@@ -13,4 +13,4 @@ Schema.org turned into strongly typed C# classes for use in .NET.
 
 | Name | NuGet | MyGet |
 | :--- | :---  | :---  |
-| [Schema.NET](https://www.nuget.org/packages/Schema.NET/) | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET MyGet Package](https://img.shields.io/myget/rehansaeed/v/Schema.NET.svg)](http://myget.org/gallery/Schema.NET) |
+| [Schema.NET](https://www.nuget.org/packages/Schema.NET/) | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET MyGet Package](https://img.shields.io/myget/rehansaeed/v/schema-net.svg)](http://myget.org/gallery/schema-net) |
