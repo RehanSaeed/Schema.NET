@@ -1,0 +1,18 @@
+namespace Schema.NET
+{
+    using System;
+    using System.Runtime.Serialization;
+
+    /// <summary>
+    /// The anatomical location at which two or more bones make contact.
+    /// </summary>
+    [DataContract]
+    public class Joint : AnatomicalStructure
+    {
+        /// <summary>
+        /// Gets the name of the type as specified by schema.org.
+        /// </summary>
+        [DataMember(Name = "@type")]
+        public override string Type => "Joint";
+    }
+}

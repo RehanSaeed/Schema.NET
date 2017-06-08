@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Build">
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <CodeAnalysisRuleSet>../../MinimumRecommendedRulesWithStyleCop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package">
+    <VersionPrefix>3.2.0</VersionPrefix>
+    <Authors>Muhammad Rehan Saeed (RehanSaeed.com)</Authors>
+    <Product>Schema.NET</Product>
+    <Description>Schema.org turned into strongly typed C# classes for use in .NET</Description>
+    <Copyright>Copyright © Muhammad Rehan Saeed. All rights Reserved</Copyright>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/RehanSaeed/Schema.NET/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/RehanSaeed/Schema.NET</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/RehanSaeed/Schema.NET/master/Images/Icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/RehanSaeed/Schema.NET.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Schema;.NET;Schema.org;Schema.NET</PackageTags>
+    <PackageReleaseNotes>Initial version.</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Signing">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>../../Key.snk</AssemblyOriginatorKeyFile>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+  </PropertyGroup>
+
+  <ItemGroup Label="Package References">
+    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All" Version="1.0.2" />
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
