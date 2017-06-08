@@ -53,7 +53,7 @@ Task("Restore")
     .Does(() =>
     {
         var project = GetFiles("./**/Schema.NET.Tool.csproj").First();
-        DotNetCoreRun(project.GetDirectory().FullPath);
+        DotNetCoreRun(project.ToString());
     });
     
 Task("Build")
