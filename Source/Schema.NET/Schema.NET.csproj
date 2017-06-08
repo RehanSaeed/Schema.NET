@@ -19,7 +19,7 @@
     <PackageIconUrl>https://github.com/RehanSaeed/Schema.NET/master/Images/Icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/RehanSaeed/Schema.NET.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Schema;.NET;Schema.org;Schema.NET</PackageTags>
+    <PackageTags>Schema;.NET;Schema.org;Schema.NET;Structured Data;Google Structured Data</PackageTags>
     <PackageReleaseNotes>Initial version.</PackageReleaseNotes>
   </PropertyGroup>
 

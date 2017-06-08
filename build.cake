@@ -35,8 +35,29 @@ Task("Restore")
         DotNetCoreRestore();
     });
 
- Task("Build")
+ Task("BuildTool")
     .IsDependentOn("Restore")
+    .Does(() =>
+    {
+        var project = GetFiles("./**/Schema.NET.Tool.csproj").First();
+        DotNetCoreBuild(
+            project.GetDirectory().FullPath,
+            new DotNetCoreBuildSettings()
+            {
+                Configuration = configuration
+            });
+    });
+
+ Task("RunTool")
+    .IsDependentOn("BuildTool")
+    .Does(() =>
+    {
+        var project = GetFiles("./**/Schema.NET.Tool.csproj").First();
+        DotNetCoreRun(project.GetDirectory().FullPath);
+    });
+    
+Task("Build")
+    .IsDependentOn("RunTool")
     .Does(() =>
     {
         foreach(var project in GetFiles("./**/*.csproj"))
@@ -50,16 +71,8 @@ Task("Restore")
         }
     });
 
- Task("RunTool")
-    .IsDependentOn("Build")
-    .Does(() =>
-    {
-        var project = GetFiles("./**/Schema.NET.Tool.csproj").First();
-        DotNetCoreRun(project.GetDirectory().FullPath);
-    });
-
 Task("Test")
-    .IsDependentOn("RunTool")
+    .IsDependentOn("Build")
     .Does(() =>
     {
         foreach(var project in GetFiles("./Tests/**/*.csproj"))
