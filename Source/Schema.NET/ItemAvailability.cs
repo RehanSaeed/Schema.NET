@@ -1,18 +1,53 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// A list of possible product availability options.
     /// </summary>
-    [DataContract]
-    public class ItemAvailability : Enumeration
+    public enum ItemAvailability
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// Indicates that the item has been discontinued.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "ItemAvailability";
+        Discontinued,
+
+        /// <summary>
+        /// Indicates that the item is in stock.
+        /// </summary>
+        InStock,
+
+        /// <summary>
+        /// Indicates that the item is available only at physical locations.
+        /// </summary>
+        InStoreOnly,
+
+        /// <summary>
+        /// Indicates that the item has limited availability.
+        /// </summary>
+        LimitedAvailability,
+
+        /// <summary>
+        /// Indicates that the item is available only online.
+        /// </summary>
+        OnlineOnly,
+
+        /// <summary>
+        /// Indicates that the item is out of stock.
+        /// </summary>
+        OutOfStock,
+
+        /// <summary>
+        /// Indicates that the item is available for pre-order, but will be delivered when generally available.
+        /// </summary>
+        PreOrder,
+
+        /// <summary>
+        /// Indicates that the item is available for ordering and delivery before general availability.
+        /// </summary>
+        PreSale,
+
+        /// <summary>
+        /// Indicates that the item has sold out.
+        /// </summary>
+        SoldOut
     }
 }

@@ -1,18 +1,23 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// A type of permission which can be granted for accessing a digital document.
     /// </summary>
-    [DataContract]
-    public class DigitalDocumentPermissionType : Enumeration
+    public enum DigitalDocumentPermissionType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// Permission to add comments to the document.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "DigitalDocumentPermissionType";
+        CommentPermission,
+
+        /// <summary>
+        /// Permission to read or view the document.
+        /// </summary>
+        ReadPermission,
+
+        /// <summary>
+        /// Permission to write or edit the document.
+        /// </summary>
+        WritePermission
     }
 }

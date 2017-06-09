@@ -1,18 +1,28 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// The kind of release which this album is: single, EP or album.
     /// </summary>
-    [DataContract]
-    public class MusicAlbumReleaseType : Enumeration
+    public enum MusicAlbumReleaseType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// AlbumRelease.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "MusicAlbumReleaseType";
+        AlbumRelease,
+
+        /// <summary>
+        /// BroadcastRelease.
+        /// </summary>
+        BroadcastRelease,
+
+        /// <summary>
+        /// EPRelease.
+        /// </summary>
+        EPRelease,
+
+        /// <summary>
+        /// SingleRelease.
+        /// </summary>
+        SingleRelease
     }
 }

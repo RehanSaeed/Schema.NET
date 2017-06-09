@@ -60,10 +60,15 @@
             stringBuilder.AppendLine("namespace Schema.NET");
             stringBuilder.AppendLine("{");
 
-            // Using statements
-            stringBuilder.AppendIndentLine(4, "using System;");
-            stringBuilder.AppendIndentLine(4, "using System.Runtime.Serialization;");
-            stringBuilder.AppendLine();
+            var isEnum = this.Parent != null && string.Equals(this.Parent.Name, "Enumeration");
+
+            if (!isEnum)
+            {
+                // Using statements
+                stringBuilder.AppendIndentLine(4, "using System;");
+                stringBuilder.AppendIndentLine(4, "using System.Runtime.Serialization;");
+                stringBuilder.AppendLine();
+            }
 
             // Comment
             stringBuilder.AppendIndentLine(4, "/// <summary>");
@@ -73,54 +78,92 @@
             var isThing = string.Equals(this.Name, "Thing", StringComparison.Ordinal);
             var partial = isThing ? " partial" : string.Empty;
 
-            // Class
-            stringBuilder.AppendIndentLine(4, "[DataContract]");
-            stringBuilder.AppendIndent(4, $"public{partial} class {this.Name}");
-            stringBuilder.AppendLine(this.Parent == null ? null : $" : {this.Parent.Name}");
-
-            stringBuilder.AppendIndentLine(4, "{");
-
-            var modifier = isThing ? "virtual" : "override";
-            if (isThing)
+            if (isEnum)
             {
-                // Context Property
-                stringBuilder.AppendIndentLine(8, "/// <summary>");
-                stringBuilder.AppendIndentLine(8, "/// Gets the context for the object, specifying that it comes from schema.org.");
-                stringBuilder.AppendIndentLine(8, "/// </summary>");
-                stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@context\", Order = 0)]");
-                stringBuilder.AppendIndentLine(8, $"public string Context => \"http://schema.org\";");
-                stringBuilder.AppendLine();
-            }
+                stringBuilder.AppendIndentLine(4, $"public enum {this.Name}");
+                stringBuilder.AppendIndentLine(4, "{");
 
-            // Type Property
-            stringBuilder.AppendIndentLine(8, "/// <summary>");
-            stringBuilder.AppendIndentLine(8, "/// Gets the name of the type as specified by schema.org.");
-            stringBuilder.AppendIndentLine(8, "/// </summary>");
-            stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@type\", Order = 1)]");
-            stringBuilder.AppendIndentLine(8, $"public {modifier} string Type => \"{this.Name}\";");
-
-            // Properties
-            if (this.Properties.Count > 0)
-            {
-                stringBuilder.AppendLine();
-
-                var i = 0;
-                var order = 2;
-                foreach (var property in this.Properties.OrderBy(x => x.Name))
+                // Properties
+                if (this.Properties.Count > 0)
                 {
-                    var isLast = i == (this.Properties.Count - 1);
-                    property.AppendIndentLine(stringBuilder, 8, order, this);
-                    if (!isLast)
+                    var i = 0;
+                    foreach (var property in this.Properties.OrderBy(x => x.Name))
                     {
-                        stringBuilder.AppendLine();
-                    }
+                        var isLast = i == (this.Properties.Count - 1);
 
-                    ++i;
-                    ++order;
+                        stringBuilder.AppendIndentLine(8, "/// <summary>");
+                        stringBuilder.AppendCommentLine(8, property.Comment);
+                        stringBuilder.AppendIndentLine(8, "/// </summary>");
+                        stringBuilder.AppendIndent(8, property.Name);
+                        if (!isLast)
+                        {
+                            stringBuilder.AppendLine(",");
+                        }
+
+                        stringBuilder.AppendLine();
+
+                        ++i;
+                    }
                 }
+
+                stringBuilder.AppendIndentLine(4, "}");
+            }
+            else
+            {
+                // Class
+                stringBuilder.AppendIndentLine(4, "[DataContract]");
+                stringBuilder.AppendIndent(4, $"public{partial} class {this.Name}");
+                stringBuilder.AppendLine(this.Parent == null ? null : $" : {this.Parent.Name}");
+
+                stringBuilder.AppendIndentLine(4, "{");
+
+                var modifier = isThing ? "virtual" : "override";
+                if (isThing)
+                {
+                    // Context Property
+                    stringBuilder.AppendIndentLine(8, "/// <summary>");
+                    stringBuilder.AppendIndentLine(8, "/// Gets the context for the object, specifying that it comes from schema.org.");
+                    stringBuilder.AppendIndentLine(8, "/// </summary>");
+                    stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@context\", Order = 0)]");
+                    stringBuilder.AppendIndentLine(8, $"public string Context => \"http://schema.org\";");
+                    stringBuilder.AppendLine();
+                }
+
+                // Type Property
+                stringBuilder.AppendIndentLine(8, "/// <summary>");
+                stringBuilder.AppendIndentLine(8, "/// Gets the name of the type as specified by schema.org.");
+                stringBuilder.AppendIndentLine(8, "/// </summary>");
+                stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@type\", Order = 1)]");
+                stringBuilder.AppendIndentLine(8, $"public {modifier} string Type => \"{this.Name}\";");
+
+                // Properties
+                var props = this.Properties
+                    .Where(x => string.Equals(x.PropertyType, "rdf:Property", StringComparison.OrdinalIgnoreCase))
+                    .OrderBy(x => x.Name)
+                    .ToList();
+                if (props.Count > 0)
+                {
+                    stringBuilder.AppendLine();
+
+                    var i = 0;
+                    var order = 2;
+                    foreach (var property in props)
+                    {
+                        var isLast = i == (props.Count - 1);
+                        property.AppendIndentLine(stringBuilder, 8, order, this);
+                        if (!isLast)
+                        {
+                            stringBuilder.AppendLine();
+                        }
+
+                        ++i;
+                        ++order;
+                    }
+                }
+
+                stringBuilder.AppendIndentLine(4, "}");
             }
 
-            stringBuilder.AppendIndentLine(4, "}");
             stringBuilder.AppendLine("}");
 
             return stringBuilder.ToString();

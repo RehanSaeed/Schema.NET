@@ -1,18 +1,28 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// The publication format of the book.
     /// </summary>
-    [DataContract]
-    public class BookFormatType : Enumeration
+    public enum BookFormatType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// Book format: Audiobook. This is an enumerated value for use with the bookFormat property. There is also a type 'Audiobook' in the bib extension which includes Audiobook specific properties.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "BookFormatType";
+        AudiobookFormat,
+
+        /// <summary>
+        /// Book format: Ebook.
+        /// </summary>
+        EBook,
+
+        /// <summary>
+        /// Book format: Hardcover.
+        /// </summary>
+        Hardcover,
+
+        /// <summary>
+        /// Book format: Paperback.
+        /// </summary>
+        Paperback
     }
 }

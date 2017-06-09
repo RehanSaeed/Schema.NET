@@ -1,18 +1,28 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Status of a game server.
     /// </summary>
-    [DataContract]
-    public class GameServerStatus : Enumeration
+    public enum GameServerStatus
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// Game server status: OfflinePermanently. Server is offline and not available.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "GameServerStatus";
+        OfflinePermanently,
+
+        /// <summary>
+        /// Game server status: OfflineTemporarily. Server is offline now but it can be online soon.
+        /// </summary>
+        OfflineTemporarily,
+
+        /// <summary>
+        /// Game server status: Online. Server is available.
+        /// </summary>
+        Online,
+
+        /// <summary>
+        /// Game server status: OnlineFull. Server is online but unavailable. The maximum number of players has reached.
+        /// </summary>
+        OnlineFull
     }
 }

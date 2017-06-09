@@ -1,18 +1,63 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// A diet restricted to certain foods or preparations for cultural, religious, health or lifestyle reasons.
     /// </summary>
-    [DataContract]
-    public class RestrictedDiet : Enumeration
+    public enum RestrictedDiet
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// A diet appropriate for people with diabetes.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "RestrictedDiet";
+        DiabeticDiet,
+
+        /// <summary>
+        /// A diet exclusive of gluten.
+        /// </summary>
+        GlutenFreeDiet,
+
+        /// <summary>
+        /// A diet conforming to Islamic dietary practices.
+        /// </summary>
+        HalalDiet,
+
+        /// <summary>
+        /// A diet conforming to Hindu dietary practices, in particular, beef-free.
+        /// </summary>
+        HinduDiet,
+
+        /// <summary>
+        /// A diet conforming to Jewish dietary practices.
+        /// </summary>
+        KosherDiet,
+
+        /// <summary>
+        /// A diet focused on reduced calorie intake.
+        /// </summary>
+        LowCalorieDiet,
+
+        /// <summary>
+        /// A diet focused on reduced fat and cholesterol intake.
+        /// </summary>
+        LowFatDiet,
+
+        /// <summary>
+        /// A diet appropriate for people with lactose intolerance.
+        /// </summary>
+        LowLactoseDiet,
+
+        /// <summary>
+        /// A diet focused on reduced sodium intake.
+        /// </summary>
+        LowSaltDiet,
+
+        /// <summary>
+        /// A diet exclusive of all animal products.
+        /// </summary>
+        VeganDiet,
+
+        /// <summary>
+        /// A diet exclusive of animal meat.
+        /// </summary>
+        VegetarianDiet
     }
 }

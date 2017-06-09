@@ -1,18 +1,18 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Enumerated options related to a ContactPoint.
     /// </summary>
-    [DataContract]
-    public class ContactPointOption : Enumeration
+    public enum ContactPointOption
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// Uses devices to support users with hearing impairments.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "ContactPointOption";
+        HearingImpairedSupported,
+
+        /// <summary>
+        /// The associated telephone number is toll free.
+        /// </summary>
+        TollFree
     }
 }

@@ -1,18 +1,53 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
     /// </summary>
-    [DataContract]
-    public class MusicAlbumProductionType : Enumeration
+    public enum MusicAlbumProductionType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// CompilationAlbum.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "MusicAlbumProductionType";
+        CompilationAlbum,
+
+        /// <summary>
+        /// DemoAlbum.
+        /// </summary>
+        DemoAlbum,
+
+        /// <summary>
+        /// DJMixAlbum.
+        /// </summary>
+        DJMixAlbum,
+
+        /// <summary>
+        /// LiveAlbum.
+        /// </summary>
+        LiveAlbum,
+
+        /// <summary>
+        /// MixtapeAlbum.
+        /// </summary>
+        MixtapeAlbum,
+
+        /// <summary>
+        /// RemixAlbum.
+        /// </summary>
+        RemixAlbum,
+
+        /// <summary>
+        /// SoundtrackAlbum.
+        /// </summary>
+        SoundtrackAlbum,
+
+        /// <summary>
+        /// SpokenWordAlbum.
+        /// </summary>
+        SpokenWordAlbum,
+
+        /// <summary>
+        /// StudioAlbum.
+        /// </summary>
+        StudioAlbum
     }
 }

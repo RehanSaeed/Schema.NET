@@ -1,18 +1,23 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
     /// </summary>
-    [DataContract]
-    public class ItemListOrderType : Enumeration
+    public enum ItemListOrderType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// An ItemList ordered with lower values listed first.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "ItemListOrderType";
+        ItemListOrderAscending,
+
+        /// <summary>
+        /// An ItemList ordered with higher values listed first.
+        /// </summary>
+        ItemListOrderDescending,
+
+        /// <summary>
+        /// An ItemList ordered with no explicit order.
+        /// </summary>
+        ItemListUnordered
     }
 }

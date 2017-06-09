@@ -1,18 +1,28 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Enumerated status values for Reservation.
     /// </summary>
-    [DataContract]
-    public class ReservationStatusType : Enumeration
+    public enum ReservationStatusType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// The status for a previously confirmed reservation that is now cancelled.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "ReservationStatusType";
+        ReservationCancelled,
+
+        /// <summary>
+        /// The status of a confirmed reservation.
+        /// </summary>
+        ReservationConfirmed,
+
+        /// <summary>
+        /// The status of a reservation on hold pending an update like credit card number or flight changes.
+        /// </summary>
+        ReservationHold,
+
+        /// <summary>
+        /// The status of a reservation when a request has been sent, but not confirmed.
+        /// </summary>
+        ReservationPending
     }
 }

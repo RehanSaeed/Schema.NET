@@ -1,18 +1,23 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// RsvpResponseType is an enumeration type whose instances represent responding to an RSVP request.
     /// </summary>
-    [DataContract]
-    public class RsvpResponseType : Enumeration
+    public enum RsvpResponseType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// The invitee may or may not attend.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "RsvpResponseType";
+        RsvpResponseMaybe,
+
+        /// <summary>
+        /// The invitee will not attend.
+        /// </summary>
+        RsvpResponseNo,
+
+        /// <summary>
+        /// The invitee will attend.
+        /// </summary>
+        RsvpResponseYes
     }
 }

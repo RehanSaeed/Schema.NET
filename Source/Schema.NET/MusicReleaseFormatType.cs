@@ -1,18 +1,43 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc...
     /// </summary>
-    [DataContract]
-    public class MusicReleaseFormatType : Enumeration
+    public enum MusicReleaseFormatType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// CassetteFormat.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "MusicReleaseFormatType";
+        CassetteFormat,
+
+        /// <summary>
+        /// CDFormat.
+        /// </summary>
+        CDFormat,
+
+        /// <summary>
+        /// DigitalAudioTapeFormat.
+        /// </summary>
+        DigitalAudioTapeFormat,
+
+        /// <summary>
+        /// DigitalFormat.
+        /// </summary>
+        DigitalFormat,
+
+        /// <summary>
+        /// DVDFormat.
+        /// </summary>
+        DVDFormat,
+
+        /// <summary>
+        /// LaserDiscFormat.
+        /// </summary>
+        LaserDiscFormat,
+
+        /// <summary>
+        /// VinylFormat.
+        /// </summary>
+        VinylFormat
     }
 }

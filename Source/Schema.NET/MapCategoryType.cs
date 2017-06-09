@@ -1,18 +1,28 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// An enumeration of several kinds of Map.
     /// </summary>
-    [DataContract]
-    public class MapCategoryType : Enumeration
+    public enum MapCategoryType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// A parking map.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "MapCategoryType";
+        ParkingMap,
+
+        /// <summary>
+        /// A seating map.
+        /// </summary>
+        SeatingMap,
+
+        /// <summary>
+        /// A transit map.
+        /// </summary>
+        TransitMap,
+
+        /// <summary>
+        /// A venue map (e.g. for malls, auditoriums, museums, etc.).
+        /// </summary>
+        VenueMap
     }
 }

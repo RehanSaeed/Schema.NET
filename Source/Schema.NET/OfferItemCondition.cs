@@ -1,18 +1,28 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// A list of possible conditions for the item.
     /// </summary>
-    [DataContract]
-    public class OfferItemCondition : Enumeration
+    public enum OfferItemCondition
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// Indicates that the item is damaged.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "OfferItemCondition";
+        DamagedCondition,
+
+        /// <summary>
+        /// Indicates that the item is new.
+        /// </summary>
+        NewCondition,
+
+        /// <summary>
+        /// Indicates that the item is refurbished.
+        /// </summary>
+        RefurbishedCondition,
+
+        /// <summary>
+        /// Indicates that the item is used.
+        /// </summary>
+        UsedCondition
     }
 }

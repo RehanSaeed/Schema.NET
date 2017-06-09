@@ -1,18 +1,48 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Enumerated status values for Order.
     /// </summary>
-    [DataContract]
-    public class OrderStatus : Enumeration
+    public enum OrderStatus
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// OrderStatus representing cancellation of an order.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "OrderStatus";
+        OrderCancelled,
+
+        /// <summary>
+        /// OrderStatus representing successful delivery of an order.
+        /// </summary>
+        OrderDelivered,
+
+        /// <summary>
+        /// OrderStatus representing that an order is in transit.
+        /// </summary>
+        OrderInTransit,
+
+        /// <summary>
+        /// OrderStatus representing that payment is due on an order.
+        /// </summary>
+        OrderPaymentDue,
+
+        /// <summary>
+        /// OrderStatus representing availability of an order for pickup.
+        /// </summary>
+        OrderPickupAvailable,
+
+        /// <summary>
+        /// OrderStatus representing that there is a problem with the order.
+        /// </summary>
+        OrderProblem,
+
+        /// <summary>
+        /// OrderStatus representing that an order is being processed.
+        /// </summary>
+        OrderProcessing,
+
+        /// <summary>
+        /// OrderStatus representing that an order has been returned.
+        /// </summary>
+        OrderReturned
     }
 }

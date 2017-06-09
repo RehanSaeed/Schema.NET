@@ -1,18 +1,33 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// A specific payment status. For example, PaymentDue, PaymentComplete, etc.
     /// </summary>
-    [DataContract]
-    public class PaymentStatusType : Enumeration
+    public enum PaymentStatusType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// An automatic payment system is in place and will be used.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "PaymentStatusType";
+        PaymentAutomaticallyApplied,
+
+        /// <summary>
+        /// The payment has been received and processed.
+        /// </summary>
+        PaymentComplete,
+
+        /// <summary>
+        /// The payee received the payment, but it was declined for some reason.
+        /// </summary>
+        PaymentDeclined,
+
+        /// <summary>
+        /// The payment is due, but still within an acceptable time to be received.
+        /// </summary>
+        PaymentDue,
+
+        /// <summary>
+        /// The payment is due and considered late.
+        /// </summary>
+        PaymentPastDue
     }
 }

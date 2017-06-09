@@ -53,7 +53,6 @@
                 var adjustedType = distinctTypes.First();
                 stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.Name}\", Order = {order})]");
                 stringBuilder.AppendIndentLine(indent, $"public{modifier} {adjustedType.CSharpTypeString} {csharpName} {{ get; set; }}");
-
             }
             else
             {

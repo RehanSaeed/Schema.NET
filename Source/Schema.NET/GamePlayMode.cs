@@ -1,18 +1,23 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Indicates whether this game is multi-player, co-op or single-player.
     /// </summary>
-    [DataContract]
-    public class GamePlayMode : Enumeration
+    public enum GamePlayMode
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// Play mode: CoOp. Co-operative games, where you play on the same team with friends.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "GamePlayMode";
+        CoOp,
+
+        /// <summary>
+        /// Play mode: MultiPlayer. Requiring or allowing multiple human players to play simultaneously.
+        /// </summary>
+        MultiPlayer,
+
+        /// <summary>
+        /// Play mode: SinglePlayer. Which is played by a lone player.
+        /// </summary>
+        SinglePlayer
     }
 }

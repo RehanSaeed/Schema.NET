@@ -1,18 +1,18 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// A type of boarding policy used by an airline.
     /// </summary>
-    [DataContract]
-    public class BoardingPolicyType : Enumeration
+    public enum BoardingPolicyType
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// The airline boards by groups based on check-in time, priority, etc.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "BoardingPolicyType";
+        GroupBoardingPolicy,
+
+        /// <summary>
+        /// The airline boards by zones of the plane.
+        /// </summary>
+        ZoneBoardingPolicy
     }
 }
