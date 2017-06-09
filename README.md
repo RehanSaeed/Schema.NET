@@ -1,6 +1,6 @@
 ![Schema.NET Banner](https://raw.githubusercontent.com/RehanSaeed/Schema.NET/master/Images/Banner.png)
 
-Schema.org turned into strongly typed C# classes for use in .NET.
+Schema.org objects turned into strongly typed C# classes for use in .NET. All classes can be serialized into JSON/JSON-LD and XML, typically used to represent structured data in the `head` section of `html` page.
 
 ## Continuous Integration
 
@@ -13,4 +13,4 @@ Schema.org turned into strongly typed C# classes for use in .NET.
 
 | Name | NuGet | MyGet |
 | :--- | :---  | :---  |
-| [Schema.NET](https://www.nuget.org/packages/Schema.NET/) | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET MyGet Package](https://img.shields.io/myget/rehansaeed/v/schema-net.svg)](http://myget.org/gallery/schema-net) |
+| Schema.NET | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET MyGet Package](https://img.shields.io/myget/schema-net/v/Schema.Net.svg)](http://myget.org/gallery/schema-net) |
