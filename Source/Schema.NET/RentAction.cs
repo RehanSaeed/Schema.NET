@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "RentAction";
 
         /// <summary>
         /// A sub property of participant. The owner of the real estate property.
         /// </summary>
-        [DataMember(Name = "landlord")]
+        [DataMember(Name = "landlord", Order = 2)]
         public object Landlord { get; protected set; }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The real estate agent involved in the action.
         /// </summary>
-        [DataMember(Name = "realEstateAgent")]
+        [DataMember(Name = "realEstateAgent", Order = 3)]
         public RealEstateAgent RealEstateAgent { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "CompoundPriceSpecification";
 
         /// <summary>
         /// This property links to all &lt;a class="localLink" href="http://schema.org/UnitPriceSpecification"&gt;UnitPriceSpecification&lt;/a&gt; nodes that apply in parallel for the &lt;a class="localLink" href="http://schema.org/CompoundPriceSpecification"&gt;CompoundPriceSpecification&lt;/a&gt; node.
         /// </summary>
-        [DataMember(Name = "priceComponent")]
+        [DataMember(Name = "priceComponent", Order = 2)]
         public UnitPriceSpecification PriceComponent { get; set; }
     }
 }

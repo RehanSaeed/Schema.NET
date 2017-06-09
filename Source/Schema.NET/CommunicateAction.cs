@@ -12,19 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "CommunicateAction";
 
         /// <summary>
         /// The subject matter of the content.
         /// </summary>
-        [DataMember(Name = "about")]
+        [DataMember(Name = "about", Order = 2)]
         public Thing About { get; set; }
 
         /// <summary>
         /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "inLanguage")]
+        [DataMember(Name = "inLanguage", Order = 3)]
         public object InLanguage { get; protected set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
-        [DataMember(Name = "recipient")]
+        [DataMember(Name = "recipient", Order = 4)]
         public object Recipient { get; protected set; }
 
         /// <summary>

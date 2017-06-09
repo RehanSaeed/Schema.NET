@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MobileApplication";
 
         /// <summary>
         /// Specifies specific carrier(s) requirements for the application (e.g. an application may only work on a specific carrier network).
         /// </summary>
-        [DataMember(Name = "carrierRequirements")]
+        [DataMember(Name = "carrierRequirements", Order = 2)]
         public string CarrierRequirements { get; set; }
     }
 }

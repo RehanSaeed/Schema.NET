@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "TravelAction";
 
         /// <summary>
         /// The distance travelled, e.g. exercising or travelling.
         /// </summary>
-        [DataMember(Name = "distance")]
+        [DataMember(Name = "distance", Order = 2)]
         public Distance Distance { get; set; }
     }
 }

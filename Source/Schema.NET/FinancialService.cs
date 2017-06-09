@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "FinancialService";
 
         /// <summary>
         /// Description of fees, commissions, and other terms applied either to a class of financial product, or by a financial service organization.
         /// </summary>
-        [DataMember(Name = "feesAndCommissionsSpecification")]
+        [DataMember(Name = "feesAndCommissionsSpecification", Order = 2)]
         public object FeesAndCommissionsSpecification { get; protected set; }
 
         /// <summary>

@@ -12,19 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Brand";
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
-        [DataMember(Name = "aggregateRating")]
+        [DataMember(Name = "aggregateRating", Order = 2)]
         public AggregateRating AggregateRating { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
-        [DataMember(Name = "logo")]
+        [DataMember(Name = "logo", Order = 3)]
         public object Logo { get; protected set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Schema.NET
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review")]
+        [DataMember(Name = "review", Order = 4)]
         public Review Review { get; set; }
     }
 }

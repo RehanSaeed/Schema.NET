@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Seat";
 
         /// <summary>
         /// The type/class of the seat.
         /// </summary>
-        [DataMember(Name = "seatingType")]
+        [DataMember(Name = "seatingType", Order = 2)]
         public object SeatingType { get; protected set; }
 
         /// <summary>
@@ -42,21 +42,21 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// The section location of the reserved seat (e.g. Orchestra).
+        /// The location of the reserved seat (e.g., 27).
         /// </summary>
-        [DataMember(Name = "seatSection")]
-        public string SeatSection { get; set; }
+        [DataMember(Name = "seatNumber", Order = 3)]
+        public string SeatNumber { get; set; }
 
         /// <summary>
         /// The row location of the reserved seat (e.g., B).
         /// </summary>
-        [DataMember(Name = "seatRow")]
+        [DataMember(Name = "seatRow", Order = 4)]
         public string SeatRow { get; set; }
 
         /// <summary>
-        /// The location of the reserved seat (e.g., 27).
+        /// The section location of the reserved seat (e.g. Orchestra).
         /// </summary>
-        [DataMember(Name = "seatNumber")]
-        public string SeatNumber { get; set; }
+        [DataMember(Name = "seatSection", Order = 5)]
+        public string SeatSection { get; set; }
     }
 }

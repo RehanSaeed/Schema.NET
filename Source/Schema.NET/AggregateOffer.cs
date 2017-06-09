@@ -12,25 +12,39 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "AggregateOffer";
 
         /// <summary>
-        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
+        /// The highest price of all offers available.
         /// </summary>
-        [DataMember(Name = "offers")]
-        public Offer Offers { get; set; }
+        [DataMember(Name = "highPrice", Order = 2)]
+        public object HighPrice { get; protected set; }
 
         /// <summary>
-        /// The number of offers for the product.
+        /// The highest price of all offers available.
         /// </summary>
-        [DataMember(Name = "offerCount")]
-        public int OfferCount { get; set; }
+        [IgnoreDataMember]
+        public string HighPriceText
+        {
+            get => this.HighPrice as string;
+            set => this.HighPrice = value;
+        }
+
+        /// <summary>
+        /// The highest price of all offers available.
+        /// </summary>
+        [IgnoreDataMember]
+        public decimal? HighPriceNumber
+        {
+            get => this.HighPrice as decimal?;
+            set => this.HighPrice = value;
+        }
 
         /// <summary>
         /// The lowest price of all offers available.
         /// </summary>
-        [DataMember(Name = "lowPrice")]
+        [DataMember(Name = "lowPrice", Order = 3)]
         public object LowPrice { get; protected set; }
 
         /// <summary>
@@ -54,29 +68,15 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// The highest price of all offers available.
+        /// The number of offers for the product.
         /// </summary>
-        [DataMember(Name = "highPrice")]
-        public object HighPrice { get; protected set; }
+        [DataMember(Name = "offerCount", Order = 4)]
+        public int? OfferCount { get; set; }
 
         /// <summary>
-        /// The highest price of all offers available.
+        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        [IgnoreDataMember]
-        public string HighPriceText
-        {
-            get => this.HighPrice as string;
-            set => this.HighPrice = value;
-        }
-
-        /// <summary>
-        /// The highest price of all offers available.
-        /// </summary>
-        [IgnoreDataMember]
-        public decimal? HighPriceNumber
-        {
-            get => this.HighPrice as decimal?;
-            set => this.HighPrice = value;
-        }
+        [DataMember(Name = "offers", Order = 5)]
+        public Offer Offers { get; set; }
     }
 }

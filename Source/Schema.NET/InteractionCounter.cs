@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "InteractionCounter";
 
         /// <summary>
         /// The WebSite or SoftwareApplication where the interactions took place.
         /// </summary>
-        [DataMember(Name = "interactionService")]
+        [DataMember(Name = "interactionService", Order = 2)]
         public object InteractionService { get; protected set; }
 
         /// <summary>
@@ -42,15 +42,15 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication.
-        /// </summary>
-        [DataMember(Name = "userInteractionCount")]
-        public int UserInteractionCount { get; set; }
-
-        /// <summary>
         /// The Action representing the type of interaction. For up votes, +1s, etc. use &lt;a class="localLink" href="http://schema.org/LikeAction"&gt;LikeAction&lt;/a&gt;. For down votes use &lt;a class="localLink" href="http://schema.org/DislikeAction"&gt;DislikeAction&lt;/a&gt;. Otherwise, use the most specific Action.
         /// </summary>
-        [DataMember(Name = "interactionType")]
+        [DataMember(Name = "interactionType", Order = 3)]
         public Action InteractionType { get; set; }
+
+        /// <summary>
+        /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication.
+        /// </summary>
+        [DataMember(Name = "userInteractionCount", Order = 4)]
+        public int? UserInteractionCount { get; set; }
     }
 }

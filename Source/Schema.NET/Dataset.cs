@@ -12,19 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Dataset";
-
-        /// <summary>
-        /// A data catalog which contains this dataset.
-        /// </summary>
-        [DataMember(Name = "includedInDataCatalog")]
-        public DataCatalog IncludedInDataCatalog { get; set; }
 
         /// <summary>
         /// A downloadable form of this dataset, at a specific location, in a specific format.
         /// </summary>
-        [DataMember(Name = "distribution")]
+        [DataMember(Name = "distribution", Order = 2)]
         public DataDownload Distribution { get; set; }
+
+        /// <summary>
+        /// A data catalog which contains this dataset.
+        /// </summary>
+        [DataMember(Name = "includedInDataCatalog", Order = 3)]
+        public DataCatalog IncludedInDataCatalog { get; set; }
     }
 }

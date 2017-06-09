@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "FollowAction";
 
         /// <summary>
         /// A sub property of object. The person or organization being followed.
         /// </summary>
-        [DataMember(Name = "followee")]
+        [DataMember(Name = "followee", Order = 2)]
         public object Followee { get; protected set; }
 
         /// <summary>

@@ -12,25 +12,25 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "LocationFeatureSpecification";
 
         /// <summary>
         /// The hours during which this service or contact is available.
         /// </summary>
-        [DataMember(Name = "hoursAvailable")]
+        [DataMember(Name = "hoursAvailable", Order = 2)]
         public OpeningHoursSpecification HoursAvailable { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        [DataMember(Name = "validFrom")]
-        public DateTimeOffset ValidFrom { get; set; }
+        [DataMember(Name = "validFrom", Order = 3)]
+        public DateTimeOffset? ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        [DataMember(Name = "validThrough")]
-        public DateTimeOffset ValidThrough { get; set; }
+        [DataMember(Name = "validThrough", Order = 4)]
+        public DateTimeOffset? ValidThrough { get; set; }
     }
 }

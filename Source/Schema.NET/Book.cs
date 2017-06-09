@@ -12,37 +12,37 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Book";
-
-        /// <summary>
-        /// The ISBN of the book.
-        /// </summary>
-        [DataMember(Name = "isbn")]
-        public string Isbn { get; set; }
 
         /// <summary>
         /// The edition of the book.
         /// </summary>
-        [DataMember(Name = "bookEdition")]
+        [DataMember(Name = "bookEdition", Order = 2)]
         public string BookEdition { get; set; }
 
         /// <summary>
         /// The format of the book.
         /// </summary>
-        [DataMember(Name = "bookFormat")]
+        [DataMember(Name = "bookFormat", Order = 3)]
         public BookFormatType BookFormat { get; set; }
-
-        /// <summary>
-        /// The number of pages in the book.
-        /// </summary>
-        [DataMember(Name = "numberOfPages")]
-        public int NumberOfPages { get; set; }
 
         /// <summary>
         /// The illustrator of the book.
         /// </summary>
-        [DataMember(Name = "illustrator")]
+        [DataMember(Name = "illustrator", Order = 4)]
         public Person Illustrator { get; set; }
+
+        /// <summary>
+        /// The ISBN of the book.
+        /// </summary>
+        [DataMember(Name = "isbn", Order = 5)]
+        public string Isbn { get; set; }
+
+        /// <summary>
+        /// The number of pages in the book.
+        /// </summary>
+        [DataMember(Name = "numberOfPages", Order = 6)]
+        public int? NumberOfPages { get; set; }
     }
 }

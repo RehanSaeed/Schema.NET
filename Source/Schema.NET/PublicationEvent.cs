@@ -12,19 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PublicationEvent";
-
-        /// <summary>
-        /// A broadcast service associated with the publication event.
-        /// </summary>
-        [DataMember(Name = "publishedOn")]
-        public BroadcastService PublishedOn { get; set; }
 
         /// <summary>
         /// A flag to signal that the publication is accessible for free.
         /// </summary>
-        [DataMember(Name = "isAccessibleForFree")]
-        public override bool IsAccessibleForFree { get; set; }
+        [DataMember(Name = "isAccessibleForFree", Order = 2)]
+        public override bool? IsAccessibleForFree { get; set; }
+
+        /// <summary>
+        /// A broadcast service associated with the publication event.
+        /// </summary>
+        [DataMember(Name = "publishedOn", Order = 3)]
+        public BroadcastService PublishedOn { get; set; }
     }
 }

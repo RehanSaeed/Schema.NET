@@ -12,25 +12,25 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "RsvpAction";
 
         /// <summary>
         /// If responding yes, the number of guests who will attend in addition to the invitee.
         /// </summary>
-        [DataMember(Name = "additionalNumberOfGuests")]
-        public decimal AdditionalNumberOfGuests { get; set; }
+        [DataMember(Name = "additionalNumberOfGuests", Order = 2)]
+        public int? AdditionalNumberOfGuests { get; set; }
 
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
-        [DataMember(Name = "comment")]
+        [DataMember(Name = "comment", Order = 3)]
         public Comment Comment { get; set; }
 
         /// <summary>
         /// The response (yes, no, maybe) to the RSVP.
         /// </summary>
-        [DataMember(Name = "rsvpResponse")]
+        [DataMember(Name = "rsvpResponse", Order = 4)]
         public RsvpResponseType RsvpResponse { get; set; }
     }
 }

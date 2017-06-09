@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "SomeProducts";
 
         /// <summary>
         /// The current approximate inventory level for the item or items.
         /// </summary>
-        [DataMember(Name = "inventoryLevel")]
+        [DataMember(Name = "inventoryLevel", Order = 2)]
         public QuantitativeValue InventoryLevel { get; set; }
     }
 }

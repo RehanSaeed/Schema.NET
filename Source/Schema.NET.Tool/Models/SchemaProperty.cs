@@ -24,15 +24,15 @@
 
         public string PropertyType { get; set; }
 
-        public void AppendIndentLine(StringBuilder stringBuilder, int count, bool isLast, SchemaClass schemaClass)
+        public void AppendIndentLine(StringBuilder stringBuilder, int indent, int order, SchemaClass schemaClass)
         {
-            AppendCommentLine(stringBuilder, count);
+            AppendCommentLine(stringBuilder, indent);
 
             var csharpName = GetCSharpName(this.Name);
             var distinctTypes = new List<SchemaType>();
             foreach (var type in this.Types)
             {
-                SetCSharpType(type);
+                SetCSharpType(csharpName, type);
                 if (!distinctTypes.Any(x => string.Equals(x.CSharpTypeString, type.CSharpTypeString)))
                 {
                     distinctTypes.Add(type);
@@ -51,37 +51,36 @@
             if (distinctTypes.Count == 1)
             {
                 var adjustedType = distinctTypes.First();
-                stringBuilder.AppendIndentLine(count, $"[DataMember(Name = \"{this.Name}\")]");
-                stringBuilder.AppendIndentLine(count, $"public{modifier} {adjustedType.CSharpTypeString} {csharpName} {{ get; set; }}");
-                if (!isLast)
-                {
-                    stringBuilder.AppendLine();
-                }
+                stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.Name}\", Order = {order})]");
+                stringBuilder.AppendIndentLine(indent, $"public{modifier} {adjustedType.CSharpTypeString} {csharpName} {{ get; set; }}");
+
             }
             else
             {
-                stringBuilder.AppendIndentLine(count, $"[DataMember(Name = \"{this.Name}\")]");
-                stringBuilder.AppendIndentLine(count, $"public{modifier} object {csharpName} {{ get; protected set; }}");
+                stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.Name}\", Order = {order})]");
+                stringBuilder.AppendIndentLine(indent, $"public{modifier} object {csharpName} {{ get; protected set; }}");
                 stringBuilder.AppendLine();
 
+                var i = 0;
                 foreach (var type in distinctTypes)
                 {
-                    var isLastType = type == distinctTypes.Last();
+                    var isLastType = i == (distinctTypes.Count - 1);
                     var isStruct = !(type.CSharpType == null || type.CSharpType.GetTypeInfo().IsClass);
-                    var nullable = isStruct ? "?" : string.Empty;
 
-                    AppendCommentLine(stringBuilder, count);
+                    AppendCommentLine(stringBuilder, indent);
 
-                    stringBuilder.AppendIndentLine(count, "[IgnoreDataMember]");
-                    stringBuilder.AppendIndentLine(count, $"public{modifier} {type.CSharpTypeString}{nullable} {csharpName}{type.Name}");
-                    stringBuilder.AppendIndentLine(count, "{");
-                    stringBuilder.AppendIndentLine(count + 4, $"get => this.{csharpName} as {type.CSharpTypeString}{nullable};");
-                    stringBuilder.AppendIndentLine(count + 4, $"set => this.{csharpName} = value;");
-                    stringBuilder.AppendIndentLine(count, "}");
-                    if (!(isLast && isLastType))
+                    stringBuilder.AppendIndentLine(indent, "[IgnoreDataMember]");
+                    stringBuilder.AppendIndentLine(indent, $"public{modifier} {type.CSharpTypeString} {csharpName}{type.Name}");
+                    stringBuilder.AppendIndentLine(indent, "{");
+                    stringBuilder.AppendIndentLine(indent + 4, $"get => this.{csharpName} as {type.CSharpTypeString};");
+                    stringBuilder.AppendIndentLine(indent + 4, $"set => this.{csharpName} = value;");
+                    stringBuilder.AppendIndentLine(indent, "}");
+                    if (!isLastType)
                     {
                         stringBuilder.AppendLine();
                     }
+
+                    ++i;
                 }
             }
         }
@@ -98,34 +97,39 @@
             return name;
         }
 
-        private static void SetCSharpType(SchemaType type)
+        private static void SetCSharpType(string name, SchemaType type)
         {
             switch (type.Name)
             {
                 case "Boolean":
-                    type.CSharpType = typeof(bool);
-                    type.CSharpTypeString = "bool";
+                    type.CSharpType = typeof(bool?);
+                    type.CSharpTypeString = "bool?";
                     break;
                 case "Date":
                 case "DateTime":
-                    type.CSharpType = typeof(DateTimeOffset);
-                    type.CSharpTypeString = "DateTimeOffset";
+                    type.CSharpType = typeof(DateTimeOffset?);
+                    type.CSharpTypeString = "DateTimeOffset?";
                     break;
                 case "Integer":
-                    type.CSharpType = typeof(int);
-                    type.CSharpTypeString = "int";
+                case "Number" when name.Contains("NumberOf") || name.Contains("Year") || name.Contains("Count") || name.Contains("Age"):
+                    type.CSharpType = typeof(int?);
+                    type.CSharpTypeString = "int?";
+                    break;
+                case "Number" when name.Contains("Price") || name.Contains("Amount") || name.Contains("Salary") || name.Contains("Discount"):
+                    type.CSharpType = typeof(decimal?);
+                    type.CSharpTypeString = "decimal?";
                     break;
                 case "Number":
-                    type.CSharpType = typeof(decimal);
-                    type.CSharpTypeString = "decimal";
+                    type.CSharpType = typeof(double?);
+                    type.CSharpTypeString = "double?";
                     break;
                 case "Text":
                     type.CSharpType = typeof(string);
                     type.CSharpTypeString = "string";
                     break;
                 case "Time":
-                    type.CSharpType = typeof(TimeSpan);
-                    type.CSharpTypeString = "TimeSpan";
+                    type.CSharpType = typeof(TimeSpan?);
+                    type.CSharpTypeString = "TimeSpan?";
                     break;
                 case "URL":
                     type.CSharpType = typeof(Uri);

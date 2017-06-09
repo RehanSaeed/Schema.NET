@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ReservationPackage";
 
         /// <summary>
         /// The individual reservations included in the package. Typically a repeated property.
         /// </summary>
-        [DataMember(Name = "subReservation")]
+        [DataMember(Name = "subReservation", Order = 2)]
         public Reservation SubReservation { get; set; }
     }
 }

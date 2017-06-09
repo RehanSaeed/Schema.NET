@@ -12,21 +12,14 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Apartment";
-
-        /// <summary>
-        /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
-        /// Typical unit code(s): C62 for person
-        /// </summary>
-        [DataMember(Name = "occupancy")]
-        public QuantitativeValue Occupancy { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the acccommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
-        [DataMember(Name = "numberOfRooms")]
+        [DataMember(Name = "numberOfRooms", Order = 2)]
         public override object NumberOfRooms { get; protected set; }
 
         /// <summary>
@@ -34,9 +27,9 @@ namespace Schema.NET
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
         [IgnoreDataMember]
-        public override decimal? NumberOfRoomsNumber
+        public override int? NumberOfRoomsNumber
         {
-            get => this.NumberOfRooms as decimal?;
+            get => this.NumberOfRooms as int?;
             set => this.NumberOfRooms = value;
         }
 
@@ -50,5 +43,12 @@ namespace Schema.NET
             get => this.NumberOfRooms as QuantitativeValue;
             set => this.NumberOfRooms = value;
         }
+
+        /// <summary>
+        /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
+        /// Typical unit code(s): C62 for person
+        /// </summary>
+        [DataMember(Name = "occupancy", Order = 3)]
+        public QuantitativeValue Occupancy { get; set; }
     }
 }

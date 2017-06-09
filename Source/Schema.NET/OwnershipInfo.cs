@@ -12,39 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OwnershipInfo";
-
-        /// <summary>
-        /// The product that this structured value is referring to.
-        /// </summary>
-        [DataMember(Name = "typeOfGood")]
-        public object TypeOfGood { get; protected set; }
-
-        /// <summary>
-        /// The product that this structured value is referring to.
-        /// </summary>
-        [IgnoreDataMember]
-        public Product TypeOfGoodProduct
-        {
-            get => this.TypeOfGood as Product;
-            set => this.TypeOfGood = value;
-        }
-
-        /// <summary>
-        /// The product that this structured value is referring to.
-        /// </summary>
-        [IgnoreDataMember]
-        public Service TypeOfGoodService
-        {
-            get => this.TypeOfGood as Service;
-            set => this.TypeOfGood = value;
-        }
 
         /// <summary>
         /// The organization or person from which the product was acquired.
         /// </summary>
-        [DataMember(Name = "acquiredFrom")]
+        [DataMember(Name = "acquiredFrom", Order = 2)]
         public object AcquiredFrom { get; protected set; }
 
         /// <summary>
@@ -70,13 +44,39 @@ namespace Schema.NET
         /// <summary>
         /// The date and time of obtaining the product.
         /// </summary>
-        [DataMember(Name = "ownedFrom")]
-        public DateTimeOffset OwnedFrom { get; set; }
+        [DataMember(Name = "ownedFrom", Order = 3)]
+        public DateTimeOffset? OwnedFrom { get; set; }
 
         /// <summary>
         /// The date and time of giving up ownership on the product.
         /// </summary>
-        [DataMember(Name = "ownedThrough")]
-        public DateTimeOffset OwnedThrough { get; set; }
+        [DataMember(Name = "ownedThrough", Order = 4)]
+        public DateTimeOffset? OwnedThrough { get; set; }
+
+        /// <summary>
+        /// The product that this structured value is referring to.
+        /// </summary>
+        [DataMember(Name = "typeOfGood", Order = 5)]
+        public object TypeOfGood { get; protected set; }
+
+        /// <summary>
+        /// The product that this structured value is referring to.
+        /// </summary>
+        [IgnoreDataMember]
+        public Product TypeOfGoodProduct
+        {
+            get => this.TypeOfGood as Product;
+            set => this.TypeOfGood = value;
+        }
+
+        /// <summary>
+        /// The product that this structured value is referring to.
+        /// </summary>
+        [IgnoreDataMember]
+        public Service TypeOfGoodService
+        {
+            get => this.TypeOfGood as Service;
+            set => this.TypeOfGood = value;
+        }
     }
 }

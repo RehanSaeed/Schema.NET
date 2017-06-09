@@ -12,19 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "CreativeWorkSeries";
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "endDate")]
-        public DateTimeOffset EndDate { get; set; }
+        [DataMember(Name = "endDate", Order = 2)]
+        public DateTimeOffset? EndDate { get; set; }
 
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "startDate")]
-        public DateTimeOffset StartDate { get; set; }
+        [DataMember(Name = "startDate", Order = 3)]
+        public DateTimeOffset? StartDate { get; set; }
     }
 }

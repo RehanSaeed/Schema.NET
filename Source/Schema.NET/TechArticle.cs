@@ -12,19 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "TechArticle";
 
         /// <summary>
         /// Prerequisites needed to fulfill steps in article.
         /// </summary>
-        [DataMember(Name = "dependencies")]
+        [DataMember(Name = "dependencies", Order = 2)]
         public string Dependencies { get; set; }
 
         /// <summary>
         /// Proficiency needed for this content; expected values: 'Beginner', 'Expert'.
         /// </summary>
-        [DataMember(Name = "proficiencyLevel")]
+        [DataMember(Name = "proficiencyLevel", Order = 3)]
         public string ProficiencyLevel { get; set; }
     }
 }

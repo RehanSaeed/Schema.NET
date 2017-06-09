@@ -12,14 +12,8 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "TradeAction";
-
-        /// <summary>
-        /// One or more detailed price specifications, indicating the unit price and delivery or payment charges.
-        /// </summary>
-        [DataMember(Name = "priceSpecification")]
-        public PriceSpecification PriceSpecification { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.&lt;/p&gt;
@@ -32,7 +26,7 @@ namespace Schema.NET
         /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "price")]
+        [DataMember(Name = "price", Order = 2)]
         public object Price { get; protected set; }
 
         /// <summary>
@@ -70,5 +64,11 @@ namespace Schema.NET
             get => this.Price as decimal?;
             set => this.Price = value;
         }
+
+        /// <summary>
+        /// One or more detailed price specifications, indicating the unit price and delivery or payment charges.
+        /// </summary>
+        [DataMember(Name = "priceSpecification", Order = 3)]
+        public PriceSpecification PriceSpecification { get; set; }
     }
 }

@@ -12,50 +12,32 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PriceSpecification";
 
         /// <summary>
-        /// The lowest price if the price is a range.
+        /// The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
         /// </summary>
-        [DataMember(Name = "minPrice")]
-        public decimal MinPrice { get; set; }
+        [DataMember(Name = "eligibleQuantity", Order = 2)]
+        public QuantitativeValue EligibleQuantity { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
         /// </summary>
-        [DataMember(Name = "eligibleTransactionVolume")]
+        [DataMember(Name = "eligibleTransactionVolume", Order = 3)]
         public PriceSpecification EligibleTransactionVolume { get; set; }
 
         /// <summary>
         /// The highest price if the price is a range.
         /// </summary>
-        [DataMember(Name = "maxPrice")]
-        public decimal MaxPrice { get; set; }
+        [DataMember(Name = "maxPrice", Order = 4)]
+        public decimal? MaxPrice { get; set; }
 
         /// <summary>
-        /// The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.
+        /// The lowest price if the price is a range.
         /// </summary>
-        [DataMember(Name = "priceCurrency")]
-        public string PriceCurrency { get; set; }
-
-        /// <summary>
-        /// The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
-        /// </summary>
-        [DataMember(Name = "eligibleQuantity")]
-        public QuantitativeValue EligibleQuantity { get; set; }
-
-        /// <summary>
-        /// The date when the item becomes valid.
-        /// </summary>
-        [DataMember(Name = "validFrom")]
-        public DateTimeOffset ValidFrom { get; set; }
-
-        /// <summary>
-        /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
-        /// </summary>
-        [DataMember(Name = "validThrough")]
-        public DateTimeOffset ValidThrough { get; set; }
+        [DataMember(Name = "minPrice", Order = 5)]
+        public decimal? MinPrice { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.&lt;/p&gt;
@@ -68,7 +50,7 @@ namespace Schema.NET
         /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "price")]
+        [DataMember(Name = "price", Order = 6)]
         public object Price { get; protected set; }
 
         /// <summary>
@@ -108,9 +90,27 @@ namespace Schema.NET
         }
 
         /// <summary>
+        /// The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.
+        /// </summary>
+        [DataMember(Name = "priceCurrency", Order = 7)]
+        public string PriceCurrency { get; set; }
+
+        /// <summary>
+        /// The date when the item becomes valid.
+        /// </summary>
+        [DataMember(Name = "validFrom", Order = 8)]
+        public DateTimeOffset? ValidFrom { get; set; }
+
+        /// <summary>
+        /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
+        /// </summary>
+        [DataMember(Name = "validThrough", Order = 9)]
+        public DateTimeOffset? ValidThrough { get; set; }
+
+        /// <summary>
         /// Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
         /// </summary>
-        [DataMember(Name = "valueAddedTaxIncluded")]
-        public bool ValueAddedTaxIncluded { get; set; }
+        [DataMember(Name = "valueAddedTaxIncluded", Order = 10)]
+        public bool? ValueAddedTaxIncluded { get; set; }
     }
 }

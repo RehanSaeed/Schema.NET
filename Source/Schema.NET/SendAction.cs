@@ -12,13 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "SendAction";
+
+        /// <summary>
+        /// A sub property of instrument. The method of delivery.
+        /// </summary>
+        [DataMember(Name = "deliveryMethod", Order = 2)]
+        public DeliveryMethod DeliveryMethod { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
-        [DataMember(Name = "recipient")]
+        [DataMember(Name = "recipient", Order = 3)]
         public object Recipient { get; protected set; }
 
         /// <summary>
@@ -50,11 +56,5 @@ namespace Schema.NET
             get => this.Recipient as Organization;
             set => this.Recipient = value;
         }
-
-        /// <summary>
-        /// A sub property of instrument. The method of delivery.
-        /// </summary>
-        [DataMember(Name = "deliveryMethod")]
-        public DeliveryMethod DeliveryMethod { get; set; }
     }
 }

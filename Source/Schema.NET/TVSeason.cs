@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "TVSeason";
 
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
-        [DataMember(Name = "countryOfOrigin")]
+        [DataMember(Name = "countryOfOrigin", Order = 2)]
         public Country CountryOfOrigin { get; set; }
     }
 }

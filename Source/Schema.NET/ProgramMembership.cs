@@ -12,19 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ProgramMembership";
 
         /// <summary>
-        /// A unique identifier for the membership.
+        /// The organization (airline, travelers' club, etc.) the membership is made with.
         /// </summary>
-        [DataMember(Name = "membershipNumber")]
-        public string MembershipNumber { get; set; }
+        [DataMember(Name = "hostingOrganization", Order = 2)]
+        public Organization HostingOrganization { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
         /// </summary>
-        [DataMember(Name = "member")]
+        [DataMember(Name = "member", Order = 3)]
         public object Member { get; protected set; }
 
         /// <summary>
@@ -48,15 +48,15 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// The organization (airline, travelers' club, etc.) the membership is made with.
+        /// A unique identifier for the membership.
         /// </summary>
-        [DataMember(Name = "hostingOrganization")]
-        public Organization HostingOrganization { get; set; }
+        [DataMember(Name = "membershipNumber", Order = 4)]
+        public string MembershipNumber { get; set; }
 
         /// <summary>
         /// The program providing the membership.
         /// </summary>
-        [DataMember(Name = "programName")]
+        [DataMember(Name = "programName", Order = 5)]
         public string ProgramName { get; set; }
     }
 }

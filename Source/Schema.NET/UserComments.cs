@@ -12,31 +12,25 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "UserComments";
 
         /// <summary>
         /// The text of the UserComment.
         /// </summary>
-        [DataMember(Name = "commentText")]
+        [DataMember(Name = "commentText", Order = 2)]
         public string CommentText { get; set; }
-
-        /// <summary>
-        /// Specifies the CreativeWork associated with the UserComment.
-        /// </summary>
-        [DataMember(Name = "discusses")]
-        public CreativeWork Discusses { get; set; }
 
         /// <summary>
         /// The time at which the UserComment was made.
         /// </summary>
-        [DataMember(Name = "commentTime")]
-        public DateTimeOffset CommentTime { get; set; }
+        [DataMember(Name = "commentTime", Order = 3)]
+        public DateTimeOffset? CommentTime { get; set; }
 
         /// <summary>
         /// The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
         /// </summary>
-        [DataMember(Name = "creator")]
+        [DataMember(Name = "creator", Order = 4)]
         public object Creator { get; protected set; }
 
         /// <summary>
@@ -60,9 +54,15 @@ namespace Schema.NET
         }
 
         /// <summary>
+        /// Specifies the CreativeWork associated with the UserComment.
+        /// </summary>
+        [DataMember(Name = "discusses", Order = 5)]
+        public CreativeWork Discusses { get; set; }
+
+        /// <summary>
         /// The URL at which a reply may be posted to the specified UserComment.
         /// </summary>
-        [DataMember(Name = "replyToUrl")]
+        [DataMember(Name = "replyToUrl", Order = 6)]
         public Uri ReplyToUrl { get; set; }
     }
 }

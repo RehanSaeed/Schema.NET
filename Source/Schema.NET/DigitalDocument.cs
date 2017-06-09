@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DigitalDocument";
 
         /// <summary>
         /// A permission related to the access to this document (e.g. permission to read or write an electronic document). For a public document, specify a grantee with an Audience with audienceType equal to "public".
         /// </summary>
-        [DataMember(Name = "hasDigitalDocumentPermission")]
+        [DataMember(Name = "hasDigitalDocumentPermission", Order = 2)]
         public DigitalDocumentPermission HasDigitalDocumentPermission { get; set; }
     }
 }

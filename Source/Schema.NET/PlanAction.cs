@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PlanAction";
 
         /// <summary>
         /// The time the object is scheduled to.
         /// </summary>
-        [DataMember(Name = "scheduledTime")]
-        public DateTimeOffset ScheduledTime { get; set; }
+        [DataMember(Name = "scheduledTime", Order = 2)]
+        public DateTimeOffset? ScheduledTime { get; set; }
     }
 }

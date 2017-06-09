@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DataCatalog";
 
         /// <summary>
         /// A dataset contained in this catalog.
         /// </summary>
-        [DataMember(Name = "dataset")]
+        [DataMember(Name = "dataset", Order = 2)]
         public Dataset Dataset { get; set; }
     }
 }

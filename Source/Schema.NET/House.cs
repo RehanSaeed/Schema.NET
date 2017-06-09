@@ -12,14 +12,14 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "House";
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the acccommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
-        [DataMember(Name = "numberOfRooms")]
+        [DataMember(Name = "numberOfRooms", Order = 2)]
         public override object NumberOfRooms { get; protected set; }
 
         /// <summary>
@@ -27,9 +27,9 @@ namespace Schema.NET
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
         [IgnoreDataMember]
-        public override decimal? NumberOfRoomsNumber
+        public override int? NumberOfRoomsNumber
         {
-            get => this.NumberOfRooms as decimal?;
+            get => this.NumberOfRooms as int?;
             set => this.NumberOfRooms = value;
         }
 

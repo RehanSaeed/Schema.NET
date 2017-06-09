@@ -12,19 +12,25 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ListItem";
+
+        /// <summary>
+        /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.
+        /// </summary>
+        [DataMember(Name = "item", Order = 2)]
+        public Thing Item { get; set; }
 
         /// <summary>
         /// A link to the ListItem that follows the current one.
         /// </summary>
-        [DataMember(Name = "nextItem")]
+        [DataMember(Name = "nextItem", Order = 3)]
         public ListItem NextItem { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
         /// </summary>
-        [DataMember(Name = "position")]
+        [DataMember(Name = "position", Order = 4)]
         public object Position { get; protected set; }
 
         /// <summary>
@@ -50,13 +56,7 @@ namespace Schema.NET
         /// <summary>
         /// A link to the ListItem that preceeds the current one.
         /// </summary>
-        [DataMember(Name = "previousItem")]
+        [DataMember(Name = "previousItem", Order = 5)]
         public ListItem PreviousItem { get; set; }
-
-        /// <summary>
-        /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.
-        /// </summary>
-        [DataMember(Name = "item")]
-        public Thing Item { get; set; }
     }
 }

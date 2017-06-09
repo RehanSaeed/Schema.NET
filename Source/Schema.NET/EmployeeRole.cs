@@ -12,19 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "EmployeeRole";
-
-        /// <summary>
-        /// The currency (coded using &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; ) used for the main salary information in this job posting or for this employee.
-        /// </summary>
-        [DataMember(Name = "salaryCurrency")]
-        public string SalaryCurrency { get; set; }
 
         /// <summary>
         /// The base salary of the job or of an employee in an EmployeeRole.
         /// </summary>
-        [DataMember(Name = "baseSalary")]
+        [DataMember(Name = "baseSalary", Order = 2)]
         public object BaseSalary { get; protected set; }
 
         /// <summary>
@@ -56,5 +50,11 @@ namespace Schema.NET
             get => this.BaseSalary as PriceSpecification;
             set => this.BaseSalary = value;
         }
+
+        /// <summary>
+        /// The currency (coded using &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; ) used for the main salary information in this job posting or for this employee.
+        /// </summary>
+        [DataMember(Name = "salaryCurrency", Order = 3)]
+        public string SalaryCurrency { get; set; }
     }
 }

@@ -12,31 +12,31 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DeliveryEvent";
-
-        /// <summary>
-        /// Method used for delivery or shipping.
-        /// </summary>
-        [DataMember(Name = "hasDeliveryMethod")]
-        public DeliveryMethod HasDeliveryMethod { get; set; }
-
-        /// <summary>
-        /// After this date, the item will no longer be available for pickup.
-        /// </summary>
-        [DataMember(Name = "availableThrough")]
-        public DateTimeOffset AvailableThrough { get; set; }
-
-        /// <summary>
-        /// When the item is available for pickup from the store, locker, etc.
-        /// </summary>
-        [DataMember(Name = "availableFrom")]
-        public DateTimeOffset AvailableFrom { get; set; }
 
         /// <summary>
         /// Password, PIN, or access code needed for delivery (e.g. from a locker).
         /// </summary>
-        [DataMember(Name = "accessCode")]
+        [DataMember(Name = "accessCode", Order = 2)]
         public string AccessCode { get; set; }
+
+        /// <summary>
+        /// When the item is available for pickup from the store, locker, etc.
+        /// </summary>
+        [DataMember(Name = "availableFrom", Order = 3)]
+        public DateTimeOffset? AvailableFrom { get; set; }
+
+        /// <summary>
+        /// After this date, the item will no longer be available for pickup.
+        /// </summary>
+        [DataMember(Name = "availableThrough", Order = 4)]
+        public DateTimeOffset? AvailableThrough { get; set; }
+
+        /// <summary>
+        /// Method used for delivery or shipping.
+        /// </summary>
+        [DataMember(Name = "hasDeliveryMethod", Order = 5)]
+        public DeliveryMethod HasDeliveryMethod { get; set; }
     }
 }

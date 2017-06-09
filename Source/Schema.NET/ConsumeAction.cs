@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ConsumeAction";
 
         /// <summary>
         /// An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
         /// </summary>
-        [DataMember(Name = "expectsAcceptanceOf")]
+        [DataMember(Name = "expectsAcceptanceOf", Order = 2)]
         public Offer ExpectsAcceptanceOf { get; set; }
     }
 }

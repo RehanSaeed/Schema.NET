@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "SportsOrganization";
 
         /// <summary>
         /// A type of sport (e.g. Baseball).
         /// </summary>
-        [DataMember(Name = "sport")]
+        [DataMember(Name = "sport", Order = 2)]
         public object Sport { get; protected set; }
 
         /// <summary>

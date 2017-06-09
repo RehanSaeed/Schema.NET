@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Periodical";
 
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this periodical. You can repeat this property to (for example) identify different formats of this periodical.
         /// </summary>
-        [DataMember(Name = "issn")]
+        [DataMember(Name = "issn", Order = 2)]
         public string Issn { get; set; }
     }
 }

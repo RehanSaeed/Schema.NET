@@ -12,19 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "LoanOrCredit";
-
-        /// <summary>
-        /// The duration of the loan or credit agreement.
-        /// </summary>
-        [DataMember(Name = "loanTerm")]
-        public QuantitativeValue LoanTerm { get; set; }
 
         /// <summary>
         /// The amount of money.
         /// </summary>
-        [DataMember(Name = "amount")]
+        [DataMember(Name = "amount", Order = 2)]
         public object Amount { get; protected set; }
 
         /// <summary>
@@ -48,9 +42,15 @@ namespace Schema.NET
         }
 
         /// <summary>
+        /// The duration of the loan or credit agreement.
+        /// </summary>
+        [DataMember(Name = "loanTerm", Order = 3)]
+        public QuantitativeValue LoanTerm { get; set; }
+
+        /// <summary>
         /// Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)
         /// </summary>
-        [DataMember(Name = "requiredCollateral")]
+        [DataMember(Name = "requiredCollateral", Order = 4)]
         public object RequiredCollateral { get; protected set; }
 
         /// <summary>

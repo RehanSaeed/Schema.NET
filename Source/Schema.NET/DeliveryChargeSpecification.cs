@@ -12,59 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DeliveryChargeSpecification";
-
-        /// <summary>
-        /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;/p&gt;
-        /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
-        /// </summary>
-        [DataMember(Name = "ineligibleRegion")]
-        public object IneligibleRegion { get; protected set; }
-
-        /// <summary>
-        /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;/p&gt;
-        /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
-        /// </summary>
-        [IgnoreDataMember]
-        public string IneligibleRegionText
-        {
-            get => this.IneligibleRegion as string;
-            set => this.IneligibleRegion = value;
-        }
-
-        /// <summary>
-        /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;/p&gt;
-        /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
-        /// </summary>
-        [IgnoreDataMember]
-        public GeoShape IneligibleRegionGeoShape
-        {
-            get => this.IneligibleRegion as GeoShape;
-            set => this.IneligibleRegion = value;
-        }
-
-        /// <summary>
-        /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;/p&gt;
-        /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
-        /// </summary>
-        [IgnoreDataMember]
-        public Place IneligibleRegionPlace
-        {
-            get => this.IneligibleRegion as Place;
-            set => this.IneligibleRegion = value;
-        }
 
         /// <summary>
         /// The delivery method(s) to which the delivery charge or payment charge specification applies.
         /// </summary>
-        [DataMember(Name = "appliesToDeliveryMethod")]
+        [DataMember(Name = "appliesToDeliveryMethod", Order = 2)]
         public DeliveryMethod AppliesToDeliveryMethod { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
         /// </summary>
-        [DataMember(Name = "areaServed")]
+        [DataMember(Name = "areaServed", Order = 3)]
         public object AreaServed { get; protected set; }
 
         /// <summary>
@@ -111,7 +71,7 @@ namespace Schema.NET
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;/p&gt;
         /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "eligibleRegion")]
+        [DataMember(Name = "eligibleRegion", Order = 4)]
         public object EligibleRegion { get; protected set; }
 
         /// <summary>
@@ -145,6 +105,46 @@ namespace Schema.NET
         {
             get => this.EligibleRegion as string;
             set => this.EligibleRegion = value;
+        }
+
+        /// <summary>
+        /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;/p&gt;
+        /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "ineligibleRegion", Order = 5)]
+        public object IneligibleRegion { get; protected set; }
+
+        /// <summary>
+        /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;/p&gt;
+        /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
+        /// </summary>
+        [IgnoreDataMember]
+        public string IneligibleRegionText
+        {
+            get => this.IneligibleRegion as string;
+            set => this.IneligibleRegion = value;
+        }
+
+        /// <summary>
+        /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;/p&gt;
+        /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
+        /// </summary>
+        [IgnoreDataMember]
+        public GeoShape IneligibleRegionGeoShape
+        {
+            get => this.IneligibleRegion as GeoShape;
+            set => this.IneligibleRegion = value;
+        }
+
+        /// <summary>
+        /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;/p&gt;
+        /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
+        /// </summary>
+        [IgnoreDataMember]
+        public Place IneligibleRegionPlace
+        {
+            get => this.IneligibleRegion as Place;
+            set => this.IneligibleRegion = value;
         }
     }
 }

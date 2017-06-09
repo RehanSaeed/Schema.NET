@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DataFeed";
 
         /// <summary>
         /// An item within in a data feed. Data feeds may have many elements.
         /// </summary>
-        [DataMember(Name = "dataFeedElement")]
+        [DataMember(Name = "dataFeedElement", Order = 2)]
         public object DataFeedElement { get; protected set; }
 
         /// <summary>

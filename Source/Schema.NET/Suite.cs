@@ -12,21 +12,14 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Suite";
-
-        /// <summary>
-        /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
-        /// Typical unit code(s): C62 for person
-        /// </summary>
-        [DataMember(Name = "occupancy")]
-        public QuantitativeValue Occupancy { get; set; }
 
         /// <summary>
         /// The type of bed or beds included in the accommodation. For the single case of just one bed of a certain type, you use bed directly with a text.
         ///       If you want to indicate the quantity of a certain kind of bed, use an instance of BedDetails. For more detailed information, use the amenityFeature property.
         /// </summary>
-        [DataMember(Name = "bed")]
+        [DataMember(Name = "bed", Order = 2)]
         public object Bed { get; protected set; }
 
         /// <summary>
@@ -55,7 +48,7 @@ namespace Schema.NET
         /// The number of rooms (excluding bathrooms and closets) of the acccommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
-        [DataMember(Name = "numberOfRooms")]
+        [DataMember(Name = "numberOfRooms", Order = 3)]
         public override object NumberOfRooms { get; protected set; }
 
         /// <summary>
@@ -63,9 +56,9 @@ namespace Schema.NET
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
         [IgnoreDataMember]
-        public override decimal? NumberOfRoomsNumber
+        public override int? NumberOfRoomsNumber
         {
-            get => this.NumberOfRooms as decimal?;
+            get => this.NumberOfRooms as int?;
             set => this.NumberOfRooms = value;
         }
 
@@ -79,5 +72,12 @@ namespace Schema.NET
             get => this.NumberOfRooms as QuantitativeValue;
             set => this.NumberOfRooms = value;
         }
+
+        /// <summary>
+        /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
+        /// Typical unit code(s): C62 for person
+        /// </summary>
+        [DataMember(Name = "occupancy", Order = 4)]
+        public QuantitativeValue Occupancy { get; set; }
     }
 }

@@ -12,37 +12,51 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Clip";
 
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        [DataMember(Name = "actor")]
+        [DataMember(Name = "actor", Order = 2)]
         public Person Actor { get; set; }
 
         /// <summary>
-        /// The series to which this episode or season belongs.
+        /// Position of the clip within an ordered group of clips.
         /// </summary>
-        [DataMember(Name = "partOfSeries")]
-        public CreativeWorkSeries PartOfSeries { get; set; }
+        [DataMember(Name = "clipNumber", Order = 3)]
+        public object ClipNumber { get; protected set; }
 
         /// <summary>
-        /// The episode to which this clip belongs.
+        /// Position of the clip within an ordered group of clips.
         /// </summary>
-        [DataMember(Name = "partOfEpisode")]
-        public Episode PartOfEpisode { get; set; }
+        [IgnoreDataMember]
+        public int? ClipNumberInteger
+        {
+            get => this.ClipNumber as int?;
+            set => this.ClipNumber = value;
+        }
 
         /// <summary>
-        /// The season to which this episode belongs.
+        /// Position of the clip within an ordered group of clips.
         /// </summary>
-        [DataMember(Name = "partOfSeason")]
-        public CreativeWorkSeason PartOfSeason { get; set; }
+        [IgnoreDataMember]
+        public string ClipNumberText
+        {
+            get => this.ClipNumber as string;
+            set => this.ClipNumber = value;
+        }
+
+        /// <summary>
+        /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
+        /// </summary>
+        [DataMember(Name = "director", Order = 4)]
+        public Person Director { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
-        [DataMember(Name = "musicBy")]
+        [DataMember(Name = "musicBy", Order = 5)]
         public object MusicBy { get; protected set; }
 
         /// <summary>
@@ -66,35 +80,21 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
+        /// The episode to which this clip belongs.
         /// </summary>
-        [DataMember(Name = "director")]
-        public Person Director { get; set; }
+        [DataMember(Name = "partOfEpisode", Order = 6)]
+        public Episode PartOfEpisode { get; set; }
 
         /// <summary>
-        /// Position of the clip within an ordered group of clips.
+        /// The season to which this episode belongs.
         /// </summary>
-        [DataMember(Name = "clipNumber")]
-        public object ClipNumber { get; protected set; }
+        [DataMember(Name = "partOfSeason", Order = 7)]
+        public CreativeWorkSeason PartOfSeason { get; set; }
 
         /// <summary>
-        /// Position of the clip within an ordered group of clips.
+        /// The series to which this episode or season belongs.
         /// </summary>
-        [IgnoreDataMember]
-        public int? ClipNumberInteger
-        {
-            get => this.ClipNumber as int?;
-            set => this.ClipNumber = value;
-        }
-
-        /// <summary>
-        /// Position of the clip within an ordered group of clips.
-        /// </summary>
-        [IgnoreDataMember]
-        public string ClipNumberText
-        {
-            get => this.ClipNumber as string;
-            set => this.ClipNumber = value;
-        }
+        [DataMember(Name = "partOfSeries", Order = 8)]
+        public CreativeWorkSeries PartOfSeries { get; set; }
     }
 }

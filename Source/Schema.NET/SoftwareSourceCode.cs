@@ -12,25 +12,25 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "SoftwareSourceCode";
-
-        /// <summary>
-        /// Target Operating System / Product to which the code applies.  If applies to several versions, just the product name can be used.
-        /// </summary>
-        [DataMember(Name = "targetProduct")]
-        public SoftwareApplication TargetProduct { get; set; }
 
         /// <summary>
         /// Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex).
         /// </summary>
-        [DataMember(Name = "codeRepository")]
+        [DataMember(Name = "codeRepository", Order = 2)]
         public Uri CodeRepository { get; set; }
+
+        /// <summary>
+        /// What type of code sample: full (compile ready) solution, code snippet, inline code, scripts, template.
+        /// </summary>
+        [DataMember(Name = "codeSampleType", Order = 3)]
+        public string CodeSampleType { get; set; }
 
         /// <summary>
         /// The computer programming language.
         /// </summary>
-        [DataMember(Name = "programmingLanguage")]
+        [DataMember(Name = "programmingLanguage", Order = 4)]
         public object ProgrammingLanguage { get; protected set; }
 
         /// <summary>
@@ -54,15 +54,15 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// What type of code sample: full (compile ready) solution, code snippet, inline code, scripts, template.
-        /// </summary>
-        [DataMember(Name = "codeSampleType")]
-        public string CodeSampleType { get; set; }
-
-        /// <summary>
         /// Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3, .Net Framework 3.0).
         /// </summary>
-        [DataMember(Name = "runtimePlatform")]
+        [DataMember(Name = "runtimePlatform", Order = 5)]
         public string RuntimePlatform { get; set; }
+
+        /// <summary>
+        /// Target Operating System / Product to which the code applies.  If applies to several versions, just the product name can be used.
+        /// </summary>
+        [DataMember(Name = "targetProduct", Order = 6)]
+        public SoftwareApplication TargetProduct { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Report";
 
         /// <summary>
         /// The number or other unique designator assigned to a Report by the publishing organization.
         /// </summary>
-        [DataMember(Name = "reportNumber")]
+        [DataMember(Name = "reportNumber", Order = 2)]
         public string ReportNumber { get; set; }
     }
 }

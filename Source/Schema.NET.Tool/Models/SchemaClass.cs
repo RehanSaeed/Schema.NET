@@ -70,14 +70,16 @@
             stringBuilder.AppendCommentLine(4, this.Description);
             stringBuilder.AppendIndentLine(4, "/// </summary>");
 
+            var isThing = string.Equals(this.Name, "Thing", StringComparison.Ordinal);
+            var partial = isThing ? " partial" : string.Empty;
+
             // Class
             stringBuilder.AppendIndentLine(4, "[DataContract]");
-            stringBuilder.AppendIndent(4, $"public class {this.Name}");
+            stringBuilder.AppendIndent(4, $"public{partial} class {this.Name}");
             stringBuilder.AppendLine(this.Parent == null ? null : $" : {this.Parent.Name}");
 
             stringBuilder.AppendIndentLine(4, "{");
 
-            var isThing = string.Equals(this.Name, "Thing", StringComparison.Ordinal);
             var modifier = isThing ? "virtual" : "override";
             if (isThing)
             {
@@ -85,7 +87,7 @@
                 stringBuilder.AppendIndentLine(8, "/// <summary>");
                 stringBuilder.AppendIndentLine(8, "/// Gets the context for the object, specifying that it comes from schema.org.");
                 stringBuilder.AppendIndentLine(8, "/// </summary>");
-                stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@context\")]");
+                stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@context\", Order = 0)]");
                 stringBuilder.AppendIndentLine(8, $"public string Context => \"http://schema.org\";");
                 stringBuilder.AppendLine();
             }
@@ -94,17 +96,28 @@
             stringBuilder.AppendIndentLine(8, "/// <summary>");
             stringBuilder.AppendIndentLine(8, "/// Gets the name of the type as specified by schema.org.");
             stringBuilder.AppendIndentLine(8, "/// </summary>");
-            stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@type\")]");
+            stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@type\", Order = 1)]");
             stringBuilder.AppendIndentLine(8, $"public {modifier} string Type => \"{this.Name}\";");
+
+            // Properties
             if (this.Properties.Count > 0)
             {
                 stringBuilder.AppendLine();
-            }
 
-            // Properties
-            foreach (var property in this.Properties)
-            {
-                property.AppendIndentLine(stringBuilder, 8, this.Properties.Last() == property, this);
+                var i = 0;
+                var order = 2;
+                foreach (var property in this.Properties.OrderBy(x => x.Name))
+                {
+                    var isLast = i == (this.Properties.Count - 1);
+                    property.AppendIndentLine(stringBuilder, 8, order, this);
+                    if (!isLast)
+                    {
+                        stringBuilder.AppendLine();
+                    }
+
+                    ++i;
+                    ++order;
+                }
             }
 
             stringBuilder.AppendIndentLine(4, "}");

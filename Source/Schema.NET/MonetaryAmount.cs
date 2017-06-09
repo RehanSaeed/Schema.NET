@@ -12,14 +12,38 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MonetaryAmount";
 
         /// <summary>
         /// The currency in which the monetary amount is expressed (in 3-letter &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; format).
         /// </summary>
-        [DataMember(Name = "currency")]
+        [DataMember(Name = "currency", Order = 2)]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// The upper value of some characteristic or property.
+        /// </summary>
+        [DataMember(Name = "maxValue", Order = 3)]
+        public double? MaxValue { get; set; }
+
+        /// <summary>
+        /// The lower value of some characteristic or property.
+        /// </summary>
+        [DataMember(Name = "minValue", Order = 4)]
+        public double? MinValue { get; set; }
+
+        /// <summary>
+        /// The date when the item becomes valid.
+        /// </summary>
+        [DataMember(Name = "validFrom", Order = 5)]
+        public DateTimeOffset? ValidFrom { get; set; }
+
+        /// <summary>
+        /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
+        /// </summary>
+        [DataMember(Name = "validThrough", Order = 6)]
+        public DateTimeOffset? ValidThrough { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The value of the quantitative value or property value node.&lt;/p&gt;
@@ -28,7 +52,7 @@ namespace Schema.NET
         /// &lt;li&gt;For &lt;a class="localLink" href="http://schema.org/PropertyValue"&gt;PropertyValue&lt;/a&gt;, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "value")]
+        [DataMember(Name = "value", Order = 7)]
         public object Value { get; protected set; }
 
         /// <summary>
@@ -81,34 +105,10 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [IgnoreDataMember]
-        public decimal? ValueNumber
+        public double? ValueNumber
         {
-            get => this.Value as decimal?;
+            get => this.Value as double?;
             set => this.Value = value;
         }
-
-        /// <summary>
-        /// The date when the item becomes valid.
-        /// </summary>
-        [DataMember(Name = "validFrom")]
-        public DateTimeOffset ValidFrom { get; set; }
-
-        /// <summary>
-        /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
-        /// </summary>
-        [DataMember(Name = "validThrough")]
-        public DateTimeOffset ValidThrough { get; set; }
-
-        /// <summary>
-        /// The upper value of some characteristic or property.
-        /// </summary>
-        [DataMember(Name = "maxValue")]
-        public decimal MaxValue { get; set; }
-
-        /// <summary>
-        /// The lower value of some characteristic or property.
-        /// </summary>
-        [DataMember(Name = "minValue")]
-        public decimal MinValue { get; set; }
     }
 }

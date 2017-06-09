@@ -12,20 +12,14 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "LocalBusiness";
 
         /// <summary>
-        /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
+        /// The currency accepted (in &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "priceRange")]
-        public string PriceRange { get; set; }
-
-        /// <summary>
-        /// Cash, credit card, etc.
-        /// </summary>
-        [DataMember(Name = "paymentAccepted")]
-        public string PaymentAccepted { get; set; }
+        [DataMember(Name = "currenciesAccepted", Order = 2)]
+        public string CurrenciesAccepted { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;/p&gt;
@@ -36,13 +30,19 @@ namespace Schema.NET
         /// &lt;li&gt;If a business is open 7 days a week, then it can be specified as &lt;code&gt;&amp;lt;time itemprop=&amp;quot;openingHours&amp;quot; datetime=&amp;quot;Mo-Su&amp;quot;&amp;gt;Monday through Sunday, all day&amp;lt;/time&amp;gt;&lt;/code&gt;.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "openingHours")]
+        [DataMember(Name = "openingHours", Order = 3)]
         public string OpeningHours { get; set; }
 
         /// <summary>
-        /// The currency accepted (in &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt;).
+        /// Cash, credit card, etc.
         /// </summary>
-        [DataMember(Name = "currenciesAccepted")]
-        public string CurrenciesAccepted { get; set; }
+        [DataMember(Name = "paymentAccepted", Order = 4)]
+        public string PaymentAccepted { get; set; }
+
+        /// <summary>
+        /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
+        /// </summary>
+        [DataMember(Name = "priceRange", Order = 5)]
+        public string PriceRange { get; set; }
     }
 }

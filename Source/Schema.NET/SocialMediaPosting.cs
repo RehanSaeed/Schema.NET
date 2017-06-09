@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "SocialMediaPosting";
 
         /// <summary>
         /// A CreativeWork such as an image, video, or audio clip shared as part of this posting.
         /// </summary>
-        [DataMember(Name = "sharedContent")]
+        [DataMember(Name = "sharedContent", Order = 2)]
         public CreativeWork SharedContent { get; set; }
     }
 }

@@ -12,19 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PublicationVolume";
-
-        /// <summary>
-        /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".
-        /// </summary>
-        [DataMember(Name = "pagination")]
-        public string Pagination { get; set; }
 
         /// <summary>
         /// The page on which the work ends; for example "138" or "xvi".
         /// </summary>
-        [DataMember(Name = "pageEnd")]
+        [DataMember(Name = "pageEnd", Order = 2)]
         public object PageEnd { get; protected set; }
 
         /// <summary>
@@ -48,35 +42,9 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Identifies the volume of publication or multi-part work; for example, "iii" or "2".
-        /// </summary>
-        [DataMember(Name = "volumeNumber")]
-        public object VolumeNumber { get; protected set; }
-
-        /// <summary>
-        /// Identifies the volume of publication or multi-part work; for example, "iii" or "2".
-        /// </summary>
-        [IgnoreDataMember]
-        public string VolumeNumberText
-        {
-            get => this.VolumeNumber as string;
-            set => this.VolumeNumber = value;
-        }
-
-        /// <summary>
-        /// Identifies the volume of publication or multi-part work; for example, "iii" or "2".
-        /// </summary>
-        [IgnoreDataMember]
-        public int? VolumeNumberInteger
-        {
-            get => this.VolumeNumber as int?;
-            set => this.VolumeNumber = value;
-        }
-
-        /// <summary>
         /// The page on which the work starts; for example "135" or "xiii".
         /// </summary>
-        [DataMember(Name = "pageStart")]
+        [DataMember(Name = "pageStart", Order = 3)]
         public object PageStart { get; protected set; }
 
         /// <summary>
@@ -97,6 +65,38 @@ namespace Schema.NET
         {
             get => this.PageStart as string;
             set => this.PageStart = value;
+        }
+
+        /// <summary>
+        /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".
+        /// </summary>
+        [DataMember(Name = "pagination", Order = 4)]
+        public string Pagination { get; set; }
+
+        /// <summary>
+        /// Identifies the volume of publication or multi-part work; for example, "iii" or "2".
+        /// </summary>
+        [DataMember(Name = "volumeNumber", Order = 5)]
+        public object VolumeNumber { get; protected set; }
+
+        /// <summary>
+        /// Identifies the volume of publication or multi-part work; for example, "iii" or "2".
+        /// </summary>
+        [IgnoreDataMember]
+        public string VolumeNumberText
+        {
+            get => this.VolumeNumber as string;
+            set => this.VolumeNumber = value;
+        }
+
+        /// <summary>
+        /// Identifies the volume of publication or multi-part work; for example, "iii" or "2".
+        /// </summary>
+        [IgnoreDataMember]
+        public int? VolumeNumberInteger
+        {
+            get => this.VolumeNumber as int?;
+            set => this.VolumeNumber = value;
         }
     }
 }

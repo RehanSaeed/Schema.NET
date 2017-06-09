@@ -61,7 +61,10 @@
         {
             foreach (var filePath in Directory.GetFiles(directoryPath, "*.cs"))
             {
-                File.Delete(filePath);
+                if (!string.Equals(Path.GetFileName(filePath), "Thing.Partial.cs", StringComparison.OrdinalIgnoreCase))
+                {
+                    File.Delete(filePath);
+                }
             }
         }
 

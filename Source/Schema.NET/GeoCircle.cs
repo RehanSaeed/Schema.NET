@@ -12,13 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "GeoCircle";
+
+        /// <summary>
+        /// Indicates the GeoCoordinates at the centre of a GeoShape e.g. GeoCircle.
+        /// </summary>
+        [DataMember(Name = "geoMidpoint", Order = 2)]
+        public GeoCoordinates GeoMidpoint { get; set; }
 
         /// <summary>
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).
         /// </summary>
-        [DataMember(Name = "geoRadius")]
+        [DataMember(Name = "geoRadius", Order = 3)]
         public object GeoRadius { get; protected set; }
 
         /// <summary>
@@ -35,9 +41,9 @@ namespace Schema.NET
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).
         /// </summary>
         [IgnoreDataMember]
-        public decimal? GeoRadiusNumber
+        public double? GeoRadiusNumber
         {
-            get => this.GeoRadius as decimal?;
+            get => this.GeoRadius as double?;
             set => this.GeoRadius = value;
         }
 
@@ -50,11 +56,5 @@ namespace Schema.NET
             get => this.GeoRadius as string;
             set => this.GeoRadius = value;
         }
-
-        /// <summary>
-        /// Indicates the GeoCoordinates at the centre of a GeoShape e.g. GeoCircle.
-        /// </summary>
-        [DataMember(Name = "geoMidpoint")]
-        public GeoCoordinates GeoMidpoint { get; set; }
     }
 }

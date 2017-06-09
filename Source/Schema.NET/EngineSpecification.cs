@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "EngineSpecification";
 
         /// <summary>
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
         /// </summary>
-        [DataMember(Name = "fuelType")]
+        [DataMember(Name = "fuelType", Order = 2)]
         public object FuelType { get; protected set; }
 
         /// <summary>

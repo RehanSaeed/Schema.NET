@@ -13,13 +13,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "TaxiReservation";
 
         /// <summary>
         /// Number of people the reservation should accommodate.
         /// </summary>
-        [DataMember(Name = "partySize")]
+        [DataMember(Name = "partySize", Order = 2)]
         public object PartySize { get; protected set; }
 
         /// <summary>
@@ -45,13 +45,13 @@ namespace Schema.NET
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
-        [DataMember(Name = "pickupLocation")]
+        [DataMember(Name = "pickupLocation", Order = 3)]
         public Place PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
-        [DataMember(Name = "pickupTime")]
-        public DateTimeOffset PickupTime { get; set; }
+        [DataMember(Name = "pickupTime", Order = 4)]
+        public DateTimeOffset? PickupTime { get; set; }
     }
 }

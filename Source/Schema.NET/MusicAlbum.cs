@@ -12,31 +12,31 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MusicAlbum";
 
         /// <summary>
         /// Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
         /// </summary>
-        [DataMember(Name = "albumProductionType")]
+        [DataMember(Name = "albumProductionType", Order = 2)]
         public MusicAlbumProductionType AlbumProductionType { get; set; }
+
+        /// <summary>
+        /// A release of this album.
+        /// </summary>
+        [DataMember(Name = "albumRelease", Order = 3)]
+        public MusicRelease AlbumRelease { get; set; }
 
         /// <summary>
         /// The kind of release which this album is: single, EP or album.
         /// </summary>
-        [DataMember(Name = "albumReleaseType")]
+        [DataMember(Name = "albumReleaseType", Order = 4)]
         public MusicAlbumReleaseType AlbumReleaseType { get; set; }
 
         /// <summary>
         /// The artist that performed this album or recording.
         /// </summary>
-        [DataMember(Name = "byArtist")]
+        [DataMember(Name = "byArtist", Order = 5)]
         public MusicGroup ByArtist { get; set; }
-
-        /// <summary>
-        /// A release of this album.
-        /// </summary>
-        [DataMember(Name = "albumRelease")]
-        public MusicRelease AlbumRelease { get; set; }
     }
 }

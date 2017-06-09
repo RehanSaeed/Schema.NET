@@ -13,57 +13,31 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "LodgingReservation";
-
-        /// <summary>
-        /// A full description of the lodging unit.
-        /// </summary>
-        [DataMember(Name = "lodgingUnitDescription")]
-        public string LodgingUnitDescription { get; set; }
 
         /// <summary>
         /// The earliest someone may check into a lodging establishment.
         /// </summary>
-        [DataMember(Name = "checkinTime")]
-        public DateTimeOffset CheckinTime { get; set; }
-
-        /// <summary>
-        /// The number of children staying in the unit.
-        /// </summary>
-        [DataMember(Name = "numChildren")]
-        public object NumChildren { get; protected set; }
-
-        /// <summary>
-        /// The number of children staying in the unit.
-        /// </summary>
-        [IgnoreDataMember]
-        public int? NumChildrenInteger
-        {
-            get => this.NumChildren as int?;
-            set => this.NumChildren = value;
-        }
-
-        /// <summary>
-        /// The number of children staying in the unit.
-        /// </summary>
-        [IgnoreDataMember]
-        public QuantitativeValue NumChildrenQuantitativeValue
-        {
-            get => this.NumChildren as QuantitativeValue;
-            set => this.NumChildren = value;
-        }
+        [DataMember(Name = "checkinTime", Order = 2)]
+        public DateTimeOffset? CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
-        [DataMember(Name = "checkoutTime")]
-        public DateTimeOffset CheckoutTime { get; set; }
+        [DataMember(Name = "checkoutTime", Order = 3)]
+        public DateTimeOffset? CheckoutTime { get; set; }
+
+        /// <summary>
+        /// A full description of the lodging unit.
+        /// </summary>
+        [DataMember(Name = "lodgingUnitDescription", Order = 4)]
+        public string LodgingUnitDescription { get; set; }
 
         /// <summary>
         /// Textual description of the unit type (including suite vs. room, size of bed, etc.).
         /// </summary>
-        [DataMember(Name = "lodgingUnitType")]
+        [DataMember(Name = "lodgingUnitType", Order = 5)]
         public object LodgingUnitType { get; protected set; }
 
         /// <summary>
@@ -89,7 +63,7 @@ namespace Schema.NET
         /// <summary>
         /// The number of adults staying in the unit.
         /// </summary>
-        [DataMember(Name = "numAdults")]
+        [DataMember(Name = "numAdults", Order = 6)]
         public object NumAdults { get; protected set; }
 
         /// <summary>
@@ -110,6 +84,32 @@ namespace Schema.NET
         {
             get => this.NumAdults as int?;
             set => this.NumAdults = value;
+        }
+
+        /// <summary>
+        /// The number of children staying in the unit.
+        /// </summary>
+        [DataMember(Name = "numChildren", Order = 7)]
+        public object NumChildren { get; protected set; }
+
+        /// <summary>
+        /// The number of children staying in the unit.
+        /// </summary>
+        [IgnoreDataMember]
+        public int? NumChildrenInteger
+        {
+            get => this.NumChildren as int?;
+            set => this.NumChildren = value;
+        }
+
+        /// <summary>
+        /// The number of children staying in the unit.
+        /// </summary>
+        [IgnoreDataMember]
+        public QuantitativeValue NumChildrenQuantitativeValue
+        {
+            get => this.NumChildren as QuantitativeValue;
+            set => this.NumChildren = value;
         }
     }
 }

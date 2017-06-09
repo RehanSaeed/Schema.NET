@@ -12,15 +12,60 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "QuantitativeValue";
 
         /// <summary>
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;/p&gt;
         /// &lt;p&gt;Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
-        [DataMember(Name = "additionalProperty")]
+        [DataMember(Name = "additionalProperty", Order = 2)]
         public PropertyValue AdditionalProperty { get; set; }
+
+        /// <summary>
+        /// The upper value of some characteristic or property.
+        /// </summary>
+        [DataMember(Name = "maxValue", Order = 3)]
+        public double? MaxValue { get; set; }
+
+        /// <summary>
+        /// The lower value of some characteristic or property.
+        /// </summary>
+        [DataMember(Name = "minValue", Order = 4)]
+        public double? MinValue { get; set; }
+
+        /// <summary>
+        /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
+        /// </summary>
+        [DataMember(Name = "unitCode", Order = 5)]
+        public object UnitCode { get; protected set; }
+
+        /// <summary>
+        /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
+        /// </summary>
+        [IgnoreDataMember]
+        public string UnitCodeText
+        {
+            get => this.UnitCode as string;
+            set => this.UnitCode = value;
+        }
+
+        /// <summary>
+        /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
+        /// </summary>
+        [IgnoreDataMember]
+        public Uri UnitCodeURL
+        {
+            get => this.UnitCode as Uri;
+            set => this.UnitCode = value;
+        }
+
+        /// <summary>
+        /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
+        /// &lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "unitText", Order = 6)]
+        public string UnitText { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The value of the quantitative value or property value node.&lt;/p&gt;
@@ -29,7 +74,7 @@ namespace Schema.NET
         /// &lt;li&gt;For &lt;a class="localLink" href="http://schema.org/PropertyValue"&gt;PropertyValue&lt;/a&gt;, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "value")]
+        [DataMember(Name = "value", Order = 7)]
         public object Value { get; protected set; }
 
         /// <summary>
@@ -82,16 +127,16 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [IgnoreDataMember]
-        public decimal? ValueNumber
+        public double? ValueNumber
         {
-            get => this.Value as decimal?;
+            get => this.Value as double?;
             set => this.Value = value;
         }
 
         /// <summary>
         /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
         /// </summary>
-        [DataMember(Name = "valueReference")]
+        [DataMember(Name = "valueReference", Order = 8)]
         public object ValueReference { get; protected set; }
 
         /// <summary>
@@ -143,50 +188,5 @@ namespace Schema.NET
             get => this.ValueReference as PropertyValue;
             set => this.ValueReference = value;
         }
-
-        /// <summary>
-        /// The upper value of some characteristic or property.
-        /// </summary>
-        [DataMember(Name = "maxValue")]
-        public decimal MaxValue { get; set; }
-
-        /// <summary>
-        /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
-        /// </summary>
-        [DataMember(Name = "unitCode")]
-        public object UnitCode { get; protected set; }
-
-        /// <summary>
-        /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
-        /// </summary>
-        [IgnoreDataMember]
-        public string UnitCodeText
-        {
-            get => this.UnitCode as string;
-            set => this.UnitCode = value;
-        }
-
-        /// <summary>
-        /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
-        /// </summary>
-        [IgnoreDataMember]
-        public Uri UnitCodeURL
-        {
-            get => this.UnitCode as Uri;
-            set => this.UnitCode = value;
-        }
-
-        /// <summary>
-        /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
-        /// &lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
-        /// </summary>
-        [DataMember(Name = "unitText")]
-        public string UnitText { get; set; }
-
-        /// <summary>
-        /// The lower value of some characteristic or property.
-        /// </summary>
-        [DataMember(Name = "minValue")]
-        public decimal MinValue { get; set; }
     }
 }

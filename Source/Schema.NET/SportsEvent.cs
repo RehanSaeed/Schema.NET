@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "SportsEvent";
 
         /// <summary>
         /// The away team in a sports event.
         /// </summary>
-        [DataMember(Name = "awayTeam")]
+        [DataMember(Name = "awayTeam", Order = 2)]
         public object AwayTeam { get; protected set; }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Schema.NET
         /// <summary>
         /// A competitor in a sports event.
         /// </summary>
-        [DataMember(Name = "competitor")]
+        [DataMember(Name = "competitor", Order = 3)]
         public object Competitor { get; protected set; }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Schema.NET
         /// <summary>
         /// The home team in a sports event.
         /// </summary>
-        [DataMember(Name = "homeTeam")]
+        [DataMember(Name = "homeTeam", Order = 4)]
         public object HomeTeam { get; protected set; }
 
         /// <summary>

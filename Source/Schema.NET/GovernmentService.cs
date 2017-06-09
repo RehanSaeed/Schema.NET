@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "GovernmentService";
 
         /// <summary>
         /// The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
         /// </summary>
-        [DataMember(Name = "serviceOperator")]
+        [DataMember(Name = "serviceOperator", Order = 2)]
         public Organization ServiceOperator { get; set; }
     }
 }

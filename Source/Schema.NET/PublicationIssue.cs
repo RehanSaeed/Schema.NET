@@ -12,19 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PublicationIssue";
-
-        /// <summary>
-        /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".
-        /// </summary>
-        [DataMember(Name = "pagination")]
-        public string Pagination { get; set; }
 
         /// <summary>
         /// Identifies the issue of publication; for example, "iii" or "2".
         /// </summary>
-        [DataMember(Name = "issueNumber")]
+        [DataMember(Name = "issueNumber", Order = 2)]
         public object IssueNumber { get; protected set; }
 
         /// <summary>
@@ -50,7 +44,7 @@ namespace Schema.NET
         /// <summary>
         /// The page on which the work ends; for example "138" or "xvi".
         /// </summary>
-        [DataMember(Name = "pageEnd")]
+        [DataMember(Name = "pageEnd", Order = 3)]
         public object PageEnd { get; protected set; }
 
         /// <summary>
@@ -76,7 +70,7 @@ namespace Schema.NET
         /// <summary>
         /// The page on which the work starts; for example "135" or "xiii".
         /// </summary>
-        [DataMember(Name = "pageStart")]
+        [DataMember(Name = "pageStart", Order = 4)]
         public object PageStart { get; protected set; }
 
         /// <summary>
@@ -98,5 +92,11 @@ namespace Schema.NET
             get => this.PageStart as string;
             set => this.PageStart = value;
         }
+
+        /// <summary>
+        /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".
+        /// </summary>
+        [DataMember(Name = "pagination", Order = 5)]
+        public string Pagination { get; set; }
     }
 }

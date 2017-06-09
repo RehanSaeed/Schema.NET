@@ -12,25 +12,37 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Message";
 
         /// <summary>
         /// The date/time at which the message has been read by the recipient if a single recipient exists.
         /// </summary>
-        [DataMember(Name = "dateRead")]
-        public DateTimeOffset DateRead { get; set; }
+        [DataMember(Name = "dateRead", Order = 2)]
+        public DateTimeOffset? DateRead { get; set; }
+
+        /// <summary>
+        /// The date/time the message was received if a single recipient exists.
+        /// </summary>
+        [DataMember(Name = "dateReceived", Order = 3)]
+        public DateTimeOffset? DateReceived { get; set; }
 
         /// <summary>
         /// The date/time at which the message was sent.
         /// </summary>
-        [DataMember(Name = "dateSent")]
-        public DateTimeOffset DateSent { get; set; }
+        [DataMember(Name = "dateSent", Order = 4)]
+        public DateTimeOffset? DateSent { get; set; }
+
+        /// <summary>
+        /// A CreativeWork attached to the message.
+        /// </summary>
+        [DataMember(Name = "messageAttachment", Order = 5)]
+        public CreativeWork MessageAttachment { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
-        [DataMember(Name = "recipient")]
+        [DataMember(Name = "recipient", Order = 6)]
         public object Recipient { get; protected set; }
 
         /// <summary>
@@ -66,7 +78,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The participant who is at the sending end of the action.
         /// </summary>
-        [DataMember(Name = "sender")]
+        [DataMember(Name = "sender", Order = 7)]
         public object Sender { get; protected set; }
 
         /// <summary>
@@ -98,17 +110,5 @@ namespace Schema.NET
             get => this.Sender as Audience;
             set => this.Sender = value;
         }
-
-        /// <summary>
-        /// A CreativeWork attached to the message.
-        /// </summary>
-        [DataMember(Name = "messageAttachment")]
-        public CreativeWork MessageAttachment { get; set; }
-
-        /// <summary>
-        /// The date/time the message was received if a single recipient exists.
-        /// </summary>
-        [DataMember(Name = "dateReceived")]
-        public DateTimeOffset DateReceived { get; set; }
     }
 }

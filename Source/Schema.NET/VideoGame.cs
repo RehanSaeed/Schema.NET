@@ -12,13 +12,31 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "VideoGame";
+
+        /// <summary>
+        /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
+        /// </summary>
+        [DataMember(Name = "actor", Order = 2)]
+        public Person Actor { get; set; }
+
+        /// <summary>
+        /// Cheat codes to the game.
+        /// </summary>
+        [DataMember(Name = "cheatCode", Order = 3)]
+        public CreativeWork CheatCode { get; set; }
+
+        /// <summary>
+        /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
+        /// </summary>
+        [DataMember(Name = "director", Order = 4)]
+        public Person Director { get; set; }
 
         /// <summary>
         /// The electronic systems used to play &lt;a href="http://en.wikipedia.org/wiki/Category:Video_game_platforms"&gt;video games&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "gamePlatform")]
+        [DataMember(Name = "gamePlatform", Order = 5)]
         public object GamePlatform { get; protected set; }
 
         /// <summary>
@@ -54,37 +72,19 @@ namespace Schema.NET
         /// <summary>
         /// The server on which  it is possible to play the game.
         /// </summary>
-        [DataMember(Name = "gameServer")]
+        [DataMember(Name = "gameServer", Order = 6)]
         public GameServer GameServer { get; set; }
-
-        /// <summary>
-        /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
-        /// </summary>
-        [DataMember(Name = "actor")]
-        public Person Actor { get; set; }
-
-        /// <summary>
-        /// The trailer of a movie or tv/radio series, season, episode, etc.
-        /// </summary>
-        [DataMember(Name = "trailer")]
-        public VideoObject Trailer { get; set; }
-
-        /// <summary>
-        /// Cheat codes to the game.
-        /// </summary>
-        [DataMember(Name = "cheatCode")]
-        public CreativeWork CheatCode { get; set; }
 
         /// <summary>
         /// Links to tips, tactics, etc.
         /// </summary>
-        [DataMember(Name = "gameTip")]
+        [DataMember(Name = "gameTip", Order = 7)]
         public CreativeWork GameTip { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
-        [DataMember(Name = "musicBy")]
+        [DataMember(Name = "musicBy", Order = 8)]
         public object MusicBy { get; protected set; }
 
         /// <summary>
@@ -110,13 +110,13 @@ namespace Schema.NET
         /// <summary>
         /// Indicates whether this game is multi-player, co-op or single-player.  The game can be marked as multi-player, co-op and single-player at the same time.
         /// </summary>
-        [DataMember(Name = "playMode")]
+        [DataMember(Name = "playMode", Order = 9)]
         public GamePlayMode PlayMode { get; set; }
 
         /// <summary>
-        /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
+        /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
-        [DataMember(Name = "director")]
-        public Person Director { get; set; }
+        [DataMember(Name = "trailer", Order = 10)]
+        public VideoObject Trailer { get; set; }
     }
 }

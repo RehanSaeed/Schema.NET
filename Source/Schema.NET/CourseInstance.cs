@@ -12,19 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "CourseInstance";
-
-        /// <summary>
-        /// A person assigned to instruct or provide instructional assistance for the &lt;a class="localLink" href="http://schema.org/CourseInstance"&gt;CourseInstance&lt;/a&gt;.
-        /// </summary>
-        [DataMember(Name = "instructor")]
-        public Person Instructor { get; set; }
 
         /// <summary>
         /// The medium or means of delivery of the course instance or the mode of study, either as a text label (e.g. "online", "onsite" or "blended"; "synchronous" or "asynchronous"; "full-time" or "part-time") or as a URL reference to a term from a controlled vocabulary (e.g. https://ceds.ed.gov/element/001311#Asynchronous ).
         /// </summary>
-        [DataMember(Name = "courseMode")]
+        [DataMember(Name = "courseMode", Order = 2)]
         public object CourseMode { get; protected set; }
 
         /// <summary>
@@ -46,5 +40,11 @@ namespace Schema.NET
             get => this.CourseMode as string;
             set => this.CourseMode = value;
         }
+
+        /// <summary>
+        /// A person assigned to instruct or provide instructional assistance for the &lt;a class="localLink" href="http://schema.org/CourseInstance"&gt;CourseInstance&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "instructor", Order = 3)]
+        public Person Instructor { get; set; }
     }
 }

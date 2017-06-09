@@ -12,13 +12,13 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "SellAction";
 
         /// <summary>
         /// A sub property of participant. The participant/person/organization that bought the object.
         /// </summary>
-        [DataMember(Name = "buyer")]
+        [DataMember(Name = "buyer", Order = 2)]
         public Person Buyer { get; set; }
     }
 }

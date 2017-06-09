@@ -12,19 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PlayAction";
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
-        [DataMember(Name = "audience")]
+        [DataMember(Name = "audience", Order = 2)]
         public Audience Audience { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        [DataMember(Name = "event")]
+        [DataMember(Name = "event", Order = 3)]
         public Event Event { get; set; }
     }
 }

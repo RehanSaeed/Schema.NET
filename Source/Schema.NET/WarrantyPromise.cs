@@ -12,19 +12,19 @@ namespace Schema.NET
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public override string Type => "WarrantyPromise";
 
         /// <summary>
         /// The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
         /// </summary>
-        [DataMember(Name = "durationOfWarranty")]
+        [DataMember(Name = "durationOfWarranty", Order = 2)]
         public QuantitativeValue DurationOfWarranty { get; set; }
 
         /// <summary>
         /// The scope of the warranty promise.
         /// </summary>
-        [DataMember(Name = "warrantyScope")]
+        [DataMember(Name = "warrantyScope", Order = 3)]
         public WarrantyScope WarrantyScope { get; set; }
     }
 }
