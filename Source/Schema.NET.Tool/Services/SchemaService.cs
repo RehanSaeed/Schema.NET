@@ -37,15 +37,7 @@
             var schemaProperties = await this.GetSchemaProperties();
             foreach (var schemaProperty in schemaProperties)
             {
-                if (schemaProperty.IsProperty)
-                {
-                    foreach (var schemaClass in schemaClasses.Where(x => schemaProperty.ClassUrls.Contains(x.Url)))
-                    {
-                        schemaProperty.Classes.Add(schemaClass);
-                        schemaClass.Properties.Add(schemaProperty);
-                    }
-                }
-                else if (schemaProperty.IsClass)
+                if (schemaProperty.IsClass)
                 {
                     // {
                     //   "@id": "http://schema.org/CafeOrCoffeeShop",
@@ -61,12 +53,7 @@
                 {
                     if (schemaProperty.Url.StartsWith("http://schema.org"))
                     {
-                        foreach (var schemaClass in schemaClasses
-                            .Where(x => string.Equals(schemaProperty.PropertyType, x.Url, StringComparison.Ordinal)))
-                        {
-                            schemaProperty.Classes.Add(schemaClass);
-                            schemaClass.Properties.Add(schemaProperty);
-                        }
+
                     }
                     else
                     {
@@ -80,7 +67,33 @@
                 }
             }
 
-            return schemaClasses;
+            foreach (var schemaClass in schemaClasses)
+            {
+                if (schemaClass.IsPrimitive)
+                {
+                    // Ignore
+                }
+                else if (schemaClass.IsEnum)
+                {
+                    foreach (var schemaProperty in schemaProperties
+                        .Where(x => x.IsEnumValue && string.Equals(x.PropertyType, schemaClass.Url, StringComparison.Ordinal)))
+                    {
+                        schemaProperty.Classes.Add(schemaClass);
+                        schemaClass.Properties.Add(schemaProperty);
+                    }
+                }
+                else if (schemaClass.IsClass)
+                {
+                    foreach (var schemaProperty in schemaProperties
+                        .Where(x => x.IsProperty && x.ClassUrls.Contains(schemaClass.Url)))
+                    {
+                        schemaProperty.Classes.Add(schemaClass);
+                        schemaClass.Properties.Add(schemaProperty);
+                    }
+                }
+            }
+
+            return schemaClasses.Where(x => !x.IsPrimitive).ToList();
         }
 
         public async Task<List<SchemaProperty>> GetSchemaProperties()

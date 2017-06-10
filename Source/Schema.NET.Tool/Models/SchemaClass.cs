@@ -37,6 +37,8 @@
 
         public bool IsEnum => this.Parent != null && string.Equals(this.Parent.Name, "Enumeration");
 
+        public bool IsPrimitive => new string[] { "Intangible", "Enumeration", "Boolean", "Date", "DateTime", "Number", "Text", "Time" }.Contains(this.Name);
+
         public bool IsThingClass => string.Equals(this.Name, "Thing", StringComparison.Ordinal);
 
         [DataMember]

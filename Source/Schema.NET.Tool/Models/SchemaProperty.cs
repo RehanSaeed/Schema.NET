@@ -16,6 +16,8 @@
 
         public bool IsClass => string.Equals(this.PropertyType, "rdfs:Class", StringComparison.OrdinalIgnoreCase);
 
+        public bool IsEnumValue => !this.IsClass && !this.IsProperty;
+
         public bool IsProperty => string.Equals(this.PropertyType, "rdf:Property", StringComparison.OrdinalIgnoreCase);
 
         public string Url { get; set; }
