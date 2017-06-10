@@ -10,6 +10,10 @@
         {
             var organization = new Organization()
             {
+                AddressPostalAddress = new PostalAddress()
+                {
+                    ContactOption = ContactPointOption.HearingImpairedSupported
+                },
                 DissolutionDate = new DateTimeOffset(2000, 1, 1, 0, 0, 0, TimeSpan.FromHours(1)),
                 ContactPoint = new ContactPoint()
                 {

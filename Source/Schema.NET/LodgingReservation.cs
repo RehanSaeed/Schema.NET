@@ -38,27 +38,7 @@ namespace Schema.NET
         /// Textual description of the unit type (including suite vs. room, size of bed, etc.).
         /// </summary>
         [DataMember(Name = "lodgingUnitType", Order = 5)]
-        public object LodgingUnitType { get; protected set; }
-
-        /// <summary>
-        /// Textual description of the unit type (including suite vs. room, size of bed, etc.).
-        /// </summary>
-        [IgnoreDataMember]
-        public string LodgingUnitTypeText
-        {
-            get => this.LodgingUnitType as string;
-            set => this.LodgingUnitType = value;
-        }
-
-        /// <summary>
-        /// Textual description of the unit type (including suite vs. room, size of bed, etc.).
-        /// </summary>
-        [IgnoreDataMember]
-        public QualitativeValue? LodgingUnitTypeQualitativeValue
-        {
-            get => this.LodgingUnitType as QualitativeValue?;
-            set => this.LodgingUnitType = value;
-        }
+        public string LodgingUnitType { get; set; }
 
         /// <summary>
         /// The number of adults staying in the unit.

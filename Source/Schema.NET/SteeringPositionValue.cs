@@ -1,18 +1,18 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// A value indicating a steering position.
     /// </summary>
-    [DataContract]
-    public class SteeringPositionValue : QualitativeValue
+    public enum SteeringPositionValue
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// The steering position is on the left side of the vehicle (viewed from the main direction of driving).
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "SteeringPositionValue";
+        LeftHandDriving,
+
+        /// <summary>
+        /// The steering position is on the right side of the vehicle (viewed from the main direction of driving).
+        /// </summary>
+        RightHandDriving
     }
 }

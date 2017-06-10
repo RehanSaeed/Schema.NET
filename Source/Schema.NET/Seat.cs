@@ -19,27 +19,7 @@ namespace Schema.NET
         /// The type/class of the seat.
         /// </summary>
         [DataMember(Name = "seatingType", Order = 2)]
-        public object SeatingType { get; protected set; }
-
-        /// <summary>
-        /// The type/class of the seat.
-        /// </summary>
-        [IgnoreDataMember]
-        public QualitativeValue? SeatingTypeQualitativeValue
-        {
-            get => this.SeatingType as QualitativeValue?;
-            set => this.SeatingType = value;
-        }
-
-        /// <summary>
-        /// The type/class of the seat.
-        /// </summary>
-        [IgnoreDataMember]
-        public string SeatingTypeText
-        {
-            get => this.SeatingType as string;
-            set => this.SeatingType = value;
-        }
+        public string SeatingType { get; set; }
 
         /// <summary>
         /// The location of the reserved seat (e.g., 27).

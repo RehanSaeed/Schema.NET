@@ -39,9 +39,9 @@ namespace Schema.NET
         /// The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's engine via the drivetrain.
         /// </summary>
         [IgnoreDataMember]
-        public DriveWheelConfigurationValue DriveWheelConfigurationDriveWheelConfigurationValue
+        public DriveWheelConfigurationValue? DriveWheelConfigurationDriveWheelConfigurationValue
         {
-            get => this.DriveWheelConfiguration as DriveWheelConfigurationValue;
+            get => this.DriveWheelConfiguration as DriveWheelConfigurationValue?;
             set => this.DriveWheelConfiguration = value;
         }
 
@@ -82,16 +82,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "fuelType", Order = 7)]
         public object FuelType { get; protected set; }
-
-        /// <summary>
-        /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
-        /// </summary>
-        [IgnoreDataMember]
-        public QualitativeValue? FuelTypeQualitativeValue
-        {
-            get => this.FuelType as QualitativeValue?;
-            set => this.FuelType = value;
-        }
 
         /// <summary>
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
@@ -284,7 +274,7 @@ namespace Schema.NET
         /// The position of the steering wheel or similar device (mostly for cars).
         /// </summary>
         [DataMember(Name = "steeringPosition", Order = 17)]
-        public SteeringPositionValue SteeringPosition { get; set; }
+        public SteeringPositionValue? SteeringPosition { get; set; }
 
         /// <summary>
         /// A short text indicating the configuration of the vehicle, e.g. '5dr hatchback ST 2.5 MT 225 hp' or 'limited edition'.
@@ -380,16 +370,6 @@ namespace Schema.NET
         public string VehicleTransmissionText
         {
             get => this.VehicleTransmission as string;
-            set => this.VehicleTransmission = value;
-        }
-
-        /// <summary>
-        /// The type of component used for transmitting the power from a rotating power source to the wheels or other relevant component(s) ("gearbox" for cars).
-        /// </summary>
-        [IgnoreDataMember]
-        public QualitativeValue? VehicleTransmissionQualitativeValue
-        {
-            get => this.VehicleTransmission as QualitativeValue?;
             set => this.VehicleTransmission = value;
         }
     }

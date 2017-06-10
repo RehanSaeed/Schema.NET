@@ -62,6 +62,13 @@
                     foreach (var schemaProperty in schemaProperties
                         .Where(x => x.IsProperty && x.ClassUrls.Contains(schemaClass.Url)))
                     {
+                        var schemaType = schemaProperty.Types
+                            .FirstOrDefault(x => string.Equals(x.Name, "QualitativeValue", StringComparison.Ordinal));
+                        if (schemaType != null)
+                        {
+                            schemaProperty.Types.Remove(schemaType);
+                        }
+
                         schemaProperty.Classes.Add(schemaClass);
                         schemaClass.Properties.Add(schemaProperty);
                     }

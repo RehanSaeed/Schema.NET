@@ -26,27 +26,7 @@ namespace Schema.NET
         /// The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
         /// </summary>
         [DataMember(Name = "passengerPriorityStatus", Order = 3)]
-        public object PassengerPriorityStatus { get; protected set; }
-
-        /// <summary>
-        /// The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
-        /// </summary>
-        [IgnoreDataMember]
-        public QualitativeValue? PassengerPriorityStatusQualitativeValue
-        {
-            get => this.PassengerPriorityStatus as QualitativeValue?;
-            set => this.PassengerPriorityStatus = value;
-        }
-
-        /// <summary>
-        /// The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
-        /// </summary>
-        [IgnoreDataMember]
-        public string PassengerPriorityStatusText
-        {
-            get => this.PassengerPriorityStatus as string;
-            set => this.PassengerPriorityStatus = value;
-        }
+        public string PassengerPriorityStatus { get; set; }
 
         /// <summary>
         /// The passenger's sequence number as assigned by the airline.

@@ -171,16 +171,6 @@ namespace Schema.NET
         /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
         /// </summary>
         [IgnoreDataMember]
-        public QualitativeValue? ValueReferenceQualitativeValue
-        {
-            get => this.ValueReference as QualitativeValue?;
-            set => this.ValueReference = value;
-        }
-
-        /// <summary>
-        /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
-        /// </summary>
-        [IgnoreDataMember]
         public QuantitativeValue ValueReferenceQuantitativeValue
         {
             get => this.ValueReference as QuantitativeValue;

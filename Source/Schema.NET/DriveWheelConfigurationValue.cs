@@ -1,18 +1,28 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// A value indicating which roadwheels will receive torque.
     /// </summary>
-    [DataContract]
-    public class DriveWheelConfigurationValue : QualitativeValue
+    public enum DriveWheelConfigurationValue
     {
         /// <summary>
-        /// Gets the name of the type as specified by schema.org.
+        /// All-wheel Drive is a transmission layout where the engine drives all four wheels.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "DriveWheelConfigurationValue";
+        AllWheelDriveConfiguration,
+
+        /// <summary>
+        /// Four-wheel drive is a transmission layout where the engine primarily drives two wheels with a part-time four-wheel drive capability.
+        /// </summary>
+        FourWheelDriveConfiguration,
+
+        /// <summary>
+        /// Front-wheel drive is a transmission layout where the engine drives the front wheels.
+        /// </summary>
+        FrontWheelDriveConfiguration,
+
+        /// <summary>
+        /// Real-wheel drive is a transmission layout where the engine drives the rear wheels.
+        /// </summary>
+        RearWheelDriveConfiguration
     }
 }

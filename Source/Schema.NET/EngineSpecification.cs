@@ -25,16 +25,6 @@ namespace Schema.NET
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
         /// </summary>
         [IgnoreDataMember]
-        public QualitativeValue? FuelTypeQualitativeValue
-        {
-            get => this.FuelType as QualitativeValue?;
-            set => this.FuelType = value;
-        }
-
-        /// <summary>
-        /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
-        /// </summary>
-        [IgnoreDataMember]
         public Uri FuelTypeURL
         {
             get => this.FuelType as Uri;
