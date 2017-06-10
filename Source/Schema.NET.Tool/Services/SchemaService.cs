@@ -69,7 +69,7 @@
 
             foreach (var schemaClass in schemaClasses)
             {
-                if (schemaClass.IsPrimitive)
+                if (schemaClass.IsPrimitive || schemaClass.IsMeta || schemaClass.IsPending)
                 {
                     // Ignore
                 }
@@ -93,7 +93,7 @@
                 }
             }
 
-            return schemaClasses.Where(x => !x.IsPrimitive).ToList();
+            return schemaClasses.Where(x => !x.IsPrimitive && !x.IsPending && !x.IsMeta).ToList();
         }
 
         public async Task<List<SchemaProperty>> GetSchemaProperties()

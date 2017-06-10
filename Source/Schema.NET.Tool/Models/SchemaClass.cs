@@ -41,6 +41,10 @@
 
         public bool IsThingClass => string.Equals(this.Name, "Thing", StringComparison.Ordinal);
 
+        public bool IsPending => string.Equals(this.Layer, "pending", StringComparison.Ordinal);
+
+        public bool IsMeta => string.Equals(this.Layer, "meta", StringComparison.Ordinal);
+
         [DataMember]
         public string Layer { get; set; }
 
