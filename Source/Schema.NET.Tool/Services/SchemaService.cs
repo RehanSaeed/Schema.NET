@@ -35,38 +35,6 @@
         {
             var schemaClasses = await this.GetSchemaClasses();
             var schemaProperties = await this.GetSchemaProperties();
-            foreach (var schemaProperty in schemaProperties)
-            {
-                if (schemaProperty.IsClass)
-                {
-                    // {
-                    //   "@id": "http://schema.org/CafeOrCoffeeShop",
-                    //   "@type": "rdfs:Class",
-                    //   "rdfs:comment": "A cafe or coffee shop.",
-                    //   "rdfs:label": "CafeOrCoffeeShop",
-                    //   "rdfs:subClassOf": {
-                    //     "@id": "http://schema.org/FoodEstablishment"
-                    //   }
-                    // }
-                }
-                else
-                {
-                    if (schemaProperty.Url.StartsWith("http://schema.org"))
-                    {
-
-                    }
-                    else
-                    {
-                        // {
-                        //   "@id": "https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology",
-                        //   "@type": "http://schema.org/Organization",
-                        //   "rdfs:comment": "This element is based on the STI Accommodation Ontology, see <a href=\"http://ontologies.sti-innsbruck.at/acco/ns.html\">http://ontologies.sti-innsbruck.at/acco/ns.html</a> for details.\n    Many class and property definitions are inspired by or based on abstracts from Wikipedia, the free encyclopedia.",
-                        //   "rdfs:label": "STI Accommodation Ontology"
-                        // }
-                    }
-                }
-            }
-
             foreach (var schemaClass in schemaClasses)
             {
                 if (schemaClass.IsPrimitive || schemaClass.IsMeta || schemaClass.IsPending || schemaClass.IsArchived)

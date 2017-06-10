@@ -56,7 +56,7 @@
         public SchemaClass Parent { get; set; }
 
         [DataMember(Name = "rdfs:subClassOf")]
-        public string ParentId { get; set; }
+        public string ParentUrl { get; set; }
 
         public List<SchemaProperty> Properties { get; set; } = new List<SchemaProperty>();
 
