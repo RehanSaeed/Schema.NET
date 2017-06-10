@@ -6,8 +6,10 @@
 
     public interface ISchemaService
     {
-        Task<IEnumerable<SchemaClass>> GetSchemaClasses();
+        Task<List<SchemaClass>> GetSchemaClasses();
 
-        Task<IEnumerable<SchemaProperty>> GetSchemaProperties();
+        Task<List<SchemaClass>> GetSchemaClassesWithProperties();
+
+        Task<List<SchemaProperty>> GetSchemaProperties();
     }
 }

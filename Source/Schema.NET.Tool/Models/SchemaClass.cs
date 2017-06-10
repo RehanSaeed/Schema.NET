@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Runtime.Serialization;
     using System.Text;
-    using System.Xml;
 
     [DataContract]
     public class SchemaClass
@@ -34,6 +33,12 @@
         [DataMember(Name = "@id")]
         public string Id { get; set; }
 
+        public bool IsClass => !this.IsEnum;
+
+        public bool IsEnum => this.Parent != null && string.Equals(this.Parent.Name, "Enumeration");
+
+        public bool IsThingClass => string.Equals(this.Name, "Thing", StringComparison.Ordinal);
+
         [DataMember]
         public string Layer { get; set; }
 
@@ -60,9 +65,7 @@
             stringBuilder.AppendLine("namespace Schema.NET");
             stringBuilder.AppendLine("{");
 
-            var isEnum = this.Parent != null && string.Equals(this.Parent.Name, "Enumeration");
-
-            if (!isEnum)
+            if (!this.IsEnum)
             {
                 // Using statements
                 stringBuilder.AppendIndentLine(4, "using System;");
@@ -75,10 +78,8 @@
             stringBuilder.AppendCommentLine(4, this.Description);
             stringBuilder.AppendIndentLine(4, "/// </summary>");
 
-            var isThing = string.Equals(this.Name, "Thing", StringComparison.Ordinal);
-            var partial = isThing ? " partial" : string.Empty;
-
-            if (isEnum)
+            var partial = this.IsThingClass ? " partial" : string.Empty;
+            if (this.IsEnum)
             {
                 stringBuilder.AppendIndentLine(4, $"public enum {this.Name}");
                 stringBuilder.AppendIndentLine(4, "{");
@@ -92,7 +93,7 @@
                         var isLast = i == (this.Properties.Count - 1);
 
                         stringBuilder.AppendIndentLine(8, "/// <summary>");
-                        stringBuilder.AppendCommentLine(8, property.Comment);
+                        stringBuilder.AppendCommentLine(8, property.Description);
                         stringBuilder.AppendIndentLine(8, "/// </summary>");
                         stringBuilder.AppendIndent(8, property.Name);
                         if (!isLast)
@@ -117,8 +118,8 @@
 
                 stringBuilder.AppendIndentLine(4, "{");
 
-                var modifier = isThing ? "virtual" : "override";
-                if (isThing)
+                var modifier = this.IsThingClass ? "virtual" : "override";
+                if (this.IsThingClass)
                 {
                     // Context Property
                     stringBuilder.AppendIndentLine(8, "/// <summary>");
@@ -137,10 +138,7 @@
                 stringBuilder.AppendIndentLine(8, $"public {modifier} string Type => \"{this.Name}\";");
 
                 // Properties
-                var props = this.Properties
-                    .Where(x => string.Equals(x.PropertyType, "rdf:Property", StringComparison.OrdinalIgnoreCase))
-                    .OrderBy(x => x.Name)
-                    .ToList();
+                var props = this.Properties.Where(x => x.IsProperty).OrderBy(x => x.Name).ToList();
                 if (props.Count > 0)
                 {
                     stringBuilder.AppendLine();

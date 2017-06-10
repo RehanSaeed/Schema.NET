@@ -12,7 +12,11 @@
 
         public List<string> ClassUrls { get; set; } = new List<string>();
 
-        public string Comment { get; set; }
+        public string Description { get; set; }
+
+        public bool IsClass => string.Equals(this.PropertyType, "rdfs:Class", StringComparison.OrdinalIgnoreCase);
+
+        public bool IsProperty => string.Equals(this.PropertyType, "rdf:Property", StringComparison.OrdinalIgnoreCase);
 
         public string Url { get; set; }
 
@@ -143,7 +147,7 @@
         private void AppendCommentLine(StringBuilder stringBuilder, int count)
         {
             stringBuilder.AppendIndentLine(count, "/// <summary>");
-            stringBuilder.AppendCommentLine(count, this.Comment);
+            stringBuilder.AppendCommentLine(count, this.Description);
             stringBuilder.AppendIndentLine(count, "/// </summary>");
         }
     }

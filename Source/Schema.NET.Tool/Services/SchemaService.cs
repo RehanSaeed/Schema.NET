@@ -19,7 +19,7 @@
                 BaseAddress = new Uri("https://schema.org")
             };
 
-        public async Task<IEnumerable<SchemaClass>> GetSchemaClasses()
+        public async Task<List<SchemaClass>> GetSchemaClasses()
         {
             var response = await this.httpClient.GetAsync("/docs/tree.jsonld");
             response.EnsureSuccessStatusCode();
@@ -31,12 +31,64 @@
                 .ToList();
         }
 
-        public async Task<IEnumerable<SchemaProperty>> GetSchemaProperties()
+        public async Task<List<SchemaClass>> GetSchemaClassesWithProperties()
+        {
+            var schemaClasses = await this.GetSchemaClasses();
+            var schemaProperties = await this.GetSchemaProperties();
+            foreach (var schemaProperty in schemaProperties)
+            {
+                if (schemaProperty.IsProperty)
+                {
+                    foreach (var schemaClass in schemaClasses.Where(x => schemaProperty.ClassUrls.Contains(x.Url)))
+                    {
+                        schemaProperty.Classes.Add(schemaClass);
+                        schemaClass.Properties.Add(schemaProperty);
+                    }
+                }
+                else if (schemaProperty.IsClass)
+                {
+                    // {
+                    //   "@id": "http://schema.org/CafeOrCoffeeShop",
+                    //   "@type": "rdfs:Class",
+                    //   "rdfs:comment": "A cafe or coffee shop.",
+                    //   "rdfs:label": "CafeOrCoffeeShop",
+                    //   "rdfs:subClassOf": {
+                    //     "@id": "http://schema.org/FoodEstablishment"
+                    //   }
+                    // }
+                }
+                else
+                {
+                    if (schemaProperty.Url.StartsWith("http://schema.org"))
+                    {
+                        foreach (var schemaClass in schemaClasses
+                            .Where(x => string.Equals(schemaProperty.PropertyType, x.Url, StringComparison.Ordinal)))
+                        {
+                            schemaProperty.Classes.Add(schemaClass);
+                            schemaClass.Properties.Add(schemaProperty);
+                        }
+                    }
+                    else
+                    {
+                        // {
+                        //   "@id": "https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology",
+                        //   "@type": "http://schema.org/Organization",
+                        //   "rdfs:comment": "This element is based on the STI Accommodation Ontology, see <a href=\"http://ontologies.sti-innsbruck.at/acco/ns.html\">http://ontologies.sti-innsbruck.at/acco/ns.html</a> for details.\n    Many class and property definitions are inspired by or based on abstracts from Wikipedia, the free encyclopedia.",
+                        //   "rdfs:label": "STI Accommodation Ontology"
+                        // }
+                    }
+                }
+            }
+
+            return schemaClasses;
+        }
+
+        public async Task<List<SchemaProperty>> GetSchemaProperties()
         {
             var response = await this.httpClient.GetAsync("/version/latest/schema.jsonld");
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
-            return Deserialize<IEnumerable<SchemaProperty>>(json, new SchemaPropertyJsonConverter());
+            return Deserialize<List<SchemaProperty>>(json, new SchemaPropertyJsonConverter());
         }
 
         private static T Deserialize<T>(string json, JsonConverter converter) =>

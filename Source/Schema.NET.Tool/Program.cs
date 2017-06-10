@@ -12,72 +12,16 @@
     {
         private readonly ISchemaService schemaService;
 
-        public Program()
-        {
+        public Program() =>
             this.schemaService = new SchemaService();
-        }
 
-        public static void Main(string[] args)
-        {
+        public static void Main(string[] args) =>
             new Program().Execute().Wait();
-        }
 
         public async Task Execute()
         {
             Console.WriteLine("Executing Class and Property Download");
-
-            var schemaClasses = await this.schemaService.GetSchemaClasses();
-            var schemaProperties = await this.schemaService.GetSchemaProperties();
-            foreach (var schemaProperty in schemaProperties)
-            {
-                if (string.Equals(schemaProperty.PropertyType, "rdf:Property", StringComparison.OrdinalIgnoreCase))
-                {
-                    foreach (var schemaClass in schemaClasses.Where(x => schemaProperty.ClassUrls.Contains(x.Url)))
-                    {
-                        schemaProperty.Classes.Add(schemaClass);
-                        schemaClass.Properties.Add(schemaProperty);
-                    }
-                }
-                else if (string.Equals(schemaProperty.PropertyType, "rdfs:Class", StringComparison.OrdinalIgnoreCase))
-                {
-                    // {
-                    //   "@id": "http://schema.org/CafeOrCoffeeShop",
-                    //   "@type": "rdfs:Class",
-                    //   "rdfs:comment": "A cafe or coffee shop.",
-                    //   "rdfs:label": "CafeOrCoffeeShop",
-                    //   "rdfs:subClassOf": {
-                    //     "@id": "http://schema.org/FoodEstablishment"
-                    //   }
-                    // }
-                }
-                else
-                {
-                    if (schemaProperty.Url.StartsWith("http://schema.org"))
-                    {
-                        foreach (var schemaClass in schemaClasses
-                            .Where(x => string.Equals(schemaProperty.PropertyType, x.Url, StringComparison.Ordinal)))
-                        {
-                            schemaProperty.Classes.Add(schemaClass);
-                            schemaClass.Properties.Add(schemaProperty);
-                        }
-
-                        foreach (var schemaClass in collection)
-                        {
-
-                        }
-                    }
-                    else
-                    {
-                        // {
-                        //   "@id": "https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology",
-                        //   "@type": "http://schema.org/Organization",
-                        //   "rdfs:comment": "This element is based on the STI Accommodation Ontology, see <a href=\"http://ontologies.sti-innsbruck.at/acco/ns.html\">http://ontologies.sti-innsbruck.at/acco/ns.html</a> for details.\n    Many class and property definitions are inspired by or based on abstracts from Wikipedia, the free encyclopedia.",
-                        //   "rdfs:label": "STI Accommodation Ontology"
-                        // }
-                    }
-                }
-            }
-
+            var schemaClasses = await this.schemaService.GetSchemaClassesWithProperties();
             Console.WriteLine("Finished Class and Property Download");
 
             var assemblyLocation = typeof(Program).GetTypeInfo().Assembly.Location;

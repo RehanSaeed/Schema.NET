@@ -9,7 +9,7 @@
 
     public class SchemaPropertyJsonConverter : JsonConverter
     {
-        public override bool CanConvert(Type objectType) => objectType == typeof(IEnumerable<SchemaProperty>);
+        public override bool CanConvert(Type objectType) => objectType == typeof(List<SchemaProperty>);
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
@@ -54,7 +54,7 @@
                             return new SchemaProperty()
                             {
                                 ClassUrls = domainIncludes,
-                                Comment = comment,
+                                Description = comment,
                                 Name = label,
                                 Parents = parents,
                                 PropertyType = type,
@@ -76,10 +76,8 @@
             return Enumerable.Empty<SchemaProperty>();
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) =>
             throw new NotImplementedException();
-        }
 
         private static IEnumerable<string> GetTokenValues(JToken token)
         {
