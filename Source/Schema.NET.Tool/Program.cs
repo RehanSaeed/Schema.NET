@@ -43,13 +43,24 @@
             Console.WriteLine("Finished Write Classes");
         }
 
-        private static void ClearOutputDirectory(string directoryPath)
+        private static async Task ClearOutputDirectory(string directoryPath)
         {
             foreach (var filePath in Directory.GetFiles(directoryPath, "*.cs"))
             {
                 if (!string.Equals(Path.GetFileName(filePath), "Thing.Partial.cs", StringComparison.OrdinalIgnoreCase))
                 {
-                    // File.Delete(filePath);
+                    while (true)
+                    {
+                        try
+                        {
+                            File.Delete(filePath);
+                            break;
+                        }
+                        catch
+                        {
+                            await Task.Delay(100);
+                        }
+                    }
                 }
             }
         }

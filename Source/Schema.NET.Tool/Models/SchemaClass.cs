@@ -45,6 +45,8 @@
 
         public bool IsMeta => string.Equals(this.Layer, "meta", StringComparison.Ordinal);
 
+        public bool IsArchived => string.Equals(this.Layer, "attic", StringComparison.Ordinal);
+
         [DataMember]
         public string Layer { get; set; }
 
