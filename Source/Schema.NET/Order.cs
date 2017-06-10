@@ -177,7 +177,7 @@ namespace Schema.NET
         /// The current status of the order.
         /// </summary>
         [DataMember(Name = "orderStatus", Order = 15)]
-        public OrderStatus OrderStatus { get; set; }
+        public OrderStatus? OrderStatus { get; set; }
 
         /// <summary>
         /// The order is being paid as part of the referenced Invoice.
@@ -195,7 +195,7 @@ namespace Schema.NET
         /// The name of the credit card or other method of payment for the order.
         /// </summary>
         [DataMember(Name = "paymentMethod", Order = 18)]
-        public PaymentMethod PaymentMethod { get; set; }
+        public PaymentMethod? PaymentMethod { get; set; }
 
         /// <summary>
         /// An identifier for the method of payment used (e.g. the last 4 digits of the credit card).

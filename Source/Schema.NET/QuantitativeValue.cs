@@ -143,9 +143,9 @@ namespace Schema.NET
         /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
         /// </summary>
         [IgnoreDataMember]
-        public QualitativeValue ValueReferenceQualitativeValue
+        public QualitativeValue? ValueReferenceQualitativeValue
         {
-            get => this.ValueReference as QualitativeValue;
+            get => this.ValueReference as QualitativeValue?;
             set => this.ValueReference = value;
         }
 

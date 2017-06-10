@@ -32,9 +32,9 @@ namespace Schema.NET
         /// The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
         /// </summary>
         [IgnoreDataMember]
-        public QualitativeValue PassengerPriorityStatusQualitativeValue
+        public QualitativeValue? PassengerPriorityStatusQualitativeValue
         {
-            get => this.PassengerPriorityStatus as QualitativeValue;
+            get => this.PassengerPriorityStatus as QualitativeValue?;
             set => this.PassengerPriorityStatus = value;
         }
 

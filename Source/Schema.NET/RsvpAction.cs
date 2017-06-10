@@ -31,6 +31,6 @@ namespace Schema.NET
         /// The response (yes, no, maybe) to the RSVP.
         /// </summary>
         [DataMember(Name = "rsvpResponse", Order = 4)]
-        public RsvpResponseType RsvpResponse { get; set; }
+        public RsvpResponseType? RsvpResponse { get; set; }
     }
 }

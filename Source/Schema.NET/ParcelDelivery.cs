@@ -43,7 +43,7 @@ namespace Schema.NET
         /// Method used for delivery or shipping.
         /// </summary>
         [DataMember(Name = "hasDeliveryMethod", Order = 6)]
-        public DeliveryMethod HasDeliveryMethod { get; set; }
+        public DeliveryMethod? HasDeliveryMethod { get; set; }
 
         /// <summary>
         /// Item(s) being shipped.

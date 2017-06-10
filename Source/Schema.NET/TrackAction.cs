@@ -22,6 +22,6 @@ namespace Schema.NET
         /// A sub property of instrument. The method of delivery.
         /// </summary>
         [DataMember(Name = "deliveryMethod", Order = 2)]
-        public DeliveryMethod DeliveryMethod { get; set; }
+        public DeliveryMethod? DeliveryMethod { get; set; }
     }
 }

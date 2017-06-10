@@ -69,7 +69,7 @@ namespace Schema.NET
         /// The type of boarding policy used by the airline (e.g. zone-based or group-based).
         /// </summary>
         [DataMember(Name = "boardingPolicy", Order = 7)]
-        public BoardingPolicyType BoardingPolicy { get; set; }
+        public BoardingPolicyType? BoardingPolicy { get; set; }
 
         /// <summary>
         /// The airport where the flight originates.

@@ -31,6 +31,6 @@ namespace Schema.NET
         /// Status of a game server.
         /// </summary>
         [DataMember(Name = "serverStatus", Order = 4)]
-        public GameServerStatus ServerStatus { get; set; }
+        public GameServerStatus? ServerStatus { get; set; }
     }
 }

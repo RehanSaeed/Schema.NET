@@ -91,7 +91,7 @@ namespace Schema.NET
         /// An option available on this contact point (e.g. a toll-free number or support for hearing-impaired callers).
         /// </summary>
         [DataMember(Name = "contactOption", Order = 4)]
-        public ContactPointOption ContactOption { get; set; }
+        public ContactPointOption? ContactOption { get; set; }
 
         /// <summary>
         /// A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.

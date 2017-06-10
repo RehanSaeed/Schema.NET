@@ -107,7 +107,7 @@ namespace Schema.NET
         /// The current status of the reservation.
         /// </summary>
         [DataMember(Name = "reservationStatus", Order = 10)]
-        public ReservationStatusType ReservationStatus { get; set; }
+        public ReservationStatusType? ReservationStatus { get; set; }
 
         /// <summary>
         /// A ticket associated with the reservation.

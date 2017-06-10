@@ -19,7 +19,7 @@ namespace Schema.NET
         /// The type of boarding policy used by the airline (e.g. zone-based or group-based).
         /// </summary>
         [DataMember(Name = "boardingPolicy", Order = 2)]
-        public BoardingPolicyType BoardingPolicy { get; set; }
+        public BoardingPolicyType? BoardingPolicy { get; set; }
 
         /// <summary>
         /// IATA identifier for an airline or airport.

@@ -242,7 +242,7 @@ namespace Schema.NET
         /// A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
         /// </summary>
         [DataMember(Name = "itemCondition", Order = 19)]
-        public OfferItemCondition ItemCondition { get; set; }
+        public OfferItemCondition? ItemCondition { get; set; }
 
         /// <summary>
         /// An associated logo.

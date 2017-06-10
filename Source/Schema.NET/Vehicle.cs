@@ -87,9 +87,9 @@ namespace Schema.NET
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
         /// </summary>
         [IgnoreDataMember]
-        public QualitativeValue FuelTypeQualitativeValue
+        public QualitativeValue? FuelTypeQualitativeValue
         {
-            get => this.FuelType as QualitativeValue;
+            get => this.FuelType as QualitativeValue?;
             set => this.FuelType = value;
         }
 
@@ -387,9 +387,9 @@ namespace Schema.NET
         /// The type of component used for transmitting the power from a rotating power source to the wheels or other relevant component(s) ("gearbox" for cars).
         /// </summary>
         [IgnoreDataMember]
-        public QualitativeValue VehicleTransmissionQualitativeValue
+        public QualitativeValue? VehicleTransmissionQualitativeValue
         {
-            get => this.VehicleTransmission as QualitativeValue;
+            get => this.VehicleTransmission as QualitativeValue?;
             set => this.VehicleTransmission = value;
         }
     }

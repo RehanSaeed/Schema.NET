@@ -19,7 +19,7 @@ namespace Schema.NET
         /// Indicates the current disposition of the Action.
         /// </summary>
         [DataMember(Name = "actionStatus", Order = 2)]
-        public ActionStatusType ActionStatus { get; set; }
+        public ActionStatusType? ActionStatus { get; set; }
 
         /// <summary>
         /// The direct performer or driver of the action (animate or inanimate). e.g. &lt;em&gt;John&lt;/em&gt; wrote a book.

@@ -65,6 +65,6 @@ namespace Schema.NET
         /// The type of permission granted the person, organization, or audience.
         /// </summary>
         [DataMember(Name = "permissionType", Order = 3)]
-        public DigitalDocumentPermissionType PermissionType { get; set; }
+        public DigitalDocumentPermissionType? PermissionType { get; set; }
     }
 }

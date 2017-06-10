@@ -25,9 +25,9 @@ namespace Schema.NET
         /// The type/class of the seat.
         /// </summary>
         [IgnoreDataMember]
-        public QualitativeValue SeatingTypeQualitativeValue
+        public QualitativeValue? SeatingTypeQualitativeValue
         {
-            get => this.SeatingType as QualitativeValue;
+            get => this.SeatingType as QualitativeValue?;
             set => this.SeatingType = value;
         }
 

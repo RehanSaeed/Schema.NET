@@ -35,9 +35,9 @@ namespace Schema.NET
         /// The payment method(s) accepted by seller for this offer.
         /// </summary>
         [IgnoreDataMember]
-        public PaymentMethod AcceptedPaymentMethodPaymentMethod
+        public PaymentMethod? AcceptedPaymentMethodPaymentMethod
         {
-            get => this.AcceptedPaymentMethod as PaymentMethod;
+            get => this.AcceptedPaymentMethod as PaymentMethod?;
             set => this.AcceptedPaymentMethod = value;
         }
 
@@ -109,7 +109,7 @@ namespace Schema.NET
         /// The availability of this item&amp;#x2014;for example In stock, Out of stock, Pre-order, etc.
         /// </summary>
         [DataMember(Name = "availability", Order = 7)]
-        public ItemAvailability Availability { get; set; }
+        public ItemAvailability? Availability { get; set; }
 
         /// <summary>
         /// The end of the availability of the product or service included in the offer.
@@ -133,13 +133,13 @@ namespace Schema.NET
         /// The delivery method(s) available for this offer.
         /// </summary>
         [DataMember(Name = "availableDeliveryMethod", Order = 11)]
-        public DeliveryMethod AvailableDeliveryMethod { get; set; }
+        public DeliveryMethod? AvailableDeliveryMethod { get; set; }
 
         /// <summary>
         /// The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
         /// </summary>
         [DataMember(Name = "businessFunction", Order = 12)]
-        public BusinessFunction BusinessFunction { get; set; }
+        public BusinessFunction? BusinessFunction { get; set; }
 
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
@@ -177,7 +177,7 @@ namespace Schema.NET
         /// The type(s) of customers for which the given offer is valid.
         /// </summary>
         [DataMember(Name = "eligibleCustomerType", Order = 15)]
-        public BusinessEntityType EligibleCustomerType { get; set; }
+        public BusinessEntityType? EligibleCustomerType { get; set; }
 
         /// <summary>
         /// The duration for which the given offer is valid.
@@ -317,7 +317,7 @@ namespace Schema.NET
         /// A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
         /// </summary>
         [DataMember(Name = "itemCondition", Order = 27)]
-        public OfferItemCondition ItemCondition { get; set; }
+        public OfferItemCondition? ItemCondition { get; set; }
 
         /// <summary>
         /// The item being offered.

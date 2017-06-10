@@ -25,7 +25,7 @@ namespace Schema.NET
         /// The format of the book.
         /// </summary>
         [DataMember(Name = "bookFormat", Order = 3)]
-        public BookFormatType BookFormat { get; set; }
+        public BookFormatType? BookFormat { get; set; }
 
         /// <summary>
         /// The illustrator of the book.

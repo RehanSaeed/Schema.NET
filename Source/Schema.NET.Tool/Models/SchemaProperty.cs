@@ -141,7 +141,14 @@
                     type.CSharpTypeString = "Uri";
                     break;
                 default:
-                    type.CSharpTypeString = type.Name;
+                    if (type.IsEnum)
+                    {
+                        type.CSharpTypeString = type.Name + "?";
+                    }
+                    else
+                    {
+                        type.CSharpTypeString = type.Name;
+                    }
                     break;
             }
         }

@@ -19,6 +19,6 @@ namespace Schema.NET
         /// Indicates the kind of Map, from the MapCategoryType Enumeration.
         /// </summary>
         [DataMember(Name = "mapType", Order = 2)]
-        public MapCategoryType MapType { get; set; }
+        public MapCategoryType? MapType { get; set; }
     }
 }

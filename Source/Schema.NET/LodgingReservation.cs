@@ -54,9 +54,9 @@ namespace Schema.NET
         /// Textual description of the unit type (including suite vs. room, size of bed, etc.).
         /// </summary>
         [IgnoreDataMember]
-        public QualitativeValue LodgingUnitTypeQualitativeValue
+        public QualitativeValue? LodgingUnitTypeQualitativeValue
         {
-            get => this.LodgingUnitType as QualitativeValue;
+            get => this.LodgingUnitType as QualitativeValue?;
             set => this.LodgingUnitType = value;
         }
 

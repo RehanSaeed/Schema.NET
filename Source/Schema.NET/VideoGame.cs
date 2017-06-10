@@ -111,7 +111,7 @@ namespace Schema.NET
         /// Indicates whether this game is multi-player, co-op or single-player.  The game can be marked as multi-player, co-op and single-player at the same time.
         /// </summary>
         [DataMember(Name = "playMode", Order = 9)]
-        public GamePlayMode PlayMode { get; set; }
+        public GamePlayMode? PlayMode { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.

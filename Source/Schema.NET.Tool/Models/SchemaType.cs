@@ -8,6 +8,8 @@ namespace Schema.NET.Tool.Models
 
         public string CSharpTypeString { get; set; }
 
+        public bool IsEnum { get; set; }
+
         public string Name { get; set; }
 
         public string Url { get; set; }

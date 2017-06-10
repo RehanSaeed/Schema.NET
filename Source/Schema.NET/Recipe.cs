@@ -93,7 +93,7 @@ namespace Schema.NET
         /// Indicates a dietary restriction or guideline for which this recipe or menu item is suitable, e.g. diabetic, halal etc.
         /// </summary>
         [DataMember(Name = "suitableForDiet", Order = 11)]
-        public RestrictedDiet SuitableForDiet { get; set; }
+        public RestrictedDiet? SuitableForDiet { get; set; }
 
         /// <summary>
         /// The total time it takes to prepare and cook the recipe, in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.

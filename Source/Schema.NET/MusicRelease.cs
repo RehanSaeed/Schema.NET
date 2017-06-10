@@ -57,7 +57,7 @@ namespace Schema.NET
         /// Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc.).
         /// </summary>
         [DataMember(Name = "musicReleaseFormat", Order = 5)]
-        public MusicReleaseFormatType MusicReleaseFormat { get; set; }
+        public MusicReleaseFormatType? MusicReleaseFormat { get; set; }
 
         /// <summary>
         /// The label that issued the release.

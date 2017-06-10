@@ -249,9 +249,9 @@ namespace Schema.NET
         /// Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
         /// </summary>
         [IgnoreDataMember]
-        public GenderType GenderGenderType
+        public GenderType? GenderGenderType
         {
-            get => this.Gender as GenderType;
+            get => this.Gender as GenderType?;
             set => this.Gender = value;
         }
 

@@ -19,7 +19,7 @@ namespace Schema.NET
         /// The delivery method(s) to which the delivery charge or payment charge specification applies.
         /// </summary>
         [DataMember(Name = "appliesToDeliveryMethod", Order = 2)]
-        public DeliveryMethod AppliesToDeliveryMethod { get; set; }
+        public DeliveryMethod? AppliesToDeliveryMethod { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.

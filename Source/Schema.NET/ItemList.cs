@@ -79,9 +79,9 @@ namespace Schema.NET
         /// Type of ordering (e.g. Ascending, Descending, Unordered).
         /// </summary>
         [IgnoreDataMember]
-        public ItemListOrderType ItemListOrderItemListOrderType
+        public ItemListOrderType? ItemListOrderItemListOrderType
         {
-            get => this.ItemListOrder as ItemListOrderType;
+            get => this.ItemListOrder as ItemListOrderType?;
             set => this.ItemListOrder = value;
         }
 

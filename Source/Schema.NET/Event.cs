@@ -145,7 +145,7 @@ namespace Schema.NET
         /// An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
         /// </summary>
         [DataMember(Name = "eventStatus", Order = 13)]
-        public EventStatusType EventStatus { get; set; }
+        public EventStatusType? EventStatus { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.

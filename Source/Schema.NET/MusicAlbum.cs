@@ -19,7 +19,7 @@ namespace Schema.NET
         /// Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
         /// </summary>
         [DataMember(Name = "albumProductionType", Order = 2)]
-        public MusicAlbumProductionType AlbumProductionType { get; set; }
+        public MusicAlbumProductionType? AlbumProductionType { get; set; }
 
         /// <summary>
         /// A release of this album.
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The kind of release which this album is: single, EP or album.
         /// </summary>
         [DataMember(Name = "albumReleaseType", Order = 4)]
-        public MusicAlbumReleaseType AlbumReleaseType { get; set; }
+        public MusicAlbumReleaseType? AlbumReleaseType { get; set; }
 
         /// <summary>
         /// The artist that performed this album or recording.

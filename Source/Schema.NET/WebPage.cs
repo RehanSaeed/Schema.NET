@@ -101,6 +101,6 @@ namespace Schema.NET
         /// One of the domain specialities to which this web page's content applies.
         /// </summary>
         [DataMember(Name = "specialty", Order = 9)]
-        public Specialty Specialty { get; set; }
+        public Specialty? Specialty { get; set; }
     }
 }

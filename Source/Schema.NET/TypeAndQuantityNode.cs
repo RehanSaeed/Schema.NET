@@ -25,7 +25,7 @@ namespace Schema.NET
         /// The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
         /// </summary>
         [DataMember(Name = "businessFunction", Order = 3)]
-        public BusinessFunction BusinessFunction { get; set; }
+        public BusinessFunction? BusinessFunction { get; set; }
 
         /// <summary>
         /// The product that this structured value is referring to.

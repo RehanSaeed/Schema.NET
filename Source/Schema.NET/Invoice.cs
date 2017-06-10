@@ -147,7 +147,7 @@ namespace Schema.NET
         /// The name of the credit card or other method of payment for the order.
         /// </summary>
         [DataMember(Name = "paymentMethod", Order = 10)]
-        public PaymentMethod PaymentMethod { get; set; }
+        public PaymentMethod? PaymentMethod { get; set; }
 
         /// <summary>
         /// An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
@@ -165,9 +165,9 @@ namespace Schema.NET
         /// The status of payment; whether the invoice has been paid or not.
         /// </summary>
         [IgnoreDataMember]
-        public PaymentStatusType PaymentStatusPaymentStatusType
+        public PaymentStatusType? PaymentStatusPaymentStatusType
         {
-            get => this.PaymentStatus as PaymentStatusType;
+            get => this.PaymentStatus as PaymentStatusType?;
             set => this.PaymentStatus = value;
         }
 

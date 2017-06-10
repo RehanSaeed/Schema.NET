@@ -43,6 +43,13 @@
                 }
                 else if (schemaClass.IsEnum)
                 {
+                    foreach (var schemaType in schemaProperties
+                        .SelectMany(x => x.Types)
+                        .Where(x => string.Equals(x.Url, schemaClass.Url, StringComparison.Ordinal)))
+                    {
+                        schemaType.IsEnum = true;
+                    }
+
                     foreach (var schemaProperty in schemaProperties
                         .Where(x => x.IsEnumValue && string.Equals(x.PropertyType, schemaClass.Url, StringComparison.Ordinal)))
                     {

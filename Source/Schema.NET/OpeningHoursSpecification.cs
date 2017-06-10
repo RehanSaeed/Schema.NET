@@ -25,7 +25,7 @@ namespace Schema.NET
         /// The day of the week for which these opening hours are valid.
         /// </summary>
         [DataMember(Name = "dayOfWeek", Order = 3)]
-        public DayOfWeek DayOfWeek { get; set; }
+        public DayOfWeek? DayOfWeek { get; set; }
 
         /// <summary>
         /// The opening hour of the place or service on the given day(s) of the week.

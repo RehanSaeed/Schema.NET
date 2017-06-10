@@ -25,6 +25,6 @@ namespace Schema.NET
         /// The scope of the warranty promise.
         /// </summary>
         [DataMember(Name = "warrantyScope", Order = 3)]
-        public WarrantyScope WarrantyScope { get; set; }
+        public WarrantyScope? WarrantyScope { get; set; }
     }
 }

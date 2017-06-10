@@ -57,7 +57,7 @@ namespace Schema.NET
         /// The current status of the order item.
         /// </summary>
         [DataMember(Name = "orderItemStatus", Order = 5)]
-        public OrderStatus OrderItemStatus { get; set; }
+        public OrderStatus? OrderItemStatus { get; set; }
 
         /// <summary>
         /// The number of the item ordered. If the property is not set, assume the quantity is one.
