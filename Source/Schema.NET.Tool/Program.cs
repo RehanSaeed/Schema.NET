@@ -28,7 +28,7 @@
             var outputDirectory = GetOutputDirectory(Path.GetDirectoryName(assemblyLocation));
 
             Console.WriteLine("Executing Clean Project Folder");
-            ClearOutputDirectory(outputDirectory);
+            await ClearOutputDirectory(outputDirectory);
             Console.WriteLine("Finished Clean Project Folder");
 
             Console.WriteLine("Executing Write Classes");
