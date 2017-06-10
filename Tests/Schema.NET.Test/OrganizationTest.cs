@@ -26,6 +26,10 @@
                 @"{" +
                     "\"@context\":\"http://schema.org\"," +
                     "\"@type\":\"Organization\"," +
+                    "\"address\":{" +
+                        "\"@type\":\"PostalAddress\"," +
+                        "\"contactOption\":\"HearingImpairedSupported\"" +
+                    "}," +
                     "\"contactPoint\":{" +
                         "\"@type\":\"ContactPoint\"," +
                         "\"contactType\":\"customer service\"," +

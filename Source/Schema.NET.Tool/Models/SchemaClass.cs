@@ -35,15 +35,20 @@
 
         public bool IsClass => !this.IsEnum;
 
-        public bool IsEnum => this.Parent != null &&
-            (string.Equals(this.Parent.Name, "Enumeration", StringComparison.Ordinal) ||
-            string.Equals(this.Parent.Name, "QualitativeValue", StringComparison.Ordinal));
+        //public bool IsEnum => this.Parent != null &&
+        //    (string.Equals(this.Parent.Name, "Enumeration", StringComparison.Ordinal) ||
+        //    string.Equals(this.Parent.Name, "QualitativeValue", StringComparison.Ordinal));
+        public bool IsEnum => EnumerableExtensions
+            .Traverse(this, x => x.Parent)
+            .Any(x => string.Equals(x.Name, "Enumeration", StringComparison.Ordinal));
 
         public bool IsPrimitive => new string[] { "QualitativeValue", "Enumeration", "Boolean", "Date", "DateTime", "Number", "Text", "Time" }.Contains(this.Name);
 
         public bool IsThingClass => string.Equals(this.Name, "Thing", StringComparison.Ordinal);
 
-        public bool IsPending => string.Equals(this.Layer, "pending", StringComparison.Ordinal);
+        public bool IsPending => EnumerableExtensions
+            .Traverse(this, x => x.Parent)
+            .Any(x => string.Equals(x.Layer, "pending", StringComparison.Ordinal));
 
         public bool IsMeta => string.Equals(this.Layer, "meta", StringComparison.Ordinal);
 

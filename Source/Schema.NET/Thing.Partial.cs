@@ -1,13 +1,19 @@
 ﻿namespace Schema.NET
 {
+    using System.Collections.Generic;
     using System.Text;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     public partial class Thing
     {
         private const string ContextPropertyJson = "\"@context\":\"http://schema.org\",";
         private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
         {
+            Converters = new List<JsonConverter>()
+            {
+                new StringEnumConverter()
+            },
             NullValueHandling = NullValueHandling.Ignore
         };
 

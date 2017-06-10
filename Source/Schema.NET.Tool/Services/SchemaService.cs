@@ -37,7 +37,7 @@
             var schemaProperties = await this.GetSchemaProperties();
             foreach (var schemaClass in schemaClasses)
             {
-                if (schemaClass.IsPrimitive || schemaClass.IsMeta || schemaClass.IsPending || schemaClass.IsArchived)
+                if (schemaClass.IsPrimitive)
                 {
                     // Ignore
                 }
@@ -63,7 +63,8 @@
                         .Where(x => x.IsProperty && x.ClassUrls.Contains(schemaClass.Url)))
                     {
                         var schemaType = schemaProperty.Types
-                            .FirstOrDefault(x => string.Equals(x.Name, "QualitativeValue", StringComparison.Ordinal));
+                            .FirstOrDefault(x => string.Equals(x.Name, "Enumeration", StringComparison.Ordinal) ||
+                                string.Equals(x.Name, "QualitativeValue", StringComparison.Ordinal));
                         if (schemaType != null)
                         {
                             schemaProperty.Types.Remove(schemaType);
@@ -75,7 +76,7 @@
                 }
             }
 
-            return schemaClasses.Where(x => !x.IsPrimitive && !x.IsPending && !x.IsMeta&& !x.IsArchived).ToList();
+            return schemaClasses.Where(x => !x.IsPrimitive && !x.IsPending && !x.IsMeta && !x.IsArchived).ToList();
         }
 
         public async Task<List<SchemaProperty>> GetSchemaProperties()

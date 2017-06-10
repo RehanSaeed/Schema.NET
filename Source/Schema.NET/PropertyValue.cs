@@ -191,16 +191,6 @@ namespace Schema.NET
         /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
         /// </summary>
         [IgnoreDataMember]
-        public Enumeration ValueReferenceEnumeration
-        {
-            get => this.ValueReference as Enumeration;
-            set => this.ValueReference = value;
-        }
-
-        /// <summary>
-        /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
-        /// </summary>
-        [IgnoreDataMember]
         public PropertyValue ValueReferencePropertyValue
         {
             get => this.ValueReference as PropertyValue;

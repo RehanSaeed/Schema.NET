@@ -1,18 +1,9 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Design models for medical trials. Enumerated type.
     /// </summary>
-    [DataContract]
-    public class MedicalTrialDesign : MedicalEnumeration
+    public enum MedicalTrialDesign
     {
-        /// <summary>
-        /// Gets the name of the type as specified by schema.org.
-        /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "MedicalTrialDesign";
     }
 }

@@ -1,18 +1,9 @@
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Systems of medical practice.
     /// </summary>
-    [DataContract]
-    public class MedicineSystem : MedicalEnumeration
+    public enum MedicineSystem
     {
-        /// <summary>
-        /// Gets the name of the type as specified by schema.org.
-        /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "MedicineSystem";
     }
 }
