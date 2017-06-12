@@ -1,19 +1,28 @@
 ﻿namespace Schema.NET.Tool
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
+    using Schema.NET.Tool.Overrides;
     using Schema.NET.Tool.Services;
 
     public class Program
     {
+        private readonly List<ISchemaClassOverride> overrides;
         private readonly ISchemaService schemaService;
 
-        public Program() =>
+        public Program()
+        {
             this.schemaService = new SchemaService();
+            this.overrides = new List<ISchemaClassOverride>()
+            {
+                new AddTextTypeToActionTarget()
+            };
+        }
 
         public static void Main(string[] args) =>
             new Program().Execute().Wait();
@@ -30,6 +39,17 @@
             Console.WriteLine("Executing Clean Project Folder");
             await ClearOutputDirectory(outputDirectory);
             Console.WriteLine("Finished Clean Project Folder");
+
+            foreach (var schemaClass in schemaClasses)
+            {
+                foreach (var overrid in this.overrides)
+                {
+                    if (overrid.CanOverride(schemaClass))
+                    {
+                        overrid.Override(schemaClass);
+                    }
+                }
+            }
 
             Console.WriteLine("Executing Write Classes");
 
@@ -57,7 +77,7 @@
         {
             foreach (var filePath in Directory.GetFiles(directoryPath, "*.cs", SearchOption.AllDirectories))
             {
-                if (!string.Equals(Path.GetFileName(filePath), "Thing.Partial.cs", StringComparison.OrdinalIgnoreCase))
+                if (!Path.GetFileName(filePath).EndsWith(".Partial.cs", StringComparison.OrdinalIgnoreCase))
                 {
                     while (true)
                     {
