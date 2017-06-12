@@ -33,11 +33,21 @@
 
             Console.WriteLine("Executing Write Classes");
 
-            foreach (var item in schemaClasses)
+            foreach (var schemaClassGroup in schemaClasses.GroupBy(x => x.Layer))
             {
-                var filePath = Path.Combine(outputDirectory, item.Name + ".cs");
-                File.WriteAllText(filePath, item.ToString());
-                Console.WriteLine(Path.GetFileName(filePath));
+                var directoryPath = Path.Combine(outputDirectory, schemaClassGroup.Key);
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                    Console.WriteLine("=====================" + schemaClassGroup.Key);
+                }
+
+                foreach (var schemaClass in schemaClassGroup)
+                {
+                    var filePath = Path.Combine(directoryPath, schemaClass.Name + ".cs");
+                    File.WriteAllText(filePath, schemaClass.ToString());
+                    Console.WriteLine(Path.GetFileName(filePath));
+                }
             }
 
             Console.WriteLine("Finished Write Classes");
@@ -45,7 +55,7 @@
 
         private static async Task ClearOutputDirectory(string directoryPath)
         {
-            foreach (var filePath in Directory.GetFiles(directoryPath, "*.cs"))
+            foreach (var filePath in Directory.GetFiles(directoryPath, "*.cs", SearchOption.AllDirectories))
             {
                 if (!string.Equals(Path.GetFileName(filePath), "Thing.Partial.cs", StringComparison.OrdinalIgnoreCase))
                 {
@@ -61,6 +71,16 @@
                             await Task.Delay(100);
                         }
                     }
+                }
+            }
+
+            foreach (var subDirectoryPath in Directory.GetDirectories(directoryPath))
+            {
+                var subDirectoryName = Path.GetFileNameWithoutExtension(subDirectoryPath);
+                if (!string.Equals(subDirectoryName, "bin", StringComparison.Ordinal) &&
+                    !string.Equals(subDirectoryName, "obj", StringComparison.Ordinal))
+                {
+                    Directory.Delete(subDirectoryPath, true);
                 }
             }
         }
