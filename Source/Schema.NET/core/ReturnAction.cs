@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of returning to the origin that which was previously received (concrete objects) or taken (ownership).
     /// </summary>
     [DataContract]
-    public class ReturnAction : TransferAction
+    public partial class ReturnAction : TransferAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

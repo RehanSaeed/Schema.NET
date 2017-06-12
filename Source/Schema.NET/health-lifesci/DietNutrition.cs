@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Dietetic and nutrition as a medical speciality.
     /// </summary>
     [DataContract]
-    public class DietNutrition : MedicalBusiness
+    public partial class DietNutrition : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

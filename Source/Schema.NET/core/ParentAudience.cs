@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A set of characteristics describing parents, who can be interested in viewing some content.
     /// </summary>
     [DataContract]
-    public class ParentAudience : PeopleAudience
+    public partial class ParentAudience : PeopleAudience
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of consuming written content.
     /// </summary>
     [DataContract]
-    public class ReadAction : ConsumeAction
+    public partial class ReadAction : ConsumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

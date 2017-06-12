@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of notifying an event organizer as to whether you expect to attend the event.
     /// </summary>
     [DataContract]
-    public class RsvpAction : InformAction
+    public partial class RsvpAction : InformAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

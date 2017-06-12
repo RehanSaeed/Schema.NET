@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A media object, such as an image, video, or audio object embedded in a web page or a downloadable dataset i...
     /// </summary>
     [DataContract]
-    public class MediaObject : CreativeWork
+    public partial class MediaObject : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

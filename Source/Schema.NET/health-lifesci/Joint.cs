@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The anatomical location at which two or more bones make contact.
     /// </summary>
     [DataContract]
-    public class Joint : AnatomicalStructure
+    public partial class Joint : AnatomicalStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

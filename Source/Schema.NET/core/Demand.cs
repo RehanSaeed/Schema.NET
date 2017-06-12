@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A demand entity represents the public, not necessarily binding, not necessarily exclusive, announcement by an organization or person to seek a certain type of goods or services...
     /// </summary>
     [DataContract]
-    public class Demand : Intangible
+    public partial class Demand : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

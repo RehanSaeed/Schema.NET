@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Residence type: Gated community.
     /// </summary>
     [DataContract]
-    public class GatedResidenceCommunity : Residence
+    public partial class GatedResidenceCommunity : Residence
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

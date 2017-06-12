@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
     /// </summary>
     [DataContract]
-    public class TravelAction : MoveAction
+    public partial class TravelAction : MoveAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

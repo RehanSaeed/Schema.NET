@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A library.
     /// </summary>
     [DataContract]
-    public class Library : LocalBusiness
+    public partial class Library : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

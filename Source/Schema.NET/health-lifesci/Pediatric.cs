@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A specific branch of medical science that specializes in the care of infants, children and adolescents.
     /// </summary>
     [DataContract]
-    public class Pediatric : MedicalBusiness
+    public partial class Pediatric : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

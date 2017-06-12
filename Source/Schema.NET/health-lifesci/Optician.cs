@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A store that sells reading glasses and similar devices for improving vision.
     /// </summary>
     [DataContract]
-    public class Optician : MedicalBusiness
+    public partial class Optician : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

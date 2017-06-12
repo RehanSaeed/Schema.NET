@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A publication in any medium issued in successive parts bearing numerical or chronological designations and intended, such as a magazine, scholarly journal, or newspaper to continue indefinitely...
     /// </summary>
     [DataContract]
-    public class Periodical : CreativeWorkSeries
+    public partial class Periodical : CreativeWorkSeries
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

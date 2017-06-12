@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A river (for example, the broad majestic Shannon).
     /// </summary>
     [DataContract]
-    public class RiverBodyOfWater : BodyOfWater
+    public partial class RiverBodyOfWater : BodyOfWater
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

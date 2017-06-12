@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any complaint sensed and expressed by the patient (therefore defined as subjective)  like stomachache, lower-back pain, or fatigue.
     /// </summary>
     [DataContract]
-    public class MedicalSymptom : MedicalSignOrSymptom
+    public partial class MedicalSymptom : MedicalSignOrSymptom
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

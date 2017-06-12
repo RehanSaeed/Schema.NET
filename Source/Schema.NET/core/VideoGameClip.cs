@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A short segment/part of a video game.
     /// </summary>
     [DataContract]
-    public class VideoGameClip : Clip
+    public partial class VideoGameClip : Clip
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

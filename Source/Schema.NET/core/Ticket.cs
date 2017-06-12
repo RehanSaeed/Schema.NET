@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Used to describe a ticket to an event, a flight, a bus ride, etc.
     /// </summary>
     [DataContract]
-    public class Ticket : Intangible
+    public partial class Ticket : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

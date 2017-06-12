@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A process of progressive physical care and rehabilitation aimed at improving a health condition.
     /// </summary>
     [DataContract]
-    public class PhysicalTherapy : MedicalTherapy
+    public partial class PhysicalTherapy : MedicalTherapy
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

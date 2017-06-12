@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Branch of medicine that pertains to the health services to improve and protect community health, especially epidemiology, sanitation, immunization, and preventive medicine.
     /// </summary>
     [DataContract]
-    public class PublicHealth : MedicalBusiness
+    public partial class PublicHealth : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

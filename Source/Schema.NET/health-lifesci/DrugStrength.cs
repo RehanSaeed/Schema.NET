@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A specific strength in which a medical drug is available in a specific country.
     /// </summary>
     [DataContract]
-    public class DrugStrength : MedicalIntangible
+    public partial class DrugStrength : MedicalIntangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

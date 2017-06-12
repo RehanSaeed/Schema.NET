@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of producing a visual/graphical representation of an object, typically with a pen/pencil and paper as instruments.
     /// </summary>
     [DataContract]
-    public class DrawAction : CreateAction
+    public partial class DrawAction : CreateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

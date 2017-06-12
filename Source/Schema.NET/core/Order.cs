@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An order is a confirmation of a transaction (a receipt), which can contain multiple line items, each represented by an Offer that has been accepted by the customer.
     /// </summary>
     [DataContract]
-    public class Order : Intangible
+    public partial class Order : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

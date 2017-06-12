@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of consuming dynamic/moving visual content.
     /// </summary>
     [DataContract]
-    public class WatchAction : ConsumeAction
+    public partial class WatchAction : ConsumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A bus (also omnibus or autobus) is a road vehicle designed to carry passengers...
     /// </summary>
     [DataContract]
-    public class BusOrCoach : Vehicle
+    public partial class BusOrCoach : Vehicle
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

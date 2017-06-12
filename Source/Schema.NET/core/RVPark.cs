@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
     /// </summary>
     [DataContract]
-    public class RVPark : CivicStructure
+    public partial class RVPark : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of registering to an organization/service without the guarantee to receive it...
     /// </summary>
     [DataContract]
-    public class ApplyAction : OrganizeAction
+    public partial class ApplyAction : OrganizeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

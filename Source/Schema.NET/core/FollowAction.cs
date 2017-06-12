@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of forming a personal connection with someone/something (object) unidirectionally/asymmetrically to get updates polled from...
     /// </summary>
     [DataContract]
-    public class FollowAction : InteractAction
+    public partial class FollowAction : InteractAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

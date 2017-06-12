@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A crematorium.
     /// </summary>
     [DataContract]
-    public class Crematorium : CivicStructure
+    public partial class Crematorium : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

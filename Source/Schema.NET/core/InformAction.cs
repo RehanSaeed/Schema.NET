@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of notifying someone of information pertinent to them, with no expectation of a response.
     /// </summary>
     [DataContract]
-    public class InformAction : CommunicateAction
+    public partial class InformAction : CommunicateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician.
     /// </summary>
     [DataContract]
-    public class ExercisePlan : CreativeWork
+    public partial class ExercisePlan : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

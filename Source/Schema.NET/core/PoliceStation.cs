@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A police station.
     /// </summary>
     [DataContract]
-    public class PoliceStation : EmergencyService
+    public partial class PoliceStation : EmergencyService
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

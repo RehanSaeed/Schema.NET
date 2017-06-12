@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A structured value providing information about the opening hours of a place or a certain service inside a place...
     /// </summary>
     [DataContract]
-    public class OpeningHoursSpecification : StructuredValue
+    public partial class OpeningHoursSpecification : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

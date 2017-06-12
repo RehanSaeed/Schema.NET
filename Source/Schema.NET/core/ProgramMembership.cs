@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Used to describe membership in a loyalty programs (e.g. "StarAliance"), traveler clubs (e...
     /// </summary>
     [DataContract]
-    public class ProgramMembership : Intangible
+    public partial class ProgramMembership : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

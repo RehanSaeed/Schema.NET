@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A reservation for an event like a concert, sporting event, or lecture...
     /// </summary>
     [DataContract]
-    public class EventReservation : Reservation
+    public partial class EventReservation : Reservation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

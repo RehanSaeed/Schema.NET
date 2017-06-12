@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A museum.
     /// </summary>
     [DataContract]
-    public class Museum : CivicStructure
+    public partial class Museum : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// This type covers computer programming languages such as Scheme and Lisp, as well as other language-like computer representations...
     /// </summary>
     [DataContract]
-    public class ComputerLanguage : Intangible
+    public partial class ComputerLanguage : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

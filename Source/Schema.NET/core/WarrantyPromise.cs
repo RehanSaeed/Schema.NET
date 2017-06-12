@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A structured value representing the duration and scope of services that will be provided to a customer free of charge in case of a defect or malfunction of a product.
     /// </summary>
     [DataContract]
-    public class WarrantyPromise : StructuredValue
+    public partial class WarrantyPromise : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

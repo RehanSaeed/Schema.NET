@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A dataset in downloadable form.
     /// </summary>
     [DataContract]
-    public class DataDownload : MediaObject
+    public partial class DataDownload : MediaObject
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

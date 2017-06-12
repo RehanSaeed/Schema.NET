@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of physically/electronically dispatching an object for transfer from an origin to a destination...
     /// </summary>
     [DataContract]
-    public class SendAction : TransferAction
+    public partial class SendAction : TransferAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

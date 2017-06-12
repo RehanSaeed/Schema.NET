@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of authoring written creative content.
     /// </summary>
     [DataContract]
-    public class WriteAction : CreateAction
+    public partial class WriteAction : CreateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

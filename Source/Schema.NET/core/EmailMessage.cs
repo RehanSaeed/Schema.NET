@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An email message.
     /// </summary>
     [DataContract]
-    public class EmailMessage : Message
+    public partial class EmailMessage : Message
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

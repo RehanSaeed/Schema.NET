@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A short TV program or a segment/part of a TV program.
     /// </summary>
     [DataContract]
-    public class TVClip : Clip
+    public partial class TVClip : Clip
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An entity holding detailed information about the available bed types, e...
     /// </summary>
     [DataContract]
-    public class BedDetails : Intangible
+    public partial class BedDetails : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any recommendation made by a standard society (e.g. ACC/AHA) or consensus statement that denotes how to diagnose and treat a particular condition...
     /// </summary>
     [DataContract]
-    public class MedicalGuideline : MedicalEntity
+    public partial class MedicalGuideline : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

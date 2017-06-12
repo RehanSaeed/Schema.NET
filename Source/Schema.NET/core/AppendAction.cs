@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of inserting at the end if an ordered collection.
     /// </summary>
     [DataContract]
-    public class AppendAction : InsertAction
+    public partial class AppendAction : InsertAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

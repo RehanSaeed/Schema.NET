@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism...
     /// </summary>
     [DataContract]
-    public class Drug : Substance
+    public partial class Drug : Substance
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

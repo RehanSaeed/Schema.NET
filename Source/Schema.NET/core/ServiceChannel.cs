@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A means for accessing a service, e.g. a government office location, web site, or phone number.
     /// </summary>
     [DataContract]
-    public class ServiceChannel : Intangible
+    public partial class ServiceChannel : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A type of blood vessel that specifically carries lymph fluid unidirectionally toward the heart.
     /// </summary>
     [DataContract]
-    public class LymphaticVessel : Vessel
+    public partial class LymphaticVessel : Vessel
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

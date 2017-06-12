@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any condition of the human body that affects the normal functioning of a person, whether physically or mentally...
     /// </summary>
     [DataContract]
-    public class MedicalCondition : MedicalEntity
+    public partial class MedicalCondition : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

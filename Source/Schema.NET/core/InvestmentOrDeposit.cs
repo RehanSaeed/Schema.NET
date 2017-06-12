@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.
     /// </summary>
     [DataContract]
-    public class InvestmentOrDeposit : FinancialProduct
+    public partial class InvestmentOrDeposit : FinancialProduct
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

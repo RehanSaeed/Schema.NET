@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
     /// </summary>
     [DataContract]
-    public class LiveBlogPosting : BlogPosting
+    public partial class LiveBlogPosting : BlogPosting
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

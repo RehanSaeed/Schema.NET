@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A MusicRelease is a specific release of a music album.
     /// </summary>
     [DataContract]
-    public class MusicRelease : MusicPlaylist
+    public partial class MusicRelease : MusicPlaylist
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

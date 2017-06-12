@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An agent pays a price to a participant.
     /// </summary>
     [DataContract]
-    public class PayAction : TradeAction
+    public partial class PayAction : TradeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

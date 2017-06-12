@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A permit issued by a government agency.
     /// </summary>
     [DataContract]
-    public class GovernmentPermit : Permit
+    public partial class GovernmentPermit : Permit
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

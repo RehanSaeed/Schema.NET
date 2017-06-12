@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any medical test, typically performed for diagnostic purposes.
     /// </summary>
     [DataContract]
-    public class MedicalTest : MedicalEntity
+    public partial class MedicalTest : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Web page type: Search results page.
     /// </summary>
     [DataContract]
-    public class SearchResultsPage : WebPage
+    public partial class SearchResultsPage : WebPage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

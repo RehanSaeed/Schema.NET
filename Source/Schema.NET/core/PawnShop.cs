@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A shop that will buy, or lend money against the security of, personal possessions.
     /// </summary>
     [DataContract]
-    public class PawnShop : Store
+    public partial class PawnShop : Store
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

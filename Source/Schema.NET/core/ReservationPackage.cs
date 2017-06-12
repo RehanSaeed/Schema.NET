@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A group of multiple reservations with common values for all sub-reservations.
     /// </summary>
     [DataContract]
-    public class ReservationPackage : Reservation
+    public partial class ReservationPackage : Reservation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

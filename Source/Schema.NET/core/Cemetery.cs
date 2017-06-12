@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A graveyard.
     /// </summary>
     [DataContract]
-    public class Cemetery : CivicStructure
+    public partial class Cemetery : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

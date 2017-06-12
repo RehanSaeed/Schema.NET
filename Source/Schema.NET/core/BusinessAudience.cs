@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A set of characteristics belonging to businesses, e.g. who compose an item's target audience.
     /// </summary>
     [DataContract]
-    public class BusinessAudience : Audience
+    public partial class BusinessAudience : Audience
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

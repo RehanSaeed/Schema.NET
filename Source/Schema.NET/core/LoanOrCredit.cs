@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A financial product for the loaning of an amount of money under agreed terms and charges.
     /// </summary>
     [DataContract]
-    public class LoanOrCredit : FinancialProduct
+    public partial class LoanOrCredit : FinancialProduct
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

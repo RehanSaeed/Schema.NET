@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A media season e.g. tv, radio, video game etc.
     /// </summary>
     [DataContract]
-    public class CreativeWorkSeason : CreativeWork
+    public partial class CreativeWorkSeason : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

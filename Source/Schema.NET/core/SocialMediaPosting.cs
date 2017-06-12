@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
     /// </summary>
     [DataContract]
-    public class SocialMediaPosting : Article
+    public partial class SocialMediaPosting : Article
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

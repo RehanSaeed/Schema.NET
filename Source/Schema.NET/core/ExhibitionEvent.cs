@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Event type: Exhibition event, e.g. at a museum, library, archive, tradeshow, ...
     /// </summary>
     [DataContract]
-    public class ExhibitionEvent : Event
+    public partial class ExhibitionEvent : Event
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

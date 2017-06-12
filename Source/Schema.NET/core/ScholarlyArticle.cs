@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A scholarly article.
     /// </summary>
     [DataContract]
-    public class ScholarlyArticle : Article
+    public partial class ScholarlyArticle : Article
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

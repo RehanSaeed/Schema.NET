@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An audiobook.
     /// </summary>
     [DataContract]
-    public class Audiobook : Book
+    public partial class Audiobook : Book
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

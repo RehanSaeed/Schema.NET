@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any collection of tests commonly ordered together.
     /// </summary>
     [DataContract]
-    public class MedicalTestPanel : MedicalTest
+    public partial class MedicalTestPanel : MedicalTest
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

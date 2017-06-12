@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of expressing a difference of opinion with the object...
     /// </summary>
     [DataContract]
-    public class DisagreeAction : ReactAction
+    public partial class DisagreeAction : ReactAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

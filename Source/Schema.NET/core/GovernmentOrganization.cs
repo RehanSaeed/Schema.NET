@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A governmental organization or agency.
     /// </summary>
     [DataContract]
-    public class GovernmentOrganization : Organization
+    public partial class GovernmentOrganization : Organization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

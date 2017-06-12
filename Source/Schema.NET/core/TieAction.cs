@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of reaching a draw in a competitive activity.
     /// </summary>
     [DataContract]
-    public class TieAction : AchieveAction
+    public partial class TieAction : AchieveAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

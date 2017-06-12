@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A theater group or company, for example, the Royal Shakespeare Company or Druid Theatre.
     /// </summary>
     [DataContract]
-    public class TheaterGroup : PerformingGroup
+    public partial class TheaterGroup : PerformingGroup
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

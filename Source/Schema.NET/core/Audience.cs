@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Intended audience for an item, i.e. the group for whom the item was created.
     /// </summary>
     [DataContract]
-    public class Audience : Intangible
+    public partial class Audience : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An audio file.
     /// </summary>
     [DataContract]
-    public class AudioObject : MediaObject
+    public partial class AudioObject : MediaObject
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

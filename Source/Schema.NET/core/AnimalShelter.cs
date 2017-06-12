@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Animal shelter.
     /// </summary>
     [DataContract]
-    public class AnimalShelter : LocalBusiness
+    public partial class AnimalShelter : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

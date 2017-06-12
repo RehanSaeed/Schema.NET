@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A file containing slides or used for a presentation.
     /// </summary>
     [DataContract]
-    public class PresentationDigitalDocument : DigitalDocument
+    public partial class PresentationDigitalDocument : DigitalDocument
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

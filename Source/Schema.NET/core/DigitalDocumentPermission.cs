@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A permission for a particular person or group to access a particular file.
     /// </summary>
     [DataContract]
-    public class DigitalDocumentPermission : Intangible
+    public partial class DigitalDocumentPermission : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

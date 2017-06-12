@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An list item, e.g. a step in a checklist or how-to description.
     /// </summary>
     [DataContract]
-    public class ListItem : Intangible
+    public partial class ListItem : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

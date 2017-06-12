@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A media episode (e.g. TV, radio, video game) which can be part of a series or season.
     /// </summary>
     [DataContract]
-    public class Episode : CreativeWork
+    public partial class Episode : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The most generic type of entity related to health and the practice of medicine.
     /// </summary>
     [DataContract]
-    public class MedicalEntity : Thing
+    public partial class MedicalEntity : Thing
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A screening of a movie or other video.
     /// </summary>
     [DataContract]
-    public class ScreeningEvent : Event
+    public partial class ScreeningEvent : Event
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

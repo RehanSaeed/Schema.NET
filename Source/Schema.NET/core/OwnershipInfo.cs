@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A structured value providing information about when a certain organization or person owned a certain product.
     /// </summary>
     [DataContract]
-    public class OwnershipInfo : StructuredValue
+    public partial class OwnershipInfo : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

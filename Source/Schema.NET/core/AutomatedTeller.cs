@@ -7,7 +7,7 @@ namespace Schema.NET
     /// ATM/cash machine.
     /// </summary>
     [DataContract]
-    public class AutomatedTeller : FinancialService
+    public partial class AutomatedTeller : FinancialService
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An over the air or online broadcast event.
     /// </summary>
     [DataContract]
-    public class BroadcastEvent : PublicationEvent
+    public partial class BroadcastEvent : PublicationEvent
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

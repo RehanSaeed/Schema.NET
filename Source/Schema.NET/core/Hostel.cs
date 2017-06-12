@@ -8,7 +8,7 @@ namespace Schema.NET
     /// See also the dedicated document on the use of schema...
     /// </summary>
     [DataContract]
-    public class Hostel : LodgingBusiness
+    public partial class Hostel : LodgingBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

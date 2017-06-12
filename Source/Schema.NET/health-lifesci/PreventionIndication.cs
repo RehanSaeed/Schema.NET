@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An indication for preventing an underlying condition, symptom, etc.
     /// </summary>
     [DataContract]
-    public class PreventionIndication : MedicalIndication
+    public partial class PreventionIndication : MedicalIndication
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

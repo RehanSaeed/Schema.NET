@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
     /// </summary>
     [DataContract]
-    public class VideoGame : Game
+    public partial class VideoGame : Game
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

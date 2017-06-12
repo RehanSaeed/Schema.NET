@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A service provided by an organization, e.g. delivery service, print services, etc.
     /// </summary>
     [DataContract]
-    public class Service : Intangible
+    public partial class Service : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

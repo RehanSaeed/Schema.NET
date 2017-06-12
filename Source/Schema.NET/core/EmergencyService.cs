@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An emergency service, such as a fire station or ER.
     /// </summary>
     [DataContract]
-    public class EmergencyService : LocalBusiness
+    public partial class EmergencyService : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An article, such as a news article or piece of investigative report...
     /// </summary>
     [DataContract]
-    public class Article : CreativeWork
+    public partial class Article : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

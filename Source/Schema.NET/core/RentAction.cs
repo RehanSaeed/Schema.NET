@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of giving money in return for temporary use, but not ownership, of an object such as a vehicle or property...
     /// </summary>
     [DataContract]
-    public class RentAction : TradeAction
+    public partial class RentAction : TradeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

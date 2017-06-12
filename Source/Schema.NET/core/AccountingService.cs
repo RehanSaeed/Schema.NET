@@ -8,7 +8,7 @@ namespace Schema.NET
     /// As a LocalBusiness it can be described as a provider of one or more Service(s).
     /// </summary>
     [DataContract]
-    public class AccountingService : FinancialService
+    public partial class AccountingService : FinancialService
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

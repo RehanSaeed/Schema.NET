@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A tennis complex.
     /// </summary>
     [DataContract]
-    public class TennisComplex : SportsActivityLocation
+    public partial class TennisComplex : SportsActivityLocation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

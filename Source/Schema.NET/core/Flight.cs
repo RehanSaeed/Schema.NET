@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An airline flight.
     /// </summary>
     [DataContract]
-    public class Flight : Intangible
+    public partial class Flight : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

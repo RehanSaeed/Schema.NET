@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of forming one's opinion, reaction or sentiment.
     /// </summary>
     [DataContract]
-    public class AssessAction : Action
+    public partial class AssessAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

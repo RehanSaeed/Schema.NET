@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Natural languages such as Spanish, Tamil, Hindi, English, etc...
     /// </summary>
     [DataContract]
-    public class Language : Intangible
+    public partial class Language : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

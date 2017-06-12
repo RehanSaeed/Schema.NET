@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of being defeated in a competitive activity.
     /// </summary>
     [DataContract]
-    public class LoseAction : AchieveAction
+    public partial class LoseAction : AchieveAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

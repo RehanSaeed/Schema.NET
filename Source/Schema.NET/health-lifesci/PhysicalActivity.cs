@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any bodily activity that enhances or maintains physical fitness and overall health and wellness...
     /// </summary>
     [DataContract]
-    public class PhysicalActivity : LifestyleModification
+    public partial class PhysicalActivity : LifestyleModification
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

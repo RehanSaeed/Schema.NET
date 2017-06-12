@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of expressing a consistency of opinion with the object...
     /// </summary>
     [DataContract]
-    public class AgreeAction : ReactAction
+    public partial class AgreeAction : ReactAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

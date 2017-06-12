@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A brand is a name used by an organization or business person for labeling a product, product group, or similar.
     /// </summary>
     [DataContract]
-    public class Brand : Intangible
+    public partial class Brand : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

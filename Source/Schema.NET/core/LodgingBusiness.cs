@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A lodging business, such as a motel, hotel, or inn.
     /// </summary>
     [DataContract]
-    public class LodgingBusiness : LocalBusiness
+    public partial class LodgingBusiness : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

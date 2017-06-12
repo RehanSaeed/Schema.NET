@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A food service, like breakfast, lunch, or dinner.
     /// </summary>
     [DataContract]
-    public class FoodService : Service
+    public partial class FoodService : Service
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

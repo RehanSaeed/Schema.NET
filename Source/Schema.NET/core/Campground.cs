@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A camping site, campsite, or campground is a place used for overnight stay in the outdoors...
     /// </summary>
     [DataContract]
-    public class Campground : LodgingBusiness
+    public partial class Campground : LodgingBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

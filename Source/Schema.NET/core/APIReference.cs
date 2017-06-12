@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Reference documentation for application programming interfaces (APIs).
     /// </summary>
     [DataContract]
-    public class APIReference : TechArticle
+    public partial class APIReference : TechArticle
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

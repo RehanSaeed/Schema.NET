@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An embassy.
     /// </summary>
     [DataContract]
-    public class Embassy : GovernmentBuilding
+    public partial class Embassy : GovernmentBuilding
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

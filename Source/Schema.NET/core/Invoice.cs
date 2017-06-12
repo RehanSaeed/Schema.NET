@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A statement of the money due for goods or services; a bill.
     /// </summary>
     [DataContract]
-    public class Invoice : Intangible
+    public partial class Invoice : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

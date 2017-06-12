@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of adding at a specific location in an ordered collection.
     /// </summary>
     [DataContract]
-    public class InsertAction : AddAction
+    public partial class InsertAction : AddAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

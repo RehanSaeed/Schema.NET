@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A review of an item - for example, of a restaurant, movie, or store.
     /// </summary>
     [DataContract]
-    public class Review : CreativeWork
+    public partial class Review : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

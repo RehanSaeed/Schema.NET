@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Entities that have a somewhat fixed, physical extension.
     /// </summary>
     [DataContract]
-    public class Place : Thing
+    public partial class Place : Thing
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

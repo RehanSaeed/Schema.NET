@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of arriving at a place. An agent arrives at a destination from a fromLocation, optionally with participants.
     /// </summary>
     [DataContract]
-    public class ArriveAction : MoveAction
+    public partial class ArriveAction : MoveAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

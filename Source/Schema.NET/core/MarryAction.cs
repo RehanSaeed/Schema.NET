@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of marrying a person.
     /// </summary>
     [DataContract]
-    public class MarryAction : InteractAction
+    public partial class MarryAction : InteractAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

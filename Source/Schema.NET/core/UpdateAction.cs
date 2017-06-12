@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of managing by changing/editing the state of the object.
     /// </summary>
     [DataContract]
-    public class UpdateAction : Action
+    public partial class UpdateAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

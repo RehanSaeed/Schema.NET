@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An agent inspects, determines, investigates, inquires, or examines an object's accuracy, quality, condition, or state.
     /// </summary>
     [DataContract]
-    public class CheckAction : FindAction
+    public partial class CheckAction : FindAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A utility class that serves as the umbrella for a number of 'intangible' things in the medical space.
     /// </summary>
     [DataContract]
-    public class MedicalIntangible : MedicalEntity
+    public partial class MedicalIntangible : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A page devoted to a single item, such as a particular product or hotel.
     /// </summary>
     [DataContract]
-    public class ItemPage : WebPage
+    public partial class ItemPage : WebPage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

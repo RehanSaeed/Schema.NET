@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of interacting with another person or organization.
     /// </summary>
     [DataContract]
-    public class InteractAction : Action
+    public partial class InteractAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

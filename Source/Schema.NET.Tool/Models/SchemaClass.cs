@@ -93,7 +93,6 @@
             stringBuilder.AppendCommentLine(4, this.Description);
             stringBuilder.AppendIndentLine(4, "/// </summary>");
 
-            var partial = this.IsThingClass ? " partial" : string.Empty;
             if (this.IsEnum)
             {
                 stringBuilder.AppendIndentLine(4, $"public enum {this.Name}");
@@ -128,7 +127,7 @@
             {
                 // Class
                 stringBuilder.AppendIndentLine(4, "[DataContract]");
-                stringBuilder.AppendIndent(4, $"public{partial} class {this.Name}");
+                stringBuilder.AppendIndent(4, $"public partial class {this.Name}");
                 stringBuilder.AppendLine(this.Parent == null ? null : $" : {this.Parent.Name}");
 
                 stringBuilder.AppendIndentLine(4, "{");

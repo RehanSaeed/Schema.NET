@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A pharmacy or drugstore.
     /// </summary>
     [DataContract]
-    public class Pharmacy : MedicalBusiness
+    public partial class Pharmacy : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

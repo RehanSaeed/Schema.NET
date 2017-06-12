@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A sub-grouping of food or drink items in a menu. E.g. courses (such as 'Dinner', 'Breakfast', etc...
     /// </summary>
     [DataContract]
-    public class MenuSection : CreativeWork
+    public partial class MenuSection : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

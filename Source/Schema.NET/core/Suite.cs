@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A suite in a hotel or other public accommodation, denotes a class of luxury accommodations, the key feature of which is multiple rooms (Source: Wikipedia, the free encyclopedia, see http://en...
     /// </summary>
     [DataContract]
-    public class Suite : Accommodation
+    public partial class Suite : Accommodation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

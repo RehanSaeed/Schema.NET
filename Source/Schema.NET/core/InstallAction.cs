@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of installing an application.
     /// </summary>
     [DataContract]
-    public class InstallAction : ConsumeAction
+    public partial class InstallAction : ConsumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

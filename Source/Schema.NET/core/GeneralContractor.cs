@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A general contractor.
     /// </summary>
     [DataContract]
-    public class GeneralContractor : HomeAndConstructionBusiness
+    public partial class GeneralContractor : HomeAndConstructionBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

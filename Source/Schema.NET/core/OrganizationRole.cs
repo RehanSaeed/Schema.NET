@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A subclass of Role used to describe roles within organizations.
     /// </summary>
     [DataContract]
-    public class OrganizationRole : Role
+    public partial class OrganizationRole : Role
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

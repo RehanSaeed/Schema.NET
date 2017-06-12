@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A blog.
     /// </summary>
     [DataContract]
-    public class Blog : CreativeWork
+    public partial class Blog : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

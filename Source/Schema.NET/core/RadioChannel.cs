@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A unique instance of a radio BroadcastService on a CableOrSatelliteService lineup.
     /// </summary>
     [DataContract]
-    public class RadioChannel : BroadcastChannel
+    public partial class RadioChannel : BroadcastChannel
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

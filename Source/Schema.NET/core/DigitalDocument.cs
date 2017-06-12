@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An electronic file or document.
     /// </summary>
     [DataContract]
-    public class DigitalDocument : CreativeWork
+    public partial class DigitalDocument : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

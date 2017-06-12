@@ -9,7 +9,7 @@ namespace Schema.NET
     ///     Wanderer".
     /// </summary>
     [DataContract]
-    public class ComicSeries : Periodical
+    public partial class ComicSeries : Periodical
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

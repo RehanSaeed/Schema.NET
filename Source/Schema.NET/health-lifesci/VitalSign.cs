@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Vital signs are measures of various physiological functions in order to assess the most basic body functions.
     /// </summary>
     [DataContract]
-    public class VitalSign : MedicalSign
+    public partial class VitalSign : MedicalSign
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A condition or factor that indicates use of a medical therapy, including signs, symptoms, risk factors, anatomical states, etc.
     /// </summary>
     [DataContract]
-    public class MedicalIndication : MedicalEntity
+    public partial class MedicalIndication : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

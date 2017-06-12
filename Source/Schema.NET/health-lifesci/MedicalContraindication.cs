@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A condition or factor that serves as a reason to withhold a certain medical therapy...
     /// </summary>
     [DataContract]
-    public class MedicalContraindication : MedicalEntity
+    public partial class MedicalContraindication : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

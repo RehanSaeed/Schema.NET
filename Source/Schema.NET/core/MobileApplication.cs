@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A software application designed specifically to work well on a mobile device such as a telephone.
     /// </summary>
     [DataContract]
-    public class MobileApplication : SoftwareApplication
+    public partial class MobileApplication : SoftwareApplication
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

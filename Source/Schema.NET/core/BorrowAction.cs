@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of obtaining an object under an agreement to return it at a later date...
     /// </summary>
     [DataContract]
-    public class BorrowAction : TransferAction
+    public partial class BorrowAction : TransferAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

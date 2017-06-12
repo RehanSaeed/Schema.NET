@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An event involving the delivery of an item.
     /// </summary>
     [DataContract]
-    public class DeliveryEvent : Event
+    public partial class DeliveryEvent : Event
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

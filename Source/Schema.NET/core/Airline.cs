@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An organization that provides flights for passengers.
     /// </summary>
     [DataContract]
-    public class Airline : Organization
+    public partial class Airline : Organization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

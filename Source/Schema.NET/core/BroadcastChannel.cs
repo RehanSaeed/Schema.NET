@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A unique instance of a BroadcastService on a CableOrSatelliteService lineup.
     /// </summary>
     [DataContract]
-    public class BroadcastChannel : Intangible
+    public partial class BroadcastChannel : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -8,7 +8,7 @@ namespace Schema.NET
     /// Note: This type is for information about actual reservations, e...
     /// </summary>
     [DataContract]
-    public class TrainReservation : Reservation
+    public partial class TrainReservation : Reservation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

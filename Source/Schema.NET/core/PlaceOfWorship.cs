@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Place of worship, such as a church, synagogue, or mosque.
     /// </summary>
     [DataContract]
-    public class PlaceOfWorship : CivicStructure
+    public partial class PlaceOfWorship : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

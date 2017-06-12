@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
     /// </summary>
     [DataContract]
-    public class TypeAndQuantityNode : StructuredValue
+    public partial class TypeAndQuantityNode : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

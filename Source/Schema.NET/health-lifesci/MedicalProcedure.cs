@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A process of care used in either a diagnostic, therapeutic, preventive or palliative capacity that relies on invasive (surgical), non-invasive, or other techniques.
     /// </summary>
     [DataContract]
-    public class MedicalProcedure : MedicalEntity
+    public partial class MedicalProcedure : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

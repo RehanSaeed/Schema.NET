@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A bar or pub.
     /// </summary>
     [DataContract]
-    public class BarOrPub : FoodEstablishment
+    public partial class BarOrPub : FoodEstablishment
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

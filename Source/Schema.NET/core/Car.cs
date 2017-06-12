@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A car is a wheeled, self-powered motor vehicle used for transportation.
     /// </summary>
     [DataContract]
-    public class Car : Vehicle
+    public partial class Car : Vehicle
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

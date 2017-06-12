@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
     /// </summary>
     [DataContract]
-    public class ChooseAction : AssessAction
+    public partial class ChooseAction : AssessAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

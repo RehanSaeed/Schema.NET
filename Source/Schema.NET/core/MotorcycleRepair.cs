@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A motorcycle repair shop.
     /// </summary>
     [DataContract]
-    public class MotorcycleRepair : AutomotiveBusiness
+    public partial class MotorcycleRepair : AutomotiveBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

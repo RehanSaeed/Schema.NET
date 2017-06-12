@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A house is a building or structure that has the ability to be occupied for habitation by humans or other creatures (Source: Wikipedia, the free encyclopedia, see http://en...
     /// </summary>
     [DataContract]
-    public class House : Accommodation
+    public partial class House : Accommodation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

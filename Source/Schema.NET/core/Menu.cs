@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A structured representation of food or drink items available from a FoodEstablishment.
     /// </summary>
     [DataContract]
-    public class Menu : CreativeWork
+    public partial class Menu : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

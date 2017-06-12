@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A rating is an evaluation on a numeric scale, such as 1 to 5 stars.
     /// </summary>
     [DataContract]
-    public class Rating : Intangible
+    public partial class Rating : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

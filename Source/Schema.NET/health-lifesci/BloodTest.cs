@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A medical test performed on a sample of a patient's blood.
     /// </summary>
     [DataContract]
-    public class BloodTest : MedicalTest
+    public partial class BloodTest : MedicalTest
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

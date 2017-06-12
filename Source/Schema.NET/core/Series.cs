@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A Series in schema.org is a group of related items, typically but not necessarily of the same kind.
     /// </summary>
     [DataContract]
-    public class Series : CreativeWork
+    public partial class Series : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

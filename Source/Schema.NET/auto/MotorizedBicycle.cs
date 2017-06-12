@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A motorized bicycle is a bicycle with an attached motor used to power the vehicle, or to assist with pedaling.
     /// </summary>
     [DataContract]
-    public class MotorizedBicycle : Vehicle
+    public partial class MotorizedBicycle : Vehicle
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

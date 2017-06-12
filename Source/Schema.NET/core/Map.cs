@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A map.
     /// </summary>
     [DataContract]
-    public class Map : CreativeWork
+    public partial class Map : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

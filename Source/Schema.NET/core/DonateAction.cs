@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of providing goods, services, or money without compensation, often for philanthropic reasons.
     /// </summary>
     [DataContract]
-    public class DonateAction : TradeAction
+    public partial class DonateAction : TradeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

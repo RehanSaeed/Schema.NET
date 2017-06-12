@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An accommodation is a place that can accommodate human beings, e...
     /// </summary>
     [DataContract]
-    public class Accommodation : Place
+    public partial class Accommodation : Place
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

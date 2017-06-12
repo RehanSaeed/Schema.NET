@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Nutritional information about the recipe.
     /// </summary>
     [DataContract]
-    public class NutritionInformation : StructuredValue
+    public partial class NutritionInformation : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any rule set or interactive tool for estimating the risk of developing a complication or condition.
     /// </summary>
     [DataContract]
-    public class MedicalRiskEstimator : MedicalEntity
+    public partial class MedicalRiskEstimator : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

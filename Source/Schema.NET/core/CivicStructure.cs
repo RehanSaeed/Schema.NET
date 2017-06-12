@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A public structure, such as a town hall or concert hall.
     /// </summary>
     [DataContract]
-    public class CivicStructure : Place
+    public partial class CivicStructure : Place
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

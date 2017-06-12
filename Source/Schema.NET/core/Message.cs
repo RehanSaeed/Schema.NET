@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A single message from a sender to one or more organizations or people.
     /// </summary>
     [DataContract]
-    public class Message : CreativeWork
+    public partial class Message : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

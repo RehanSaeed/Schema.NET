@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An agent controls a device or application.
     /// </summary>
     [DataContract]
-    public class ControlAction : Action
+    public partial class ControlAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

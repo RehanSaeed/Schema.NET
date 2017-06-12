@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A part of a successively published publication such as a periodical or multi-volume work, often numbered...
     /// </summary>
     [DataContract]
-    public class PublicationVolume : CreativeWork
+    public partial class PublicationVolume : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

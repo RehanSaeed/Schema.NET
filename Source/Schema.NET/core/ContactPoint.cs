@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A contact point&amp;#x2014;for example, a Customer Complaints department.
     /// </summary>
     [DataContract]
-    public class ContactPoint : StructuredValue
+    public partial class ContactPoint : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

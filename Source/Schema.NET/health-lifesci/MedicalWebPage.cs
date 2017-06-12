@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A web page that provides medical information.
     /// </summary>
     [DataContract]
-    public class MedicalWebPage : WebPage
+    public partial class MedicalWebPage : WebPage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

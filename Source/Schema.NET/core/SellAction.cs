@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of taking money from a buyer in exchange for goods or services rendered...
     /// </summary>
     [DataContract]
-    public class SellAction : TradeAction
+    public partial class SellAction : TradeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

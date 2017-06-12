@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A resort is a place used for relaxation or recreation, attracting visitors for holidays or vacations...
     /// </summary>
     [DataContract]
-    public class Resort : LodgingBusiness
+    public partial class Resort : LodgingBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

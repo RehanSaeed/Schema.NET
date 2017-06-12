@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A publication event e.g. catch-up TV or radio podcast, during which a program is available on-demand.
     /// </summary>
     [DataContract]
-    public class OnDemandEvent : PublicationEvent
+    public partial class OnDemandEvent : PublicationEvent
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

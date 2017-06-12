@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of producing/preparing food.
     /// </summary>
     [DataContract]
-    public class CookAction : CreateAction
+    public partial class CookAction : CreateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A placeholder for multiple similar products of the same kind.
     /// </summary>
     [DataContract]
-    public class SomeProducts : Product
+    public partial class SomeProducts : Product
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

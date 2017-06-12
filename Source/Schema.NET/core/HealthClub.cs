@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A health club.
     /// </summary>
     [DataContract]
-    public class HealthClub : HealthAndBeautyBusiness
+    public partial class HealthClub : HealthAndBeautyBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

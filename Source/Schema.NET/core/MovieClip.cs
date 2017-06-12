@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A short segment/part of a movie.
     /// </summary>
     [DataContract]
-    public class MovieClip : Clip
+    public partial class MovieClip : Clip
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

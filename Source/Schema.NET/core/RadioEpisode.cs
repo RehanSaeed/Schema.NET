@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A radio episode which can be part of a series or season.
     /// </summary>
     [DataContract]
-    public class RadioEpisode : Episode
+    public partial class RadioEpisode : Episode
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

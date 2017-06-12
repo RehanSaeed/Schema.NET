@@ -10,7 +10,7 @@ namespace Schema.NET
     /// RejectAction: The antonym of AcceptAction.
     /// </summary>
     [DataContract]
-    public class AcceptAction : AllocateAction
+    public partial class AcceptAction : AllocateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

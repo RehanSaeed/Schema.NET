@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Beach.
     /// </summary>
     [DataContract]
-    public class Beach : CivicStructure
+    public partial class Beach : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

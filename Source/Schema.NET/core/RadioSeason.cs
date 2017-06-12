@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Season dedicated to radio broadcast and associated online delivery.
     /// </summary>
     [DataContract]
-    public class RadioSeason : CreativeWorkSeason
+    public partial class RadioSeason : CreativeWorkSeason
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

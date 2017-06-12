@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The costs of settling the payment using a particular payment method.
     /// </summary>
     [DataContract]
-    public class PaymentChargeSpecification : PriceSpecification
+    public partial class PaymentChargeSpecification : PriceSpecification
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

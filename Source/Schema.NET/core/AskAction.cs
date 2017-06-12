@@ -10,7 +10,7 @@ namespace Schema.NET
     /// ReplyAction: Appears generally as a response to AskAction.
     /// </summary>
     [DataContract]
-    public class AskAction : CommunicateAction
+    public partial class AskAction : CommunicateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

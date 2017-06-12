@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Anatomical features that can be observed by sight (without dissection), including the form and proportions of the human body as well as surface landmarks that correspond to deeper subcutaneous structures...
     /// </summary>
     [DataContract]
-    public class SuperficialAnatomy : MedicalEntity
+    public partial class SuperficialAnatomy : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

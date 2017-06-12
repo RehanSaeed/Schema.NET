@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A TV episode which can be part of a series or season.
     /// </summary>
     [DataContract]
-    public class TVEpisode : Episode
+    public partial class TVEpisode : Episode
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

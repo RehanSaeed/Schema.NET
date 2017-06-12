@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A collection of music tracks.
     /// </summary>
     [DataContract]
-    public class MusicAlbum : MusicPlaylist
+    public partial class MusicAlbum : MusicPlaylist
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A structured value representing a price or price range. Typically, only the subclasses of this type are used for markup...
     /// </summary>
     [DataContract]
-    public class PriceSpecification : StructuredValue
+    public partial class PriceSpecification : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

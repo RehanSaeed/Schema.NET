@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A specific branch of medical science that is concerned with the ear, nose and throat and their respective disease states.
     /// </summary>
     [DataContract]
-    public class Otolaryngologic : MedicalBusiness
+    public partial class Otolaryngologic : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An indication for treating an underlying condition, symptom, etc.
     /// </summary>
     [DataContract]
-    public class TreatmentIndication : MedicalIndication
+    public partial class TreatmentIndication : MedicalIndication
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

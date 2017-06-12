@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of consuming static visual content.
     /// </summary>
     [DataContract]
-    public class ViewAction : ConsumeAction
+    public partial class ViewAction : ConsumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

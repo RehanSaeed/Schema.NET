@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of transferring ownership of an object to a destination...
     /// </summary>
     [DataContract]
-    public class GiveAction : TransferAction
+    public partial class GiveAction : TransferAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

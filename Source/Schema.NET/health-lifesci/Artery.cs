@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A type of blood vessel that specifically carries blood away from the heart.
     /// </summary>
     [DataContract]
-    public class Artery : Vessel
+    public partial class Artery : Vessel
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A reservation to dine at a food-related business.Note: This type is for information about actual reservations, e...
     /// </summary>
     [DataContract]
-    public class FoodEstablishmentReservation : Reservation
+    public partial class FoodEstablishmentReservation : Reservation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

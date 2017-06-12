@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A piece of sculpture.
     /// </summary>
     [DataContract]
-    public class Sculpture : CreativeWork
+    public partial class Sculpture : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

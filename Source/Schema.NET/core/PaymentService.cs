@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A Service to transfer funds from a person or organization to a beneficiary person or organization.
     /// </summary>
     [DataContract]
-    public class PaymentService : FinancialProduct
+    public partial class PaymentService : FinancialProduct
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The header section of the page.
     /// </summary>
     [DataContract]
-    public class WPHeader : WebPageElement
+    public partial class WPHeader : WebPageElement
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

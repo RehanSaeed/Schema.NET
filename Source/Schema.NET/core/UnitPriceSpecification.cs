@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The price asked for a given offer by the respective organization or person.
     /// </summary>
     [DataContract]
-    public class UnitPriceSpecification : PriceSpecification
+    public partial class UnitPriceSpecification : PriceSpecification
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

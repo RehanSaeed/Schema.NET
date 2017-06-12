@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type e...
     /// </summary>
     [DataContract]
-    public class PublicationEvent : Event
+    public partial class PublicationEvent : Event
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

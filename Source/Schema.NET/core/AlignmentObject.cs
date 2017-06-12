@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An intangible item that describes an alignment between a learning resource and a node in an educational framework.
     /// </summary>
     [DataContract]
-    public class AlignmentObject : Intangible
+    public partial class AlignmentObject : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

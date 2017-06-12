@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A created collection of Creative Works or other artefacts.
     /// </summary>
     [DataContract]
-    public class Collection : CreativeWork
+    public partial class Collection : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

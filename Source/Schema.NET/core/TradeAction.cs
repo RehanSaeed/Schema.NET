@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of participating in an exchange of goods and services for monetary compensation...
     /// </summary>
     [DataContract]
-    public class TradeAction : Action
+    public partial class TradeAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A health profession of a person formally educated and trained in the care of the sick or infirm person.
     /// </summary>
     [DataContract]
-    public class Nursing : MedicalBusiness
+    public partial class Nursing : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

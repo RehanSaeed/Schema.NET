@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Quantity: Duration (use ISO 8601 duration format).
     /// </summary>
     [DataContract]
-    public class Duration : Quantity
+    public partial class Duration : Quantity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any object used in a medical capacity, such as to diagnose or treat a patient.
     /// </summary>
     [DataContract]
-    public class MedicalDevice : MedicalEntity
+    public partial class MedicalDevice : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

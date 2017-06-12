@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of registering to be a user of a service, product or web page...
     /// </summary>
     [DataContract]
-    public class RegisterAction : InteractAction
+    public partial class RegisterAction : InteractAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

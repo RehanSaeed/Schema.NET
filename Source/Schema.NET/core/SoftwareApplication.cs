@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A software application.
     /// </summary>
     [DataContract]
-    public class SoftwareApplication : CreativeWork
+    public partial class SoftwareApplication : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

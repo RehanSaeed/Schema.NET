@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A college, university, or other third-level educational institution.
     /// </summary>
     [DataContract]
-    public class CollegeOrUniversity : EducationalOrganization
+    public partial class CollegeOrUniversity : EducationalOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

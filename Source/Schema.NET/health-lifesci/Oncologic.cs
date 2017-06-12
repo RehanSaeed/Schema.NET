@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A specific branch of medical science that deals with benign and malignant tumors, including the study of their development, diagnosis, treatment and prevention.
     /// </summary>
     [DataContract]
-    public class Oncologic : MedicalBusiness
+    public partial class Oncologic : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

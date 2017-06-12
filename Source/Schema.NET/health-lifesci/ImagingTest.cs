@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any medical imaging modality typically used for diagnostic purposes.
     /// </summary>
     [DataContract]
-    public class ImagingTest : MedicalTest
+    public partial class ImagingTest : MedicalTest
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

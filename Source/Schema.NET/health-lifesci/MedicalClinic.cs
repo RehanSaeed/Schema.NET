@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A facility, often associated with a hospital or medical school, that is devoted to the specific diagnosis and/or healthcare...
     /// </summary>
     [DataContract]
-    public class MedicalClinic : MedicalBusiness
+    public partial class MedicalClinic : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

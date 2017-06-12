@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A file composed primarily of text.
     /// </summary>
     [DataContract]
-    public class TextDigitalDocument : DigitalDocument
+    public partial class TextDigitalDocument : DigitalDocument
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

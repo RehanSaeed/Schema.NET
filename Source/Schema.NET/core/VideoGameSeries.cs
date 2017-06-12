@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A video game series.
     /// </summary>
     [DataContract]
-    public class VideoGameSeries : CreativeWorkSeries
+    public partial class VideoGameSeries : CreativeWorkSeries
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

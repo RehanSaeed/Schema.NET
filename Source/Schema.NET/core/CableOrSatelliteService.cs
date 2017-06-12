@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A service which provides access to media programming like TV or radio...
     /// </summary>
     [DataContract]
-    public class CableOrSatelliteService : Service
+    public partial class CableOrSatelliteService : Service
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

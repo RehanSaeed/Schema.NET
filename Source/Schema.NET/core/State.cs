@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A state or province of a country.
     /// </summary>
     [DataContract]
-    public class State : AdministrativeArea
+    public partial class State : AdministrativeArea
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

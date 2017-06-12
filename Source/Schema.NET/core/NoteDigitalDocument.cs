@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A file containing a note, primarily for the author.
     /// </summary>
     [DataContract]
-    public class NoteDigitalDocument : DigitalDocument
+    public partial class NoteDigitalDocument : DigitalDocument
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

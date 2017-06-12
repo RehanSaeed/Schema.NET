@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.
     /// </summary>
     [DataContract]
-    public class Product : Thing
+    public partial class Product : Thing
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

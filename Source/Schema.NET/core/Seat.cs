@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Used to describe a seat, such as a reserved seat in an event reservation.
     /// </summary>
     [DataContract]
-    public class Seat : Intangible
+    public partial class Seat : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

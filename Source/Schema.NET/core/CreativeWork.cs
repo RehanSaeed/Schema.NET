@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The most generic kind of creative work, including books, movies, photographs, software programs, etc.
     /// </summary>
     [DataContract]
-    public class CreativeWork : Thing
+    public partial class CreativeWork : Thing
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

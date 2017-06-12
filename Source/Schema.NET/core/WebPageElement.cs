@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A web page element, like a table or an image.
     /// </summary>
     [DataContract]
-    public class WebPageElement : CreativeWork
+    public partial class WebPageElement : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

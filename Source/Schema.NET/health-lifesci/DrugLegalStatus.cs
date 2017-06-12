@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The legal availability status of a medical drug.
     /// </summary>
     [DataContract]
-    public class DrugLegalStatus : MedicalIntangible
+    public partial class DrugLegalStatus : MedicalIntangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

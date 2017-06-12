@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
     /// </summary>
     [DataContract]
-    public class SportsOrganization : Organization
+    public partial class SportsOrganization : Organization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

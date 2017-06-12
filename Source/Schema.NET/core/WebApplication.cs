@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Web applications.
     /// </summary>
     [DataContract]
-    public class WebApplication : SoftwareApplication
+    public partial class WebApplication : SoftwareApplication
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

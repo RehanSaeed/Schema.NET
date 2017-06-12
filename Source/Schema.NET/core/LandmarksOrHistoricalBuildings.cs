@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An historical landmark or building.
     /// </summary>
     [DataContract]
-    public class LandmarksOrHistoricalBuildings : Place
+    public partial class LandmarksOrHistoricalBuildings : Place
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

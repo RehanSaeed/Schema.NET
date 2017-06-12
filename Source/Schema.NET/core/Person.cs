@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A person (alive, dead, undead, or fictional).
     /// </summary>
     [DataContract]
-    public class Person : Thing
+    public partial class Person : Thing
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

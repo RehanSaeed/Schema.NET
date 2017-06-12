@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An action performed by a direct agent and indirect participants upon a direct object...
     /// </summary>
     [DataContract]
-    public class Action : Thing
+    public partial class Action : Thing
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -151,6 +151,26 @@ namespace Schema.NET
         /// Indicates a target EntryPoint for an Action.
         /// </summary>
         [DataMember(Name = "target", Order = 12)]
-        public EntryPoint Target { get; set; }
+        public object Target { get; protected set; }
+
+        /// <summary>
+        /// Indicates a target EntryPoint for an Action.
+        /// </summary>
+        [IgnoreDataMember]
+        public EntryPoint TargetEntryPoint
+        {
+            get => this.Target as EntryPoint;
+            set => this.Target = value;
+        }
+
+        /// <summary>
+        /// Indicates a target EntryPoint for an Action.
+        /// </summary>
+        [IgnoreDataMember]
+        public Uri TargetURL
+        {
+            get => this.Target as Uri;
+            set => this.Target = value;
+        }
     }
 }

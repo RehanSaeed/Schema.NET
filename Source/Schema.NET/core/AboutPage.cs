@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Web page type: About page.
     /// </summary>
     [DataContract]
-    public class AboutPage : WebPage
+    public partial class AboutPage : WebPage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

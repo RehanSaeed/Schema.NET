@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of editing a recipient by replacing an old object with a new object.
     /// </summary>
     [DataContract]
-    public class ReplaceAction : UpdateAction
+    public partial class ReplaceAction : UpdateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

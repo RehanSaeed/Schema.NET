@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as breadcrumb may be used...
     /// </summary>
     [DataContract]
-    public class WebPage : CreativeWork
+    public partial class WebPage : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

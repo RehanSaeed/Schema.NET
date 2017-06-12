@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of expressing a desire about the object. An agent wants an object.
     /// </summary>
     [DataContract]
-    public class WantAction : ReactAction
+    public partial class WantAction : ReactAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

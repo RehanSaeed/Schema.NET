@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of  departing from a place. An agent departs from an fromLocation for a destination, optionally with participants.
     /// </summary>
     [DataContract]
-    public class DepartAction : MoveAction
+    public partial class DepartAction : MoveAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

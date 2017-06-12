@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Event type: Visual arts event.
     /// </summary>
     [DataContract]
-    public class VisualArtsEvent : Event
+    public partial class VisualArtsEvent : Event
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

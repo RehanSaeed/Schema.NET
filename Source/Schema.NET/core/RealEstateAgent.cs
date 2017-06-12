@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A real-estate agent.
     /// </summary>
     [DataContract]
-    public class RealEstateAgent : LocalBusiness
+    public partial class RealEstateAgent : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

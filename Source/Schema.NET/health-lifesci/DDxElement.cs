@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An alternative, closely-related condition typically considered later in the differential diagnosis process along with the signs that are used to distinguish it.
     /// </summary>
     [DataContract]
-    public class DDxElement : MedicalIntangible
+    public partial class DDxElement : MedicalIntangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

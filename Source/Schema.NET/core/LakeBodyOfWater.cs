@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A lake (for example, Lake Pontrachain).
     /// </summary>
     [DataContract]
-    public class LakeBodyOfWater : BodyOfWater
+    public partial class LakeBodyOfWater : BodyOfWater
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

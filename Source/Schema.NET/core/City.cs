@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A city or town.
     /// </summary>
     [DataContract]
-    public class City : AdministrativeArea
+    public partial class City : AdministrativeArea
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

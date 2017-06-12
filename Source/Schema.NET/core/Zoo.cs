@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A zoo.
     /// </summary>
     [DataContract]
-    public class Zoo : CivicStructure
+    public partial class Zoo : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

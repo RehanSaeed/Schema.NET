@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A defence establishment, such as an army or navy base.
     /// </summary>
     [DataContract]
-    public class DefenceEstablishment : GovernmentBuilding
+    public partial class DefenceEstablishment : GovernmentBuilding
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of participating in performance arts.
     /// </summary>
     [DataContract]
-    public class PerformAction : PlayAction
+    public partial class PerformAction : PlayAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

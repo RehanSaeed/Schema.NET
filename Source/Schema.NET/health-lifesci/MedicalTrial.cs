@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A medical trial is a type of medical study that uses scientific process used to compare the safety and efficacy of medical therapies or medical procedures...
     /// </summary>
     [DataContract]
-    public class MedicalTrial : MedicalStudy
+    public partial class MedicalTrial : MedicalStudy
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

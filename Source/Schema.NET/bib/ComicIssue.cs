@@ -8,7 +8,7 @@ namespace Schema.NET
     ///     part of a larger series...
     /// </summary>
     [DataContract]
-    public class ComicIssue : PublicationIssue
+    public partial class ComicIssue : PublicationIssue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

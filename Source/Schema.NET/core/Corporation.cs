@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Organization: A business corporation.
     /// </summary>
     [DataContract]
-    public class Corporation : Organization
+    public partial class Corporation : Organization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

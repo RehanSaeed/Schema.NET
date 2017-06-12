@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A geographical region, typically under the jurisdiction of a particular government.
     /// </summary>
     [DataContract]
-    public class AdministrativeArea : Place
+    public partial class AdministrativeArea : Place
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A thesis or dissertation document submitted in support of candidature for an academic degree or professional qualification.
     /// </summary>
     [DataContract]
-    public class Thesis : CreativeWork
+    public partial class Thesis : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

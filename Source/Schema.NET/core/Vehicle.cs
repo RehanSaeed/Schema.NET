@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.
     /// </summary>
     [DataContract]
-    public class Vehicle : Product
+    public partial class Vehicle : Product
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

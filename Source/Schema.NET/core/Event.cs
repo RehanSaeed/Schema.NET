@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An event happening at a certain time and location, such as a concert, lecture, or festival...
     /// </summary>
     [DataContract]
-    public class Event : Thing
+    public partial class Event : Thing
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A single, identifiable product instance (e.g. a laptop with a particular serial number).
     /// </summary>
     [DataContract]
-    public class IndividualProduct : Product
+    public partial class IndividualProduct : Product
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

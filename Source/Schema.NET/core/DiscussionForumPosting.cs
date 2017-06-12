@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A posting to a discussion forum.
     /// </summary>
     [DataContract]
-    public class DiscussionForumPosting : SocialMediaPosting
+    public partial class DiscussionForumPosting : SocialMediaPosting
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

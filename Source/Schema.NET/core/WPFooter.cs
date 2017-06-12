@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The footer section of the page.
     /// </summary>
     [DataContract]
-    public class WPFooter : WebPageElement
+    public partial class WPFooter : WebPageElement
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

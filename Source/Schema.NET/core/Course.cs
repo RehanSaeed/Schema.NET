@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A description of an educational course which may be offered as distinct instances at which take place at different times or take place at different locations, or be offered through different media or modes of study...
     /// </summary>
     [DataContract]
-    public class Course : CreativeWork
+    public partial class Course : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

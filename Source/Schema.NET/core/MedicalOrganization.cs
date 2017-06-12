@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A medical organization (physical or not), such as hospital, institution or clinic.
     /// </summary>
     [DataContract]
-    public class MedicalOrganization : Organization
+    public partial class MedicalOrganization : Organization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

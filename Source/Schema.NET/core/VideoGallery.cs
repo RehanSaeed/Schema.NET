@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Web page type: Video gallery page.
     /// </summary>
     [DataContract]
-    public class VideoGallery : CollectionPage
+    public partial class VideoGallery : CollectionPage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

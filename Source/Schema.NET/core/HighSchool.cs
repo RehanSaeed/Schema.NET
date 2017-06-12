@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A high school.
     /// </summary>
     [DataContract]
-    public class HighSchool : EducationalOrganization
+    public partial class HighSchool : EducationalOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

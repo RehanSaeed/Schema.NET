@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An Insurance agency.
     /// </summary>
     [DataContract]
-    public class InsuranceAgency : FinancialService
+    public partial class InsuranceAgency : FinancialService
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

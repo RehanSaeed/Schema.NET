@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A medical procedure intended primarily for diagnostic, as opposed to therapeutic, purposes.
     /// </summary>
     [DataContract]
-    public class DiagnosticProcedure : MedicalProcedure
+    public partial class DiagnosticProcedure : MedicalProcedure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

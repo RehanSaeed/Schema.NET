@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An apartment (in American English) or flat (in British English) is a self-contained housing unit (a type of residential real estate) that occupies only part of a building (Source: Wikipedia, the free encyclopedia, see http://en...
     /// </summary>
     [DataContract]
-    public class Apartment : Accommodation
+    public partial class Apartment : Accommodation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Represents additional information about a relationship or property...
     /// </summary>
     [DataContract]
-    public class Role : Intangible
+    public partial class Role : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

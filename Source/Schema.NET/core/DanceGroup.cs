@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A dance group&amp;#x2014;for example, the Alvin Ailey Dance Theater or Riverdance.
     /// </summary>
     [DataContract]
-    public class DanceGroup : PerformingGroup
+    public partial class DanceGroup : PerformingGroup
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

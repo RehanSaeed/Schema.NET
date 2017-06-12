@@ -10,7 +10,7 @@ namespace Schema.NET
     /// ReserveAction: Unlike ReserveAction, ScheduleAction allocates future actions (e...
     /// </summary>
     [DataContract]
-    public class ScheduleAction : PlanAction
+    public partial class ScheduleAction : PlanAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

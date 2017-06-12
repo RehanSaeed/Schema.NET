@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The delivery of a parcel either via the postal service or a commercial service.
     /// </summary>
     [DataContract]
-    public class ParcelDelivery : Intangible
+    public partial class ParcelDelivery : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

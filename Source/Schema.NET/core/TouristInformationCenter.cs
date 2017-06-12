@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A tourist information center.
     /// </summary>
     [DataContract]
-    public class TouristInformationCenter : LocalBusiness
+    public partial class TouristInformationCenter : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

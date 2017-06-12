@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of applying an object to its intended purpose.
     /// </summary>
     [DataContract]
-    public class UseAction : ConsumeAction
+    public partial class UseAction : ConsumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

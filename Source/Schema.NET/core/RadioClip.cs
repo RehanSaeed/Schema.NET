@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A short radio program or a segment/part of a radio program.
     /// </summary>
     [DataContract]
-    public class RadioClip : Clip
+    public partial class RadioClip : Clip
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

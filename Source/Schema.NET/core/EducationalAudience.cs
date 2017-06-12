@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An EducationalAudience.
     /// </summary>
     [DataContract]
-    public class EducationalAudience : Audience
+    public partial class EducationalAudience : Audience
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

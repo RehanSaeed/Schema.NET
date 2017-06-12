@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another.
     /// </summary>
     [DataContract]
-    public class TransferAction : Action
+    public partial class TransferAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

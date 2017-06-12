@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The geographic coordinates of a place or event.
     /// </summary>
     [DataContract]
-    public class GeoCoordinates : StructuredValue
+    public partial class GeoCoordinates : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

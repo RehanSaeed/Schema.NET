@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of giving money voluntarily to a beneficiary in recognition of services rendered.
     /// </summary>
     [DataContract]
-    public class TipAction : TradeAction
+    public partial class TipAction : TradeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

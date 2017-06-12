@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An anatomical system is a group of anatomical structures that work together to perform a certain task...
     /// </summary>
     [DataContract]
-    public class AnatomicalSystem : MedicalEntity
+    public partial class AnatomicalSystem : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

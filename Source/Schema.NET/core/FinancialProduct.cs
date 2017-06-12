@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A product provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies which comprise the financial services industry.
     /// </summary>
     [DataContract]
-    public class FinancialProduct : Service
+    public partial class FinancialProduct : Service
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

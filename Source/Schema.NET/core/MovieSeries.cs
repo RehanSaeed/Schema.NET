@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A series of movies. Included movies can be indicated with the hasPart property.
     /// </summary>
     [DataContract]
-    public class MovieSeries : CreativeWorkSeries
+    public partial class MovieSeries : CreativeWorkSeries
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

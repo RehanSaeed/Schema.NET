@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A radio station.
     /// </summary>
     [DataContract]
-    public class RadioStation : LocalBusiness
+    public partial class RadioStation : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

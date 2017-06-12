@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of planning the execution of an event/task/action/reservation/plan to a future date.
     /// </summary>
     [DataContract]
-    public class PlanAction : OrganizeAction
+    public partial class PlanAction : OrganizeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

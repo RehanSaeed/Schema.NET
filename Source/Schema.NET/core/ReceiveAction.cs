@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of physically/electronically taking delivery of an object thathas been transferred from an origin to a destination...
     /// </summary>
     [DataContract]
-    public class ReceiveAction : TransferAction
+    public partial class ReceiveAction : TransferAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

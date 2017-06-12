@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An agent quotes/estimates/appraises an object/product/service with a price at a location/store.
     /// </summary>
     [DataContract]
-    public class QuoteAction : TradeAction
+    public partial class QuoteAction : TradeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

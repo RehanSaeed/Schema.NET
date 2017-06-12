@@ -7,7 +7,7 @@ namespace Schema.NET
     /// One of the continents (for example, Europe or Africa).
     /// </summary>
     [DataContract]
-    public class Continent : Landform
+    public partial class Continent : Landform
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

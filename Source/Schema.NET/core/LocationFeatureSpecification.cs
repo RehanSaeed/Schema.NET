@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.
     /// </summary>
     [DataContract]
-    public class LocationFeatureSpecification : PropertyValue
+    public partial class LocationFeatureSpecification : PropertyValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

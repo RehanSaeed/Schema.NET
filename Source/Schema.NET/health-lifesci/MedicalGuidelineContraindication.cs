@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A guideline contraindication that designates a process as harmful and where quality of the data supporting the contraindication is sound.
     /// </summary>
     [DataContract]
-    public class MedicalGuidelineContraindication : MedicalGuideline
+    public partial class MedicalGuidelineContraindication : MedicalGuideline
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

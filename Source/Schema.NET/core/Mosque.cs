@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A mosque.
     /// </summary>
     [DataContract]
-    public class Mosque : PlaceOfWorship
+    public partial class Mosque : PlaceOfWorship
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

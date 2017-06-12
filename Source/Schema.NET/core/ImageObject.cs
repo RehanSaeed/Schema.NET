@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An image file.
     /// </summary>
     [DataContract]
-    public class ImageObject : MediaObject
+    public partial class ImageObject : MediaObject
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

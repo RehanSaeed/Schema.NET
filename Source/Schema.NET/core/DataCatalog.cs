@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A collection of datasets.
     /// </summary>
     [DataContract]
-    public class DataCatalog : CreativeWork
+    public partial class DataCatalog : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

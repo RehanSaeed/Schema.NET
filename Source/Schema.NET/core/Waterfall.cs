@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A waterfall, like Niagara.
     /// </summary>
     [DataContract]
-    public class Waterfall : BodyOfWater
+    public partial class Waterfall : BodyOfWater
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

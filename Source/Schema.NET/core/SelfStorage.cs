@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A self-storage facility.
     /// </summary>
     [DataContract]
-    public class SelfStorage : LocalBusiness
+    public partial class SelfStorage : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

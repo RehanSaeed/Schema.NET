@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A bowling alley.
     /// </summary>
     [DataContract]
-    public class BowlingAlley : SportsActivityLocation
+    public partial class BowlingAlley : SportsActivityLocation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

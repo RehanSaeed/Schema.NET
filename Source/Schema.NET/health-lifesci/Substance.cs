@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
     /// </summary>
     [DataContract]
-    public class Substance : MedicalEntity
+    public partial class Substance : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

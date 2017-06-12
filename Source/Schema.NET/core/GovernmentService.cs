@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
     /// </summary>
     [DataContract]
-    public class GovernmentService : Service
+    public partial class GovernmentService : Service
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

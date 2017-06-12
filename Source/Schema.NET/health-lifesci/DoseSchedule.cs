@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A specific dosing schedule for a drug or supplement.
     /// </summary>
     [DataContract]
-    public class DoseSchedule : MedicalIntangible
+    public partial class DoseSchedule : MedicalIntangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

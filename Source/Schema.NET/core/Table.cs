@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A table on a Web page.
     /// </summary>
     [DataContract]
-    public class Table : WebPageElement
+    public partial class Table : WebPageElement
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

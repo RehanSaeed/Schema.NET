@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
     /// </summary>
     [DataContract]
-    public class LocalBusiness : Organization
+    public partial class LocalBusiness : Organization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of generating a comment about a subject.
     /// </summary>
     [DataContract]
-    public class CommentAction : CommunicateAction
+    public partial class CommentAction : CommunicateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

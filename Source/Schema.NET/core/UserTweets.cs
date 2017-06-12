@@ -7,7 +7,7 @@ namespace Schema.NET
     /// UserInteraction and its subtypes is an old way of talking about users interacting with pages...
     /// </summary>
     [DataContract]
-    public class UserTweets : UserInteraction
+    public partial class UserTweets : UserInteraction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

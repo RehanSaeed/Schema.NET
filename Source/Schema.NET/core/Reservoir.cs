@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
     /// </summary>
     [DataContract]
-    public class Reservoir : BodyOfWater
+    public partial class Reservoir : BodyOfWater
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

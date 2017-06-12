@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A body of structured information describing some topic(s) of interest.
     /// </summary>
     [DataContract]
-    public class Dataset : CreativeWork
+    public partial class Dataset : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

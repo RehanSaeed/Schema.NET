@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An agent approves/certifies/likes/supports/sanction an object.
     /// </summary>
     [DataContract]
-    public class EndorseAction : ReactAction
+    public partial class EndorseAction : ReactAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A music video file.
     /// </summary>
     [DataContract]
-    public class MusicVideoObject : MediaObject
+    public partial class MusicVideoObject : MediaObject
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

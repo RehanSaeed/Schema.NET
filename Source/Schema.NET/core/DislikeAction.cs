@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of expressing a negative sentiment about the object. An agent dislikes an object (a proposition, topic or theme) with participants.
     /// </summary>
     [DataContract]
-    public class DislikeAction : ReactAction
+    public partial class DislikeAction : ReactAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

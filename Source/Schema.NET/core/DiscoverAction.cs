@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of discovering/finding an object.
     /// </summary>
     [DataContract]
-    public class DiscoverAction : FindAction
+    public partial class DiscoverAction : FindAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A sea (for example, the Caspian sea).
     /// </summary>
     [DataContract]
-    public class SeaBodyOfWater : BodyOfWater
+    public partial class SeaBodyOfWater : BodyOfWater
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

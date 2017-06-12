@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A single item within a larger data feed.
     /// </summary>
     [DataContract]
-    public class DataFeedItem : Intangible
+    public partial class DataFeedItem : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

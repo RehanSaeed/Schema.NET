@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A dry-cleaning business.
     /// </summary>
     [DataContract]
-    public class DryCleaningOrLaundry : LocalBusiness
+    public partial class DryCleaningOrLaundry : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A motorcycle or motorbike is a single-track, two-wheeled motor vehicle.
     /// </summary>
     [DataContract]
-    public class Motorcycle : Vehicle
+    public partial class Motorcycle : Vehicle
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

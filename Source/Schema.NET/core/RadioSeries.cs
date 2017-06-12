@@ -7,7 +7,7 @@ namespace Schema.NET
     /// CreativeWorkSeries dedicated to radio broadcast and associated online delivery.
     /// </summary>
     [DataContract]
-    public class RadioSeries : CreativeWorkSeries
+    public partial class RadioSeries : CreativeWorkSeries
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

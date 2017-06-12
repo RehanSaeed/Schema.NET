@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of deliberately creating/producing/generating/building a result out of the agent.
     /// </summary>
     [DataContract]
-    public class CreateAction : Action
+    public partial class CreateAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

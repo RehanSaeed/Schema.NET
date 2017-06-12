@@ -7,7 +7,7 @@ namespace Schema.NET
     /// When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
     /// </summary>
     [DataContract]
-    public class AggregateOffer : Offer
+    public partial class AggregateOffer : Offer
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

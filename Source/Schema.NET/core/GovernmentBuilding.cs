@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A government building.
     /// </summary>
     [DataContract]
-    public class GovernmentBuilding : CivicStructure
+    public partial class GovernmentBuilding : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

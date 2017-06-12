@@ -10,7 +10,7 @@ namespace Schema.NET
     /// RegisterAction: antonym of UnRegisterAction...
     /// </summary>
     [DataContract]
-    public class UnRegisterAction : InteractAction
+    public partial class UnRegisterAction : InteractAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

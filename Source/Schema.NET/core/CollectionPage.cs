@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Web page type: Collection page.
     /// </summary>
     [DataContract]
-    public class CollectionPage : WebPage
+    public partial class CollectionPage : WebPage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

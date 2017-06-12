@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of swallowing solid objects.
     /// </summary>
     [DataContract]
-    public class EatAction : ConsumeAction
+    public partial class EatAction : ConsumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

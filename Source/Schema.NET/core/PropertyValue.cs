@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A property-value pair, e.g. representing a feature of a product or place...
     /// </summary>
     [DataContract]
-    public class PropertyValue : StructuredValue
+    public partial class PropertyValue : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

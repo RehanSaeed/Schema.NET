@@ -7,7 +7,7 @@ namespace Schema.NET
     /// CreativeWorkSeries dedicated to TV broadcast and associated online delivery.
     /// </summary>
     [DataContract]
-    public class TVSeries : CreativeWorkSeries
+    public partial class TVSeries : CreativeWorkSeries
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

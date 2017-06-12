@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A taxi stand.
     /// </summary>
     [DataContract]
-    public class TaxiStand : CivicStructure
+    public partial class TaxiStand : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Describes a reservation for travel, dining or an event. Some reservations require tickets...
     /// </summary>
     [DataContract]
-    public class Reservation : Intangible
+    public partial class Reservation : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

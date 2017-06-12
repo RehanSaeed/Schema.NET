@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The place where a person lives.
     /// </summary>
     [DataContract]
-    public class Residence : Place
+    public partial class Residence : Place
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

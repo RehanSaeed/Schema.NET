@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Residence type: Single-family home.
     /// </summary>
     [DataContract]
-    public class SingleFamilyResidence : House
+    public partial class SingleFamilyResidence : House
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

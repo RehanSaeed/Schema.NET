@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The mailing address.
     /// </summary>
     [DataContract]
-    public class PostalAddress : ContactPoint
+    public partial class PostalAddress : ContactPoint
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of achieving victory in a competitive activity.
     /// </summary>
     [DataContract]
-    public class WinAction : AchieveAction
+    public partial class WinAction : AchieveAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

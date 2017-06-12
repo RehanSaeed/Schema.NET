@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A delivery service through which content is provided via broadcast over the air or online.
     /// </summary>
     [DataContract]
-    public class BroadcastService : Service
+    public partial class BroadcastService : Service
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

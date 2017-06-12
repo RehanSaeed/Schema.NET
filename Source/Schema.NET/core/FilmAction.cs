@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of capturing sound and moving images on film, video, or digitally.
     /// </summary>
     [DataContract]
-    public class FilmAction : CreateAction
+    public partial class FilmAction : CreateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

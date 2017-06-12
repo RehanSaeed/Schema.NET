@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A service to convert funds from one currency to another currency.
     /// </summary>
     [DataContract]
-    public class CurrencyConversionService : FinancialProduct
+    public partial class CurrencyConversionService : FinancialProduct
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

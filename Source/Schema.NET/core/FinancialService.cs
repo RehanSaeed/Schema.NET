@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Financial services business.
     /// </summary>
     [DataContract]
-    public class FinancialService : LocalBusiness
+    public partial class FinancialService : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

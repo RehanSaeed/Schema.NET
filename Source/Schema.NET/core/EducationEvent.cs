@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Event type: Education event.
     /// </summary>
     [DataContract]
-    public class EducationEvent : Event
+    public partial class EducationEvent : Event
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of swallowing liquids.
     /// </summary>
     [DataContract]
-    public class DrinkAction : ConsumeAction
+    public partial class DrinkAction : ConsumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

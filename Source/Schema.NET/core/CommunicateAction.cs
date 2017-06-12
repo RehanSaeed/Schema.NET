@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of conveying information to another person via a communication medium (instrument) such as speech, email, or telephone conversation.
     /// </summary>
     [DataContract]
-    public class CommunicateAction : InteractAction
+    public partial class CommunicateAction : InteractAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

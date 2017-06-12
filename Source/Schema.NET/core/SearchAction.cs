@@ -10,7 +10,7 @@ namespace Schema.NET
     /// FindAction: SearchAction generally leads to a FindAction, but not necessarily.
     /// </summary>
     [DataContract]
-    public class SearchAction : Action
+    public partial class SearchAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

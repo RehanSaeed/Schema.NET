@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The average rating based on multiple ratings or reviews.
     /// </summary>
     [DataContract]
-    public class AggregateRating : Rating
+    public partial class AggregateRating : Rating
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

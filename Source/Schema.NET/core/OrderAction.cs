@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An agent orders an object/product/service to be delivered/sent.
     /// </summary>
     [DataContract]
-    public class OrderAction : TradeAction
+    public partial class OrderAction : TradeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

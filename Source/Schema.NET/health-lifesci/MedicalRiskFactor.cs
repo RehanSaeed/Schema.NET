@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A risk factor is anything that increases a person's likelihood of developing or contracting a disease, medical condition, or complication.
     /// </summary>
     [DataContract]
-    public class MedicalRiskFactor : MedicalEntity
+    public partial class MedicalRiskFactor : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of producing a balanced opinion about the object for an audience...
     /// </summary>
     [DataContract]
-    public class ReviewAction : AssessAction
+    public partial class ReviewAction : AssessAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

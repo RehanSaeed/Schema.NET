@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
     /// </summary>
     [DataContract]
-    public class MusicGroup : PerformingGroup
+    public partial class MusicGroup : PerformingGroup
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

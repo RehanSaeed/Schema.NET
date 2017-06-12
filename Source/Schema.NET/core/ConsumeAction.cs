@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of ingesting information/resources/food.
     /// </summary>
     [DataContract]
-    public class ConsumeAction : Action
+    public partial class ConsumeAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

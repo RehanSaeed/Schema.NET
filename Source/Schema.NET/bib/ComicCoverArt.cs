@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The artwork on the cover of a comic.
     /// </summary>
     [DataContract]
-    public class ComicCoverArt : ComicStory
+    public partial class ComicCoverArt : ComicStory
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

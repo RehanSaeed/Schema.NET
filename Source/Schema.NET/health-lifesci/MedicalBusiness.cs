@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A particular physical or virtual business of an organization for medical purposes...
     /// </summary>
     [DataContract]
-    public class MedicalBusiness : LocalBusiness
+    public partial class MedicalBusiness : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

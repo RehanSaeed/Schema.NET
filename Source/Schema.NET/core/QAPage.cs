@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A QAPage is a WebPage focussed on a specific Question and its Answer(s), e...
     /// </summary>
     [DataContract]
-    public class QAPage : WebPage
+    public partial class QAPage : WebPage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

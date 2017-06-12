@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Web page type: Checkout page.
     /// </summary>
     [DataContract]
-    public class CheckoutPage : WebPage
+    public partial class CheckoutPage : WebPage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

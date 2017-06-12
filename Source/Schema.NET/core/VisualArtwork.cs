@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A work of art that is primarily visual in character.
     /// </summary>
     [DataContract]
-    public class VisualArtwork : CreativeWork
+    public partial class VisualArtwork : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

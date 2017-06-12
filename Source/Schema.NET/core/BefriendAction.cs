@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of forming a personal connection with someone (object) mutually/bidirectionally/symmetrically...
     /// </summary>
     [DataContract]
-    public class BefriendAction : InteractAction
+    public partial class BefriendAction : InteractAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

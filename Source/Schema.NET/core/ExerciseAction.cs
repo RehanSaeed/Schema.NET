@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of participating in exertive activity for the purposes of improving health and fitness.
     /// </summary>
     [DataContract]
-    public class ExerciseAction : PlayAction
+    public partial class ExerciseAction : PlayAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

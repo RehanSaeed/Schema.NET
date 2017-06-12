@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A playground.
     /// </summary>
     [DataContract]
-    public class Playground : CivicStructure
+    public partial class Playground : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

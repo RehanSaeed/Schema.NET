@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any physical manifestation of a person's medical condition discoverable by objective diagnostic tests or physical examination.
     /// </summary>
     [DataContract]
-    public class MedicalSign : MedicalSignOrSymptom
+    public partial class MedicalSign : MedicalSignOrSymptom
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

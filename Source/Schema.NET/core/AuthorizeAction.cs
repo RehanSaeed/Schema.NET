@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of granting permission to an object.
     /// </summary>
     [DataContract]
-    public class AuthorizeAction : AllocateAction
+    public partial class AuthorizeAction : AllocateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

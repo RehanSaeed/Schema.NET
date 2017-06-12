@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A complex mathematical calculation requiring an online calculator, used to assess prognosis...
     /// </summary>
     [DataContract]
-    public class MedicalRiskCalculator : MedicalRiskEstimator
+    public partial class MedicalRiskCalculator : MedicalRiskEstimator
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

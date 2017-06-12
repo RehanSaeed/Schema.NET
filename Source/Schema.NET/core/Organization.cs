@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An organization such as a school, NGO, corporation, club, etc.
     /// </summary>
     [DataContract]
-    public class Organization : Thing
+    public partial class Organization : Thing
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

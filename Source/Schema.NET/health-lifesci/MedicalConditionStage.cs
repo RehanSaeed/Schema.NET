@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A stage of a medical condition, such as 'Stage IIIa'.
     /// </summary>
     [DataContract]
-    public class MedicalConditionStage : MedicalIntangible
+    public partial class MedicalConditionStage : MedicalIntangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A datasheet or vendor specification of a product (in the sense of a prototypical description).
     /// </summary>
     [DataContract]
-    public class ProductModel : Product
+    public partial class ProductModel : Product
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

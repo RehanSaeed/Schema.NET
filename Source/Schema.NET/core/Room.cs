@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A room is a distinguishable space within a structure, usually separated from other spaces by interior walls...
     /// </summary>
     [DataContract]
-    public class Room : Accommodation
+    public partial class Room : Accommodation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

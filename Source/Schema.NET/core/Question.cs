@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A specific question - e.g. from a user seeking answers online, or collected in a Frequently Asked Questions (FAQ) document.
     /// </summary>
     [DataContract]
-    public class Question : CreativeWork
+    public partial class Question : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

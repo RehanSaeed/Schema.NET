@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of stopping or deactivating a device or application (e...
     /// </summary>
     [DataContract]
-    public class DeactivateAction : ControlAction
+    public partial class DeactivateAction : ControlAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

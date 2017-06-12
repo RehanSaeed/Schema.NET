@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of asking someone to attend an event. Reciprocal of RsvpAction.
     /// </summary>
     [DataContract]
-    public class InviteAction : CommunicateAction
+    public partial class InviteAction : CommunicateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A simple system that adds up the number of risk factors to yield a score that is associated with prognosis, e...
     /// </summary>
     [DataContract]
-    public class MedicalRiskScore : MedicalRiskEstimator
+    public partial class MedicalRiskScore : MedicalRiskEstimator
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

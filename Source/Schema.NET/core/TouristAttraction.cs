@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A tourist attraction.
     /// </summary>
     [DataContract]
-    public class TouristAttraction : Place
+    public partial class TouristAttraction : Place
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

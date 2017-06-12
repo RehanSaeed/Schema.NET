@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A store that sells materials useful or necessary for various hobbies.
     /// </summary>
     [DataContract]
-    public class HobbyShop : Store
+    public partial class HobbyShop : Store
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

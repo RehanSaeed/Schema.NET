@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any feature associated or not with a medical condition. In medicine a symptom is generally subjective while a sign is objective.
     /// </summary>
     [DataContract]
-    public class MedicalSignOrSymptom : MedicalCondition
+    public partial class MedicalSignOrSymptom : MedicalCondition
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

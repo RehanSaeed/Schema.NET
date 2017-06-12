@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An advertising section of the page.
     /// </summary>
     [DataContract]
-    public class WPAdBlock : WebPageElement
+    public partial class WPAdBlock : WebPageElement
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

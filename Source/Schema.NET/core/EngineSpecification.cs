@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.
     /// </summary>
     [DataContract]
-    public class EngineSpecification : StructuredValue
+    public partial class EngineSpecification : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

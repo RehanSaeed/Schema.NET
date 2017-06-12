@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
     /// </summary>
     [DataContract]
-    public class OrderItem : Intangible
+    public partial class OrderItem : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A list of items of any sort&amp;#x2014;for example, Top 10 Movies About Weathermen, or Top 100 Party Songs...
     /// </summary>
     [DataContract]
-    public class ItemList : Intangible
+    public partial class ItemList : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A volcano, like Fuji san.
     /// </summary>
     [DataContract]
-    public class Volcano : Landform
+    public partial class Volcano : Landform
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

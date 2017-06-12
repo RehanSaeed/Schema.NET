@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of asserting that a future event/action is no longer going to happen...
     /// </summary>
     [DataContract]
-    public class CancelAction : PlanAction
+    public partial class CancelAction : PlanAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

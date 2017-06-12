@@ -10,7 +10,7 @@ namespace Schema.NET
     /// TransferAction: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.
     /// </summary>
     [DataContract]
-    public class MoveAction : Action
+    public partial class MoveAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

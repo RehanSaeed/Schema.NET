@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing.
     /// </summary>
     [DataContract]
-    public class StructuredValue : Intangible
+    public partial class StructuredValue : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

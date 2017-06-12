@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A medical laboratory that offers on-site or off-site diagnostic services.
     /// </summary>
     [DataContract]
-    public class DiagnosticLab : MedicalOrganization
+    public partial class DiagnosticLab : MedicalOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

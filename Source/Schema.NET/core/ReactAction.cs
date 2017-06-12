@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of responding instinctively and emotionally to an object, expressing a sentiment.
     /// </summary>
     [DataContract]
-    public class ReactAction : AssessAction
+    public partial class ReactAction : AssessAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

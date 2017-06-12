@@ -10,7 +10,7 @@ namespace Schema.NET
     /// FollowAction: Unlike FollowAction, TrackAction refers to the interest on the location of innanimates objects...
     /// </summary>
     [DataContract]
-    public class TrackAction : FindAction
+    public partial class TrackAction : FindAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

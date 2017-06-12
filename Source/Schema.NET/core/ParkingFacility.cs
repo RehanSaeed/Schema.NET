@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A parking lot or other parking facility.
     /// </summary>
     [DataContract]
-    public class ParkingFacility : CivicStructure
+    public partial class ParkingFacility : CivicStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

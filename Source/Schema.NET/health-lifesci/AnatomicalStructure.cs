@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Any part of the human body, typically a component of an anatomical system...
     /// </summary>
     [DataContract]
-    public class AnatomicalStructure : MedicalEntity
+    public partial class AnatomicalStructure : MedicalEntity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A hotel is an establishment that provides lodging paid on a short-term basis (Source: Wikipedia, the free encyclopedia, see http://en...
     /// </summary>
     [DataContract]
-    public class Hotel : LodgingBusiness
+    public partial class Hotel : LodgingBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A set of characteristics belonging to people, e.g. who compose an item's target audience.
     /// </summary>
     [DataContract]
-    public class PeopleAudience : Audience
+    public partial class PeopleAudience : Audience
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

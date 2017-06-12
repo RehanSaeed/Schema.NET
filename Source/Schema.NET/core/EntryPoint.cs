@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An entry point, within some Web-based protocol.
     /// </summary>
     [DataContract]
-    public class EntryPoint : Intangible
+    public partial class EntryPoint : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

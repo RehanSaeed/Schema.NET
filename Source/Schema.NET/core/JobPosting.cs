@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A listing that describes a job opening in a certain organization.
     /// </summary>
     [DataContract]
-    public class JobPosting : Intangible
+    public partial class JobPosting : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

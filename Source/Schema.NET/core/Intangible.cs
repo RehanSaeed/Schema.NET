@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc.
     /// </summary>
     [DataContract]
-    public class Intangible : Thing
+    public partial class Intangible : Thing
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

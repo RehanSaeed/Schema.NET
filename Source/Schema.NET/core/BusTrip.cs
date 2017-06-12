@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A trip on a commercial bus line.
     /// </summary>
     [DataContract]
-    public class BusTrip : Intangible
+    public partial class BusTrip : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

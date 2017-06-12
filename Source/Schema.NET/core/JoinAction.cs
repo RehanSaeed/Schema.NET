@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An agent joins an event/group with participants/friends at a location...
     /// </summary>
     [DataContract]
-    public class JoinAction : InteractAction
+    public partial class JoinAction : InteractAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

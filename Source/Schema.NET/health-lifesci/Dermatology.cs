@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A specific branch of medical science that pertains to diagnosis and treatment of disorders of skin.
     /// </summary>
     [DataContract]
-    public class Dermatology : MedicalBusiness
+    public partial class Dermatology : MedicalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

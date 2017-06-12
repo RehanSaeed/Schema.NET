@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise...
     /// </summary>
     [DataContract]
-    public class PlayAction : Action
+    public partial class PlayAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

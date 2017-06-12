@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of distributing content to people for their amusement or edification.
     /// </summary>
     [DataContract]
-    public class ShareAction : CommunicateAction
+    public partial class ShareAction : CommunicateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

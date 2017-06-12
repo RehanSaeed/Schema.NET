@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A common pathway for the electrochemical nerve impulses that are transmitted along each of the axons.
     /// </summary>
     [DataContract]
-    public class Nerve : AnatomicalStructure
+    public partial class Nerve : AnatomicalStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

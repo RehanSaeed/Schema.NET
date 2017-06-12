@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A television station.
     /// </summary>
     [DataContract]
-    public class TelevisionStation : LocalBusiness
+    public partial class TelevisionStation : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

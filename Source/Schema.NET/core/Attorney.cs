@@ -8,7 +8,7 @@ namespace Schema.NET
     /// This type is deprecated - LegalService is more inclusive and less ambiguous.
     /// </summary>
     [DataContract]
-    public class Attorney : LegalService
+    public partial class Attorney : LegalService
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

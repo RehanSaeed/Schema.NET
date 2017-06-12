@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The geographic shape of a place. A GeoShape can be described using several properties whose values are based on latitude/longitude pairs...
     /// </summary>
     [DataContract]
-    public class GeoShape : StructuredValue
+    public partial class GeoShape : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

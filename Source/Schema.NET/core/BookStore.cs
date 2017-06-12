@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A bookstore.
     /// </summary>
     [DataContract]
-    public class BookStore : Store
+    public partial class BookStore : Store
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// Server that provides game interaction in a multiplayer game.
     /// </summary>
     [DataContract]
-    public class GameServer : Intangible
+    public partial class GameServer : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

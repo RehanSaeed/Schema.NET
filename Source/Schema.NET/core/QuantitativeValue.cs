@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A point value or interval for product characteristics and other purposes.
     /// </summary>
     [DataContract]
-    public class QuantitativeValue : StructuredValue
+    public partial class QuantitativeValue : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

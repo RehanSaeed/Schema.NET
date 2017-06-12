@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The price for the delivery of an offer using a particular delivery method.
     /// </summary>
     [DataContract]
-    public class DeliveryChargeSpecification : PriceSpecification
+    public partial class DeliveryChargeSpecification : PriceSpecification
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

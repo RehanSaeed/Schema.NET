@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A technical article - Example: How-to (task) topics, step-by-step, procedural troubleshooting, specifications, etc.
     /// </summary>
     [DataContract]
-    public class TechArticle : Article
+    public partial class TechArticle : Article
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

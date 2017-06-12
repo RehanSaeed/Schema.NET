@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of expressing a preference from a fixed/finite/structured set of choices/options.
     /// </summary>
     [DataContract]
-    public class VoteAction : ChooseAction
+    public partial class VoteAction : ChooseAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

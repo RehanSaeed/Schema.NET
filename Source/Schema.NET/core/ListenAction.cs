@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of consuming audio content.
     /// </summary>
     [DataContract]
-    public class ListenAction : ConsumeAction
+    public partial class ListenAction : ConsumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

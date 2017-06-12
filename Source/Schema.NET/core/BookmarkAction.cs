@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An agent bookmarks/flags/labels/tags/marks an object.
     /// </summary>
     [DataContract]
-    public class BookmarkAction : OrganizeAction
+    public partial class BookmarkAction : OrganizeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

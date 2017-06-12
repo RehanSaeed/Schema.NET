@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of resuming a device or application which was formerly paused (e...
     /// </summary>
     [DataContract]
-    public class ResumeAction : ControlAction
+    public partial class ResumeAction : ControlAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

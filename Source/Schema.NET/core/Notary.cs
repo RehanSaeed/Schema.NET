@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A notary.
     /// </summary>
     [DataContract]
-    public class Notary : LegalService
+    public partial class Notary : LegalService
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

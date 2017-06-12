@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A music recording (track), usually a single song.
     /// </summary>
     [DataContract]
-    public class MusicRecording : CreativeWork
+    public partial class MusicRecording : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

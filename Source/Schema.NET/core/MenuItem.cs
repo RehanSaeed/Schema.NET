@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A food or drink item listed in a menu or menu section.
     /// </summary>
     [DataContract]
-    public class MenuItem : Intangible
+    public partial class MenuItem : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

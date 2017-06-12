@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of responding to a question/message asked/sent by the object...
     /// </summary>
     [DataContract]
-    public class ReplyAction : CommunicateAction
+    public partial class ReplyAction : CommunicateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

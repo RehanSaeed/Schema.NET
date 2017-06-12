@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via suitableForDiet...
     /// </summary>
     [DataContract]
-    public class Recipe : CreativeWork
+    public partial class Recipe : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of starting or activating a device or application (e.g...
     /// </summary>
     [DataContract]
-    public class ActivateAction : ControlAction
+    public partial class ActivateAction : ControlAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

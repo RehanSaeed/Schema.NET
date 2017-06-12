@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An ocean (for example, the Pacific).
     /// </summary>
     [DataContract]
-    public class OceanBodyOfWater : BodyOfWater
+    public partial class OceanBodyOfWater : BodyOfWater
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

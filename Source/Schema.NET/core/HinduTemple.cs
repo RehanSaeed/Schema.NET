@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A Hindu temple.
     /// </summary>
     [DataContract]
-    public class HinduTemple : PlaceOfWorship
+    public partial class HinduTemple : PlaceOfWorship
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).
     /// </summary>
     [DataContract]
-    public class ClaimReview : Review
+    public partial class ClaimReview : Review
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The maximum dosing schedule considered safe for a drug or supplement as recommended by an authority or by the drug/supplement's manufacturer...
     /// </summary>
     [DataContract]
-    public class MaximumDoseSchedule : DoseSchedule
+    public partial class MaximumDoseSchedule : DoseSchedule
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

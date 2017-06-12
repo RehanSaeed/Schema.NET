@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A shopping center or mall.
     /// </summary>
     [DataContract]
-    public class ShoppingCenter : LocalBusiness
+    public partial class ShoppingCenter : LocalBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

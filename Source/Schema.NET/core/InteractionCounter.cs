@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A summary of how users have interacted with this CreativeWork...
     /// </summary>
     [DataContract]
-    public class InteractionCounter : StructuredValue
+    public partial class InteractionCounter : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

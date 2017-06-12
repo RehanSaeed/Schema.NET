@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A pond.
     /// </summary>
     [DataContract]
-    public class Pond : BodyOfWater
+    public partial class Pond : BodyOfWater
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

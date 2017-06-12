@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A GeoCircle is a GeoShape representing a circular geographic area...
     /// </summary>
     [DataContract]
-    public class GeoCircle : GeoShape
+    public partial class GeoCircle : GeoShape
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

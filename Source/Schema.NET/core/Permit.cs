@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A permit issued by an organization, e.g. a parking pass.
     /// </summary>
     [DataContract]
-    public class Permit : Intangible
+    public partial class Permit : Intangible
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

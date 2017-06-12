@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of dressing oneself in clothing.
     /// </summary>
     [DataContract]
-    public class WearAction : UseAction
+    public partial class WearAction : UseAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

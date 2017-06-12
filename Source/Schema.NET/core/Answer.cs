@@ -7,7 +7,7 @@ namespace Schema.NET
     /// An answer offered to a question; perhaps correct, perhaps opinionated or wrong.
     /// </summary>
     [DataContract]
-    public class Answer : Comment
+    public partial class Answer : Comment
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

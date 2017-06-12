@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A DatedMoneySpecification represents monetary values with optional start and end dates...
     /// </summary>
     [DataContract]
-    public class DatedMoneySpecification : StructuredValue
+    public partial class DatedMoneySpecification : StructuredValue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

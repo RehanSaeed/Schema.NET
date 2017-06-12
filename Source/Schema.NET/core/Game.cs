@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The Game type represents things which are games. These are typically rule-governed recreational activities, e...
     /// </summary>
     [DataContract]
-    public class Game : CreativeWork
+    public partial class Game : CreativeWork
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

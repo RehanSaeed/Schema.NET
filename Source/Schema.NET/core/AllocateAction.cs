@@ -7,7 +7,7 @@ namespace Schema.NET
     /// The act of organizing tasks/objects/events by associating resources to it.
     /// </summary>
     [DataContract]
-    public class AllocateAction : OrganizeAction
+    public partial class AllocateAction : OrganizeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

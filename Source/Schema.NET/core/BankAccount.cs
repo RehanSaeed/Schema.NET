@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A product or service offered by a bank whereby one may deposit, withdraw or transfer money and in some cases be paid interest.
     /// </summary>
     [DataContract]
-    public class BankAccount : FinancialProduct
+    public partial class BankAccount : FinancialProduct
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

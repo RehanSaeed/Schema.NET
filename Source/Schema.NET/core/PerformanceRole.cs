@@ -7,7 +7,7 @@ namespace Schema.NET
     /// A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e...
     /// </summary>
     [DataContract]
-    public class PerformanceRole : Role
+    public partial class PerformanceRole : Role
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
