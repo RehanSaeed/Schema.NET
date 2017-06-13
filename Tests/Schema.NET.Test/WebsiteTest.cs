@@ -13,7 +13,7 @@
                 PotentialAction = new SearchAction()
                 {
                     TargetURL = new Uri("http://example.com/search?&q={query}"),
-                    QueryInput = "required"
+                    QueryInputText = "required"
                 },
                 Url = new Uri("https://example.com")
             };

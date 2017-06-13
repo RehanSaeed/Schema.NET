@@ -92,14 +92,30 @@
 
         private static string GetCSharpName(string name)
         {
-            var firstChar = name[0];
-            if (!char.IsUpper(firstChar))
+            var stringBuilder = new StringBuilder();
+
+            var upper = true;
+            for (var i = 0; i < name.Length; ++i)
             {
-                var upper = char.ToUpper(firstChar);
-                name = upper + name.Substring(1, name.Length - 1);
+                var character = name[i];
+
+                if (upper && !char.IsUpper(character))
+                {
+                    stringBuilder.Append(char.ToUpper(character));
+                    upper = false;
+                }
+                else if (character == '-')
+                {
+                    upper = true;
+                }
+                else
+                {
+                    stringBuilder.Append(character);
+                    upper = false;
+                }
             }
 
-            return name;
+            return stringBuilder.ToString();
         }
 
         private static void SetCSharpType(string name, SchemaType type)

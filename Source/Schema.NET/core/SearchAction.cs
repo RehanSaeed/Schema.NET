@@ -23,5 +23,31 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "query", Order = 2)]
         public string Query { get; set; }
+
+        /// <summary>
+        /// Gets or sets the query input search parameter.
+        /// </summary>
+        [DataMember(Name = "query-input", Order = 3)]
+        public object QueryInput { get; protected set; }
+
+        /// <summary>
+        /// Gets or sets the query input search parameter.
+        /// </summary>
+        [IgnoreDataMember]
+        public string QueryInputText
+        {
+            get => this.QueryInput as string;
+            set => this.QueryInput = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the query input search parameter.
+        /// </summary>
+        [IgnoreDataMember]
+        public PropertyValueSpecification QueryInputPropertyValueSpecification
+        {
+            get => this.QueryInput as PropertyValueSpecification;
+            set => this.QueryInput = value;
+        }
     }
 }

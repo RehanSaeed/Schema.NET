@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Reflection;
@@ -20,6 +19,7 @@
             this.schemaService = new SchemaService();
             this.overrides = new List<ISchemaClassOverride>()
             {
+                new AddQueryInputPropertyToSearchAction(),
                 new AddTextTypeToActionTarget()
             };
         }
