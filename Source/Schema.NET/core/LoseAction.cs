@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of being defeated in a competitive activity.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A sub property of participant. The winner of the action.
         /// </summary>
         [DataMember(Name = "winner", Order = 2)]
-        public Person Winner { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person>? Winner { get; set; }
     }
 }

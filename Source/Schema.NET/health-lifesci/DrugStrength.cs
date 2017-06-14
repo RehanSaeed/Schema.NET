@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A specific strength in which a medical drug is available in a specific country.

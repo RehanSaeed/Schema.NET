@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.

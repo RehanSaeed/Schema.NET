@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of giving money in return for temporary use, but not ownership, of an object such as a vehicle or property...
@@ -19,32 +20,14 @@ namespace Schema.NET
         /// A sub property of participant. The owner of the real estate property.
         /// </summary>
         [DataMember(Name = "landlord", Order = 2)]
-        public object Landlord { get; protected set; }
-
-        /// <summary>
-        /// A sub property of participant. The owner of the real estate property.
-        /// </summary>
-        [IgnoreDataMember]
-        public Person LandlordPerson
-        {
-            get => this.Landlord as Person;
-            set => this.Landlord = value;
-        }
-
-        /// <summary>
-        /// A sub property of participant. The owner of the real estate property.
-        /// </summary>
-        [IgnoreDataMember]
-        public Organization LandlordOrganization
-        {
-            get => this.Landlord as Organization;
-            set => this.Landlord = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person, Organization>? Landlord { get; set; }
 
         /// <summary>
         /// A sub property of participant. The real estate agent involved in the action.
         /// </summary>
         [DataMember(Name = "realEstateAgent", Order = 3)]
-        public RealEstateAgent RealEstateAgent { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<RealEstateAgent>? RealEstateAgent { get; set; }
     }
 }

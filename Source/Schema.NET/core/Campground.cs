@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A camping site, campsite, or campground is a place used for overnight stay in the outdoors...

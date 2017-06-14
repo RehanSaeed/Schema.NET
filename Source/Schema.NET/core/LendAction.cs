@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of providing an object under an agreement that it will be returned at a later date...
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A sub property of participant. The person that borrows the object being lent.
         /// </summary>
         [DataMember(Name = "borrower", Order = 2)]
-        public Person Borrower { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person>? Borrower { get; set; }
     }
 }

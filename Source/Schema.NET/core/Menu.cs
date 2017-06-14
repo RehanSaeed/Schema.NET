@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A structured representation of food or drink items available from a FoodEstablishment.
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// A food or drink item contained in a menu or menu section.
         /// </summary>
         [DataMember(Name = "hasMenuItem", Order = 2)]
-        public MenuItem HasMenuItem { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MenuItem>? HasMenuItem { get; set; }
 
         /// <summary>
         /// A subgrouping of the menu (by dishes, course, serving time period, etc.).
         /// </summary>
         [DataMember(Name = "hasMenuSection", Order = 3)]
-        public MenuSection HasMenuSection { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MenuSection>? HasMenuSection { get; set; }
     }
 }

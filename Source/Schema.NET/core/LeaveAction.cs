@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An agent leaves an event / group with participants/friends at a location...
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
         [DataMember(Name = "event", Order = 2)]
-        public Event Event { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Event>? Event { get; set; }
     }
 }

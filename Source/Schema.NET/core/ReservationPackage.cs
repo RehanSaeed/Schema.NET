@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A group of multiple reservations with common values for all sub-reservations.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// The individual reservations included in the package. Typically a repeated property.
         /// </summary>
         [DataMember(Name = "subReservation", Order = 2)]
-        public Reservation SubReservation { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Reservation>? SubReservation { get; set; }
     }
 }

@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise...
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
         [DataMember(Name = "audience", Order = 2)]
-        public Audience Audience { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Audience>? Audience { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
         [DataMember(Name = "event", Order = 3)]
-        public Event Event { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Event>? Event { get; set; }
     }
 }

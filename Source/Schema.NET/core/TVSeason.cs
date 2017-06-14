@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Season dedicated to TV broadcast and associated online delivery.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
         [DataMember(Name = "countryOfOrigin", Order = 2)]
-        public Country CountryOfOrigin { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Country>? CountryOfOrigin { get; set; }
     }
 }

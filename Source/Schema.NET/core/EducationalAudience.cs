@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An EducationalAudience.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// An educationalRole of an EducationalAudience.
         /// </summary>
         [DataMember(Name = "educationalRole", Order = 2)]
-        public string EducationalRole { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? EducationalRole { get; set; }
     }
 }

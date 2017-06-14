@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
         /// </summary>
         [DataMember(Name = "serviceOperator", Order = 2)]
-        public Organization ServiceOperator { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Organization>? ServiceOperator { get; set; }
     }
 }

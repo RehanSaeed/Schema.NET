@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A reservation for a taxi.
@@ -20,38 +21,21 @@ namespace Schema.NET
         /// Number of people the reservation should accommodate.
         /// </summary>
         [DataMember(Name = "partySize", Order = 2)]
-        public object PartySize { get; protected set; }
-
-        /// <summary>
-        /// Number of people the reservation should accommodate.
-        /// </summary>
-        [IgnoreDataMember]
-        public QuantitativeValue PartySizeQuantitativeValue
-        {
-            get => this.PartySize as QuantitativeValue;
-            set => this.PartySize = value;
-        }
-
-        /// <summary>
-        /// Number of people the reservation should accommodate.
-        /// </summary>
-        [IgnoreDataMember]
-        public int? PartySizeInteger
-        {
-            get => this.PartySize as int?;
-            set => this.PartySize = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<QuantitativeValue, int?>? PartySize { get; set; }
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
         [DataMember(Name = "pickupLocation", Order = 3)]
-        public Place PickupLocation { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Place>? PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
         [DataMember(Name = "pickupTime", Order = 4)]
-        public DateTimeOffset? PickupTime { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? PickupTime { get; set; }
     }
 }

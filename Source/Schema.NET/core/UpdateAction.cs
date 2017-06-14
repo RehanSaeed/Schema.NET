@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of managing by changing/editing the state of the object.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A sub property of object. The collection target of the action.
         /// </summary>
         [DataMember(Name = "targetCollection", Order = 2)]
-        public Thing TargetCollection { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Thing>? TargetCollection { get; set; }
     }
 }

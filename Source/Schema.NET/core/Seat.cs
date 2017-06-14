@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Used to describe a seat, such as a reserved seat in an event reservation.
@@ -19,24 +20,28 @@ namespace Schema.NET
         /// The type/class of the seat.
         /// </summary>
         [DataMember(Name = "seatingType", Order = 2)]
-        public string SeatingType { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? SeatingType { get; set; }
 
         /// <summary>
         /// The location of the reserved seat (e.g., 27).
         /// </summary>
         [DataMember(Name = "seatNumber", Order = 3)]
-        public string SeatNumber { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? SeatNumber { get; set; }
 
         /// <summary>
         /// The row location of the reserved seat (e.g., B).
         /// </summary>
         [DataMember(Name = "seatRow", Order = 4)]
-        public string SeatRow { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? SeatRow { get; set; }
 
         /// <summary>
         /// The section location of the reserved seat (e.g. Orchestra).
         /// </summary>
         [DataMember(Name = "seatSection", Order = 5)]
-        public string SeatSection { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? SeatSection { get; set; }
     }
 }

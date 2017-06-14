@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of producing a balanced opinion about the object for an audience...
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A sub property of result. The review that resulted in the performing of the action.
         /// </summary>
         [DataMember(Name = "resultReview", Order = 2)]
-        public Review ResultReview { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Review>? ResultReview { get; set; }
     }
 }

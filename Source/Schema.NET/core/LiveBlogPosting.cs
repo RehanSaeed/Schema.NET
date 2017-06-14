@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
@@ -19,18 +20,21 @@ namespace Schema.NET
         /// The time when the live blog will stop covering the Event. Note that coverage may continue after the Event concludes.
         /// </summary>
         [DataMember(Name = "coverageEndTime", Order = 2)]
-        public DateTimeOffset? CoverageEndTime { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? CoverageEndTime { get; set; }
 
         /// <summary>
         /// The time when the live blog will begin covering the Event. Note that coverage may begin before the Event's start time. The LiveBlogPosting may also be created before coverage begins.
         /// </summary>
         [DataMember(Name = "coverageStartTime", Order = 3)]
-        public DateTimeOffset? CoverageStartTime { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? CoverageStartTime { get; set; }
 
         /// <summary>
         /// An update to the LiveBlog.
         /// </summary>
         [DataMember(Name = "liveBlogUpdate", Order = 4)]
-        public BlogPosting LiveBlogUpdate { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<BlogPosting>? LiveBlogUpdate { get; set; }
     }
 }

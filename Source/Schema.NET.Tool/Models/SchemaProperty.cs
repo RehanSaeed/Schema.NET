@@ -54,40 +54,12 @@
             var modifier = isVirtual ? " virtual" : string.Empty;
             modifier = isOverride ? " override" : modifier;
 
-            if (distinctTypes.Count == 1)
-            {
-                var adjustedType = distinctTypes.First();
-                stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.Name}\", Order = {order})]");
-                stringBuilder.AppendIndentLine(indent, $"public{modifier} {adjustedType.CSharpTypeString} {csharpName} {{ get; set; }}");
-            }
-            else
-            {
-                stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.Name}\", Order = {order})]");
-                stringBuilder.AppendIndentLine(indent, $"public{modifier} object {csharpName} {{ get; protected set; }}");
-                stringBuilder.AppendLine();
+            var adjustedTypes = string.Join(", ", distinctTypes.Select(x => x.CSharpTypeString));
+            var typeString = $"Values<{adjustedTypes}>?";
 
-                var i = 0;
-                foreach (var type in distinctTypes)
-                {
-                    var isLastType = i == (distinctTypes.Count - 1);
-                    var isStruct = !(type.CSharpType == null || type.CSharpType.GetTypeInfo().IsClass);
-
-                    AppendCommentLine(stringBuilder, indent);
-
-                    stringBuilder.AppendIndentLine(indent, "[IgnoreDataMember]");
-                    stringBuilder.AppendIndentLine(indent, $"public{modifier} {type.CSharpTypeString} {csharpName}{type.Name}");
-                    stringBuilder.AppendIndentLine(indent, "{");
-                    stringBuilder.AppendIndentLine(indent + 4, $"get => this.{csharpName} as {type.CSharpTypeString};");
-                    stringBuilder.AppendIndentLine(indent + 4, $"set => this.{csharpName} = value;");
-                    stringBuilder.AppendIndentLine(indent, "}");
-                    if (!isLastType)
-                    {
-                        stringBuilder.AppendLine();
-                    }
-
-                    ++i;
-                }
-            }
+            stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.Name}\", Order = {order})]");
+            stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(ValuesConverter))]");
+            stringBuilder.AppendIndentLine(indent, $"public{modifier} {typeString} {csharpName} {{ get; set; }}");
         }
 
         private static string GetCSharpName(string name)

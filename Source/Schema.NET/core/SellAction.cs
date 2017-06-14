@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of taking money from a buyer in exchange for goods or services rendered...
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A sub property of participant. The participant/person/organization that bought the object.
         /// </summary>
         [DataMember(Name = "buyer", Order = 2)]
-        public Person Buyer { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person>? Buyer { get; set; }
     }
 }

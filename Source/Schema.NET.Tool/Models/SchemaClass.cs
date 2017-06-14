@@ -85,6 +85,7 @@
                 // Using statements
                 stringBuilder.AppendIndentLine(4, "using System;");
                 stringBuilder.AppendIndentLine(4, "using System.Runtime.Serialization;");
+                stringBuilder.AppendIndentLine(4, "using Newtonsoft.Json;");
                 stringBuilder.AppendLine();
             }
 

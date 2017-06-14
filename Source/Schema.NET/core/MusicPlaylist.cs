@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A collection of music tracks in playlist form.
@@ -19,32 +20,14 @@ namespace Schema.NET
         /// The number of tracks in this album or playlist.
         /// </summary>
         [DataMember(Name = "numTracks", Order = 2)]
-        public int? NumTracks { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<int?>? NumTracks { get; set; }
 
         /// <summary>
         /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
         /// </summary>
         [DataMember(Name = "track", Order = 3)]
-        public object Track { get; protected set; }
-
-        /// <summary>
-        /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
-        /// </summary>
-        [IgnoreDataMember]
-        public MusicRecording TrackMusicRecording
-        {
-            get => this.Track as MusicRecording;
-            set => this.Track = value;
-        }
-
-        /// <summary>
-        /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
-        /// </summary>
-        [IgnoreDataMember]
-        public ItemList TrackItemList
-        {
-            get => this.Track as ItemList;
-            set => this.Track = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MusicRecording, ItemList>? Track { get; set; }
     }
 }

@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A screening of a movie or other video.
@@ -19,38 +20,21 @@ namespace Schema.NET
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "subtitleLanguage", Order = 2)]
-        public object SubtitleLanguage { get; protected set; }
-
-        /// <summary>
-        /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
-        /// </summary>
-        [IgnoreDataMember]
-        public string SubtitleLanguageText
-        {
-            get => this.SubtitleLanguage as string;
-            set => this.SubtitleLanguage = value;
-        }
-
-        /// <summary>
-        /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
-        /// </summary>
-        [IgnoreDataMember]
-        public Language SubtitleLanguageLanguage
-        {
-            get => this.SubtitleLanguage as Language;
-            set => this.SubtitleLanguage = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string, Language>? SubtitleLanguage { get; set; }
 
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).
         /// </summary>
         [DataMember(Name = "videoFormat", Order = 3)]
-        public string VideoFormat { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? VideoFormat { get; set; }
 
         /// <summary>
         /// The movie presented during this event.
         /// </summary>
         [DataMember(Name = "workPresented", Order = 4)]
-        public Movie WorkPresented { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Movie>? WorkPresented { get; set; }
     }
 }

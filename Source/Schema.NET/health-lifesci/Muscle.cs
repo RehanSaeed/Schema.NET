@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A muscle is an anatomical structure consisting of a contractile form of tissue that animals use to effect movement.

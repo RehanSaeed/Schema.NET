@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A field of public health focusing on improving health characteristics of a defined population in relation with their geographical or environment areas

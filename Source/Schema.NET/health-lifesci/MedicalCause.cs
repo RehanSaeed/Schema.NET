@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The causative agent(s) that are responsible for the pathophysiologic process that eventually results in a medical condition, symptom or sign...

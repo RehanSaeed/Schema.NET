@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An audio file.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
         /// </summary>
         [DataMember(Name = "transcript", Order = 2)]
-        public string Transcript { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? Transcript { get; set; }
     }
 }

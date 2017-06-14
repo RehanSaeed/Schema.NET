@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The therapy that is concerned with the maintenance or improvement of respiratory function (as in patients with pulmonary disease).

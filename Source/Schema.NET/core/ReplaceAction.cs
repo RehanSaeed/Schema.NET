@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of editing a recipient by replacing an old object with a new object.
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// A sub property of object. The object that is being replaced.
         /// </summary>
         [DataMember(Name = "replacee", Order = 2)]
-        public Thing Replacee { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Thing>? Replacee { get; set; }
 
         /// <summary>
         /// A sub property of object. The object that replaces.
         /// </summary>
         [DataMember(Name = "replacer", Order = 3)]
-        public Thing Replacer { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Thing>? Replacer { get; set; }
     }
 }

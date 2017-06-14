@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An educational organization.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// Alumni of an organization.
         /// </summary>
         [DataMember(Name = "alumni", Order = 2)]
-        public override Person Alumni { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public override Values<Person>? Alumni { get; set; }
     }
 }

@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A music recording (track), usually a single song.
@@ -19,36 +20,42 @@ namespace Schema.NET
         /// The artist that performed this album or recording.
         /// </summary>
         [DataMember(Name = "byArtist", Order = 2)]
-        public MusicGroup ByArtist { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MusicGroup>? ByArtist { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "duration", Order = 3)]
-        public Duration Duration { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Duration>? Duration { get; set; }
 
         /// <summary>
         /// The album to which this recording belongs.
         /// </summary>
         [DataMember(Name = "inAlbum", Order = 4)]
-        public MusicAlbum InAlbum { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MusicAlbum>? InAlbum { get; set; }
 
         /// <summary>
         /// The playlist to which this recording belongs.
         /// </summary>
         [DataMember(Name = "inPlaylist", Order = 5)]
-        public MusicPlaylist InPlaylist { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MusicPlaylist>? InPlaylist { get; set; }
 
         /// <summary>
         /// The International Standard Recording Code for the recording.
         /// </summary>
         [DataMember(Name = "isrcCode", Order = 6)]
-        public string IsrcCode { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? IsrcCode { get; set; }
 
         /// <summary>
         /// The composition this track is a recording of.
         /// </summary>
         [DataMember(Name = "recordingOf", Order = 7)]
-        public MusicComposition RecordingOf { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MusicComposition>? RecordingOf { get; set; }
     }
 }

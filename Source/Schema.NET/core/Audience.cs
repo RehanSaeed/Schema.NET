@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Intended audience for an item, i.e. the group for whom the item was created.
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).
         /// </summary>
         [DataMember(Name = "audienceType", Order = 2)]
-        public string AudienceType { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? AudienceType { get; set; }
 
         /// <summary>
         /// The geographic area associated with the audience.
         /// </summary>
         [DataMember(Name = "geographicArea", Order = 3)]
-        public AdministrativeArea GeographicArea { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<AdministrativeArea>? GeographicArea { get; set; }
     }
 }

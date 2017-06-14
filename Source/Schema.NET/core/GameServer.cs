@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Server that provides game interaction in a multiplayer game.
@@ -19,18 +20,21 @@ namespace Schema.NET
         /// Video game which is played on this server.
         /// </summary>
         [DataMember(Name = "game", Order = 2)]
-        public VideoGame Game { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<VideoGame>? Game { get; set; }
 
         /// <summary>
         /// Number of players on the server.
         /// </summary>
         [DataMember(Name = "playersOnline", Order = 3)]
-        public int? PlayersOnline { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<int?>? PlayersOnline { get; set; }
 
         /// <summary>
         /// Status of a game server.
         /// </summary>
         [DataMember(Name = "serverStatus", Order = 4)]
-        public GameServerStatus? ServerStatus { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<GameServerStatus?>? ServerStatus { get; set; }
     }
 }

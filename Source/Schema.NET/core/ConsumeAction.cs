@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of ingesting information/resources/food.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
         /// </summary>
         [DataMember(Name = "expectsAcceptanceOf", Order = 2)]
-        public Offer ExpectsAcceptanceOf { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Offer>? ExpectsAcceptanceOf { get; set; }
     }
 }

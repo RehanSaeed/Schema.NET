@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A CreativeWork such as an image, video, or audio clip shared as part of this posting.
         /// </summary>
         [DataMember(Name = "sharedContent", Order = 2)]
-        public CreativeWork SharedContent { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<CreativeWork>? SharedContent { get; set; }
     }
 }

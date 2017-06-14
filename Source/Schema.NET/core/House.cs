@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A house is a building or structure that has the ability to be occupied for habitation by humans or other creatures (Source: Wikipedia, the free encyclopedia, see http://en...
@@ -20,28 +21,7 @@ namespace Schema.NET
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 2)]
-        public override object NumberOfRooms { get; protected set; }
-
-        /// <summary>
-        /// The number of rooms (excluding bathrooms and closets) of the acccommodation or lodging business.
-        /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
-        /// </summary>
-        [IgnoreDataMember]
-        public override int? NumberOfRoomsNumber
-        {
-            get => this.NumberOfRooms as int?;
-            set => this.NumberOfRooms = value;
-        }
-
-        /// <summary>
-        /// The number of rooms (excluding bathrooms and closets) of the acccommodation or lodging business.
-        /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
-        /// </summary>
-        [IgnoreDataMember]
-        public override QuantitativeValue NumberOfRoomsQuantitativeValue
-        {
-            get => this.NumberOfRooms as QuantitativeValue;
-            set => this.NumberOfRooms = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public override Values<int?, QuantitativeValue>? NumberOfRooms { get; set; }
     }
 }

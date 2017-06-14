@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A book.
@@ -19,30 +20,35 @@ namespace Schema.NET
         /// The edition of the book.
         /// </summary>
         [DataMember(Name = "bookEdition", Order = 2)]
-        public string BookEdition { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? BookEdition { get; set; }
 
         /// <summary>
         /// The format of the book.
         /// </summary>
         [DataMember(Name = "bookFormat", Order = 3)]
-        public BookFormatType? BookFormat { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<BookFormatType?>? BookFormat { get; set; }
 
         /// <summary>
         /// The illustrator of the book.
         /// </summary>
         [DataMember(Name = "illustrator", Order = 4)]
-        public Person Illustrator { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person>? Illustrator { get; set; }
 
         /// <summary>
         /// The ISBN of the book.
         /// </summary>
         [DataMember(Name = "isbn", Order = 5)]
-        public string Isbn { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? Isbn { get; set; }
 
         /// <summary>
         /// The number of pages in the book.
         /// </summary>
         [DataMember(Name = "numberOfPages", Order = 6)]
-        public int? NumberOfPages { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<int?>? NumberOfPages { get; set; }
     }
 }

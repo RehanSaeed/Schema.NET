@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A technical article - Example: How-to (task) topics, step-by-step, procedural troubleshooting, specifications, etc.
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// Prerequisites needed to fulfill steps in article.
         /// </summary>
         [DataMember(Name = "dependencies", Order = 2)]
-        public string Dependencies { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? Dependencies { get; set; }
 
         /// <summary>
         /// Proficiency needed for this content; expected values: 'Beginner', 'Expert'.
         /// </summary>
         [DataMember(Name = "proficiencyLevel", Order = 3)]
-        public string ProficiencyLevel { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? ProficiencyLevel { get; set; }
     }
 }

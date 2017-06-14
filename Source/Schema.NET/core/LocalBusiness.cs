@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
@@ -19,7 +20,8 @@ namespace Schema.NET
         /// The currency accepted (in &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "currenciesAccepted", Order = 2)]
-        public string CurrenciesAccepted { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? CurrenciesAccepted { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;/p&gt;
@@ -31,18 +33,21 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "openingHours", Order = 3)]
-        public string OpeningHours { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? OpeningHours { get; set; }
 
         /// <summary>
         /// Cash, credit card, etc.
         /// </summary>
         [DataMember(Name = "paymentAccepted", Order = 4)]
-        public string PaymentAccepted { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? PaymentAccepted { get; set; }
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
         /// </summary>
         [DataMember(Name = "priceRange", Order = 5)]
-        public string PriceRange { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? PriceRange { get; set; }
     }
 }

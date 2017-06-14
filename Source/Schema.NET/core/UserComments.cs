@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// UserInteraction and its subtypes is an old way of talking about users interacting with pages...
@@ -19,50 +20,35 @@ namespace Schema.NET
         /// The text of the UserComment.
         /// </summary>
         [DataMember(Name = "commentText", Order = 2)]
-        public string CommentText { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? CommentText { get; set; }
 
         /// <summary>
         /// The time at which the UserComment was made.
         /// </summary>
         [DataMember(Name = "commentTime", Order = 3)]
-        public DateTimeOffset? CommentTime { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? CommentTime { get; set; }
 
         /// <summary>
         /// The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
         /// </summary>
         [DataMember(Name = "creator", Order = 4)]
-        public object Creator { get; protected set; }
-
-        /// <summary>
-        /// The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
-        /// </summary>
-        [IgnoreDataMember]
-        public Person CreatorPerson
-        {
-            get => this.Creator as Person;
-            set => this.Creator = value;
-        }
-
-        /// <summary>
-        /// The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
-        /// </summary>
-        [IgnoreDataMember]
-        public Organization CreatorOrganization
-        {
-            get => this.Creator as Organization;
-            set => this.Creator = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person, Organization>? Creator { get; set; }
 
         /// <summary>
         /// Specifies the CreativeWork associated with the UserComment.
         /// </summary>
         [DataMember(Name = "discusses", Order = 5)]
-        public CreativeWork Discusses { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<CreativeWork>? Discusses { get; set; }
 
         /// <summary>
         /// The URL at which a reply may be posted to the specified UserComment.
         /// </summary>
         [DataMember(Name = "replyToUrl", Order = 6)]
-        public Uri ReplyToUrl { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Uri>? ReplyToUrl { get; set; }
     }
 }

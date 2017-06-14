@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A blog.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A posting that is part of this blog.
         /// </summary>
         [DataMember(Name = "blogPost", Order = 2)]
-        public BlogPosting BlogPost { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<BlogPosting>? BlogPost { get; set; }
     }
 }

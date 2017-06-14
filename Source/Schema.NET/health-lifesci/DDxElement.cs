@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An alternative, closely-related condition typically considered later in the differential diagnosis process along with the signs that are used to distinguish it.

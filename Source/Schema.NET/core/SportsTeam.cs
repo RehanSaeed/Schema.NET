@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Organization: Sports team.
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// A person that acts as performing member of a sports team; a player as opposed to a coach.
         /// </summary>
         [DataMember(Name = "athlete", Order = 2)]
-        public Person Athlete { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person>? Athlete { get; set; }
 
         /// <summary>
         /// A person that acts in a coaching role for a sports team.
         /// </summary>
         [DataMember(Name = "coach", Order = 3)]
-        public Person Coach { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person>? Coach { get; set; }
     }
 }

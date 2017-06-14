@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Web applications.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// Specifies browser requirements in human-readable text. For example, 'requires HTML5 support'.
         /// </summary>
         [DataMember(Name = "browserRequirements", Order = 2)]
-        public string BrowserRequirements { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? BrowserRequirements { get; set; }
     }
 }

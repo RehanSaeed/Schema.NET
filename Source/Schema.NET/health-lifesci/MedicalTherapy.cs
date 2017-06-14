@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Any medical intervention designed to prevent, treat, and cure human diseases and medical conditions, including both curative and palliative therapies...

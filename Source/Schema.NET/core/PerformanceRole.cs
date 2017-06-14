@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e...
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// The name of a character played in some acting or performing role, i.e. in a PerformanceRole.
         /// </summary>
         [DataMember(Name = "characterName", Order = 2)]
-        public string CharacterName { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? CharacterName { get; set; }
     }
 }

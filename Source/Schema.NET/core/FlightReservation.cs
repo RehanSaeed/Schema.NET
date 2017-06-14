@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A reservation for air travel.
@@ -20,24 +21,28 @@ namespace Schema.NET
         /// The airline-specific indicator of boarding order / preference.
         /// </summary>
         [DataMember(Name = "boardingGroup", Order = 2)]
-        public string BoardingGroup { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? BoardingGroup { get; set; }
 
         /// <summary>
         /// The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
         /// </summary>
         [DataMember(Name = "passengerPriorityStatus", Order = 3)]
-        public string PassengerPriorityStatus { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? PassengerPriorityStatus { get; set; }
 
         /// <summary>
         /// The passenger's sequence number as assigned by the airline.
         /// </summary>
         [DataMember(Name = "passengerSequenceNumber", Order = 4)]
-        public string PassengerSequenceNumber { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? PassengerSequenceNumber { get; set; }
 
         /// <summary>
         /// The type of security screening the passenger is subject to.
         /// </summary>
         [DataMember(Name = "securityScreening", Order = 5)]
-        public string SecurityScreening { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? SecurityScreening { get; set; }
     }
 }

@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A subclass of OrganizationRole used to describe employee relationships.
@@ -19,42 +20,14 @@ namespace Schema.NET
         /// The base salary of the job or of an employee in an EmployeeRole.
         /// </summary>
         [DataMember(Name = "baseSalary", Order = 2)]
-        public object BaseSalary { get; protected set; }
-
-        /// <summary>
-        /// The base salary of the job or of an employee in an EmployeeRole.
-        /// </summary>
-        [IgnoreDataMember]
-        public decimal? BaseSalaryNumber
-        {
-            get => this.BaseSalary as decimal?;
-            set => this.BaseSalary = value;
-        }
-
-        /// <summary>
-        /// The base salary of the job or of an employee in an EmployeeRole.
-        /// </summary>
-        [IgnoreDataMember]
-        public MonetaryAmount BaseSalaryMonetaryAmount
-        {
-            get => this.BaseSalary as MonetaryAmount;
-            set => this.BaseSalary = value;
-        }
-
-        /// <summary>
-        /// The base salary of the job or of an employee in an EmployeeRole.
-        /// </summary>
-        [IgnoreDataMember]
-        public PriceSpecification BaseSalaryPriceSpecification
-        {
-            get => this.BaseSalary as PriceSpecification;
-            set => this.BaseSalary = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<decimal?, MonetaryAmount, PriceSpecification>? BaseSalary { get; set; }
 
         /// <summary>
         /// The currency (coded using &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; ) used for the main salary information in this job posting or for this employee.
         /// </summary>
         [DataMember(Name = "salaryCurrency", Order = 3)]
-        public string SalaryCurrency { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? SalaryCurrency { get; set; }
     }
 }

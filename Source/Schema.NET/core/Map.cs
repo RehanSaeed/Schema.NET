@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A map.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// Indicates the kind of Map, from the MapCategoryType Enumeration.
         /// </summary>
         [DataMember(Name = "mapType", Order = 2)]
-        public MapCategoryType? MapType { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MapCategoryType?>? MapType { get; set; }
     }
 }

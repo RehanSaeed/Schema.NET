@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A specific branch of medical science that specializes in the care of women during the prenatal and postnatal care and with the delivery of the child.

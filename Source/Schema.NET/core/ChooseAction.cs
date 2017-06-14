@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
@@ -19,26 +20,7 @@ namespace Schema.NET
         /// A sub property of object. The options subject to this action.
         /// </summary>
         [DataMember(Name = "actionOption", Order = 2)]
-        public object ActionOption { get; protected set; }
-
-        /// <summary>
-        /// A sub property of object. The options subject to this action.
-        /// </summary>
-        [IgnoreDataMember]
-        public string ActionOptionText
-        {
-            get => this.ActionOption as string;
-            set => this.ActionOption = value;
-        }
-
-        /// <summary>
-        /// A sub property of object. The options subject to this action.
-        /// </summary>
-        [IgnoreDataMember]
-        public Thing ActionOptionThing
-        {
-            get => this.ActionOption as Thing;
-            set => this.ActionOption = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string, Thing>? ActionOption { get; set; }
     }
 }

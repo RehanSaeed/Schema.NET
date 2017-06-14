@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Financial services business.
@@ -19,26 +20,7 @@ namespace Schema.NET
         /// Description of fees, commissions, and other terms applied either to a class of financial product, or by a financial service organization.
         /// </summary>
         [DataMember(Name = "feesAndCommissionsSpecification", Order = 2)]
-        public object FeesAndCommissionsSpecification { get; protected set; }
-
-        /// <summary>
-        /// Description of fees, commissions, and other terms applied either to a class of financial product, or by a financial service organization.
-        /// </summary>
-        [IgnoreDataMember]
-        public string FeesAndCommissionsSpecificationText
-        {
-            get => this.FeesAndCommissionsSpecification as string;
-            set => this.FeesAndCommissionsSpecification = value;
-        }
-
-        /// <summary>
-        /// Description of fees, commissions, and other terms applied either to a class of financial product, or by a financial service organization.
-        /// </summary>
-        [IgnoreDataMember]
-        public Uri FeesAndCommissionsSpecificationURL
-        {
-            get => this.FeesAndCommissionsSpecification as Uri;
-            set => this.FeesAndCommissionsSpecification = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string, Uri>? FeesAndCommissionsSpecification { get; set; }
     }
 }

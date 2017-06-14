@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An agent tracks an object for updates.
@@ -22,6 +23,7 @@ namespace Schema.NET
         /// A sub property of instrument. The method of delivery.
         /// </summary>
         [DataMember(Name = "deliveryMethod", Order = 2)]
-        public DeliveryMethod? DeliveryMethod { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DeliveryMethod?>? DeliveryMethod { get; set; }
     }
 }

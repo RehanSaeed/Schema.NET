@@ -77,7 +77,8 @@
         {
             foreach (var filePath in Directory.GetFiles(directoryPath, "*.cs", SearchOption.AllDirectories))
             {
-                if (!Path.GetFileName(filePath).EndsWith(".Partial.cs", StringComparison.OrdinalIgnoreCase))
+                var fileDirectoryPath = Path.GetDirectoryName(filePath);
+                if (!string.Equals(fileDirectoryPath, directoryPath, StringComparison.OrdinalIgnoreCase))
                 {
                     while (true)
                     {

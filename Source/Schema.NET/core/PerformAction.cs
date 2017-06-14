@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of participating in performance arts.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A sub property of location. The entertainment business where the action occurred.
         /// </summary>
         [DataMember(Name = "entertainmentBusiness", Order = 2)]
-        public EntertainmentBusiness EntertainmentBusiness { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<EntertainmentBusiness>? EntertainmentBusiness { get; set; }
     }
 }

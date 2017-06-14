@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A collection of datasets.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A dataset contained in this catalog.
         /// </summary>
         [DataMember(Name = "dataset", Order = 2)]
-        public Dataset Dataset { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Dataset>? Dataset { get; set; }
     }
 }

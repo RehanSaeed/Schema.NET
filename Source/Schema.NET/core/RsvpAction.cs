@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of notifying an event organizer as to whether you expect to attend the event.
@@ -19,18 +20,21 @@ namespace Schema.NET
         /// If responding yes, the number of guests who will attend in addition to the invitee.
         /// </summary>
         [DataMember(Name = "additionalNumberOfGuests", Order = 2)]
-        public int? AdditionalNumberOfGuests { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<int?>? AdditionalNumberOfGuests { get; set; }
 
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
         [DataMember(Name = "comment", Order = 3)]
-        public Comment Comment { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Comment>? Comment { get; set; }
 
         /// <summary>
         /// The response (yes, no, maybe) to the RSVP.
         /// </summary>
         [DataMember(Name = "rsvpResponse", Order = 4)]
-        public RsvpResponseType? RsvpResponse { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<RsvpResponseType?>? RsvpResponse { get; set; }
     }
 }

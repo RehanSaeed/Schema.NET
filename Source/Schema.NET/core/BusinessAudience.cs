@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A set of characteristics belonging to businesses, e.g. who compose an item's target audience.
@@ -19,18 +20,21 @@ namespace Schema.NET
         /// The number of employees in an organization e.g. business.
         /// </summary>
         [DataMember(Name = "numberOfEmployees", Order = 2)]
-        public QuantitativeValue NumberOfEmployees { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<QuantitativeValue>? NumberOfEmployees { get; set; }
 
         /// <summary>
         /// The size of the business in annual revenue.
         /// </summary>
         [DataMember(Name = "yearlyRevenue", Order = 3)]
-        public QuantitativeValue YearlyRevenue { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<QuantitativeValue>? YearlyRevenue { get; set; }
 
         /// <summary>
         /// The age of the business.
         /// </summary>
         [DataMember(Name = "yearsInOperation", Order = 4)]
-        public QuantitativeValue YearsInOperation { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<QuantitativeValue>? YearsInOperation { get; set; }
     }
 }

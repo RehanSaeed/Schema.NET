@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A placeholder for multiple similar products of the same kind.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// The current approximate inventory level for the item or items.
         /// </summary>
         [DataMember(Name = "inventoryLevel", Order = 2)]
-        public QuantitativeValue InventoryLevel { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<QuantitativeValue>? InventoryLevel { get; set; }
     }
 }

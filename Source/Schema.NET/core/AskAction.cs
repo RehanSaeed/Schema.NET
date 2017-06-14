@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of posing a question / favor to someone.
@@ -22,6 +23,7 @@ namespace Schema.NET
         /// A sub property of object. A question.
         /// </summary>
         [DataMember(Name = "question", Order = 2)]
-        public Question Question { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Question>? Question { get; set; }
     }
 }

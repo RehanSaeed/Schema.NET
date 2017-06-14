@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An agent approves/certifies/likes/supports/sanction an object.
@@ -19,26 +20,7 @@ namespace Schema.NET
         /// A sub property of participant. The person/organization being supported.
         /// </summary>
         [DataMember(Name = "endorsee", Order = 2)]
-        public object Endorsee { get; protected set; }
-
-        /// <summary>
-        /// A sub property of participant. The person/organization being supported.
-        /// </summary>
-        [IgnoreDataMember]
-        public Organization EndorseeOrganization
-        {
-            get => this.Endorsee as Organization;
-            set => this.Endorsee = value;
-        }
-
-        /// <summary>
-        /// A sub property of participant. The person/organization being supported.
-        /// </summary>
-        [IgnoreDataMember]
-        public Person EndorseePerson
-        {
-            get => this.Endorsee as Person;
-            set => this.Endorsee = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Organization, Person>? Endorsee { get; set; }
     }
 }

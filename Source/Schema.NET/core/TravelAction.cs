@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// The distance travelled, e.g. exercising or travelling.
         /// </summary>
         [DataMember(Name = "distance", Order = 2)]
-        public Distance Distance { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Distance>? Distance { get; set; }
     }
 }

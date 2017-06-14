@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A short summary of the specific claims reviewed in a ClaimReview.
         /// </summary>
         [DataMember(Name = "claimReviewed", Order = 2)]
-        public string ClaimReviewed { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? ClaimReviewed { get; set; }
     }
 }

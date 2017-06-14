@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates.

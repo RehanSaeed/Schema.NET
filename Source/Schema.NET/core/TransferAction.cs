@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another.
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// A sub property of location. The original location of the object or the agent before the action.
         /// </summary>
         [DataMember(Name = "fromLocation", Order = 2)]
-        public Place FromLocation { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Place>? FromLocation { get; set; }
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
         [DataMember(Name = "toLocation", Order = 3)]
-        public Place ToLocation { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Place>? ToLocation { get; set; }
     }
 }

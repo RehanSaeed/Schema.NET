@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Reference documentation for application programming interfaces (APIs).
@@ -19,24 +20,28 @@ namespace Schema.NET
         /// Associated product/technology version. e.g., .NET Framework 4.5.
         /// </summary>
         [DataMember(Name = "assemblyVersion", Order = 2)]
-        public string AssemblyVersion { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? AssemblyVersion { get; set; }
 
         /// <summary>
         /// Library file name e.g., mscorlib.dll, system.web.dll.
         /// </summary>
         [DataMember(Name = "executableLibraryName", Order = 3)]
-        public string ExecutableLibraryName { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? ExecutableLibraryName { get; set; }
 
         /// <summary>
         /// Indicates whether API is managed or unmanaged.
         /// </summary>
         [DataMember(Name = "programmingModel", Order = 4)]
-        public string ProgrammingModel { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? ProgrammingModel { get; set; }
 
         /// <summary>
         /// Type of app development: phone, Metro style, desktop, XBox, etc.
         /// </summary>
         [DataMember(Name = "targetPlatform", Order = 5)]
-        public string TargetPlatform { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? TargetPlatform { get; set; }
     }
 }

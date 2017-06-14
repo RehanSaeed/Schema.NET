@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An list item, e.g. a step in a checklist or how-to description.
@@ -19,44 +20,28 @@ namespace Schema.NET
         /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.
         /// </summary>
         [DataMember(Name = "item", Order = 2)]
-        public Thing Item { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Thing>? Item { get; set; }
 
         /// <summary>
         /// A link to the ListItem that follows the current one.
         /// </summary>
         [DataMember(Name = "nextItem", Order = 3)]
-        public ListItem NextItem { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<ListItem>? NextItem { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
         /// </summary>
         [DataMember(Name = "position", Order = 4)]
-        public object Position { get; protected set; }
-
-        /// <summary>
-        /// The position of an item in a series or sequence of items.
-        /// </summary>
-        [IgnoreDataMember]
-        public int? PositionInteger
-        {
-            get => this.Position as int?;
-            set => this.Position = value;
-        }
-
-        /// <summary>
-        /// The position of an item in a series or sequence of items.
-        /// </summary>
-        [IgnoreDataMember]
-        public string PositionText
-        {
-            get => this.Position as string;
-            set => this.Position = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<int?, string>? Position { get; set; }
 
         /// <summary>
         /// A link to the ListItem that preceeds the current one.
         /// </summary>
         [DataMember(Name = "previousItem", Order = 5)]
-        public ListItem PreviousItem { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<ListItem>? PreviousItem { get; set; }
     }
 }

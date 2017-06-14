@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A subclass of Role used to describe roles within organizations.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A number associated with a role in an organization, for example, the number on an athlete's jersey.
         /// </summary>
         [DataMember(Name = "numberedPosition", Order = 2)]
-        public double? NumberedPosition { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<double?>? NumberedPosition { get; set; }
     }
 }

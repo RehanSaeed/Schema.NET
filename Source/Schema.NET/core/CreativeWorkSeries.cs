@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A CreativeWorkSeries in schema.org is a group of related items, typically but not necessarily of the same kind...
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "endDate", Order = 2)]
-        public DateTimeOffset? EndDate { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? EndDate { get; set; }
 
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "startDate", Order = 3)]
-        public DateTimeOffset? StartDate { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? StartDate { get; set; }
     }
 }

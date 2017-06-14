@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of forming a personal connection with someone/something (object) unidirectionally/asymmetrically to get updates polled from...
@@ -19,26 +20,7 @@ namespace Schema.NET
         /// A sub property of object. The person or organization being followed.
         /// </summary>
         [DataMember(Name = "followee", Order = 2)]
-        public object Followee { get; protected set; }
-
-        /// <summary>
-        /// A sub property of object. The person or organization being followed.
-        /// </summary>
-        [IgnoreDataMember]
-        public Organization FolloweeOrganization
-        {
-            get => this.Followee as Organization;
-            set => this.Followee = value;
-        }
-
-        /// <summary>
-        /// A sub property of object. The person or organization being followed.
-        /// </summary>
-        [IgnoreDataMember]
-        public Person FolloweePerson
-        {
-            get => this.Followee as Person;
-            set => this.Followee = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Organization, Person>? Followee { get; set; }
     }
 }

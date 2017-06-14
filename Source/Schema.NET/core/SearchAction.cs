@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of searching for an object.
@@ -22,32 +23,14 @@ namespace Schema.NET
         /// A sub property of instrument. The query used on this action.
         /// </summary>
         [DataMember(Name = "query", Order = 2)]
-        public string Query { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? Query { get; set; }
 
         /// <summary>
         /// Gets or sets the query input search parameter.
         /// </summary>
         [DataMember(Name = "query-input", Order = 3)]
-        public object QueryInput { get; protected set; }
-
-        /// <summary>
-        /// Gets or sets the query input search parameter.
-        /// </summary>
-        [IgnoreDataMember]
-        public string QueryInputText
-        {
-            get => this.QueryInput as string;
-            set => this.QueryInput = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the query input search parameter.
-        /// </summary>
-        [IgnoreDataMember]
-        public PropertyValueSpecification QueryInputPropertyValueSpecification
-        {
-            get => this.QueryInput as PropertyValueSpecification;
-            set => this.QueryInput = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string, PropertyValueSpecification>? QueryInput { get; set; }
     }
 }

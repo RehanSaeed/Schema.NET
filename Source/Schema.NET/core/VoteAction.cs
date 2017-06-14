@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of expressing a preference from a fixed/finite/structured set of choices/options.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A sub property of object. The candidate subject of this action.
         /// </summary>
         [DataMember(Name = "candidate", Order = 2)]
-        public Person Candidate { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person>? Candidate { get; set; }
     }
 }

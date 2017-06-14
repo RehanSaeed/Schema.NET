@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of generating a comment about a subject.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A sub property of result. The Comment created or sent as a result of this action.
         /// </summary>
         [DataMember(Name = "resultComment", Order = 2)]
-        public Comment ResultComment { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Comment>? ResultComment { get; set; }
     }
 }

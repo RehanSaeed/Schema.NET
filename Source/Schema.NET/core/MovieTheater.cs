@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A movie theater.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// The number of screens in the movie theater.
         /// </summary>
         [DataMember(Name = "screenCount", Order = 2)]
-        public int? ScreenCount { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<int?>? ScreenCount { get; set; }
     }
 }

@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An electronic file or document.
@@ -19,6 +20,7 @@ namespace Schema.NET
         /// A permission related to the access to this document (e.g. permission to read or write an electronic document). For a public document, specify a grantee with an Audience with audienceType equal to "public".
         /// </summary>
         [DataMember(Name = "hasDigitalDocumentPermission", Order = 2)]
-        public DigitalDocumentPermission HasDigitalDocumentPermission { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DigitalDocumentPermission>? HasDigitalDocumentPermission { get; set; }
     }
 }

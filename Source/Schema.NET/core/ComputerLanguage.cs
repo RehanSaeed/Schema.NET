@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// This type covers computer programming languages such as Scheme and Lisp, as well as other language-like computer representations...

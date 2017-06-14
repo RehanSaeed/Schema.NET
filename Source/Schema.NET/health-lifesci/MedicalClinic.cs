@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A facility, often associated with a hospital or medical school, that is devoted to the specific diagnosis and/or healthcare...

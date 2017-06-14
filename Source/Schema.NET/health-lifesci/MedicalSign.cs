@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Any physical manifestation of a person's medical condition discoverable by objective diagnostic tests or physical examination.

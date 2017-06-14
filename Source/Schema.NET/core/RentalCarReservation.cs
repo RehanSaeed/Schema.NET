@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A reservation for a rental car.
@@ -20,24 +21,28 @@ namespace Schema.NET
         /// Where a rental car can be dropped off.
         /// </summary>
         [DataMember(Name = "dropoffLocation", Order = 2)]
-        public Place DropoffLocation { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Place>? DropoffLocation { get; set; }
 
         /// <summary>
         /// When a rental car can be dropped off.
         /// </summary>
         [DataMember(Name = "dropoffTime", Order = 3)]
-        public DateTimeOffset? DropoffTime { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? DropoffTime { get; set; }
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
         [DataMember(Name = "pickupLocation", Order = 4)]
-        public Place PickupLocation { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Place>? PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
         [DataMember(Name = "pickupTime", Order = 5)]
-        public DateTimeOffset? PickupTime { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? PickupTime { get; set; }
     }
 }

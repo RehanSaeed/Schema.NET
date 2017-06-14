@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A set of characteristics describing parents, who can be interested in viewing some content.
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// Maximal age of the child.
         /// </summary>
         [DataMember(Name = "childMaxAge", Order = 2)]
-        public int? ChildMaxAge { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<int?>? ChildMaxAge { get; set; }
 
         /// <summary>
         /// Minimal age of the child.
         /// </summary>
         [DataMember(Name = "childMinAge", Order = 3)]
-        public int? ChildMinAge { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<int?>? ChildMinAge { get; set; }
     }
 }

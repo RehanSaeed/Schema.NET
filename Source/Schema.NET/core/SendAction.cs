@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of physically/electronically dispatching an object for transfer from an origin to a destination...
@@ -19,42 +20,14 @@ namespace Schema.NET
         /// A sub property of instrument. The method of delivery.
         /// </summary>
         [DataMember(Name = "deliveryMethod", Order = 2)]
-        public DeliveryMethod? DeliveryMethod { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DeliveryMethod?>? DeliveryMethod { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
         [DataMember(Name = "recipient", Order = 3)]
-        public object Recipient { get; protected set; }
-
-        /// <summary>
-        /// A sub property of participant. The participant who is at the receiving end of the action.
-        /// </summary>
-        [IgnoreDataMember]
-        public Person RecipientPerson
-        {
-            get => this.Recipient as Person;
-            set => this.Recipient = value;
-        }
-
-        /// <summary>
-        /// A sub property of participant. The participant who is at the receiving end of the action.
-        /// </summary>
-        [IgnoreDataMember]
-        public Audience RecipientAudience
-        {
-            get => this.Recipient as Audience;
-            set => this.Recipient = value;
-        }
-
-        /// <summary>
-        /// A sub property of participant. The participant who is at the receiving end of the action.
-        /// </summary>
-        [IgnoreDataMember]
-        public Organization RecipientOrganization
-        {
-            get => this.Recipient as Organization;
-            set => this.Recipient = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person, Audience, Organization>? Recipient { get; set; }
     }
 }

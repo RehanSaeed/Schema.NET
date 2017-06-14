@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// A structured value providing information about when a certain organization or person owned a certain product.
@@ -19,64 +20,28 @@ namespace Schema.NET
         /// The organization or person from which the product was acquired.
         /// </summary>
         [DataMember(Name = "acquiredFrom", Order = 2)]
-        public object AcquiredFrom { get; protected set; }
-
-        /// <summary>
-        /// The organization or person from which the product was acquired.
-        /// </summary>
-        [IgnoreDataMember]
-        public Person AcquiredFromPerson
-        {
-            get => this.AcquiredFrom as Person;
-            set => this.AcquiredFrom = value;
-        }
-
-        /// <summary>
-        /// The organization or person from which the product was acquired.
-        /// </summary>
-        [IgnoreDataMember]
-        public Organization AcquiredFromOrganization
-        {
-            get => this.AcquiredFrom as Organization;
-            set => this.AcquiredFrom = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Person, Organization>? AcquiredFrom { get; set; }
 
         /// <summary>
         /// The date and time of obtaining the product.
         /// </summary>
         [DataMember(Name = "ownedFrom", Order = 3)]
-        public DateTimeOffset? OwnedFrom { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? OwnedFrom { get; set; }
 
         /// <summary>
         /// The date and time of giving up ownership on the product.
         /// </summary>
         [DataMember(Name = "ownedThrough", Order = 4)]
-        public DateTimeOffset? OwnedThrough { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? OwnedThrough { get; set; }
 
         /// <summary>
         /// The product that this structured value is referring to.
         /// </summary>
         [DataMember(Name = "typeOfGood", Order = 5)]
-        public object TypeOfGood { get; protected set; }
-
-        /// <summary>
-        /// The product that this structured value is referring to.
-        /// </summary>
-        [IgnoreDataMember]
-        public Product TypeOfGoodProduct
-        {
-            get => this.TypeOfGood as Product;
-            set => this.TypeOfGood = value;
-        }
-
-        /// <summary>
-        /// The product that this structured value is referring to.
-        /// </summary>
-        [IgnoreDataMember]
-        public Service TypeOfGoodService
-        {
-            get => this.TypeOfGood as Service;
-            set => this.TypeOfGood = value;
-        }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Product, Service>? TypeOfGood { get; set; }
     }
 }

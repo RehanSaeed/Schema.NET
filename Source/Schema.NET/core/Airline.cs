@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// An organization that provides flights for passengers.
@@ -19,12 +20,14 @@ namespace Schema.NET
         /// The type of boarding policy used by the airline (e.g. zone-based or group-based).
         /// </summary>
         [DataMember(Name = "boardingPolicy", Order = 2)]
-        public BoardingPolicyType? BoardingPolicy { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<BoardingPolicyType?>? BoardingPolicy { get; set; }
 
         /// <summary>
         /// IATA identifier for an airline or airport.
         /// </summary>
         [DataMember(Name = "iataCode", Order = 3)]
-        public string IataCode { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? IataCode { get; set; }
     }
 }
