@@ -44,7 +44,7 @@
         {
             if (value is IValue values)
             {
-                var obj = values.GetObject();
+                var obj = values.Value;
                 if (obj == null)
                 {
                     writer.WriteNull();

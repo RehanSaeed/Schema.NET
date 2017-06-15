@@ -52,6 +52,26 @@
         public List<T> List => this.list;
 
         /// <summary>
+        /// Gets the non-null object representing the instance.
+        /// </summary>
+        public object Value
+        {
+            get
+            {
+                if (this.list != null)
+                {
+                    return this.list;
+                }
+                else if (this.HasItem)
+                {
+                    return this.item;
+                }
+
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Gets a value indicating whether this instance has a single item value.
         /// </summary>
         /// <value><c>true</c> if this instance has a single item value; otherwise, <c>false</c>.</value>
@@ -70,25 +90,5 @@
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
         public static implicit operator Values<T>(List<T> list) => new Values<T>(list);
-
-        /// <summary>
-        /// Gets the non-null object representing the instance.
-        /// </summary>
-        /// <returns>
-        /// The non-null object representing the instance.
-        /// </returns>
-        public object GetObject()
-        {
-            if (this.list != null)
-            {
-                return this.list;
-            }
-            else if (this.HasItem)
-            {
-                return this.item;
-            }
-
-            return null;
-        }
     }
 }

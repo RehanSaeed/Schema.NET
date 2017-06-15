@@ -8,7 +8,6 @@
         /// <summary>
         /// Gets the non-null object representing the instance.
         /// </summary>
-        /// <returns>The non-null object representing the instance.</returns>
-        object GetObject();
+        object Value { get; }
     }
 }

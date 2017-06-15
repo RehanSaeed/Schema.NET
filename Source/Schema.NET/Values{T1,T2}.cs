@@ -45,6 +45,26 @@
         public Values<T2> Values2 => this.values2;
 
         /// <summary>
+        /// Gets the non-null object representing the instance.
+        /// </summary>
+        public object Value
+        {
+            get
+            {
+                if (this.values1.HasValue)
+                {
+                    return this.values1.Value;
+                }
+                else if (this.values2.HasValue)
+                {
+                    return this.values2.Value;
+                }
+
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
@@ -71,25 +91,5 @@
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
         public static implicit operator Values<T1, T2>(List<T2> list) => new Values<T1, T2>(list);
-
-        /// <summary>
-        /// Gets the non-null object representing the instance.
-        /// </summary>
-        /// <returns>
-        /// The non-null object representing the instance.
-        /// </returns>
-        public object GetObject()
-        {
-            if (this.values1.HasValue)
-            {
-                return this.values1.GetObject();
-            }
-            else if (this.values2.HasValue)
-            {
-                return this.values2.GetObject();
-            }
-
-            return null;
-        }
     }
 }
