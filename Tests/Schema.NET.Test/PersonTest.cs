@@ -27,6 +27,12 @@
                     "\"@context\":\"http://schema.org\"," +
                     "\"@type\":\"Person\"," +
                     "\"name\":\"Name\"," +
+                    "\"sameAs\":[" +
+                        "\"http://www.facebook.com/your-profile\"," +
+                        "\"http://instagram.com/yourProfile\"," +
+                        "\"http://www.linkedin.com/in/yourprofile\"," +
+                        "\"http://plus.google.com/your_profile\"" +
+                    "]," +
                     "\"url\":\"https://example.com\"" +
                 "}";
 
