@@ -106,7 +106,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "height", Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, QuantitativeValue>? Height { get; set; }
+        public Values<string, QuantitativeValue, int?>? Height { get; set; }
 
         /// <summary>
         /// A pointer to another product (or multiple products) for which this product is an accessory or spare part.
@@ -239,6 +239,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "width", Order = 33)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, QuantitativeValue>? Width { get; set; }
+        public Values<string, QuantitativeValue, int?>? Width { get; set; }
     }
 }

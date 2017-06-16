@@ -56,13 +56,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "height", Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, QuantitativeValue>? Height { get; set; }
+        public Values<string, QuantitativeValue, int?>? Height { get; set; }
 
         /// <summary>
         /// The width of the item.
         /// </summary>
         [DataMember(Name = "width", Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, QuantitativeValue>? Width { get; set; }
+        public Values<string, QuantitativeValue, int?>? Width { get; set; }
     }
 }

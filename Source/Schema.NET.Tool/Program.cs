@@ -20,7 +20,8 @@
             this.overrides = new List<ISchemaClassOverride>()
             {
                 new AddQueryInputPropertyToSearchAction(),
-                new AddTextTypeToActionTarget()
+                new AddTextTypeToActionTarget(),
+                new AddNumberTypeToMediaObjectHeightAndWidth()
             };
         }
 
