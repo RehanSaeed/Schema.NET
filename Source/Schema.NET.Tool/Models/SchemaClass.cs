@@ -35,9 +35,6 @@
 
         public bool IsClass => !this.IsEnum;
 
-        //public bool IsEnum => this.Parent != null &&
-        //    (string.Equals(this.Parent.Name, "Enumeration", StringComparison.Ordinal) ||
-        //    string.Equals(this.Parent.Name, "QualitativeValue", StringComparison.Ordinal));
         public bool IsEnum => EnumerableExtensions
             .Traverse(this, x => x.Parent)
             .Any(x => string.Equals(x.Name, "Enumeration", StringComparison.Ordinal));
