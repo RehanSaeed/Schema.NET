@@ -10,31 +10,31 @@
         {
             var article = new NewsArticle()
             {
-                MainEntityOfPage = new Uri("https://google.com/article"),
-                Headline = "Article headline",
-                Image = new ImageObject()
+                MainEntityOfPage = new Uri("https://google.com/article"), // Ignored
+                Headline = "Article headline", // Recommended
+                Image = new ImageObject() // Recommended
                 {
-                    Url = new Uri("https://google.com/thumbnail1.jpg"),
-                    Height = 800,
-                    Width = 800
+                    Url = new Uri("https://google.com/thumbnail1.jpg"), // Recommended
+                    Height = 800, // Recommended
+                    Width = 800 // Recommended
                 },
-                DatePublished = new DateTimeOffset(2015, 2, 5, 8, 0, 0, TimeSpan.Zero),
-                DateModified = new DateTimeOffset(2015, 2, 5, 9, 20, 0, TimeSpan.Zero),
-                Author = new Person()
+                DatePublished = new DateTimeOffset(2015, 2, 5, 8, 0, 0, TimeSpan.Zero), // Ignored
+                DateModified = new DateTimeOffset(2015, 2, 5, 9, 20, 0, TimeSpan.Zero), // Ignored
+                Author = new Person() // Ignored
                 {
-                    Name = "John Doe"
+                    Name = "John Doe" // Ignored
                 },
-                Publisher = new Organization()
+                Publisher = new Organization() // Ignored
                 {
                     Name = "Google",
-                    Logo = new ImageObject()
+                    Logo = new ImageObject() // Ignored
                     {
-                        Url = new Uri("https://google.com/logo.jpg"),
-                        Height = 60,
-                        Width = 600
+                        Url = new Uri("https://google.com/logo.jpg"), // Ignored
+                        Height = 60, // Ignored
+                        Width = 600 // Ignored
                     }
                 },
-                Description = "A most wonderful article"
+                Description = "A most wonderful article" // Ignored
             };
             var expectedJson =
                 "{" +
