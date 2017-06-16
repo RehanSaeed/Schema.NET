@@ -48,8 +48,8 @@ namespace Schema.NET
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "duration", Order = 6)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<Duration>? Duration { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<TimeSpan?>? Duration { get; set; }
 
         /// <summary>
         /// A URL pointing to a player for a specific video. In general, this is the information in the &lt;code&gt;src&lt;/code&gt; element of an &lt;code&gt;embed&lt;/code&gt; tag and should not be the same as the content of the &lt;code&gt;loc&lt;/code&gt; tag.
@@ -84,7 +84,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "height", Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, QuantitativeValue>? Height { get; set; }
+        public Values<string, QuantitativeValue>? Height { get; set; }
 
         /// <summary>
         /// Player type required&amp;#x2014;for example, Flash or Silverlight.
@@ -126,6 +126,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "width", Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, QuantitativeValue>? Width { get; set; }
+        public Values<string, QuantitativeValue>? Width { get; set; }
     }
 }

@@ -27,8 +27,8 @@ namespace Schema.NET
         /// Estimated processing time for the service using this channel.
         /// </summary>
         [DataMember(Name = "processingTime", Order = 3)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<Duration>? ProcessingTime { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<TimeSpan?>? ProcessingTime { get; set; }
 
         /// <summary>
         /// The service provided by this channel.

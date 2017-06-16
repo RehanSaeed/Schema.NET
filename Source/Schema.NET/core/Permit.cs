@@ -41,8 +41,8 @@ namespace Schema.NET
         /// The time validity of the permit.
         /// </summary>
         [DataMember(Name = "validFor", Order = 5)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<Duration>? ValidFor { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<TimeSpan?>? ValidFor { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.

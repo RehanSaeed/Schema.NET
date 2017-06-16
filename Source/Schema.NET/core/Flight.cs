@@ -90,15 +90,15 @@ namespace Schema.NET
         /// The estimated time the flight will take.
         /// </summary>
         [DataMember(Name = "estimatedFlightDuration", Order = 12)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Duration>? EstimatedFlightDuration { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<string, TimeSpan?>? EstimatedFlightDuration { get; set; }
 
         /// <summary>
         /// The distance of the flight.
         /// </summary>
         [DataMember(Name = "flightDistance", Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, string>? FlightDistance { get; set; }
+        public Values<string>? FlightDistance { get; set; }
 
         /// <summary>
         /// The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.

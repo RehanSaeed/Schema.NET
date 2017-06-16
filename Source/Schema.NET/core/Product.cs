@@ -71,7 +71,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "depth", Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, QuantitativeValue>? Depth { get; set; }
+        public Values<string, QuantitativeValue>? Depth { get; set; }
 
         /// <summary>
         /// The &lt;a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx"&gt;GTIN-12&lt;/a&gt; code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GS1 GTIN Summary&lt;/a&gt; for more details.
@@ -106,7 +106,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "height", Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, QuantitativeValue>? Height { get; set; }
+        public Values<string, QuantitativeValue>? Height { get; set; }
 
         /// <summary>
         /// A pointer to another product (or multiple products) for which this product is an accessory or spare part.
@@ -239,6 +239,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "width", Order = 33)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, QuantitativeValue>? Width { get; set; }
+        public Values<string, QuantitativeValue>? Width { get; set; }
     }
 }

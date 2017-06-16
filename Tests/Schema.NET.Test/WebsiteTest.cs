@@ -11,10 +11,10 @@
         {
             var website = new WebSite()
             {
-                PotentialAction = new SearchAction()
+                PotentialAction = new SearchAction() // Required
                 {
-                    Target = new Uri("http://example.com/search?&q={query}"),
-                    QueryInput = "required"
+                    Target = new Uri("http://example.com/search?&q={query}"), // Required
+                    QueryInput = "required" // Required
                 },
                 Url = new Uri("https://example.com") // Required
             };

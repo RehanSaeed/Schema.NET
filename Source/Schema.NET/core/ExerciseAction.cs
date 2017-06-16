@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "distance", Order = 2)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance>? Distance { get; set; }
+        public Values<string>? Distance { get; set; }
 
         /// <summary>
         /// A sub property of location. The course where this action was taken.

@@ -1,6 +1,7 @@
 ﻿namespace Schema.NET
 {
     using System;
+    using System.Xml;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -10,6 +11,14 @@
     /// <seealso cref="JsonConverter" />
     public class ValuesConverter : JsonConverter
     {
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="T:Newtonsoft.Json.JsonConverter" /> can read JSON.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this <see cref="T:Newtonsoft.Json.JsonConverter" /> can read JSON; otherwise, <c>false</c>.
+        /// </value>
+        public override bool CanRead => false;
+
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
         /// </summary>
@@ -42,19 +51,28 @@
         /// <param name="serializer">The JSON serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value is IValue values)
+            var values = (IValue)value;
+            var obj = values.Value;
+            if (obj == null)
             {
-                var obj = values.Value;
-                if (obj == null)
-                {
-                    writer.WriteNull();
-                }
-                else
-                {
-                    var token = JToken.FromObject(obj, serializer);
-                    token.WriteTo(writer);
-                }
+                writer.WriteNull();
             }
+            else
+            {
+                this.WriteObject(writer, obj, serializer);
+            }
+        }
+
+        /// <summary>
+        /// Writes the object retrieved from <see cref="IValue"/> when one is found.
+        /// </summary>
+        /// <param name="writer">The JSON writer.</param>
+        /// <param name="value">The value to write.</param>
+        /// <param name="serializer">The JSON serializer.</param>
+        public virtual void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var token = JToken.FromObject(value, serializer);
+            token.WriteTo(writer);
         }
     }
 }
