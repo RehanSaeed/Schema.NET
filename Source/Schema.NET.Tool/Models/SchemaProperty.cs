@@ -58,7 +58,16 @@
             var typeString = $"Values<{adjustedTypes}>?";
 
             stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.Name}\", Order = {order})]");
-            stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(ValuesConverter))]");
+
+            if (distinctTypes.Any(x => string.Equals(x.Name, "Duration", StringComparison.Ordinal)))
+            {
+                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]");
+            }
+            else
+            {
+                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(ValuesConverter))]");
+            }
+
             stringBuilder.AppendIndentLine(indent, $"public{modifier} {typeString} {csharpName} {{ get; set; }}");
         }
 
@@ -117,10 +126,14 @@
                     type.CSharpTypeString = "double?";
                     break;
                 case "Text":
+                case "Distance":
+                case "Energy":
+                case "Mass":
                     type.CSharpType = typeof(string);
                     type.CSharpTypeString = "string";
                     break;
                 case "Time":
+                case "Duration":
                     type.CSharpType = typeof(TimeSpan?);
                     type.CSharpTypeString = "TimeSpan?";
                     break;

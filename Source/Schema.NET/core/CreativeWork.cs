@@ -521,8 +521,8 @@ namespace Schema.NET
         /// Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
         /// </summary>
         [DataMember(Name = "timeRequired", Order = 73)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<Duration>? TimeRequired { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<TimeSpan?>? TimeRequired { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.

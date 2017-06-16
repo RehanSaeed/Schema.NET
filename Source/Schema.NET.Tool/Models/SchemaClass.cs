@@ -35,14 +35,11 @@
 
         public bool IsClass => !this.IsEnum;
 
-        //public bool IsEnum => this.Parent != null &&
-        //    (string.Equals(this.Parent.Name, "Enumeration", StringComparison.Ordinal) ||
-        //    string.Equals(this.Parent.Name, "QualitativeValue", StringComparison.Ordinal));
         public bool IsEnum => EnumerableExtensions
             .Traverse(this, x => x.Parent)
             .Any(x => string.Equals(x.Name, "Enumeration", StringComparison.Ordinal));
 
-        public bool IsPrimitive => new string[] { "QualitativeValue", "Enumeration", "Boolean", "Date", "DateTime", "Number", "Text", "Time" }.Contains(this.Name);
+        public bool IsPrimitive => new string[] { "QualitativeValue", "Enumeration", "Boolean", "Date", "DateTime", "Number", "Text", "Quantity", "Mass", "Energy", "Distance", "Duration", "Time" }.Contains(this.Name);
 
         public bool IsThingClass => string.Equals(this.Name, "Thing", StringComparison.Ordinal);
 
@@ -133,7 +130,6 @@
 
                 stringBuilder.AppendIndentLine(4, "{");
 
-                var modifier = this.IsThingClass ? "virtual" : "override";
                 if (this.IsThingClass)
                 {
                     // Context Property
@@ -141,7 +137,7 @@
                     stringBuilder.AppendIndentLine(8, "/// Gets the context for the object, specifying that it comes from schema.org.");
                     stringBuilder.AppendIndentLine(8, "/// </summary>");
                     stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@context\", Order = 0)]");
-                    stringBuilder.AppendIndentLine(8, $"public string Context => \"http://schema.org\";");
+                    stringBuilder.AppendIndentLine(8, $"public override string Context => \"http://schema.org\";");
                     stringBuilder.AppendLine();
                 }
 
@@ -150,7 +146,7 @@
                 stringBuilder.AppendIndentLine(8, "/// Gets the name of the type as specified by schema.org.");
                 stringBuilder.AppendIndentLine(8, "/// </summary>");
                 stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@type\", Order = 1)]");
-                stringBuilder.AppendIndentLine(8, $"public {modifier} string Type => \"{this.Name}\";");
+                stringBuilder.AppendIndentLine(8, $"public override string Type => \"{this.Name}\";");
 
                 // Properties
                 var props = this.Properties.Where(x => x.IsProperty).OrderBy(x => x.Name).ToList();

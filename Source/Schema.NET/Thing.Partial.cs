@@ -5,7 +5,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public partial class Thing
+    public partial class Thing : JsonLdObject
     {
         private const string ContextPropertyJson = "\"@context\":\"http://schema.org\",";
         private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()

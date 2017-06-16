@@ -34,8 +34,8 @@ namespace Schema.NET
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "duration", Order = 4)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<Duration>? Duration { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<TimeSpan?>? Duration { get; set; }
 
         /// <summary>
         /// Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc.).

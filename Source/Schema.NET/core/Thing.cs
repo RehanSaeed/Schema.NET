@@ -14,13 +14,13 @@ namespace Schema.NET
         /// Gets the context for the object, specifying that it comes from schema.org.
         /// </summary>
         [DataMember(Name = "@context", Order = 0)]
-        public string Context => "http://schema.org";
+        public override string Context => "http://schema.org";
 
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public virtual string Type => "Thing";
+        public override string Type => "Thing";
 
         /// <summary>
         /// An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.

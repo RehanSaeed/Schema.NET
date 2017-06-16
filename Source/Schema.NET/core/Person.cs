@@ -189,7 +189,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "height", Order = 26)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, QuantitativeValue>? Height { get; set; }
+        public Values<string, QuantitativeValue>? Height { get; set; }
 
         /// <summary>
         /// A contact location for a person's residence.

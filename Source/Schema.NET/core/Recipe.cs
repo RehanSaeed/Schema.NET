@@ -27,8 +27,8 @@ namespace Schema.NET
         /// The time it takes to actually cook the dish, in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "cookTime", Order = 3)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<Duration>? CookTime { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<TimeSpan?>? CookTime { get; set; }
 
         /// <summary>
         /// Nutrition information about the recipe or menu item.
@@ -41,8 +41,8 @@ namespace Schema.NET
         /// The length of time it takes to prepare the recipe, in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "prepTime", Order = 5)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<Duration>? PrepTime { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<TimeSpan?>? PrepTime { get; set; }
 
         /// <summary>
         /// The category of the recipe—for example, appetizer, entree, etc.
@@ -90,7 +90,7 @@ namespace Schema.NET
         /// The total time it takes to prepare and cook the recipe, in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "totalTime", Order = 12)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<Duration>? TotalTime { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<TimeSpan?>? TotalTime { get; set; }
     }
 }

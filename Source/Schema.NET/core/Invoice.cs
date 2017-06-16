@@ -27,8 +27,8 @@ namespace Schema.NET
         /// The time interval used to compute the invoice.
         /// </summary>
         [DataMember(Name = "billingPeriod", Order = 3)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<Duration>? BillingPeriod { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public Values<TimeSpan?>? BillingPeriod { get; set; }
 
         /// <summary>
         /// An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.

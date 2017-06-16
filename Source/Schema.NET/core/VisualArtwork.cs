@@ -49,20 +49,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "depth", Order = 6)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, QuantitativeValue>? Depth { get; set; }
+        public Values<string, QuantitativeValue>? Depth { get; set; }
 
         /// <summary>
         /// The height of the item.
         /// </summary>
         [DataMember(Name = "height", Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, QuantitativeValue>? Height { get; set; }
+        public Values<string, QuantitativeValue>? Height { get; set; }
 
         /// <summary>
         /// The width of the item.
         /// </summary>
         [DataMember(Name = "width", Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, QuantitativeValue>? Width { get; set; }
+        public Values<string, QuantitativeValue>? Width { get; set; }
     }
 }

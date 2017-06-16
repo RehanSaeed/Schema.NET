@@ -28,6 +28,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "geoRadius", Order = 3)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Distance, double?, string>? GeoRadius { get; set; }
+        public Values<string, double?>? GeoRadius { get; set; }
     }
 }
