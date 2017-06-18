@@ -1,6 +1,30 @@
-![Schema.NET Banner](https://raw.githubusercontent.com/RehanSaeed/Schema.NET/master/Images/Banner.png)
+﻿![Schema.NET Banner](https://raw.githubusercontent.com/RehanSaeed/Schema.NET/master/Images/Banner.png)
 
 Schema.org objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD and XML, typically used to represent structured data in the `head` section of `html` page.
+
+## Simple Example
+
+```
+var website = new WebSite()
+{
+    AlternateName = "An Alternative Name",
+    Name = "Your Site Name",
+    Url = new Uri("https://example.com")
+};
+var jsonLd = website.ToString();
+```
+
+The code above outputs the following JSON-LD:
+
+```
+{
+    "@context":"http://schema.org",
+    "@type":"WebSite",
+    "alternateName":"An Alternative Name",
+    "name":"Your Site Name",
+    "url":"https://example.com"
+}
+```
 
 ## Continuous Integration
 
