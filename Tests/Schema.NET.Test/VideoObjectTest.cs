@@ -13,27 +13,28 @@
         {
             var videoObject = new VideoObject()
             {
-                Name = "Title",
+                Name = "Title", // Required
                 Description = "Video description",
-                ThumbnailUrl = new Uri("https://www.example.com/thumbnail.jpg"),
+                ThumbnailUrl = new Uri("https://www.example.com/thumbnail.jpg"), // Required
+                Expires = new DateTimeOffset(2016, 2, 5, 8, 0, 0, TimeSpan.Zero), // Recommended
                 UploadDate = new DateTimeOffset(2015, 2, 5, 8, 0, 0, TimeSpan.Zero),
-                Duration = new TimeSpan(0, 1, 33),
+                Duration = new TimeSpan(0, 1, 33), // Recommended
                 Publisher = new Organization()
                 {
-                    Name = "Example Publisher",
-                    Logo = new ImageObject()
+                    Name = "Example Publisher", // Required
+                    Logo = new ImageObject() // Required
                     {
-                        Height = 60,
-                        Url = new Uri("https://example.com/logo.jpg"),
-                        Width = 600
+                        Height = 60, // Required
+                        Url = new Uri("https://example.com/logo.jpg"), // Required
+                        Width = 600 // Required
                     }
                 },
-                ContentUrl = new Uri("https://www.example.com/video123.flv"),
-                EmbedUrl = new Uri("https://www.example.com/videoplayer.swf?video=123"),
+                ContentUrl = new Uri("https://www.example.com/video123.flv"), // Recommended
+                EmbedUrl = new Uri("https://www.example.com/videoplayer.swf?video=123"), // Recommended
                 InteractionStatistic = new InteractionCounter()
                 {
-                    UserInteractionCount = 2347
-                }
+                    UserInteractionCount = 2347 // Recommended
+                },
             };
             var expectedJson =
                 "{" +
@@ -44,6 +45,7 @@
                     "\"duration\":\"PT1M33S\"," +
                     "\"embedUrl\":\"https://www.example.com/videoplayer.swf?video=123\"," +
                     "\"name\":\"Title\"," +
+                    "\"expires\":\"2016-02-05T08:00:00+00:00\"," +
                     "\"uploadDate\":\"2015-02-05T08:00:00+00:00\"," +
                     "\"interactionStatistic\":{" +
                         "\"@type\":\"InteractionCounter\"," +
