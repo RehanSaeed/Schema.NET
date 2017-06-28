@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// A person that acts as performing member of a sports team; a player as opposed to a coach.
         /// </summary>
-        [DataMember(Name = "athlete", Order = 304)]
+        [DataMember(Name = "athlete", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Athlete { get; set; }
 
         /// <summary>
         /// A person that acts in a coaching role for a sports team.
         /// </summary>
-        [DataMember(Name = "coach", Order = 305)]
+        [DataMember(Name = "coach", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Coach { get; set; }
     }

@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// A food or drink item contained in a menu or menu section.
         /// </summary>
-        [DataMember(Name = "hasMenuItem", Order = 204)]
+        [DataMember(Name = "hasMenuItem", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MenuItem>? HasMenuItem { get; set; }
 
         /// <summary>
         /// A subgrouping of the menu (by dishes, course, serving time period, etc.).
         /// </summary>
-        [DataMember(Name = "hasMenuSection", Order = 205)]
+        [DataMember(Name = "hasMenuSection", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MenuSection>? HasMenuSection { get; set; }
     }

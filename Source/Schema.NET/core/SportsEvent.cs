@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The away team in a sports event.
         /// </summary>
-        [DataMember(Name = "awayTeam", Order = 204)]
+        [DataMember(Name = "awayTeam", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<SportsTeam, Person>? AwayTeam { get; set; }
 
         /// <summary>
         /// A competitor in a sports event.
         /// </summary>
-        [DataMember(Name = "competitor", Order = 205)]
+        [DataMember(Name = "competitor", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person, SportsTeam>? Competitor { get; set; }
 
         /// <summary>
         /// The home team in a sports event.
         /// </summary>
-        [DataMember(Name = "homeTeam", Order = 206)]
+        [DataMember(Name = "homeTeam", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person, SportsTeam>? HomeTeam { get; set; }
     }

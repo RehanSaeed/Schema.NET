@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The medium or means of delivery of the course instance or the mode of study, either as a text label (e.g. "online", "onsite" or "blended"; "synchronous" or "asynchronous"; "full-time" or "part-time") or as a URL reference to a term from a controlled vocabulary (e.g. https://ceds.ed.gov/element/001311#Asynchronous ).
         /// </summary>
-        [DataMember(Name = "courseMode", Order = 204)]
+        [DataMember(Name = "courseMode", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Uri, string>? CourseMode { get; set; }
 
         /// <summary>
         /// A person assigned to instruct or provide instructional assistance for the &lt;a class="localLink" href="http://schema.org/CourseInstance"&gt;CourseInstance&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "instructor", Order = 205)]
+        [DataMember(Name = "instructor", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Instructor { get; set; }
     }

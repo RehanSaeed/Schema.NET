@@ -20,7 +20,7 @@ namespace Schema.NET
         /// The number of rooms (excluding bathrooms and closets) of the acccommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
-        [DataMember(Name = "numberOfRooms", Order = 304)]
+        [DataMember(Name = "numberOfRooms", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<int?, QuantitativeValue>? NumberOfRooms { get; set; }
 
@@ -28,7 +28,7 @@ namespace Schema.NET
         /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
         /// Typical unit code(s): C62 for person
         /// </summary>
-        [DataMember(Name = "occupancy", Order = 305)]
+        [DataMember(Name = "occupancy", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? Occupancy { get; set; }
     }

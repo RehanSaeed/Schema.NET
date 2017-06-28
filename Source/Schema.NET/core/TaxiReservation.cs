@@ -20,21 +20,21 @@ namespace Schema.NET
         /// <summary>
         /// Number of people the reservation should accommodate.
         /// </summary>
-        [DataMember(Name = "partySize", Order = 304)]
+        [DataMember(Name = "partySize", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue, int?>? PartySize { get; set; }
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
-        [DataMember(Name = "pickupLocation", Order = 305)]
+        [DataMember(Name = "pickupLocation", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
-        [DataMember(Name = "pickupTime", Order = 306)]
+        [DataMember(Name = "pickupTime", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? PickupTime { get; set; }
     }

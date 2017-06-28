@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The number of screens in the movie theater.
         /// </summary>
-        [DataMember(Name = "screenCount", Order = 404)]
+        [DataMember(Name = "screenCount", Order = 405)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? ScreenCount { get; set; }
     }

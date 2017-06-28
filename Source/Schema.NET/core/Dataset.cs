@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// A downloadable form of this dataset, at a specific location, in a specific format.
         /// </summary>
-        [DataMember(Name = "distribution", Order = 204)]
+        [DataMember(Name = "distribution", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DataDownload>? Distribution { get; set; }
 
         /// <summary>
         /// A data catalog which contains this dataset.
         /// </summary>
-        [DataMember(Name = "includedInDataCatalog", Order = 205)]
+        [DataMember(Name = "includedInDataCatalog", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DataCatalog>? IncludedInDataCatalog { get; set; }
     }

@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The delivery method(s) to which the delivery charge or payment charge specification applies.
         /// </summary>
-        [DataMember(Name = "appliesToDeliveryMethod", Order = 404)]
+        [DataMember(Name = "appliesToDeliveryMethod", Order = 405)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
         /// </summary>
-        [DataMember(Name = "areaServed", Order = 405)]
+        [DataMember(Name = "areaServed", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<AdministrativeArea, GeoShape, Place, string>? AreaServed { get; set; }
 
@@ -34,7 +34,7 @@ namespace Schema.NET
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;/p&gt;
         /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "eligibleRegion", Order = 406)]
+        [DataMember(Name = "eligibleRegion", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<GeoShape, Place, string>? EligibleRegion { get; set; }
 
@@ -42,7 +42,7 @@ namespace Schema.NET
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;/p&gt;
         /// &lt;p&gt;See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "ineligibleRegion", Order = 407)]
+        [DataMember(Name = "ineligibleRegion", Order = 408)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, GeoShape, Place>? IneligibleRegion { get; set; }
     }

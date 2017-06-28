@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this periodical. You can repeat this property to (for example) identify different formats of this periodical.
         /// </summary>
-        [DataMember(Name = "issn", Order = 304)]
+        [DataMember(Name = "issn", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Issn { get; set; }
     }

@@ -19,35 +19,35 @@ namespace Schema.NET
         /// <summary>
         /// The unique address by which the BroadcastService can be identified in a provider lineup. In US, this is typically a number.
         /// </summary>
-        [DataMember(Name = "broadcastChannelId", Order = 204)]
+        [DataMember(Name = "broadcastChannelId", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? BroadcastChannelId { get; set; }
 
         /// <summary>
         /// The type of service required to have access to the channel (e.g. Standard or Premium).
         /// </summary>
-        [DataMember(Name = "broadcastServiceTier", Order = 205)]
+        [DataMember(Name = "broadcastServiceTier", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? BroadcastServiceTier { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
         /// </summary>
-        [DataMember(Name = "genre", Order = 206)]
+        [DataMember(Name = "genre", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? Genre { get; set; }
 
         /// <summary>
         /// The CableOrSatelliteService offering the channel.
         /// </summary>
-        [DataMember(Name = "inBroadcastLineup", Order = 207)]
+        [DataMember(Name = "inBroadcastLineup", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CableOrSatelliteService>? InBroadcastLineup { get; set; }
 
         /// <summary>
         /// The BroadcastService offered on this channel.
         /// </summary>
-        [DataMember(Name = "providesBroadcastService", Order = 208)]
+        [DataMember(Name = "providesBroadcastService", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<BroadcastService>? ProvidesBroadcastService { get; set; }
     }

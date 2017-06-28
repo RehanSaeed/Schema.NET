@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The owner of the real estate property.
         /// </summary>
-        [DataMember(Name = "landlord", Order = 304)]
+        [DataMember(Name = "landlord", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person, Organization>? Landlord { get; set; }
 
         /// <summary>
         /// A sub property of participant. The real estate agent involved in the action.
         /// </summary>
-        [DataMember(Name = "realEstateAgent", Order = 305)]
+        [DataMember(Name = "realEstateAgent", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<RealEstateAgent>? RealEstateAgent { get; set; }
     }

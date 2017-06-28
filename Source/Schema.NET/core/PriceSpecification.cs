@@ -19,28 +19,28 @@ namespace Schema.NET
         /// <summary>
         /// The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
         /// </summary>
-        [DataMember(Name = "eligibleQuantity", Order = 304)]
+        [DataMember(Name = "eligibleQuantity", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? EligibleQuantity { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
         /// </summary>
-        [DataMember(Name = "eligibleTransactionVolume", Order = 305)]
+        [DataMember(Name = "eligibleTransactionVolume", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<PriceSpecification>? EligibleTransactionVolume { get; set; }
 
         /// <summary>
         /// The highest price if the price is a range.
         /// </summary>
-        [DataMember(Name = "maxPrice", Order = 306)]
+        [DataMember(Name = "maxPrice", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<decimal?>? MaxPrice { get; set; }
 
         /// <summary>
         /// The lowest price if the price is a range.
         /// </summary>
-        [DataMember(Name = "minPrice", Order = 307)]
+        [DataMember(Name = "minPrice", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<decimal?>? MinPrice { get; set; }
 
@@ -55,35 +55,35 @@ namespace Schema.NET
         /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "price", Order = 308)]
+        [DataMember(Name = "price", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, decimal?>? Price { get; set; }
 
         /// <summary>
         /// The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.
         /// </summary>
-        [DataMember(Name = "priceCurrency", Order = 309)]
+        [DataMember(Name = "priceCurrency", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PriceCurrency { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        [DataMember(Name = "validFrom", Order = 310)]
+        [DataMember(Name = "validFrom", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        [DataMember(Name = "validThrough", Order = 311)]
+        [DataMember(Name = "validThrough", Order = 312)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ValidThrough { get; set; }
 
         /// <summary>
         /// Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
         /// </summary>
-        [DataMember(Name = "valueAddedTaxIncluded", Order = 312)]
+        [DataMember(Name = "valueAddedTaxIncluded", Order = 313)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<bool?>? ValueAddedTaxIncluded { get; set; }
     }

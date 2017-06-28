@@ -19,28 +19,28 @@ namespace Schema.NET
         /// <summary>
         /// The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
         /// </summary>
-        [DataMember(Name = "author", Order = 204)]
+        [DataMember(Name = "author", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Author { get; set; }
 
         /// <summary>
         /// The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
         /// </summary>
-        [DataMember(Name = "bestRating", Order = 205)]
+        [DataMember(Name = "bestRating", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?, string>? BestRating { get; set; }
 
         /// <summary>
         /// The rating for the content.
         /// </summary>
-        [DataMember(Name = "ratingValue", Order = 206)]
+        [DataMember(Name = "ratingValue", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, double?>? RatingValue { get; set; }
 
         /// <summary>
         /// The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
         /// </summary>
-        [DataMember(Name = "worstRating", Order = 207)]
+        [DataMember(Name = "worstRating", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?, string>? WorstRating { get; set; }
     }

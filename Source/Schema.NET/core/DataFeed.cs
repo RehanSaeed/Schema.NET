@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// An item within in a data feed. Data feeds may have many elements.
         /// </summary>
-        [DataMember(Name = "dataFeedElement", Order = 304)]
+        [DataMember(Name = "dataFeedElement", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DataFeedItem, Thing, string>? DataFeedElement { get; set; }
     }

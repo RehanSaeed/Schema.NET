@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
-        [DataMember(Name = "audience", Order = 204)]
+        [DataMember(Name = "audience", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Audience>? Audience { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        [DataMember(Name = "event", Order = 205)]
+        [DataMember(Name = "event", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Event>? Event { get; set; }
     }

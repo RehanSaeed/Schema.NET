@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The exchange traded instrument associated with a Corporation object. The tickerSymbol is expressed as an exchange and an instrument name separated by a space character. For the exchange component of the tickerSymbol attribute, we reccommend using the controlled vocaulary of Market Identifier Codes (MIC) specified in ISO15022.
         /// </summary>
-        [DataMember(Name = "tickerSymbol", Order = 204)]
+        [DataMember(Name = "tickerSymbol", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TickerSymbol { get; set; }
     }

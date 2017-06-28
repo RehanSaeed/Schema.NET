@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// Specifies specific carrier(s) requirements for the application (e.g. an application may only work on a specific carrier network).
         /// </summary>
-        [DataMember(Name = "carrierRequirements", Order = 304)]
+        [DataMember(Name = "carrierRequirements", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? CarrierRequirements { get; set; }
     }

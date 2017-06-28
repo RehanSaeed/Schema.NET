@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
-        [DataMember(Name = "toLocation", Order = 404)]
+        [DataMember(Name = "toLocation", Order = 405)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? ToLocation { get; set; }
     }

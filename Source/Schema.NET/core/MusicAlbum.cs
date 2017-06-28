@@ -19,28 +19,28 @@ namespace Schema.NET
         /// <summary>
         /// Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
         /// </summary>
-        [DataMember(Name = "albumProductionType", Order = 304)]
+        [DataMember(Name = "albumProductionType", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MusicAlbumProductionType?>? AlbumProductionType { get; set; }
 
         /// <summary>
         /// A release of this album.
         /// </summary>
-        [DataMember(Name = "albumRelease", Order = 305)]
+        [DataMember(Name = "albumRelease", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MusicRelease>? AlbumRelease { get; set; }
 
         /// <summary>
         /// The kind of release which this album is: single, EP or album.
         /// </summary>
-        [DataMember(Name = "albumReleaseType", Order = 306)]
+        [DataMember(Name = "albumReleaseType", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MusicAlbumReleaseType?>? AlbumReleaseType { get; set; }
 
         /// <summary>
         /// The artist that performed this album or recording.
         /// </summary>
-        [DataMember(Name = "byArtist", Order = 307)]
+        [DataMember(Name = "byArtist", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MusicGroup>? ByArtist { get; set; }
     }

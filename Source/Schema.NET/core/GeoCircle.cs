@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// Indicates the GeoCoordinates at the centre of a GeoShape e.g. GeoCircle.
         /// </summary>
-        [DataMember(Name = "geoMidpoint", Order = 404)]
+        [DataMember(Name = "geoMidpoint", Order = 405)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<GeoCoordinates>? GeoMidpoint { get; set; }
 
         /// <summary>
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).
         /// </summary>
-        [DataMember(Name = "geoRadius", Order = 405)]
+        [DataMember(Name = "geoRadius", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, double?>? GeoRadius { get; set; }
     }

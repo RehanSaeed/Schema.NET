@@ -20,28 +20,28 @@ namespace Schema.NET
         /// <summary>
         /// The airline-specific indicator of boarding order / preference.
         /// </summary>
-        [DataMember(Name = "boardingGroup", Order = 304)]
+        [DataMember(Name = "boardingGroup", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? BoardingGroup { get; set; }
 
         /// <summary>
         /// The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
         /// </summary>
-        [DataMember(Name = "passengerPriorityStatus", Order = 305)]
+        [DataMember(Name = "passengerPriorityStatus", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PassengerPriorityStatus { get; set; }
 
         /// <summary>
         /// The passenger's sequence number as assigned by the airline.
         /// </summary>
-        [DataMember(Name = "passengerSequenceNumber", Order = 306)]
+        [DataMember(Name = "passengerSequenceNumber", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PassengerSequenceNumber { get; set; }
 
         /// <summary>
         /// The type of security screening the passenger is subject to.
         /// </summary>
-        [DataMember(Name = "securityScreening", Order = 307)]
+        [DataMember(Name = "securityScreening", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? SecurityScreening { get; set; }
     }

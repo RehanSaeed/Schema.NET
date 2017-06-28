@@ -20,28 +20,28 @@ namespace Schema.NET
         /// <summary>
         /// Where a rental car can be dropped off.
         /// </summary>
-        [DataMember(Name = "dropoffLocation", Order = 304)]
+        [DataMember(Name = "dropoffLocation", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? DropoffLocation { get; set; }
 
         /// <summary>
         /// When a rental car can be dropped off.
         /// </summary>
-        [DataMember(Name = "dropoffTime", Order = 305)]
+        [DataMember(Name = "dropoffTime", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? DropoffTime { get; set; }
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
-        [DataMember(Name = "pickupLocation", Order = 306)]
+        [DataMember(Name = "pickupLocation", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
-        [DataMember(Name = "pickupTime", Order = 307)]
+        [DataMember(Name = "pickupTime", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? PickupTime { get; set; }
     }

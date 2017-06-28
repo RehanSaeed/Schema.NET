@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A short summary of the specific claims reviewed in a ClaimReview.
         /// </summary>
-        [DataMember(Name = "claimReviewed", Order = 304)]
+        [DataMember(Name = "claimReviewed", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ClaimReviewed { get; set; }
     }

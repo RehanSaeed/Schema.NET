@@ -27,14 +27,14 @@ namespace Schema.NET
         /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "price", Order = 204)]
+        [DataMember(Name = "price", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, decimal?>? Price { get; set; }
 
         /// <summary>
         /// One or more detailed price specifications, indicating the unit price and delivery or payment charges.
         /// </summary>
-        [DataMember(Name = "priceSpecification", Order = 205)]
+        [DataMember(Name = "priceSpecification", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<PriceSpecification>? PriceSpecification { get; set; }
     }

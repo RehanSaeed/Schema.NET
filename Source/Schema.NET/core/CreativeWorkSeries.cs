@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "startDate", Order = 204)]
+        [DataMember(Name = "startDate", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "endDate", Order = 205)]
+        [DataMember(Name = "endDate", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? EndDate { get; set; }
     }

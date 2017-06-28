@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of result. The review that resulted in the performing of the action.
         /// </summary>
-        [DataMember(Name = "resultReview", Order = 304)]
+        [DataMember(Name = "resultReview", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Review>? ResultReview { get; set; }
     }

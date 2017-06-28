@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// An educationalRole of an EducationalAudience.
         /// </summary>
-        [DataMember(Name = "educationalRole", Order = 304)]
+        [DataMember(Name = "educationalRole", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? EducationalRole { get; set; }
     }

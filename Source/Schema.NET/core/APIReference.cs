@@ -19,28 +19,28 @@ namespace Schema.NET
         /// <summary>
         /// Associated product/technology version. e.g., .NET Framework 4.5.
         /// </summary>
-        [DataMember(Name = "assemblyVersion", Order = 404)]
+        [DataMember(Name = "assemblyVersion", Order = 405)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? AssemblyVersion { get; set; }
 
         /// <summary>
         /// Library file name e.g., mscorlib.dll, system.web.dll.
         /// </summary>
-        [DataMember(Name = "executableLibraryName", Order = 405)]
+        [DataMember(Name = "executableLibraryName", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ExecutableLibraryName { get; set; }
 
         /// <summary>
         /// Indicates whether API is managed or unmanaged.
         /// </summary>
-        [DataMember(Name = "programmingModel", Order = 406)]
+        [DataMember(Name = "programmingModel", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ProgrammingModel { get; set; }
 
         /// <summary>
         /// Type of app development: phone, Metro style, desktop, XBox, etc.
         /// </summary>
-        [DataMember(Name = "targetPlatform", Order = 407)]
+        [DataMember(Name = "targetPlatform", Order = 408)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TargetPlatform { get; set; }
     }

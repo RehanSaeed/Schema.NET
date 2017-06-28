@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The amount of money.
         /// </summary>
-        [DataMember(Name = "amount", Order = 404)]
+        [DataMember(Name = "amount", Order = 405)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MonetaryAmount, decimal?>? Amount { get; set; }
     }

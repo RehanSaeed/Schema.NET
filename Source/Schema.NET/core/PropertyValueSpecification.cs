@@ -19,77 +19,77 @@ namespace Schema.NET
         /// <summary>
         /// The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.
         /// </summary>
-        [DataMember(Name = "defaultValue", Order = 204)]
+        [DataMember(Name = "defaultValue", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Thing, string>? DefaultValue { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
         /// </summary>
-        [DataMember(Name = "maxValue", Order = 205)]
+        [DataMember(Name = "maxValue", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? MaxValue { get; set; }
 
         /// <summary>
         /// The lower value of some characteristic or property.
         /// </summary>
-        [DataMember(Name = "minValue", Order = 206)]
+        [DataMember(Name = "minValue", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? MinValue { get; set; }
 
         /// <summary>
         /// Whether multiple values are allowed for the property.  Default is false.
         /// </summary>
-        [DataMember(Name = "multipleValues", Order = 207)]
+        [DataMember(Name = "multipleValues", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<bool?>? MultipleValues { get; set; }
 
         /// <summary>
         /// Whether or not a property is mutable.  Default is false. Specifying this for a property that also has a value makes it act similar to a "hidden" input in an HTML form.
         /// </summary>
-        [DataMember(Name = "readonlyValue", Order = 208)]
+        [DataMember(Name = "readonlyValue", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<bool?>? ReadonlyValue { get; set; }
 
         /// <summary>
         /// The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
         /// </summary>
-        [DataMember(Name = "stepValue", Order = 209)]
+        [DataMember(Name = "stepValue", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? StepValue { get; set; }
 
         /// <summary>
         /// Specifies the allowed range for number of characters in a literal value.
         /// </summary>
-        [DataMember(Name = "valueMaxLength", Order = 210)]
+        [DataMember(Name = "valueMaxLength", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? ValueMaxLength { get; set; }
 
         /// <summary>
         /// Specifies the minimum allowed range for number of characters in a literal value.
         /// </summary>
-        [DataMember(Name = "valueMinLength", Order = 211)]
+        [DataMember(Name = "valueMinLength", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? ValueMinLength { get; set; }
 
         /// <summary>
         /// Indicates the name of the PropertyValueSpecification to be used in URL templates and form encoding in a manner analogous to HTML's input@name.
         /// </summary>
-        [DataMember(Name = "valueName", Order = 212)]
+        [DataMember(Name = "valueName", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ValueName { get; set; }
 
         /// <summary>
         /// Specifies a regular expression for testing literal values according to the HTML spec.
         /// </summary>
-        [DataMember(Name = "valuePattern", Order = 213)]
+        [DataMember(Name = "valuePattern", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ValuePattern { get; set; }
 
         /// <summary>
         /// Whether the property must be filled in to complete the action.  Default is false.
         /// </summary>
-        [DataMember(Name = "valueRequired", Order = 214)]
+        [DataMember(Name = "valueRequired", Order = 215)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<bool?>? ValueRequired { get; set; }
     }

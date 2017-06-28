@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// If responding yes, the number of guests who will attend in addition to the invitee.
         /// </summary>
-        [DataMember(Name = "additionalNumberOfGuests", Order = 504)]
+        [DataMember(Name = "additionalNumberOfGuests", Order = 505)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? AdditionalNumberOfGuests { get; set; }
 
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
-        [DataMember(Name = "comment", Order = 505)]
+        [DataMember(Name = "comment", Order = 506)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Comment>? Comment { get; set; }
 
         /// <summary>
         /// The response (yes, no, maybe) to the RSVP.
         /// </summary>
-        [DataMember(Name = "rsvpResponse", Order = 506)]
+        [DataMember(Name = "rsvpResponse", Order = 507)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<RsvpResponseType?>? RsvpResponse { get; set; }
     }

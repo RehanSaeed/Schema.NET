@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The number of downvotes this question, answer or comment has received from the community.
         /// </summary>
-        [DataMember(Name = "downvoteCount", Order = 204)]
+        [DataMember(Name = "downvoteCount", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? DownvoteCount { get; set; }
 
         /// <summary>
         /// The parent of a question, answer or item in general.
         /// </summary>
-        [DataMember(Name = "parentItem", Order = 205)]
+        [DataMember(Name = "parentItem", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Question>? ParentItem { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.
         /// </summary>
-        [DataMember(Name = "upvoteCount", Order = 206)]
+        [DataMember(Name = "upvoteCount", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? UpvoteCount { get; set; }
     }

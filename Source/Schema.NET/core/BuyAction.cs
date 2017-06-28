@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
         /// </summary>
-        [DataMember(Name = "seller", Order = 304)]
+        [DataMember(Name = "seller", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Seller { get; set; }
     }

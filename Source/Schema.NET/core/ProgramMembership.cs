@@ -19,28 +19,28 @@ namespace Schema.NET
         /// <summary>
         /// The organization (airline, travelers' club, etc.) the membership is made with.
         /// </summary>
-        [DataMember(Name = "hostingOrganization", Order = 204)]
+        [DataMember(Name = "hostingOrganization", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization>? HostingOrganization { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
         /// </summary>
-        [DataMember(Name = "member", Order = 205)]
+        [DataMember(Name = "member", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person, Organization>? Member { get; set; }
 
         /// <summary>
         /// A unique identifier for the membership.
         /// </summary>
-        [DataMember(Name = "membershipNumber", Order = 206)]
+        [DataMember(Name = "membershipNumber", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? MembershipNumber { get; set; }
 
         /// <summary>
         /// The program providing the membership.
         /// </summary>
-        [DataMember(Name = "programName", Order = 207)]
+        [DataMember(Name = "programName", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ProgramName { get; set; }
     }

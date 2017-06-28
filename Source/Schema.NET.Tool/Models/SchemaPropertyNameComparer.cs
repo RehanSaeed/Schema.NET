@@ -8,8 +8,9 @@
         {
             { "context", 0 },
             { "type", 1 },
-            { "name", 2 },
-            { "description", 3 }
+            { "title", 2 },
+            { "name", 3 },
+            { "description", 4 }
         };
 
         public int Compare(string x, string y)

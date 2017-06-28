@@ -19,42 +19,42 @@ namespace Schema.NET
         /// <summary>
         /// An application that can complete the request.
         /// </summary>
-        [DataMember(Name = "actionApplication", Order = 204)]
+        [DataMember(Name = "actionApplication", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<SoftwareApplication>? ActionApplication { get; set; }
 
         /// <summary>
         /// The high level platform(s) where the Action can be performed for the given URL. To specify a specific application or operating system instance, use actionApplication.
         /// </summary>
-        [DataMember(Name = "actionPlatform", Order = 205)]
+        [DataMember(Name = "actionPlatform", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Uri, string>? ActionPlatform { get; set; }
 
         /// <summary>
         /// The supported content type(s) for an EntryPoint response.
         /// </summary>
-        [DataMember(Name = "contentType", Order = 206)]
+        [DataMember(Name = "contentType", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ContentType { get; set; }
 
         /// <summary>
         /// The supported encoding type(s) for an EntryPoint request.
         /// </summary>
-        [DataMember(Name = "encodingType", Order = 207)]
+        [DataMember(Name = "encodingType", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? EncodingType { get; set; }
 
         /// <summary>
         /// An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP.
         /// </summary>
-        [DataMember(Name = "httpMethod", Order = 208)]
+        [DataMember(Name = "httpMethod", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? HttpMethod { get; set; }
 
         /// <summary>
         /// An url template (RFC6570) that will be used to construct the target of the execution of the action.
         /// </summary>
-        [DataMember(Name = "urlTemplate", Order = 209)]
+        [DataMember(Name = "urlTemplate", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? UrlTemplate { get; set; }
     }

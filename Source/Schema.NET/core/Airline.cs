@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The type of boarding policy used by the airline (e.g. zone-based or group-based).
         /// </summary>
-        [DataMember(Name = "boardingPolicy", Order = 204)]
+        [DataMember(Name = "boardingPolicy", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<BoardingPolicyType?>? BoardingPolicy { get; set; }
 
         /// <summary>
         /// IATA identifier for an airline or airport.
         /// </summary>
-        [DataMember(Name = "iataCode", Order = 205)]
+        [DataMember(Name = "iataCode", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? IataCode { get; set; }
     }

@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The participant/person/organization that bought the object.
         /// </summary>
-        [DataMember(Name = "buyer", Order = 304)]
+        [DataMember(Name = "buyer", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Buyer { get; set; }
     }
