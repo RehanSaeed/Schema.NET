@@ -19,35 +19,35 @@ namespace Schema.NET
         /// <summary>
         /// A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationalLevel'.
         /// </summary>
-        [DataMember(Name = "alignmentType", Order = 2)]
+        [DataMember(Name = "alignmentType", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? AlignmentType { get; set; }
 
         /// <summary>
         /// The framework to which the resource being described is aligned.
         /// </summary>
-        [DataMember(Name = "educationalFramework", Order = 3)]
+        [DataMember(Name = "educationalFramework", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? EducationalFramework { get; set; }
 
         /// <summary>
         /// The description of a node in an established educational framework.
         /// </summary>
-        [DataMember(Name = "targetDescription", Order = 4)]
+        [DataMember(Name = "targetDescription", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TargetDescription { get; set; }
 
         /// <summary>
         /// The name of a node in an established educational framework.
         /// </summary>
-        [DataMember(Name = "targetName", Order = 5)]
+        [DataMember(Name = "targetName", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TargetName { get; set; }
 
         /// <summary>
         /// The URL of a node in an established educational framework.
         /// </summary>
-        [DataMember(Name = "targetUrl", Order = 6)]
+        [DataMember(Name = "targetUrl", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Uri>? TargetUrl { get; set; }
     }

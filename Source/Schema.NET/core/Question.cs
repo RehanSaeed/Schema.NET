@@ -19,35 +19,35 @@ namespace Schema.NET
         /// <summary>
         /// The answer that has been accepted as best, typically on a Question/Answer site. Sites vary in their selection mechanisms, e.g. drawing on community opinion and/or the view of the Question author.
         /// </summary>
-        [DataMember(Name = "acceptedAnswer", Order = 2)]
+        [DataMember(Name = "acceptedAnswer", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Answer>? AcceptedAnswer { get; set; }
 
         /// <summary>
         /// The number of answers this question has received.
         /// </summary>
-        [DataMember(Name = "answerCount", Order = 3)]
+        [DataMember(Name = "answerCount", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? AnswerCount { get; set; }
 
         /// <summary>
         /// The number of downvotes this question, answer or comment has received from the community.
         /// </summary>
-        [DataMember(Name = "downvoteCount", Order = 4)]
+        [DataMember(Name = "downvoteCount", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? DownvoteCount { get; set; }
 
         /// <summary>
         /// An answer (possibly one of several, possibly incorrect) to a Question, e.g. on a Question/Answer site.
         /// </summary>
-        [DataMember(Name = "suggestedAnswer", Order = 5)]
+        [DataMember(Name = "suggestedAnswer", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Answer>? SuggestedAnswer { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.
         /// </summary>
-        [DataMember(Name = "upvoteCount", Order = 6)]
+        [DataMember(Name = "upvoteCount", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? UpvoteCount { get; set; }
     }

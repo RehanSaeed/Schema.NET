@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The number of tracks in this album or playlist.
         /// </summary>
-        [DataMember(Name = "numTracks", Order = 2)]
+        [DataMember(Name = "numTracks", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? NumTracks { get; set; }
 
         /// <summary>
         /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
         /// </summary>
-        [DataMember(Name = "track", Order = 3)]
+        [DataMember(Name = "track", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MusicRecording, ItemList>? Track { get; set; }
     }

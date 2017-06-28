@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
         /// </summary>
-        [DataMember(Name = "fuelType", Order = 2)]
+        [DataMember(Name = "fuelType", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Uri, string>? FuelType { get; set; }
     }

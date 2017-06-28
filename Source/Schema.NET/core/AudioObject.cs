@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
         /// </summary>
-        [DataMember(Name = "transcript", Order = 2)]
+        [DataMember(Name = "transcript", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Transcript { get; set; }
     }

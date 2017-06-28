@@ -19,35 +19,35 @@ namespace Schema.NET
         /// <summary>
         /// The delivery of the parcel related to this order or order item.
         /// </summary>
-        [DataMember(Name = "orderDelivery", Order = 2)]
+        [DataMember(Name = "orderDelivery", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<ParcelDelivery>? OrderDelivery { get; set; }
 
         /// <summary>
         /// The item ordered.
         /// </summary>
-        [DataMember(Name = "orderedItem", Order = 3)]
+        [DataMember(Name = "orderedItem", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<OrderItem, Product>? OrderedItem { get; set; }
 
         /// <summary>
         /// The identifier of the order item.
         /// </summary>
-        [DataMember(Name = "orderItemNumber", Order = 4)]
+        [DataMember(Name = "orderItemNumber", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? OrderItemNumber { get; set; }
 
         /// <summary>
         /// The current status of the order item.
         /// </summary>
-        [DataMember(Name = "orderItemStatus", Order = 5)]
+        [DataMember(Name = "orderItemStatus", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<OrderStatus?>? OrderItemStatus { get; set; }
 
         /// <summary>
         /// The number of the item ordered. If the property is not set, assume the quantity is one.
         /// </summary>
-        [DataMember(Name = "orderQuantity", Order = 6)]
+        [DataMember(Name = "orderQuantity", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? OrderQuantity { get; set; }
     }

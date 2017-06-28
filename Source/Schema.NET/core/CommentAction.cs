@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of result. The Comment created or sent as a result of this action.
         /// </summary>
-        [DataMember(Name = "resultComment", Order = 2)]
+        [DataMember(Name = "resultComment", Order = 404)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Comment>? ResultComment { get; set; }
     }

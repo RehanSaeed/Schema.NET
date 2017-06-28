@@ -20,7 +20,7 @@ namespace Schema.NET
         /// The type of bed or beds included in the accommodation. For the single case of just one bed of a certain type, you use bed directly with a text.
         ///       If you want to indicate the quantity of a certain kind of bed, use an instance of BedDetails. For more detailed information, use the amenityFeature property.
         /// </summary>
-        [DataMember(Name = "bed", Order = 2)]
+        [DataMember(Name = "bed", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<BedDetails, string>? Bed { get; set; }
 
@@ -28,7 +28,7 @@ namespace Schema.NET
         /// The number of rooms (excluding bathrooms and closets) of the acccommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
-        [DataMember(Name = "numberOfRooms", Order = 3)]
+        [DataMember(Name = "numberOfRooms", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<int?, QuantitativeValue>? NumberOfRooms { get; set; }
 
@@ -36,7 +36,7 @@ namespace Schema.NET
         /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
         /// Typical unit code(s): C62 for person
         /// </summary>
-        [DataMember(Name = "occupancy", Order = 4)]
+        [DataMember(Name = "occupancy", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? Occupancy { get; set; }
     }

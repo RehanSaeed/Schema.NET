@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The individual reservations included in the package. Typically a repeated property.
         /// </summary>
-        [DataMember(Name = "subReservation", Order = 2)]
+        [DataMember(Name = "subReservation", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Reservation>? SubReservation { get; set; }
     }

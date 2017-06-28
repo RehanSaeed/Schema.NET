@@ -19,35 +19,35 @@ namespace Schema.NET
         /// <summary>
         /// Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex).
         /// </summary>
-        [DataMember(Name = "codeRepository", Order = 2)]
+        [DataMember(Name = "codeRepository", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Uri>? CodeRepository { get; set; }
 
         /// <summary>
         /// What type of code sample: full (compile ready) solution, code snippet, inline code, scripts, template.
         /// </summary>
-        [DataMember(Name = "codeSampleType", Order = 3)]
+        [DataMember(Name = "codeSampleType", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? CodeSampleType { get; set; }
 
         /// <summary>
         /// The computer programming language.
         /// </summary>
-        [DataMember(Name = "programmingLanguage", Order = 4)]
+        [DataMember(Name = "programmingLanguage", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<ComputerLanguage, string>? ProgrammingLanguage { get; set; }
 
         /// <summary>
         /// Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3, .Net Framework 3.0).
         /// </summary>
-        [DataMember(Name = "runtimePlatform", Order = 5)]
+        [DataMember(Name = "runtimePlatform", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? RuntimePlatform { get; set; }
 
         /// <summary>
         /// Target Operating System / Product to which the code applies.  If applies to several versions, just the product name can be used.
         /// </summary>
-        [DataMember(Name = "targetProduct", Order = 6)]
+        [DataMember(Name = "targetProduct", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<SoftwareApplication>? TargetProduct { get; set; }
     }

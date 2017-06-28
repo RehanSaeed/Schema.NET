@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The hours during which this service or contact is available.
         /// </summary>
-        [DataMember(Name = "hoursAvailable", Order = 2)]
+        [DataMember(Name = "hoursAvailable", Order = 404)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<OpeningHoursSpecification>? HoursAvailable { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        [DataMember(Name = "validFrom", Order = 3)]
+        [DataMember(Name = "validFrom", Order = 405)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        [DataMember(Name = "validThrough", Order = 4)]
+        [DataMember(Name = "validThrough", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ValidThrough { get; set; }
     }

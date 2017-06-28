@@ -19,35 +19,35 @@ namespace Schema.NET
         /// <summary>
         /// The currency in which the monetary amount is expressed (in 3-letter &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; format).
         /// </summary>
-        [DataMember(Name = "currency", Order = 2)]
+        [DataMember(Name = "currency", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Currency { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
         /// </summary>
-        [DataMember(Name = "maxValue", Order = 3)]
+        [DataMember(Name = "maxValue", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? MaxValue { get; set; }
 
         /// <summary>
         /// The lower value of some characteristic or property.
         /// </summary>
-        [DataMember(Name = "minValue", Order = 4)]
+        [DataMember(Name = "minValue", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? MinValue { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        [DataMember(Name = "validFrom", Order = 5)]
+        [DataMember(Name = "validFrom", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        [DataMember(Name = "validThrough", Order = 6)]
+        [DataMember(Name = "validThrough", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ValidThrough { get; set; }
 
@@ -58,7 +58,7 @@ namespace Schema.NET
         /// &lt;li&gt;For &lt;a class="localLink" href="http://schema.org/PropertyValue"&gt;PropertyValue&lt;/a&gt;, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "value", Order = 7)]
+        [DataMember(Name = "value", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<StructuredValue, bool?, string, double?>? Value { get; set; }
     }

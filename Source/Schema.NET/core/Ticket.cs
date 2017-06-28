@@ -19,56 +19,56 @@ namespace Schema.NET
         /// <summary>
         /// The date the ticket was issued.
         /// </summary>
-        [DataMember(Name = "dateIssued", Order = 2)]
+        [DataMember(Name = "dateIssued", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? DateIssued { get; set; }
 
         /// <summary>
         /// The organization issuing the ticket or permit.
         /// </summary>
-        [DataMember(Name = "issuedBy", Order = 3)]
+        [DataMember(Name = "issuedBy", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization>? IssuedBy { get; set; }
 
         /// <summary>
         /// The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.
         /// </summary>
-        [DataMember(Name = "priceCurrency", Order = 4)]
+        [DataMember(Name = "priceCurrency", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PriceCurrency { get; set; }
 
         /// <summary>
         /// The seat associated with the ticket.
         /// </summary>
-        [DataMember(Name = "ticketedSeat", Order = 5)]
+        [DataMember(Name = "ticketedSeat", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Seat>? TicketedSeat { get; set; }
 
         /// <summary>
         /// The unique identifier for the ticket.
         /// </summary>
-        [DataMember(Name = "ticketNumber", Order = 6)]
+        [DataMember(Name = "ticketNumber", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TicketNumber { get; set; }
 
         /// <summary>
         /// Reference to an asset (e.g., Barcode, QR code image or PDF) usable for entrance.
         /// </summary>
-        [DataMember(Name = "ticketToken", Order = 7)]
+        [DataMember(Name = "ticketToken", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? TicketToken { get; set; }
 
         /// <summary>
         /// The total price for the reservation or ticket, including applicable taxes, shipping, etc.
         /// </summary>
-        [DataMember(Name = "totalPrice", Order = 8)]
+        [DataMember(Name = "totalPrice", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<decimal?, PriceSpecification, string>? TotalPrice { get; set; }
 
         /// <summary>
         /// The person or organization the reservation or ticket is for.
         /// </summary>
-        [DataMember(Name = "underName", Order = 9)]
+        [DataMember(Name = "underName", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person, Organization>? UnderName { get; set; }
     }

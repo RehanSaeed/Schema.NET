@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The event being broadcast such as a sporting event or awards ceremony.
         /// </summary>
-        [DataMember(Name = "broadcastOfEvent", Order = 2)]
+        [DataMember(Name = "broadcastOfEvent", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Event>? BroadcastOfEvent { get; set; }
 
         /// <summary>
         /// True is the broadcast is of a live event.
         /// </summary>
-        [DataMember(Name = "isLiveBroadcast", Order = 3)]
+        [DataMember(Name = "isLiveBroadcast", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<bool?>? IsLiveBroadcast { get; set; }
 
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).
         /// </summary>
-        [DataMember(Name = "videoFormat", Order = 4)]
+        [DataMember(Name = "videoFormat", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? VideoFormat { get; set; }
     }

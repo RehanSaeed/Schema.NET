@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A dataset contained in this catalog.
         /// </summary>
-        [DataMember(Name = "dataset", Order = 2)]
+        [DataMember(Name = "dataset", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Dataset>? Dataset { get; set; }
     }

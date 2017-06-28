@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// Prerequisites needed to fulfill steps in article.
         /// </summary>
-        [DataMember(Name = "dependencies", Order = 2)]
+        [DataMember(Name = "dependencies", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Dependencies { get; set; }
 
         /// <summary>
         /// Proficiency needed for this content; expected values: 'Beginner', 'Expert'.
         /// </summary>
-        [DataMember(Name = "proficiencyLevel", Order = 3)]
+        [DataMember(Name = "proficiencyLevel", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ProficiencyLevel { get; set; }
     }

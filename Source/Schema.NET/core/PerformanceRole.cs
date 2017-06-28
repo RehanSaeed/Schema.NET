@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The name of a character played in some acting or performing role, i.e. in a PerformanceRole.
         /// </summary>
-        [DataMember(Name = "characterName", Order = 2)]
+        [DataMember(Name = "characterName", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? CharacterName { get; set; }
     }

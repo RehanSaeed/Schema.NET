@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A CreativeWork such as an image, video, or audio clip shared as part of this posting.
         /// </summary>
-        [DataMember(Name = "sharedContent", Order = 2)]
+        [DataMember(Name = "sharedContent", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork>? SharedContent { get; set; }
     }

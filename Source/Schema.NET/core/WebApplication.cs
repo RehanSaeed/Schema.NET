@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// Specifies browser requirements in human-readable text. For example, 'requires HTML5 support'.
         /// </summary>
-        [DataMember(Name = "browserRequirements", Order = 2)]
+        [DataMember(Name = "browserRequirements", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? BrowserRequirements { get; set; }
     }

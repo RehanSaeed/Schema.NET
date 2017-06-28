@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of object. The collection target of the action.
         /// </summary>
-        [DataMember(Name = "targetCollection", Order = 2)]
+        [DataMember(Name = "targetCollection", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Thing>? TargetCollection { get; set; }
     }

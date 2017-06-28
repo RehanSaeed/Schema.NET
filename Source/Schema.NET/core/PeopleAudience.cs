@@ -19,42 +19,42 @@ namespace Schema.NET
         /// <summary>
         /// Audiences defined by a person's gender.
         /// </summary>
-        [DataMember(Name = "requiredGender", Order = 2)]
+        [DataMember(Name = "requiredGender", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? RequiredGender { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's maximum age.
         /// </summary>
-        [DataMember(Name = "requiredMaxAge", Order = 3)]
+        [DataMember(Name = "requiredMaxAge", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? RequiredMaxAge { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's minimum age.
         /// </summary>
-        [DataMember(Name = "requiredMinAge", Order = 4)]
+        [DataMember(Name = "requiredMinAge", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? RequiredMinAge { get; set; }
 
         /// <summary>
         /// The gender of the person or audience.
         /// </summary>
-        [DataMember(Name = "suggestedGender", Order = 5)]
+        [DataMember(Name = "suggestedGender", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? SuggestedGender { get; set; }
 
         /// <summary>
         /// Maximal age recommended for viewing content.
         /// </summary>
-        [DataMember(Name = "suggestedMaxAge", Order = 6)]
+        [DataMember(Name = "suggestedMaxAge", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? SuggestedMaxAge { get; set; }
 
         /// <summary>
         /// Minimal age recommended for viewing content.
         /// </summary>
-        [DataMember(Name = "suggestedMinAge", Order = 7)]
+        [DataMember(Name = "suggestedMinAge", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? SuggestedMinAge { get; set; }
     }

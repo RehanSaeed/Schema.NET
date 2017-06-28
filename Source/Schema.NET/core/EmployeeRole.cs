@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The base salary of the job or of an employee in an EmployeeRole.
         /// </summary>
-        [DataMember(Name = "baseSalary", Order = 2)]
+        [DataMember(Name = "baseSalary", Order = 404)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<decimal?, MonetaryAmount, PriceSpecification>? BaseSalary { get; set; }
 
         /// <summary>
         /// The currency (coded using &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; ) used for the main salary information in this job posting or for this employee.
         /// </summary>
-        [DataMember(Name = "salaryCurrency", Order = 3)]
+        [DataMember(Name = "salaryCurrency", Order = 405)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? SalaryCurrency { get; set; }
     }

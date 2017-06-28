@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        [DataMember(Name = "event", Order = 2)]
+        [DataMember(Name = "event", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Event>? Event { get; set; }
     }

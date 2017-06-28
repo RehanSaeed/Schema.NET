@@ -19,63 +19,63 @@ namespace Schema.NET
         /// <summary>
         /// The platform where the train arrives.
         /// </summary>
-        [DataMember(Name = "arrivalPlatform", Order = 2)]
+        [DataMember(Name = "arrivalPlatform", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ArrivalPlatform { get; set; }
 
         /// <summary>
         /// The station where the train trip ends.
         /// </summary>
-        [DataMember(Name = "arrivalStation", Order = 3)]
+        [DataMember(Name = "arrivalStation", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<TrainStation>? ArrivalStation { get; set; }
 
         /// <summary>
         /// The expected arrival time.
         /// </summary>
-        [DataMember(Name = "arrivalTime", Order = 4)]
+        [DataMember(Name = "arrivalTime", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ArrivalTime { get; set; }
 
         /// <summary>
         /// The platform from which the train departs.
         /// </summary>
-        [DataMember(Name = "departurePlatform", Order = 5)]
+        [DataMember(Name = "departurePlatform", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? DeparturePlatform { get; set; }
 
         /// <summary>
         /// The station from which the train departs.
         /// </summary>
-        [DataMember(Name = "departureStation", Order = 6)]
+        [DataMember(Name = "departureStation", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<TrainStation>? DepartureStation { get; set; }
 
         /// <summary>
         /// The expected departure time.
         /// </summary>
-        [DataMember(Name = "departureTime", Order = 7)]
+        [DataMember(Name = "departureTime", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? DepartureTime { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        [DataMember(Name = "provider", Order = 8)]
+        [DataMember(Name = "provider", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Provider { get; set; }
 
         /// <summary>
         /// The name of the train (e.g. The Orient Express).
         /// </summary>
-        [DataMember(Name = "trainName", Order = 9)]
+        [DataMember(Name = "trainName", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TrainName { get; set; }
 
         /// <summary>
         /// The unique identifier for the train.
         /// </summary>
-        [DataMember(Name = "trainNumber", Order = 10)]
+        [DataMember(Name = "trainNumber", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TrainNumber { get; set; }
     }

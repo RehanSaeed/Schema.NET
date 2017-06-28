@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of location. The entertainment business where the action occurred.
         /// </summary>
-        [DataMember(Name = "entertainmentBusiness", Order = 2)]
+        [DataMember(Name = "entertainmentBusiness", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<EntertainmentBusiness>? EntertainmentBusiness { get; set; }
     }

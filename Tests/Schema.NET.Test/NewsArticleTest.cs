@@ -43,8 +43,8 @@
                     "\"description\":\"A most wonderful article\"," +
                     "\"image\":{" +
                         "\"@type\":\"ImageObject\"," +
-                        "\"height\":800," +
                         "\"url\":\"https://google.com/thumbnail1.jpg\"," +
+                        "\"height\":800," +
                         "\"width\":800" +
                     "}," +
                     "\"mainEntityOfPage\":\"https://google.com/article\"," +
@@ -60,8 +60,8 @@
                         "\"name\":\"Google\"," +
                         "\"logo\":{" +
                             "\"@type\":\"ImageObject\"," +
-                            "\"height\":60," +
                             "\"url\":\"https://google.com/logo.jpg\"," +
+                            "\"height\":60," +
                             "\"width\":600" +
                         "}" +
                     "}" +

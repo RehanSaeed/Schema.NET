@@ -149,17 +149,23 @@
                 stringBuilder.AppendIndentLine(8, $"public override string Type => \"{this.Name}\";");
 
                 // Properties
-                var props = this.Properties.Where(x => x.IsProperty).OrderBy(x => x.Name).ToList();
+                var props = this.Properties.Where(x => x.IsProperty).OrderBy(x => x.Name, new SchemaPropertyNameComparer()).ToList();
                 if (props.Count > 0)
                 {
                     stringBuilder.AppendLine();
-
                     var i = 0;
-                    var order = 2;
+                    var order = ((SchemaPropertyNameComparer.KnownPropertyNameOrders.Values.Max() + 1) + (this.Ancestors.Count() * 100));
                     foreach (var property in props)
                     {
+                        var jsonOrder = order;
+                        var lowerPropertyName = property.Name.ToLower();
+                        if (SchemaPropertyNameComparer.KnownPropertyNameOrders.ContainsKey(lowerPropertyName))
+                        {
+                            jsonOrder = SchemaPropertyNameComparer.KnownPropertyNameOrders[lowerPropertyName];
+                        }
+
                         var isLast = i == (props.Count - 1);
-                        property.AppendIndentLine(stringBuilder, 8, order, this);
+                        property.AppendIndentLine(stringBuilder, 8, jsonOrder, this);
                         if (!isLast)
                         {
                             stringBuilder.AppendLine();

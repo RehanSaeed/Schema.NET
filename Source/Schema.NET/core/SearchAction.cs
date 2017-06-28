@@ -22,14 +22,14 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of instrument. The query used on this action.
         /// </summary>
-        [DataMember(Name = "query", Order = 2)]
+        [DataMember(Name = "query", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Query { get; set; }
 
         /// <summary>
         /// Gets or sets the query input search parameter.
         /// </summary>
-        [DataMember(Name = "query-input", Order = 3)]
+        [DataMember(Name = "query-input", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, PropertyValueSpecification>? QueryInput { get; set; }
     }

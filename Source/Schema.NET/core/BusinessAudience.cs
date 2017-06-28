@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The number of employees in an organization e.g. business.
         /// </summary>
-        [DataMember(Name = "numberOfEmployees", Order = 2)]
+        [DataMember(Name = "numberOfEmployees", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? NumberOfEmployees { get; set; }
 
         /// <summary>
         /// The size of the business in annual revenue.
         /// </summary>
-        [DataMember(Name = "yearlyRevenue", Order = 3)]
+        [DataMember(Name = "yearlyRevenue", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? YearlyRevenue { get; set; }
 
         /// <summary>
         /// The age of the business.
         /// </summary>
-        [DataMember(Name = "yearsInOperation", Order = 4)]
+        [DataMember(Name = "yearsInOperation", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? YearsInOperation { get; set; }
     }

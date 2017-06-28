@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
         /// </summary>
-        [DataMember(Name = "durationOfWarranty", Order = 2)]
+        [DataMember(Name = "durationOfWarranty", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? DurationOfWarranty { get; set; }
 
         /// <summary>
         /// The scope of the warranty promise.
         /// </summary>
-        [DataMember(Name = "warrantyScope", Order = 3)]
+        [DataMember(Name = "warrantyScope", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<WarrantyScope?>? WarrantyScope { get; set; }
     }

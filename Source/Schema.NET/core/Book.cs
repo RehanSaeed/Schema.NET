@@ -19,35 +19,35 @@ namespace Schema.NET
         /// <summary>
         /// The edition of the book.
         /// </summary>
-        [DataMember(Name = "bookEdition", Order = 2)]
+        [DataMember(Name = "bookEdition", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? BookEdition { get; set; }
 
         /// <summary>
         /// The format of the book.
         /// </summary>
-        [DataMember(Name = "bookFormat", Order = 3)]
+        [DataMember(Name = "bookFormat", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<BookFormatType?>? BookFormat { get; set; }
 
         /// <summary>
         /// The illustrator of the book.
         /// </summary>
-        [DataMember(Name = "illustrator", Order = 4)]
+        [DataMember(Name = "illustrator", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Illustrator { get; set; }
 
         /// <summary>
         /// The ISBN of the book.
         /// </summary>
-        [DataMember(Name = "isbn", Order = 5)]
+        [DataMember(Name = "isbn", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Isbn { get; set; }
 
         /// <summary>
         /// The number of pages in the book.
         /// </summary>
-        [DataMember(Name = "numberOfPages", Order = 6)]
+        [DataMember(Name = "numberOfPages", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? NumberOfPages { get; set; }
     }

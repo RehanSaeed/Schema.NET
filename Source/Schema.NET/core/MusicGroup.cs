@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// A music album.
         /// </summary>
-        [DataMember(Name = "album", Order = 2)]
+        [DataMember(Name = "album", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MusicAlbum>? Album { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
         /// </summary>
-        [DataMember(Name = "genre", Order = 3)]
+        [DataMember(Name = "genre", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? Genre { get; set; }
 
         /// <summary>
         /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
         /// </summary>
-        [DataMember(Name = "track", Order = 4)]
+        [DataMember(Name = "track", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MusicRecording, ItemList>? Track { get; set; }
     }

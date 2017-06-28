@@ -24,8 +24,8 @@
                     "\"@type\":\"WebSite\"," +
                     "\"potentialAction\":{" +
                         "\"@type\":\"SearchAction\"," +
-                        "\"query-input\":\"required\"," +
-                        "\"target\":\"http://example.com/search?&q={query}\"" +
+                        "\"target\":\"http://example.com/search?&q={query}\"," +
+                        "\"query-input\":\"required\"" +
                     "}," +
                     "\"url\":\"https://example.com\"" +
                 "}";
@@ -49,8 +49,8 @@
                 "{" +
                     "\"@context\":\"http://schema.org\"," +
                     "\"@type\":\"WebSite\"," +
-                    "\"alternateName\":\"An Alternative Name\"," +
                     "\"name\":\"Your Site Name\"," +
+                    "\"alternateName\":\"An Alternative Name\"," +
                     "\"url\":\"https://example.com\"" +
                 "}";
 

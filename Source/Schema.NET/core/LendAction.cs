@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The person that borrows the object being lent.
         /// </summary>
-        [DataMember(Name = "borrower", Order = 2)]
+        [DataMember(Name = "borrower", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Borrower { get; set; }
     }

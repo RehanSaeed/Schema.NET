@@ -34,13 +34,13 @@
                     "\"itemListElement\":[" +
                         "{" +
                             "\"@type\":\"ListItem\"," +
-                            "\"position\":1," +
-                            "\"url\":\"http://example.com/articles/1\"" +
+                            "\"url\":\"http://example.com/articles/1\"," +
+                            "\"position\":1" +
                         "}," +
                         "{" +
                             "\"@type\":\"ListItem\"," +
-                            "\"position\":2," +
-                            "\"url\":\"http://example.com/articles/2\"" +
+                            "\"url\":\"http://example.com/articles/2\"," +
+                            "\"position\":2" +
                         "}" +
                     "]" +
                 "}";

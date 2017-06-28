@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The amount of money.
         /// </summary>
-        [DataMember(Name = "amount", Order = 2)]
+        [DataMember(Name = "amount", Order = 404)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MonetaryAmount, decimal?>? Amount { get; set; }
 
         /// <summary>
         /// The duration of the loan or credit agreement.
         /// </summary>
-        [DataMember(Name = "loanTerm", Order = 3)]
+        [DataMember(Name = "loanTerm", Order = 405)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? LoanTerm { get; set; }
 
         /// <summary>
         /// Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)
         /// </summary>
-        [DataMember(Name = "requiredCollateral", Order = 4)]
+        [DataMember(Name = "requiredCollateral", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Thing>? RequiredCollateral { get; set; }
     }

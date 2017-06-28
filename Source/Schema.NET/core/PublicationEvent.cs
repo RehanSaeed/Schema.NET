@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// A flag to signal that the publication is accessible for free.
         /// </summary>
-        [DataMember(Name = "isAccessibleForFree", Order = 2)]
+        [DataMember(Name = "isAccessibleForFree", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<bool?>? IsAccessibleForFree { get; set; }
 
         /// <summary>
         /// A broadcast service associated with the publication event.
         /// </summary>
-        [DataMember(Name = "publishedOn", Order = 3)]
+        [DataMember(Name = "publishedOn", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<BroadcastService>? PublishedOn { get; set; }
     }

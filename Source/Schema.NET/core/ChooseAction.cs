@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of object. The options subject to this action.
         /// </summary>
-        [DataMember(Name = "actionOption", Order = 2)]
+        [DataMember(Name = "actionOption", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Thing>? ActionOption { get; set; }
     }

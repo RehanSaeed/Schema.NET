@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The distance travelled, e.g. exercising or travelling.
         /// </summary>
-        [DataMember(Name = "distance", Order = 2)]
+        [DataMember(Name = "distance", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Distance { get; set; }
     }

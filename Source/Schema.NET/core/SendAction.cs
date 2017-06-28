@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of instrument. The method of delivery.
         /// </summary>
-        [DataMember(Name = "deliveryMethod", Order = 2)]
+        [DataMember(Name = "deliveryMethod", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DeliveryMethod?>? DeliveryMethod { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
-        [DataMember(Name = "recipient", Order = 3)]
+        [DataMember(Name = "recipient", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person, Audience, Organization>? Recipient { get; set; }
     }

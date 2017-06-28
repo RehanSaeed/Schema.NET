@@ -19,28 +19,28 @@ namespace Schema.NET
         /// <summary>
         /// The type/class of the seat.
         /// </summary>
-        [DataMember(Name = "seatingType", Order = 2)]
+        [DataMember(Name = "seatingType", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? SeatingType { get; set; }
 
         /// <summary>
         /// The location of the reserved seat (e.g., 27).
         /// </summary>
-        [DataMember(Name = "seatNumber", Order = 3)]
+        [DataMember(Name = "seatNumber", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? SeatNumber { get; set; }
 
         /// <summary>
         /// The row location of the reserved seat (e.g., B).
         /// </summary>
-        [DataMember(Name = "seatRow", Order = 4)]
+        [DataMember(Name = "seatRow", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? SeatRow { get; set; }
 
         /// <summary>
         /// The section location of the reserved seat (e.g. Orchestra).
         /// </summary>
-        [DataMember(Name = "seatSection", Order = 5)]
+        [DataMember(Name = "seatSection", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? SeatSection { get; set; }
     }

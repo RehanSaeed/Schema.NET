@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// IATA identifier for an airline or airport.
         /// </summary>
-        [DataMember(Name = "iataCode", Order = 2)]
+        [DataMember(Name = "iataCode", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? IataCode { get; set; }
 
         /// <summary>
         /// ICAO identifier for an airport.
         /// </summary>
-        [DataMember(Name = "icaoCode", Order = 3)]
+        [DataMember(Name = "icaoCode", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? IcaoCode { get; set; }
     }

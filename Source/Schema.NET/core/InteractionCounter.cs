@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The WebSite or SoftwareApplication where the interactions took place.
         /// </summary>
-        [DataMember(Name = "interactionService", Order = 2)]
+        [DataMember(Name = "interactionService", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<SoftwareApplication, WebSite>? InteractionService { get; set; }
 
         /// <summary>
         /// The Action representing the type of interaction. For up votes, +1s, etc. use &lt;a class="localLink" href="http://schema.org/LikeAction"&gt;LikeAction&lt;/a&gt;. For down votes use &lt;a class="localLink" href="http://schema.org/DislikeAction"&gt;DislikeAction&lt;/a&gt;. Otherwise, use the most specific Action.
         /// </summary>
-        [DataMember(Name = "interactionType", Order = 3)]
+        [DataMember(Name = "interactionType", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Action>? InteractionType { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication.
         /// </summary>
-        [DataMember(Name = "userInteractionCount", Order = 4)]
+        [DataMember(Name = "userInteractionCount", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? UserInteractionCount { get; set; }
     }

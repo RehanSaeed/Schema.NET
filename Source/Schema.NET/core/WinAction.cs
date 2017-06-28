@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The loser of the action.
         /// </summary>
-        [DataMember(Name = "loser", Order = 2)]
+        [DataMember(Name = "loser", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Loser { get; set; }
     }

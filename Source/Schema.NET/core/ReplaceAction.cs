@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of object. The object that is being replaced.
         /// </summary>
-        [DataMember(Name = "replacee", Order = 2)]
+        [DataMember(Name = "replacee", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Thing>? Replacee { get; set; }
 
         /// <summary>
         /// A sub property of object. The object that replaces.
         /// </summary>
-        [DataMember(Name = "replacer", Order = 3)]
+        [DataMember(Name = "replacer", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Thing>? Replacer { get; set; }
     }

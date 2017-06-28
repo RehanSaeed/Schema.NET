@@ -25,6 +25,7 @@
                 @"{" +
                     "\"@context\":\"http://schema.org\"," +
                     "\"@type\":\"Organization\"," +
+                    "\"url\":\"https://example.com\"," +
                     "\"areaServed\":\"GB\"," +
                     "\"contactPoint\":{" +
                         "\"@type\":\"ContactPoint\"," +
@@ -32,8 +33,7 @@
                         "\"contactOption\":\"TollFree\"," +
                         "\"contactType\":\"customer service\"," +
                         "\"telephone\":\"+1-401-555-1212\"" +
-                    "}," +
-                    "\"url\":\"https://example.com\"" +
+                    "}" +
                 "}";
 
             var json = organization.ToString();
@@ -84,6 +84,7 @@
                 @"{" +
                     "\"@context\":\"http://schema.org\"," +
                     "\"@type\":\"Organization\"," +
+                    "\"url\":\"https://example.com\"," +
                     "\"address\":{" +
                         "\"@type\":\"PostalAddress\"," +
                         "\"contactOption\":\"HearingImpairedSupported\"" +
@@ -93,8 +94,7 @@
                         "\"contactType\":\"Customer Service\"," +
                         "\"telephone\":\"+1-401-555-1212\"" +
                     "}," +
-                    "\"dissolutionDate\":\"2000-01-01T00:00:00+01:00\"," +
-                    "\"url\":\"https://example.com\"" +
+                    "\"dissolutionDate\":\"2000-01-01T00:00:00+01:00\"" +
                 "}";
 
             var json = organization.ToString();

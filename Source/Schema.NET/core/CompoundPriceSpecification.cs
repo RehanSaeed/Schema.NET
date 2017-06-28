@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// This property links to all &lt;a class="localLink" href="http://schema.org/UnitPriceSpecification"&gt;UnitPriceSpecification&lt;/a&gt; nodes that apply in parallel for the &lt;a class="localLink" href="http://schema.org/CompoundPriceSpecification"&gt;CompoundPriceSpecification&lt;/a&gt; node.
         /// </summary>
-        [DataMember(Name = "priceComponent", Order = 2)]
+        [DataMember(Name = "priceComponent", Order = 404)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<UnitPriceSpecification>? PriceComponent { get; set; }
     }

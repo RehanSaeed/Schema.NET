@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
-        [DataMember(Name = "aggregateRating", Order = 2)]
+        [DataMember(Name = "aggregateRating", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<AggregateRating>? AggregateRating { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
-        [DataMember(Name = "logo", Order = 3)]
+        [DataMember(Name = "logo", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Uri, ImageObject>? Logo { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 4)]
+        [DataMember(Name = "review", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Review>? Review { get; set; }
     }

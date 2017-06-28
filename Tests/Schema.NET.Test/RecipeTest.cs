@@ -46,6 +46,19 @@
                 "{" +
                     "\"@context\":\"http://schema.org\"," +
                     "\"@type\":\"Recipe\"," +
+                    "\"name\":\"Grandma's Holiday Apple Pie\"," +
+                    "\"description\":\"This is my grandmother's apple pie recipe. I like to add a dash of nutmeg.\"," +
+                    "\"image\":\"https://example.com/image.jpg\"," +
+                    "\"aggregateRating\":{" +
+                        "\"@type\":\"AggregateRating\"," +
+                        "\"ratingValue\":4.0," +
+                        "\"reviewCount\":35" +
+                    "}," +
+                    "\"author\":{" +
+                        "\"@type\":\"Person\"," +
+                        "\"name\":\"Carol Smith\"" +
+                    "}," +
+                    "\"datePublished\":\"2009-11-05T00:00:00+00:00\"," +
                     "\"cookTime\":\"PT1H\"," +
                     "\"nutrition\":{" +
                         "\"@type\":\"NutritionInformation\"," +
@@ -53,27 +66,14 @@
                         "\"fatContent\":\"12 g\"," +
                         "\"servingSize\":\"1 medium slice\"" +
                     "}," +
-                    "\"description\":\"This is my grandmother's apple pie recipe. I like to add a dash of nutmeg.\"," +
                     "\"prepTime\":\"PT30M\"," +
-                    "\"image\":\"https://example.com/image.jpg\"," +
                     "\"recipeIngredient\":[" +
                         "\"Thinly-sliced apples:6 cups\"," +
                         "\"White sugar:3/4 cup\"" +
                     "]," +
                     "\"recipeInstructions\":\"1. Cut and peel apples...\"," +
-                    "\"name\":\"Grandma's Holiday Apple Pie\"," +
                     "\"recipeYield\":\"1 9 inch pie (8 servings)\"," +
-                    "\"aggregateRating\":{" +
-                        "\"@type\":\"AggregateRating\"," +
-                        "\"reviewCount\":35," +
-                        "\"ratingValue\":4.0" +
-                    "}," +
-                    "\"totalTime\":\"PT1H30M\"," +
-                    "\"author\":{" +
-                        "\"@type\":\"Person\"," +
-                        "\"name\":\"Carol Smith\"" +
-                    "}," +
-                    "\"datePublished\":\"2009-11-05T00:00:00+00:00\"" +
+                    "\"totalTime\":\"PT1H30M\"" +
                  "}";
 
             var json = recipe.ToString();

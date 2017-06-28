@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A type of sport (e.g. Baseball).
         /// </summary>
-        [DataMember(Name = "sport", Order = 2)]
+        [DataMember(Name = "sport", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Uri, string>? Sport { get; set; }
     }

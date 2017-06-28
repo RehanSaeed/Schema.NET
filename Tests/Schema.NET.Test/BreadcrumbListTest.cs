@@ -42,8 +42,8 @@
                             "\"@type\":\"ListItem\"," +
                             "\"item\":{" + // Required
                                 "\"@type\":\"Book\"," +
-                                "\"image\":\"http://example.com/images/icon-book.png\"," + // Optional
-                                "\"name\":\"Books\"" + // Required
+                                "\"name\":\"Books\"," + // Required
+                                "\"image\":\"http://example.com/images/icon-book.png\"" + // Optional
                             "}," +
                             "\"position\":1" + // Required
                         "}," +
@@ -51,8 +51,8 @@
                             "\"@type\":\"ListItem\"," +
                             "\"item\":{" +
                                 "\"@type\":\"Person\"," +
-                                "\"image\":\"http://example.com/images/icon-author.png\"," +
-                                "\"name\":\"Authors\"" +
+                                "\"name\":\"Authors\"," +
+                                "\"image\":\"http://example.com/images/icon-author.png\"" +
                             "}," +
                             "\"position\":2" +
                         "}" +

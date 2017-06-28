@@ -19,49 +19,49 @@ namespace Schema.NET
         /// <summary>
         /// The stop or station from which the bus arrives.
         /// </summary>
-        [DataMember(Name = "arrivalBusStop", Order = 2)]
+        [DataMember(Name = "arrivalBusStop", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<BusStation, BusStop>? ArrivalBusStop { get; set; }
 
         /// <summary>
         /// The expected arrival time.
         /// </summary>
-        [DataMember(Name = "arrivalTime", Order = 3)]
+        [DataMember(Name = "arrivalTime", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ArrivalTime { get; set; }
 
         /// <summary>
         /// The name of the bus (e.g. Bolt Express).
         /// </summary>
-        [DataMember(Name = "busName", Order = 4)]
+        [DataMember(Name = "busName", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? BusName { get; set; }
 
         /// <summary>
         /// The unique identifier for the bus.
         /// </summary>
-        [DataMember(Name = "busNumber", Order = 5)]
+        [DataMember(Name = "busNumber", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? BusNumber { get; set; }
 
         /// <summary>
         /// The stop or station from which the bus departs.
         /// </summary>
-        [DataMember(Name = "departureBusStop", Order = 6)]
+        [DataMember(Name = "departureBusStop", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<BusStation, BusStop>? DepartureBusStop { get; set; }
 
         /// <summary>
         /// The expected departure time.
         /// </summary>
-        [DataMember(Name = "departureTime", Order = 7)]
+        [DataMember(Name = "departureTime", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? DepartureTime { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        [DataMember(Name = "provider", Order = 8)]
+        [DataMember(Name = "provider", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Provider { get; set; }
     }

@@ -19,28 +19,28 @@ namespace Schema.NET
         /// <summary>
         /// Password, PIN, or access code needed for delivery (e.g. from a locker).
         /// </summary>
-        [DataMember(Name = "accessCode", Order = 2)]
+        [DataMember(Name = "accessCode", Order = 204)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? AccessCode { get; set; }
 
         /// <summary>
         /// When the item is available for pickup from the store, locker, etc.
         /// </summary>
-        [DataMember(Name = "availableFrom", Order = 3)]
+        [DataMember(Name = "availableFrom", Order = 205)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? AvailableFrom { get; set; }
 
         /// <summary>
         /// After this date, the item will no longer be available for pickup.
         /// </summary>
-        [DataMember(Name = "availableThrough", Order = 4)]
+        [DataMember(Name = "availableThrough", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? AvailableThrough { get; set; }
 
         /// <summary>
         /// Method used for delivery or shipping.
         /// </summary>
-        [DataMember(Name = "hasDeliveryMethod", Order = 5)]
+        [DataMember(Name = "hasDeliveryMethod", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DeliveryMethod?>? HasDeliveryMethod { get; set; }
     }

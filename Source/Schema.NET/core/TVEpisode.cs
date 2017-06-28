@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
-        [DataMember(Name = "countryOfOrigin", Order = 2)]
+        [DataMember(Name = "countryOfOrigin", Order = 304)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Country>? CountryOfOrigin { get; set; }
 
         /// <summary>
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "subtitleLanguage", Order = 3)]
+        [DataMember(Name = "subtitleLanguage", Order = 305)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Language>? SubtitleLanguage { get; set; }
     }
