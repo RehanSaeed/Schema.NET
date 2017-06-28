@@ -17,6 +17,15 @@
             x = x.ToLower();
             y = y.ToLower();
 
+            if (x.Equals("enddate"))
+            {
+                x = "startdate1";
+            }
+            else if (y.Equals("enddate"))
+            {
+                y = "startdate1";
+            }
+
             var isXKnown = KnownPropertyNameOrders.ContainsKey(x);
             var isYKnown = KnownPropertyNameOrders.ContainsKey(y);
             if (isXKnown && isYKnown)
@@ -25,7 +34,7 @@
                 var yIndex = KnownPropertyNameOrders[y];
                 return xIndex.CompareTo(yIndex);
             }
-            else if(isXKnown)
+            else if (isXKnown)
             {
                 return -1;
             }

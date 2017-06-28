@@ -31,17 +31,17 @@ namespace Schema.NET
         public Values<string>? Currency { get; set; }
 
         /// <summary>
-        /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
-        /// </summary>
-        [DataMember(Name = "endDate", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? EndDate { get; set; }
-
-        /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "startDate", Order = 307)]
+        [DataMember(Name = "startDate", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? StartDate { get; set; }
+
+        /// <summary>
+        /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
+        /// </summary>
+        [DataMember(Name = "endDate", Order = 307)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? EndDate { get; set; }
     }
 }

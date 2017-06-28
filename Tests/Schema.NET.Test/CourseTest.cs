@@ -5,14 +5,15 @@
 
     public class CourseTest
     {
+        // https://developers.google.com/search/docs/data-types/courses
         [Fact]
         public void ToString_CourseGoogleStructuredData_ReturnsExpectedJsonLd()
         {
             var course = new Course()
             {
-                Name = "Introduction to Computer Science and Programming",
-                Description = "Introductory CS course laying out the basics.",
-                Provider = new Organization()
+                Name = "Introduction to Computer Science and Programming", // Required
+                Description = "Introductory CS course laying out the basics.", // Required
+                Provider = new Organization() // Recommended
                 {
                     Name = "University of Technology - Eureka",
                     SameAs = new Uri("http://www.ut-eureka.edu")
