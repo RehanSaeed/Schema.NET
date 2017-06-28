@@ -62,44 +62,5 @@
 
             Assert.Equal(expectedJson, json);
         }
-
-        [Fact]
-        public void ToString_TestAllPrimitiveTypes_ReturnsExpectedJsonLd()
-        {
-            var organization = new Organization()
-            {
-                Address = new PostalAddress()
-                {
-                    ContactOption = ContactPointOption.HearingImpairedSupported
-                },
-                DissolutionDate = new DateTimeOffset(2000, 1, 1, 0, 0, 0, TimeSpan.FromHours(1)),
-                ContactPoint = new ContactPoint()
-                {
-                    Telephone = "+1-401-555-1212",
-                    ContactType = "Customer Service"
-                },
-                Url = new Uri("https://example.com")
-            };
-            var expectedJson =
-                @"{" +
-                    "\"@context\":\"http://schema.org\"," +
-                    "\"@type\":\"Organization\"," +
-                    "\"url\":\"https://example.com\"," +
-                    "\"address\":{" +
-                        "\"@type\":\"PostalAddress\"," +
-                        "\"contactOption\":\"http://schema.org/HearingImpairedSupported\"" +
-                    "}," +
-                    "\"contactPoint\":{" +
-                        "\"@type\":\"ContactPoint\"," +
-                        "\"contactType\":\"Customer Service\"," +
-                        "\"telephone\":\"+1-401-555-1212\"" +
-                    "}," +
-                    "\"dissolutionDate\":\"2000-01-01T00:00:00+01:00\"" +
-                "}";
-
-            var json = organization.ToString();
-
-            Assert.Equal(expectedJson, json);
-        }
     }
 }
