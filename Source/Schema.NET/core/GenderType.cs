@@ -1,5 +1,7 @@
 namespace Schema.NET
 {
+    using System.Runtime.Serialization;
+
     /// <summary>
     /// An enumeration of genders.
     /// </summary>
@@ -8,11 +10,13 @@ namespace Schema.NET
         /// <summary>
         /// The female gender.
         /// </summary>
+        [EnumMember(Value = "http://schema.org/Female")]
         Female,
 
         /// <summary>
         /// The male gender.
         /// </summary>
+        [EnumMember(Value = "http://schema.org/Male")]
         Male
     }
 }

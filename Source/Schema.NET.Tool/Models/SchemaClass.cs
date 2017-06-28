@@ -77,9 +77,14 @@
             stringBuilder.AppendLine("namespace Schema.NET");
             stringBuilder.AppendLine("{");
 
-            if (!this.IsEnum)
+            // Using statements
+            if (this.IsEnum)
             {
-                // Using statements
+                stringBuilder.AppendIndentLine(4, "using System.Runtime.Serialization;");
+                stringBuilder.AppendLine();
+            }
+            else
+            {
                 stringBuilder.AppendIndentLine(4, "using System;");
                 stringBuilder.AppendIndentLine(4, "using System.Runtime.Serialization;");
                 stringBuilder.AppendIndentLine(4, "using Newtonsoft.Json;");
@@ -107,6 +112,7 @@
                         stringBuilder.AppendIndentLine(8, "/// <summary>");
                         stringBuilder.AppendCommentLine(8, property.Description);
                         stringBuilder.AppendIndentLine(8, "/// </summary>");
+                        stringBuilder.AppendIndentLine(8, $"[EnumMember(Value = \"http://schema.org/{property.Name}\")]");
                         stringBuilder.AppendIndent(8, property.Name);
                         if (!isLast)
                         {

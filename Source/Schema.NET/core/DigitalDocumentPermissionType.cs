@@ -1,5 +1,7 @@
 namespace Schema.NET
 {
+    using System.Runtime.Serialization;
+
     /// <summary>
     /// A type of permission which can be granted for accessing a digital document.
     /// </summary>
@@ -8,16 +10,19 @@ namespace Schema.NET
         /// <summary>
         /// Permission to add comments to the document.
         /// </summary>
+        [EnumMember(Value = "http://schema.org/CommentPermission")]
         CommentPermission,
 
         /// <summary>
         /// Permission to read or view the document.
         /// </summary>
+        [EnumMember(Value = "http://schema.org/ReadPermission")]
         ReadPermission,
 
         /// <summary>
         /// Permission to write or edit the document.
         /// </summary>
+        [EnumMember(Value = "http://schema.org/WritePermission")]
         WritePermission
     }
 }

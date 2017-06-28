@@ -30,7 +30,7 @@
                     "\"contactPoint\":{" +
                         "\"@type\":\"ContactPoint\"," +
                         "\"availableLanguage\":\"English\"," +
-                        "\"contactOption\":\"TollFree\"," +
+                        "\"contactOption\":\"http://schema.org/TollFree\"," +
                         "\"contactType\":\"customer service\"," +
                         "\"telephone\":\"+1-401-555-1212\"" +
                     "}" +
@@ -87,7 +87,7 @@
                     "\"url\":\"https://example.com\"," +
                     "\"address\":{" +
                         "\"@type\":\"PostalAddress\"," +
-                        "\"contactOption\":\"HearingImpairedSupported\"" +
+                        "\"contactOption\":\"http://schema.org/HearingImpairedSupported\"" +
                     "}," +
                     "\"contactPoint\":{" +
                         "\"@type\":\"ContactPoint\"," +
