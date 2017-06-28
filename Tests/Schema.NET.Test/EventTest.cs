@@ -11,13 +11,13 @@
         {
             var @event = new Event()
             {
-                Name = "Jan Lieberman Concert Series: Journey in Jazz",
-                Description = "Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.",
-                StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)),
-                Location = new Place()
+                Name = "Jan Lieberman Concert Series: Journey in Jazz", // Required
+                Description = "Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.", // Recommended
+                StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)), // Required
+                Location = new Place() // Required
                 {
-                    Name = "Santa Clara City Library, Central Park Library",
-                    Address = new PostalAddress()
+                    Name = "Santa Clara City Library, Central Park Library", // Recommended
+                    Address = new PostalAddress() // Required
                     {
                         StreetAddress = "2635 Homestead Rd",
                         AddressLocality = "Santa Clara",
@@ -26,19 +26,19 @@
                         AddressCountry = "US"
                     }
                 },
-                Image = new Uri("http://www.example.com/event_image/12345"),
-                EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)),
-                Offers = new Offer()
+                Image = new Uri("http://www.example.com/event_image/12345"), // Recommended
+                EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)), // Recommended
+                Offers = new Offer() // Recommended
                 {
-                    Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
-                    Price = 30M,
-                    PriceCurrency = "USD",
-                    Availability = ItemAvailability.InStock,
-                    ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
+                    Url = new Uri("https://www.example.com/event_offer/12345_201803180430"), // Recommended
+                    Price = 30M, // Recommended
+                    PriceCurrency = "USD", // Recommended
+                    Availability = ItemAvailability.InStock, // Recommended
+                    ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)) // Recommended
                 },
-                Performer = new Person()
+                Performer = new Person() // Recommended
                 {
-                    Name = "Andy Lagunoff"
+                    Name = "Andy Lagunoff" // Recommended
                 }
             };
             var expectedJson =
