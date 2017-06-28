@@ -5,27 +5,28 @@
 
     public class JobPostingTest
     {
+        // https://developers.google.com/search/docs/data-types/job-postings
         [Fact]
         public void ToString_JobPostingGoogleStructuredData_ReturnsExpectedJsonLd()
         {
             var jobPosting = new JobPosting()
             {
-                Title = "Fitter and Turner",
-                Description = "<p>Widget assembly role for pressing wheel assemblies.</p><p><strong>Educational Requirements:</strong> Completed level 2 ISTA Machinist Apprenticeship.</p><p><strong>Required Experience:</strong> At least 3 years in a machinist role.</p>",
-                Identifier = new PropertyValue()
+                Title = "Fitter and Turner", // Required
+                Description = "<p>Widget assembly role for pressing wheel assemblies.</p><p><strong>Educational Requirements:</strong> Completed level 2 ISTA Machinist Apprenticeship.</p><p><strong>Required Experience:</strong> At least 3 years in a machinist role.</p>", // Required
+                Identifier = new PropertyValue() // Recommended
                 {
                     Name = "MagsRUs Wheel Company",
                     Value = "1234567"
                 },
-                DatePosted = new DateTimeOffset(2017, 1, 18, 0, 0, 0, TimeSpan.Zero),
-                ValidThrough = new DateTimeOffset(2017, 3, 18, 0, 0, 0, TimeSpan.Zero),
-                EmploymentType = "CONTRACTOR",
-                HiringOrganization = new Organization()
+                DatePosted = new DateTimeOffset(2017, 1, 18, 0, 0, 0, TimeSpan.Zero), // Required
+                ValidThrough = new DateTimeOffset(2017, 3, 18, 0, 0, 0, TimeSpan.Zero), // Required
+                EmploymentType = "CONTRACTOR", // Recommended FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY,INTERN, VOLUNTEER, PER_DIEM, OTHER
+                HiringOrganization = new Organization() // Required
                 {
                     Name = "MagsRUs Wheel Company",
                     SameAs = new Uri("http://www.magsruswheelcompany.com")
                 },
-                JobLocation = new Place()
+                JobLocation = new Place() // Required
                 {
                     Address = new PostalAddress()
                     {
@@ -36,13 +37,13 @@
                         StreetAddress = "555 Clancy St"
                     }
                 },
-                BaseSalary = new MonetaryAmount()
+                BaseSalary = new MonetaryAmount() // Recommended
                 {
                     Currency = "USD",
                     Value = new QuantitativeValue()
                     {
                         Value = 40D,
-                        UnitText = "HOUR"
+                        UnitText = "HOUR" // HOUR, WEEK, MONTH, YEAR
                     }
                 }
             };
