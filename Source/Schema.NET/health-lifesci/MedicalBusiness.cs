@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A particular physical or virtual business of an organization for medical purposes...
+    /// A particular physical or virtual business of an organization for medical purposes. Examples of MedicalBusiness include differents business run by health professionals.
     /// </summary>
     [DataContract]
     public partial class MedicalBusiness : LocalBusiness

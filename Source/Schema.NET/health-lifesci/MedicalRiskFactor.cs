@@ -15,5 +15,12 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MedicalRiskFactor";
+
+        /// <summary>
+        /// The condition, complication, etc. influenced by this factor.
+        /// </summary>
+        [DataMember(Name = "increasesRiskOf", Order = 206)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MedicalEntity>? IncreasesRiskOf { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A QAPage is a WebPage focussed on a specific Question and its Answer(s), e...
+    /// A QAPage is a WebPage focussed on a specific Question and its Answer(s), e.g. in a question answering site or documenting Frequently Asked Questions (FAQs).
     /// </summary>
     [DataContract]
     public partial class QAPage : WebPage

@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A posting that is part of this blog.
         /// </summary>
-        [DataMember(Name = "blogPost", Order = 205)]
+        [DataMember(Name = "blogPost", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<BlogPosting>? BlogPost { get; set; }
     }

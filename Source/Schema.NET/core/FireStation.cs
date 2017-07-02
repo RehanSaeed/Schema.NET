@@ -8,7 +8,7 @@ namespace Schema.NET
     /// A fire station. With firemen.
     /// </summary>
     [DataContract]
-    public partial class FireStation : EmergencyService
+    public partial class FireStation : CivicStructureAndEmergencyService
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

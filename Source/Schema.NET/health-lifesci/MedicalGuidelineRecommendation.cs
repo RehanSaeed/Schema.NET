@@ -15,5 +15,12 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MedicalGuidelineRecommendation";
+
+        /// <summary>
+        /// Strength of the guideline's recommendation (e.g. 'class I').
+        /// </summary>
+        [DataMember(Name = "recommendationStrength", Order = 306)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? RecommendationStrength { get; set; }
     }
 }

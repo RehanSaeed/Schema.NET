@@ -15,5 +15,12 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "AllocateAction";
+
+        /// <summary>
+        /// A goal towards an action is taken. Can be concrete or abstract.
+        /// </summary>
+        [DataMember(Name = "purpose", Order = 306)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MedicalDevicePurpose?, Thing>? Purpose { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
-        [DataMember(Name = "countryOfOrigin", Order = 305)]
+        [DataMember(Name = "countryOfOrigin", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Country>? CountryOfOrigin { get; set; }
     }

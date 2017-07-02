@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// An entity holding detailed information about the available bed types, e...
+    /// An entity holding detailed information about the available bed types, e.g. the quantity of twin beds for a hotel room. For the single case of just one bed of a certain type, you can use bed directly with a text. See also &lt;a class="localLink" href="http://schema.org/BedType"&gt;BedType&lt;/a&gt; (under development).
     /// </summary>
     [DataContract]
     public partial class BedDetails : Intangible
@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The quantity of the given bed type available in the HotelRoom, Suite, House, or Apartment.
         /// </summary>
-        [DataMember(Name = "numberOfBeds", Order = 205)]
+        [DataMember(Name = "numberOfBeds", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? NumberOfBeds { get; set; }
 
         /// <summary>
         /// The type of bed to which the BedDetail refers, i.e. the type of bed available in the quantity indicated by quantity.
         /// </summary>
-        [DataMember(Name = "typeOfBed", Order = 206)]
+        [DataMember(Name = "typeOfBed", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TypeOfBed { get; set; }
     }

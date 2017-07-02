@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A monetary value or range. This type can be used to describe an amount of money such as $50 USD, or a range as in describing a bank account being suitable for a balance between £1,000 and £1,000,000 GBP, or the value of a salary, etc...
+    /// A monetary value or range. This type can be used to describe an amount of money such as $50 USD, or a range as in describing a bank account being suitable for a balance between £1,000 and £1,000,000 GBP, or the value of a salary, etc. It is recommended to use &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; Types to describe the price of an Offer, Invoice, etc.
     /// </summary>
     [DataContract]
     public partial class MonetaryAmount : StructuredValue
@@ -19,35 +19,35 @@ namespace Schema.NET
         /// <summary>
         /// The currency in which the monetary amount is expressed (in 3-letter &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; format).
         /// </summary>
-        [DataMember(Name = "currency", Order = 305)]
+        [DataMember(Name = "currency", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Currency { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
         /// </summary>
-        [DataMember(Name = "maxValue", Order = 306)]
+        [DataMember(Name = "maxValue", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? MaxValue { get; set; }
 
         /// <summary>
         /// The lower value of some characteristic or property.
         /// </summary>
-        [DataMember(Name = "minValue", Order = 307)]
+        [DataMember(Name = "minValue", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? MinValue { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        [DataMember(Name = "validFrom", Order = 308)]
+        [DataMember(Name = "validFrom", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        [DataMember(Name = "validThrough", Order = 309)]
+        [DataMember(Name = "validThrough", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ValidThrough { get; set; }
 
@@ -58,8 +58,8 @@ namespace Schema.NET
         /// &lt;li&gt;For &lt;a class="localLink" href="http://schema.org/PropertyValue"&gt;PropertyValue&lt;/a&gt;, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "value", Order = 310)]
+        [DataMember(Name = "value", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<StructuredValue, bool?, string, double?>? Value { get; set; }
+        public Values<bool?, double?, StructuredValue, string>? Value { get; set; }
     }
 }

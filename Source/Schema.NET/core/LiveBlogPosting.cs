@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The time when the live blog will stop covering the Event. Note that coverage may continue after the Event concludes.
         /// </summary>
-        [DataMember(Name = "coverageEndTime", Order = 505)]
+        [DataMember(Name = "coverageEndTime", Order = 506)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? CoverageEndTime { get; set; }
 
         /// <summary>
         /// The time when the live blog will begin covering the Event. Note that coverage may begin before the Event's start time. The LiveBlogPosting may also be created before coverage begins.
         /// </summary>
-        [DataMember(Name = "coverageStartTime", Order = 506)]
+        [DataMember(Name = "coverageStartTime", Order = 507)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? CoverageStartTime { get; set; }
 
         /// <summary>
         /// An update to the LiveBlog.
         /// </summary>
-        [DataMember(Name = "liveBlogUpdate", Order = 507)]
+        [DataMember(Name = "liveBlogUpdate", Order = 508)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<BlogPosting>? LiveBlogUpdate { get; set; }
     }

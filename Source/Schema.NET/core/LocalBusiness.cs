@@ -8,7 +8,7 @@ namespace Schema.NET
     /// A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
     /// </summary>
     [DataContract]
-    public partial class LocalBusiness : Organization
+    public partial class LocalBusiness : OrganizationAndPlace
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The currency accepted (in &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "currenciesAccepted", Order = 205)]
+        [DataMember(Name = "currenciesAccepted", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? CurrenciesAccepted { get; set; }
 
@@ -32,21 +32,21 @@ namespace Schema.NET
         /// &lt;li&gt;If a business is open 7 days a week, then it can be specified as &lt;code&gt;&amp;lt;time itemprop=&amp;quot;openingHours&amp;quot; datetime=&amp;quot;Mo-Su&amp;quot;&amp;gt;Monday through Sunday, all day&amp;lt;/time&amp;gt;&lt;/code&gt;.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "openingHours", Order = 206)]
+        [DataMember(Name = "openingHours", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? OpeningHours { get; set; }
+        public virtual Values<string>? OpeningHours { get; set; }
 
         /// <summary>
         /// Cash, credit card, etc.
         /// </summary>
-        [DataMember(Name = "paymentAccepted", Order = 207)]
+        [DataMember(Name = "paymentAccepted", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PaymentAccepted { get; set; }
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
         /// </summary>
-        [DataMember(Name = "priceRange", Order = 208)]
+        [DataMember(Name = "priceRange", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PriceRange { get; set; }
     }

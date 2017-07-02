@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).
         /// </summary>
-        [DataMember(Name = "audienceType", Order = 205)]
+        [DataMember(Name = "audienceType", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? AudienceType { get; set; }
 
         /// <summary>
         /// The geographic area associated with the audience.
         /// </summary>
-        [DataMember(Name = "geographicArea", Order = 206)]
+        [DataMember(Name = "geographicArea", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<AdministrativeArea>? GeographicArea { get; set; }
     }

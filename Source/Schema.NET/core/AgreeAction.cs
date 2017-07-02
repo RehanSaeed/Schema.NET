@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of expressing a consistency of opinion with the object...
+    /// The act of expressing a consistency of opinion with the object. An agent agrees to/about an object (a proposition, topic or theme) with participants.
     /// </summary>
     [DataContract]
     public partial class AgreeAction : ReactAction

@@ -20,7 +20,7 @@
     <RepositoryUrl>https://github.com/RehanSaeed/Schema.NET.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Schema;.NET;Schema.org;Schema.NET;Structured Data;Google Structured Data</PackageTags>
-    <PackageReleaseNotes>Added array implicit conversion to Values&lt;T&gt;, fix serialization of enumerations and put name and description properties at the top.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added array implicit conversion to Values&lt;T&gt;, fix serialization of enumerations, put name and description properties at the top, support combined classes, @id properties and use the all-layers.jsonld as the base.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Label="Signing">

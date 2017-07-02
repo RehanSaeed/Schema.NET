@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of taking money from a buyer in exchange for goods or services rendered...
+    /// The act of taking money from a buyer in exchange for goods or services rendered. An agent sells an object, product, or service to a buyer for a price. Reciprocal of BuyAction.
     /// </summary>
     [DataContract]
     public partial class SellAction : TradeAction
@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The participant/person/organization that bought the object.
         /// </summary>
-        [DataMember(Name = "buyer", Order = 305)]
+        [DataMember(Name = "buyer", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Buyer { get; set; }
     }

@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of instrument. The method of delivery.
         /// </summary>
-        [DataMember(Name = "deliveryMethod", Order = 305)]
+        [DataMember(Name = "deliveryMethod", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DeliveryMethod?>? DeliveryMethod { get; set; }
     }

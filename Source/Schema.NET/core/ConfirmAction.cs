@@ -5,7 +5,11 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of notifying someone that a future event/action is going to happen as expected...
+    /// &lt;p&gt;The act of notifying someone that a future event/action is going to happen as expected.&lt;/p&gt;
+    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// &lt;ul&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/CancelAction"&gt;CancelAction&lt;/a&gt;: The antonym of ConfirmAction.&lt;/li&gt;
+    /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
     public partial class ConfirmAction : InformAction

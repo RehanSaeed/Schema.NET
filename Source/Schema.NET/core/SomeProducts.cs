@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The current approximate inventory level for the item or items.
         /// </summary>
-        [DataMember(Name = "inventoryLevel", Order = 205)]
+        [DataMember(Name = "inventoryLevel", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? InventoryLevel { get; set; }
     }

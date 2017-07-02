@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "subtitleLanguage", Order = 205)]
+        [DataMember(Name = "subtitleLanguage", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Language>? SubtitleLanguage { get; set; }
+        public Values<Language, string>? SubtitleLanguage { get; set; }
 
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).
         /// </summary>
-        [DataMember(Name = "videoFormat", Order = 206)]
+        [DataMember(Name = "videoFormat", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? VideoFormat { get; set; }
 
         /// <summary>
         /// The movie presented during this event.
         /// </summary>
-        [DataMember(Name = "workPresented", Order = 207)]
+        [DataMember(Name = "workPresented", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Movie>? WorkPresented { get; set; }
     }

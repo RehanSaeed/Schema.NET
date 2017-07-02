@@ -17,44 +17,51 @@ namespace Schema.NET
         public override string Type => "PeopleAudience";
 
         /// <summary>
+        /// Specifying the health condition(s) of a patient, medical study, or other target audience.
+        /// </summary>
+        [DataMember(Name = "healthCondition", Order = 306)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MedicalCondition>? HealthCondition { get; set; }
+
+        /// <summary>
         /// Audiences defined by a person's gender.
         /// </summary>
-        [DataMember(Name = "requiredGender", Order = 305)]
+        [DataMember(Name = "requiredGender", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? RequiredGender { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's maximum age.
         /// </summary>
-        [DataMember(Name = "requiredMaxAge", Order = 306)]
+        [DataMember(Name = "requiredMaxAge", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? RequiredMaxAge { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's minimum age.
         /// </summary>
-        [DataMember(Name = "requiredMinAge", Order = 307)]
+        [DataMember(Name = "requiredMinAge", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? RequiredMinAge { get; set; }
 
         /// <summary>
         /// The gender of the person or audience.
         /// </summary>
-        [DataMember(Name = "suggestedGender", Order = 308)]
+        [DataMember(Name = "suggestedGender", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? SuggestedGender { get; set; }
 
         /// <summary>
         /// Maximal age recommended for viewing content.
         /// </summary>
-        [DataMember(Name = "suggestedMaxAge", Order = 309)]
+        [DataMember(Name = "suggestedMaxAge", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? SuggestedMaxAge { get; set; }
 
         /// <summary>
         /// Minimal age recommended for viewing content.
         /// </summary>
-        [DataMember(Name = "suggestedMinAge", Order = 310)]
+        [DataMember(Name = "suggestedMinAge", Order = 312)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? SuggestedMinAge { get; set; }
     }

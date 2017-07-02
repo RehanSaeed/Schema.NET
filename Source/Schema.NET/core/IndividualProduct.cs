@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
         /// </summary>
-        [DataMember(Name = "serialNumber", Order = 205)]
+        [DataMember(Name = "serialNumber", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? SerialNumber { get; set; }
     }

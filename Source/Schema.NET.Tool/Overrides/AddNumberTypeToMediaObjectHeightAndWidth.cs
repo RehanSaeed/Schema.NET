@@ -2,34 +2,34 @@
 {
     using System;
     using System.Linq;
-    using Schema.NET.Tool.Models;
+    using Schema.NET.Tool.ViewModels;
 
     // https://github.com/schemaorg/schemaorg/issues/1668
-    public class AddNumberTypeToMediaObjectHeightAndWidth : ISchemaClassOverride
+    public class AddNumberTypeToMediaObjectHeightAndWidth : IClassOverride
     {
-        public bool CanOverride(SchemaClass schemaClass) =>
-            string.Equals(schemaClass.Name, "MediaObject", StringComparison.OrdinalIgnoreCase);
+        public bool CanOverride(Class @class) =>
+            string.Equals(@class.Name, "MediaObject", StringComparison.OrdinalIgnoreCase);
 
-        public void Override(SchemaClass schemaClass)
+        public void Override(Class @class)
         {
-            var numberType = new SchemaType()
-            {
-                CSharpType = typeof(int),
-                CSharpTypeString = "int",
-                Name = "Integer",
-                Url = "http://schema.org/Integer"
-            };
-
-            schemaClass
+            @class
                 .Properties
-                .First(x => string.Equals(x.Name, "height", StringComparison.Ordinal))
+                .First(x => string.Equals(x.Name, "Height", StringComparison.OrdinalIgnoreCase))
                 .Types
-                .Add(numberType);
-            schemaClass
+                .Add(new PropertyType()
+                {
+                    CSharpTypeString = "int",
+                    Name = "Integer"
+                });
+            @class
                 .Properties
-                .First(x => string.Equals(x.Name, "width", StringComparison.Ordinal))
+                .First(x => string.Equals(x.Name, "Width", StringComparison.OrdinalIgnoreCase))
                 .Types
-                .Add(numberType);
+                .Add(new PropertyType()
+                {
+                    CSharpTypeString = "int",
+                    Name = "Integer"
+                });
         }
     }
 }

@@ -7,31 +7,35 @@
     using System.Reflection;
     using System.Threading.Tasks;
     using Schema.NET.Tool.Overrides;
+    using Schema.NET.Tool.Repositories;
     using Schema.NET.Tool.Services;
+    using Schema.NET.Tool.ViewModels;
 
     public class Program
     {
-        private readonly List<ISchemaClassOverride> overrides;
-        private readonly ISchemaService schemaService;
 
-        public Program()
-        {
-            this.schemaService = new SchemaService();
-            this.overrides = new List<ISchemaClassOverride>()
-            {
-                new AddQueryInputPropertyToSearchAction(),
-                new AddTextTypeToActionTarget(),
-                new AddNumberTypeToMediaObjectHeightAndWidth()
-            };
-        }
+        private readonly SchemaService schemaService;
 
-        public static void Main(string[] args) =>
-            new Program().Execute().Wait();
+        public Program() =>
+            this.schemaService = new SchemaService(
+                new List<IClassOverride>()
+                {
+                    new AddQueryInputPropertyToSearchAction(),
+                    new AddTextTypeToActionTarget(),
+                    new AddNumberTypeToMediaObjectHeightAndWidth()
+                },
+                new List<IEnumerationOverride>()
+                {
+                    new WarnEmptyEnumerations()
+                },
+                new SchemaRepository());
+
+        public static void Main(string[] args) => new Program().Execute().Wait();
 
         public async Task Execute()
         {
             Console.WriteLine("Executing Class and Property Download");
-            var schemaClasses = await this.schemaService.GetSchemaClassesWithProperties();
+            var (enumerations, classes) = await this.schemaService.GetObjects();
             Console.WriteLine("Finished Class and Property Download");
 
             var assemblyLocation = typeof(Program).GetTypeInfo().Assembly.Location;
@@ -41,36 +45,26 @@
             await ClearOutputDirectory(outputDirectory);
             Console.WriteLine("Finished Clean Project Folder");
 
-            foreach (var schemaClass in schemaClasses)
-            {
-                foreach (var overrid in this.overrides)
-                {
-                    if (overrid.CanOverride(schemaClass))
-                    {
-                        overrid.Override(schemaClass);
-                    }
-                }
-            }
-
             Console.WriteLine("Executing Write Classes");
-
-            foreach (var schemaClassGroup in schemaClasses.GroupBy(x => x.Layer))
+            foreach (var schemaObjectGroup in enumerations
+                .OfType<SchemaObject>()
+                .Concat(classes.OfType<SchemaObject>())
+                .GroupBy(x => x.Layer))
             {
-                var directoryPath = Path.Combine(outputDirectory, schemaClassGroup.Key);
+                var directoryPath = Path.Combine(outputDirectory, schemaObjectGroup.Key);
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
-                    Console.WriteLine("=====================" + schemaClassGroup.Key);
+                    Console.WriteLine("=====================" + schemaObjectGroup.Key);
                 }
 
-                foreach (var schemaClass in schemaClassGroup)
+                foreach (var schemaObject in schemaObjectGroup)
                 {
-                    var filePath = Path.Combine(directoryPath, schemaClass.Name + ".cs");
-                    File.WriteAllText(filePath, schemaClass.ToString());
+                    var filePath = Path.Combine(directoryPath, schemaObject.Name + ".cs");
+                    File.WriteAllText(filePath, schemaObject.ToString());
                     Console.WriteLine(Path.GetFileName(filePath));
                 }
             }
-
             Console.WriteLine("Finished Write Classes");
         }
 

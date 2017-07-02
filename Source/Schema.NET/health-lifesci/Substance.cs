@@ -15,5 +15,19 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Substance";
+
+        /// <summary>
+        /// An active ingredient, typically chemical compounds and/or biologic substances.
+        /// </summary>
+        [DataMember(Name = "activeIngredient", Order = 206)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Values<string>? ActiveIngredient { get; set; }
+
+        /// <summary>
+        /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
+        /// </summary>
+        [DataMember(Name = "maximumIntake", Order = 207)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Values<MaximumDoseSchedule>? MaximumIntake { get; set; }
     }
 }

@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of location. The specific food establishment where the action occurred.
         /// </summary>
-        [DataMember(Name = "foodEstablishment", Order = 305)]
+        [DataMember(Name = "foodEstablishment", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<FoodEstablishment, Place>? FoodEstablishment { get; set; }
 
         /// <summary>
         /// A sub property of location. The specific food event where the action occurred.
         /// </summary>
-        [DataMember(Name = "foodEvent", Order = 306)]
+        [DataMember(Name = "foodEvent", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<FoodEvent>? FoodEvent { get; set; }
 
         /// <summary>
         /// A sub property of instrument. The recipe/instructions used to perform the action.
         /// </summary>
-        [DataMember(Name = "recipe", Order = 307)]
+        [DataMember(Name = "recipe", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Recipe>? Recipe { get; set; }
     }

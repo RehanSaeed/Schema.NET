@@ -8,7 +8,7 @@ namespace Schema.NET
     /// A dentist.
     /// </summary>
     [DataContract]
-    public partial class Dentist : LocalBusiness
+    public partial class Dentist : LocalBusinessAndMedicalOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

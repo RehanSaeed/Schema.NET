@@ -19,35 +19,35 @@ namespace Schema.NET
         /// <summary>
         /// The location where the NewsArticle was produced.
         /// </summary>
-        [DataMember(Name = "dateline", Order = 305)]
+        [DataMember(Name = "dateline", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Dateline { get; set; }
 
         /// <summary>
         /// The number of the column in which the NewsArticle appears in the print edition.
         /// </summary>
-        [DataMember(Name = "printColumn", Order = 306)]
+        [DataMember(Name = "printColumn", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PrintColumn { get; set; }
 
         /// <summary>
         /// The edition of the print product in which the NewsArticle appears.
         /// </summary>
-        [DataMember(Name = "printEdition", Order = 307)]
+        [DataMember(Name = "printEdition", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PrintEdition { get; set; }
 
         /// <summary>
         /// If this NewsArticle appears in print, this field indicates the name of the page on which the article is found. Please note that this field is intended for the exact page name (e.g. A5, B18).
         /// </summary>
-        [DataMember(Name = "printPage", Order = 308)]
+        [DataMember(Name = "printPage", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PrintPage { get; set; }
 
         /// <summary>
         /// If this NewsArticle appears in print, this field indicates the print section in which the article appeared.
         /// </summary>
-        [DataMember(Name = "printSection", Order = 309)]
+        [DataMember(Name = "printSection", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PrintSection { get; set; }
     }

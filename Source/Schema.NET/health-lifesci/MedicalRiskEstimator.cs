@@ -15,5 +15,19 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MedicalRiskEstimator";
+
+        /// <summary>
+        /// The condition, complication, or symptom whose risk is being estimated.
+        /// </summary>
+        [DataMember(Name = "estimatesRiskOf", Order = 206)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MedicalEntity>? EstimatesRiskOf { get; set; }
+
+        /// <summary>
+        /// A modifiable or non-modifiable risk factor included in the calculation, e.g. age, coexisting condition.
+        /// </summary>
+        [DataMember(Name = "includedRiskFactor", Order = 207)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MedicalRiskFactor>? IncludedRiskFactor { get; set; }
     }
 }

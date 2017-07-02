@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of location. The original location of the object or the agent before the action.
         /// </summary>
-        [DataMember(Name = "fromLocation", Order = 205)]
+        [DataMember(Name = "fromLocation", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? FromLocation { get; set; }
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
-        [DataMember(Name = "toLocation", Order = 206)]
+        [DataMember(Name = "toLocation", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? ToLocation { get; set; }
     }

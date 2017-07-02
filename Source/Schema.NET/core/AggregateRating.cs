@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The item that is being reviewed/rated.
         /// </summary>
-        [DataMember(Name = "itemReviewed", Order = 305)]
+        [DataMember(Name = "itemReviewed", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Thing>? ItemReviewed { get; set; }
 
         /// <summary>
         /// The count of total number of ratings.
         /// </summary>
-        [DataMember(Name = "ratingCount", Order = 306)]
+        [DataMember(Name = "ratingCount", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? RatingCount { get; set; }
 
         /// <summary>
         /// The count of total number of reviews.
         /// </summary>
-        [DataMember(Name = "reviewCount", Order = 307)]
+        [DataMember(Name = "reviewCount", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? ReviewCount { get; set; }
     }

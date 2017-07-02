@@ -15,5 +15,12 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Thesis";
+
+        /// <summary>
+        /// Qualification, candidature, degree, application that Thesis supports.
+        /// </summary>
+        [DataMember(Name = "inSupportOf", Order = 206)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? InSupportOf { get; set; }
     }
 }

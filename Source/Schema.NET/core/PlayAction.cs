@@ -5,7 +5,12 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise...
+    /// &lt;p&gt;The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.&lt;/p&gt;
+    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// &lt;ul&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/ListenAction"&gt;ListenAction&lt;/a&gt;: Unlike ListenAction (which is under ConsumeAction), PlayAction refers to performing for an audience or at an event, rather than consuming music.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/WatchAction"&gt;WatchAction&lt;/a&gt;: Unlike WatchAction (which is under ConsumeAction), PlayAction refers to showing/displaying for an audience or at an event, rather than consuming visual content.&lt;/li&gt;
+    /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
     public partial class PlayAction : Action
@@ -19,14 +24,14 @@ namespace Schema.NET
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
-        [DataMember(Name = "audience", Order = 205)]
+        [DataMember(Name = "audience", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Audience>? Audience { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        [DataMember(Name = "event", Order = 206)]
+        [DataMember(Name = "event", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Event>? Event { get; set; }
     }

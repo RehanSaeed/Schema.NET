@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A number associated with a role in an organization, for example, the number on an athlete's jersey.
         /// </summary>
-        [DataMember(Name = "numberedPosition", Order = 305)]
+        [DataMember(Name = "numberedPosition", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? NumberedPosition { get; set; }
     }

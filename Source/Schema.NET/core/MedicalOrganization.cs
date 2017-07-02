@@ -15,5 +15,26 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MedicalOrganization";
+
+        /// <summary>
+        /// Name or unique ID of network. (Networks are often reused across different insurance plans).
+        /// </summary>
+        [DataMember(Name = "healthPlanNetworkId", Order = 206)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? HealthPlanNetworkId { get; set; }
+
+        /// <summary>
+        /// Whether the provider is accepting new patients.
+        /// </summary>
+        [DataMember(Name = "isAcceptingNewPatients", Order = 207)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<bool?>? IsAcceptingNewPatients { get; set; }
+
+        /// <summary>
+        /// A medical specialty of the provider.
+        /// </summary>
+        [DataMember(Name = "medicalSpecialty", Order = 208)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Values<MedicalSpecialty?>? MedicalSpecialty { get; set; }
     }
 }

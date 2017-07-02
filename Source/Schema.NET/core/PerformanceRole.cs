@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e...
+    /// A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e.g. in a Movie, TVSeries etc.
     /// </summary>
     [DataContract]
     public partial class PerformanceRole : Role
@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The name of a character played in some acting or performing role, i.e. in a PerformanceRole.
         /// </summary>
-        [DataMember(Name = "characterName", Order = 305)]
+        [DataMember(Name = "characterName", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? CharacterName { get; set; }
     }

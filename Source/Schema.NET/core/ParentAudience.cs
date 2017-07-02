@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// Maximal age of the child.
         /// </summary>
-        [DataMember(Name = "childMaxAge", Order = 405)]
+        [DataMember(Name = "childMaxAge", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? ChildMaxAge { get; set; }
 
         /// <summary>
         /// Minimal age of the child.
         /// </summary>
-        [DataMember(Name = "childMinAge", Order = 406)]
+        [DataMember(Name = "childMinAge", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? ChildMinAge { get; set; }
     }

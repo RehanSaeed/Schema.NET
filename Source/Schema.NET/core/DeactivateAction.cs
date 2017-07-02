@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of stopping or deactivating a device or application (e...
+    /// The act of stopping or deactivating a device or application (e.g. stopping a timer or turning off a flashlight).
     /// </summary>
     [DataContract]
     public partial class DeactivateAction : ControlAction

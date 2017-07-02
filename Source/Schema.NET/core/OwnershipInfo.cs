@@ -19,28 +19,28 @@ namespace Schema.NET
         /// <summary>
         /// The organization or person from which the product was acquired.
         /// </summary>
-        [DataMember(Name = "acquiredFrom", Order = 305)]
+        [DataMember(Name = "acquiredFrom", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person, Organization>? AcquiredFrom { get; set; }
+        public Values<Organization, Person>? AcquiredFrom { get; set; }
 
         /// <summary>
         /// The date and time of obtaining the product.
         /// </summary>
-        [DataMember(Name = "ownedFrom", Order = 306)]
+        [DataMember(Name = "ownedFrom", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? OwnedFrom { get; set; }
 
         /// <summary>
         /// The date and time of giving up ownership on the product.
         /// </summary>
-        [DataMember(Name = "ownedThrough", Order = 307)]
+        [DataMember(Name = "ownedThrough", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? OwnedThrough { get; set; }
 
         /// <summary>
         /// The product that this structured value is referring to.
         /// </summary>
-        [DataMember(Name = "typeOfGood", Order = 308)]
+        [DataMember(Name = "typeOfGood", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Product, Service>? TypeOfGood { get; set; }
     }

@@ -7,6 +7,7 @@
     /// The base object
     /// See https://json-ld.org/spec/latest/json-ld
     /// </summary>
+    [DataContract]
     public class JsonLdObject
     {
         /// <summary>
@@ -21,7 +22,7 @@
         /// Simply speaking, a context is used to map terms to IRIs. Terms are case sensitive and any valid string that
         /// is not a reserved JSON-LD keyword can be used as a term.
         /// </summary>
-        [DataMember(Name = "@context")]
+        [DataMember(Name = "@context", Order = 0)]
         public virtual string Context { get; }
 
         /// <summary>
@@ -32,14 +33,14 @@
         /// result in a representation of that node.This may allow an application to retrieve further information about
         /// a node. In JSON-LD, a node is identified using the @id keyword:
         /// </summary>
-        [DataMember(Name = "@id")]
+        [DataMember(Name = "@id", Order = 2)]
         public virtual Uri Id { get; set; }
 
         /// <summary>
         /// Gets or sets the type, used to uniquely identify things that are being described in the document with IRIs
         /// or blank node identifiers.
         /// </summary>
-        [DataMember(Name = "@type")]
+        [DataMember(Name = "@type", Order = 1)]
         public virtual string Type { get; }
     }
 }

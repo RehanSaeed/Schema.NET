@@ -15,5 +15,12 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DrugLegalStatus";
+
+        /// <summary>
+        /// The location in which the status applies.
+        /// </summary>
+        [DataMember(Name = "applicableLocation", Order = 306)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<AdministrativeArea>? ApplicableLocation { get; set; }
     }
 }

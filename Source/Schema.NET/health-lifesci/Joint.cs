@@ -15,5 +15,26 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Joint";
+
+        /// <summary>
+        /// The biomechanical properties of the bone.
+        /// </summary>
+        [DataMember(Name = "biomechnicalClass", Order = 306)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? BiomechnicalClass { get; set; }
+
+        /// <summary>
+        /// The degree of mobility the joint allows.
+        /// </summary>
+        [DataMember(Name = "functionalClass", Order = 307)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MedicalEntity, string>? FunctionalClass { get; set; }
+
+        /// <summary>
+        /// The name given to how bone physically connects to each other.
+        /// </summary>
+        [DataMember(Name = "structuralClass", Order = 308)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? StructuralClass { get; set; }
     }
 }

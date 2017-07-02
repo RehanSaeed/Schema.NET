@@ -5,10 +5,11 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of an agent relocating to a place.
-    /// Related actions:
-    ///
-    /// TransferAction: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.
+    /// &lt;p&gt;The act of an agent relocating to a place.&lt;/p&gt;
+    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// &lt;ul&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/TransferAction"&gt;TransferAction&lt;/a&gt;: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.&lt;/li&gt;
+    /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
     public partial class MoveAction : Action
@@ -22,14 +23,14 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of location. The original location of the object or the agent before the action.
         /// </summary>
-        [DataMember(Name = "fromLocation", Order = 205)]
+        [DataMember(Name = "fromLocation", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? FromLocation { get; set; }
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
-        [DataMember(Name = "toLocation", Order = 206)]
+        [DataMember(Name = "toLocation", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? ToLocation { get; set; }
     }

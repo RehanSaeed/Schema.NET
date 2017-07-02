@@ -20,28 +20,28 @@ namespace Schema.NET
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;/p&gt;
         /// &lt;p&gt;Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
-        [DataMember(Name = "additionalProperty", Order = 305)]
+        [DataMember(Name = "additionalProperty", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<PropertyValue>? AdditionalProperty { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
         /// </summary>
-        [DataMember(Name = "maxValue", Order = 306)]
+        [DataMember(Name = "maxValue", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? MaxValue { get; set; }
 
         /// <summary>
         /// The lower value of some characteristic or property.
         /// </summary>
-        [DataMember(Name = "minValue", Order = 307)]
+        [DataMember(Name = "minValue", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?>? MinValue { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
         /// </summary>
-        [DataMember(Name = "unitCode", Order = 308)]
+        [DataMember(Name = "unitCode", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? UnitCode { get; set; }
 
@@ -49,7 +49,7 @@ namespace Schema.NET
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
         /// &lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "unitText", Order = 309)]
+        [DataMember(Name = "unitText", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? UnitText { get; set; }
 
@@ -60,15 +60,15 @@ namespace Schema.NET
         /// &lt;li&gt;For &lt;a class="localLink" href="http://schema.org/PropertyValue"&gt;PropertyValue&lt;/a&gt;, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "value", Order = 310)]
+        [DataMember(Name = "value", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<StructuredValue, bool?, string, double?>? Value { get; set; }
+        public Values<bool?, double?, StructuredValue, string>? Value { get; set; }
 
         /// <summary>
         /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
         /// </summary>
-        [DataMember(Name = "valueReference", Order = 311)]
+        [DataMember(Name = "valueReference", Order = 312)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue, StructuredValue, PropertyValue>? ValueReference { get; set; }
+        public Values<PropertyValue, QuantitativeValue, StructuredValue>? ValueReference { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Schema.NET
     /// A movie theater.
     /// </summary>
     [DataContract]
-    public partial class MovieTheater : EntertainmentBusiness
+    public partial class MovieTheater : CivicStructureAndEntertainmentBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The number of screens in the movie theater.
         /// </summary>
-        [DataMember(Name = "screenCount", Order = 405)]
+        [DataMember(Name = "screenCount", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? ScreenCount { get; set; }
     }

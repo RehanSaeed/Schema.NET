@@ -2,24 +2,22 @@
 {
     using System;
     using System.Linq;
-    using Schema.NET.Tool.Models;
+    using Schema.NET.Tool.ViewModels;
 
     // See https://schema.org/docs/actions.html#part-3
-    public class AddTextTypeToActionTarget : ISchemaClassOverride
+    public class AddTextTypeToActionTarget : IClassOverride
     {
-        public bool CanOverride(SchemaClass schemaClass) =>
-            string.Equals(schemaClass.Name, "Action", StringComparison.OrdinalIgnoreCase);
+        public bool CanOverride(Class @class) =>
+            string.Equals(@class.Name, "Action", StringComparison.OrdinalIgnoreCase);
 
-        public void Override(SchemaClass schemaClass)
+        public void Override(Class @class)
         {
-            var property = schemaClass.Properties.First(x => string.Equals(x.Name, "target", StringComparison.Ordinal));
+            var property = @class.Properties.First(x => string.Equals(x.Name, "target", StringComparison.OrdinalIgnoreCase));
             property.Types.Add(
-                new SchemaType()
+                new PropertyType()
                 {
-                    CSharpType = typeof(Uri),
                     CSharpTypeString = "Uri",
-                    Name = "URL",
-                    Url = "http://schema.org/URL"
+                    Name = "URL"
                 });
         }
     }

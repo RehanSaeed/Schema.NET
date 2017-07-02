@@ -2,41 +2,36 @@
 {
     using System;
     using System.Collections.Generic;
-    using Schema.NET.Tool.Models;
+    using Schema.NET.Tool.ViewModels;
 
-    public class AddQueryInputPropertyToSearchAction : ISchemaClassOverride
+    public class AddQueryInputPropertyToSearchAction : IClassOverride
     {
-        public bool CanOverride(SchemaClass schemaClass) =>
-            string.Equals(schemaClass.Name, "SearchAction", StringComparison.Ordinal);
+        public bool CanOverride(Class @class) =>
+            string.Equals(@class.Name, "SearchAction", StringComparison.Ordinal);
 
-        public void Override(SchemaClass schemaClass)
+        public void Override(Class @class)
         {
-            var schemaProperty = new SchemaProperty()
+            var property = new Property()
             {
+                Class = @class,
                 Description = "Gets or sets the query input search parameter.",
-                Name = "query-input",
-                PropertyType = "rdf:Property",
-                Types = new List<SchemaType>()
+                JsonName = "query-input",
+                Name = "QueryInput",
+                Types = new List<PropertyType>()
                 {
-                    new SchemaType()
+                    new PropertyType()
                     {
-                        CSharpType = typeof(string),
                         CSharpTypeString = "string",
-                        Name = "Text",
-                        Url = "http://schema.org/Text"
+                        Name = "Text"
                     },
-                    new SchemaType()
+                    new PropertyType()
                     {
                         CSharpTypeString = "PropertyValueSpecification",
-                        Name = "PropertyValueSpecification",
-                        Url = "http://schema.org/PropertyValueSpecification"
+                        Name = "PropertyValueSpecification"
                     }
-                },
-                Url = "http://schema.org/query-input"
+                }
             };
-            schemaClass.Properties.Add(schemaProperty);
-            schemaProperty.Classes.Add(schemaClass);
-            schemaProperty.ClassUrls.Add(schemaClass.Url);
+            @class.Properties.Add(property);
         }
     }
 }

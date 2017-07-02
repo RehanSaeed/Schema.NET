@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A reservation to dine at a food-related business.Note: This type is for information about actual reservations, e...
+    /// A reservation to dine at a food-related business.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
     /// </summary>
     [DataContract]
     public partial class FoodEstablishmentReservation : Reservation
@@ -20,22 +20,22 @@ namespace Schema.NET
         /// The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to &lt;em&gt;December&lt;/em&gt;.&lt;/p&gt;
         /// &lt;p&gt;Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        [DataMember(Name = "endTime", Order = 305)]
+        [DataMember(Name = "endTime", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? EndTime { get; set; }
 
         /// <summary>
         /// Number of people the reservation should accommodate.
         /// </summary>
-        [DataMember(Name = "partySize", Order = 306)]
+        [DataMember(Name = "partySize", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue, int?>? PartySize { get; set; }
+        public Values<int?, QuantitativeValue>? PartySize { get; set; }
 
         /// <summary>
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December.&lt;/p&gt;
         /// &lt;p&gt;Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        [DataMember(Name = "startTime", Order = 307)]
+        [DataMember(Name = "startTime", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? StartTime { get; set; }
     }

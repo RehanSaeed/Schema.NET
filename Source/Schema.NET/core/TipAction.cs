@@ -19,8 +19,8 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
-        [DataMember(Name = "recipient", Order = 305)]
+        [DataMember(Name = "recipient", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person, Audience, Organization>? Recipient { get; set; }
+        public Values<Audience, Organization, Person>? Recipient { get; set; }
     }
 }

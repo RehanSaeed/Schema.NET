@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The number or other unique designator assigned to a Report by the publishing organization.
         /// </summary>
-        [DataMember(Name = "reportNumber", Order = 305)]
+        [DataMember(Name = "reportNumber", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? ReportNumber { get; set; }
     }

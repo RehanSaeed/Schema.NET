@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// The time the object is scheduled to.
         /// </summary>
-        [DataMember(Name = "scheduledTime", Order = 305)]
+        [DataMember(Name = "scheduledTime", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? ScheduledTime { get; set; }
     }

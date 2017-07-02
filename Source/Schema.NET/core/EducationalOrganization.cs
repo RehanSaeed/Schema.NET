@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// Alumni of an organization.
         /// </summary>
-        [DataMember(Name = "alumni", Order = 205)]
+        [DataMember(Name = "alumni", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<Person>? Alumni { get; set; }
     }

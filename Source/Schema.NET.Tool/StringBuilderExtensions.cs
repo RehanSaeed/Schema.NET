@@ -24,15 +24,24 @@
 
         public static void AppendCommentLine(this StringBuilder stringBuilder, int count, string value)
         {
+            value = value.Trim().Replace("\n\n", "\n").Replace(" \n", "\n");
+            var escapedValue = XmlEscape(value);
+
             stringBuilder.AppendIndent(count);
             stringBuilder.Append("/// ");
-            value = value.Trim().Replace("\n\n", "\n").Replace(" \n", "\n");
-            stringBuilder.AppendLine(XmlEscape(value)
+            stringBuilder.AppendLine(escapedValue
                 .Replace("\n", $"\n{new string(Space, count)}/// ")
                 .Replace("/// \n", "///\n"));
         }
 
-        public static string XmlEscape(string value)
+        public static void AppendCommentSummary(this StringBuilder stringBuilder, int count, string value)
+        {
+            stringBuilder.AppendIndentLine(count, "/// <summary>");
+            stringBuilder.AppendCommentLine(count, value);
+            stringBuilder.AppendIndentLine(count, "/// </summary>");
+        }
+
+        private static string XmlEscape(string value)
         {
             var document = new XmlDocument();
             var element = document.CreateElement("root");

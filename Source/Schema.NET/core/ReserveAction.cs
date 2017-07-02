@@ -5,10 +5,11 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Reserving a concrete object.
-    /// Related actions:
-    ///
-    /// ScheduleAction: Unlike ScheduleAction, ReserveAction reserves concrete objects (e...
+    /// &lt;p&gt;Reserving a concrete object.&lt;/p&gt;
+    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// &lt;ul&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/ScheduleAction"&gt;ScheduleAction&lt;/a&gt;&lt;/a&gt;: Unlike ScheduleAction, ReserveAction reserves concrete objects (e.g. a table, a hotel) towards a time slot / spatial allocation.&lt;/li&gt;
+    /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
     public partial class ReserveAction : PlanAction

@@ -5,8 +5,8 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A reservation for a taxi.
-    /// Note: This type is for information about actual reservations, e...
+    /// A reservation for a taxi.&lt;/p&gt;
+    /// &lt;p&gt;Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use &lt;a class="localLink" href="http://schema.org/Offer"&gt;Offer&lt;/a&gt;.
     /// </summary>
     [DataContract]
     public partial class TaxiReservation : Reservation
@@ -20,21 +20,21 @@ namespace Schema.NET
         /// <summary>
         /// Number of people the reservation should accommodate.
         /// </summary>
-        [DataMember(Name = "partySize", Order = 305)]
+        [DataMember(Name = "partySize", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue, int?>? PartySize { get; set; }
+        public Values<int?, QuantitativeValue>? PartySize { get; set; }
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
-        [DataMember(Name = "pickupLocation", Order = 306)]
+        [DataMember(Name = "pickupLocation", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
-        [DataMember(Name = "pickupTime", Order = 307)]
+        [DataMember(Name = "pickupTime", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? PickupTime { get; set; }
     }

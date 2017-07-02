@@ -19,28 +19,28 @@ namespace Schema.NET
         /// <summary>
         /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.
         /// </summary>
-        [DataMember(Name = "item", Order = 205)]
+        [DataMember(Name = "item", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Thing>? Item { get; set; }
 
         /// <summary>
         /// A link to the ListItem that follows the current one.
         /// </summary>
-        [DataMember(Name = "nextItem", Order = 206)]
+        [DataMember(Name = "nextItem", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<ListItem>? NextItem { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
         /// </summary>
-        [DataMember(Name = "position", Order = 207)]
+        [DataMember(Name = "position", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?, string>? Position { get; set; }
 
         /// <summary>
         /// A link to the ListItem that preceeds the current one.
         /// </summary>
-        [DataMember(Name = "previousItem", Order = 208)]
+        [DataMember(Name = "previousItem", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<ListItem>? PreviousItem { get; set; }
     }

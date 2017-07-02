@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of resuming a device or application which was formerly paused (e...
+    /// The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer).
     /// </summary>
     [DataContract]
     public partial class ResumeAction : ControlAction

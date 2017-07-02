@@ -5,8 +5,8 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A reservation for lodging at a hotel, motel, inn, etc.
-    /// Note: This type is for information about actual reservations, e...
+    /// A reservation for lodging at a hotel, motel, inn, etc.&lt;/p&gt;
+    /// &lt;p&gt;Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
     /// </summary>
     [DataContract]
     public partial class LodgingReservation : Reservation
@@ -20,42 +20,42 @@ namespace Schema.NET
         /// <summary>
         /// The earliest someone may check into a lodging establishment.
         /// </summary>
-        [DataMember(Name = "checkinTime", Order = 305)]
+        [DataMember(Name = "checkinTime", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
-        [DataMember(Name = "checkoutTime", Order = 306)]
+        [DataMember(Name = "checkoutTime", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? CheckoutTime { get; set; }
 
         /// <summary>
         /// A full description of the lodging unit.
         /// </summary>
-        [DataMember(Name = "lodgingUnitDescription", Order = 307)]
+        [DataMember(Name = "lodgingUnitDescription", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? LodgingUnitDescription { get; set; }
 
         /// <summary>
         /// Textual description of the unit type (including suite vs. room, size of bed, etc.).
         /// </summary>
-        [DataMember(Name = "lodgingUnitType", Order = 308)]
+        [DataMember(Name = "lodgingUnitType", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? LodgingUnitType { get; set; }
 
         /// <summary>
         /// The number of adults staying in the unit.
         /// </summary>
-        [DataMember(Name = "numAdults", Order = 309)]
+        [DataMember(Name = "numAdults", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue, int?>? NumAdults { get; set; }
+        public Values<int?, QuantitativeValue>? NumAdults { get; set; }
 
         /// <summary>
         /// The number of children staying in the unit.
         /// </summary>
-        [DataMember(Name = "numChildren", Order = 310)]
+        [DataMember(Name = "numChildren", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?, QuantitativeValue>? NumChildren { get; set; }
     }

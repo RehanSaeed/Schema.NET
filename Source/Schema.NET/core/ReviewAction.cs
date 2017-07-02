@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of producing a balanced opinion about the object for an audience...
+    /// The act of producing a balanced opinion about the object for an audience. An agent reviews an object with participants resulting in a review.
     /// </summary>
     [DataContract]
     public partial class ReviewAction : AssessAction
@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of result. The review that resulted in the performing of the action.
         /// </summary>
-        [DataMember(Name = "resultReview", Order = 305)]
+        [DataMember(Name = "resultReview", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Review>? ResultReview { get; set; }
     }

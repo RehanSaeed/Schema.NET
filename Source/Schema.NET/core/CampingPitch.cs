@@ -5,7 +5,9 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A camping pitch is an individual place for overnight stay in the outdoors, typically being part of a larger camping site...
+    /// A camping pitch is an individual place for overnight stay in the outdoors, typically being part of a larger camping site.
+    /// &lt;br /&gt;&lt;br /&gt;
+    /// See also the &lt;a href="/docs/hotels.html"&gt;dedicated document on the use of schema.org for marking up hotels and other forms of accommodations&lt;/a&gt;.
     /// </summary>
     [DataContract]
     public partial class CampingPitch : Accommodation

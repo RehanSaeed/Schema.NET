@@ -15,5 +15,12 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ImagingTest";
+
+        /// <summary>
+        /// Imaging technique used.
+        /// </summary>
+        [DataMember(Name = "imagingTechnique", Order = 306)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MedicalImagingTechnique?>? ImagingTechnique { get; set; }
     }
 }

@@ -15,5 +15,12 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MedicalScholarlyArticle";
+
+        /// <summary>
+        /// The type of the medical article, taken from the US NLM MeSH publication type catalog. See also &lt;a href="http://www.nlm.nih.gov/mesh/pubtypes.html"&gt;MeSH documentation&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "publicationType", Order = 406)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? PublicationType { get; set; }
     }
 }

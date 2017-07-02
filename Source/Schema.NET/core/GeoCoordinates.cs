@@ -19,42 +19,42 @@ namespace Schema.NET
         /// <summary>
         /// Physical address of the item.
         /// </summary>
-        [DataMember(Name = "address", Order = 305)]
+        [DataMember(Name = "address", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<PostalAddress, string>? Address { get; set; }
 
         /// <summary>
         /// The country. For example, USA. You can also provide the two-letter &lt;a href="http://en.wikipedia.org/wiki/ISO_3166-1"&gt;ISO 3166-1 alpha-2 country code&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "addressCountry", Order = 306)]
+        [DataMember(Name = "addressCountry", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Country, string>? AddressCountry { get; set; }
 
         /// <summary>
         /// The elevation of a location (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "elevation", Order = 307)]
+        [DataMember(Name = "elevation", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?, string>? Elevation { get; set; }
 
         /// <summary>
         /// The latitude of a location. For example &lt;code&gt;37.42242&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "latitude", Order = 308)]
+        [DataMember(Name = "latitude", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, double?>? Latitude { get; set; }
+        public Values<double?, string>? Latitude { get; set; }
 
         /// <summary>
         /// The longitude of a location. For example &lt;code&gt;-122.08585&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "longitude", Order = 309)]
+        [DataMember(Name = "longitude", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?, string>? Longitude { get; set; }
 
         /// <summary>
         /// The postal code. For example, 94043.
         /// </summary>
-        [DataMember(Name = "postalCode", Order = 310)]
+        [DataMember(Name = "postalCode", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PostalCode { get; set; }
     }

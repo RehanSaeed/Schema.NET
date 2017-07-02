@@ -5,7 +5,11 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of registering to an organization/service without the guarantee to receive it...
+    /// &lt;p&gt;The act of registering to an organization/service without the guarantee to receive it.&lt;/p&gt;
+    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// &lt;ul&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/RegisterAction"&gt;RegisterAction&lt;/a&gt;: Unlike RegisterAction, ApplyAction has no guarantees that the application will be accepted.&lt;/li&gt;
+    /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
     public partial class ApplyAction : OrganizeAction

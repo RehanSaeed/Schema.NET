@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// Indicates the kind of Map, from the MapCategoryType Enumeration.
         /// </summary>
-        [DataMember(Name = "mapType", Order = 205)]
+        [DataMember(Name = "mapType", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MapCategoryType?>? MapType { get; set; }
     }

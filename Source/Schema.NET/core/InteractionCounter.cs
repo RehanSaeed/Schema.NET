@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A summary of how users have interacted with this CreativeWork...
+    /// A summary of how users have interacted with this CreativeWork. In most cases, authors will use a subtype to specify the specific type of interaction.
     /// </summary>
     [DataContract]
     public partial class InteractionCounter : StructuredValue
@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// The WebSite or SoftwareApplication where the interactions took place.
         /// </summary>
-        [DataMember(Name = "interactionService", Order = 305)]
+        [DataMember(Name = "interactionService", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<SoftwareApplication, WebSite>? InteractionService { get; set; }
 
         /// <summary>
         /// The Action representing the type of interaction. For up votes, +1s, etc. use &lt;a class="localLink" href="http://schema.org/LikeAction"&gt;LikeAction&lt;/a&gt;. For down votes use &lt;a class="localLink" href="http://schema.org/DislikeAction"&gt;DislikeAction&lt;/a&gt;. Otherwise, use the most specific Action.
         /// </summary>
-        [DataMember(Name = "interactionType", Order = 306)]
+        [DataMember(Name = "interactionType", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Action>? InteractionType { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication.
         /// </summary>
-        [DataMember(Name = "userInteractionCount", Order = 307)]
+        [DataMember(Name = "userInteractionCount", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? UserInteractionCount { get; set; }
     }

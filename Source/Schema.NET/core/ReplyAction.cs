@@ -5,7 +5,11 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of responding to a question/message asked/sent by the object...
+    /// &lt;p&gt;The act of responding to a question/message asked/sent by the object. Related to &lt;a class="localLink" href="http://schema.org/AskAction"&gt;AskAction&lt;/a&gt;&lt;/p&gt;
+    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// &lt;ul&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/AskAction"&gt;AskAction&lt;/a&gt;: Appears generally as an origin of a ReplyAction.&lt;/li&gt;
+    /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
     public partial class ReplyAction : CommunicateAction
@@ -19,7 +23,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of result. The Comment created or sent as a result of this action.
         /// </summary>
-        [DataMember(Name = "resultComment", Order = 405)]
+        [DataMember(Name = "resultComment", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Comment>? ResultComment { get; set; }
     }

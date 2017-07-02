@@ -15,5 +15,33 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "TherapeuticProcedure";
+
+        /// <summary>
+        /// A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
+        /// </summary>
+        [DataMember(Name = "adverseOutcome", Order = 306)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MedicalEntity>? AdverseOutcome { get; set; }
+
+        /// <summary>
+        /// A dosing schedule for the drug for a given population, either observed, recommended, or maximum dose based on the type used.
+        /// </summary>
+        [DataMember(Name = "doseSchedule", Order = 307)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DoseSchedule>? DoseSchedule { get; set; }
+
+        /// <summary>
+        /// Specifying a drug or medicine used in a medication procedure
+        /// </summary>
+        [DataMember(Name = "drug", Order = 308)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Drug>? Drug { get; set; }
+
+        /// <summary>
+        /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
+        /// </summary>
+        [DataMember(Name = "indication", Order = 309)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override Values<MedicalIndication>? Indication { get; set; }
     }
 }

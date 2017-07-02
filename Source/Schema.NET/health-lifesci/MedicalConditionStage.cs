@@ -15,5 +15,19 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MedicalConditionStage";
+
+        /// <summary>
+        /// The stage represented as a number, e.g. 3.
+        /// </summary>
+        [DataMember(Name = "stageAsNumber", Order = 306)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<double?>? StageAsNumber { get; set; }
+
+        /// <summary>
+        /// The substage, e.g. 'a' for Stage IIIa.
+        /// </summary>
+        [DataMember(Name = "subStageSuffix", Order = 307)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? SubStageSuffix { get; set; }
     }
 }

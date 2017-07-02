@@ -17,10 +17,17 @@ namespace Schema.NET
         public override string Type => "PayAction";
 
         /// <summary>
+        /// A goal towards an action is taken. Can be concrete or abstract.
+        /// </summary>
+        [DataMember(Name = "purpose", Order = 306)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<MedicalDevicePurpose?, Thing>? Purpose { get; set; }
+
+        /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
-        [DataMember(Name = "recipient", Order = 305)]
+        [DataMember(Name = "recipient", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person, Audience, Organization>? Recipient { get; set; }
+        public Values<Audience, Organization, Person>? Recipient { get; set; }
     }
 }

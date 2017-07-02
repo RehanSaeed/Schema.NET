@@ -5,7 +5,9 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A GeoCircle is a GeoShape representing a circular geographic area...
+    /// A GeoCircle is a GeoShape representing a circular geographic area. As it is a GeoShape
+    ///           it provides the simple textual property 'circle', but also allows the combination of postalCode alongside geoRadius.
+    ///           The center of the circle can be indicated via the 'geoMidpoint' property, or more approximately using 'address', 'postalCode'.
     /// </summary>
     [DataContract]
     public partial class GeoCircle : GeoShape
@@ -19,15 +21,15 @@ namespace Schema.NET
         /// <summary>
         /// Indicates the GeoCoordinates at the centre of a GeoShape e.g. GeoCircle.
         /// </summary>
-        [DataMember(Name = "geoMidpoint", Order = 405)]
+        [DataMember(Name = "geoMidpoint", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<GeoCoordinates>? GeoMidpoint { get; set; }
 
         /// <summary>
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).
         /// </summary>
-        [DataMember(Name = "geoRadius", Order = 406)]
+        [DataMember(Name = "geoRadius", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, double?>? GeoRadius { get; set; }
+        public Values<double?, string>? GeoRadius { get; set; }
     }
 }

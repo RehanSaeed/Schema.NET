@@ -5,8 +5,8 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Professional service: Attorney.
-    /// This type is deprecated - LegalService is more inclusive and less ambiguous.
+    /// Professional service: Attorney. &lt;/p&gt;
+    /// &lt;p&gt;This type is deprecated - &lt;a class="localLink" href="http://schema.org/LegalService"&gt;LegalService&lt;/a&gt; is more inclusive and less ambiguous.
     /// </summary>
     [DataContract]
     public partial class Attorney : LegalService

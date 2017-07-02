@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
         /// </summary>
-        [DataMember(Name = "expectsAcceptanceOf", Order = 205)]
+        [DataMember(Name = "expectsAcceptanceOf", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Offer>? ExpectsAcceptanceOf { get; set; }
     }

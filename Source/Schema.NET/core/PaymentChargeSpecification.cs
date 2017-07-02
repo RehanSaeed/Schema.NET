@@ -19,14 +19,14 @@ namespace Schema.NET
         /// <summary>
         /// The delivery method(s) to which the delivery charge or payment charge specification applies.
         /// </summary>
-        [DataMember(Name = "appliesToDeliveryMethod", Order = 405)]
+        [DataMember(Name = "appliesToDeliveryMethod", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
 
         /// <summary>
         /// The payment method(s) to which the payment charge specification applies.
         /// </summary>
-        [DataMember(Name = "appliesToPaymentMethod", Order = 406)]
+        [DataMember(Name = "appliesToPaymentMethod", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<PaymentMethod?>? AppliesToPaymentMethod { get; set; }
     }
