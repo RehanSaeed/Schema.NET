@@ -55,7 +55,7 @@ Task("Restore")
         var project = GetFiles("./**/Schema.NET.Tool.csproj").First();
         DotNetCoreRun(project.ToString());
     });
-    
+
 Task("Build")
     .IsDependentOn("RunTool")
     .Does(() =>

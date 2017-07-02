@@ -26,6 +26,22 @@ The code above outputs the following JSON-LD:
 }
 ```
 
+## What is Schema.org?
+
+[schema.org](https://schema.org) defines a set of standard classes and their properties for objects and services in the real world. This machine readable format is a common standard used across the web for describing things.
+
+## Where is Schema.org Used?
+
+##### Websites
+
+Websites can define Structured Data in the `head` section of their `html` to enable search engines to show richer information in their search results. Here is an example of how [Google](https://developers.google.com/search/docs/guides/intro-structured-data) can display extended metadata about your site in it's search results.
+
+![Google Logo Structured Data Example](https://raw.githubusercontent.com/RehanSaeed/Schema.NET/master/Images/Google%20Logo%20Structured%20Data%20Example.png)
+
+##### Windows UWP Sharing
+
+Windows UWP apps let you share data using schema.org classes. [Here](https://docs.microsoft.com/en-us/uwp/schemas/appxpackage/appxmanifestschema/element-sharetarget) is an example showing how to share metadata about a book.
+
 ## Continuous Integration
 
 | Name      | Operating System | Status |

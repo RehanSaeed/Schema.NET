@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{719809C2-A551-4C4A-9EFD-B10FB5E35BC0}"
 EndProject
@@ -32,6 +32,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E1B24F25-B8A4-46EE-B7EB-7803DCFC543F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schema.NET.Test", "Tests\Schema.NET.Test\Schema.NET.Test.csproj", "{3E75002C-0EF2-4F04-8EC6-CED90BA27AD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{26F71F5B-2940-4FB0-9681-A76060CBCEF9}"
+	ProjectSection(SolutionItems) = preProject
+		Images\Banner.png = Images\Banner.png
+		Images\Google Logo Structured Data Example.png = Images\Google Logo Structured Data Example.png
+		Images\Icon.png = Images\Icon.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
