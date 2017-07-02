@@ -4,7 +4,7 @@ Schema.org objects turned into strongly typed C# POCO classes for use in .NET. A
 
 ## Simple Example
 
-```
+```C#
 var website = new WebSite()
 {
     AlternateName = "An Alternative Name",
@@ -16,7 +16,7 @@ var jsonLd = website.ToString();
 
 The code above outputs the following JSON-LD:
 
-```
+```JSONLD
 {
     "@context":"http://schema.org",
     "@type":"WebSite",
@@ -40,7 +40,7 @@ Websites can define Structured Data in the `head` section of their `html` to ena
 
 Using structured data in `html` requires the use of a `script` tag with a MIME type of `application/ld+json` like so:
 
-```
+```HTML
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -66,7 +66,7 @@ schema.org defines classes and properties, where each property can have a single
 
 To facilitate this Schema.NET uses some clever C# generics and implicit type conversions so that setting a single or multiple values is possible and that setting a `string` or `PostalAddress` is also possible:
 
-```
+```C#
 // Single string address
 var organization = new Organization()
 {
