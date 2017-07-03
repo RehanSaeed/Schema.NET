@@ -1,4 +1,4 @@
-# AppVeyor documentation https://www.appveyor.com/docs
+﻿# AppVeyor documentation https://www.appveyor.com/docs
 
 version: '{build}'
 
@@ -21,6 +21,7 @@ environment:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 build_script:
+- ps: .\build.ps1 -Target RunTool
 - ps: .\build.ps1
 
 test: off

@@ -57,7 +57,7 @@ Task("Restore")
     });
 
 Task("Build")
-    .IsDependentOn("RunTool")
+    .IsDependentOn("Restore")
     .Does(() =>
     {
         foreach(var project in GetFiles("./**/*.csproj"))
