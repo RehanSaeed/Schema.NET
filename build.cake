@@ -60,6 +60,13 @@ Task("Build")
     .IsDependentOn("Restore")
     .Does(() =>
     {
+        Information("Started Listing Files");
+        foreach (var file in GetFiles("./**/*"))
+        {
+            Information(file.ToString());
+        }
+        Information("Finished Listing Files");
+
         foreach(var project in GetFiles("./**/*.csproj"))
         {
             DotNetCoreBuild(
