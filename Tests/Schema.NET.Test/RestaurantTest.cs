@@ -5,6 +5,7 @@
 
     public class RestaurantTest
     {
+        // https://developers.google.com/search/docs/data-types/local-businesses
         [Fact]
         public void ToString_RestaurantGoogleStructuredData_ReturnsExpectedJsonLd()
         {

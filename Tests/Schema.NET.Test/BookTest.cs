@@ -6,11 +6,13 @@
 
     public class BookTest
     {
+        // https://developers.google.com/search/docs/data-types/books
         [Fact]
         public void ToString_BookGoogleStructuredData_ReturnsExpectedJsonLd()
         {
             var book = new Book()
             {
+                Id = new Uri("http://example.com/book/1"),
                 Name = "The Catcher in the Rye",
                 Author = new Person()
                 {
@@ -83,6 +85,7 @@
                 "{" +
                     "\"@context\":\"http://schema.org\"," +
                     "\"@type\":\"Book\"," +
+                    "\"@id\":\"http://example.com/book/1\"," +
                     "\"name\":\"The Catcher in the Rye\"," +
                     "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
                     "\"author\":{" +
