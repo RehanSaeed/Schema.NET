@@ -21,7 +21,7 @@ indent_style = tab
 indent_size = 2
 
 # Configuration Files
-[*.{json,xml,props,targets,nuspec,resx,ruleset,config,yml}]
+[*.{json,xml,yml,config,props,targets,nuspec,resx,ruleset}]
 indent_size = 2
 
 # Markdown Files
@@ -29,7 +29,7 @@ indent_size = 2
 trim_trailing_whitespace = false
 
 # Web Files
-[*.{htm,html,js,ts,css,scss}]
+[*.{htm,html,js,ts,css,scss,less}]
 indent_size = 2
 insert_final_newline = true
 
@@ -40,7 +40,7 @@ end_of_line = lf
 # Dotnet Code Style Settings
 # See https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
 # See http://kent-boogaart.com/blog/editorconfig-reference-for-c-developers
-[*.{cs,vb}]
+[*.{cs,csx,cake,vb}]
 dotnet_sort_system_directives_first = true:warning
 dotnet_style_coalesce_expression = true:warning
 dotnet_style_collection_initializer = true:warning
@@ -141,7 +141,7 @@ dotnet_naming_rule.interface_types_must_be_prefixed_with_i.style = prefix_interf
 # C# Code Style Settings
 # See https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
 # See http://kent-boogaart.com/blog/editorconfig-reference-for-c-developers
-[*.cs]
+[*.cs,csx,cake]
 # Indentation Options
 csharp_indent_block_contents = true:warning
 csharp_indent_braces = false:warning
