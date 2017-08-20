@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.Models
+namespace Schema.NET.Tool.Models
 {
     using System;
     using System.Collections.Generic;
@@ -34,6 +34,8 @@
             "Integer",
             "Float",
             "Text",
+            "XPathType",
+            "CssSelectorType",
             "Quantity",
             "Mass",
             "Energy",

@@ -168,7 +168,11 @@ namespace Schema.NET.Tool.Services
                 foreach (var parentClassId in @class.Parents.Select(x => x.Id).Distinct().ToList())
                 {
                     var parentClass = classes.FirstOrDefault(x => x.Id == parentClassId);
-                    if (parentClass != null)
+                    if (parentClass == null)
+                    {
+                        throw new Exception("Check that a new primitive type has not been added.");
+                    }
+                    else
                     {
                         parentClass.Children.Add(@class);
                         @class.Parents.Remove(@class.Parents.First(x => x.Id == parentClassId));

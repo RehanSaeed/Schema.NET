@@ -16,12 +16,5 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Periodical";
-
-        /// <summary>
-        /// The International Standard Serial Number (ISSN) that identifies this periodical. You can repeat this property to (for example) identify different formats of this periodical.
-        /// </summary>
-        [DataMember(Name = "issn", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Issn { get; set; }
     }
 }

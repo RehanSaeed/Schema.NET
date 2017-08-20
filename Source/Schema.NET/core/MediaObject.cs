@@ -73,58 +73,51 @@ namespace Schema.NET
         public Values<string>? EncodingFormat { get; set; }
 
         /// <summary>
-        /// Date the content expires and is no longer useful or available. Useful for videos.
-        /// </summary>
-        [DataMember(Name = "expires", Order = 214)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? Expires { get; set; }
-
-        /// <summary>
         /// The height of the item.
         /// </summary>
-        [DataMember(Name = "height", Order = 215)]
+        [DataMember(Name = "height", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, QuantitativeValue, int>? Height { get; set; }
 
         /// <summary>
         /// Player type required&amp;#x2014;for example, Flash or Silverlight.
         /// </summary>
-        [DataMember(Name = "playerType", Order = 216)]
+        [DataMember(Name = "playerType", Order = 215)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PlayerType { get; set; }
 
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
-        [DataMember(Name = "productionCompany", Order = 217)]
+        [DataMember(Name = "productionCompany", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization>? ProductionCompany { get; set; }
 
         /// <summary>
         /// The regions where the media is allowed. If not specified, then it's assumed to be allowed everywhere. Specify the countries in &lt;a href="http://en.wikipedia.org/wiki/ISO_3166"&gt;ISO 3166 format&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "regionsAllowed", Order = 218)]
+        [DataMember(Name = "regionsAllowed", Order = 217)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? RegionsAllowed { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').
         /// </summary>
-        [DataMember(Name = "requiresSubscription", Order = 219)]
+        [DataMember(Name = "requiresSubscription", Order = 218)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<bool?>? RequiresSubscription { get; set; }
 
         /// <summary>
         /// Date when this media object was uploaded to this site.
         /// </summary>
-        [DataMember(Name = "uploadDate", Order = 220)]
+        [DataMember(Name = "uploadDate", Order = 219)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? UploadDate { get; set; }
 
         /// <summary>
         /// The width of the item.
         /// </summary>
-        [DataMember(Name = "width", Order = 221)]
+        [DataMember(Name = "width", Order = 220)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, QuantitativeValue, int>? Width { get; set; }
     }

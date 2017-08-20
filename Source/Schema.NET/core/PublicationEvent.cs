@@ -17,7 +17,7 @@ namespace Schema.NET
         public override string Type => "PublicationEvent";
 
         /// <summary>
-        /// A flag to signal that the publication is accessible for free.
+        /// A flag to signal that the item, event, or place is accessible for free.
         /// </summary>
         [DataMember(Name = "isAccessibleForFree", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]

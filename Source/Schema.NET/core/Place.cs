@@ -173,51 +173,65 @@ namespace Schema.NET
         public Values<Map, Uri>? HasMap { get; set; }
 
         /// <summary>
+        /// A flag to signal that the item, event, or place is accessible for free.
+        /// </summary>
+        [DataMember(Name = "isAccessibleForFree", Order = 128)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<bool?>? IsAccessibleForFree { get; set; }
+
+        /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
-        [DataMember(Name = "isicV4", Order = 128)]
+        [DataMember(Name = "isicV4", Order = 129)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? IsicV4 { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
-        [DataMember(Name = "logo", Order = 129)]
+        [DataMember(Name = "logo", Order = 130)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<ImageObject, Uri>? Logo { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
         /// </summary>
-        [DataMember(Name = "maximumAttendeeCapacity", Order = 130)]
+        [DataMember(Name = "maximumAttendeeCapacity", Order = 131)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?>? MaximumAttendeeCapacity { get; set; }
 
         /// <summary>
         /// The opening hours of a certain place.
         /// </summary>
-        [DataMember(Name = "openingHoursSpecification", Order = 131)]
+        [DataMember(Name = "openingHoursSpecification", Order = 132)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<OpeningHoursSpecification>? OpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// A photograph of this place.
         /// </summary>
-        [DataMember(Name = "photo", Order = 132)]
+        [DataMember(Name = "photo", Order = 133)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<ImageObject, Photograph>? Photo { get; set; }
 
         /// <summary>
+        /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
+        /// </summary>
+        [DataMember(Name = "publicAccess", Order = 134)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<bool?>? PublicAccess { get; set; }
+
+        /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 133)]
+        [DataMember(Name = "review", Order = 135)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Review>? Review { get; set; }
 
         /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
         /// </summary>
-        [DataMember(Name = "smokingAllowed", Order = 134)]
+        [DataMember(Name = "smokingAllowed", Order = 136)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<bool?>? SmokingAllowed { get; set; }
 
@@ -225,14 +239,14 @@ namespace Schema.NET
         /// The special opening hours of a certain place.&lt;/p&gt;
         /// &lt;p&gt;Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "specialOpeningHoursSpecification", Order = 135)]
+        [DataMember(Name = "specialOpeningHoursSpecification", Order = 137)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<OpeningHoursSpecification>? SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 136)]
+        [DataMember(Name = "telephone", Order = 138)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Telephone { get; set; }
     }

@@ -31,7 +31,7 @@ namespace Schema.NET
         public Values<Audience>? Audience { get; set; }
 
         /// <summary>
-        /// A language someone may use with the item. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/inLanguage"&gt;inLanguage&lt;/a&gt;
+        /// A language someone may use with or at the item, service or place. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/inLanguage"&gt;inLanguage&lt;/a&gt;
         /// </summary>
         [DataMember(Name = "availableLanguage", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]

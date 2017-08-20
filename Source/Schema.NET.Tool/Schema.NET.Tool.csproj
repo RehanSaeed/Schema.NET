@@ -2,13 +2,11 @@
 
   <PropertyGroup Label="Build">
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-    <PackageTargetFallback>net451;dotnet5.6;portable-net45+win8</PackageTargetFallback>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup Label="Package References">
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
-    <PackageReference Include="System.ValueTuple" Version="4.4.0-preview2-25405-01" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
 </Project>

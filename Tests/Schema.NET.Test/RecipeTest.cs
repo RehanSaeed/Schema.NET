@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Test
+namespace Schema.NET.Test
 {
     using System;
     using System.Collections.Generic;
@@ -59,6 +59,8 @@
                         "\"name\":\"Carol Smith\"" +
                     "}," +
                     "\"datePublished\":\"2009-11-05T00:00:00+00:00\"," +
+                    "\"prepTime\":\"PT30M\"," +
+                    "\"totalTime\":\"PT1H30M\"," +
                     "\"cookTime\":\"PT1H\"," +
                     "\"nutrition\":{" +
                         "\"@type\":\"NutritionInformation\"," +
@@ -66,14 +68,12 @@
                         "\"fatContent\":\"12 g\"," +
                         "\"servingSize\":\"1 medium slice\"" +
                     "}," +
-                    "\"prepTime\":\"PT30M\"," +
                     "\"recipeIngredient\":[" +
                         "\"Thinly-sliced apples:6 cups\"," +
                         "\"White sugar:3/4 cup\"" +
                     "]," +
                     "\"recipeInstructions\":\"1. Cut and peel apples...\"," +
-                    "\"recipeYield\":\"1 9 inch pie (8 servings)\"," +
-                    "\"totalTime\":\"PT1H30M\"" +
+                    "\"recipeYield\":\"1 9 inch pie (8 servings)\"" +
                  "}";
 
             var json = recipe.ToString();

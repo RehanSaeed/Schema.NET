@@ -19,16 +19,23 @@ namespace Schema.NET
         public override string Type => "CreativeWorkSeries";
 
         /// <summary>
+        /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.
+        /// </summary>
+        [DataMember(Name = "issn", Order = 206)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<string>? Issn { get; set; }
+
+        /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "startDate", Order = 206)]
+        [DataMember(Name = "startDate", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "endDate", Order = 207)]
+        [DataMember(Name = "endDate", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?>? EndDate { get; set; }
     }

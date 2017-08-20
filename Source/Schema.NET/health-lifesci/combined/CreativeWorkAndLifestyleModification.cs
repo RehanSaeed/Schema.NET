@@ -269,226 +269,234 @@ namespace Schema.NET
         public Values<CreativeWork>? ExampleOfWork { get; set; }
 
         /// <summary>
+        /// Date the content expires and is no longer useful or available. For example a &lt;a class="localLink" href="http://schema.org/VideoObject"&gt;VideoObject&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt; whose availability or relevance is time-limited, or a &lt;a class="localLink" href="http://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt; fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date.
+        /// </summary>
+        [DataMember(Name = "expires", Order = 242)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?>? Expires { get; set; }
+
+        /// <summary>
         /// Media type, typically MIME format (see &lt;a href="http://www.iana.org/assignments/media-types/media-types.xhtml"&gt;IANA site&lt;/a&gt;) of the content e.g. application/zip of a SoftwareApplication binary. In cases where a CreativeWork has several media type representations, 'encoding' can be used to indicate each MediaObject alongside particular fileFormat information. Unregistered or niche file formats can be indicated instead via the most appropriate URL, e.g. defining Web page or a Wikipedia entry.
         /// </summary>
-        [DataMember(Name = "fileFormat", Order = 242)]
+        [DataMember(Name = "fileFormat", Order = 243)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? FileFormat { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
         /// </summary>
-        [DataMember(Name = "funder", Order = 243)]
+        [DataMember(Name = "funder", Order = 244)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Funder { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
         /// </summary>
-        [DataMember(Name = "genre", Order = 244)]
+        [DataMember(Name = "genre", Order = 245)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? Genre { get; set; }
 
         /// <summary>
         /// Indicates a CreativeWork that is (in some sense) a part of this CreativeWork.
         /// </summary>
-        [DataMember(Name = "hasPart", Order = 245)]
+        [DataMember(Name = "hasPart", Order = 246)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork>? HasPart { get; set; }
 
         /// <summary>
         /// Headline of the article.
         /// </summary>
-        [DataMember(Name = "headline", Order = 246)]
+        [DataMember(Name = "headline", Order = 247)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Headline { get; set; }
 
         /// <summary>
         /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "inLanguage", Order = 247)]
+        [DataMember(Name = "inLanguage", Order = 248)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Language, string>? InLanguage { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
         /// </summary>
-        [DataMember(Name = "interactionStatistic", Order = 248)]
+        [DataMember(Name = "interactionStatistic", Order = 249)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<InteractionCounter>? InteractionStatistic { get; set; }
 
         /// <summary>
         /// The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
         /// </summary>
-        [DataMember(Name = "interactivityType", Order = 249)]
+        [DataMember(Name = "interactivityType", Order = 250)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? InteractivityType { get; set; }
 
         /// <summary>
-        /// A flag to signal that the publication is accessible for free.
+        /// A flag to signal that the item, event, or place is accessible for free.
         /// </summary>
-        [DataMember(Name = "isAccessibleForFree", Order = 250)]
+        [DataMember(Name = "isAccessibleForFree", Order = 251)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<bool?>? IsAccessibleForFree { get; set; }
 
         /// <summary>
         /// A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
         /// </summary>
-        [DataMember(Name = "isBasedOn", Order = 251)]
+        [DataMember(Name = "isBasedOn", Order = 252)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork, Product, Uri>? IsBasedOn { get; set; }
 
         /// <summary>
         /// Indicates whether this content is family friendly.
         /// </summary>
-        [DataMember(Name = "isFamilyFriendly", Order = 252)]
+        [DataMember(Name = "isFamilyFriendly", Order = 253)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<bool?>? IsFamilyFriendly { get; set; }
 
         /// <summary>
         /// Indicates a CreativeWork that this CreativeWork is (in some sense) part of.
         /// </summary>
-        [DataMember(Name = "isPartOf", Order = 253)]
+        [DataMember(Name = "isPartOf", Order = 254)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork>? IsPartOf { get; set; }
 
         /// <summary>
         /// Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
         /// </summary>
-        [DataMember(Name = "keywords", Order = 254)]
+        [DataMember(Name = "keywords", Order = 255)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Keywords { get; set; }
 
         /// <summary>
         /// The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.
         /// </summary>
-        [DataMember(Name = "learningResourceType", Order = 255)]
+        [DataMember(Name = "learningResourceType", Order = 256)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? LearningResourceType { get; set; }
 
         /// <summary>
         /// A license document that applies to this content, typically indicated by URL.
         /// </summary>
-        [DataMember(Name = "license", Order = 256)]
+        [DataMember(Name = "license", Order = 257)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork, Uri>? License { get; set; }
 
         /// <summary>
         /// The location where the CreativeWork was created, which may not be the same as the location depicted in the CreativeWork.
         /// </summary>
-        [DataMember(Name = "locationCreated", Order = 257)]
+        [DataMember(Name = "locationCreated", Order = 258)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? LocationCreated { get; set; }
 
         /// <summary>
         /// Indicates the primary entity described in some page or other CreativeWork.
         /// </summary>
-        [DataMember(Name = "mainEntity", Order = 258)]
+        [DataMember(Name = "mainEntity", Order = 259)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Thing>? MainEntity { get; set; }
 
         /// <summary>
         /// A material that something is made from, e.g. leather, wool, cotton, paper.
         /// </summary>
-        [DataMember(Name = "material", Order = 259)]
+        [DataMember(Name = "material", Order = 260)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Product, string, Uri>? Material { get; set; }
 
         /// <summary>
         /// Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
         /// </summary>
-        [DataMember(Name = "mentions", Order = 260)]
+        [DataMember(Name = "mentions", Order = 261)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Thing>? Mentions { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        [DataMember(Name = "offers", Order = 261)]
+        [DataMember(Name = "offers", Order = 262)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Offer>? Offers { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
         /// </summary>
-        [DataMember(Name = "position", Order = 262)]
+        [DataMember(Name = "position", Order = 263)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?, string>? Position { get; set; }
 
         /// <summary>
         /// The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
         /// </summary>
-        [DataMember(Name = "producer", Order = 263)]
+        [DataMember(Name = "producer", Order = 264)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Producer { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        [DataMember(Name = "provider", Order = 264)]
+        [DataMember(Name = "provider", Order = 265)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Provider { get; set; }
 
         /// <summary>
         /// A publication event associated with the item.
         /// </summary>
-        [DataMember(Name = "publication", Order = 265)]
+        [DataMember(Name = "publication", Order = 266)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<PublicationEvent>? Publication { get; set; }
 
         /// <summary>
         /// The publisher of the creative work.
         /// </summary>
-        [DataMember(Name = "publisher", Order = 266)]
+        [DataMember(Name = "publisher", Order = 267)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Publisher { get; set; }
 
         /// <summary>
         /// The publishing division which published the comic.
         /// </summary>
-        [DataMember(Name = "publisherImprint", Order = 267)]
+        [DataMember(Name = "publisherImprint", Order = 268)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization>? PublisherImprint { get; set; }
 
         /// <summary>
-        /// Link to page describing the editorial principles of the organization primarily responsible for the creation of the CreativeWork.
+        /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;/p&gt;
+        /// &lt;p&gt;While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
-        [DataMember(Name = "publishingPrinciples", Order = 268)]
+        [DataMember(Name = "publishingPrinciples", Order = 269)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? PublishingPrinciples { get; set; }
+        public Values<CreativeWork, Uri>? PublishingPrinciples { get; set; }
 
         /// <summary>
         /// The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
         /// </summary>
-        [DataMember(Name = "recordedAt", Order = 269)]
+        [DataMember(Name = "recordedAt", Order = 270)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Event>? RecordedAt { get; set; }
 
         /// <summary>
         /// The place and time the release was issued, expressed as a PublicationEvent.
         /// </summary>
-        [DataMember(Name = "releasedEvent", Order = 270)]
+        [DataMember(Name = "releasedEvent", Order = 271)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<PublicationEvent>? ReleasedEvent { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 271)]
+        [DataMember(Name = "review", Order = 272)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Review>? Review { get; set; }
 
         /// <summary>
         /// Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application.
         /// </summary>
-        [DataMember(Name = "schemaVersion", Order = 272)]
+        [DataMember(Name = "schemaVersion", Order = 273)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? SchemaVersion { get; set; }
 
         /// <summary>
         /// The Organization on whose behalf the creator was working.
         /// </summary>
-        [DataMember(Name = "sourceOrganization", Order = 273)]
+        [DataMember(Name = "sourceOrganization", Order = 274)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization>? SourceOrganization { get; set; }
 
@@ -497,14 +505,14 @@ namespace Schema.NET
         ///       contentLocation intended primarily for more technical and detailed materials. For example with a Dataset, it indicates
         ///       areas that the dataset describes: a dataset of New York weather would have spatialCoverage which was the place: the state of New York.
         /// </summary>
-        [DataMember(Name = "spatialCoverage", Order = 274)]
+        [DataMember(Name = "spatialCoverage", Order = 275)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Place>? SpatialCoverage { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 275)]
+        [DataMember(Name = "sponsor", Order = 276)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Sponsor { get; set; }
 
@@ -513,77 +521,77 @@ namespace Schema.NET
         ///       the case of a Dataset it will typically indicate the relevant time period in a precise notation (e.g. for a 2011 census dataset, the year 2011 would be written "2011/2012"). Other forms of content e.g. ScholarlyArticle, Book, TVSeries or TVEpisode may indicate their temporalCoverage in broader terms - textually or via well-known URL.
         ///       Written works such as books may sometimes have precise temporal coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601 interval format format via "1939/1945".
         /// </summary>
-        [DataMember(Name = "temporalCoverage", Order = 276)]
+        [DataMember(Name = "temporalCoverage", Order = 277)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?, string, Uri>? TemporalCoverage { get; set; }
 
         /// <summary>
         /// The textual content of this CreativeWork.
         /// </summary>
-        [DataMember(Name = "text", Order = 277)]
+        [DataMember(Name = "text", Order = 278)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Text { get; set; }
 
         /// <summary>
         /// A thumbnail image relevant to the Thing.
         /// </summary>
-        [DataMember(Name = "thumbnailUrl", Order = 278)]
+        [DataMember(Name = "thumbnailUrl", Order = 279)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Uri>? ThumbnailUrl { get; set; }
 
         /// <summary>
         /// Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
         /// </summary>
-        [DataMember(Name = "timeRequired", Order = 279)]
+        [DataMember(Name = "timeRequired", Order = 280)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
         public Values<TimeSpan?>? TimeRequired { get; set; }
 
         /// <summary>
         /// The work that this work has been translated from. e.g. 物种起源 is a translationOf “On the Origin of Species”
         /// </summary>
-        [DataMember(Name = "translationOfWork", Order = 280)]
+        [DataMember(Name = "translationOfWork", Order = 281)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork>? TranslationOfWork { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
         /// </summary>
-        [DataMember(Name = "translator", Order = 281)]
+        [DataMember(Name = "translator", Order = 282)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Translator { get; set; }
 
         /// <summary>
         /// The typical expected age range, e.g. '7-9', '11-'.
         /// </summary>
-        [DataMember(Name = "typicalAgeRange", Order = 282)]
+        [DataMember(Name = "typicalAgeRange", Order = 283)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TypicalAgeRange { get; set; }
 
         /// <summary>
         /// The version of the CreativeWork embodied by a specified resource.
         /// </summary>
-        [DataMember(Name = "version", Order = 283)]
+        [DataMember(Name = "version", Order = 284)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?, string>? Version { get; set; }
 
         /// <summary>
         /// An embedded video object.
         /// </summary>
-        [DataMember(Name = "video", Order = 284)]
+        [DataMember(Name = "video", Order = 285)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<VideoObject>? Video { get; set; }
 
         /// <summary>
         /// Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
         /// </summary>
-        [DataMember(Name = "workExample", Order = 285)]
+        [DataMember(Name = "workExample", Order = 286)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork>? WorkExample { get; set; }
 
         /// <summary>
         /// A work that is a translation of the content of this work. e.g. 西遊記 has an English workTranslation “Journey to the West”,a German workTranslation “Monkeys Pilgerfahrt” and a Vietnamese  translation Tây du ký bình khảo.
         /// </summary>
-        [DataMember(Name = "workTranslation", Order = 286)]
+        [DataMember(Name = "workTranslation", Order = 287)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork>? WorkTranslation { get; set; }
     }

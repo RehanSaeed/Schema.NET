@@ -180,23 +180,30 @@ namespace Schema.NET
         public override Values<Map, Uri>? HasMap { get; set; }
 
         /// <summary>
+        /// A flag to signal that the item, event, or place is accessible for free.
+        /// </summary>
+        [DataMember(Name = "isAccessibleForFree", Order = 229)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override Values<bool?>? IsAccessibleForFree { get; set; }
+
+        /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
-        [DataMember(Name = "isicV4", Order = 229)]
+        [DataMember(Name = "isicV4", Order = 230)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<string>? IsicV4 { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
-        [DataMember(Name = "logo", Order = 230)]
+        [DataMember(Name = "logo", Order = 231)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<ImageObject, Uri>? Logo { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
         /// </summary>
-        [DataMember(Name = "maximumAttendeeCapacity", Order = 231)]
+        [DataMember(Name = "maximumAttendeeCapacity", Order = 232)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<int?>? MaximumAttendeeCapacity { get; set; }
 
@@ -209,49 +216,56 @@ namespace Schema.NET
         /// &lt;li&gt;If a business is open 7 days a week, then it can be specified as &lt;code&gt;&amp;lt;time itemprop=&amp;quot;openingHours&amp;quot; datetime=&amp;quot;Mo-Su&amp;quot;&amp;gt;Monday through Sunday, all day&amp;lt;/time&amp;gt;&lt;/code&gt;.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "openingHours", Order = 232)]
+        [DataMember(Name = "openingHours", Order = 233)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Values<string>? OpeningHours { get; set; }
 
         /// <summary>
         /// The opening hours of a certain place.
         /// </summary>
-        [DataMember(Name = "openingHoursSpecification", Order = 233)]
+        [DataMember(Name = "openingHoursSpecification", Order = 234)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<OpeningHoursSpecification>? OpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// Cash, credit card, etc.
         /// </summary>
-        [DataMember(Name = "paymentAccepted", Order = 234)]
+        [DataMember(Name = "paymentAccepted", Order = 235)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PaymentAccepted { get; set; }
 
         /// <summary>
         /// A photograph of this place.
         /// </summary>
-        [DataMember(Name = "photo", Order = 235)]
+        [DataMember(Name = "photo", Order = 236)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<ImageObject, Photograph>? Photo { get; set; }
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
         /// </summary>
-        [DataMember(Name = "priceRange", Order = 236)]
+        [DataMember(Name = "priceRange", Order = 237)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? PriceRange { get; set; }
 
         /// <summary>
+        /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
+        /// </summary>
+        [DataMember(Name = "publicAccess", Order = 238)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override Values<bool?>? PublicAccess { get; set; }
+
+        /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 237)]
+        [DataMember(Name = "review", Order = 239)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<Review>? Review { get; set; }
 
         /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
         /// </summary>
-        [DataMember(Name = "smokingAllowed", Order = 238)]
+        [DataMember(Name = "smokingAllowed", Order = 240)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<bool?>? SmokingAllowed { get; set; }
 
@@ -259,14 +273,14 @@ namespace Schema.NET
         /// The special opening hours of a certain place.&lt;/p&gt;
         /// &lt;p&gt;Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "specialOpeningHoursSpecification", Order = 239)]
+        [DataMember(Name = "specialOpeningHoursSpecification", Order = 241)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<OpeningHoursSpecification>? SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 240)]
+        [DataMember(Name = "telephone", Order = 242)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<string>? Telephone { get; set; }
     }

@@ -1,8 +1,6 @@
-﻿namespace Schema.NET.Test
+namespace Schema.NET.Test
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using Xunit;
 
     public class VideoObjectTest
@@ -42,6 +40,7 @@
                     "\"@type\":\"VideoObject\"," +
                     "\"name\":\"Title\"," +
                     "\"description\":\"Video description\"," +
+                    "\"expires\":\"2016-02-05T08:00:00+00:00\"," +
                     "\"interactionStatistic\":{" +
                         "\"@type\":\"InteractionCounter\"," +
                         "\"userInteractionCount\":2347" +
@@ -60,7 +59,6 @@
                     "\"contentUrl\":\"https://www.example.com/video123.flv\"," +
                     "\"duration\":\"PT1M33S\"," +
                     "\"embedUrl\":\"https://www.example.com/videoplayer.swf?video=123\"," +
-                    "\"expires\":\"2016-02-05T08:00:00+00:00\"," +
                     "\"uploadDate\":\"2015-02-05T08:00:00+00:00\"" +
                 "}";
 

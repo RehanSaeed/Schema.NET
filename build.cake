@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 var target = Argument("Target", "Default");
@@ -19,6 +19,11 @@ var buildNumber =
     0;
 
 var artifactsDirectory = Directory("./Artifacts");
+string versionSuffix = null;
+if (!string.IsNullOrEmpty(preReleaseSuffix))
+{
+    versionSuffix = preReleaseSuffix + "-" + buildNumber.ToString("D4");
+}
 
 Task("Clean")
     .Does(() =>
@@ -54,28 +59,26 @@ Task("Restore")
     {
         var project = GetFiles("./**/Schema.NET.Tool.csproj").First();
         DotNetCoreRun(project.ToString());
+
+        Information("Started Listing Files");
+        foreach (var file in GetFiles("./**/Schema.NET/**/*"))
+        {
+            Information(file.ToString());
+        }
+        Information("Finished Listing Files");
     });
 
 Task("Build")
     .IsDependentOn("Restore")
     .Does(() =>
     {
-        Information("Started Listing Files");
-        foreach (var file in GetFiles("./**/*"))
-        {
-            Information(file.ToString());
-        }
-        Information("Finished Listing Files");
-
-        foreach(var project in GetFiles("./**/*.csproj"))
-        {
-            DotNetCoreBuild(
-                project.GetDirectory().FullPath,
-                new DotNetCoreBuildSettings()
-                {
-                    Configuration = configuration
-                });
-        }
+        DotNetCoreBuild(
+            ".",
+            new DotNetCoreBuildSettings()
+            {
+                Configuration = configuration,
+                VersionSuffix = versionSuffix
+            });
     });
 
 Task("Test")
@@ -100,12 +103,6 @@ Task("Pack")
     .IsDependentOn("Test")
     .Does(() =>
     {
-        string versionSuffix = null;
-        if (!string.IsNullOrEmpty(preReleaseSuffix))
-        {
-            versionSuffix = preReleaseSuffix + "-" + buildNumber.ToString("D4");
-        }
-
         var project = GetFiles("./**/Schema.NET.csproj").First();
         DotNetCorePack(
             project.GetDirectory().FullPath,

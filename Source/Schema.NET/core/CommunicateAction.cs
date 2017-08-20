@@ -35,6 +35,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "recipient", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Audience, Organization, Person>? Recipient { get; set; }
+        public Values<Audience, ContactPoint, Organization, Person>? Recipient { get; set; }
     }
 }

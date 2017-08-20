@@ -5,22 +5,22 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The act of granting permission to an object.
+    /// A supply consumed when performing the instructions for how to achieve a result.
     /// </summary>
     [DataContract]
-    public partial class AuthorizeAction : AllocateAction
+    public partial class HowToSupply : HowToItem
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "AuthorizeAction";
+        public override string Type => "HowToSupply";
 
         /// <summary>
-        /// A sub property of participant. The participant who is at the receiving end of the action.
+        /// The estimated cost of the supply or supplies consumed when performing instructions.
         /// </summary>
-        [DataMember(Name = "recipient", Order = 406)]
+        [DataMember(Name = "estimatedCost", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Audience, ContactPoint, Organization, Person>? Recipient { get; set; }
+        public Values<MonetaryAmount, string>? EstimatedCost { get; set; }
     }
 }

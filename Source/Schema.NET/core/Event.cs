@@ -108,7 +108,7 @@ namespace Schema.NET
         public Values<Language, string>? InLanguage { get; set; }
 
         /// <summary>
-        /// A flag to signal that the publication is accessible for free.
+        /// A flag to signal that the item, event, or place is accessible for free.
         /// </summary>
         [DataMember(Name = "isAccessibleForFree", Order = 119)]
         [JsonConverter(typeof(ValuesConverter))]

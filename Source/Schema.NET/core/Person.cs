@@ -290,79 +290,87 @@ namespace Schema.NET
         public Values<Event>? PerformerIn { get; set; }
 
         /// <summary>
+        /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;/p&gt;
+        /// &lt;p&gt;While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
+        /// </summary>
+        [DataMember(Name = "publishingPrinciples", Order = 145)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<CreativeWork, Uri>? PublishingPrinciples { get; set; }
+
+        /// <summary>
         /// The most generic familial relation.
         /// </summary>
-        [DataMember(Name = "relatedTo", Order = 145)]
+        [DataMember(Name = "relatedTo", Order = 146)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? RelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
-        [DataMember(Name = "seeks", Order = 146)]
+        [DataMember(Name = "seeks", Order = 147)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Demand>? Seeks { get; set; }
 
         /// <summary>
         /// A sibling of the person.
         /// </summary>
-        [DataMember(Name = "sibling", Order = 147)]
+        [DataMember(Name = "sibling", Order = 148)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Sibling { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 148)]
+        [DataMember(Name = "sponsor", Order = 149)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Sponsor { get; set; }
 
         /// <summary>
         /// The person's spouse.
         /// </summary>
-        [DataMember(Name = "spouse", Order = 149)]
+        [DataMember(Name = "spouse", Order = 150)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Person>? Spouse { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
         /// </summary>
-        [DataMember(Name = "taxID", Order = 150)]
+        [DataMember(Name = "taxID", Order = 151)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? TaxID { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 151)]
+        [DataMember(Name = "telephone", Order = 152)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? Telephone { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.
         /// </summary>
-        [DataMember(Name = "vatID", Order = 152)]
+        [DataMember(Name = "vatID", Order = 153)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string>? VatID { get; set; }
 
         /// <summary>
         /// The weight of the product or person.
         /// </summary>
-        [DataMember(Name = "weight", Order = 153)]
+        [DataMember(Name = "weight", Order = 154)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<QuantitativeValue>? Weight { get; set; }
 
         /// <summary>
         /// A contact location for a person's place of work.
         /// </summary>
-        [DataMember(Name = "workLocation", Order = 154)]
+        [DataMember(Name = "workLocation", Order = 155)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<ContactPoint, Place>? WorkLocation { get; set; }
 
         /// <summary>
         /// Organizations that the person works for.
         /// </summary>
-        [DataMember(Name = "worksFor", Order = 155)]
+        [DataMember(Name = "worksFor", Order = 156)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization>? WorksFor { get; set; }
     }
