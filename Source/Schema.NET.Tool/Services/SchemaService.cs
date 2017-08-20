@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.Services
+namespace Schema.NET.Tool.Services
 {
     using System;
     using System.Collections.Generic;
@@ -167,10 +167,13 @@
             {
                 foreach (var parentClassId in @class.Parents.Select(x => x.Id).Distinct().ToList())
                 {
-                    var parentClass = classes.First(x => x.Id == parentClassId);
-                    parentClass.Children.Add(@class);
-                    @class.Parents.Remove(@class.Parents.First(x => x.Id == parentClassId));
-                    @class.Parents.Add(parentClass);
+                    var parentClass = classes.FirstOrDefault(x => x.Id == parentClassId);
+                    if (parentClass != null)
+                    {
+                        parentClass.Children.Add(@class);
+                        @class.Parents.Remove(@class.Parents.First(x => x.Id == parentClassId));
+                        @class.Parents.Add(parentClass);
+                    }
                 }
             }
         }
