@@ -1,7 +1,7 @@
-﻿using System.Diagnostics;
-
 namespace Schema.NET.Tool.ViewModels
 {
+    using System.Diagnostics;
+
     [DebuggerDisplay("{Name} ({CSharpTypeString})")]
     public class PropertyType : ICloneable<PropertyType>
     {

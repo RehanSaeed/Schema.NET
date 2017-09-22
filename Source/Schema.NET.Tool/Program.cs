@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool
+namespace Schema.NET.Tool
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +13,6 @@
 
     public class Program
     {
-
         private readonly SchemaService schemaService;
 
         public Program() =>
@@ -65,6 +64,7 @@
                     Console.WriteLine(Path.GetFileName(filePath));
                 }
             }
+
             Console.WriteLine("Finished Write Classes");
         }
 

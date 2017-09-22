@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.Repositories
+namespace Schema.NET.Tool.Repositories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

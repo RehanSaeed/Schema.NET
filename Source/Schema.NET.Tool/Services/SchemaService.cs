@@ -123,6 +123,7 @@ namespace Schema.NET.Tool.Services
                             parent.Children.Add(combinedClass);
                             combinedClass.Parents.Add(parent);
                         }
+
                         classes.Add(combinedClass);
                     }
 
@@ -137,8 +138,8 @@ namespace Schema.NET.Tool.Services
         {
             foreach (var @class in classes)
             {
-                var propertyOrder = ((PropertyNameComparer.KnownPropertyNameOrders.Values.Max() + 1) +
-                    (@class.Ancestors.Count() * 100));
+                var propertyOrder = (PropertyNameComparer.KnownPropertyNameOrders.Values.Max() + 1) +
+                    (@class.Ancestors.Count() * 100);
                 foreach (var property in @class.Properties)
                 {
                     property.Order = propertyOrder;

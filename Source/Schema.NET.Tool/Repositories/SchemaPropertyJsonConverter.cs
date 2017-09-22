@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.Repositories
+namespace Schema.NET.Tool.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -115,7 +115,7 @@
                 }
                 else if (token.Type == JTokenType.Array)
                 {
-                    foreach (var subToken in ((JArray)token))
+                    foreach (var subToken in (JArray)token)
                     {
                         yield return subToken.Value<string>();
                     }
@@ -133,7 +133,7 @@
                 }
                 else if (token.Type == JTokenType.Array)
                 {
-                    foreach (var subToken in ((JArray)token))
+                    foreach (var subToken in (JArray)token)
                     {
                         yield return new Uri(subToken[name].Value<string>());
                     }

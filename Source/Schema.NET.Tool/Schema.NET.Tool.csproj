@@ -3,12 +3,14 @@
   <PropertyGroup Label="Build">
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <CodeAnalysisRuleSet>../../MinimumRecommendedRulesWithStyleCop.ruleset</CodeAnalysisRuleSet>
     <IsPackable>false</IsPackable>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup Label="Package References">
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All" Version="1.1.0-beta004" />
   </ItemGroup>
 
 </Project>

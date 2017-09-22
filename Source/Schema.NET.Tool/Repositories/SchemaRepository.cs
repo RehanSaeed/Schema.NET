@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.Repositories
+namespace Schema.NET.Tool.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -25,6 +25,7 @@
             var schemaTreeClasses = await this.GetSchemaTreeClasses();
             var enumerations = schemaObjects.OfType<SchemaClass>().ToList();
             var classes = schemaObjects.OfType<SchemaClass>().ToList();
+
             foreach (var enumeration in enumerations)
             {
                 var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("http://schema.org/" + x.Name) == enumeration.Id);
@@ -33,6 +34,7 @@
                     enumeration.Layer = schemaTreeClass.Layer;
                 }
             }
+
             foreach (var @class in classes)
             {
                 var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("http://schema.org/" + x.Name) == @class.Id);
@@ -43,11 +45,10 @@
 
                 @class.SubClassOf = classes.Where(x => @class.SubClassOfIds.Contains(x.Id)).ToList();
             }
-            return (
-                classes: classes,
-                properties: schemaObjects.OfType<SchemaProperty>().ToList(),
-                enumerationValues: schemaObjects.OfType<SchemaEnumerationValue>().ToList()
-            );
+
+            return (classes,
+                schemaObjects.OfType<SchemaProperty>().ToList(),
+                schemaObjects.OfType<SchemaEnumerationValue>().ToList());
         }
 
         public async Task<List<SchemaObject>> GetSchemaObjects()
