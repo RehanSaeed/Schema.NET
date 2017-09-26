@@ -1,6 +1,3 @@
-using System.Text.RegularExpressions;
-using System.Xml.Linq;
-
 var target = Argument("Target", "Default");
 var configuration =
     HasArgument("Configuration") ? Argument<string>("Configuration") :
@@ -40,34 +37,6 @@ Task("Restore")
         DotNetCoreRestore();
     });
 
- Task("BuildTool")
-    .IsDependentOn("Restore")
-    .Does(() =>
-    {
-        var project = GetFiles("./**/Schema.NET.Tool.csproj").First();
-        DotNetCoreBuild(
-            project.GetDirectory().FullPath,
-            new DotNetCoreBuildSettings()
-            {
-                Configuration = configuration
-            });
-    });
-
- Task("RunTool")
-    .IsDependentOn("BuildTool")
-    .Does(() =>
-    {
-        var project = GetFiles("./**/Schema.NET.Tool.csproj").First();
-        DotNetCoreRun(project.ToString());
-
-        Information("Started Listing Files");
-        foreach (var file in GetFiles("./**/Schema.NET/**/*"))
-        {
-            Information(file.ToString());
-        }
-        Information("Finished Listing Files");
-    });
-
 Task("Build")
     .IsDependentOn("Restore")
     .Does(() =>
@@ -79,6 +48,21 @@ Task("Build")
                 Configuration = configuration,
                 VersionSuffix = versionSuffix
             });
+    });
+
+ Task("RunTool")
+    .IsDependentOn("Build")
+    .Does(() =>
+    {
+        var project = GetFiles("./**/Schema.NET.Tool.csproj").First();
+        DotNetCoreRun(project.ToString());
+
+        Information("Started Listing Files");
+        foreach (var file in GetFiles("./**/Schema.NET/**/*"))
+        {
+            Information(file.ToString());
+        }
+        Information("Finished Listing Files");
     });
 
 Task("Test")
@@ -103,9 +87,8 @@ Task("Pack")
     .IsDependentOn("Test")
     .Does(() =>
     {
-        var project = GetFiles("./**/Schema.NET.csproj").First();
         DotNetCorePack(
-            project.GetDirectory().FullPath,
+            ".",
             new DotNetCorePackSettings()
             {
                 Configuration = configuration,
