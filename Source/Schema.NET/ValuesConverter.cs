@@ -1,7 +1,8 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System;
-    using System.Xml;
+    using System.Collections.Generic;
+    using System.Reflection;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -11,14 +12,6 @@
     /// <seealso cref="JsonConverter" />
     public class ValuesConverter : JsonConverter
     {
-        /// <summary>
-        /// Gets a value indicating whether this <see cref="T:Newtonsoft.Json.JsonConverter" /> can read JSON.
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if this <see cref="T:Newtonsoft.Json.JsonConverter" /> can read JSON; otherwise, <c>false</c>.
-        /// </value>
-        public override bool CanRead => false;
-
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
         /// </summary>
@@ -40,8 +33,83 @@
             JsonReader reader,
             Type objectType,
             object existingValue,
-            JsonSerializer serializer) =>
-            throw new NotImplementedException();
+            JsonSerializer serializer)
+        {
+            var mainType = objectType.GetTypeInfo().IsGenericType && objectType.GetGenericTypeDefinition() == typeof(Nullable<>)
+                ? Nullable.GetUnderlyingType(objectType)
+                : objectType;
+
+            object argument = null;
+
+            var tokenType = reader.TokenType;
+            JToken token = JToken.Load(reader);
+            if (mainType.GenericTypeArguments.Length == 1)
+            {
+                var type = mainType.GenericTypeArguments[0];
+                if (tokenType == JsonToken.StartArray)
+                {
+                    argument = token.ToObject(typeof(List<>).MakeGenericType(type));
+                }
+                else if (type.GetTypeInfo().IsPrimitive || type == typeof(string))
+                {
+                    argument = reader.Value;
+                }
+                else
+                {
+                    argument = token.ToObject(type);
+                }
+            }
+            else
+            {
+                foreach (var type in mainType.GenericTypeArguments)
+                {
+                    try
+                    {
+                        object args;
+                        if (reader.Value == null)
+                        {
+                            if (type.Name != token["@type"].ToString())
+                            {
+                                continue;
+                            }
+
+                            args = token.ToObject(type);
+                        }
+                        else
+                        {
+                            if (type.GetTypeInfo().IsPrimitive || type == typeof(string))
+                            {
+                                args = reader.Value;
+                            }
+                            else
+                            {
+                                args = Activator.CreateInstance(type, tokenType == JsonToken.Integer ? Convert.ToInt32(reader.Value) : reader.Value);
+                            }
+                        }
+
+                        var genericType = typeof(Values<>).MakeGenericType(type);
+                        argument = Activator.CreateInstance(genericType, args);
+                        break;
+                    }
+                    catch
+                    {
+                        // Nasty, but we're trying to see which Activator instance is the right one...
+                    }
+                }
+            }
+
+            object instance = null;
+            try
+            {
+                instance = Activator.CreateInstance(mainType, argument);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+
+            return instance;
+        }
 
         /// <summary>
         /// Writes the specified <see cref="IValue"/> object using the JSON writer.

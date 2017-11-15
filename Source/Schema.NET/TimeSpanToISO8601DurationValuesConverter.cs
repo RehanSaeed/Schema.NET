@@ -1,6 +1,7 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System;
+    using System.Reflection;
     using System.Xml;
     using Newtonsoft.Json;
 
@@ -11,6 +12,34 @@
     /// <seealso cref="JsonConverter" />
     public class TimeSpanToISO8601DurationValuesConverter : ValuesConverter
     {
+        /// <inheritdoc />
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var valuesType = objectType.GetTypeInfo().IsGenericType && objectType.GetGenericTypeDefinition() == typeof(Nullable<>)
+                ? Nullable.GetUnderlyingType(objectType)
+                : objectType;
+
+            if (valuesType.GenericTypeArguments.Length == 1)
+            {
+                var mainType = valuesType.GenericTypeArguments[0];
+                Type genericType = typeof(Values<TimeSpan>);
+                if (mainType.GetTypeInfo().IsGenericType && mainType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                {
+                    mainType = Nullable.GetUnderlyingType(mainType);
+                    genericType = typeof(Values<TimeSpan?>);
+                }
+
+                if (mainType == typeof(TimeSpan))
+                {
+                    var timeSpan = XmlConvert.ToTimeSpan(reader.Value.ToString());
+                    var instance = Activator.CreateInstance(genericType, timeSpan);
+                    return instance;
+                }
+            }
+
+            return base.ReadJson(reader, objectType, existingValue, serializer);
+        }
+
         /// <summary>
         /// Writes the object retrieved from <see cref="IValue"/> when one is found.
         /// </summary>
