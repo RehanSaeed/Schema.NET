@@ -1,6 +1,7 @@
-﻿namespace Schema.NET.Test
+namespace Schema.NET.Test
 {
     using System;
+    using Newtonsoft.Json;
     using Xunit;
 
     public class WebsiteTest
@@ -58,5 +59,34 @@
 
             Assert.Equal(expectedJson, json);
         }
+
+        [Fact]
+        public void Deserializing_WebSiteJsonLd_ReturnsWebSite()
+        {
+            var website = new WebSite()
+            {
+                PotentialAction = new SearchAction() // Required
+                {
+                    Target = new Uri("http://example.com/search?&q={query}"), // Required
+                    QueryInput = "required" // Required
+                },
+                Url = new Uri("https://example.com") // Required
+            };
+
+            var json =
+            "{" +
+                "\"@context\":\"http://schema.org\"," +
+                "\"@type\":\"WebSite\"," +
+                "\"potentialAction\":{" +
+                    "\"@type\":\"SearchAction\"," +
+                    "\"target\":\"http://example.com/search?&q={query}\"," +
+                    "\"query-input\":\"required\"" +
+                "}," +
+                "\"url\":\"https://example.com\"" +
+            "}";
+
+            Assert.Equal(website.ToString(), JsonConvert.DeserializeObject<WebSite>(json).ToString());
+        }
+
     }
 }

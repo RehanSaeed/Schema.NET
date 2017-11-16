@@ -1,39 +1,46 @@
-﻿namespace Schema.NET.Test
+namespace Schema.NET.Test
 {
     using System;
+    using Newtonsoft.Json;
     using Xunit;
 
+    // https://developers.google.com/search/docs/data-types/courses
     public class CourseTest
     {
-        // https://developers.google.com/search/docs/data-types/courses
+        private readonly Course course = new Course()
+        {
+            Name = "Introduction to Computer Science and Programming", // Required
+            Description = "Introductory CS course laying out the basics.", // Required
+            Provider = new Organization() // Recommended
+            {
+                Name = "University of Technology - Eureka",
+                SameAs = new Uri("http://www.ut-eureka.edu")
+            }
+        };
+
+        private readonly string json =
+        "{" +
+            "\"@context\":\"http://schema.org\"," +
+            "\"@type\":\"Course\"," +
+            "\"name\":\"Introduction to Computer Science and Programming\"," +
+            "\"description\":\"Introductory CS course laying out the basics.\"," +
+            "\"provider\":{" +
+                "\"@type\":\"Organization\"," +
+                "\"name\":\"University of Technology - Eureka\"," +
+                "\"sameAs\":\"http://www.ut-eureka.edu\"" +
+            "}" +
+        "}";
+
         [Fact]
         public void ToString_CourseGoogleStructuredData_ReturnsExpectedJsonLd()
         {
-            var course = new Course()
-            {
-                Name = "Introduction to Computer Science and Programming", // Required
-                Description = "Introductory CS course laying out the basics.", // Required
-                Provider = new Organization() // Recommended
-                {
-                    Name = "University of Technology - Eureka",
-                    SameAs = new Uri("http://www.ut-eureka.edu")
-                }
-            };
-            var expectedJson = "{" +
-                "\"@context\":\"http://schema.org\"," +
-                "\"@type\":\"Course\"," +
-                "\"name\":\"Introduction to Computer Science and Programming\"," +
-                "\"description\":\"Introductory CS course laying out the basics.\"," +
-                "\"provider\":{" +
-                    "\"@type\":\"Organization\"," +
-                    "\"name\":\"University of Technology - Eureka\"," +
-                    "\"sameAs\":\"http://www.ut-eureka.edu\"" +
-                "}" +
-            "}";
+            Assert.Equal(this.json, this.course.ToString());
+        }
 
-            var json = course.ToString();
-
-            Assert.Equal(expectedJson, json);
+        [Fact]
+        public void Deserializing_CourseJsonLd_ReturnsCourse()
+        {
+            Assert.Equal(this.course.ToString(), JsonConvert.DeserializeObject<Course>(this.json).ToString());
         }
     }
 }
