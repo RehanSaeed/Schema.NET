@@ -147,7 +147,7 @@ namespace Schema.NET
                             }
                             else
                             {
-                                args = Activator.CreateInstance(type, value);
+                                args = token.ToObject(type); // This is expected to throw on some case
                             }
                         }
 
@@ -157,7 +157,8 @@ namespace Schema.NET
                     }
                     catch
                     {
-                        // Nasty, but we're trying to see which Activator instance is the right one...
+                        // Nasty, but we're trying brute force as a last resort, to
+                        // see which type has the right constructor for this value
                     }
                 }
             }
