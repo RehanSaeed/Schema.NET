@@ -70,7 +70,12 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_VideoObjectJsonLd_ReturnsVideoObject()
         {
-            Assert.Equal(this.videoObject.ToString(), JsonConvert.DeserializeObject<VideoObject>(this.json).ToString());
+            var serializerSettings = new JsonSerializerSettings
+            {
+                DateParseHandling = DateParseHandling.DateTimeOffset
+            };
+
+            Assert.Equal(this.videoObject.ToString(), JsonConvert.DeserializeObject<VideoObject>(this.json, serializerSettings).ToString());
         }
     }
 }

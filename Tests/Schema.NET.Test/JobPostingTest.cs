@@ -96,7 +96,12 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_JobPostingJsonLd_ReturnsJobPosting()
         {
-            Assert.Equal(this.jobPosting.ToString(), JsonConvert.DeserializeObject<JobPosting>(this.json).ToString());
+            var serializerSettings = new JsonSerializerSettings
+            {
+                DateParseHandling = DateParseHandling.DateTimeOffset
+            };
+
+            Assert.Equal(this.jobPosting.ToString(), JsonConvert.DeserializeObject<JobPosting>(this.json, serializerSettings).ToString());
         }
     }
 }

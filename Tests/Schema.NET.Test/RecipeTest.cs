@@ -84,7 +84,12 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_RecipeJsonLd_ReturnsRecipe()
         {
-            Assert.Equal(this.recipe.ToString(), JsonConvert.DeserializeObject<Recipe>(this.json).ToString());
+            var serializerSettings = new JsonSerializerSettings
+            {
+                DateParseHandling = DateParseHandling.DateTimeOffset
+            };
+
+            Assert.Equal(this.recipe.ToString(), JsonConvert.DeserializeObject<Recipe>(this.json, serializerSettings).ToString());
         }
     }
 }

@@ -79,7 +79,12 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_ProductJsonLd_ReturnsProduct()
         {
-            Assert.Equal(this.product.ToString(), JsonConvert.DeserializeObject<Product>(this.json).ToString());
+            var serializerSettings = new JsonSerializerSettings
+            {
+                DateParseHandling = DateParseHandling.DateTimeOffset
+            };
+
+            Assert.Equal(this.product.ToString(), JsonConvert.DeserializeObject<Product>(this.json, serializerSettings).ToString());
         }
     }
 }
