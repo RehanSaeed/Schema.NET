@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Reflection;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -35,28 +36,66 @@ namespace Schema.NET
             object existingValue,
             JsonSerializer serializer)
         {
-            var mainType = objectType.GetTypeInfo().IsGenericType && objectType.GetGenericTypeDefinition() == typeof(Nullable<>)
-                ? Nullable.GetUnderlyingType(objectType)
-                : objectType;
+            var mainType = UnwrapNullable(objectType);
 
             object argument = null;
 
             var tokenType = reader.TokenType;
+            var value = SanitizeReaderValue(reader, tokenType);
+
             JToken token = JToken.Load(reader);
             if (mainType.GenericTypeArguments.Length == 1)
             {
-                var type = mainType.GenericTypeArguments[0];
+                var type = UnwrapNullable(mainType.GenericTypeArguments[0]);
                 if (tokenType == JsonToken.StartArray)
                 {
-                    argument = token.ToObject(typeof(List<>).MakeGenericType(type));
+                    var listType = typeof(List<>).MakeGenericType(type);
+                    if (token.Any(t => !string.IsNullOrEmpty(GetTypeNameFromToken(t))))
+                    {
+                        var list = Activator.CreateInstance(listType);
+                        foreach (var childToken in token.Children())
+                        {
+                            var typeName = GetTypeNameFromToken(childToken);
+                            var builtType = Type.GetType($"Schema.NET.{typeName}");
+                            var child = (Thing)childToken.ToObject(builtType);
+                            listType.GetRuntimeMethod("Add", new[] { type }).Invoke(list, new object[] { child });
+                        }
+
+                        argument = list;
+                    }
+                    else
+                    {
+                        argument = token.ToObject(listType);
+                    }
                 }
-                else if (type.GetTypeInfo().IsPrimitive || type == typeof(string))
+                else if (IsPrimitiveType(type))
                 {
-                    argument = reader.Value;
+                    argument = value;
+                }
+                else if (type == typeof(decimal))
+                {
+                    argument = Convert.ToDecimal(value);
                 }
                 else
                 {
-                    argument = token.ToObject(type);
+                    if (type.GetTypeInfo().IsEnum)
+                    {
+                        var enumString = token.ToString().Substring("http://schema.org/".Length);
+                        argument = Enum.Parse(type, enumString);
+                    }
+                    else
+                    {
+                        var typeName = GetTypeNameFromToken(token);
+                        if (string.IsNullOrEmpty(typeName))
+                        {
+                            argument = token.ToObject(type);
+                        }
+                        else
+                        {
+                            var builtType = Type.GetType($"Schema.NET.{typeName}");
+                            argument = token.ToObject(builtType);
+                        }
+                    }
                 }
             }
             else
@@ -66,24 +105,49 @@ namespace Schema.NET
                     try
                     {
                         object args;
-                        if (reader.Value == null)
+                        if (tokenType == JsonToken.StartObject)
                         {
-                            if (type.Name != token["@type"].ToString())
+                            var typeName = GetTypeNameFromToken(token);
+                            if (string.IsNullOrEmpty(typeName))
                             {
-                                continue;
+                                args = token.ToObject(type);
                             }
-
-                            args = token.ToObject(type);
-                        }
-                        else
-                        {
-                            if (type.GetTypeInfo().IsPrimitive || type == typeof(string))
+                            else if (typeName == type.Name)
                             {
-                                args = reader.Value;
+                                args = token.ToObject(type);
                             }
                             else
                             {
-                                args = Activator.CreateInstance(type, tokenType == JsonToken.Integer ? Convert.ToInt32(reader.Value) : reader.Value);
+                                var builtType = Type.GetType($"Schema.NET.{typeName}");
+                                if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
+                                {
+                                    args = token.ToObject(builtType);
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                        else if (tokenType == JsonToken.StartArray)
+                        {
+                            var arrayType = typeof(List<>).MakeGenericType(type);
+                            args = token.ToObject(arrayType);
+                        }
+                        else
+                        {
+                            var unwrappedType = UnwrapNullable(type);
+                            if (IsPrimitiveType(unwrappedType))
+                            {
+                                args = value;
+                            }
+                            else if (unwrappedType == typeof(decimal))
+                            {
+                                args = Convert.ToDecimal(value);
+                            }
+                            else
+                            {
+                                args = Activator.CreateInstance(type, value);
                             }
                         }
 
@@ -141,6 +205,29 @@ namespace Schema.NET
         {
             var token = JToken.FromObject(value, serializer);
             token.WriteTo(writer);
+        }
+
+        private static Type UnwrapNullable(Type type)
+        {
+            return type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>)
+                ? Nullable.GetUnderlyingType(type)
+                : type;
+        }
+
+        private static bool IsPrimitiveType(Type type)
+        {
+            return type.GetTypeInfo().IsPrimitive || type == typeof(string);
+        }
+
+        private static object SanitizeReaderValue(JsonReader reader, JsonToken tokenType)
+        {
+            return tokenType == JsonToken.Integer ? Convert.ToInt32(reader.Value) : reader.Value;
+        }
+
+        private static string GetTypeNameFromToken(JToken token)
+        {
+            var typeNameToken = token.Values().FirstOrDefault(t => t.Path.EndsWith("@type"));
+            return typeNameToken?.Value<string>();
         }
     }
 }
