@@ -1,67 +1,69 @@
-﻿namespace Schema.NET.Test
+namespace Schema.NET.Test
 {
     using System;
     using System.Collections.Generic;
+    using Newtonsoft.Json;
     using Xunit;
 
     public class BreadcrumbListTest
     {
-        [Fact]
-        public void ToString_BreadcrumbListGoogleStructuredData_ReturnsExpectedJsonLd()
+        private readonly BreadcrumbList breadcrumbList = new BreadcrumbList()
         {
-            var breadcrumbList = new BreadcrumbList()
+            ItemListElement = new List<ListItem>()
             {
-                ItemListElement = new List<ListItem>()
+                new ListItem()
                 {
-                    new ListItem()
+                    Position = 1,
+                    Item = new Book()
                     {
-                        Position = 1,
-                        Item = new Book()
-                        {
-                            Name = "Books",
-                            Image = new Uri("http://example.com/images/icon-book.png")
-                        }
-                    },
-                    new ListItem()
+                        Name = "Books",
+                        Image = new Uri("http://example.com/images/icon-book.png")
+                    }
+                },
+                new ListItem()
+                {
+                    Position = 2,
+                    Item = new Person()
                     {
-                        Position = 2,
-                        Item = new Person()
-                        {
-                            Name = "Authors",
-                            Image = new Uri("http://example.com/images/icon-author.png")
-                        }
+                        Name = "Authors",
+                        Image = new Uri("http://example.com/images/icon-author.png")
                     }
                 }
-            };
-            var expectedJson =
+            }
+        };
+
+        private readonly string json =
+        "{" +
+            "\"@context\":\"http://schema.org\"," +
+            "\"@type\":\"BreadcrumbList\"," +
+            "\"itemListElement\":[" +
                 "{" +
-                    "\"@context\":\"http://schema.org\"," +
-                    "\"@type\":\"BreadcrumbList\"," +
-                    "\"itemListElement\":[" +
-                        "{" +
-                            "\"@type\":\"ListItem\"," +
-                            "\"item\":{" + // Required
-                                "\"@type\":\"Book\"," +
-                                "\"name\":\"Books\"," + // Required
-                                "\"image\":\"http://example.com/images/icon-book.png\"" + // Optional
-                            "}," +
-                            "\"position\":1" + // Required
-                        "}," +
-                        "{" +
-                            "\"@type\":\"ListItem\"," +
-                            "\"item\":{" +
-                                "\"@type\":\"Person\"," +
-                                "\"name\":\"Authors\"," +
-                                "\"image\":\"http://example.com/images/icon-author.png\"" +
-                            "}," +
-                            "\"position\":2" +
-                        "}" +
-                    "]" +
-                "}";
+                    "\"@type\":\"ListItem\"," +
+                    "\"item\":{" + // Required
+                        "\"@type\":\"Book\"," +
+                        "\"name\":\"Books\"," + // Required
+                        "\"image\":\"http://example.com/images/icon-book.png\"" + // Optional
+                    "}," +
+                    "\"position\":1" + // Required
+                "}," +
+                "{" +
+                    "\"@type\":\"ListItem\"," +
+                    "\"item\":{" +
+                        "\"@type\":\"Person\"," +
+                        "\"name\":\"Authors\"," +
+                        "\"image\":\"http://example.com/images/icon-author.png\"" +
+                    "}," +
+                    "\"position\":2" +
+                "}" +
+            "]" +
+        "}";
 
-            var json = breadcrumbList.ToString();
+        [Fact]
+        public void ToString_BreadcrumbListGoogleStructuredData_ReturnsExpectedJsonLd() =>
+            Assert.Equal(this.json, this.breadcrumbList.ToString());
 
-            Assert.Equal(expectedJson, json);
-        }
+        [Fact]
+        public void Deserializing_BreadcrumbListJsonLd_ReturnsBreadcrumbList() =>
+            Assert.Equal(this.breadcrumbList.ToString(), JsonConvert.DeserializeObject<BreadcrumbList>(this.json).ToString());
     }
 }

@@ -1,25 +1,23 @@
-﻿namespace Schema.NET.Test
+namespace Schema.NET.Test
 {
     using System;
     using System.Collections.Generic;
+    using Newtonsoft.Json;
     using Xunit;
 
+    // https://developers.google.com/search/docs/data-types/books
     public class BookTest
     {
-        // https://developers.google.com/search/docs/data-types/books
-        [Fact]
-        public void ToString_BookGoogleStructuredData_ReturnsExpectedJsonLd()
+        private readonly Book book = new Book()
         {
-            var book = new Book()
+            Id = new Uri("http://example.com/book/1"),
+            Name = "The Catcher in the Rye",
+            Author = new Person()
             {
-                Id = new Uri("http://example.com/book/1"),
-                Name = "The Catcher in the Rye",
-                Author = new Person()
-                {
-                    Name = "J.D. Salinger"
-                },
-                Url = new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"),
-                WorkExample = new List<CreativeWork>()
+                Name = "J.D. Salinger"
+            },
+            Url = new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"),
+            WorkExample = new List<CreativeWork>()
                 {
                     new Book()
                     {
@@ -80,81 +78,85 @@
                         },
                     }
                 }
-            };
-            var expectedJson =
+        };
+
+        private readonly string json =
+        "{" +
+            "\"@context\":\"http://schema.org\"," +
+            "\"@type\":\"Book\"," +
+            "\"@id\":\"http://example.com/book/1\"," +
+            "\"name\":\"The Catcher in the Rye\"," +
+            "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
+            "\"author\":{" +
+                "\"@type\":\"Person\"," +
+                "\"name\":\"J.D. Salinger\"" +
+            "}," +
+            "\"workExample\":[" +
                 "{" +
-                    "\"@context\":\"http://schema.org\"," +
                     "\"@type\":\"Book\"," +
-                    "\"@id\":\"http://example.com/book/1\"," +
-                    "\"name\":\"The Catcher in the Rye\"," +
-                    "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
-                    "\"author\":{" +
-                        "\"@type\":\"Person\"," +
-                        "\"name\":\"J.D. Salinger\"" +
-                    "}," +
-                    "\"workExample\":[" +
-                        "{" +
-                            "\"@type\":\"Book\"," +
-                            "\"potentialAction\":{" +
-                                "\"@type\":\"ReadAction\"," +
-                                "\"target\":{" +
-                                    "\"@type\":\"EntryPoint\"," +
-                                    "\"actionPlatform\":[" +
-                                        "\"http://schema.org/DesktopWebPlatform\"," +
-                                        "\"http://schema.org/IOSPlatform\"," +
-                                        "\"http://schema.org/AndroidPlatform\"" +
-                                    "]," +
-                                    "\"urlTemplate\":\"http://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true\"" +
-                                "}," +
-                                "\"expectsAcceptanceOf\":{" +
-                                    "\"@type\":\"Offer\"," +
-                                    "\"availability\":\"http://schema.org/InStock\"," +
-                                    "\"eligibleRegion\":{" +
-                                        "\"@type\":\"Country\"," +
-                                        "\"name\":\"US\"" +
-                                    "}," +
-                                    "\"price\":6.99," +
-                                    "\"priceCurrency\":\"USD\"" +
-                                "}" +
-                            "}," +
-                            "\"bookEdition\":\"2nd Edition\"," +
-                            "\"bookFormat\":\"http://schema.org/Hardcover\"," +
-                            "\"isbn\":\"031676948\"" +
+                    "\"potentialAction\":{" +
+                        "\"@type\":\"ReadAction\"," +
+                        "\"target\":{" +
+                            "\"@type\":\"EntryPoint\"," +
+                            "\"actionPlatform\":[" +
+                                "\"http://schema.org/DesktopWebPlatform\"," +
+                                "\"http://schema.org/IOSPlatform\"," +
+                                "\"http://schema.org/AndroidPlatform\"" +
+                            "]," +
+                            "\"urlTemplate\":\"http://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true\"" +
                         "}," +
-                        "{" +
-                            "\"@type\":\"Book\"," +
-                            "\"potentialAction\":{" +
-                                "\"@type\":\"ReadAction\"," +
-                                "\"target\":{" +
-                                    "\"@type\":\"EntryPoint\"," +
-                                    "\"actionPlatform\":[" +
-                                        "\"http://schema.org/DesktopWebPlatform\"," +
-                                        "\"http://schema.org/IOSPlatform\"," +
-                                        "\"http://schema.org/AndroidPlatform\"" +
-                                    "]," +
-                                    "\"urlTemplate\":\"http://www.barnesandnoble.com/store/info/offer/031676947?purchase=true\"" +
-                                "}," +
-                                "\"expectsAcceptanceOf\":{" +
-                                    "\"@type\":\"Offer\"," +
-                                    "\"availability\":\"http://schema.org/InStock\"," +
-                                    "\"eligibleRegion\":{" +
-                                        "\"@type\":\"Country\"," +
-                                        "\"name\":\"UK\"" +
-                                    "}," +
-                                    "\"price\":1.99," +
-                                    "\"priceCurrency\":\"USD\"" +
-                                "}" +
+                        "\"expectsAcceptanceOf\":{" +
+                            "\"@type\":\"Offer\"," +
+                            "\"availability\":\"http://schema.org/InStock\"," +
+                            "\"eligibleRegion\":{" +
+                                "\"@type\":\"Country\"," +
+                                "\"name\":\"US\"" +
                             "}," +
-                            "\"bookEdition\":\"1st Edition\"," +
-                            "\"bookFormat\":\"http://schema.org/EBook\"," +
-                            "\"isbn\":\"031676947\"" +
+                            "\"price\":6.99," +
+                            "\"priceCurrency\":\"USD\"" +
                         "}" +
-                    "]" +
-                "}";
+                    "}," +
+                    "\"bookEdition\":\"2nd Edition\"," +
+                    "\"bookFormat\":\"http://schema.org/Hardcover\"," +
+                    "\"isbn\":\"031676948\"" +
+                "}," +
+                "{" +
+                    "\"@type\":\"Book\"," +
+                    "\"potentialAction\":{" +
+                        "\"@type\":\"ReadAction\"," +
+                        "\"target\":{" +
+                            "\"@type\":\"EntryPoint\"," +
+                            "\"actionPlatform\":[" +
+                                "\"http://schema.org/DesktopWebPlatform\"," +
+                                "\"http://schema.org/IOSPlatform\"," +
+                                "\"http://schema.org/AndroidPlatform\"" +
+                            "]," +
+                            "\"urlTemplate\":\"http://www.barnesandnoble.com/store/info/offer/031676947?purchase=true\"" +
+                        "}," +
+                        "\"expectsAcceptanceOf\":{" +
+                            "\"@type\":\"Offer\"," +
+                            "\"availability\":\"http://schema.org/InStock\"," +
+                            "\"eligibleRegion\":{" +
+                                "\"@type\":\"Country\"," +
+                                "\"name\":\"UK\"" +
+                            "}," +
+                            "\"price\":1.99," +
+                            "\"priceCurrency\":\"USD\"" +
+                        "}" +
+                    "}," +
+                    "\"bookEdition\":\"1st Edition\"," +
+                    "\"bookFormat\":\"http://schema.org/EBook\"," +
+                    "\"isbn\":\"031676947\"" +
+                "}" +
+            "]" +
+        "}";
 
-            var json = book.ToString();
+        [Fact]
+        public void ToString_BookGoogleStructuredData_ReturnsExpectedJsonLd() =>
+            Assert.Equal(this.json, this.book.ToString());
 
-            Assert.Equal(expectedJson, json);
-        }
+        [Fact]
+        public void Deserializing_BookJsonLd_ReturnsBook() =>
+            Assert.Equal(this.book.ToString(), JsonConvert.DeserializeObject<Book>(this.json).ToString());
     }
 }
