@@ -118,15 +118,13 @@ namespace Schema.NET.Test
         "}";
 
         [Fact]
-        public void ToString_RestaurantGoogleStructuredData_ReturnsExpectedJsonLd()
-        {
+        public void ToString_RestaurantGoogleStructuredData_ReturnsExpectedJsonLd() =>
             Assert.Equal(this.json, this.restaurant.ToString());
-        }
 
         [Fact]
         public void Deserializing_RestaurantJsonLd_ReturnsRestaurant()
         {
-            var serializerSettings = new JsonSerializerSettings
+            var serializerSettings = new JsonSerializerSettings()
             {
                 DateParseHandling = DateParseHandling.DateTimeOffset
             };

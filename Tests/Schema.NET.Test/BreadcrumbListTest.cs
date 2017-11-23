@@ -59,15 +59,11 @@ namespace Schema.NET.Test
         "}";
 
         [Fact]
-        public void ToString_BreadcrumbListGoogleStructuredData_ReturnsExpectedJsonLd()
-        {
+        public void ToString_BreadcrumbListGoogleStructuredData_ReturnsExpectedJsonLd() =>
             Assert.Equal(this.json, this.breadcrumbList.ToString());
-        }
 
         [Fact]
-        public void Deserializing_BreadcrumbListJsonLd_ReturnsBreadcrumbList()
-        {
+        public void Deserializing_BreadcrumbListJsonLd_ReturnsBreadcrumbList() =>
             Assert.Equal(this.breadcrumbList.ToString(), JsonConvert.DeserializeObject<BreadcrumbList>(this.json).ToString());
-        }
     }
 }

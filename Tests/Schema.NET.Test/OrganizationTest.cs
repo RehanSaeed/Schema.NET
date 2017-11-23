@@ -39,15 +39,11 @@ namespace Schema.NET.Test
         "}";
 
         [Fact]
-        public void ToString_CorporateContactsGoogleStructuredData_ReturnsExpectedJsonLd()
-        {
+        public void ToString_CorporateContactsGoogleStructuredData_ReturnsExpectedJsonLd() =>
             Assert.Equal(this.json, this.organization.ToString());
-        }
 
         [Fact]
-        public void Deserializing_OrganizationJsonLd_ReturnsOrganization()
-        {
+        public void Deserializing_OrganizationJsonLd_ReturnsOrganization() =>
             Assert.Equal(this.organization.ToString(), JsonConvert.DeserializeObject<Organization>(this.json).ToString());
-        }
     }
 }

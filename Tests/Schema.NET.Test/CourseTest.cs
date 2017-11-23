@@ -32,15 +32,11 @@ namespace Schema.NET.Test
         "}";
 
         [Fact]
-        public void ToString_CourseGoogleStructuredData_ReturnsExpectedJsonLd()
-        {
+        public void ToString_CourseGoogleStructuredData_ReturnsExpectedJsonLd() =>
             Assert.Equal(this.json, this.course.ToString());
-        }
 
         [Fact]
-        public void Deserializing_CourseJsonLd_ReturnsCourse()
-        {
+        public void Deserializing_CourseJsonLd_ReturnsCourse() =>
             Assert.Equal(this.course.ToString(), JsonConvert.DeserializeObject<Course>(this.json).ToString());
-        }
     }
 }

@@ -1,4 +1,3 @@
-
 namespace Schema.NET.Test
 {
     using System;

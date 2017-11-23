@@ -76,15 +76,13 @@ namespace Schema.NET.Test
         "}";
 
         [Fact]
-        public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd()
-        {
+        public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() =>
             Assert.Equal(this.json, this.@event.ToString());
-        }
 
         [Fact]
         public void Deserializing_EventJsonLd_ReturnsEvent()
         {
-            var serializerSettings = new JsonSerializerSettings
+            var serializerSettings = new JsonSerializerSettings()
             {
                 DateParseHandling = DateParseHandling.DateTimeOffset
             };

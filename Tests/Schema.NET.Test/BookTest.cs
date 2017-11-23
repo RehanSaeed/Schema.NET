@@ -8,7 +8,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/books
     public class BookTest
     {
-        private Book book = new Book()
+        private readonly Book book = new Book()
         {
             Id = new Uri("http://example.com/book/1"),
             Name = "The Catcher in the Rye",
@@ -152,15 +152,11 @@ namespace Schema.NET.Test
         "}";
 
         [Fact]
-        public void ToString_BookGoogleStructuredData_ReturnsExpectedJsonLd()
-        {
+        public void ToString_BookGoogleStructuredData_ReturnsExpectedJsonLd() =>
             Assert.Equal(this.json, this.book.ToString());
-        }
 
         [Fact]
-        public void Deserializing_BookJsonLd_ReturnsBook()
-        {
+        public void Deserializing_BookJsonLd_ReturnsBook() =>
             Assert.Equal(this.book.ToString(), JsonConvert.DeserializeObject<Book>(this.json).ToString());
-        }
     }
 }

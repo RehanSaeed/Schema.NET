@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Reflection;
     using Newtonsoft.Json;
@@ -13,6 +14,8 @@ namespace Schema.NET
     /// <seealso cref="JsonConverter" />
     public class ValuesConverter : JsonConverter
     {
+        private const string NamespacePrefix = "Schema.NET.";
+
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
         /// </summary>
@@ -23,30 +26,30 @@ namespace Schema.NET
         public override bool CanConvert(Type objectType) => objectType == typeof(IValue);
 
         /// <summary>
-        /// Throws <see cref="NotImplementedException"/>.
+        /// Reads the JSON representation of the object.
         /// </summary>
-        /// <param name="reader">The reader.</param>
+        /// <param name="reader">The <see cref="JsonReader"/> to read from.</param>
         /// <param name="objectType">Type of the object.</param>
-        /// <param name="existingValue">The existing value.</param>
-        /// <param name="serializer">The serializer.</param>
-        /// <returns>Never returns. Throws <see cref="NotImplementedException"/>.</returns>
+        /// <param name="existingValue">The existing value of object being read.</param>
+        /// <param name="serializer">The calling serializer.</param>
+        /// <returns>The object value.</returns>
         public override object ReadJson(
             JsonReader reader,
             Type objectType,
             object existingValue,
             JsonSerializer serializer)
         {
-            var mainType = UnwrapNullable(objectType);
+            var mainType = objectType.GetUnderlyingTypeFromNullable();
 
             object argument = null;
 
             var tokenType = reader.TokenType;
             var value = SanitizeReaderValue(reader, tokenType);
 
-            JToken token = JToken.Load(reader);
+            var token = JToken.Load(reader);
             if (mainType.GenericTypeArguments.Length == 1)
             {
-                var type = UnwrapNullable(mainType.GenericTypeArguments[0]);
+                var type = mainType.GenericTypeArguments[0].GetUnderlyingTypeFromNullable();
                 if (tokenType == JsonToken.StartArray)
                 {
                     var listType = typeof(List<>).MakeGenericType(type);
@@ -56,9 +59,11 @@ namespace Schema.NET
                         foreach (var childToken in token.Children())
                         {
                             var typeName = GetTypeNameFromToken(childToken);
-                            var builtType = Type.GetType($"Schema.NET.{typeName}");
+                            var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
                             var child = (Thing)childToken.ToObject(builtType);
-                            listType.GetRuntimeMethod("Add", new[] { type }).Invoke(list, new object[] { child });
+                            listType
+                                .GetRuntimeMethod(nameof(List<object>.Add), new[] { type })
+                                .Invoke(list, new object[] { child });
                         }
 
                         argument = list;
@@ -68,7 +73,7 @@ namespace Schema.NET
                         argument = token.ToObject(listType);
                     }
                 }
-                else if (IsPrimitiveType(type))
+                else if (type.IsPrimitiveType())
                 {
                     argument = value;
                 }
@@ -92,7 +97,7 @@ namespace Schema.NET
                         }
                         else
                         {
-                            var builtType = Type.GetType($"Schema.NET.{typeName}");
+                            var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
                             argument = token.ToObject(builtType);
                         }
                     }
@@ -118,7 +123,7 @@ namespace Schema.NET
                             }
                             else
                             {
-                                var builtType = Type.GetType($"Schema.NET.{typeName}");
+                                var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
                                 if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
                                 {
                                     args = token.ToObject(builtType);
@@ -136,8 +141,8 @@ namespace Schema.NET
                         }
                         else
                         {
-                            var unwrappedType = UnwrapNullable(type);
-                            if (IsPrimitiveType(unwrappedType))
+                            var unwrappedType = type.GetUnderlyingTypeFromNullable();
+                            if (unwrappedType.IsPrimitiveType())
                             {
                                 args = value;
                             }
@@ -170,7 +175,7 @@ namespace Schema.NET
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine(e);
+                Debug.WriteLine(e);
             }
 
             return instance;
@@ -208,22 +213,8 @@ namespace Schema.NET
             token.WriteTo(writer);
         }
 
-        private static Type UnwrapNullable(Type type)
-        {
-            return type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>)
-                ? Nullable.GetUnderlyingType(type)
-                : type;
-        }
-
-        private static bool IsPrimitiveType(Type type)
-        {
-            return type.GetTypeInfo().IsPrimitive || type == typeof(string);
-        }
-
-        private static object SanitizeReaderValue(JsonReader reader, JsonToken tokenType)
-        {
-            return tokenType == JsonToken.Integer ? Convert.ToInt32(reader.Value) : reader.Value;
-        }
+        private static object SanitizeReaderValue(JsonReader reader, JsonToken tokenType) =>
+            tokenType == JsonToken.Integer ? Convert.ToInt32(reader.Value) : reader.Value;
 
         private static string GetTypeNameFromToken(JToken token)
         {

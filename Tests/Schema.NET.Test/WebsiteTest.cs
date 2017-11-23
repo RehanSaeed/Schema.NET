@@ -87,6 +87,5 @@ namespace Schema.NET.Test
 
             Assert.Equal(website.ToString(), JsonConvert.DeserializeObject<WebSite>(json).ToString());
         }
-
     }
 }

@@ -15,15 +15,13 @@ namespace Schema.NET
         /// <inheritdoc />
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var valuesType = objectType.GetTypeInfo().IsGenericType && objectType.GetGenericTypeDefinition() == typeof(Nullable<>)
-                ? Nullable.GetUnderlyingType(objectType)
-                : objectType;
+            var valuesType = objectType.GetUnderlyingTypeFromNullable();
 
             if (valuesType.GenericTypeArguments.Length == 1)
             {
                 var mainType = valuesType.GenericTypeArguments[0];
-                Type genericType = typeof(Values<TimeSpan>);
-                if (mainType.GetTypeInfo().IsGenericType && mainType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                var genericType = typeof(Values<TimeSpan>);
+                if (mainType.IsNullable())
                 {
                     mainType = Nullable.GetUnderlyingType(mainType);
                     genericType = typeof(Values<TimeSpan?>);

@@ -62,15 +62,13 @@ namespace Schema.NET.Test
             "}";
 
         [Fact]
-        public void ToString_VideoGoogleStructuredData_ReturnsExpectedJsonLd()
-        {
+        public void ToString_VideoGoogleStructuredData_ReturnsExpectedJsonLd() =>
             Assert.Equal(this.json, this.videoObject.ToString());
-        }
 
         [Fact]
         public void Deserializing_VideoObjectJsonLd_ReturnsVideoObject()
         {
-            var serializerSettings = new JsonSerializerSettings
+            var serializerSettings = new JsonSerializerSettings()
             {
                 DateParseHandling = DateParseHandling.DateTimeOffset
             };
