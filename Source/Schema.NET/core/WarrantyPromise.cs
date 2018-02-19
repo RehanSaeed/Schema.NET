@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A structured value representing the duration and scope of services that will be provided to a customer free of charge in case of a defect or malfunction of a product.
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "durationOfWarranty", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? DurationOfWarranty { get; set; }
+        public Values<QuantitativeValue>? DurationOfWarranty { get; set; } 
 
         /// <summary>
         /// The scope of the warranty promise.
         /// </summary>
         [DataMember(Name = "warrantyScope", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<WarrantyScope?>? WarrantyScope { get; set; }
+        public Values<WarrantyScope>? WarrantyScope { get; set; } 
     }
 }

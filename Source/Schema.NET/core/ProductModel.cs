@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A datasheet or vendor specification of a product (in the sense of a prototypical description).
     /// </summary>
@@ -21,20 +21,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "isVariantOf", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ProductModel>? IsVariantOf { get; set; }
+        public Values<ProductModel>? IsVariantOf { get; set; } 
 
         /// <summary>
         /// A pointer from a previous, often discontinued variant of the product to its newer variant.
         /// </summary>
         [DataMember(Name = "predecessorOf", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ProductModel>? PredecessorOf { get; set; }
+        public Values<ProductModel>? PredecessorOf { get; set; } 
 
         /// <summary>
         /// A pointer from a newer variant of a product  to its previous, often discontinued predecessor.
         /// </summary>
         [DataMember(Name = "successorOf", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ProductModel>? SuccessorOf { get; set; }
+        public Values<ProductModel>? SuccessorOf { get; set; } 
     }
 }

@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A reservation for an event like a concert, sporting event, or lecture.&lt;/p&gt;
     /// &lt;p&gt;Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use &lt;a class="localLink" href="http://schema.org/Offer"&gt;Offer&lt;/a&gt;.

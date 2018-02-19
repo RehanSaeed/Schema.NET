@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A compound price specification is one that bundles multiple prices that all apply in combination for different dimensions of consumption. Use the name property of the attached unit price specification for indicating the dimension of a price component (e.g. "electricity" or "final cleaning").
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "priceComponent", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<UnitPriceSpecification>? PriceComponent { get; set; }
+        public Values<UnitPriceSpecification>? PriceComponent { get; set; } 
     }
 }

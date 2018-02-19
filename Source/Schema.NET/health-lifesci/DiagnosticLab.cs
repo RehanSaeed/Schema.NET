@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A medical laboratory that offers on-site or off-site diagnostic services.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "availableTest", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTest>? AvailableTest { get; set; }
+        public Values<MedicalTest>? AvailableTest { get; set; } 
     }
 }

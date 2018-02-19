@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Individual comic issues are serially published as
     ///     part of a larger series. For the sake of consistency, even one-shot issues
@@ -28,35 +28,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "artist", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Artist { get; set; }
+        public Values<Person>? Artist { get; set; } 
 
         /// <summary>
         /// The individual who adds color to inked drawings.
         /// </summary>
         [DataMember(Name = "colorist", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Colorist { get; set; }
+        public Values<Person>? Colorist { get; set; } 
 
         /// <summary>
         /// The individual who traces over the pencil drawings in ink after pencils are complete.
         /// </summary>
         [DataMember(Name = "inker", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Inker { get; set; }
+        public Values<Person>? Inker { get; set; } 
 
         /// <summary>
         /// The individual who adds lettering, including speech balloons and sound effects, to artwork.
         /// </summary>
         [DataMember(Name = "letterer", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Letterer { get; set; }
+        public Values<Person>? Letterer { get; set; } 
 
         /// <summary>
         /// The individual who draws the primary narrative artwork.
         /// </summary>
         [DataMember(Name = "penciler", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Penciler { get; set; }
+        public Values<Person>? Penciler { get; set; } 
 
         /// <summary>
         /// A description of the variant cover
@@ -65,6 +65,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "variantCover", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VariantCover { get; set; }
+        public Values<string>? VariantCover { get; set; } 
     }
 }

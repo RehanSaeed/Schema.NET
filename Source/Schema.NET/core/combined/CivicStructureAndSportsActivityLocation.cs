@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// See CivicStructure, SportsActivityLocation for more information.
     /// </summary>
@@ -27,6 +27,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "openingHours", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<string>? OpeningHours { get; set; }
+        public override Values<string>? OpeningHours { get; set; } 
     }
 }

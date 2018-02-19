@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A suite in a hotel or other public accommodation, denotes a class of luxury accommodations, the key feature of which is multiple rooms (Source: Wikipedia, the free encyclopedia, see &lt;a href="http://en.wikipedia.org/wiki/Suite_(hotel)"&gt;http://en.wikipedia.org/wiki/Suite_(hotel)&lt;/a&gt;).
     /// &lt;br /&gt;&lt;br /&gt;
@@ -12,6 +12,28 @@ namespace Schema.NET
     [DataContract]
     public partial class Suite : Accommodation
     {
+        public interface IBed : IWrapper { }
+        public interface IBed<T> : IBed { new T Data { get; set; } }
+        public class BedBedDetails : IBed<BedDetails>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (BedDetails) value; } }
+            public virtual BedDetails Data { get; set; }
+            public BedBedDetails () { }
+            public BedBedDetails (BedDetails data) { Data = data; }
+            public static implicit operator BedBedDetails (BedDetails data) { return new BedBedDetails (data); }
+        }
+
+        public class Bedstring : IBed<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public Bedstring () { }
+            public Bedstring (string data) { Data = data; }
+            public static implicit operator Bedstring (string data) { return new Bedstring (data); }
+        }
+
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -24,7 +46,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "bed", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BedDetails, string>? Bed { get; set; }
+        public Values<IBed>? Bed { get; set; } //BedDetails, string
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the acccommodation or lodging business.
@@ -32,7 +54,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<int?, QuantitativeValue>? NumberOfRooms { get; set; }
+        public override Values<INumberOfRooms>? NumberOfRooms { get; set; } //int?, QuantitativeValue
 
         /// <summary>
         /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
@@ -40,6 +62,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "occupancy", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? Occupancy { get; set; }
+        public Values<QuantitativeValue>? Occupancy { get; set; } 
     }
 }

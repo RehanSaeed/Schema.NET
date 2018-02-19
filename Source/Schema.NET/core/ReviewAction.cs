@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The act of producing a balanced opinion about the object for an audience. An agent reviews an object with participants resulting in a review.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "resultReview", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Review>? ResultReview { get; set; }
+        public Values<Review>? ResultReview { get; set; } 
     }
 }

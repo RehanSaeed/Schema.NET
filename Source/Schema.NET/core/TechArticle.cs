@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A technical article - Example: How-to (task) topics, step-by-step, procedural troubleshooting, specifications, etc.
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "dependencies", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Dependencies { get; set; }
+        public Values<string>? Dependencies { get; set; } 
 
         /// <summary>
         /// Proficiency needed for this content; expected values: 'Beginner', 'Expert'.
         /// </summary>
         [DataMember(Name = "proficiencyLevel", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ProficiencyLevel { get; set; }
+        public Values<string>? ProficiencyLevel { get; set; } 
     }
 }

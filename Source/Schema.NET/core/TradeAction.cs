@@ -1,15 +1,36 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The act of participating in an exchange of goods and services for monetary compensation. An agent trades an object, product or service with a participant in exchange for a one time or periodic payment.
     /// </summary>
     [DataContract]
     public partial class TradeAction : Action
     {
+        public interface IPrice : IWrapper { }
+        public interface IPrice<T> : IPrice { new T Data { get; set; } }
+        public class Pricedecimal : IPrice<decimal>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (decimal) value; } }
+            public virtual decimal Data { get; set; }
+            public Pricedecimal () { }
+            public Pricedecimal (decimal data) { Data = data; }
+            public static implicit operator Pricedecimal (decimal data) { return new Pricedecimal (data); }
+        }
+
+        public class Pricestring : IPrice<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public Pricestring () { }
+            public Pricestring (string data) { Data = data; }
+            public static implicit operator Pricestring (string data) { return new Pricestring (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -29,13 +50,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "price", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<decimal?, string>? Price { get; set; }
+        public Values<IPrice>? Price { get; set; } //decimal?, string
 
         /// <summary>
         /// One or more detailed price specifications, indicating the unit price and delivery or payment charges.
         /// </summary>
         [DataMember(Name = "priceSpecification", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PriceSpecification>? PriceSpecification { get; set; }
+        public Values<PriceSpecification>? PriceSpecification { get; set; } 
     }
 }

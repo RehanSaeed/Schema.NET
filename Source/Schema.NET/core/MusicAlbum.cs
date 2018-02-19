@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A collection of music tracks.
     /// </summary>
@@ -21,27 +21,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "albumProductionType", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MusicAlbumProductionType?>? AlbumProductionType { get; set; }
+        public Values<MusicAlbumProductionType>? AlbumProductionType { get; set; } 
 
         /// <summary>
         /// A release of this album.
         /// </summary>
         [DataMember(Name = "albumRelease", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MusicRelease>? AlbumRelease { get; set; }
+        public Values<MusicRelease>? AlbumRelease { get; set; } 
 
         /// <summary>
         /// The kind of release which this album is: single, EP or album.
         /// </summary>
         [DataMember(Name = "albumReleaseType", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MusicAlbumReleaseType?>? AlbumReleaseType { get; set; }
+        public Values<MusicAlbumReleaseType>? AlbumReleaseType { get; set; } 
 
         /// <summary>
         /// The artist that performed this album or recording.
         /// </summary>
         [DataMember(Name = "byArtist", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MusicGroup>? ByArtist { get; set; }
+        public Values<MusicGroup>? ByArtist { get; set; } 
     }
 }

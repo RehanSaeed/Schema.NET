@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;The act of obtaining an object under an agreement to return it at a later date. Reciprocal of LendAction.&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;
@@ -14,6 +14,27 @@ namespace Schema.NET
     [DataContract]
     public partial class BorrowAction : TransferAction
     {
+        public interface ILender : IWrapper { }
+        public interface ILender<T> : ILender { new T Data { get; set; } }
+        public class LenderOrganization : ILender<Organization>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Organization) value; } }
+            public virtual Organization Data { get; set; }
+            public LenderOrganization () { }
+            public LenderOrganization (Organization data) { Data = data; }
+            public static implicit operator LenderOrganization (Organization data) { return new LenderOrganization (data); }
+        }
+
+        public class LenderPerson : ILender<Person>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Person) value; } }
+            public virtual Person Data { get; set; }
+            public LenderPerson () { }
+            public LenderPerson (Person data) { Data = data; }
+            public static implicit operator LenderPerson (Person data) { return new LenderPerson (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -25,6 +46,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "lender", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Lender { get; set; }
+        public Values<ILender>? Lender { get; set; } //Organization, Person
     }
 }

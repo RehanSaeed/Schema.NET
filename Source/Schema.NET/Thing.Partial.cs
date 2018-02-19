@@ -1,10 +1,12 @@
-﻿namespace Schema.NET
-{
-    using System.Collections.Generic;
-    using System.Text;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Text;
 
+namespace Schema.NET
+{
+    [JsonConverter(typeof(ThingConverter))]
     public partial class Thing : JsonLdObject
     {
         private const string ContextPropertyJson = "\"@context\":\"http://schema.org\",";
@@ -16,6 +18,11 @@
             },
             NullValueHandling = NullValueHandling.Ignore
         };
+
+        //place last
+        [DataMember(Name = "itemlist", Order = 9999999)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Thing>? ItemList { get; set; }
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance.

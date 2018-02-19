@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A group of multiple reservations with common values for all sub-reservations.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "subReservation", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Reservation>? SubReservation { get; set; }
+        public Values<Reservation>? SubReservation { get; set; } 
     }
 }

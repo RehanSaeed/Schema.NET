@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A car is a wheeled, self-powered motor vehicle used for transportation.
     /// </summary>
@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "acrissCode", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AcrissCode { get; set; }
+        public Values<string>? AcrissCode { get; set; } 
 
         /// <summary>
         /// &lt;p&gt;The permitted total weight of cargo and installations (e.g. a roof rack) on top of the vehicle.&lt;/p&gt;
@@ -34,6 +34,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "roofLoad", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? RoofLoad { get; set; }
+        public Values<QuantitativeValue>? RoofLoad { get; set; } 
     }
 }

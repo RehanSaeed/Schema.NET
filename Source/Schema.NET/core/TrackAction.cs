@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;An agent tracks an object for updates.&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;
@@ -26,6 +26,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "deliveryMethod", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DeliveryMethod?>? DeliveryMethod { get; set; }
+        public Values<DeliveryMethod>? DeliveryMethod { get; set; } 
     }
 }

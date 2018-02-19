@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The act of expressing a preference from a fixed/finite/structured set of choices/options.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "candidate", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Candidate { get; set; }
+        public Values<Person>? Candidate { get; set; } 
     }
 }

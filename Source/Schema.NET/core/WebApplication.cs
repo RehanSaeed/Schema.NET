@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Web applications.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "browserRequirements", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BrowserRequirements { get; set; }
+        public Values<string>? BrowserRequirements { get; set; } 
     }
 }

@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "serviceOperator", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization>? ServiceOperator { get; set; }
+        public Values<Organization>? ServiceOperator { get; set; } 
     }
 }

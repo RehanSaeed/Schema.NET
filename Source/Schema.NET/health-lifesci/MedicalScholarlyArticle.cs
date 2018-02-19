@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A scholarly article in the medical domain.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "publicationType", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PublicationType { get; set; }
+        public Values<string>? PublicationType { get; set; } 
     }
 }

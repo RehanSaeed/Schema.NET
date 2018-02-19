@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// An educational organization.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "alumni", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Person>? Alumni { get; set; }
+        public override Values<Person>? Alumni { get; set; } 
     }
 }

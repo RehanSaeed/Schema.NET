@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;The act of posing a question / favor to someone.&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;
@@ -25,6 +25,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "question", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Question>? Question { get; set; }
+        public Values<Question>? Question { get; set; } 
     }
 }

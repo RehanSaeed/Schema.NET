@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;
@@ -26,13 +26,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "audience", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Audience>? Audience { get; set; }
+        public Values<Audience>? Audience { get; set; } 
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
         [DataMember(Name = "event", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Event>? Event { get; set; }
+        public Values<Event>? Event { get; set; } 
     }
 }

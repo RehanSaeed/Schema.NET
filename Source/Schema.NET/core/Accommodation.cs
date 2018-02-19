@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// An accommodation is a place that can accommodate human beings, e.g. a hotel room, a camping pitch, or a meeting room. Many accommodations are for overnight stays, but this is not a mandatory requirement.
     /// For more specific types of accommodations not defined in schema.org, one can use additionalType with external vocabularies.
@@ -13,6 +13,48 @@ namespace Schema.NET
     [DataContract]
     public partial class Accommodation : Place
     {
+        public interface INumberOfRooms : IWrapper { }
+        public interface INumberOfRooms<T> : INumberOfRooms { new T Data { get; set; } }
+        public class NumberOfRoomsint : INumberOfRooms<int>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (int) value; } }
+            public virtual int Data { get; set; }
+            public NumberOfRoomsint () { }
+            public NumberOfRoomsint (int data) { Data = data; }
+            public static implicit operator NumberOfRoomsint (int data) { return new NumberOfRoomsint (data); }
+        }
+
+        public class NumberOfRoomsQuantitativeValue : INumberOfRooms<QuantitativeValue>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (QuantitativeValue) value; } }
+            public virtual QuantitativeValue Data { get; set; }
+            public NumberOfRoomsQuantitativeValue () { }
+            public NumberOfRoomsQuantitativeValue (QuantitativeValue data) { Data = data; }
+            public static implicit operator NumberOfRoomsQuantitativeValue (QuantitativeValue data) { return new NumberOfRoomsQuantitativeValue (data); }
+        }
+
+
+        public interface IPetsAllowed : IWrapper { }
+        public interface IPetsAllowed<T> : IPetsAllowed { new T Data { get; set; } }
+        public class PetsAllowedbool : IPetsAllowed<bool>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (bool) value; } }
+            public virtual bool Data { get; set; }
+            public PetsAllowedbool () { }
+            public PetsAllowedbool (bool data) { Data = data; }
+            public static implicit operator PetsAllowedbool (bool data) { return new PetsAllowedbool (data); }
+        }
+
+        public class PetsAllowedstring : IPetsAllowed<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public PetsAllowedstring () { }
+            public PetsAllowedstring (string data) { Data = data; }
+            public static implicit operator PetsAllowedstring (string data) { return new PetsAllowedstring (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -24,7 +66,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "amenityFeature", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<LocationFeatureSpecification>? AmenityFeature { get; set; }
+        public override Values<LocationFeatureSpecification>? AmenityFeature { get; set; } 
 
         /// <summary>
         /// The size of the accommodation, e.g. in square meter or squarefoot.
@@ -32,7 +74,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "floorSize", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? FloorSize { get; set; }
+        public Values<QuantitativeValue>? FloorSize { get; set; } 
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the acccommodation or lodging business.
@@ -40,20 +82,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<int?, QuantitativeValue>? NumberOfRooms { get; set; }
+        public virtual Values<INumberOfRooms>? NumberOfRooms { get; set; } //int?, QuantitativeValue
 
         /// <summary>
         /// Indications regarding the permitted usage of the accommodation.
         /// </summary>
         [DataMember(Name = "permittedUsage", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PermittedUsage { get; set; }
+        public Values<string>? PermittedUsage { get; set; } 
 
         /// <summary>
         /// Indicates whether pets are allowed to enter the accommodation or lodging business. More detailed information can be put in a text value.
         /// </summary>
         [DataMember(Name = "petsAllowed", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?, string>? PetsAllowed { get; set; }
+        public Values<IPetsAllowed>? PetsAllowed { get; set; } //bool?, string
     }
 }

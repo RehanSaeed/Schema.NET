@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A camping pitch is an individual place for overnight stay in the outdoors, typically being part of a larger camping site.
     /// &lt;br /&gt;&lt;br /&gt;

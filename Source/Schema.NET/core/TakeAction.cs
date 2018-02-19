@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;The act of gaining ownership of an object from an origin. Reciprocal of GiveAction.&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;

@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "issn", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Issn { get; set; }
+        public Values<string>? Issn { get; set; } 
     }
 }

@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The average rating based on multiple ratings or reviews.
     /// </summary>
@@ -21,20 +21,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "itemReviewed", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? ItemReviewed { get; set; }
+        public Values<Thing>? ItemReviewed { get; set; } 
 
         /// <summary>
         /// The count of total number of ratings.
         /// </summary>
         [DataMember(Name = "ratingCount", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? RatingCount { get; set; }
+        public Values<int>? RatingCount { get; set; } 
 
         /// <summary>
         /// The count of total number of reviews.
         /// </summary>
         [DataMember(Name = "reviewCount", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? ReviewCount { get; set; }
+        public Values<int>? ReviewCount { get; set; } 
     }
 }

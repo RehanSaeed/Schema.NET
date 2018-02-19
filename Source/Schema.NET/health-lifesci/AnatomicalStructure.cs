@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Any part of the human body, typically a component of an anatomical system. Organs, tissues, and cells are all anatomical structures.
     /// </summary>
@@ -21,62 +21,62 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "associatedPathophysiology", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AssociatedPathophysiology { get; set; }
+        public Values<string>? AssociatedPathophysiology { get; set; } 
 
         /// <summary>
         /// Location in the body of the anatomical structure.
         /// </summary>
         [DataMember(Name = "bodyLocation", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BodyLocation { get; set; }
+        public Values<string>? BodyLocation { get; set; } 
 
         /// <summary>
         /// Other anatomical structures to which this structure is connected.
         /// </summary>
         [DataMember(Name = "connectedTo", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AnatomicalStructure>? ConnectedTo { get; set; }
+        public Values<AnatomicalStructure>? ConnectedTo { get; set; } 
 
         /// <summary>
         /// An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
         /// </summary>
         [DataMember(Name = "diagram", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ImageObject>? Diagram { get; set; }
+        public Values<ImageObject>? Diagram { get; set; } 
 
         /// <summary>
         /// Function of the anatomical structure.
         /// </summary>
         [DataMember(Name = "function", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Function { get; set; }
+        public Values<string>? Function { get; set; } 
 
         /// <summary>
         /// The anatomical or organ system that this structure is part of.
         /// </summary>
         [DataMember(Name = "partOfSystem", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AnatomicalSystem>? PartOfSystem { get; set; }
+        public Values<AnatomicalSystem>? PartOfSystem { get; set; } 
 
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalCondition>? RelatedCondition { get; set; }
+        public Values<MedicalCondition>? RelatedCondition { get; set; } 
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTherapy>? RelatedTherapy { get; set; }
+        public Values<MedicalTherapy>? RelatedTherapy { get; set; } 
 
         /// <summary>
         /// Component (sub-)structure(s) that comprise this anatomical structure.
         /// </summary>
         [DataMember(Name = "subStructure", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AnatomicalStructure>? SubStructure { get; set; }
+        public Values<AnatomicalStructure>? SubStructure { get; set; } 
     }
 }

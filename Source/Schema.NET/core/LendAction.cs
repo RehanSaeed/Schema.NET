@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;The act of providing an object under an agreement that it will be returned at a later date. Reciprocal of BorrowAction.&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;
@@ -25,6 +25,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "borrower", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Borrower { get; set; }
+        public Values<Person>? Borrower { get; set; } 
     }
 }

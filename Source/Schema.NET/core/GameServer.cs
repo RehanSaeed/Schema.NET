@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Server that provides game interaction in a multiplayer game.
     /// </summary>
@@ -21,20 +21,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "game", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<VideoGame>? Game { get; set; }
+        public Values<VideoGame>? Game { get; set; } 
 
         /// <summary>
         /// Number of players on the server.
         /// </summary>
         [DataMember(Name = "playersOnline", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? PlayersOnline { get; set; }
+        public Values<int>? PlayersOnline { get; set; } 
 
         /// <summary>
         /// Status of a game server.
         /// </summary>
         [DataMember(Name = "serverStatus", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<GameServerStatus?>? ServerStatus { get; set; }
+        public Values<GameServerStatus>? ServerStatus { get; set; } 
     }
 }

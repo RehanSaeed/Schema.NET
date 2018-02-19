@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The act of ingesting information/resources/food.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "expectsAcceptanceOf", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Offer>? ExpectsAcceptanceOf { get; set; }
+        public Values<Offer>? ExpectsAcceptanceOf { get; set; } 
     }
 }

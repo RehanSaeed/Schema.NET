@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// An entity holding detailed information about the available bed types, e.g. the quantity of twin beds for a hotel room. For the single case of just one bed of a certain type, you can use bed directly with a text. See also &lt;a class="localLink" href="http://schema.org/BedType"&gt;BedType&lt;/a&gt; (under development).
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberOfBeds", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? NumberOfBeds { get; set; }
+        public Values<int>? NumberOfBeds { get; set; } 
 
         /// <summary>
         /// The type of bed to which the BedDetail refers, i.e. the type of bed available in the quantity indicated by quantity.
         /// </summary>
         [DataMember(Name = "typeOfBed", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? TypeOfBed { get; set; }
+        public Values<string>? TypeOfBed { get; set; } 
     }
 }

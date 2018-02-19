@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A single, identifiable product instance (e.g. a laptop with a particular serial number).
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "serialNumber", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? SerialNumber { get; set; }
+        public Values<string>? SerialNumber { get; set; } 
     }
 }

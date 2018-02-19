@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A software application designed specifically to work well on a mobile device such as a telephone.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "carrierRequirements", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? CarrierRequirements { get; set; }
+        public Values<string>? CarrierRequirements { get; set; } 
     }
 }

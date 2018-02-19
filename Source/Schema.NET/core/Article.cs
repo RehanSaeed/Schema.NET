@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.&lt;/p&gt;
     /// &lt;p&gt;See also &lt;a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"&gt;blog post&lt;/a&gt;.
@@ -11,6 +11,48 @@ namespace Schema.NET
     [DataContract]
     public partial class Article : CreativeWork
     {
+        public interface IPageEnd : IWrapper { }
+        public interface IPageEnd<T> : IPageEnd { new T Data { get; set; } }
+        public class PageEndint : IPageEnd<int>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (int) value; } }
+            public virtual int Data { get; set; }
+            public PageEndint () { }
+            public PageEndint (int data) { Data = data; }
+            public static implicit operator PageEndint (int data) { return new PageEndint (data); }
+        }
+
+        public class PageEndstring : IPageEnd<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public PageEndstring () { }
+            public PageEndstring (string data) { Data = data; }
+            public static implicit operator PageEndstring (string data) { return new PageEndstring (data); }
+        }
+
+
+        public interface IPageStart : IWrapper { }
+        public interface IPageStart<T> : IPageStart { new T Data { get; set; } }
+        public class PageStartint : IPageStart<int>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (int) value; } }
+            public virtual int Data { get; set; }
+            public PageStartint () { }
+            public PageStartint (int data) { Data = data; }
+            public static implicit operator PageStartint (int data) { return new PageStartint (data); }
+        }
+
+        public class PageStartstring : IPageStart<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public PageStartstring () { }
+            public PageStartstring (string data) { Data = data; }
+            public static implicit operator PageStartstring (string data) { return new PageStartstring (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -22,35 +64,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "articleBody", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ArticleBody { get; set; }
+        public Values<string>? ArticleBody { get; set; } 
 
         /// <summary>
         /// Articles may belong to one or more 'sections' in a magazine or newspaper, such as Sports, Lifestyle, etc.
         /// </summary>
         [DataMember(Name = "articleSection", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ArticleSection { get; set; }
+        public Values<string>? ArticleSection { get; set; } 
 
         /// <summary>
         /// The page on which the work ends; for example "138" or "xvi".
         /// </summary>
         [DataMember(Name = "pageEnd", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?, string>? PageEnd { get; set; }
+        public Values<IPageEnd>? PageEnd { get; set; } //int?, string
 
         /// <summary>
         /// The page on which the work starts; for example "135" or "xiii".
         /// </summary>
         [DataMember(Name = "pageStart", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?, string>? PageStart { get; set; }
+        public Values<IPageStart>? PageStart { get; set; } //int?, string
 
         /// <summary>
         /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".
         /// </summary>
         [DataMember(Name = "pagination", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Pagination { get; set; }
+        public Values<string>? Pagination { get; set; } 
 
         /// <summary>
         /// Indicates sections of a Web page that are particularly 'speakable' in the sense of being highlighted as being especially appropriate for text-to-speech conversion. Other sections of a page may also be usefully spoken in particular circumstances; the 'speakable' property serves to indicate the parts most likely to be generally useful for speech.&lt;/p&gt;
@@ -63,13 +105,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "speakable", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? Speakable { get; set; }
+        public Values<Uri>? Speakable { get; set; } 
 
         /// <summary>
         /// The number of words in the text of the Article.
         /// </summary>
         [DataMember(Name = "wordCount", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? WordCount { get; set; }
+        public Values<int>? WordCount { get; set; } 
     }
 }

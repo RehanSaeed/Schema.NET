@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;The act of searching for an object.&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;
@@ -14,6 +14,27 @@ namespace Schema.NET
     [DataContract]
     public partial class SearchAction : Action
     {
+        public interface IQueryInput : IWrapper { }
+        public interface IQueryInput<T> : IQueryInput { new T Data { get; set; } }
+        public class QueryInputstring : IQueryInput<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public QueryInputstring () { }
+            public QueryInputstring (string data) { Data = data; }
+            public static implicit operator QueryInputstring (string data) { return new QueryInputstring (data); }
+        }
+
+        public class QueryInputPropertyValueSpecification : IQueryInput<PropertyValueSpecification>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (PropertyValueSpecification) value; } }
+            public virtual PropertyValueSpecification Data { get; set; }
+            public QueryInputPropertyValueSpecification () { }
+            public QueryInputPropertyValueSpecification (PropertyValueSpecification data) { Data = data; }
+            public static implicit operator QueryInputPropertyValueSpecification (PropertyValueSpecification data) { return new QueryInputPropertyValueSpecification (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -25,13 +46,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "query", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Query { get; set; }
+        public Values<string>? Query { get; set; } 
 
         /// <summary>
         /// Gets or sets the query input search parameter.
         /// </summary>
         [DataMember(Name = "query-input", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, PropertyValueSpecification>? QueryInput { get; set; }
+        public Values<IQueryInput>? QueryInput { get; set; } //string, PropertyValueSpecification
     }
 }

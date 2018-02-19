@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;The act of an agent relocating to a place.&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;
@@ -25,13 +25,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "fromLocation", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? FromLocation { get; set; }
+        public Values<Place>? FromLocation { get; set; } 
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
         [DataMember(Name = "toLocation", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? ToLocation { get; set; }
+        public Values<Place>? ToLocation { get; set; } 
     }
 }

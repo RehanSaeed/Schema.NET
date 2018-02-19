@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "sharedContent", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork>? SharedContent { get; set; }
+        public Values<CreativeWork>? SharedContent { get; set; } 
     }
 }

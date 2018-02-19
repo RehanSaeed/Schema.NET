@@ -1,15 +1,66 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A list of items of any sort&amp;#x2014;for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
     /// </summary>
     [DataContract]
     public partial class ItemList : Intangible
     {
+        public interface IItemListElement : IWrapper { }
+        public interface IItemListElement<T> : IItemListElement { new T Data { get; set; } }
+        public class ItemListElementListItem : IItemListElement<ListItem>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (ListItem) value; } }
+            public virtual ListItem Data { get; set; }
+            public ItemListElementListItem () { }
+            public ItemListElementListItem (ListItem data) { Data = data; }
+            public static implicit operator ItemListElementListItem (ListItem data) { return new ItemListElementListItem (data); }
+        }
+
+        public class ItemListElementstring : IItemListElement<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public ItemListElementstring () { }
+            public ItemListElementstring (string data) { Data = data; }
+            public static implicit operator ItemListElementstring (string data) { return new ItemListElementstring (data); }
+        }
+
+        public class ItemListElementThing : IItemListElement<Thing>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Thing) value; } }
+            public virtual Thing Data { get; set; }
+            public ItemListElementThing () { }
+            public ItemListElementThing (Thing data) { Data = data; }
+            public static implicit operator ItemListElementThing (Thing data) { return new ItemListElementThing (data); }
+        }
+
+
+        public interface IItemListOrder : IWrapper { }
+        public interface IItemListOrder<T> : IItemListOrder { new T Data { get; set; } }
+        public class ItemListOrderItemListOrderType : IItemListOrder<ItemListOrderType>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (ItemListOrderType) value; } }
+            public virtual ItemListOrderType Data { get; set; }
+            public ItemListOrderItemListOrderType () { }
+            public ItemListOrderItemListOrderType (ItemListOrderType data) { Data = data; }
+            public static implicit operator ItemListOrderItemListOrderType (ItemListOrderType data) { return new ItemListOrderItemListOrderType (data); }
+        }
+
+        public class ItemListOrderstring : IItemListOrder<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public ItemListOrderstring () { }
+            public ItemListOrderstring (string data) { Data = data; }
+            public static implicit operator ItemListOrderstring (string data) { return new ItemListOrderstring (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -23,20 +74,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "itemListElement", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ListItem, string, Thing>? ItemListElement { get; set; }
+        public Values<IItemListElement>? ItemListElement { get; set; } //ListItem, string, Thing
 
         /// <summary>
         /// Type of ordering (e.g. Ascending, Descending, Unordered).
         /// </summary>
         [DataMember(Name = "itemListOrder", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ItemListOrderType?, string>? ItemListOrder { get; set; }
+        public Values<IItemListOrder>? ItemListOrder { get; set; } //ItemListOrderType?, string
 
         /// <summary>
         /// The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
         /// </summary>
         [DataMember(Name = "numberOfItems", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? NumberOfItems { get; set; }
+        public Values<int>? NumberOfItems { get; set; } 
     }
 }

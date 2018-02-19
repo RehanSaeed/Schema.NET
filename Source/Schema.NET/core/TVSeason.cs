@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Season dedicated to TV broadcast and associated online delivery.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "countryOfOrigin", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Country>? CountryOfOrigin { get; set; }
+        public Values<Country>? CountryOfOrigin { get; set; } 
     }
 }

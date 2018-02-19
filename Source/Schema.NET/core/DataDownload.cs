@@ -1,15 +1,36 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A dataset in downloadable form.
     /// </summary>
     [DataContract]
     public partial class DataDownload : MediaObject
     {
+        public interface IMeasurementTechnique : IWrapper { }
+        public interface IMeasurementTechnique<T> : IMeasurementTechnique { new T Data { get; set; } }
+        public class MeasurementTechniquestring : IMeasurementTechnique<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public MeasurementTechniquestring () { }
+            public MeasurementTechniquestring (string data) { Data = data; }
+            public static implicit operator MeasurementTechniquestring (string data) { return new MeasurementTechniquestring (data); }
+        }
+
+        public class MeasurementTechniqueUri : IMeasurementTechnique<Uri>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Uri) value; } }
+            public virtual Uri Data { get; set; }
+            public MeasurementTechniqueUri () { }
+            public MeasurementTechniqueUri (Uri data) { Data = data; }
+            public static implicit operator MeasurementTechniqueUri (Uri data) { return new MeasurementTechniqueUri (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -25,6 +46,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "measurementTechnique", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Uri>? MeasurementTechnique { get; set; }
+        public Values<IMeasurementTechnique>? MeasurementTechnique { get; set; } //string, Uri
     }
 }

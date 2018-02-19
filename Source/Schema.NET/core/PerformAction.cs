@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The act of participating in performance arts.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "entertainmentBusiness", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<EntertainmentBusiness>? EntertainmentBusiness { get; set; }
+        public Values<EntertainmentBusiness>? EntertainmentBusiness { get; set; } 
     }
 }

@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// An organization that provides flights for passengers.
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "boardingPolicy", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BoardingPolicyType?>? BoardingPolicy { get; set; }
+        public Values<BoardingPolicyType>? BoardingPolicy { get; set; } 
 
         /// <summary>
         /// IATA identifier for an airline or airport.
         /// </summary>
         [DataMember(Name = "iataCode", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? IataCode { get; set; }
+        public Values<string>? IataCode { get; set; } 
     }
 }

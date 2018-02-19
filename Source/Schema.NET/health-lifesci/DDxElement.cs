@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// An alternative, closely-related condition typically considered later in the differential diagnosis process along with the signs that are used to distinguish it.
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "diagnosis", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalCondition>? Diagnosis { get; set; }
+        public Values<MedicalCondition>? Diagnosis { get; set; } 
 
         /// <summary>
         /// One of a set of signs and symptoms that can be used to distinguish this diagnosis from others in the differential diagnosis.
         /// </summary>
         [DataMember(Name = "distinguishingSign", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalSignOrSymptom>? DistinguishingSign { get; set; }
+        public Values<MedicalSignOrSymptom>? DistinguishingSign { get; set; } 
     }
 }

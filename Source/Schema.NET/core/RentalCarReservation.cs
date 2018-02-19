@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A reservation for a rental car.&lt;/p&gt;
     /// &lt;p&gt;Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
@@ -22,27 +22,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "dropoffLocation", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? DropoffLocation { get; set; }
+        public Values<Place>? DropoffLocation { get; set; } 
 
         /// <summary>
         /// When a rental car can be dropped off.
         /// </summary>
         [DataMember(Name = "dropoffTime", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? DropoffTime { get; set; }
+        public Values<DateTimeOffset>? DropoffTime { get; set; } 
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
         [DataMember(Name = "pickupLocation", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? PickupLocation { get; set; }
+        public Values<Place>? PickupLocation { get; set; } 
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
         [DataMember(Name = "pickupTime", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? PickupTime { get; set; }
+        public Values<DateTimeOffset>? PickupTime { get; set; } 
     }
 }

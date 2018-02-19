@@ -1,10 +1,14 @@
+using System;
+using System.Reflection;
+using System.Xml;
+using Newtonsoft.Json;
+
+/// <summary>
+/// TODO, might not work with the changes made
+/// </summary>
+
 namespace Schema.NET
 {
-    using System;
-    using System.Reflection;
-    using System.Xml;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Converts an <see cref="IValue"/> object to JSON. If the <see cref="IValue"/> contains a TimeSpan, converts it
     /// to ISO 8601 format first.

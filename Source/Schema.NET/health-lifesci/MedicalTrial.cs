@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A medical trial is a type of medical study that uses scientific process used to compare the safety and efficacy of medical therapies or medical procedures. In general, medical trials are controlled and subjects are allocated at random to the different treatment and/or control groups.
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "phase", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Phase { get; set; }
+        public Values<string>? Phase { get; set; } 
 
         /// <summary>
         /// Specifics about the trial design (enumerated).
         /// </summary>
         [DataMember(Name = "trialDesign", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTrialDesign?>? TrialDesign { get; set; }
+        public Values<MedicalTrialDesign>? TrialDesign { get; set; } 
     }
 }

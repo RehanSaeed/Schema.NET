@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A public structure, such as a town hall or concert hall.
     /// </summary>
@@ -27,6 +27,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "openingHours", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? OpeningHours { get; set; }
+        public Values<string>? OpeningHours { get; set; } 
     }
 }

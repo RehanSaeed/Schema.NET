@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The term "story" is any indivisible, re-printable
     ///     unit of a comic, including the interior stories, covers, and backmatter. Most
@@ -25,34 +25,34 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "artist", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Artist { get; set; }
+        public Values<Person>? Artist { get; set; } 
 
         /// <summary>
         /// The individual who adds color to inked drawings.
         /// </summary>
         [DataMember(Name = "colorist", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Colorist { get; set; }
+        public Values<Person>? Colorist { get; set; } 
 
         /// <summary>
         /// The individual who traces over the pencil drawings in ink after pencils are complete.
         /// </summary>
         [DataMember(Name = "inker", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Inker { get; set; }
+        public Values<Person>? Inker { get; set; } 
 
         /// <summary>
         /// The individual who adds lettering, including speech balloons and sound effects, to artwork.
         /// </summary>
         [DataMember(Name = "letterer", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Letterer { get; set; }
+        public Values<Person>? Letterer { get; set; } 
 
         /// <summary>
         /// The individual who draws the primary narrative artwork.
         /// </summary>
         [DataMember(Name = "penciler", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Penciler { get; set; }
+        public Values<Person>? Penciler { get; set; } 
     }
 }

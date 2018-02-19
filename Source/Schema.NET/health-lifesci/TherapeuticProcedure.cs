@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A medical procedure intended primarily for therapeutic purposes, aimed at improving a health condition.
     /// </summary>
@@ -21,27 +21,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "adverseOutcome", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalEntity>? AdverseOutcome { get; set; }
+        public Values<MedicalEntity>? AdverseOutcome { get; set; } 
 
         /// <summary>
         /// A dosing schedule for the drug for a given population, either observed, recommended, or maximum dose based on the type used.
         /// </summary>
         [DataMember(Name = "doseSchedule", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DoseSchedule>? DoseSchedule { get; set; }
+        public Values<DoseSchedule>? DoseSchedule { get; set; } 
 
         /// <summary>
         /// Specifying a drug or medicine used in a medication procedure
         /// </summary>
         [DataMember(Name = "drug", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Drug>? Drug { get; set; }
+        public Values<Drug>? Drug { get; set; } 
 
         /// <summary>
         /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
         /// </summary>
         [DataMember(Name = "indication", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<MedicalIndication>? Indication { get; set; }
+        public override Values<MedicalIndication>? Indication { get; set; } 
     }
 }

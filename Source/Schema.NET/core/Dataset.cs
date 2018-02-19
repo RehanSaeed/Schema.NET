@@ -1,15 +1,57 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A body of structured information describing some topic(s) of interest.
     /// </summary>
     [DataContract]
     public partial class Dataset : CreativeWork
     {
+        public interface IMeasurementTechnique : IWrapper { }
+        public interface IMeasurementTechnique<T> : IMeasurementTechnique { new T Data { get; set; } }
+        public class MeasurementTechniquestring : IMeasurementTechnique<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public MeasurementTechniquestring () { }
+            public MeasurementTechniquestring (string data) { Data = data; }
+            public static implicit operator MeasurementTechniquestring (string data) { return new MeasurementTechniquestring (data); }
+        }
+
+        public class MeasurementTechniqueUri : IMeasurementTechnique<Uri>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Uri) value; } }
+            public virtual Uri Data { get; set; }
+            public MeasurementTechniqueUri () { }
+            public MeasurementTechniqueUri (Uri data) { Data = data; }
+            public static implicit operator MeasurementTechniqueUri (Uri data) { return new MeasurementTechniqueUri (data); }
+        }
+
+
+        public interface IVariableMeasured : IWrapper { }
+        public interface IVariableMeasured<T> : IVariableMeasured { new T Data { get; set; } }
+        public class VariableMeasuredPropertyValue : IVariableMeasured<PropertyValue>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (PropertyValue) value; } }
+            public virtual PropertyValue Data { get; set; }
+            public VariableMeasuredPropertyValue () { }
+            public VariableMeasuredPropertyValue (PropertyValue data) { Data = data; }
+            public static implicit operator VariableMeasuredPropertyValue (PropertyValue data) { return new VariableMeasuredPropertyValue (data); }
+        }
+
+        public class VariableMeasuredstring : IVariableMeasured<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public VariableMeasuredstring () { }
+            public VariableMeasuredstring (string data) { Data = data; }
+            public static implicit operator VariableMeasuredstring (string data) { return new VariableMeasuredstring (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -21,21 +63,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "distribution", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DataDownload>? Distribution { get; set; }
+        public Values<DataDownload>? Distribution { get; set; } 
 
         /// <summary>
         /// A data catalog which contains this dataset.
         /// </summary>
         [DataMember(Name = "includedInDataCatalog", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DataCatalog>? IncludedInDataCatalog { get; set; }
+        public Values<DataCatalog>? IncludedInDataCatalog { get; set; } 
 
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.
         /// </summary>
         [DataMember(Name = "issn", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Issn { get; set; }
+        public Values<string>? Issn { get; set; } 
 
         /// <summary>
         /// A technique or technology used in a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt; (or &lt;a class="localLink" href="http://schema.org/DataDownload"&gt;DataDownload&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/DataCatalog"&gt;DataCatalog&lt;/a&gt;),
@@ -46,13 +88,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "measurementTechnique", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Uri>? MeasurementTechnique { get; set; }
+        public Values<IMeasurementTechnique>? MeasurementTechnique { get; set; } //string, Uri
 
         /// <summary>
         /// The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
         /// </summary>
         [DataMember(Name = "variableMeasured", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PropertyValue, string>? VariableMeasured { get; set; }
+        public Values<IVariableMeasured>? VariableMeasured { get; set; } //PropertyValue, string
     }
 }

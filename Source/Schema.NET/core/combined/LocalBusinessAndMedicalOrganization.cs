@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// See LocalBusiness, MedicalOrganization for more information.
     /// </summary>
@@ -21,28 +21,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "currenciesAccepted", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? CurrenciesAccepted { get; set; }
+        public Values<string>? CurrenciesAccepted { get; set; } 
 
         /// <summary>
         /// Name or unique ID of network. (Networks are often reused across different insurance plans).
         /// </summary>
         [DataMember(Name = "healthPlanNetworkId", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? HealthPlanNetworkId { get; set; }
+        public Values<string>? HealthPlanNetworkId { get; set; } 
 
         /// <summary>
         /// Whether the provider is accepting new patients.
         /// </summary>
         [DataMember(Name = "isAcceptingNewPatients", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?>? IsAcceptingNewPatients { get; set; }
+        public Values<bool>? IsAcceptingNewPatients { get; set; } 
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
         [DataMember(Name = "medicalSpecialty", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        public Values<MedicalSpecialty>? MedicalSpecialty { get; set; } 
 
         /// <summary>
         /// &lt;p&gt;The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;/p&gt;
@@ -55,20 +55,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "openingHours", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? OpeningHours { get; set; }
+        public Values<string>? OpeningHours { get; set; } 
 
         /// <summary>
         /// Cash, credit card, etc.
         /// </summary>
         [DataMember(Name = "paymentAccepted", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PaymentAccepted { get; set; }
+        public Values<string>? PaymentAccepted { get; set; } 
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
         /// </summary>
         [DataMember(Name = "priceRange", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PriceRange { get; set; }
+        public Values<string>? PriceRange { get; set; } 
     }
 }

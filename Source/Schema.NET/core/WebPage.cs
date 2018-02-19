@@ -1,15 +1,57 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as &lt;code&gt;breadcrumb&lt;/code&gt; may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page.
     /// </summary>
     [DataContract]
     public partial class WebPage : CreativeWork
     {
+        public interface IBreadcrumb : IWrapper { }
+        public interface IBreadcrumb<T> : IBreadcrumb { new T Data { get; set; } }
+        public class BreadcrumbBreadcrumbList : IBreadcrumb<BreadcrumbList>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (BreadcrumbList) value; } }
+            public virtual BreadcrumbList Data { get; set; }
+            public BreadcrumbBreadcrumbList () { }
+            public BreadcrumbBreadcrumbList (BreadcrumbList data) { Data = data; }
+            public static implicit operator BreadcrumbBreadcrumbList (BreadcrumbList data) { return new BreadcrumbBreadcrumbList (data); }
+        }
+
+        public class Breadcrumbstring : IBreadcrumb<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public Breadcrumbstring () { }
+            public Breadcrumbstring (string data) { Data = data; }
+            public static implicit operator Breadcrumbstring (string data) { return new Breadcrumbstring (data); }
+        }
+
+
+        public interface IReviewedBy : IWrapper { }
+        public interface IReviewedBy<T> : IReviewedBy { new T Data { get; set; } }
+        public class ReviewedByOrganization : IReviewedBy<Organization>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Organization) value; } }
+            public virtual Organization Data { get; set; }
+            public ReviewedByOrganization () { }
+            public ReviewedByOrganization (Organization data) { Data = data; }
+            public static implicit operator ReviewedByOrganization (Organization data) { return new ReviewedByOrganization (data); }
+        }
+
+        public class ReviewedByPerson : IReviewedBy<Person>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Person) value; } }
+            public virtual Person Data { get; set; }
+            public ReviewedByPerson () { }
+            public ReviewedByPerson (Person data) { Data = data; }
+            public static implicit operator ReviewedByPerson (Person data) { return new ReviewedByPerson (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -21,49 +63,49 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "breadcrumb", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BreadcrumbList, string>? Breadcrumb { get; set; }
+        public Values<IBreadcrumb>? Breadcrumb { get; set; } //BreadcrumbList, string
 
         /// <summary>
         /// Date on which the content on this web page was last reviewed for accuracy and/or completeness.
         /// </summary>
         [DataMember(Name = "lastReviewed", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? LastReviewed { get; set; }
+        public Values<DateTimeOffset>? LastReviewed { get; set; } 
 
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.
         /// </summary>
         [DataMember(Name = "mainContentOfPage", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<WebPageElement>? MainContentOfPage { get; set; }
+        public Values<WebPageElement>? MainContentOfPage { get; set; } 
 
         /// <summary>
         /// Indicates the main image on the page.
         /// </summary>
         [DataMember(Name = "primaryImageOfPage", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ImageObject>? PrimaryImageOfPage { get; set; }
+        public Values<ImageObject>? PrimaryImageOfPage { get; set; } 
 
         /// <summary>
         /// A link related to this web page, for example to other related web pages.
         /// </summary>
         [DataMember(Name = "relatedLink", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? RelatedLink { get; set; }
+        public Values<Uri>? RelatedLink { get; set; } 
 
         /// <summary>
         /// People or organizations that have reviewed the content on this web page for accuracy and/or completeness.
         /// </summary>
         [DataMember(Name = "reviewedBy", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? ReviewedBy { get; set; }
+        public Values<IReviewedBy>? ReviewedBy { get; set; } //Organization, Person
 
         /// <summary>
         /// One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most.
         /// </summary>
         [DataMember(Name = "significantLink", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? SignificantLink { get; set; }
+        public Values<Uri>? SignificantLink { get; set; } 
 
         /// <summary>
         /// Indicates sections of a Web page that are particularly 'speakable' in the sense of being highlighted as being especially appropriate for text-to-speech conversion. Other sections of a page may also be usefully spoken in particular circumstances; the 'speakable' property serves to indicate the parts most likely to be generally useful for speech.&lt;/p&gt;
@@ -76,13 +118,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "speakable", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? Speakable { get; set; }
+        public Values<Uri>? Speakable { get; set; } 
 
         /// <summary>
         /// One of the domain specialities to which this web page's content applies.
         /// </summary>
         [DataMember(Name = "specialty", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Specialty?>? Specialty { get; set; }
+        public Values<Specialty>? Specialty { get; set; } 
     }
 }

@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A blog.
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "blogPost", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BlogPosting>? BlogPost { get; set; }
+        public Values<BlogPosting>? BlogPost { get; set; } 
 
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.
         /// </summary>
         [DataMember(Name = "issn", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Issn { get; set; }
+        public Values<string>? Issn { get; set; } 
     }
 }

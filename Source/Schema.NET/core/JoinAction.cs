@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;An agent joins an event/group with participants/friends at a location.&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;
@@ -27,6 +27,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "event", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Event>? Event { get; set; }
+        public Values<Event>? Event { get; set; } 
     }
 }

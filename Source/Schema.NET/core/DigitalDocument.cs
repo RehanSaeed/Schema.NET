@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// An electronic file or document.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hasDigitalDocumentPermission", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DigitalDocumentPermission>? HasDigitalDocumentPermission { get; set; }
+        public Values<DigitalDocumentPermission>? HasDigitalDocumentPermission { get; set; } 
     }
 }

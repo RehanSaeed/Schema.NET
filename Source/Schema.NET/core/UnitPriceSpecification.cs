@@ -1,15 +1,36 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The price asked for a given offer by the respective organization or person.
     /// </summary>
     [DataContract]
     public partial class UnitPriceSpecification : PriceSpecification
     {
+        public interface IUnitCode : IWrapper { }
+        public interface IUnitCode<T> : IUnitCode { new T Data { get; set; } }
+        public class UnitCodestring : IUnitCode<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public UnitCodestring () { }
+            public UnitCodestring (string data) { Data = data; }
+            public static implicit operator UnitCodestring (string data) { return new UnitCodestring (data); }
+        }
+
+        public class UnitCodeUri : IUnitCode<Uri>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Uri) value; } }
+            public virtual Uri Data { get; set; }
+            public UnitCodeUri () { }
+            public UnitCodeUri (Uri data) { Data = data; }
+            public static implicit operator UnitCodeUri (Uri data) { return new UnitCodeUri (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -21,28 +42,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "billingIncrement", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? BillingIncrement { get; set; }
+        public Values<double>? BillingIncrement { get; set; } 
 
         /// <summary>
         /// A short text or acronym indicating multiple price specifications for the same offer, e.g. SRP for the suggested retail price or INVOICE for the invoice price, mostly used in the car industry.
         /// </summary>
         [DataMember(Name = "priceType", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PriceType { get; set; }
+        public Values<string>? PriceType { get; set; } 
 
         /// <summary>
         /// The reference quantity for which a certain price applies, e.g. 1 EUR per 4 kWh of electricity. This property is a replacement for unitOfMeasurement for the advanced cases where the price does not relate to a standard unit.
         /// </summary>
         [DataMember(Name = "referenceQuantity", Order = 408)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? ReferenceQuantity { get; set; }
+        public Values<QuantitativeValue>? ReferenceQuantity { get; set; } 
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
         /// </summary>
         [DataMember(Name = "unitCode", Order = 409)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Uri>? UnitCode { get; set; }
+        public Values<IUnitCode>? UnitCode { get; set; } //string, Uri
 
         /// <summary>
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
@@ -50,6 +71,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "unitText", Order = 410)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? UnitText { get; set; }
+        public Values<string>? UnitText { get; set; } 
     }
 }

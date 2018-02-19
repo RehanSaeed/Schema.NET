@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A map.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "mapType", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MapCategoryType?>? MapType { get; set; }
+        public Values<MapCategoryType>? MapType { get; set; } 
     }
 }

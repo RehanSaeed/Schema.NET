@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// An audiobook.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "readBy", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? ReadBy { get; set; }
+        public Values<Person>? ReadBy { get; set; } 
     }
 }

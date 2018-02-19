@@ -15,34 +15,34 @@
         {
             var stringBuilder = new StringBuilder();
 
-            if (this.ValueMaxLength.HasValue && this.ValueMaxLength.Value.Item.HasValue)
+            if (ValueMaxLength.HasValue)
             {
                 stringBuilder.Append("maxlength=");
-                stringBuilder.Append(this.ValueMaxLength.Value.Item.Value);
+                stringBuilder.Append(this.ValueMaxLength.Value.Item);
             }
 
-            if (this.ValueMinLength.HasValue && this.ValueMinLength.Value.Item.HasValue)
+            if (ValueMinLength.HasValue)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("minlength=");
-                stringBuilder.Append(this.ValueMinLength.Value.Item.Value);
+                stringBuilder.Append(this.ValueMinLength.Value.Item);
             }
 
-            if (this.ValueName.HasValue && this.ValueName.Value.Item != null)
+            if (ValueName.HasValue && !string.IsNullOrEmpty(ValueName.Value.Item))
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("name=");
-                stringBuilder.Append(this.ValueName.Value.Item);
+                stringBuilder.Append(ValueName.Value.Item);
             }
 
-            if (this.ValuePattern.HasValue && this.ValuePattern.Value.Item != null)
+            if (ValuePattern.HasValue && !string.IsNullOrEmpty(ValuePattern.Value.Item))
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("pattern=");
                 stringBuilder.Append(this.ValuePattern.Value.Item);
             }
 
-            if (this.ValueRequired.HasValue && this.ValueRequired.Value.Item.HasValue)
+            if (ValueRequired.HasValue)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("required");

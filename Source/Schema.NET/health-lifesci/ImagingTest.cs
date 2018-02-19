@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Any medical imaging modality typically used for diagnostic purposes.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "imagingTechnique", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalImagingTechnique?>? ImagingTechnique { get; set; }
+        public Values<MedicalImagingTechnique>? ImagingTechnique { get; set; } 
     }
 }

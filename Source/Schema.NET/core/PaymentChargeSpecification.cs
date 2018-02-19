@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The costs of settling the payment using a particular payment method.
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "appliesToDeliveryMethod", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
+        public Values<DeliveryMethod>? AppliesToDeliveryMethod { get; set; } 
 
         /// <summary>
         /// The payment method(s) to which the payment charge specification applies.
         /// </summary>
         [DataMember(Name = "appliesToPaymentMethod", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PaymentMethod?>? AppliesToPaymentMethod { get; set; }
+        public Values<PaymentMethod>? AppliesToPaymentMethod { get; set; } 
     }
 }

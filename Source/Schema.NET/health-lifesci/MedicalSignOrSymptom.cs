@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Any feature associated or not with a medical condition. In medicine a symptom is generally subjective while a sign is objective.
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "cause", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<MedicalCause>? Cause { get; set; }
+        public override Values<MedicalCause>? Cause { get; set; } 
 
         /// <summary>
         /// A possible treatment to address this condition, sign or symptom.
         /// </summary>
         [DataMember(Name = "possibleTreatment", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<MedicalTherapy>? PossibleTreatment { get; set; }
+        public override Values<MedicalTherapy>? PossibleTreatment { get; set; } 
     }
 }

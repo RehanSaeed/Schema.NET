@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A sub-grouping of food or drink items in a menu. E.g. courses (such as 'Dinner', 'Breakfast', etc.), specific type of dishes (such as 'Meat', 'Vegan', 'Drinks', etc.), or some other classification made by the menu provider.
     /// </summary>
@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hasMenuItem", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MenuItem>? HasMenuItem { get; set; }
+        public Values<MenuItem>? HasMenuItem { get; set; } 
 
         /// <summary>
         /// A subgrouping of the menu (by dishes, course, serving time period, etc.).
         /// </summary>
         [DataMember(Name = "hasMenuSection", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MenuSection>? HasMenuSection { get; set; }
+        public Values<MenuSection>? HasMenuSection { get; set; } 
     }
 }

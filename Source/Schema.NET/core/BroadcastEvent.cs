@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// An over the air or online broadcast event.
     /// </summary>
@@ -21,20 +21,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "broadcastOfEvent", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Event>? BroadcastOfEvent { get; set; }
+        public Values<Event>? BroadcastOfEvent { get; set; } 
 
         /// <summary>
         /// True is the broadcast is of a live event.
         /// </summary>
         [DataMember(Name = "isLiveBroadcast", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?>? IsLiveBroadcast { get; set; }
+        public Values<bool>? IsLiveBroadcast { get; set; } 
 
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).
         /// </summary>
         [DataMember(Name = "videoFormat", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VideoFormat { get; set; }
+        public Values<string>? VideoFormat { get; set; } 
     }
 }

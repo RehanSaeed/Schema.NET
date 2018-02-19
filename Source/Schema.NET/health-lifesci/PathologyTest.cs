@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A medical test performed by a laboratory that typically involves examination of a tissue sample by a pathologist.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "tissueSample", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? TissueSample { get; set; }
+        public Values<string>? TissueSample { get; set; } 
     }
 }

@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;The act of responding to a question/message asked/sent by the object. Related to &lt;a class="localLink" href="http://schema.org/AskAction"&gt;AskAction&lt;/a&gt;&lt;/p&gt;
     /// &lt;p&gt;Related actions:&lt;/p&gt;
@@ -25,6 +25,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "resultComment", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Comment>? ResultComment { get; set; }
+        public Values<Comment>? ResultComment { get; set; } 
     }
 }

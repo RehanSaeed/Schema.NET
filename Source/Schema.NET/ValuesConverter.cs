@@ -1,13 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Reflection;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-
     /// <summary>
     /// Converts an <see cref="IValue"/> object to JSON.
     /// </summary>
@@ -53,25 +53,25 @@ namespace Schema.NET
                 if (tokenType == JsonToken.StartArray)
                 {
                     var listType = typeof(List<>).MakeGenericType(type);
-                    if (token.Any(t => !string.IsNullOrEmpty(GetTypeNameFromToken(t))))
-                    {
-                        var list = Activator.CreateInstance(listType);
-                        foreach (var childToken in token.Children())
-                        {
-                            var typeName = GetTypeNameFromToken(childToken);
-                            var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                            var child = (Thing)childToken.ToObject(builtType);
-                            listType
-                                .GetRuntimeMethod(nameof(List<object>.Add), new[] { type })
-                                .Invoke(list, new object[] { child });
-                        }
+                    //if (!(typeof(IWrapper).IsAssignableFrom(type)) && token.Any(t => !string.IsNullOrEmpty(GetTypeNameFromToken(t))))
+                    //{
+                    //    var list = Activator.CreateInstance(listType);
+                    //    foreach (var childToken in token.Children())
+                    //    {
+                    //        var typeName = GetTypeNameFromToken(childToken);
+                    //        var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
+                    //        var child = (Thing)childToken.ToObject(builtType);
+                    //        listType
+                    //            .GetRuntimeMethod(nameof(List<object>.Add), new[] { type })
+                    //            .Invoke(list, new object[] { child });
+                    //    }
 
-                        argument = list;
-                    }
-                    else
-                    {
+                    //    argument = list;
+                    //}
+                    //else
+                    //{
                         argument = token.ToObject(listType);
-                    }
+                    //}
                 }
                 else if (type.IsPrimitiveType())
                 {
@@ -80,6 +80,9 @@ namespace Schema.NET
                 else if (type == typeof(decimal))
                 {
                     argument = Convert.ToDecimal(value);
+                }
+                else if (typeof(IWrapper).IsAssignableFrom(type)) {
+                    argument = token.ToObject(type);
                 }
                 else
                 {
@@ -93,77 +96,19 @@ namespace Schema.NET
                         var typeName = GetTypeNameFromToken(token);
                         if (string.IsNullOrEmpty(typeName))
                         {
-                            argument = token.ToObject(type);
+                            try
+                            {
+                                argument = token.ToObject(type);
+                            }
+                            catch (Exception e) {
+                                Debug.WriteLine($"Cannot convert to {type} from {token.ToString()}");
+                            }
                         }
                         else
                         {
                             var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
                             argument = token.ToObject(builtType);
                         }
-                    }
-                }
-            }
-            else
-            {
-                foreach (var type in mainType.GenericTypeArguments)
-                {
-                    try
-                    {
-                        object args;
-                        if (tokenType == JsonToken.StartObject)
-                        {
-                            var typeName = GetTypeNameFromToken(token);
-                            if (string.IsNullOrEmpty(typeName))
-                            {
-                                args = token.ToObject(type);
-                            }
-                            else if (typeName == type.Name)
-                            {
-                                args = token.ToObject(type);
-                            }
-                            else
-                            {
-                                var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                                if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
-                                {
-                                    args = token.ToObject(builtType);
-                                }
-                                else
-                                {
-                                    continue;
-                                }
-                            }
-                        }
-                        else if (tokenType == JsonToken.StartArray)
-                        {
-                            var arrayType = typeof(List<>).MakeGenericType(type);
-                            args = token.ToObject(arrayType);
-                        }
-                        else
-                        {
-                            var unwrappedType = type.GetUnderlyingTypeFromNullable();
-                            if (unwrappedType.IsPrimitiveType())
-                            {
-                                args = value;
-                            }
-                            else if (unwrappedType == typeof(decimal))
-                            {
-                                args = Convert.ToDecimal(value);
-                            }
-                            else
-                            {
-                                args = token.ToObject(type); // This is expected to throw on some case
-                            }
-                        }
-
-                        var genericType = typeof(Values<>).MakeGenericType(type);
-                        argument = Activator.CreateInstance(genericType, args);
-                        break;
-                    }
-                    catch
-                    {
-                        // Nasty, but we're trying brute force as a last resort, to
-                        // see which type has the right constructor for this value
                     }
                 }
             }

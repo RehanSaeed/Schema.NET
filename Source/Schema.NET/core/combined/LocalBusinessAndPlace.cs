@@ -1,15 +1,20 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// See LocalBusiness, Place for more information.
     /// </summary>
     [DataContract]
     public abstract partial class LocalBusinessAndPlace : OrganizationAndPlace
     {
+
+
+
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -22,28 +27,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<PropertyValue>? AdditionalProperty { get; set; }
+        public override Values<PropertyValue>? AdditionalProperty { get; set; } 
 
         /// <summary>
         /// Physical address of the item.
         /// </summary>
         [DataMember(Name = "address", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<PostalAddress, string>? Address { get; set; }
+        public override Values<IAddress>? Address { get; set; } //PostalAddress, string
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<AggregateRating>? AggregateRating { get; set; }
+        public override Values<AggregateRating>? AggregateRating { get; set; } 
 
         /// <summary>
         /// An amenity feature (e.g. a characteristic or service) of the Accommodation. This generic property does not make a statement about whether the feature is included in an offer for the main accommodation or available at extra costs.
         /// </summary>
         [DataMember(Name = "amenityFeature", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<LocationFeatureSpecification>? AmenityFeature { get; set; }
+        public override Values<LocationFeatureSpecification>? AmenityFeature { get; set; } 
 
         /// <summary>
         /// A short textual code (also called "store code") that uniquely identifies a place of business. The code is typically assigned by the parentOrganization and used in structured URLs.&lt;/p&gt;
@@ -51,161 +56,161 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "branchCode", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<string>? BranchCode { get; set; }
+        public override Values<string>? BranchCode { get; set; } 
 
         /// <summary>
         /// The basic containment relation between a place and one that contains it.
         /// </summary>
         [DataMember(Name = "containedInPlace", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? ContainedInPlace { get; set; }
+        public override Values<Place>? ContainedInPlace { get; set; } 
 
         /// <summary>
         /// The basic containment relation between a place and another that it contains.
         /// </summary>
         [DataMember(Name = "containsPlace", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? ContainsPlace { get; set; }
+        public override Values<Place>? ContainsPlace { get; set; } 
 
         /// <summary>
         /// The currency accepted (in &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "currenciesAccepted", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? CurrenciesAccepted { get; set; }
+        public Values<string>? CurrenciesAccepted { get; set; } 
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
         [DataMember(Name = "event", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Event>? Event { get; set; }
+        public override Values<Event>? Event { get; set; } 
 
         /// <summary>
         /// The fax number.
         /// </summary>
         [DataMember(Name = "faxNumber", Order = 215)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<string>? FaxNumber { get; set; }
+        public override Values<string>? FaxNumber { get; set; } 
 
         /// <summary>
         /// The geo coordinates of the place.
         /// </summary>
         [DataMember(Name = "geo", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<GeoCoordinates, GeoShape>? Geo { get; set; }
+        public override Values<IGeo>? Geo { get; set; } //GeoCoordinates, GeoShape
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a containing geometry to a contained geometry. "a contains b iff no points of b lie in the exterior of a, and at least one point of the interior of b lies in the interior of a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geospatiallyContains", Order = 217)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyContains { get; set; }
+        public override Values<Place>? GeospatiallyContains { get; set; } 
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that covers it. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geospatiallyCoveredBy", Order = 218)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyCoveredBy { get; set; }
+        public override Values<Place>? GeospatiallyCoveredBy { get; set; } 
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a covering geometry to a covered geometry. "Every point of b is a point of (the interior or boundary of) a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geospatiallyCovers", Order = 219)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyCovers { get; set; }
+        public override Values<Place>? GeospatiallyCovers { get; set; } 
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that crosses it: "a crosses b: they have some but not all interior points in common, and the dimension of the intersection is less than that of at least one of them". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geospatiallyCrosses", Order = 220)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyCrosses { get; set; }
+        public override Values<Place>? GeospatiallyCrosses { get; set; } 
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically disjoint: they have no point in common. They form a set of disconnected geometries." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;)
         /// </summary>
         [DataMember(Name = "geospatiallyDisjoint", Order = 221)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyDisjoint { get; set; }
+        public override Values<Place>? GeospatiallyDisjoint { get; set; } 
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically equal, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;. "Two geometries are topologically equal if their interiors intersect and no part of the interior or boundary of one geometry intersects the exterior of the other" (a symmetric relationship)
         /// </summary>
         [DataMember(Name = "geospatiallyEquals", Order = 222)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyEquals { get; set; }
+        public override Values<Place>? GeospatiallyEquals { get; set; } 
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) have at least one point in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geospatiallyIntersects", Order = 223)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyIntersects { get; set; }
+        public override Values<Place>? GeospatiallyIntersects { get; set; } 
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that geospatially overlaps it, i.e. they have some but not all points in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geospatiallyOverlaps", Order = 224)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyOverlaps { get; set; }
+        public override Values<Place>? GeospatiallyOverlaps { get; set; } 
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) touch: they have at least one boundary point in common, but no interior points." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt; )
         /// </summary>
         [DataMember(Name = "geospatiallyTouches", Order = 225)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyTouches { get; set; }
+        public override Values<Place>? GeospatiallyTouches { get; set; } 
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to one that contains it, i.e. it is inside (i.e. within) its interior. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geospatiallyWithin", Order = 226)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place>? GeospatiallyWithin { get; set; }
+        public override Values<Place>? GeospatiallyWithin { get; set; } 
 
         /// <summary>
         /// The &lt;a href="http://www.gs1.org/gln"&gt;Global Location Number&lt;/a&gt; (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
         /// </summary>
         [DataMember(Name = "globalLocationNumber", Order = 227)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<string>? GlobalLocationNumber { get; set; }
+        public override Values<string>? GlobalLocationNumber { get; set; } 
 
         /// <summary>
         /// A URL to a map of the place.
         /// </summary>
         [DataMember(Name = "hasMap", Order = 228)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Map, Uri>? HasMap { get; set; }
+        public override Values<IHasMap>? HasMap { get; set; } //Map, Uri
 
         /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
         /// </summary>
         [DataMember(Name = "isAccessibleForFree", Order = 229)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<bool?>? IsAccessibleForFree { get; set; }
+        public override Values<bool>? IsAccessibleForFree { get; set; } 
 
         /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
         [DataMember(Name = "isicV4", Order = 230)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<string>? IsicV4 { get; set; }
+        public override Values<string>? IsicV4 { get; set; } 
 
         /// <summary>
         /// An associated logo.
         /// </summary>
         [DataMember(Name = "logo", Order = 231)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<ImageObject, Uri>? Logo { get; set; }
+        public override Values<ILogo>? Logo { get; set; } //ImageObject, Uri
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
         /// </summary>
         [DataMember(Name = "maximumAttendeeCapacity", Order = 232)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<int?>? MaximumAttendeeCapacity { get; set; }
+        public override Values<int>? MaximumAttendeeCapacity { get; set; } 
 
         /// <summary>
         /// &lt;p&gt;The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;/p&gt;
@@ -218,56 +223,56 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "openingHours", Order = 233)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<string>? OpeningHours { get; set; }
+        public virtual Values<string>? OpeningHours { get; set; } 
 
         /// <summary>
         /// The opening hours of a certain place.
         /// </summary>
         [DataMember(Name = "openingHoursSpecification", Order = 234)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<OpeningHoursSpecification>? OpeningHoursSpecification { get; set; }
+        public override Values<OpeningHoursSpecification>? OpeningHoursSpecification { get; set; } 
 
         /// <summary>
         /// Cash, credit card, etc.
         /// </summary>
         [DataMember(Name = "paymentAccepted", Order = 235)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PaymentAccepted { get; set; }
+        public Values<string>? PaymentAccepted { get; set; } 
 
         /// <summary>
         /// A photograph of this place.
         /// </summary>
         [DataMember(Name = "photo", Order = 236)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<ImageObject, Photograph>? Photo { get; set; }
+        public override Values<IPhoto>? Photo { get; set; } //ImageObject, Photograph
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
         /// </summary>
         [DataMember(Name = "priceRange", Order = 237)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PriceRange { get; set; }
+        public Values<string>? PriceRange { get; set; } 
 
         /// <summary>
         /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
         /// </summary>
         [DataMember(Name = "publicAccess", Order = 238)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<bool?>? PublicAccess { get; set; }
+        public override Values<bool>? PublicAccess { get; set; } 
 
         /// <summary>
         /// A review of the item.
         /// </summary>
         [DataMember(Name = "review", Order = 239)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Review>? Review { get; set; }
+        public override Values<Review>? Review { get; set; } 
 
         /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
         /// </summary>
         [DataMember(Name = "smokingAllowed", Order = 240)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<bool?>? SmokingAllowed { get; set; }
+        public override Values<bool>? SmokingAllowed { get; set; } 
 
         /// <summary>
         /// The special opening hours of a certain place.&lt;/p&gt;
@@ -275,13 +280,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "specialOpeningHoursSpecification", Order = 241)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<OpeningHoursSpecification>? SpecialOpeningHoursSpecification { get; set; }
+        public override Values<OpeningHoursSpecification>? SpecialOpeningHoursSpecification { get; set; } 
 
         /// <summary>
         /// The telephone number.
         /// </summary>
         [DataMember(Name = "telephone", Order = 242)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<string>? Telephone { get; set; }
+        public override Values<string>? Telephone { get; set; } 
     }
 }

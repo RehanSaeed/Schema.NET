@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The act of generating a comment about a subject.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "resultComment", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Comment>? ResultComment { get; set; }
+        public Values<Comment>? ResultComment { get; set; } 
     }
 }

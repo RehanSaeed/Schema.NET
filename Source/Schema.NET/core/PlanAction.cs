@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The act of planning the execution of an event/task/action/reservation/plan to a future date.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "scheduledTime", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ScheduledTime { get; set; }
+        public Values<DateTimeOffset>? ScheduledTime { get; set; } 
     }
 }

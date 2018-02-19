@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A thesis or dissertation document submitted in support of candidature for an academic degree or professional qualification.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "inSupportOf", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? InSupportOf { get; set; }
+        public Values<string>? InSupportOf { get; set; } 
     }
 }

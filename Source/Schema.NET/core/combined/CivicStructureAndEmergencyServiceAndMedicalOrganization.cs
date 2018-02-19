@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// See CivicStructure, EmergencyService, MedicalOrganization for more information.
     /// </summary>
@@ -21,21 +21,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "healthPlanNetworkId", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? HealthPlanNetworkId { get; set; }
+        public Values<string>? HealthPlanNetworkId { get; set; } 
 
         /// <summary>
         /// Whether the provider is accepting new patients.
         /// </summary>
         [DataMember(Name = "isAcceptingNewPatients", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?>? IsAcceptingNewPatients { get; set; }
+        public Values<bool>? IsAcceptingNewPatients { get; set; } 
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
         [DataMember(Name = "medicalSpecialty", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        public virtual Values<MedicalSpecialty>? MedicalSpecialty { get; set; } 
 
         /// <summary>
         /// &lt;p&gt;The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;/p&gt;
@@ -48,6 +48,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "openingHours", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<string>? OpeningHours { get; set; }
+        public override Values<string>? OpeningHours { get; set; } 
     }
 }

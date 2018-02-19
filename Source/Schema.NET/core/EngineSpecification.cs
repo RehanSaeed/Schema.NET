@@ -1,15 +1,57 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.
     /// </summary>
     [DataContract]
     public partial class EngineSpecification : StructuredValue
     {
+        public interface IEngineType : IWrapper { }
+        public interface IEngineType<T> : IEngineType { new T Data { get; set; } }
+        public class EngineTypestring : IEngineType<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public EngineTypestring () { }
+            public EngineTypestring (string data) { Data = data; }
+            public static implicit operator EngineTypestring (string data) { return new EngineTypestring (data); }
+        }
+
+        public class EngineTypeUri : IEngineType<Uri>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Uri) value; } }
+            public virtual Uri Data { get; set; }
+            public EngineTypeUri () { }
+            public EngineTypeUri (Uri data) { Data = data; }
+            public static implicit operator EngineTypeUri (Uri data) { return new EngineTypeUri (data); }
+        }
+
+
+        public interface IFuelType : IWrapper { }
+        public interface IFuelType<T> : IFuelType { new T Data { get; set; } }
+        public class FuelTypestring : IFuelType<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public FuelTypestring () { }
+            public FuelTypestring (string data) { Data = data; }
+            public static implicit operator FuelTypestring (string data) { return new FuelTypestring (data); }
+        }
+
+        public class FuelTypeUri : IFuelType<Uri>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Uri) value; } }
+            public virtual Uri Data { get; set; }
+            public FuelTypeUri () { }
+            public FuelTypeUri (Uri data) { Data = data; }
+            public static implicit operator FuelTypeUri (Uri data) { return new FuelTypeUri (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -24,7 +66,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "engineDisplacement", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? EngineDisplacement { get; set; }
+        public Values<QuantitativeValue>? EngineDisplacement { get; set; } 
 
         /// <summary>
         /// &lt;p&gt;The power of the vehicle's engine.
@@ -37,21 +79,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "enginePower", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? EnginePower { get; set; }
+        public Values<QuantitativeValue>? EnginePower { get; set; } 
 
         /// <summary>
         /// The type of engine or engines powering the vehicle.
         /// </summary>
         [DataMember(Name = "engineType", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Uri>? EngineType { get; set; }
+        public Values<IEngineType>? EngineType { get; set; } //string, Uri
 
         /// <summary>
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
         /// </summary>
         [DataMember(Name = "fuelType", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Uri>? FuelType { get; set; }
+        public Values<IFuelType>? FuelType { get; set; } //string, Uri
 
         /// <summary>
         /// &lt;p&gt;The torque (turning force) of the vehicle's engine.&lt;/p&gt;
@@ -63,6 +105,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "torque", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? Torque { get; set; }
+        public Values<QuantitativeValue>? Torque { get; set; } 
     }
 }

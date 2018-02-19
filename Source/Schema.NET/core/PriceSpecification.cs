@@ -1,15 +1,36 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A structured value representing a price or price range. Typically, only the subclasses of this type are used for markup. It is recommended to use &lt;a class="localLink" href="http://schema.org/MonetaryAmount"&gt;MonetaryAmount&lt;/a&gt; to describe independent amounts of money such as a salary, credit card limits, etc.
     /// </summary>
     [DataContract]
     public partial class PriceSpecification : StructuredValue
     {
+        public interface IPrice : IWrapper { }
+        public interface IPrice<T> : IPrice { new T Data { get; set; } }
+        public class Pricedecimal : IPrice<decimal>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (decimal) value; } }
+            public virtual decimal Data { get; set; }
+            public Pricedecimal () { }
+            public Pricedecimal (decimal data) { Data = data; }
+            public static implicit operator Pricedecimal (decimal data) { return new Pricedecimal (data); }
+        }
+
+        public class Pricestring : IPrice<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public Pricestring () { }
+            public Pricestring (string data) { Data = data; }
+            public static implicit operator Pricestring (string data) { return new Pricestring (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -21,28 +42,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "eligibleQuantity", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? EligibleQuantity { get; set; }
+        public Values<QuantitativeValue>? EligibleQuantity { get; set; } 
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
         /// </summary>
         [DataMember(Name = "eligibleTransactionVolume", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PriceSpecification>? EligibleTransactionVolume { get; set; }
+        public Values<PriceSpecification>? EligibleTransactionVolume { get; set; } 
 
         /// <summary>
         /// The highest price if the price is a range.
         /// </summary>
         [DataMember(Name = "maxPrice", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<decimal?>? MaxPrice { get; set; }
+        public Values<decimal>? MaxPrice { get; set; } 
 
         /// <summary>
         /// The lowest price if the price is a range.
         /// </summary>
         [DataMember(Name = "minPrice", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<decimal?>? MinPrice { get; set; }
+        public Values<decimal>? MinPrice { get; set; } 
 
         /// <summary>
         /// &lt;p&gt;The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.&lt;/p&gt;
@@ -57,34 +78,34 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "price", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<decimal?, string>? Price { get; set; }
+        public Values<IPrice>? Price { get; set; } //decimal?, string
 
         /// <summary>
         /// The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.
         /// </summary>
         [DataMember(Name = "priceCurrency", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PriceCurrency { get; set; }
+        public Values<string>? PriceCurrency { get; set; } 
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
         [DataMember(Name = "validFrom", Order = 312)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ValidFrom { get; set; }
+        public Values<DateTimeOffset>? ValidFrom { get; set; } 
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
         [DataMember(Name = "validThrough", Order = 313)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ValidThrough { get; set; }
+        public Values<DateTimeOffset>? ValidThrough { get; set; } 
 
         /// <summary>
         /// Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
         /// </summary>
         [DataMember(Name = "valueAddedTaxIncluded", Order = 314)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?>? ValueAddedTaxIncluded { get; set; }
+        public Values<bool>? ValueAddedTaxIncluded { get; set; } 
     }
 }

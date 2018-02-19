@@ -1,15 +1,36 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A collection of datasets.
     /// </summary>
     [DataContract]
     public partial class DataCatalog : CreativeWork
     {
+        public interface IMeasurementTechnique : IWrapper { }
+        public interface IMeasurementTechnique<T> : IMeasurementTechnique { new T Data { get; set; } }
+        public class MeasurementTechniquestring : IMeasurementTechnique<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public MeasurementTechniquestring () { }
+            public MeasurementTechniquestring (string data) { Data = data; }
+            public static implicit operator MeasurementTechniquestring (string data) { return new MeasurementTechniquestring (data); }
+        }
+
+        public class MeasurementTechniqueUri : IMeasurementTechnique<Uri>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Uri) value; } }
+            public virtual Uri Data { get; set; }
+            public MeasurementTechniqueUri () { }
+            public MeasurementTechniqueUri (Uri data) { Data = data; }
+            public static implicit operator MeasurementTechniqueUri (Uri data) { return new MeasurementTechniqueUri (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -21,7 +42,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "dataset", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Dataset>? Dataset { get; set; }
+        public Values<Dataset>? Dataset { get; set; } 
 
         /// <summary>
         /// A technique or technology used in a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt; (or &lt;a class="localLink" href="http://schema.org/DataDownload"&gt;DataDownload&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/DataCatalog"&gt;DataCatalog&lt;/a&gt;),
@@ -32,6 +53,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "measurementTechnique", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Uri>? MeasurementTechnique { get; set; }
+        public Values<IMeasurementTechnique>? MeasurementTechnique { get; set; } //string, Uri
     }
 }

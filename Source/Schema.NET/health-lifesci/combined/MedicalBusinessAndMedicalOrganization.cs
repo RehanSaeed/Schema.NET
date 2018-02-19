@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// See MedicalBusiness, MedicalOrganization for more information.
     /// </summary>
@@ -21,20 +21,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "healthPlanNetworkId", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? HealthPlanNetworkId { get; set; }
+        public Values<string>? HealthPlanNetworkId { get; set; } 
 
         /// <summary>
         /// Whether the provider is accepting new patients.
         /// </summary>
         [DataMember(Name = "isAcceptingNewPatients", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?>? IsAcceptingNewPatients { get; set; }
+        public Values<bool>? IsAcceptingNewPatients { get; set; } 
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
         [DataMember(Name = "medicalSpecialty", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        public virtual Values<MedicalSpecialty>? MedicalSpecialty { get; set; } 
     }
 }

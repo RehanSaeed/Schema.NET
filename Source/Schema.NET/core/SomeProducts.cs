@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A placeholder for multiple similar products of the same kind.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "inventoryLevel", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? InventoryLevel { get; set; }
+        public Values<QuantitativeValue>? InventoryLevel { get; set; } 
     }
 }

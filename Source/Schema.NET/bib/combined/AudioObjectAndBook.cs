@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// See AudioObject, Book for more information.
     /// </summary>
@@ -21,48 +21,48 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "abridged", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?>? Abridged { get; set; }
+        public Values<bool>? Abridged { get; set; } 
 
         /// <summary>
         /// The edition of the book.
         /// </summary>
         [DataMember(Name = "bookEdition", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BookEdition { get; set; }
+        public Values<string>? BookEdition { get; set; } 
 
         /// <summary>
         /// The format of the book.
         /// </summary>
         [DataMember(Name = "bookFormat", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BookFormatType?>? BookFormat { get; set; }
+        public Values<BookFormatType>? BookFormat { get; set; } 
 
         /// <summary>
         /// The illustrator of the book.
         /// </summary>
         [DataMember(Name = "illustrator", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Illustrator { get; set; }
+        public Values<Person>? Illustrator { get; set; } 
 
         /// <summary>
         /// The ISBN of the book.
         /// </summary>
         [DataMember(Name = "isbn", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Isbn { get; set; }
+        public Values<string>? Isbn { get; set; } 
 
         /// <summary>
         /// The number of pages in the book.
         /// </summary>
         [DataMember(Name = "numberOfPages", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? NumberOfPages { get; set; }
+        public Values<int>? NumberOfPages { get; set; } 
 
         /// <summary>
         /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
         /// </summary>
         [DataMember(Name = "transcript", Order = 312)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Transcript { get; set; }
+        public Values<string>? Transcript { get; set; } 
     }
 }

@@ -1,15 +1,36 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The act of authoring written creative content.
     /// </summary>
     [DataContract]
     public partial class WriteAction : CreateAction
     {
+        public interface IInLanguage : IWrapper { }
+        public interface IInLanguage<T> : IInLanguage { new T Data { get; set; } }
+        public class InLanguageLanguage : IInLanguage<Language>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Language) value; } }
+            public virtual Language Data { get; set; }
+            public InLanguageLanguage () { }
+            public InLanguageLanguage (Language data) { Data = data; }
+            public static implicit operator InLanguageLanguage (Language data) { return new InLanguageLanguage (data); }
+        }
+
+        public class InLanguagestring : IInLanguage<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public InLanguagestring () { }
+            public InLanguagestring (string data) { Data = data; }
+            public static implicit operator InLanguagestring (string data) { return new InLanguagestring (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -21,6 +42,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "inLanguage", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Language, string>? InLanguage { get; set; }
+        public Values<IInLanguage>? InLanguage { get; set; } //Language, string
     }
 }

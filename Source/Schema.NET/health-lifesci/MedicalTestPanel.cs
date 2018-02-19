@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Any collection of tests commonly ordered together.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "subTest", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTest>? SubTest { get; set; }
+        public Values<MedicalTest>? SubTest { get; set; } 
     }
 }

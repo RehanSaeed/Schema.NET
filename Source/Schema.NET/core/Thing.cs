@@ -1,15 +1,87 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The most generic type of item.
     /// </summary>
     [DataContract]
     public partial class Thing
     {
+        public interface IIdentifier : IWrapper { }
+        public interface IIdentifier<T> : IIdentifier { new T Data { get; set; } }
+        public class IdentifierPropertyValue : IIdentifier<PropertyValue>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (PropertyValue) value; } }
+            public virtual PropertyValue Data { get; set; }
+            public IdentifierPropertyValue () { }
+            public IdentifierPropertyValue (PropertyValue data) { Data = data; }
+            public static implicit operator IdentifierPropertyValue (PropertyValue data) { return new IdentifierPropertyValue (data); }
+        }
+
+        public class Identifierstring : IIdentifier<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public Identifierstring () { }
+            public Identifierstring (string data) { Data = data; }
+            public static implicit operator Identifierstring (string data) { return new Identifierstring (data); }
+        }
+
+        public class IdentifierUri : IIdentifier<Uri>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Uri) value; } }
+            public virtual Uri Data { get; set; }
+            public IdentifierUri () { }
+            public IdentifierUri (Uri data) { Data = data; }
+            public static implicit operator IdentifierUri (Uri data) { return new IdentifierUri (data); }
+        }
+
+
+        public interface IImage : IWrapper { }
+        public interface IImage<T> : IImage { new T Data { get; set; } }
+        public class ImageImageObject : IImage<ImageObject>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (ImageObject) value; } }
+            public virtual ImageObject Data { get; set; }
+            public ImageImageObject () { }
+            public ImageImageObject (ImageObject data) { Data = data; }
+            public static implicit operator ImageImageObject (ImageObject data) { return new ImageImageObject (data); }
+        }
+
+        public class ImageUri : IImage<Uri>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Uri) value; } }
+            public virtual Uri Data { get; set; }
+            public ImageUri () { }
+            public ImageUri (Uri data) { Data = data; }
+            public static implicit operator ImageUri (Uri data) { return new ImageUri (data); }
+        }
+
+
+        public interface IMainEntityOfPage : IWrapper { }
+        public interface IMainEntityOfPage<T> : IMainEntityOfPage { new T Data { get; set; } }
+        public class MainEntityOfPageCreativeWork : IMainEntityOfPage<CreativeWork>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (CreativeWork) value; } }
+            public virtual CreativeWork Data { get; set; }
+            public MainEntityOfPageCreativeWork () { }
+            public MainEntityOfPageCreativeWork (CreativeWork data) { Data = data; }
+            public static implicit operator MainEntityOfPageCreativeWork (CreativeWork data) { return new MainEntityOfPageCreativeWork (data); }
+        }
+
+        public class MainEntityOfPageUri : IMainEntityOfPage<Uri>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (Uri) value; } }
+            public virtual Uri Data { get; set; }
+            public MainEntityOfPageUri () { }
+            public MainEntityOfPageUri (Uri data) { Data = data; }
+            public static implicit operator MainEntityOfPageUri (Uri data) { return new MainEntityOfPageUri (data); }
+        }
+
+
         /// <summary>
         /// Gets the context for the object, specifying that it comes from schema.org.
         /// </summary>
@@ -27,76 +99,76 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "name", Order = 4)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Name { get; set; }
+        public Values<string>? Name { get; set; } 
 
         /// <summary>
         /// A description of the item.
         /// </summary>
         [DataMember(Name = "description", Order = 5)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Description { get; set; }
+        public Values<string>? Description { get; set; } 
 
         /// <summary>
         /// An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
         /// </summary>
         [DataMember(Name = "additionalType", Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? AdditionalType { get; set; }
+        public Values<Uri>? AdditionalType { get; set; } 
 
         /// <summary>
         /// An alias for the item.
         /// </summary>
         [DataMember(Name = "alternateName", Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AlternateName { get; set; }
+        public Values<string>? AlternateName { get; set; } 
 
         /// <summary>
         /// A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
         /// </summary>
         [DataMember(Name = "disambiguatingDescription", Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? DisambiguatingDescription { get; set; }
+        public Values<string>? DisambiguatingDescription { get; set; } 
 
         /// <summary>
         /// The identifier property represents any kind of identifier for any kind of &lt;a class="localLink" href="http://schema.org/Thing"&gt;Thing&lt;/a&gt;, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See &lt;a href="/docs/datamodel.html#identifierBg"&gt;background notes&lt;/a&gt; for more details.
         /// </summary>
         [DataMember(Name = "identifier", Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PropertyValue, string, Uri>? Identifier { get; set; }
+        public Values<IIdentifier>? Identifier { get; set; } //PropertyValue, string, Uri
 
         /// <summary>
         /// An image of the item. This can be a &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt; or a fully described &lt;a class="localLink" href="http://schema.org/ImageObject"&gt;ImageObject&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "image", Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ImageObject, Uri>? Image { get; set; }
+        public Values<IImage>? Image { get; set; } //ImageObject, Uri
 
         /// <summary>
         /// Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See &lt;a href="/docs/datamodel.html#mainEntityBackground"&gt;background notes&lt;/a&gt; for details.
         /// </summary>
         [DataMember(Name = "mainEntityOfPage", Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork, Uri>? MainEntityOfPage { get; set; }
+        public Values<IMainEntityOfPage>? MainEntityOfPage { get; set; } //CreativeWork, Uri
 
         /// <summary>
         /// Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
         /// </summary>
         [DataMember(Name = "potentialAction", Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Action>? PotentialAction { get; set; }
+        public Values<Action>? PotentialAction { get; set; } 
 
         /// <summary>
         /// URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
         /// </summary>
         [DataMember(Name = "sameAs", Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? SameAs { get; set; }
+        public Values<Uri>? SameAs { get; set; } 
 
         /// <summary>
         /// URL of the item.
         /// </summary>
         [DataMember(Name = "url", Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? Url { get; set; }
+        public Values<Uri>? Url { get; set; } 
     }
 }

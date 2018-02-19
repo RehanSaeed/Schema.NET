@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// The act of adding at a specific location in an ordered collection.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "toLocation", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? ToLocation { get; set; }
+        public Values<Place>? ToLocation { get; set; } 
     }
 }

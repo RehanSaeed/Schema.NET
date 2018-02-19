@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// &lt;p&gt;A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.&lt;/p&gt;
     /// &lt;pre&gt;&lt;code&gt;  &amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;See also &amp;lt;a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"&amp;gt;blog post&amp;lt;/a&amp;gt;.
@@ -12,6 +12,69 @@ namespace Schema.NET
     [DataContract]
     public partial class PublicationVolume : CreativeWork
     {
+        public interface IPageEnd : IWrapper { }
+        public interface IPageEnd<T> : IPageEnd { new T Data { get; set; } }
+        public class PageEndint : IPageEnd<int>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (int) value; } }
+            public virtual int Data { get; set; }
+            public PageEndint () { }
+            public PageEndint (int data) { Data = data; }
+            public static implicit operator PageEndint (int data) { return new PageEndint (data); }
+        }
+
+        public class PageEndstring : IPageEnd<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public PageEndstring () { }
+            public PageEndstring (string data) { Data = data; }
+            public static implicit operator PageEndstring (string data) { return new PageEndstring (data); }
+        }
+
+
+        public interface IPageStart : IWrapper { }
+        public interface IPageStart<T> : IPageStart { new T Data { get; set; } }
+        public class PageStartint : IPageStart<int>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (int) value; } }
+            public virtual int Data { get; set; }
+            public PageStartint () { }
+            public PageStartint (int data) { Data = data; }
+            public static implicit operator PageStartint (int data) { return new PageStartint (data); }
+        }
+
+        public class PageStartstring : IPageStart<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public PageStartstring () { }
+            public PageStartstring (string data) { Data = data; }
+            public static implicit operator PageStartstring (string data) { return new PageStartstring (data); }
+        }
+
+
+        public interface IVolumeNumber : IWrapper { }
+        public interface IVolumeNumber<T> : IVolumeNumber { new T Data { get; set; } }
+        public class VolumeNumberint : IVolumeNumber<int>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (int) value; } }
+            public virtual int Data { get; set; }
+            public VolumeNumberint () { }
+            public VolumeNumberint (int data) { Data = data; }
+            public static implicit operator VolumeNumberint (int data) { return new VolumeNumberint (data); }
+        }
+
+        public class VolumeNumberstring : IVolumeNumber<string>
+        {
+            object IWrapper.Data { get { return Data; } set { Data = (string) value; } }
+            public virtual string Data { get; set; }
+            public VolumeNumberstring () { }
+            public VolumeNumberstring (string data) { Data = data; }
+            public static implicit operator VolumeNumberstring (string data) { return new VolumeNumberstring (data); }
+        }
+
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -23,27 +86,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "pageEnd", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?, string>? PageEnd { get; set; }
+        public Values<IPageEnd>? PageEnd { get; set; } //int?, string
 
         /// <summary>
         /// The page on which the work starts; for example "135" or "xiii".
         /// </summary>
         [DataMember(Name = "pageStart", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?, string>? PageStart { get; set; }
+        public Values<IPageStart>? PageStart { get; set; } //int?, string
 
         /// <summary>
         /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".
         /// </summary>
         [DataMember(Name = "pagination", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Pagination { get; set; }
+        public Values<string>? Pagination { get; set; } 
 
         /// <summary>
         /// Identifies the volume of publication or multi-part work; for example, "iii" or "2".
         /// </summary>
         [DataMember(Name = "volumeNumber", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?, string>? VolumeNumber { get; set; }
+        public Values<IVolumeNumber>? VolumeNumber { get; set; } //int?, string
     }
 }

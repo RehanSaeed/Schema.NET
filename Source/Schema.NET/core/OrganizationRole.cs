@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A subclass of Role used to describe roles within organizations.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberedPosition", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? NumberedPosition { get; set; }
+        public Values<double>? NumberedPosition { get; set; } 
     }
 }

@@ -1,9 +1,9 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Schema.NET
 {
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// A risk factor is anything that increases a person's likelihood of developing or contracting a disease, medical condition, or complication.
     /// </summary>
@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "increasesRiskOf", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalEntity>? IncreasesRiskOf { get; set; }
+        public Values<MedicalEntity>? IncreasesRiskOf { get; set; } 
     }
 }
