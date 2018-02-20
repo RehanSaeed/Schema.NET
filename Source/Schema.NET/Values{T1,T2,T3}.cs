@@ -1,7 +1,6 @@
 namespace Schema.NET
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// A single or list of values which can be any of the specified types.
@@ -12,76 +11,76 @@ namespace Schema.NET
     /// <seealso cref="IValue" />
     public struct Values<T1, T2, T3> : IValue
     {
-        private readonly OneOrMany<T1> values1;
-        private readonly OneOrMany<T2> values2;
-        private readonly OneOrMany<T3> values3;
+        private readonly OneOrMany<T1> value1;
+        private readonly OneOrMany<T2> value2;
+        private readonly OneOrMany<T3> value3;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3}"/> struct.
         /// </summary>
-        /// <param name="values">The value of type <typeparamref name="T1"/>.</param>
-        public Values(OneOrMany<T1> values)
+        /// <param name="value">The value of type <typeparamref name="T1"/>.</param>
+        public Values(OneOrMany<T1> value)
         {
-            this.values1 = values;
-            this.values2 = default(OneOrMany<T2>);
-            this.values3 = default(OneOrMany<T3>);
+            this.value1 = value;
+            this.value2 = default;
+            this.value3 = default;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3}"/> struct.
         /// </summary>
-        /// <param name="values">The value of type <typeparamref name="T2"/>.</param>
-        public Values(OneOrMany<T2> values)
+        /// <param name="value">The value of type <typeparamref name="T2"/>.</param>
+        public Values(OneOrMany<T2> value)
         {
-            this.values1 = default(OneOrMany<T1>);
-            this.values2 = values;
-            this.values3 = default(OneOrMany<T3>);
+            this.value1 = default;
+            this.value2 = value;
+            this.value3 = default;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3}"/> struct.
         /// </summary>
-        /// <param name="values">The value of type <typeparamref name="T3"/>.</param>
-        public Values(OneOrMany<T3> values)
+        /// <param name="value">The value of type <typeparamref name="T3"/>.</param>
+        public Values(OneOrMany<T3> value)
         {
-            this.values1 = default(OneOrMany<T1>);
-            this.values2 = default(OneOrMany<T2>);
-            this.values3 = values;
+            this.value1 = default;
+            this.value2 = default;
+            this.value3 = value;
         }
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T1" />.
         /// </summary>
-        public OneOrMany<T1> Values1 => this.values1;
+        public OneOrMany<T1> Value1 => this.value1;
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T2" />.
         /// </summary>
-        public OneOrMany<T2> Values2 => this.values2;
+        public OneOrMany<T2> Value2 => this.value2;
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T3" />.
         /// </summary>
-        public OneOrMany<T3> Values3 => this.values3;
+        public OneOrMany<T3> Value3 => this.value3;
 
         /// <summary>
         /// Gets the non-null object representing the instance.
         /// </summary>
-        public object Value
+        object IValue.Value
         {
             get
             {
-                if (this.values1.Count > 0)
+                if (this.value1.Count > 0)
                 {
-                    return this.values1.Value;
+                    return ((IValue)this.value1).Value;
                 }
-                else if (this.values2.Count > 0)
+                else if (this.value2.Count > 0)
                 {
-                    return this.values2.Value;
+                    return ((IValue)this.value2).Value;
                 }
-                else if (this.values3.Count > 0)
+                else if (this.value3.Count > 0)
                 {
-                    return this.values3.Value;
+                    return ((IValue)this.value3).Value;
                 }
 
                 return null;

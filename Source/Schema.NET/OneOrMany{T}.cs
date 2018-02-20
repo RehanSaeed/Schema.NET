@@ -84,7 +84,7 @@ namespace Schema.NET
         /// <summary>
         /// Gets the non-null object representing the instance.
         /// </summary>
-        public object Value
+        object IValue.Value
         {
             get
             {
