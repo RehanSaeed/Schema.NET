@@ -21,14 +21,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "amenityFeature", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<LocationFeatureSpecification>? AmenityFeature { get; set; }
+        public override OneOrMany<LocationFeatureSpecification>? AmenityFeature { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
         [DataMember(Name = "audience", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Audience>? Audience { get; set; }
+        public OneOrMany<Audience>? Audience { get; set; }
 
         /// <summary>
         /// A language someone may use with or at the item, service or place. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/inLanguage"&gt;inLanguage&lt;/a&gt;
@@ -42,14 +42,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "checkinTime", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? CheckinTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
         [DataMember(Name = "checkoutTime", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? CheckoutTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? CheckoutTime { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;/p&gt;
@@ -62,7 +62,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "openingHours", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<string>? OpeningHours { get; set; }
+        public override OneOrMany<string>? OpeningHours { get; set; }
 
         /// <summary>
         /// Indicates whether pets are allowed to enter the accommodation or lodging business. More detailed information can be put in a text value.
@@ -76,6 +76,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "starRating", Order = 313)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Rating>? StarRating { get; set; }
+        public OneOrMany<Rating>? StarRating { get; set; }
     }
 }

@@ -21,20 +21,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "downvoteCount", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? DownvoteCount { get; set; }
+        public OneOrMany<int?>? DownvoteCount { get; set; }
 
         /// <summary>
         /// The parent of a question, answer or item in general.
         /// </summary>
         [DataMember(Name = "parentItem", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Question>? ParentItem { get; set; }
+        public OneOrMany<Question>? ParentItem { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.
         /// </summary>
         [DataMember(Name = "upvoteCount", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? UpvoteCount { get; set; }
+        public OneOrMany<int?>? UpvoteCount { get; set; }
     }
 }

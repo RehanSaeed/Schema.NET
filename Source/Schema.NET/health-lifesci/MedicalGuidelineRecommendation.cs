@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "recommendationStrength", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? RecommendationStrength { get; set; }
+        public OneOrMany<string>? RecommendationStrength { get; set; }
     }
 }

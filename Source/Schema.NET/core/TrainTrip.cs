@@ -21,42 +21,42 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "arrivalPlatform", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ArrivalPlatform { get; set; }
+        public OneOrMany<string>? ArrivalPlatform { get; set; }
 
         /// <summary>
         /// The station where the train trip ends.
         /// </summary>
         [DataMember(Name = "arrivalStation", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<TrainStation>? ArrivalStation { get; set; }
+        public OneOrMany<TrainStation>? ArrivalStation { get; set; }
 
         /// <summary>
         /// The expected arrival time.
         /// </summary>
         [DataMember(Name = "arrivalTime", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ArrivalTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? ArrivalTime { get; set; }
 
         /// <summary>
         /// The platform from which the train departs.
         /// </summary>
         [DataMember(Name = "departurePlatform", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? DeparturePlatform { get; set; }
+        public OneOrMany<string>? DeparturePlatform { get; set; }
 
         /// <summary>
         /// The station from which the train departs.
         /// </summary>
         [DataMember(Name = "departureStation", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<TrainStation>? DepartureStation { get; set; }
+        public OneOrMany<TrainStation>? DepartureStation { get; set; }
 
         /// <summary>
         /// The expected departure time.
         /// </summary>
         [DataMember(Name = "departureTime", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? DepartureTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? DepartureTime { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
@@ -70,13 +70,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "trainName", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? TrainName { get; set; }
+        public OneOrMany<string>? TrainName { get; set; }
 
         /// <summary>
         /// The unique identifier for the train.
         /// </summary>
         [DataMember(Name = "trainNumber", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? TrainNumber { get; set; }
+        public OneOrMany<string>? TrainNumber { get; set; }
     }
 }

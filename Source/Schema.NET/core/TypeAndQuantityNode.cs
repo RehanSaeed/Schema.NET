@@ -21,14 +21,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "amountOfThisGood", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<decimal?>? AmountOfThisGood { get; set; }
+        public OneOrMany<decimal?>? AmountOfThisGood { get; set; }
 
         /// <summary>
         /// The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
         /// </summary>
         [DataMember(Name = "businessFunction", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BusinessFunction?>? BusinessFunction { get; set; }
+        public OneOrMany<BusinessFunction?>? BusinessFunction { get; set; }
 
         /// <summary>
         /// The product that this structured value is referring to.
@@ -50,6 +50,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "unitText", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? UnitText { get; set; }
+        public OneOrMany<string>? UnitText { get; set; }
     }
 }

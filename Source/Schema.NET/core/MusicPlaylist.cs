@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numTracks", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? NumTracks { get; set; }
+        public OneOrMany<int?>? NumTracks { get; set; }
 
         /// <summary>
         /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.

@@ -28,13 +28,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "interactionType", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Action>? InteractionType { get; set; }
+        public OneOrMany<Action>? InteractionType { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication.
         /// </summary>
         [DataMember(Name = "userInteractionCount", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? UserInteractionCount { get; set; }
+        public OneOrMany<int?>? UserInteractionCount { get; set; }
     }
 }

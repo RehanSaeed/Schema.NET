@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "scheduledTime", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ScheduledTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? ScheduledTime { get; set; }
     }
 }

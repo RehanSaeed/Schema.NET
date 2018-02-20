@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "dataset", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Dataset>? Dataset { get; set; }
+        public OneOrMany<Dataset>? Dataset { get; set; }
 
         /// <summary>
         /// A technique or technology used in a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt; (or &lt;a class="localLink" href="http://schema.org/DataDownload"&gt;DataDownload&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/DataCatalog"&gt;DataCatalog&lt;/a&gt;),

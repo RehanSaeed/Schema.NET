@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "screenCount", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? ScreenCount { get; set; }
+        public OneOrMany<int?>? ScreenCount { get; set; }
     }
 }

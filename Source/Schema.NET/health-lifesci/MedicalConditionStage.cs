@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "stageAsNumber", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? StageAsNumber { get; set; }
+        public OneOrMany<double?>? StageAsNumber { get; set; }
 
         /// <summary>
         /// The substage, e.g. 'a' for Stage IIIa.
         /// </summary>
         [DataMember(Name = "subStageSuffix", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? SubStageSuffix { get; set; }
+        public OneOrMany<string>? SubStageSuffix { get; set; }
     }
 }

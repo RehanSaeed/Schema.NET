@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "additionalName", Order = 106)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AdditionalName { get; set; }
+        public OneOrMany<string>? AdditionalName { get; set; }
 
         /// <summary>
         /// Physical address of the item.
@@ -35,7 +35,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "affiliation", Order = 108)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization>? Affiliation { get; set; }
+        public OneOrMany<Organization>? Affiliation { get; set; }
 
         /// <summary>
         /// An organization that the person is an alumni of.
@@ -49,21 +49,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "award", Order = 110)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Award { get; set; }
+        public OneOrMany<string>? Award { get; set; }
 
         /// <summary>
         /// Date of birth.
         /// </summary>
         [DataMember(Name = "birthDate", Order = 111)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? BirthDate { get; set; }
+        public OneOrMany<DateTimeOffset?>? BirthDate { get; set; }
 
         /// <summary>
         /// The place where the person was born.
         /// </summary>
         [DataMember(Name = "birthPlace", Order = 112)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? BirthPlace { get; set; }
+        public OneOrMany<Place>? BirthPlace { get; set; }
 
         /// <summary>
         /// The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
@@ -77,7 +77,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "children", Order = 114)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Children { get; set; }
+        public OneOrMany<Person>? Children { get; set; }
 
         /// <summary>
         /// A colleague of the person.
@@ -91,56 +91,56 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "contactPoint", Order = 116)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ContactPoint>? ContactPoint { get; set; }
+        public OneOrMany<ContactPoint>? ContactPoint { get; set; }
 
         /// <summary>
         /// Date of death.
         /// </summary>
         [DataMember(Name = "deathDate", Order = 117)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? DeathDate { get; set; }
+        public OneOrMany<DateTimeOffset?>? DeathDate { get; set; }
 
         /// <summary>
         /// The place where the person died.
         /// </summary>
         [DataMember(Name = "deathPlace", Order = 118)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? DeathPlace { get; set; }
+        public OneOrMany<Place>? DeathPlace { get; set; }
 
         /// <summary>
         /// The Dun &amp;amp; Bradstreet DUNS number for identifying an organization or business person.
         /// </summary>
         [DataMember(Name = "duns", Order = 119)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Duns { get; set; }
+        public OneOrMany<string>? Duns { get; set; }
 
         /// <summary>
         /// Email address.
         /// </summary>
         [DataMember(Name = "email", Order = 120)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Email { get; set; }
+        public OneOrMany<string>? Email { get; set; }
 
         /// <summary>
         /// Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.
         /// </summary>
         [DataMember(Name = "familyName", Order = 121)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? FamilyName { get; set; }
+        public OneOrMany<string>? FamilyName { get; set; }
 
         /// <summary>
         /// The fax number.
         /// </summary>
         [DataMember(Name = "faxNumber", Order = 122)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? FaxNumber { get; set; }
+        public OneOrMany<string>? FaxNumber { get; set; }
 
         /// <summary>
         /// The most generic uni-directional social relation.
         /// </summary>
         [DataMember(Name = "follows", Order = 123)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Follows { get; set; }
+        public OneOrMany<Person>? Follows { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -161,28 +161,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "givenName", Order = 126)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? GivenName { get; set; }
+        public OneOrMany<string>? GivenName { get; set; }
 
         /// <summary>
         /// The &lt;a href="http://www.gs1.org/gln"&gt;Global Location Number&lt;/a&gt; (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
         /// </summary>
         [DataMember(Name = "globalLocationNumber", Order = 127)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? GlobalLocationNumber { get; set; }
+        public OneOrMany<string>? GlobalLocationNumber { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
         /// </summary>
         [DataMember(Name = "hasOfferCatalog", Order = 128)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<OfferCatalog>? HasOfferCatalog { get; set; }
+        public OneOrMany<OfferCatalog>? HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
         [DataMember(Name = "hasPOS", Order = 129)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? HasPOS { get; set; }
+        public OneOrMany<Place>? HasPOS { get; set; }
 
         /// <summary>
         /// The height of the item.
@@ -203,42 +203,42 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "honorificPrefix", Order = 132)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? HonorificPrefix { get; set; }
+        public OneOrMany<string>? HonorificPrefix { get; set; }
 
         /// <summary>
         /// An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.
         /// </summary>
         [DataMember(Name = "honorificSuffix", Order = 133)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? HonorificSuffix { get; set; }
+        public OneOrMany<string>? HonorificSuffix { get; set; }
 
         /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
         [DataMember(Name = "isicV4", Order = 134)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? IsicV4 { get; set; }
+        public OneOrMany<string>? IsicV4 { get; set; }
 
         /// <summary>
         /// The job title of the person (for example, Financial Manager).
         /// </summary>
         [DataMember(Name = "jobTitle", Order = 135)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? JobTitle { get; set; }
+        public OneOrMany<string>? JobTitle { get; set; }
 
         /// <summary>
         /// The most generic bi-directional social/work relation.
         /// </summary>
         [DataMember(Name = "knows", Order = 136)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Knows { get; set; }
+        public OneOrMany<Person>? Knows { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
         /// </summary>
         [DataMember(Name = "makesOffer", Order = 137)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Offer>? MakesOffer { get; set; }
+        public OneOrMany<Offer>? MakesOffer { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
@@ -252,14 +252,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "naics", Order = 139)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Naics { get; set; }
+        public OneOrMany<string>? Naics { get; set; }
 
         /// <summary>
         /// Nationality of the person.
         /// </summary>
         [DataMember(Name = "nationality", Order = 140)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Country>? Nationality { get; set; }
+        public OneOrMany<Country>? Nationality { get; set; }
 
         /// <summary>
         /// The total financial value of the person as calculated by subtracting assets from liabilities.
@@ -280,14 +280,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "parent", Order = 143)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Parent { get; set; }
+        public OneOrMany<Person>? Parent { get; set; }
 
         /// <summary>
         /// Event that this person is a performer or participant in.
         /// </summary>
         [DataMember(Name = "performerIn", Order = 144)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Event>? PerformerIn { get; set; }
+        public OneOrMany<Event>? PerformerIn { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;/p&gt;
@@ -302,21 +302,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "relatedTo", Order = 146)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? RelatedTo { get; set; }
+        public OneOrMany<Person>? RelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
         [DataMember(Name = "seeks", Order = 147)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Demand>? Seeks { get; set; }
+        public OneOrMany<Demand>? Seeks { get; set; }
 
         /// <summary>
         /// A sibling of the person.
         /// </summary>
         [DataMember(Name = "sibling", Order = 148)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Sibling { get; set; }
+        public OneOrMany<Person>? Sibling { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -330,35 +330,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "spouse", Order = 150)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Spouse { get; set; }
+        public OneOrMany<Person>? Spouse { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
         /// </summary>
         [DataMember(Name = "taxID", Order = 151)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? TaxID { get; set; }
+        public OneOrMany<string>? TaxID { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
         [DataMember(Name = "telephone", Order = 152)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Telephone { get; set; }
+        public OneOrMany<string>? Telephone { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.
         /// </summary>
         [DataMember(Name = "vatID", Order = 153)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VatID { get; set; }
+        public OneOrMany<string>? VatID { get; set; }
 
         /// <summary>
         /// The weight of the product or person.
         /// </summary>
         [DataMember(Name = "weight", Order = 154)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? Weight { get; set; }
+        public OneOrMany<QuantitativeValue>? Weight { get; set; }
 
         /// <summary>
         /// A contact location for a person's place of work.
@@ -372,6 +372,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "worksFor", Order = 156)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization>? WorksFor { get; set; }
+        public OneOrMany<Organization>? WorksFor { get; set; }
     }
 }

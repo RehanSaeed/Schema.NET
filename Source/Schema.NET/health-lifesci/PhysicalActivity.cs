@@ -28,13 +28,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "epidemiology", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Epidemiology { get; set; }
+        public OneOrMany<string>? Epidemiology { get; set; }
 
         /// <summary>
         /// Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
         /// </summary>
         [DataMember(Name = "pathophysiology", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Pathophysiology { get; set; }
+        public OneOrMany<string>? Pathophysiology { get; set; }
     }
 }

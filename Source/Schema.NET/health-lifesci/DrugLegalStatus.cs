@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "applicableLocation", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AdministrativeArea>? ApplicableLocation { get; set; }
+        public OneOrMany<AdministrativeArea>? ApplicableLocation { get; set; }
     }
 }

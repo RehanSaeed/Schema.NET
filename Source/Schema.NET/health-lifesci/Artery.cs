@@ -21,20 +21,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "arterialBranch", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AnatomicalStructure>? ArterialBranch { get; set; }
+        public OneOrMany<AnatomicalStructure>? ArterialBranch { get; set; }
 
         /// <summary>
         /// The anatomical or organ system that the artery originates from.
         /// </summary>
         [DataMember(Name = "source", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AnatomicalStructure>? Source { get; set; }
+        public OneOrMany<AnatomicalStructure>? Source { get; set; }
 
         /// <summary>
         /// The area to which the artery supplies blood.
         /// </summary>
         [DataMember(Name = "supplyTo", Order = 408)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AnatomicalStructure>? SupplyTo { get; set; }
+        public OneOrMany<AnatomicalStructure>? SupplyTo { get; set; }
     }
 }

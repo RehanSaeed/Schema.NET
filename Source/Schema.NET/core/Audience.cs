@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "audienceType", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AudienceType { get; set; }
+        public OneOrMany<string>? AudienceType { get; set; }
 
         /// <summary>
         /// The geographic area associated with the audience.
         /// </summary>
         [DataMember(Name = "geographicArea", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AdministrativeArea>? GeographicArea { get; set; }
+        public OneOrMany<AdministrativeArea>? GeographicArea { get; set; }
     }
 }

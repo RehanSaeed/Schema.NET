@@ -156,7 +156,7 @@ namespace Schema.NET
                             }
                         }
 
-                        var genericType = typeof(Values<>).MakeGenericType(type);
+                        var genericType = typeof(OneOrMany<>).MakeGenericType(type);
                         argument = Activator.CreateInstance(genericType, args);
                         break;
                     }

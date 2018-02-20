@@ -43,6 +43,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "pagination", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Pagination { get; set; }
+        public OneOrMany<string>? Pagination { get; set; }
     }
 }

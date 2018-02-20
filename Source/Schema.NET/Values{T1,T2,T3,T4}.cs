@@ -1,4 +1,4 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Collections.Generic;
     using Newtonsoft.Json.Linq;
@@ -13,78 +13,78 @@
     /// <seealso cref="IValue" />
     public struct Values<T1, T2, T3, T4> : IValue
     {
-        private readonly Values<T1> values1;
-        private readonly Values<T2> values2;
-        private readonly Values<T3> values3;
-        private readonly Values<T4> values4;
+        private readonly OneOrMany<T1> values1;
+        private readonly OneOrMany<T2> values2;
+        private readonly OneOrMany<T3> values3;
+        private readonly OneOrMany<T4> values4;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
         /// </summary>
         /// <param name="values">The value of type <typeparamref name="T1"/>.</param>
-        public Values(Values<T1> values)
+        public Values(OneOrMany<T1> values)
         {
             this.values1 = values;
-            this.values2 = default(Values<T2>);
-            this.values3 = default(Values<T3>);
-            this.values4 = default(Values<T4>);
+            this.values2 = default(OneOrMany<T2>);
+            this.values3 = default(OneOrMany<T3>);
+            this.values4 = default(OneOrMany<T4>);
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
         /// </summary>
         /// <param name="values">The value of type <typeparamref name="T2"/>.</param>
-        public Values(Values<T2> values)
+        public Values(OneOrMany<T2> values)
         {
-            this.values1 = default(Values<T1>);
+            this.values1 = default(OneOrMany<T1>);
             this.values2 = values;
-            this.values3 = default(Values<T3>);
-            this.values4 = default(Values<T4>);
+            this.values3 = default(OneOrMany<T3>);
+            this.values4 = default(OneOrMany<T4>);
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
         /// </summary>
         /// <param name="values">The value of type <typeparamref name="T3"/>.</param>
-        public Values(Values<T3> values)
+        public Values(OneOrMany<T3> values)
         {
-            this.values1 = default(Values<T1>);
-            this.values2 = default(Values<T2>);
+            this.values1 = default(OneOrMany<T1>);
+            this.values2 = default(OneOrMany<T2>);
             this.values3 = values;
-            this.values4 = default(Values<T4>);
+            this.values4 = default(OneOrMany<T4>);
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
         /// </summary>
         /// <param name="values">The value of type <typeparamref name="T4"/>.</param>
-        public Values(Values<T4> values)
+        public Values(OneOrMany<T4> values)
         {
-            this.values1 = default(Values<T1>);
-            this.values2 = default(Values<T2>);
-            this.values3 = default(Values<T3>);
+            this.values1 = default(OneOrMany<T1>);
+            this.values2 = default(OneOrMany<T2>);
+            this.values3 = default(OneOrMany<T3>);
             this.values4 = values;
         }
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T1" />.
         /// </summary>
-        public Values<T1> Values1 => this.values1;
+        public OneOrMany<T1> Values1 => this.values1;
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T2" />.
         /// </summary>
-        public Values<T2> Values2 => this.values2;
+        public OneOrMany<T2> Values2 => this.values2;
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T3" />.
         /// </summary>
-        public Values<T3> Values3 => this.values3;
+        public OneOrMany<T3> Values3 => this.values3;
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T4" />.
         /// </summary>
-        public Values<T4> Values4 => this.values4;
+        public OneOrMany<T4> Values4 => this.values4;
 
         /// <summary>
         /// Gets the non-null object representing the instance.
@@ -93,19 +93,19 @@
         {
             get
             {
-                if (this.values1.HasValue)
+                if (this.values1.Count > 0)
                 {
                     return this.values1.Value;
                 }
-                else if (this.values2.HasValue)
+                else if (this.values2.Count > 0)
                 {
                     return this.values2.Value;
                 }
-                else if (this.values3.HasValue)
+                else if (this.values3.Count > 0)
                 {
                     return this.values3.Value;
                 }
-                else if (this.values4.HasValue)
+                else if (this.values4.Count > 0)
                 {
                     return this.values4.Value;
                 }

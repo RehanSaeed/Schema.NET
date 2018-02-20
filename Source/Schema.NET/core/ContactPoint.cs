@@ -35,35 +35,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "contactOption", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ContactPointOption?>? ContactOption { get; set; }
+        public OneOrMany<ContactPointOption?>? ContactOption { get; set; }
 
         /// <summary>
         /// A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.
         /// </summary>
         [DataMember(Name = "contactType", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ContactType { get; set; }
+        public OneOrMany<string>? ContactType { get; set; }
 
         /// <summary>
         /// Email address.
         /// </summary>
         [DataMember(Name = "email", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Email { get; set; }
+        public OneOrMany<string>? Email { get; set; }
 
         /// <summary>
         /// The fax number.
         /// </summary>
         [DataMember(Name = "faxNumber", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? FaxNumber { get; set; }
+        public OneOrMany<string>? FaxNumber { get; set; }
 
         /// <summary>
         /// The hours during which this service or contact is available.
         /// </summary>
         [DataMember(Name = "hoursAvailable", Order = 312)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<OpeningHoursSpecification>? HoursAvailable { get; set; }
+        public OneOrMany<OpeningHoursSpecification>? HoursAvailable { get; set; }
 
         /// <summary>
         /// The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").
@@ -77,6 +77,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "telephone", Order = 314)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Telephone { get; set; }
+        public OneOrMany<string>? Telephone { get; set; }
     }
 }

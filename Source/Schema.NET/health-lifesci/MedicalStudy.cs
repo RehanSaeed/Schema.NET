@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "healthCondition", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalCondition>? HealthCondition { get; set; }
+        public OneOrMany<MedicalCondition>? HealthCondition { get; set; }
 
         /// <summary>
         /// Expected or actual outcomes of the study.
@@ -35,7 +35,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "population", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Population { get; set; }
+        public OneOrMany<string>? Population { get; set; }
 
         /// <summary>
         /// The status of the study (enumerated).
@@ -49,13 +49,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "studyLocation", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AdministrativeArea>? StudyLocation { get; set; }
+        public OneOrMany<AdministrativeArea>? StudyLocation { get; set; }
 
         /// <summary>
         /// A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
         /// </summary>
         [DataMember(Name = "studySubject", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalEntity>? StudySubject { get; set; }
+        public OneOrMany<MedicalEntity>? StudySubject { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AggregateRating>? AggregateRating { get; set; }
+        public OneOrMany<AggregateRating>? AggregateRating { get; set; }
 
         /// <summary>
         /// An associated logo.
@@ -35,6 +35,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "review", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Review>? Review { get; set; }
+        public OneOrMany<Review>? Review { get; set; }
     }
 }

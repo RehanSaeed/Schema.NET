@@ -28,98 +28,98 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "cause", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<MedicalCause>? Cause { get; set; }
+        public virtual OneOrMany<MedicalCause>? Cause { get; set; }
 
         /// <summary>
         /// One of a set of differential diagnoses for the condition. Specifically, a closely-related or competing diagnosis typically considered later in the cognitive process whereby this medical condition is distinguished from others most likely responsible for a similar collection of signs and symptoms to reach the most parsimonious diagnosis or diagnoses in a patient.
         /// </summary>
         [DataMember(Name = "differentialDiagnosis", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DDxElement>? DifferentialDiagnosis { get; set; }
+        public OneOrMany<DDxElement>? DifferentialDiagnosis { get; set; }
 
         /// <summary>
         /// Specifying a drug or medicine used in a medication procedure
         /// </summary>
         [DataMember(Name = "drug", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Drug>? Drug { get; set; }
+        public OneOrMany<Drug>? Drug { get; set; }
 
         /// <summary>
         /// The characteristics of associated patients, such as age, gender, race etc.
         /// </summary>
         [DataMember(Name = "epidemiology", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Epidemiology { get; set; }
+        public OneOrMany<string>? Epidemiology { get; set; }
 
         /// <summary>
         /// The likely outcome in either the short term or long term of the medical condition.
         /// </summary>
         [DataMember(Name = "expectedPrognosis", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ExpectedPrognosis { get; set; }
+        public OneOrMany<string>? ExpectedPrognosis { get; set; }
 
         /// <summary>
         /// The expected progression of the condition if it is not treated and allowed to progress naturally.
         /// </summary>
         [DataMember(Name = "naturalProgression", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? NaturalProgression { get; set; }
+        public OneOrMany<string>? NaturalProgression { get; set; }
 
         /// <summary>
         /// Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
         /// </summary>
         [DataMember(Name = "pathophysiology", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Pathophysiology { get; set; }
+        public OneOrMany<string>? Pathophysiology { get; set; }
 
         /// <summary>
         /// A possible unexpected and unfavorable evolution of a medical condition. Complications may include worsening of the signs or symptoms of the disease, extension of the condition to other organ systems, etc.
         /// </summary>
         [DataMember(Name = "possibleComplication", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PossibleComplication { get; set; }
+        public OneOrMany<string>? PossibleComplication { get; set; }
 
         /// <summary>
         /// A possible treatment to address this condition, sign or symptom.
         /// </summary>
         [DataMember(Name = "possibleTreatment", Order = 215)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<MedicalTherapy>? PossibleTreatment { get; set; }
+        public virtual OneOrMany<MedicalTherapy>? PossibleTreatment { get; set; }
 
         /// <summary>
         /// A preventative therapy used to prevent an initial occurrence of the medical condition, such as vaccination.
         /// </summary>
         [DataMember(Name = "primaryPrevention", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTherapy>? PrimaryPrevention { get; set; }
+        public OneOrMany<MedicalTherapy>? PrimaryPrevention { get; set; }
 
         /// <summary>
         /// A modifiable or non-modifiable factor that increases the risk of a patient contracting this condition, e.g. age,  coexisting condition.
         /// </summary>
         [DataMember(Name = "riskFactor", Order = 217)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalRiskFactor>? RiskFactor { get; set; }
+        public OneOrMany<MedicalRiskFactor>? RiskFactor { get; set; }
 
         /// <summary>
         /// A preventative therapy used to prevent reoccurrence of the medical condition after an initial episode of the condition.
         /// </summary>
         [DataMember(Name = "secondaryPrevention", Order = 218)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTherapy>? SecondaryPrevention { get; set; }
+        public OneOrMany<MedicalTherapy>? SecondaryPrevention { get; set; }
 
         /// <summary>
         /// A sign or symptom of this condition. Signs are objective or physically observable manifestations of the medical condition while symptoms are the subjective experience of the medical condition.
         /// </summary>
         [DataMember(Name = "signOrSymptom", Order = 219)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalSignOrSymptom>? SignOrSymptom { get; set; }
+        public OneOrMany<MedicalSignOrSymptom>? SignOrSymptom { get; set; }
 
         /// <summary>
         /// The stage of the condition, if applicable.
         /// </summary>
         [DataMember(Name = "stage", Order = 220)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalConditionStage>? Stage { get; set; }
+        public OneOrMany<MedicalConditionStage>? Stage { get; set; }
 
         /// <summary>
         /// The status of the study (enumerated).
@@ -133,13 +133,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "subtype", Order = 222)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Subtype { get; set; }
+        public OneOrMany<string>? Subtype { get; set; }
 
         /// <summary>
         /// A medical test typically performed given this condition.
         /// </summary>
         [DataMember(Name = "typicalTest", Order = 223)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTest>? TypicalTest { get; set; }
+        public OneOrMany<MedicalTest>? TypicalTest { get; set; }
     }
 }

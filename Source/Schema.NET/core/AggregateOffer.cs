@@ -35,13 +35,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "offerCount", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? OfferCount { get; set; }
+        public OneOrMany<int?>? OfferCount { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
         [DataMember(Name = "offers", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Offer>? Offers { get; set; }
+        public OneOrMany<Offer>? Offers { get; set; }
     }
 }

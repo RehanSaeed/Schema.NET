@@ -35,42 +35,42 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "applicationSuite", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ApplicationSuite { get; set; }
+        public OneOrMany<string>? ApplicationSuite { get; set; }
 
         /// <summary>
         /// Device required to run the application. Used in cases where a specific make/model is required to run the application.
         /// </summary>
         [DataMember(Name = "availableOnDevice", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AvailableOnDevice { get; set; }
+        public OneOrMany<string>? AvailableOnDevice { get; set; }
 
         /// <summary>
         /// A piece of data that represents a particular aspect of a fictional character (skill, power, character points, advantage, disadvantage).
         /// </summary>
         [DataMember(Name = "characterAttribute", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? CharacterAttribute { get; set; }
+        public OneOrMany<Thing>? CharacterAttribute { get; set; }
 
         /// <summary>
         /// Countries for which the application is not supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
         /// </summary>
         [DataMember(Name = "countriesNotSupported", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? CountriesNotSupported { get; set; }
+        public OneOrMany<string>? CountriesNotSupported { get; set; }
 
         /// <summary>
         /// Countries for which the application is supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
         /// </summary>
         [DataMember(Name = "countriesSupported", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? CountriesSupported { get; set; }
+        public OneOrMany<string>? CountriesSupported { get; set; }
 
         /// <summary>
         /// If the file can be downloaded, URL to download the binary.
         /// </summary>
         [DataMember(Name = "downloadUrl", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? DownloadUrl { get; set; }
+        public OneOrMany<Uri>? DownloadUrl { get; set; }
 
         /// <summary>
         /// Features or modules provided by this application (and possibly required by other applications).
@@ -84,14 +84,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "fileSize", Order = 215)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? FileSize { get; set; }
+        public OneOrMany<string>? FileSize { get; set; }
 
         /// <summary>
         /// An item is an object within the game world that can be collected by a player or, occasionally, a non-player character.
         /// </summary>
         [DataMember(Name = "gameItem", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? GameItem { get; set; }
+        public OneOrMany<Thing>? GameItem { get; set; }
 
         /// <summary>
         /// Real or fictional location of the game (or part of game).
@@ -105,7 +105,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "installUrl", Order = 218)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? InstallUrl { get; set; }
+        public OneOrMany<Uri>? InstallUrl { get; set; }
 
         /// <summary>
         /// Minimum memory requirements.
@@ -119,35 +119,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberOfPlayers", Order = 220)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? NumberOfPlayers { get; set; }
+        public OneOrMany<QuantitativeValue>? NumberOfPlayers { get; set; }
 
         /// <summary>
         /// Operating systems supported (Windows 7, OSX 10.6, Android 1.6).
         /// </summary>
         [DataMember(Name = "operatingSystem", Order = 221)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? OperatingSystem { get; set; }
+        public OneOrMany<string>? OperatingSystem { get; set; }
 
         /// <summary>
         /// Permission(s) required to run the app (for example, a mobile app may require full internet access or may run only on wifi).
         /// </summary>
         [DataMember(Name = "permissions", Order = 222)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Permissions { get; set; }
+        public OneOrMany<string>? Permissions { get; set; }
 
         /// <summary>
         /// Processor architecture required to run the application (e.g. IA64).
         /// </summary>
         [DataMember(Name = "processorRequirements", Order = 223)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ProcessorRequirements { get; set; }
+        public OneOrMany<string>? ProcessorRequirements { get; set; }
 
         /// <summary>
         /// The task that a player-controlled character, or group of characters may complete in order to gain a reward.
         /// </summary>
         [DataMember(Name = "quest", Order = 224)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? Quest { get; set; }
+        public OneOrMany<Thing>? Quest { get; set; }
 
         /// <summary>
         /// Description of what changed in this version.
@@ -168,14 +168,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "softwareAddOn", Order = 227)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<SoftwareApplication>? SoftwareAddOn { get; set; }
+        public OneOrMany<SoftwareApplication>? SoftwareAddOn { get; set; }
 
         /// <summary>
         /// Software application help.
         /// </summary>
         [DataMember(Name = "softwareHelp", Order = 228)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork>? SoftwareHelp { get; set; }
+        public OneOrMany<CreativeWork>? SoftwareHelp { get; set; }
 
         /// <summary>
         /// Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).
@@ -189,7 +189,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "softwareVersion", Order = 230)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? SoftwareVersion { get; set; }
+        public OneOrMany<string>? SoftwareVersion { get; set; }
 
         /// <summary>
         /// Storage requirements (free space required).
@@ -203,6 +203,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "supportingData", Order = 232)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DataFeed>? SupportingData { get; set; }
+        public OneOrMany<DataFeed>? SupportingData { get; set; }
     }
 }

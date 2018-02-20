@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "browserRequirements", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BrowserRequirements { get; set; }
+        public OneOrMany<string>? BrowserRequirements { get; set; }
     }
 }

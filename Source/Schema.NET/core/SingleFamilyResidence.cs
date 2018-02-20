@@ -30,6 +30,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "occupancy", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? Occupancy { get; set; }
+        public OneOrMany<QuantitativeValue>? Occupancy { get; set; }
     }
 }

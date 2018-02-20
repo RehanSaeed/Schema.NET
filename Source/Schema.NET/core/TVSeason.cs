@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "countryOfOrigin", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Country>? CountryOfOrigin { get; set; }
+        public OneOrMany<Country>? CountryOfOrigin { get; set; }
     }
 }

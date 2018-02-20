@@ -21,27 +21,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "evidenceLevel", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalEvidenceLevel?>? EvidenceLevel { get; set; }
+        public OneOrMany<MedicalEvidenceLevel?>? EvidenceLevel { get; set; }
 
         /// <summary>
         /// Source of the data used to formulate the guidance, e.g. RCT, consensus opinion, etc.
         /// </summary>
         [DataMember(Name = "evidenceOrigin", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? EvidenceOrigin { get; set; }
+        public OneOrMany<string>? EvidenceOrigin { get; set; }
 
         /// <summary>
         /// Date on which this guideline's recommendation was made.
         /// </summary>
         [DataMember(Name = "guidelineDate", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? GuidelineDate { get; set; }
+        public OneOrMany<DateTimeOffset?>? GuidelineDate { get; set; }
 
         /// <summary>
         /// The medical conditions, treatments, etc. that are the subject of the guideline.
         /// </summary>
         [DataMember(Name = "guidelineSubject", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalEntity>? GuidelineSubject { get; set; }
+        public OneOrMany<MedicalEntity>? GuidelineSubject { get; set; }
     }
 }

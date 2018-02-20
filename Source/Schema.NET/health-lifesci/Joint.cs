@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "biomechnicalClass", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BiomechnicalClass { get; set; }
+        public OneOrMany<string>? BiomechnicalClass { get; set; }
 
         /// <summary>
         /// The degree of mobility the joint allows.
@@ -35,6 +35,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "structuralClass", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? StructuralClass { get; set; }
+        public OneOrMany<string>? StructuralClass { get; set; }
     }
 }

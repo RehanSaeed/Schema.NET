@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "appliesToDeliveryMethod", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
+        public OneOrMany<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.

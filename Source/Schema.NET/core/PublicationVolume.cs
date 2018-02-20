@@ -37,7 +37,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "pagination", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Pagination { get; set; }
+        public OneOrMany<string>? Pagination { get; set; }
 
         /// <summary>
         /// Identifies the volume of publication or multi-part work; for example, "iii" or "2".

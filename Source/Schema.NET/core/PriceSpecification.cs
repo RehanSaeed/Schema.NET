@@ -21,28 +21,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "eligibleQuantity", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? EligibleQuantity { get; set; }
+        public OneOrMany<QuantitativeValue>? EligibleQuantity { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
         /// </summary>
         [DataMember(Name = "eligibleTransactionVolume", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PriceSpecification>? EligibleTransactionVolume { get; set; }
+        public OneOrMany<PriceSpecification>? EligibleTransactionVolume { get; set; }
 
         /// <summary>
         /// The highest price if the price is a range.
         /// </summary>
         [DataMember(Name = "maxPrice", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<decimal?>? MaxPrice { get; set; }
+        public OneOrMany<decimal?>? MaxPrice { get; set; }
 
         /// <summary>
         /// The lowest price if the price is a range.
         /// </summary>
         [DataMember(Name = "minPrice", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<decimal?>? MinPrice { get; set; }
+        public OneOrMany<decimal?>? MinPrice { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.&lt;/p&gt;
@@ -64,27 +64,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "priceCurrency", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PriceCurrency { get; set; }
+        public OneOrMany<string>? PriceCurrency { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
         [DataMember(Name = "validFrom", Order = 312)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ValidFrom { get; set; }
+        public OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
         [DataMember(Name = "validThrough", Order = 313)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ValidThrough { get; set; }
+        public OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
 
         /// <summary>
         /// Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
         /// </summary>
         [DataMember(Name = "valueAddedTaxIncluded", Order = 314)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?>? ValueAddedTaxIncluded { get; set; }
+        public OneOrMany<bool?>? ValueAddedTaxIncluded { get; set; }
     }
 }

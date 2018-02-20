@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "drainsTo", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Vessel>? DrainsTo { get; set; }
+        public OneOrMany<Vessel>? DrainsTo { get; set; }
 
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
@@ -35,6 +35,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "tributary", Order = 408)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AnatomicalStructure>? Tributary { get; set; }
+        public OneOrMany<AnatomicalStructure>? Tributary { get; set; }
     }
 }

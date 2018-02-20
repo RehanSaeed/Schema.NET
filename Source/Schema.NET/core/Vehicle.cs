@@ -25,7 +25,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "accelerationTime", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? AccelerationTime { get; set; }
+        public OneOrMany<QuantitativeValue>? AccelerationTime { get; set; }
 
         /// <summary>
         /// Indicates the design and body style of the vehicle (e.g. station wagon, hatchback, etc.).
@@ -41,14 +41,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "cargoVolume", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? CargoVolume { get; set; }
+        public OneOrMany<QuantitativeValue>? CargoVolume { get; set; }
 
         /// <summary>
         /// The date of the first registration of the vehicle with the respective public authorities.
         /// </summary>
         [DataMember(Name = "dateVehicleFirstRegistered", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? DateVehicleFirstRegistered { get; set; }
+        public OneOrMany<DateTimeOffset?>? DateVehicleFirstRegistered { get; set; }
 
         /// <summary>
         /// The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's engine via the drivetrain.
@@ -62,7 +62,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "emissionsCO2", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? EmissionsCO2 { get; set; }
+        public OneOrMany<double?>? EmissionsCO2 { get; set; }
 
         /// <summary>
         /// The capacity of the fuel tank or in the case of electric cars, the battery. If there are multiple components for storage, this should indicate the total of all storage of the same type.&lt;/p&gt;
@@ -70,7 +70,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "fuelCapacity", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? FuelCapacity { get; set; }
+        public OneOrMany<QuantitativeValue>? FuelCapacity { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The amount of fuel consumed for traveling a particular distance or temporal duration with the given vehicle (e.g. liters per 100 km).&lt;/p&gt;
@@ -82,7 +82,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "fuelConsumption", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? FuelConsumption { get; set; }
+        public OneOrMany<QuantitativeValue>? FuelConsumption { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The distance traveled per unit of fuel used; most commonly miles per gallon (mpg) or kilometers per liter (km/L).&lt;/p&gt;
@@ -94,7 +94,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "fuelEfficiency", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? FuelEfficiency { get; set; }
+        public OneOrMany<QuantitativeValue>? FuelEfficiency { get; set; }
 
         /// <summary>
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
@@ -108,7 +108,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "knownVehicleDamages", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? KnownVehicleDamages { get; set; }
+        public OneOrMany<string>? KnownVehicleDamages { get; set; }
 
         /// <summary>
         /// Indicates that the vehicle meets the respective emission standard.
@@ -123,14 +123,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "mileageFromOdometer", Order = 218)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? MileageFromOdometer { get; set; }
+        public OneOrMany<QuantitativeValue>? MileageFromOdometer { get; set; }
 
         /// <summary>
         /// The release date of a vehicle model (often used to differentiate versions of the same make and model).
         /// </summary>
         [DataMember(Name = "modelDate", Order = 219)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ModelDate { get; set; }
+        public OneOrMany<DateTimeOffset?>? ModelDate { get; set; }
 
         /// <summary>
         /// The number or type of airbags in the vehicle.
@@ -183,21 +183,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "payload", Order = 225)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? Payload { get; set; }
+        public OneOrMany<QuantitativeValue>? Payload { get; set; }
 
         /// <summary>
         /// The date of production of the item, e.g. vehicle.
         /// </summary>
         [DataMember(Name = "productionDate", Order = 226)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<DateTimeOffset?>? ProductionDate { get; set; }
+        public override OneOrMany<DateTimeOffset?>? ProductionDate { get; set; }
 
         /// <summary>
         /// The date the item e.g. vehicle was purchased by the current owner.
         /// </summary>
         [DataMember(Name = "purchaseDate", Order = 227)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<DateTimeOffset?>? PurchaseDate { get; set; }
+        public override OneOrMany<DateTimeOffset?>? PurchaseDate { get; set; }
 
         /// <summary>
         /// The number of persons that can be seated (e.g. in a vehicle), both in terms of the physical space available, and in terms of limitations set by law.&lt;/p&gt;
@@ -215,14 +215,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "speed", Order = 229)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? Speed { get; set; }
+        public OneOrMany<QuantitativeValue>? Speed { get; set; }
 
         /// <summary>
         /// The position of the steering wheel or similar device (mostly for cars).
         /// </summary>
         [DataMember(Name = "steeringPosition", Order = 230)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<SteeringPositionValue?>? SteeringPosition { get; set; }
+        public OneOrMany<SteeringPositionValue?>? SteeringPosition { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The permitted vertical load (TWR) of a trailer attached to the vehicle. Also referred to as Tongue Load Rating (TLR) or Vertical Load Rating (VLR)&lt;/p&gt;
@@ -235,7 +235,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "tongueWeight", Order = 231)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? TongueWeight { get; set; }
+        public OneOrMany<QuantitativeValue>? TongueWeight { get; set; }
 
         /// <summary>
         /// The permitted weight of a trailer attached to the vehicle.&lt;/p&gt;
@@ -246,49 +246,49 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "trailerWeight", Order = 232)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? TrailerWeight { get; set; }
+        public OneOrMany<QuantitativeValue>? TrailerWeight { get; set; }
 
         /// <summary>
         /// A short text indicating the configuration of the vehicle, e.g. '5dr hatchback ST 2.5 MT 225 hp' or 'limited edition'.
         /// </summary>
         [DataMember(Name = "vehicleConfiguration", Order = 233)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VehicleConfiguration { get; set; }
+        public OneOrMany<string>? VehicleConfiguration { get; set; }
 
         /// <summary>
         /// Information about the engine or engines of the vehicle.
         /// </summary>
         [DataMember(Name = "vehicleEngine", Order = 234)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<EngineSpecification>? VehicleEngine { get; set; }
+        public OneOrMany<EngineSpecification>? VehicleEngine { get; set; }
 
         /// <summary>
         /// The Vehicle Identification Number (VIN) is a unique serial number used by the automotive industry to identify individual motor vehicles.
         /// </summary>
         [DataMember(Name = "vehicleIdentificationNumber", Order = 235)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VehicleIdentificationNumber { get; set; }
+        public OneOrMany<string>? VehicleIdentificationNumber { get; set; }
 
         /// <summary>
         /// The color or color combination of the interior of the vehicle.
         /// </summary>
         [DataMember(Name = "vehicleInteriorColor", Order = 236)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VehicleInteriorColor { get; set; }
+        public OneOrMany<string>? VehicleInteriorColor { get; set; }
 
         /// <summary>
         /// The type or material of the interior of the vehicle (e.g. synthetic fabric, leather, wood, etc.). While most interior types are characterized by the material used, an interior type can also be based on vehicle usage or target audience.
         /// </summary>
         [DataMember(Name = "vehicleInteriorType", Order = 237)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VehicleInteriorType { get; set; }
+        public OneOrMany<string>? VehicleInteriorType { get; set; }
 
         /// <summary>
         /// The release date of a vehicle model (often used to differentiate versions of the same make and model).
         /// </summary>
         [DataMember(Name = "vehicleModelDate", Order = 238)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? VehicleModelDate { get; set; }
+        public OneOrMany<DateTimeOffset?>? VehicleModelDate { get; set; }
 
         /// <summary>
         /// The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.&lt;/p&gt;
@@ -303,7 +303,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "vehicleSpecialUsage", Order = 240)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VehicleSpecialUsage { get; set; }
+        public OneOrMany<string>? VehicleSpecialUsage { get; set; }
 
         /// <summary>
         /// The type of component used for transmitting the power from a rotating power source to the wheels or other relevant component(s) ("gearbox" for cars).
@@ -323,7 +323,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "weightTotal", Order = 242)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? WeightTotal { get; set; }
+        public OneOrMany<QuantitativeValue>? WeightTotal { get; set; }
 
         /// <summary>
         /// The distance between the centers of the front and rear wheels.&lt;/p&gt;
@@ -331,6 +331,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "wheelbase", Order = 243)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? Wheelbase { get; set; }
+        public OneOrMany<QuantitativeValue>? Wheelbase { get; set; }
     }
 }

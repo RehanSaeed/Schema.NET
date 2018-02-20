@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "isAccessibleForFree", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<bool?>? IsAccessibleForFree { get; set; }
+        public override OneOrMany<bool?>? IsAccessibleForFree { get; set; }
 
         /// <summary>
         /// An agent associated with the publication event.
@@ -35,6 +35,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "publishedOn", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BroadcastService>? PublishedOn { get; set; }
+        public OneOrMany<BroadcastService>? PublishedOn { get; set; }
     }
 }

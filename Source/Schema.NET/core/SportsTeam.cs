@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "athlete", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Athlete { get; set; }
+        public OneOrMany<Person>? Athlete { get; set; }
 
         /// <summary>
         /// A person that acts in a coaching role for a sports team.
         /// </summary>
         [DataMember(Name = "coach", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Coach { get; set; }
+        public OneOrMany<Person>? Coach { get; set; }
     }
 }

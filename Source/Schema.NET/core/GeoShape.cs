@@ -35,14 +35,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "box", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Box { get; set; }
+        public OneOrMany<string>? Box { get; set; }
 
         /// <summary>
         /// A circle is the circular region of a specified radius centered at a specified latitude and longitude. A circle is expressed as a pair followed by a radius in meters.
         /// </summary>
         [DataMember(Name = "circle", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Circle { get; set; }
+        public OneOrMany<string>? Circle { get; set; }
 
         /// <summary>
         /// The elevation of a location (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
@@ -56,20 +56,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "line", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Line { get; set; }
+        public OneOrMany<string>? Line { get; set; }
 
         /// <summary>
         /// A polygon is the area enclosed by a point-to-point path for which the starting and ending points are the same. A polygon is expressed as a series of four or more space delimited points where the first and final points are identical.
         /// </summary>
         [DataMember(Name = "polygon", Order = 312)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Polygon { get; set; }
+        public OneOrMany<string>? Polygon { get; set; }
 
         /// <summary>
         /// The postal code. For example, 94043.
         /// </summary>
         [DataMember(Name = "postalCode", Order = 313)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PostalCode { get; set; }
+        public OneOrMany<string>? PostalCode { get; set; }
     }
 }

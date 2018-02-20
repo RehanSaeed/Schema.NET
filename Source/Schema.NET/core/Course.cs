@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "courseCode", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? CourseCode { get; set; }
+        public OneOrMany<string>? CourseCode { get; set; }
 
         /// <summary>
         /// Requirements for taking the Course. May be completion of another &lt;a class="localLink" href="http://schema.org/Course"&gt;Course&lt;/a&gt; or a textual description like "permission of instructor". Requirements may be a pre-requisite competency, referenced using &lt;a class="localLink" href="http://schema.org/AlignmentObject"&gt;AlignmentObject&lt;/a&gt;.
@@ -42,6 +42,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hasCourseInstance", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CourseInstance>? HasCourseInstance { get; set; }
+        public OneOrMany<CourseInstance>? HasCourseInstance { get; set; }
     }
 }

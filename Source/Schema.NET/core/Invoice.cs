@@ -21,14 +21,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "accountId", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AccountId { get; set; }
+        public OneOrMany<string>? AccountId { get; set; }
 
         /// <summary>
         /// The time interval used to compute the invoice.
         /// </summary>
         [DataMember(Name = "billingPeriod", Order = 207)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public Values<TimeSpan?>? BillingPeriod { get; set; }
+        public OneOrMany<TimeSpan?>? BillingPeriod { get; set; }
 
         /// <summary>
         /// An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
@@ -49,7 +49,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "confirmationNumber", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ConfirmationNumber { get; set; }
+        public OneOrMany<string>? ConfirmationNumber { get; set; }
 
         /// <summary>
         /// Party placing the order or paying the invoice.
@@ -70,21 +70,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "paymentDueDate", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? PaymentDueDate { get; set; }
+        public OneOrMany<DateTimeOffset?>? PaymentDueDate { get; set; }
 
         /// <summary>
         /// The name of the credit card or other method of payment for the order.
         /// </summary>
         [DataMember(Name = "paymentMethod", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PaymentMethod?>? PaymentMethod { get; set; }
+        public OneOrMany<PaymentMethod?>? PaymentMethod { get; set; }
 
         /// <summary>
         /// An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
         /// </summary>
         [DataMember(Name = "paymentMethodId", Order = 215)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PaymentMethodId { get; set; }
+        public OneOrMany<string>? PaymentMethodId { get; set; }
 
         /// <summary>
         /// The status of payment; whether the invoice has been paid or not.
@@ -105,14 +105,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "referencesOrder", Order = 218)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Order>? ReferencesOrder { get; set; }
+        public OneOrMany<Order>? ReferencesOrder { get; set; }
 
         /// <summary>
         /// The date the invoice is scheduled to be paid.
         /// </summary>
         [DataMember(Name = "scheduledPaymentDate", Order = 219)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ScheduledPaymentDate { get; set; }
+        public OneOrMany<DateTimeOffset?>? ScheduledPaymentDate { get; set; }
 
         /// <summary>
         /// The total amount due.

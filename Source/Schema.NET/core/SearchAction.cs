@@ -25,7 +25,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "query", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Query { get; set; }
+        public OneOrMany<string>? Query { get; set; }
 
         /// <summary>
         /// Gets or sets the query input search parameter.

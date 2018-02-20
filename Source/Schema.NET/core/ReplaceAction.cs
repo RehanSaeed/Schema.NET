@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "replacee", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? Replacee { get; set; }
+        public OneOrMany<Thing>? Replacee { get; set; }
 
         /// <summary>
         /// A sub property of object. The object that replaces.
         /// </summary>
         [DataMember(Name = "replacer", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? Replacer { get; set; }
+        public OneOrMany<Thing>? Replacer { get; set; }
     }
 }

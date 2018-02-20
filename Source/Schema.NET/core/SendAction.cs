@@ -25,7 +25,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "deliveryMethod", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DeliveryMethod?>? DeliveryMethod { get; set; }
+        public OneOrMany<DeliveryMethod?>? DeliveryMethod { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.

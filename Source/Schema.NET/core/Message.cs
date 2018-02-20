@@ -35,28 +35,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "dateRead", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? DateRead { get; set; }
+        public OneOrMany<DateTimeOffset?>? DateRead { get; set; }
 
         /// <summary>
         /// The date/time the message was received if a single recipient exists.
         /// </summary>
         [DataMember(Name = "dateReceived", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? DateReceived { get; set; }
+        public OneOrMany<DateTimeOffset?>? DateReceived { get; set; }
 
         /// <summary>
         /// The date/time at which the message was sent.
         /// </summary>
         [DataMember(Name = "dateSent", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? DateSent { get; set; }
+        public OneOrMany<DateTimeOffset?>? DateSent { get; set; }
 
         /// <summary>
         /// A CreativeWork attached to the message.
         /// </summary>
         [DataMember(Name = "messageAttachment", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork>? MessageAttachment { get; set; }
+        public OneOrMany<CreativeWork>? MessageAttachment { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.

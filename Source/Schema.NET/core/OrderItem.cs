@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "orderDelivery", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ParcelDelivery>? OrderDelivery { get; set; }
+        public OneOrMany<ParcelDelivery>? OrderDelivery { get; set; }
 
         /// <summary>
         /// The item ordered.
@@ -35,20 +35,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "orderItemNumber", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? OrderItemNumber { get; set; }
+        public OneOrMany<string>? OrderItemNumber { get; set; }
 
         /// <summary>
         /// The current status of the order item.
         /// </summary>
         [DataMember(Name = "orderItemStatus", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<OrderStatus?>? OrderItemStatus { get; set; }
+        public OneOrMany<OrderStatus?>? OrderItemStatus { get; set; }
 
         /// <summary>
         /// The number of the item ordered. If the property is not set, assume the quantity is one.
         /// </summary>
         [DataMember(Name = "orderQuantity", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? OrderQuantity { get; set; }
+        public OneOrMany<double?>? OrderQuantity { get; set; }
     }
 }

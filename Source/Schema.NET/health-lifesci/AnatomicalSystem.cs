@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "associatedPathophysiology", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AssociatedPathophysiology { get; set; }
+        public OneOrMany<string>? AssociatedPathophysiology { get; set; }
 
         /// <summary>
         /// Specifying something physically contained by something else. Typically used here for the underlying anatomical structures, such as organs, that comprise the anatomical system.
@@ -35,20 +35,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalCondition>? RelatedCondition { get; set; }
+        public OneOrMany<MedicalCondition>? RelatedCondition { get; set; }
 
         /// <summary>
         /// Related anatomical structure(s) that are not part of the system but relate or connect to it, such as vascular bundles associated with an organ system.
         /// </summary>
         [DataMember(Name = "relatedStructure", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AnatomicalStructure>? RelatedStructure { get; set; }
+        public OneOrMany<AnatomicalStructure>? RelatedStructure { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTherapy>? RelatedTherapy { get; set; }
+        public OneOrMany<MedicalTherapy>? RelatedTherapy { get; set; }
     }
 }

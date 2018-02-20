@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "adverseOutcome", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalEntity>? AdverseOutcome { get; set; }
+        public OneOrMany<MedicalEntity>? AdverseOutcome { get; set; }
 
         /// <summary>
         /// A contraindication for this therapy.
@@ -35,28 +35,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "indication", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalIndication>? Indication { get; set; }
+        public OneOrMany<MedicalIndication>? Indication { get; set; }
 
         /// <summary>
         /// A description of the postoperative procedures, care, and/or followups for this device.
         /// </summary>
         [DataMember(Name = "postOp", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PostOp { get; set; }
+        public OneOrMany<string>? PostOp { get; set; }
 
         /// <summary>
         /// A description of the workup, testing, and other preparations required before implanting this device.
         /// </summary>
         [DataMember(Name = "preOp", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PreOp { get; set; }
+        public OneOrMany<string>? PreOp { get; set; }
 
         /// <summary>
         /// A description of the procedure involved in setting up, using, and/or installing the device.
         /// </summary>
         [DataMember(Name = "procedure", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Procedure { get; set; }
+        public OneOrMany<string>? Procedure { get; set; }
 
         /// <summary>
         /// A goal towards an action is taken. Can be concrete or abstract.
@@ -70,6 +70,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "seriousAdverseOutcome", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalEntity>? SeriousAdverseOutcome { get; set; }
+        public OneOrMany<MedicalEntity>? SeriousAdverseOutcome { get; set; }
     }
 }

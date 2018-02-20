@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "identifyingExam", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PhysicalExam?>? IdentifyingExam { get; set; }
+        public OneOrMany<PhysicalExam?>? IdentifyingExam { get; set; }
 
         /// <summary>
         /// A diagnostic test that can identify this sign.
         /// </summary>
         [DataMember(Name = "identifyingTest", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTest>? IdentifyingTest { get; set; }
+        public OneOrMany<MedicalTest>? IdentifyingTest { get; set; }
     }
 }

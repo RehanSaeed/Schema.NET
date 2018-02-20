@@ -21,27 +21,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "accessCode", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AccessCode { get; set; }
+        public OneOrMany<string>? AccessCode { get; set; }
 
         /// <summary>
         /// When the item is available for pickup from the store, locker, etc.
         /// </summary>
         [DataMember(Name = "availableFrom", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? AvailableFrom { get; set; }
+        public OneOrMany<DateTimeOffset?>? AvailableFrom { get; set; }
 
         /// <summary>
         /// After this date, the item will no longer be available for pickup.
         /// </summary>
         [DataMember(Name = "availableThrough", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? AvailableThrough { get; set; }
+        public OneOrMany<DateTimeOffset?>? AvailableThrough { get; set; }
 
         /// <summary>
         /// Method used for delivery or shipping.
         /// </summary>
         [DataMember(Name = "hasDeliveryMethod", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DeliveryMethod?>? HasDeliveryMethod { get; set; }
+        public OneOrMany<DeliveryMethod?>? HasDeliveryMethod { get; set; }
     }
 }

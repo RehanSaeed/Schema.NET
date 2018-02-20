@@ -28,13 +28,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "videoFormat", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VideoFormat { get; set; }
+        public OneOrMany<string>? VideoFormat { get; set; }
 
         /// <summary>
         /// The movie presented during this event.
         /// </summary>
         [DataMember(Name = "workPresented", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Movie>? WorkPresented { get; set; }
+        public OneOrMany<Movie>? WorkPresented { get; set; }
     }
 }

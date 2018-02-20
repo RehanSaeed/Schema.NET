@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "inventoryLevel", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? InventoryLevel { get; set; }
+        public OneOrMany<QuantitativeValue>? InventoryLevel { get; set; }
     }
 }

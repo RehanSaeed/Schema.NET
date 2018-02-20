@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "tickerSymbol", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? TickerSymbol { get; set; }
+        public OneOrMany<string>? TickerSymbol { get; set; }
     }
 }

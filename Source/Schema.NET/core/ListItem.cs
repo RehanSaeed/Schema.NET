@@ -21,14 +21,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "item", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? Item { get; set; }
+        public OneOrMany<Thing>? Item { get; set; }
 
         /// <summary>
         /// A link to the ListItem that follows the current one.
         /// </summary>
         [DataMember(Name = "nextItem", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ListItem>? NextItem { get; set; }
+        public OneOrMany<ListItem>? NextItem { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
@@ -42,6 +42,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "previousItem", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ListItem>? PreviousItem { get; set; }
+        public OneOrMany<ListItem>? PreviousItem { get; set; }
     }
 }

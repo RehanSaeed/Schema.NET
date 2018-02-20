@@ -28,14 +28,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "gracePeriod", Order = 407)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public Values<TimeSpan?>? GracePeriod { get; set; }
+        public OneOrMany<TimeSpan?>? GracePeriod { get; set; }
 
         /// <summary>
         /// The duration of the loan or credit agreement.
         /// </summary>
         [DataMember(Name = "loanTerm", Order = 408)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? LoanTerm { get; set; }
+        public OneOrMany<QuantitativeValue>? LoanTerm { get; set; }
 
         /// <summary>
         /// The type of a loan or credit.
@@ -49,14 +49,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "recourseLoan", Order = 410)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?>? RecourseLoan { get; set; }
+        public OneOrMany<bool?>? RecourseLoan { get; set; }
 
         /// <summary>
         /// Whether the terms for payment of interest can be renegotiated during the life of the loan.
         /// </summary>
         [DataMember(Name = "renegotiableLoan", Order = 411)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<bool?>? RenegotiableLoan { get; set; }
+        public OneOrMany<bool?>? RenegotiableLoan { get; set; }
 
         /// <summary>
         /// Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)

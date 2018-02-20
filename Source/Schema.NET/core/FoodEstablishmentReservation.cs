@@ -22,7 +22,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "endTime", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? EndTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? EndTime { get; set; }
 
         /// <summary>
         /// Number of people the reservation should accommodate.
@@ -37,6 +37,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "startTime", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? StartTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? StartTime { get; set; }
     }
 }

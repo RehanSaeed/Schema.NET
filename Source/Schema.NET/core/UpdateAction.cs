@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "targetCollection", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? TargetCollection { get; set; }
+        public OneOrMany<Thing>? TargetCollection { get; set; }
     }
 }

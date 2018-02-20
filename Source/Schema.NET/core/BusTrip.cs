@@ -28,21 +28,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "arrivalTime", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? ArrivalTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? ArrivalTime { get; set; }
 
         /// <summary>
         /// The name of the bus (e.g. Bolt Express).
         /// </summary>
         [DataMember(Name = "busName", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BusName { get; set; }
+        public OneOrMany<string>? BusName { get; set; }
 
         /// <summary>
         /// The unique identifier for the bus.
         /// </summary>
         [DataMember(Name = "busNumber", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BusNumber { get; set; }
+        public OneOrMany<string>? BusNumber { get; set; }
 
         /// <summary>
         /// The stop or station from which the bus departs.
@@ -56,7 +56,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "departureTime", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? DepartureTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? DepartureTime { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.

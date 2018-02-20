@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "estimatesRiskOf", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalEntity>? EstimatesRiskOf { get; set; }
+        public OneOrMany<MedicalEntity>? EstimatesRiskOf { get; set; }
 
         /// <summary>
         /// A modifiable or non-modifiable risk factor included in the calculation, e.g. age, coexisting condition.
         /// </summary>
         [DataMember(Name = "includedRiskFactor", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalRiskFactor>? IncludedRiskFactor { get; set; }
+        public OneOrMany<MedicalRiskFactor>? IncludedRiskFactor { get; set; }
     }
 }

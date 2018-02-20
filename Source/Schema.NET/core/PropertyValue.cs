@@ -22,7 +22,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "maxValue", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? MaxValue { get; set; }
+        public OneOrMany<double?>? MaxValue { get; set; }
 
         /// <summary>
         /// A technique or technology used in a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt; (or &lt;a class="localLink" href="http://schema.org/DataDownload"&gt;DataDownload&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/DataCatalog"&gt;DataCatalog&lt;/a&gt;),
@@ -40,7 +40,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "minValue", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? MinValue { get; set; }
+        public OneOrMany<double?>? MinValue { get; set; }
 
         /// <summary>
         /// A commonly used identifier for the characteristic represented by the property, e.g. a manufacturer or a standard code for a property. propertyID can be
@@ -65,7 +65,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "unitText", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? UnitText { get; set; }
+        public OneOrMany<string>? UnitText { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The value of the quantitative value or property value node.&lt;/p&gt;

@@ -56,6 +56,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "postalCode", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PostalCode { get; set; }
+        public OneOrMany<string>? PostalCode { get; set; }
     }
 }

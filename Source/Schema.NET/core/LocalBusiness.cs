@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "currenciesAccepted", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? CurrenciesAccepted { get; set; }
+        public OneOrMany<string>? CurrenciesAccepted { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;/p&gt;
@@ -34,20 +34,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "openingHours", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<string>? OpeningHours { get; set; }
+        public virtual OneOrMany<string>? OpeningHours { get; set; }
 
         /// <summary>
         /// Cash, credit card, etc.
         /// </summary>
         [DataMember(Name = "paymentAccepted", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PaymentAccepted { get; set; }
+        public OneOrMany<string>? PaymentAccepted { get; set; }
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
         /// </summary>
         [DataMember(Name = "priceRange", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PriceRange { get; set; }
+        public OneOrMany<string>? PriceRange { get; set; }
     }
 }

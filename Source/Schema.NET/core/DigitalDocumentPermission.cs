@@ -28,6 +28,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "permissionType", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DigitalDocumentPermissionType?>? PermissionType { get; set; }
+        public OneOrMany<DigitalDocumentPermissionType?>? PermissionType { get; set; }
     }
 }

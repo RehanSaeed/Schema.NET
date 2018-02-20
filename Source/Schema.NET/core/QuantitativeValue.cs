@@ -22,21 +22,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PropertyValue>? AdditionalProperty { get; set; }
+        public OneOrMany<PropertyValue>? AdditionalProperty { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
         /// </summary>
         [DataMember(Name = "maxValue", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? MaxValue { get; set; }
+        public OneOrMany<double?>? MaxValue { get; set; }
 
         /// <summary>
         /// The lower value of some characteristic or property.
         /// </summary>
         [DataMember(Name = "minValue", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? MinValue { get; set; }
+        public OneOrMany<double?>? MinValue { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
@@ -51,7 +51,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "unitText", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? UnitText { get; set; }
+        public OneOrMany<string>? UnitText { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The value of the quantitative value or property value node.&lt;/p&gt;

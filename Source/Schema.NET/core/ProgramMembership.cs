@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hostingOrganization", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization>? HostingOrganization { get; set; }
+        public OneOrMany<Organization>? HostingOrganization { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
@@ -35,13 +35,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "membershipNumber", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? MembershipNumber { get; set; }
+        public OneOrMany<string>? MembershipNumber { get; set; }
 
         /// <summary>
         /// The program providing the membership.
         /// </summary>
         [DataMember(Name = "programName", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ProgramName { get; set; }
+        public OneOrMany<string>? ProgramName { get; set; }
     }
 }

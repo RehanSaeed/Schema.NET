@@ -25,34 +25,34 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "artist", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Artist { get; set; }
+        public OneOrMany<Person>? Artist { get; set; }
 
         /// <summary>
         /// The individual who adds color to inked drawings.
         /// </summary>
         [DataMember(Name = "colorist", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Colorist { get; set; }
+        public OneOrMany<Person>? Colorist { get; set; }
 
         /// <summary>
         /// The individual who traces over the pencil drawings in ink after pencils are complete.
         /// </summary>
         [DataMember(Name = "inker", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Inker { get; set; }
+        public OneOrMany<Person>? Inker { get; set; }
 
         /// <summary>
         /// The individual who adds lettering, including speech balloons and sound effects, to artwork.
         /// </summary>
         [DataMember(Name = "letterer", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Letterer { get; set; }
+        public OneOrMany<Person>? Letterer { get; set; }
 
         /// <summary>
         /// The individual who draws the primary narrative artwork.
         /// </summary>
         [DataMember(Name = "penciler", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Penciler { get; set; }
+        public OneOrMany<Person>? Penciler { get; set; }
     }
 }

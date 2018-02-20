@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "dependencies", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Dependencies { get; set; }
+        public OneOrMany<string>? Dependencies { get; set; }
 
         /// <summary>
         /// Proficiency needed for this content; expected values: 'Beginner', 'Expert'.
         /// </summary>
         [DataMember(Name = "proficiencyLevel", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ProficiencyLevel { get; set; }
+        public OneOrMany<string>? ProficiencyLevel { get; set; }
     }
 }

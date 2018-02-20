@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "carrierRequirements", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? CarrierRequirements { get; set; }
+        public OneOrMany<string>? CarrierRequirements { get; set; }
     }
 }

@@ -28,6 +28,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "medicalSpecialty", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        public override OneOrMany<MedicalSpecialty?>? MedicalSpecialty { get; set; }
     }
 }

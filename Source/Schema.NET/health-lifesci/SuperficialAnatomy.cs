@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "associatedPathophysiology", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? AssociatedPathophysiology { get; set; }
+        public OneOrMany<string>? AssociatedPathophysiology { get; set; }
 
         /// <summary>
         /// Anatomical systems or structures that relate to the superficial anatomy.
@@ -35,20 +35,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalCondition>? RelatedCondition { get; set; }
+        public OneOrMany<MedicalCondition>? RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTherapy>? RelatedTherapy { get; set; }
+        public OneOrMany<MedicalTherapy>? RelatedTherapy { get; set; }
 
         /// <summary>
         /// The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.
         /// </summary>
         [DataMember(Name = "significance", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Significance { get; set; }
+        public OneOrMany<string>? Significance { get; set; }
     }
 }

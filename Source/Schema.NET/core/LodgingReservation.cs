@@ -22,28 +22,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "checkinTime", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? CheckinTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
         [DataMember(Name = "checkoutTime", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? CheckoutTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? CheckoutTime { get; set; }
 
         /// <summary>
         /// A full description of the lodging unit.
         /// </summary>
         [DataMember(Name = "lodgingUnitDescription", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? LodgingUnitDescription { get; set; }
+        public OneOrMany<string>? LodgingUnitDescription { get; set; }
 
         /// <summary>
         /// Textual description of the unit type (including suite vs. room, size of bed, etc.).
         /// </summary>
         [DataMember(Name = "lodgingUnitType", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? LodgingUnitType { get; set; }
+        public OneOrMany<string>? LodgingUnitType { get; set; }
 
         /// <summary>
         /// The number of adults staying in the unit.

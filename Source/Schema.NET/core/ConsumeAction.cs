@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "expectsAcceptanceOf", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Offer>? ExpectsAcceptanceOf { get; set; }
+        public OneOrMany<Offer>? ExpectsAcceptanceOf { get; set; }
     }
 }

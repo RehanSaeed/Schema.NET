@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "mapType", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MapCategoryType?>? MapType { get; set; }
+        public OneOrMany<MapCategoryType?>? MapType { get; set; }
     }
 }

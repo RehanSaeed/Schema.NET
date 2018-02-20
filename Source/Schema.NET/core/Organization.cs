@@ -35,14 +35,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 108)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AggregateRating>? AggregateRating { get; set; }
+        public OneOrMany<AggregateRating>? AggregateRating { get; set; }
 
         /// <summary>
         /// Alumni of an organization.
         /// </summary>
         [DataMember(Name = "alumni", Order = 109)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<Person>? Alumni { get; set; }
+        public virtual OneOrMany<Person>? Alumni { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
@@ -56,7 +56,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "award", Order = 111)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Award { get; set; }
+        public OneOrMany<string>? Award { get; set; }
 
         /// <summary>
         /// The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
@@ -70,7 +70,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "contactPoint", Order = 113)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ContactPoint>? ContactPoint { get; set; }
+        public OneOrMany<ContactPoint>? ContactPoint { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.
@@ -84,14 +84,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "department", Order = 115)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization>? Department { get; set; }
+        public OneOrMany<Organization>? Department { get; set; }
 
         /// <summary>
         /// The date that this organization was dissolved.
         /// </summary>
         [DataMember(Name = "dissolutionDate", Order = 116)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? DissolutionDate { get; set; }
+        public OneOrMany<DateTimeOffset?>? DissolutionDate { get; set; }
 
         /// <summary>
         /// Statement on diversity policy by an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; e.g. a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;. For a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, a statement describing the newsroom’s diversity policy on both staffing and sources, typically providing staffing data.
@@ -105,21 +105,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "duns", Order = 118)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Duns { get; set; }
+        public OneOrMany<string>? Duns { get; set; }
 
         /// <summary>
         /// Email address.
         /// </summary>
         [DataMember(Name = "email", Order = 119)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Email { get; set; }
+        public OneOrMany<string>? Email { get; set; }
 
         /// <summary>
         /// Someone working for this organization.
         /// </summary>
         [DataMember(Name = "employee", Order = 120)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Employee { get; set; }
+        public OneOrMany<Person>? Employee { get; set; }
 
         /// <summary>
         /// Statement about ethics policy, e.g. of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; regarding journalistic and publishing practices, or of a &lt;a class="localLink" href="http://schema.org/Restaurant"&gt;Restaurant&lt;/a&gt;, a page describing food source policies. In the case of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.
@@ -133,35 +133,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "event", Order = 122)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Event>? Event { get; set; }
+        public OneOrMany<Event>? Event { get; set; }
 
         /// <summary>
         /// The fax number.
         /// </summary>
         [DataMember(Name = "faxNumber", Order = 123)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? FaxNumber { get; set; }
+        public OneOrMany<string>? FaxNumber { get; set; }
 
         /// <summary>
         /// A person who founded this organization.
         /// </summary>
         [DataMember(Name = "founder", Order = 124)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Founder { get; set; }
+        public OneOrMany<Person>? Founder { get; set; }
 
         /// <summary>
         /// The date that this organization was founded.
         /// </summary>
         [DataMember(Name = "foundingDate", Order = 125)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? FoundingDate { get; set; }
+        public OneOrMany<DateTimeOffset?>? FoundingDate { get; set; }
 
         /// <summary>
         /// The place where the Organization was founded.
         /// </summary>
         [DataMember(Name = "foundingLocation", Order = 126)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? FoundingLocation { get; set; }
+        public OneOrMany<Place>? FoundingLocation { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -175,42 +175,42 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "globalLocationNumber", Order = 128)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? GlobalLocationNumber { get; set; }
+        public OneOrMany<string>? GlobalLocationNumber { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
         /// </summary>
         [DataMember(Name = "hasOfferCatalog", Order = 129)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<OfferCatalog>? HasOfferCatalog { get; set; }
+        public OneOrMany<OfferCatalog>? HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
         [DataMember(Name = "hasPOS", Order = 130)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? HasPOS { get; set; }
+        public OneOrMany<Place>? HasPOS { get; set; }
 
         /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
         [DataMember(Name = "isicV4", Order = 131)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? IsicV4 { get; set; }
+        public OneOrMany<string>? IsicV4 { get; set; }
 
         /// <summary>
         /// The official name of the organization, e.g. the registered company name.
         /// </summary>
         [DataMember(Name = "legalName", Order = 132)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? LegalName { get; set; }
+        public OneOrMany<string>? LegalName { get; set; }
 
         /// <summary>
         /// An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.
         /// </summary>
         [DataMember(Name = "leiCode", Order = 133)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? LeiCode { get; set; }
+        public OneOrMany<string>? LeiCode { get; set; }
 
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
@@ -231,7 +231,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "makesOffer", Order = 136)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Offer>? MakesOffer { get; set; }
+        public OneOrMany<Offer>? MakesOffer { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
@@ -252,14 +252,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "naics", Order = 139)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Naics { get; set; }
+        public OneOrMany<string>? Naics { get; set; }
 
         /// <summary>
         /// The number of employees in an organization e.g. business.
         /// </summary>
         [DataMember(Name = "numberOfEmployees", Order = 140)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? NumberOfEmployees { get; set; }
+        public OneOrMany<QuantitativeValue>? NumberOfEmployees { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
@@ -273,7 +273,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "parentOrganization", Order = 142)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization>? ParentOrganization { get; set; }
+        public OneOrMany<Organization>? ParentOrganization { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;/p&gt;
@@ -288,14 +288,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "review", Order = 144)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Review>? Review { get; set; }
+        public OneOrMany<Review>? Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
         [DataMember(Name = "seeks", Order = 145)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Demand>? Seeks { get; set; }
+        public OneOrMany<Demand>? Seeks { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -309,21 +309,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "subOrganization", Order = 147)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization>? SubOrganization { get; set; }
+        public OneOrMany<Organization>? SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
         /// </summary>
         [DataMember(Name = "taxID", Order = 148)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? TaxID { get; set; }
+        public OneOrMany<string>? TaxID { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
         [DataMember(Name = "telephone", Order = 149)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Telephone { get; set; }
+        public OneOrMany<string>? Telephone { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (typically a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement about policy on use of unnamed sources and the decision process required.
@@ -337,6 +337,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "vatID", Order = 151)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? VatID { get; set; }
+        public OneOrMany<string>? VatID { get; set; }
     }
 }

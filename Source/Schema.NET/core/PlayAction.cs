@@ -26,13 +26,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "audience", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Audience>? Audience { get; set; }
+        public OneOrMany<Audience>? Audience { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
         [DataMember(Name = "event", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Event>? Event { get; set; }
+        public OneOrMany<Event>? Event { get; set; }
     }
 }

@@ -22,14 +22,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "articleBody", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ArticleBody { get; set; }
+        public OneOrMany<string>? ArticleBody { get; set; }
 
         /// <summary>
         /// Articles may belong to one or more 'sections' in a magazine or newspaper, such as Sports, Lifestyle, etc.
         /// </summary>
         [DataMember(Name = "articleSection", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ArticleSection { get; set; }
+        public OneOrMany<string>? ArticleSection { get; set; }
 
         /// <summary>
         /// The page on which the work ends; for example "138" or "xvi".
@@ -50,7 +50,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "pagination", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Pagination { get; set; }
+        public OneOrMany<string>? Pagination { get; set; }
 
         /// <summary>
         /// Indicates sections of a Web page that are particularly 'speakable' in the sense of being highlighted as being especially appropriate for text-to-speech conversion. Other sections of a page may also be usefully spoken in particular circumstances; the 'speakable' property serves to indicate the parts most likely to be generally useful for speech.&lt;/p&gt;
@@ -63,13 +63,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "speakable", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? Speakable { get; set; }
+        public OneOrMany<Uri>? Speakable { get; set; }
 
         /// <summary>
         /// The number of words in the text of the Article.
         /// </summary>
         [DataMember(Name = "wordCount", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? WordCount { get; set; }
+        public OneOrMany<int?>? WordCount { get; set; }
     }
 }

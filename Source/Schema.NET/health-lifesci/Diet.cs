@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "dietFeatures", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? DietFeatures { get; set; }
+        public OneOrMany<string>? DietFeatures { get; set; }
 
         /// <summary>
         /// People or organizations that endorse the plan.
@@ -35,27 +35,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "expertConsiderations", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ExpertConsiderations { get; set; }
+        public OneOrMany<string>? ExpertConsiderations { get; set; }
 
         /// <summary>
         /// Descriptive information establishing the overarching theory/philosophy of the plan. May include the rationale for the name, the population where the plan first came to prominence, etc.
         /// </summary>
         [DataMember(Name = "overview", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Overview { get; set; }
+        public OneOrMany<string>? Overview { get; set; }
 
         /// <summary>
         /// Specific physiologic benefits associated to the plan.
         /// </summary>
         [DataMember(Name = "physiologicalBenefits", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PhysiologicalBenefits { get; set; }
+        public OneOrMany<string>? PhysiologicalBenefits { get; set; }
 
         /// <summary>
         /// Specific physiologic risks associated to the diet plan.
         /// </summary>
         [DataMember(Name = "risks", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Risks { get; set; }
+        public OneOrMany<string>? Risks { get; set; }
     }
 }

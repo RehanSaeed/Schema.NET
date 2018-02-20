@@ -28,6 +28,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "realEstateAgent", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<RealEstateAgent>? RealEstateAgent { get; set; }
+        public OneOrMany<RealEstateAgent>? RealEstateAgent { get; set; }
     }
 }

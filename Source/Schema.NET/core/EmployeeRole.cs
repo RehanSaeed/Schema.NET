@@ -28,6 +28,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "salaryCurrency", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? SalaryCurrency { get; set; }
+        public OneOrMany<string>? SalaryCurrency { get; set; }
     }
 }

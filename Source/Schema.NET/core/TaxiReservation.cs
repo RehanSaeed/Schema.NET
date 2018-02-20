@@ -29,13 +29,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "pickupLocation", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place>? PickupLocation { get; set; }
+        public OneOrMany<Place>? PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
         [DataMember(Name = "pickupTime", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? PickupTime { get; set; }
+        public OneOrMany<DateTimeOffset?>? PickupTime { get; set; }
     }
 }

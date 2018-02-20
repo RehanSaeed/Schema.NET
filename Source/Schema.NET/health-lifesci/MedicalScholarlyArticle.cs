@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "publicationType", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PublicationType { get; set; }
+        public OneOrMany<string>? PublicationType { get; set; }
     }
 }

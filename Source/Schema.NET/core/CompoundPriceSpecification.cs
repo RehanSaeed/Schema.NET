@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "priceComponent", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<UnitPriceSpecification>? PriceComponent { get; set; }
+        public OneOrMany<UnitPriceSpecification>? PriceComponent { get; set; }
     }
 }

@@ -28,28 +28,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "lastReviewed", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DateTimeOffset?>? LastReviewed { get; set; }
+        public OneOrMany<DateTimeOffset?>? LastReviewed { get; set; }
 
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.
         /// </summary>
         [DataMember(Name = "mainContentOfPage", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<WebPageElement>? MainContentOfPage { get; set; }
+        public OneOrMany<WebPageElement>? MainContentOfPage { get; set; }
 
         /// <summary>
         /// Indicates the main image on the page.
         /// </summary>
         [DataMember(Name = "primaryImageOfPage", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ImageObject>? PrimaryImageOfPage { get; set; }
+        public OneOrMany<ImageObject>? PrimaryImageOfPage { get; set; }
 
         /// <summary>
         /// A link related to this web page, for example to other related web pages.
         /// </summary>
         [DataMember(Name = "relatedLink", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? RelatedLink { get; set; }
+        public OneOrMany<Uri>? RelatedLink { get; set; }
 
         /// <summary>
         /// People or organizations that have reviewed the content on this web page for accuracy and/or completeness.
@@ -63,7 +63,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "significantLink", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? SignificantLink { get; set; }
+        public OneOrMany<Uri>? SignificantLink { get; set; }
 
         /// <summary>
         /// Indicates sections of a Web page that are particularly 'speakable' in the sense of being highlighted as being especially appropriate for text-to-speech conversion. Other sections of a page may also be usefully spoken in particular circumstances; the 'speakable' property serves to indicate the parts most likely to be generally useful for speech.&lt;/p&gt;
@@ -76,13 +76,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "speakable", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? Speakable { get; set; }
+        public OneOrMany<Uri>? Speakable { get; set; }
 
         /// <summary>
         /// One of the domain specialities to which this web page's content applies.
         /// </summary>
         [DataMember(Name = "specialty", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Specialty?>? Specialty { get; set; }
+        public OneOrMany<Specialty?>? Specialty { get; set; }
     }
 }

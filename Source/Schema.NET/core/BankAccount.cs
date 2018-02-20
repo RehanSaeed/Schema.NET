@@ -21,14 +21,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "accountMinimumInflow", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MonetaryAmount>? AccountMinimumInflow { get; set; }
+        public OneOrMany<MonetaryAmount>? AccountMinimumInflow { get; set; }
 
         /// <summary>
         /// An overdraft is an extension of credit from a lending institution when an account reaches zero. An overdraft allows the individual to continue withdrawing money even if the account has no funds in it. Basically the bank allows people to borrow a set amount of money.
         /// </summary>
         [DataMember(Name = "accountOverdraftLimit", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MonetaryAmount>? AccountOverdraftLimit { get; set; }
+        public OneOrMany<MonetaryAmount>? AccountOverdraftLimit { get; set; }
 
         /// <summary>
         /// The type of a bank account.

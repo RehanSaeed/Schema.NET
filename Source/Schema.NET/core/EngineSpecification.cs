@@ -24,7 +24,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "engineDisplacement", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? EngineDisplacement { get; set; }
+        public OneOrMany<QuantitativeValue>? EngineDisplacement { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The power of the vehicle's engine.
@@ -37,7 +37,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "enginePower", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? EnginePower { get; set; }
+        public OneOrMany<QuantitativeValue>? EnginePower { get; set; }
 
         /// <summary>
         /// The type of engine or engines powering the vehicle.
@@ -63,6 +63,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "torque", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? Torque { get; set; }
+        public OneOrMany<QuantitativeValue>? Torque { get; set; }
     }
 }

@@ -21,20 +21,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "additionalNumberOfGuests", Order = 506)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<int?>? AdditionalNumberOfGuests { get; set; }
+        public OneOrMany<int?>? AdditionalNumberOfGuests { get; set; }
 
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
         [DataMember(Name = "comment", Order = 507)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Comment>? Comment { get; set; }
+        public OneOrMany<Comment>? Comment { get; set; }
 
         /// <summary>
         /// The response (yes, no, maybe) to the RSVP.
         /// </summary>
         [DataMember(Name = "rsvpResponse", Order = 508)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<RsvpResponseType?>? RsvpResponse { get; set; }
+        public OneOrMany<RsvpResponseType?>? RsvpResponse { get; set; }
     }
 }

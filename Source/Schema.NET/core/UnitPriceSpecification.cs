@@ -21,21 +21,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "billingIncrement", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?>? BillingIncrement { get; set; }
+        public OneOrMany<double?>? BillingIncrement { get; set; }
 
         /// <summary>
         /// A short text or acronym indicating multiple price specifications for the same offer, e.g. SRP for the suggested retail price or INVOICE for the invoice price, mostly used in the car industry.
         /// </summary>
         [DataMember(Name = "priceType", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? PriceType { get; set; }
+        public OneOrMany<string>? PriceType { get; set; }
 
         /// <summary>
         /// The reference quantity for which a certain price applies, e.g. 1 EUR per 4 kWh of electricity. This property is a replacement for unitOfMeasurement for the advanced cases where the price does not relate to a standard unit.
         /// </summary>
         [DataMember(Name = "referenceQuantity", Order = 408)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? ReferenceQuantity { get; set; }
+        public OneOrMany<QuantitativeValue>? ReferenceQuantity { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
@@ -50,6 +50,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "unitText", Order = 410)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? UnitText { get; set; }
+        public OneOrMany<string>? UnitText { get; set; }
     }
 }

@@ -21,14 +21,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "characterAttribute", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? CharacterAttribute { get; set; }
+        public OneOrMany<Thing>? CharacterAttribute { get; set; }
 
         /// <summary>
         /// An item is an object within the game world that can be collected by a player or, occasionally, a non-player character.
         /// </summary>
         [DataMember(Name = "gameItem", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? GameItem { get; set; }
+        public OneOrMany<Thing>? GameItem { get; set; }
 
         /// <summary>
         /// Real or fictional location of the game (or part of game).
@@ -42,13 +42,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberOfPlayers", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? NumberOfPlayers { get; set; }
+        public OneOrMany<QuantitativeValue>? NumberOfPlayers { get; set; }
 
         /// <summary>
         /// The task that a player-controlled character, or group of characters may complete in order to gain a reward.
         /// </summary>
         [DataMember(Name = "quest", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? Quest { get; set; }
+        public OneOrMany<Thing>? Quest { get; set; }
     }
 }

@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "boardingPolicy", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BoardingPolicyType?>? BoardingPolicy { get; set; }
+        public OneOrMany<BoardingPolicyType?>? BoardingPolicy { get; set; }
 
         /// <summary>
         /// IATA identifier for an airline or airport.
         /// </summary>
         [DataMember(Name = "iataCode", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? IataCode { get; set; }
+        public OneOrMany<string>? IataCode { get; set; }
     }
 }

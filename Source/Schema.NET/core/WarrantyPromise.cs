@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "durationOfWarranty", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue>? DurationOfWarranty { get; set; }
+        public OneOrMany<QuantitativeValue>? DurationOfWarranty { get; set; }
 
         /// <summary>
         /// The scope of the warranty promise.
         /// </summary>
         [DataMember(Name = "warrantyScope", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<WarrantyScope?>? WarrantyScope { get; set; }
+        public OneOrMany<WarrantyScope?>? WarrantyScope { get; set; }
     }
 }

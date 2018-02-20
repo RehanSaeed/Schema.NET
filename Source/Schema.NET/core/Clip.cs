@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "actor", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Actor { get; set; }
+        public OneOrMany<Person>? Actor { get; set; }
 
         /// <summary>
         /// Position of the clip within an ordered group of clips.
@@ -35,7 +35,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "director", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Director { get; set; }
+        public OneOrMany<Person>? Director { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -49,20 +49,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "partOfEpisode", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Episode>? PartOfEpisode { get; set; }
+        public OneOrMany<Episode>? PartOfEpisode { get; set; }
 
         /// <summary>
         /// The season to which this episode belongs.
         /// </summary>
         [DataMember(Name = "partOfSeason", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWorkSeason>? PartOfSeason { get; set; }
+        public OneOrMany<CreativeWorkSeason>? PartOfSeason { get; set; }
 
         /// <summary>
         /// The series to which this episode or season belongs.
         /// </summary>
         [DataMember(Name = "partOfSeries", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWorkSeries>? PartOfSeries { get; set; }
+        public OneOrMany<CreativeWorkSeries>? PartOfSeries { get; set; }
     }
 }

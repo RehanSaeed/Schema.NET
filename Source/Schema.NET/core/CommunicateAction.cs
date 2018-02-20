@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "about", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Thing>? About { get; set; }
+        public OneOrMany<Thing>? About { get; set; }
 
         /// <summary>
         /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.

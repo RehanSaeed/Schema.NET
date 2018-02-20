@@ -20,11 +20,11 @@ namespace Schema.NET
             if (valuesType.GenericTypeArguments.Length == 1)
             {
                 var mainType = valuesType.GenericTypeArguments[0];
-                var genericType = typeof(Values<TimeSpan>);
+                var genericType = typeof(OneOrMany<TimeSpan>);
                 if (mainType.IsNullable())
                 {
                     mainType = Nullable.GetUnderlyingType(mainType);
-                    genericType = typeof(Values<TimeSpan?>);
+                    genericType = typeof(OneOrMany<TimeSpan?>);
                 }
 
                 if (mainType == typeof(TimeSpan))

@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "affectedBy", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Drug>? AffectedBy { get; set; }
+        public OneOrMany<Drug>? AffectedBy { get; set; }
 
         /// <summary>
         /// Range of acceptable values for a typical patient, when applicable.
@@ -35,20 +35,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "signDetected", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalSign>? SignDetected { get; set; }
+        public OneOrMany<MedicalSign>? SignDetected { get; set; }
 
         /// <summary>
         /// A condition the test is used to diagnose.
         /// </summary>
         [DataMember(Name = "usedToDiagnose", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalCondition>? UsedToDiagnose { get; set; }
+        public OneOrMany<MedicalCondition>? UsedToDiagnose { get; set; }
 
         /// <summary>
         /// Device used to perform the test.
         /// </summary>
         [DataMember(Name = "usesDevice", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalDevice>? UsesDevice { get; set; }
+        public OneOrMany<MedicalDevice>? UsesDevice { get; set; }
     }
 }

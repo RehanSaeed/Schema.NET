@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hasMenuItem", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MenuItem>? HasMenuItem { get; set; }
+        public OneOrMany<MenuItem>? HasMenuItem { get; set; }
 
         /// <summary>
         /// A subgrouping of the menu (by dishes, course, serving time period, etc.).
         /// </summary>
         [DataMember(Name = "hasMenuSection", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MenuSection>? HasMenuSection { get; set; }
+        public OneOrMany<MenuSection>? HasMenuSection { get; set; }
     }
 }

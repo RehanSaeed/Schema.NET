@@ -21,21 +21,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "broadcastChannelId", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BroadcastChannelId { get; set; }
+        public OneOrMany<string>? BroadcastChannelId { get; set; }
 
         /// <summary>
         /// The frequency used for over-the-air broadcasts. Numeric values or simple ranges e.g. 87-99. In addition a shortcut idiom is supported for frequences of AM and FM radio channels, e.g. "87 FM".
         /// </summary>
         [DataMember(Name = "broadcastFrequency", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BroadcastFrequency { get; set; }
+        public OneOrMany<string>? BroadcastFrequency { get; set; }
 
         /// <summary>
         /// The type of service required to have access to the channel (e.g. Standard or Premium).
         /// </summary>
         [DataMember(Name = "broadcastServiceTier", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BroadcastServiceTier { get; set; }
+        public OneOrMany<string>? BroadcastServiceTier { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
@@ -49,13 +49,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "inBroadcastLineup", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CableOrSatelliteService>? InBroadcastLineup { get; set; }
+        public OneOrMany<CableOrSatelliteService>? InBroadcastLineup { get; set; }
 
         /// <summary>
         /// The BroadcastService offered on this channel.
         /// </summary>
         [DataMember(Name = "providesBroadcastService", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BroadcastService>? ProvidesBroadcastService { get; set; }
+        public OneOrMany<BroadcastService>? ProvidesBroadcastService { get; set; }
     }
 }

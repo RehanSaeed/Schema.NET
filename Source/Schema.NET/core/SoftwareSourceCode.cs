@@ -21,14 +21,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "codeRepository", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Uri>? CodeRepository { get; set; }
+        public OneOrMany<Uri>? CodeRepository { get; set; }
 
         /// <summary>
         /// What type of code sample: full (compile ready) solution, code snippet, inline code, scripts, template.
         /// </summary>
         [DataMember(Name = "codeSampleType", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? CodeSampleType { get; set; }
+        public OneOrMany<string>? CodeSampleType { get; set; }
 
         /// <summary>
         /// The computer programming language.
@@ -42,13 +42,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "runtimePlatform", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? RuntimePlatform { get; set; }
+        public OneOrMany<string>? RuntimePlatform { get; set; }
 
         /// <summary>
         /// Target Operating System / Product to which the code applies.  If applies to several versions, just the product name can be used.
         /// </summary>
         [DataMember(Name = "targetProduct", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<SoftwareApplication>? TargetProduct { get; set; }
+        public OneOrMany<SoftwareApplication>? TargetProduct { get; set; }
     }
 }

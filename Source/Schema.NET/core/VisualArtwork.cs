@@ -37,7 +37,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "artist", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<Person>? Artist { get; set; }
+        public virtual OneOrMany<Person>? Artist { get; set; }
 
         /// <summary>
         /// The material used. (e.g. Oil, Watercolour, Acrylic, Linoprint, Marble, Cyanotype, Digital, Lithograph, DryPoint, Intaglio, Pastel, Woodcut, Pencil, Mixed Media, etc.)
@@ -58,7 +58,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "colorist", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<Person>? Colorist { get; set; }
+        public virtual OneOrMany<Person>? Colorist { get; set; }
 
         /// <summary>
         /// The depth of the item.
@@ -79,21 +79,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "inker", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<Person>? Inker { get; set; }
+        public virtual OneOrMany<Person>? Inker { get; set; }
 
         /// <summary>
         /// The individual who adds lettering, including speech balloons and sound effects, to artwork.
         /// </summary>
         [DataMember(Name = "letterer", Order = 215)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<Person>? Letterer { get; set; }
+        public virtual OneOrMany<Person>? Letterer { get; set; }
 
         /// <summary>
         /// The individual who draws the primary narrative artwork.
         /// </summary>
         [DataMember(Name = "penciler", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<Person>? Penciler { get; set; }
+        public virtual OneOrMany<Person>? Penciler { get; set; }
 
         /// <summary>
         /// The width of the item.

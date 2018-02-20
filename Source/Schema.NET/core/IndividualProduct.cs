@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "serialNumber", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? SerialNumber { get; set; }
+        public OneOrMany<string>? SerialNumber { get; set; }
     }
 }

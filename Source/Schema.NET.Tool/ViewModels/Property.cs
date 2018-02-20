@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.ViewModels
+namespace Schema.NET.Tool.ViewModels
 {
     using System;
     using System.Collections.Generic;

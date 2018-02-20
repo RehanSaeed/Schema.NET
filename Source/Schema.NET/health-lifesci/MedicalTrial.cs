@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "phase", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Phase { get; set; }
+        public OneOrMany<string>? Phase { get; set; }
 
         /// <summary>
         /// Specifics about the trial design (enumerated).
         /// </summary>
         [DataMember(Name = "trialDesign", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalTrialDesign?>? TrialDesign { get; set; }
+        public OneOrMany<MedicalTrialDesign?>? TrialDesign { get; set; }
     }
 }

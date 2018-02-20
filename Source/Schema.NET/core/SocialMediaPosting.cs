@@ -21,6 +21,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "sharedContent", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork>? SharedContent { get; set; }
+        public OneOrMany<CreativeWork>? SharedContent { get; set; }
     }
 }

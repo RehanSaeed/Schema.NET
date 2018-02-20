@@ -21,28 +21,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "bodyLocation", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? BodyLocation { get; set; }
+        public OneOrMany<string>? BodyLocation { get; set; }
 
         /// <summary>
         /// Typical or recommended followup care after the procedure is performed.
         /// </summary>
         [DataMember(Name = "followup", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? Followup { get; set; }
+        public OneOrMany<string>? Followup { get; set; }
 
         /// <summary>
         /// How the procedure is performed.
         /// </summary>
         [DataMember(Name = "howPerformed", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? HowPerformed { get; set; }
+        public OneOrMany<string>? HowPerformed { get; set; }
 
         /// <summary>
         /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
         /// </summary>
         [DataMember(Name = "indication", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<MedicalIndication>? Indication { get; set; }
+        public virtual OneOrMany<MedicalIndication>? Indication { get; set; }
 
         /// <summary>
         /// Expected or actual outcomes of the study.
@@ -63,7 +63,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "procedureType", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalProcedureType?>? ProcedureType { get; set; }
+        public OneOrMany<MedicalProcedureType?>? ProcedureType { get; set; }
 
         /// <summary>
         /// The status of the study (enumerated).

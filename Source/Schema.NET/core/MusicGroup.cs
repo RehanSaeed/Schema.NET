@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "album", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MusicAlbum>? Album { get; set; }
+        public OneOrMany<MusicAlbum>? Album { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.

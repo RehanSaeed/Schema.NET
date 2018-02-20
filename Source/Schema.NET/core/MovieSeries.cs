@@ -21,14 +21,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "actor", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Actor { get; set; }
+        public OneOrMany<Person>? Actor { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "director", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person>? Director { get; set; }
+        public OneOrMany<Person>? Director { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -42,13 +42,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "productionCompany", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization>? ProductionCompany { get; set; }
+        public OneOrMany<Organization>? ProductionCompany { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
         [DataMember(Name = "trailer", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<VideoObject>? Trailer { get; set; }
+        public OneOrMany<VideoObject>? Trailer { get; set; }
     }
 }

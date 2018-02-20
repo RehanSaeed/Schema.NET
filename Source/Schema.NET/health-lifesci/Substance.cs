@@ -21,13 +21,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "activeIngredient", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<string>? ActiveIngredient { get; set; }
+        public virtual OneOrMany<string>? ActiveIngredient { get; set; }
 
         /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
         [DataMember(Name = "maximumIntake", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Values<MaximumDoseSchedule>? MaximumIntake { get; set; }
+        public virtual OneOrMany<MaximumDoseSchedule>? MaximumIntake { get; set; }
     }
 }

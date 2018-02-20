@@ -35,13 +35,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "servesCuisine", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string>? ServesCuisine { get; set; }
+        public OneOrMany<string>? ServesCuisine { get; set; }
 
         /// <summary>
         /// An official rating for a lodging business or food establishment, e.g. from national associations or standards bodies. Use the author property to indicate the rating organization, e.g. as an Organization with name such as (e.g. HOTREC, DEHOGA, WHR, or Hotelstars).
         /// </summary>
         [DataMember(Name = "starRating", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Rating>? StarRating { get; set; }
+        public OneOrMany<Rating>? StarRating { get; set; }
     }
 }

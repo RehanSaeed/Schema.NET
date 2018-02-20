@@ -28,14 +28,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "performTime", Order = 207)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public Values<TimeSpan?>? PerformTime { get; set; }
+        public OneOrMany<TimeSpan?>? PerformTime { get; set; }
 
         /// <summary>
         /// The length of time it takes to prepare the items to be used in instructions or a direction, in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "prepTime", Order = 208)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public Values<TimeSpan?>? PrepTime { get; set; }
+        public OneOrMany<TimeSpan?>? PrepTime { get; set; }
 
         /// <summary>
         /// The steps in the form of a single item (text, document, video, etc.) or an ordered list with HowToStep and/or HowToSection items.
@@ -63,7 +63,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "totalTime", Order = 212)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public Values<TimeSpan?>? TotalTime { get; set; }
+        public OneOrMany<TimeSpan?>? TotalTime { get; set; }
 
         /// <summary>
         /// The quantity that results by performing instructions. For example, a paper airplane, 10 personalized candles.
