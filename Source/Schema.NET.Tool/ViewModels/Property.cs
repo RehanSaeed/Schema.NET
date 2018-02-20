@@ -37,7 +37,7 @@ namespace Schema.NET.Tool.ViewModels
             modifier = isOverride ? " override" : modifier;
 
             var adjustedTypes = string.Join(", ", this.Types.Select(x => x.CSharpTypeString));
-            var typeString = $"Values<{adjustedTypes}>?";
+            var typeString = $"OneOrMany<{adjustedTypes}>?";
 
             stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.JsonName}\", Order = {this.Order})]");
 
