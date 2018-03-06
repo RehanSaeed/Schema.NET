@@ -7,12 +7,11 @@ using Newtonsoft.Json.Linq;
 
 namespace Schema.NET
 {
-
     public class WrapperConverter : JsonConverter
     {
         private const string NamespacePrefix = "Schema.NET.";
 
-        private Dictionary<Type, Dictionary<Type, Type>> interfaceImplementors = new Dictionary<Type, Dictionary<Type, Type>>();
+        public static Dictionary<Type, Dictionary<Type, Type>> interfaceImplementors = new Dictionary<Type, Dictionary<Type, Type>>();
 
         public override bool CanConvert(Type objectType) => objectType == typeof(IWrapper);
         
@@ -35,6 +34,7 @@ namespace Schema.NET
             }
 
             var token = JToken.Load(reader);
+            if (!token.HasValues && value == null) return null;
             foreach (var implType in impl)
             {
                 var type = implType.Key;
@@ -76,6 +76,10 @@ namespace Schema.NET
                         {
                             args = value;
                         }
+                        else if (type == typeof(Uri))
+                        {
+                            args = new Uri(value.ToString(), UriKind.RelativeOrAbsolute);
+                        }
                         else if (type == typeof(decimal))
                         {
                             args = Convert.ToDecimal(value);
@@ -85,18 +89,29 @@ namespace Schema.NET
                             args = token.ToObject(type); // This is expected to throw on some case
                         }
                     }
-                     
+
                     if (args != null)
-                        return Activator.CreateInstance(implType.Value, args);
+                    {
+                        var constructor = implType.Value.GetConstructor(new Type[] { args.GetType() });
+                        if (constructor != null)
+                        {
+                            return constructor.Invoke(new object[] { args });
+                        }                        
+                    }
                 }
                 catch (Exception e)
                 {
                     // Nasty, but we're trying brute force as a last resort, to
                     // see which type has the right constructor for this value
+#if DEBUG
                     Console.WriteLine(e);
+#endif
                 }
             }
-
+#if DEBUG
+            Console.WriteLine("Could not parse:" + token);
+            Console.WriteLine(token);
+#endif
             return null;
         }
 
@@ -111,9 +126,9 @@ namespace Schema.NET
         {
             var values = (IWrapper)value;
             var obj = values.Data;
-
+            
             var token = JToken.FromObject(obj, serializer);
-            token.WriteTo(writer);
+            token.WriteTo(writer);            
         }
 
         private static object SanitizeReaderValue(JsonReader reader, JsonToken tokenType) =>

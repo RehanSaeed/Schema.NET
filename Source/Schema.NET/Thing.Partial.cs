@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
@@ -40,5 +41,24 @@ namespace Schema.NET
             stringBuilder.Replace(ContextPropertyJson, string.Empty, startIndex, stringBuilder.Length - startIndex);
             return stringBuilder.ToString();
         }
+
+        public Thing()
+        {
+
+        }
+
+        public Thing(Uri url)
+        {
+            Url = url;
+        }
+
+        public static implicit operator Thing(Uri url) => new Thing(url);
+
+        public Thing(string name)
+        {
+            Name = name;
+        }
+
+        public static implicit operator Thing(string name) => new Thing(name);
     }
 }

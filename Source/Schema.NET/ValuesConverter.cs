@@ -47,6 +47,7 @@ namespace Schema.NET
             var value = SanitizeReaderValue(reader, tokenType);
 
             var token = JToken.Load(reader);
+            if (!token.HasValues && value == null) return null;
             if (mainType.GenericTypeArguments.Length == 1)
             {
                 var type = mainType.GenericTypeArguments[0].GetUnderlyingTypeFromNullable();
@@ -77,6 +78,10 @@ namespace Schema.NET
                 {
                     argument = value;
                 }
+                else if (type == typeof(Uri))
+                {
+                    argument = new Uri(value.ToString(), UriKind.RelativeOrAbsolute);
+                }
                 else if (type == typeof(decimal))
                 {
                     argument = Convert.ToDecimal(value);
@@ -88,8 +93,11 @@ namespace Schema.NET
                 {
                     if (type.GetTypeInfo().IsEnum)
                     {
-                        var enumString = token.ToString().Substring("http://schema.org/".Length);
-                        argument = Enum.Parse(type, enumString);
+                        var enumString = token.ToString();
+                        if (token.ToString().StartsWith("http://schema.org/"))
+                            enumString = token.ToString().Substring("http://schema.org/".Length);
+
+                        Enum.TryParse(type, enumString, out argument);
                     }
                     else
                     {
