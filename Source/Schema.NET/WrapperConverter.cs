@@ -95,7 +95,8 @@ namespace Schema.NET
                         var constructor = implType.Value.GetConstructor(new Type[] { args.GetType() });
                         if (constructor != null)
                         {
-                            return constructor.Invoke(new object[] { args });
+                            var result = constructor.Invoke(new object[] { args });
+                            return result;
                         }                        
                     }
                 }

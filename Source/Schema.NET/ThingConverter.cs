@@ -28,6 +28,11 @@ namespace Schema.NET
                     builtType = typeof(Thing).Assembly.GetTypes().FirstOrDefault(p => p.Name.Equals(typeName, StringComparison.OrdinalIgnoreCase));
                 }
 
+                if (builtType == null)
+                {
+                    builtType = typeof(Thing);
+                }
+
                 existingValue = Convert.ChangeType(existingValue, builtType);
                 existingValue = Activator.CreateInstance(builtType);
 

@@ -33,9 +33,17 @@ namespace Schema.NET
 
                 if (mainType == typeof(TimeSpan))
                 {
-                    var timeSpan = XmlConvert.ToTimeSpan(reader.Value.ToString());
-                    var instance = Activator.CreateInstance(genericType, timeSpan);
-                    return instance;
+                    if (reader.Value != null)
+                    {
+                        var timespan = reader.Value.ToString();
+                        if (!string.IsNullOrEmpty(timespan))
+                        {
+                            var timeSpan = XmlConvert.ToTimeSpan(timespan);
+                            var instance = Activator.CreateInstance(genericType, timeSpan);
+                            return instance;
+                        }
+                    }
+                    return null;
                 }
             }
 
