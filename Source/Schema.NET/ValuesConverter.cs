@@ -219,6 +219,22 @@ namespace Schema.NET
         private static string GetTypeNameFromToken(JToken token)
         {
             var typeNameToken = token.Values().FirstOrDefault(t => t.Path.EndsWith("@type"));
+            if (typeNameToken is JArray array)
+            {
+                if (!array.Any())
+                {
+                    throw new ArgumentException("Type was an empty array");
+                }
+
+                typeNameToken.Parent.Remove();
+                if (token is JContainer container)
+                {
+                    var value = array.First.Value<string>();
+                    container.Add(new JProperty("@type", value));
+                    return value;
+                }
+            }
+
             return typeNameToken?.Value<string>();
         }
     }
