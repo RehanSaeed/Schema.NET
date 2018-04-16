@@ -126,3 +126,7 @@ This magic is all carried out using the `Value<T>`, `Value<T1, T2>`, `Value<T1, 
 | Name | NuGet | MyGet |
 | :--- | :---  | :---  |
 | Schema.NET | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET MyGet Package](https://img.shields.io/myget/schema-net/v/Schema.Net.svg)](http://myget.org/gallery/schema-net) |
+
+## Contributions and Thanks
+
+- [psampaio](https://github.com/psampaio) - Added deserialization support and unit tests.
