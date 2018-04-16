@@ -6,7 +6,7 @@ namespace Schema.NET.Test
 
     public class ThingTest
     {
-        private Thing thing = new Thing()
+        private readonly Thing thing = new Thing()
         {
             Name = "New Object",
             Description = "This is the description of a new object we can't deserialize",
