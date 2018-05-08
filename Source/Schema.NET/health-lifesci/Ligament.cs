@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A short band of tough, flexible, fibrous connective tissue that functions to connect multiple bones, cartilages, and structurally support joints.
     /// </summary>
+    public partial interface ILigament : IAnatomicalStructure
+    {
+    }
+
+    /// <summary>
+    /// A short band of tough, flexible, fibrous connective tissue that functions to connect multiple bones, cartilages, and structurally support joints.
+    /// </summary>
     [DataContract]
-    public partial class Ligament : AnatomicalStructure
+    public partial class Ligament : AnatomicalStructure, ILigament
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

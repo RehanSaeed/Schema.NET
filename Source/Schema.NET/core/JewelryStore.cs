@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A jewelry store.
     /// </summary>
+    public partial interface IJewelryStore : IStore
+    {
+    }
+
+    /// <summary>
+    /// A jewelry store.
+    /// </summary>
     [DataContract]
-    public partial class JewelryStore : Store
+    public partial class JewelryStore : Store, IJewelryStore
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

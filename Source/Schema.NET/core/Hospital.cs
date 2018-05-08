@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A hospital.
     /// </summary>
+    public partial interface IHospital : ICivicStructureAndEmergencyServiceAndMedicalOrganization
+    {
+        /// <summary>
+        /// A medical service available from this provider.
+        /// </summary>
+        Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy>? AvailableService { get; set; }
+    }
+
+    /// <summary>
+    /// A hospital.
+    /// </summary>
     [DataContract]
-    public partial class Hospital : CivicStructureAndEmergencyServiceAndMedicalOrganization
+    public partial class Hospital : CivicStructureAndEmergencyServiceAndMedicalOrganization, IHospital
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +32,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "availableService", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalProcedure, MedicalTest, MedicalTherapy>? AvailableService { get; set; }
+        public Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy>? AvailableService { get; set; }
 
         /// <summary>
         /// A medical specialty of the provider.

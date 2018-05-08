@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A comedy club.
     /// </summary>
+    public partial interface IComedyClub : IEntertainmentBusiness
+    {
+    }
+
+    /// <summary>
+    /// A comedy club.
+    /// </summary>
     [DataContract]
-    public partial class ComedyClub : EntertainmentBusiness
+    public partial class ComedyClub : EntertainmentBusiness, IComedyClub
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

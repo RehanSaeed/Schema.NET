@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of capturing still images of objects using a camera.
     /// </summary>
+    public partial interface IPhotographAction : ICreateAction
+    {
+    }
+
+    /// <summary>
+    /// The act of capturing still images of objects using a camera.
+    /// </summary>
     [DataContract]
-    public partial class PhotographAction : CreateAction
+    public partial class PhotographAction : CreateAction, IPhotographAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

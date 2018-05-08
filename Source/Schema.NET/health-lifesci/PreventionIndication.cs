@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An indication for preventing an underlying condition, symptom, etc.
     /// </summary>
+    public partial interface IPreventionIndication : IMedicalIndication
+    {
+    }
+
+    /// <summary>
+    /// An indication for preventing an underlying condition, symptom, etc.
+    /// </summary>
     [DataContract]
-    public partial class PreventionIndication : MedicalIndication
+    public partial class PreventionIndication : MedicalIndication, IPreventionIndication
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

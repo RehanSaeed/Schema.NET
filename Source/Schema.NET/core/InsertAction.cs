@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// The act of adding at a specific location in an ordered collection.
     /// </summary>
+    public partial interface IInsertAction : IAddAction
+    {
+        /// <summary>
+        /// A sub property of location. The final location of the object or the agent after the action.
+        /// </summary>
+        OneOrMany<IPlace>? ToLocation { get; set; }
+    }
+
+    /// <summary>
+    /// The act of adding at a specific location in an ordered collection.
+    /// </summary>
     [DataContract]
-    public partial class InsertAction : AddAction
+    public partial class InsertAction : AddAction, IInsertAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "toLocation", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Place>? ToLocation { get; set; }
+        public OneOrMany<IPlace>? ToLocation { get; set; }
     }
 }

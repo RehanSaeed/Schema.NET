@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// See CivicStructure, EntertainmentBusiness for more information.
     /// </summary>
+    public partial interface ICivicStructureAndEntertainmentBusiness : ICivicStructure, IEntertainmentBusiness
+    {
+    }
+
+    /// <summary>
+    /// See CivicStructure, EntertainmentBusiness for more information.
+    /// </summary>
     [DataContract]
-    public abstract partial class CivicStructureAndEntertainmentBusiness : LocalBusinessAndPlace
+    public abstract partial class CivicStructureAndEntertainmentBusiness : LocalBusinessAndPlace, ICivicStructureAndEntertainmentBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

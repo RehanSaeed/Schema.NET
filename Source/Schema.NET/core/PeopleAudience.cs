@@ -7,8 +7,49 @@ namespace Schema.NET
     /// <summary>
     /// A set of characteristics belonging to people, e.g. who compose an item's target audience.
     /// </summary>
+    public partial interface IPeopleAudience : IAudience
+    {
+        /// <summary>
+        /// Specifying the health condition(s) of a patient, medical study, or other target audience.
+        /// </summary>
+        OneOrMany<IMedicalCondition>? HealthCondition { get; set; }
+
+        /// <summary>
+        /// Audiences defined by a person's gender.
+        /// </summary>
+        OneOrMany<string>? RequiredGender { get; set; }
+
+        /// <summary>
+        /// Audiences defined by a person's maximum age.
+        /// </summary>
+        OneOrMany<int?>? RequiredMaxAge { get; set; }
+
+        /// <summary>
+        /// Audiences defined by a person's minimum age.
+        /// </summary>
+        OneOrMany<int?>? RequiredMinAge { get; set; }
+
+        /// <summary>
+        /// The gender of the person or audience.
+        /// </summary>
+        OneOrMany<string>? SuggestedGender { get; set; }
+
+        /// <summary>
+        /// Maximal age recommended for viewing content.
+        /// </summary>
+        OneOrMany<int?>? SuggestedMaxAge { get; set; }
+
+        /// <summary>
+        /// Minimal age recommended for viewing content.
+        /// </summary>
+        OneOrMany<int?>? SuggestedMinAge { get; set; }
+    }
+
+    /// <summary>
+    /// A set of characteristics belonging to people, e.g. who compose an item's target audience.
+    /// </summary>
     [DataContract]
-    public partial class PeopleAudience : Audience
+    public partial class PeopleAudience : Audience, IPeopleAudience
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +62,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "healthCondition", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MedicalCondition>? HealthCondition { get; set; }
+        public OneOrMany<IMedicalCondition>? HealthCondition { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's gender.

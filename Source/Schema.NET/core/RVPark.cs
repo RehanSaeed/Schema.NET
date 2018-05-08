@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
     /// </summary>
+    public partial interface IRVPark : ICivicStructure
+    {
+    }
+
+    /// <summary>
+    /// A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
+    /// </summary>
     [DataContract]
-    public partial class RVPark : CivicStructure
+    public partial class RVPark : CivicStructure, IRVPark
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A sub-grouping of steps in the instructions for how to achieve a result (e.g. steps for making a pie crust within a pie recipe).
     /// </summary>
+    public partial interface IHowToSection : IItemList
+    {
+        /// <summary>
+        /// The steps in the form of a single item (text, document, video, etc.) or an ordered list with HowToStep and/or HowToSection items.
+        /// </summary>
+        Values<ICreativeWork, IItemList, string>? Steps { get; set; }
+    }
+
+    /// <summary>
+    /// A sub-grouping of steps in the instructions for how to achieve a result (e.g. steps for making a pie crust within a pie recipe).
+    /// </summary>
     [DataContract]
-    public partial class HowToSection : ItemList
+    public partial class HowToSection : ItemList, IHowToSection
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "steps", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork, ItemList, string>? Steps { get; set; }
+        public Values<ICreativeWork, IItemList, string>? Steps { get; set; }
     }
 }

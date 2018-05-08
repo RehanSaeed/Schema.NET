@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// Any physical manifestation of a person's medical condition discoverable by objective diagnostic tests or physical examination.
     /// </summary>
+    public partial interface IMedicalSign : IMedicalSignOrSymptom
+    {
+        /// <summary>
+        /// A physical examination that can identify this sign.
+        /// </summary>
+        OneOrMany<PhysicalExam?>? IdentifyingExam { get; set; }
+
+        /// <summary>
+        /// A diagnostic test that can identify this sign.
+        /// </summary>
+        OneOrMany<IMedicalTest>? IdentifyingTest { get; set; }
+    }
+
+    /// <summary>
+    /// Any physical manifestation of a person's medical condition discoverable by objective diagnostic tests or physical examination.
+    /// </summary>
     [DataContract]
-    public partial class MedicalSign : MedicalSignOrSymptom
+    public partial class MedicalSign : MedicalSignOrSymptom, IMedicalSign
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -28,6 +44,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "identifyingTest", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MedicalTest>? IdentifyingTest { get; set; }
+        public OneOrMany<IMedicalTest>? IdentifyingTest { get; set; }
     }
 }

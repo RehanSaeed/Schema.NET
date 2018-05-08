@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits.
     /// </summary>
+    public partial interface IDepositAccount : IBankAccountAndInvestmentOrDeposit
+    {
+    }
+
+    /// <summary>
+    /// A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits.
+    /// </summary>
     [DataContract]
-    public partial class DepositAccount : BankAccountAndInvestmentOrDeposit
+    public partial class DepositAccount : BankAccountAndInvestmentOrDeposit, IDepositAccount
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
     /// </summary>
+    public partial interface ISportsOrganization : IOrganization
+    {
+        /// <summary>
+        /// A type of sport (e.g. Baseball).
+        /// </summary>
+        Values<string, Uri>? Sport { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
+    /// </summary>
     [DataContract]
-    public partial class SportsOrganization : Organization
+    public partial class SportsOrganization : Organization, ISportsOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

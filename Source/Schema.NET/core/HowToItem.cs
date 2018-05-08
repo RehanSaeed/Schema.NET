@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// An item used as either a tool or supply when performing the instructions for how to to achieve a result.
     /// </summary>
+    public partial interface IHowToItem : IListItem
+    {
+        /// <summary>
+        /// The required quantity of the item(s).
+        /// </summary>
+        Values<double?, IQuantitativeValue, string>? RequiredQuantity { get; set; }
+    }
+
+    /// <summary>
+    /// An item used as either a tool or supply when performing the instructions for how to to achieve a result.
+    /// </summary>
     [DataContract]
-    public partial class HowToItem : ListItem
+    public partial class HowToItem : ListItem, IHowToItem
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "requiredQuantity", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<double?, QuantitativeValue, string>? RequiredQuantity { get; set; }
+        public Values<double?, IQuantitativeValue, string>? RequiredQuantity { get; set; }
     }
 }

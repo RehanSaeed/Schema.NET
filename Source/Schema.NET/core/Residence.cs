@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The place where a person lives.
     /// </summary>
+    public partial interface IResidence : IPlace
+    {
+    }
+
+    /// <summary>
+    /// The place where a person lives.
+    /// </summary>
     [DataContract]
-    public partial class Residence : Place
+    public partial class Residence : Place, IResidence
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

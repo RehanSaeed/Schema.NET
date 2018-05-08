@@ -7,8 +7,34 @@ namespace Schema.NET
     /// <summary>
     /// A structured value providing information about when a certain organization or person owned a certain product.
     /// </summary>
+    public partial interface IOwnershipInfo : IStructuredValue
+    {
+        /// <summary>
+        /// The organization or person from which the product was acquired.
+        /// </summary>
+        Values<IOrganization, IPerson>? AcquiredFrom { get; set; }
+
+        /// <summary>
+        /// The date and time of obtaining the product.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? OwnedFrom { get; set; }
+
+        /// <summary>
+        /// The date and time of giving up ownership on the product.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? OwnedThrough { get; set; }
+
+        /// <summary>
+        /// The product that this structured value is referring to.
+        /// </summary>
+        Values<IProduct, IService>? TypeOfGood { get; set; }
+    }
+
+    /// <summary>
+    /// A structured value providing information about when a certain organization or person owned a certain product.
+    /// </summary>
     [DataContract]
-    public partial class OwnershipInfo : StructuredValue
+    public partial class OwnershipInfo : StructuredValue, IOwnershipInfo
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +47,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "acquiredFrom", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? AcquiredFrom { get; set; }
+        public Values<IOrganization, IPerson>? AcquiredFrom { get; set; }
 
         /// <summary>
         /// The date and time of obtaining the product.
@@ -42,6 +68,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "typeOfGood", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Product, Service>? TypeOfGood { get; set; }
+        public Values<IProduct, IService>? TypeOfGood { get; set; }
     }
 }

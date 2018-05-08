@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// An EducationalAudience.
     /// </summary>
+    public partial interface IEducationalAudience : IAudience
+    {
+        /// <summary>
+        /// An educationalRole of an EducationalAudience.
+        /// </summary>
+        OneOrMany<string>? EducationalRole { get; set; }
+    }
+
+    /// <summary>
+    /// An EducationalAudience.
+    /// </summary>
     [DataContract]
-    public partial class EducationalAudience : Audience
+    public partial class EducationalAudience : Audience, IEducationalAudience
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

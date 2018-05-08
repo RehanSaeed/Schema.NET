@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An educational organization.
     /// </summary>
+    public partial interface IEducationalOrganization : IOrganization
+    {
+    }
+
+    /// <summary>
+    /// An educational organization.
+    /// </summary>
     [DataContract]
-    public partial class EducationalOrganization : Organization
+    public partial class EducationalOrganization : Organization, IEducationalOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +28,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "alumni", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Person>? Alumni { get; set; }
+        public override OneOrMany<IPerson>? Alumni { get; set; }
     }
 }

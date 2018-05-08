@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// Season dedicated to TV broadcast and associated online delivery.
     /// </summary>
+    public partial interface ITVSeason : ICreativeWorkSeason
+    {
+        /// <summary>
+        /// The country of the principal offices of the production company or individual responsible for the movie or program.
+        /// </summary>
+        OneOrMany<ICountry>? CountryOfOrigin { get; set; }
+    }
+
+    /// <summary>
+    /// Season dedicated to TV broadcast and associated online delivery.
+    /// </summary>
     [DataContract]
-    public partial class TVSeason : CreativeWorkSeason
+    public partial class TVSeason : CreativeWorkSeason, ITVSeason
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "countryOfOrigin", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Country>? CountryOfOrigin { get; set; }
+        public OneOrMany<ICountry>? CountryOfOrigin { get; set; }
     }
 }

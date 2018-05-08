@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A country.
     /// </summary>
+    public partial interface ICountry : IAdministrativeArea
+    {
+    }
+
+    /// <summary>
+    /// A country.
+    /// </summary>
     [DataContract]
-    public partial class Country : AdministrativeArea
+    public partial class Country : AdministrativeArea, ICountry
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

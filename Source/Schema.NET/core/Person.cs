@@ -7,8 +7,270 @@ namespace Schema.NET
     /// <summary>
     /// A person (alive, dead, undead, or fictional).
     /// </summary>
+    public partial interface IPerson : IThing
+    {
+        /// <summary>
+        /// An additional name for a Person, can be used for a middle name.
+        /// </summary>
+        OneOrMany<string>? AdditionalName { get; set; }
+
+        /// <summary>
+        /// Physical address of the item.
+        /// </summary>
+        Values<IPostalAddress, string>? Address { get; set; }
+
+        /// <summary>
+        /// An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+        /// </summary>
+        OneOrMany<IOrganization>? Affiliation { get; set; }
+
+        /// <summary>
+        /// An organization that the person is an alumni of.
+        /// </summary>
+        Values<IEducationalOrganization, IOrganization>? AlumniOf { get; set; }
+
+        /// <summary>
+        /// An award won by or for this item.
+        /// </summary>
+        OneOrMany<string>? Award { get; set; }
+
+        /// <summary>
+        /// Date of birth.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? BirthDate { get; set; }
+
+        /// <summary>
+        /// The place where the person was born.
+        /// </summary>
+        OneOrMany<IPlace>? BirthPlace { get; set; }
+
+        /// <summary>
+        /// The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+        /// </summary>
+        Values<IBrand, IOrganization>? Brand { get; set; }
+
+        /// <summary>
+        /// A child of the person.
+        /// </summary>
+        OneOrMany<IPerson>? Children { get; set; }
+
+        /// <summary>
+        /// A colleague of the person.
+        /// </summary>
+        Values<IPerson, Uri>? Colleague { get; set; }
+
+        /// <summary>
+        /// A contact point for a person or organization.
+        /// </summary>
+        OneOrMany<IContactPoint>? ContactPoint { get; set; }
+
+        /// <summary>
+        /// Date of death.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? DeathDate { get; set; }
+
+        /// <summary>
+        /// The place where the person died.
+        /// </summary>
+        OneOrMany<IPlace>? DeathPlace { get; set; }
+
+        /// <summary>
+        /// The Dun &amp;amp; Bradstreet DUNS number for identifying an organization or business person.
+        /// </summary>
+        OneOrMany<string>? Duns { get; set; }
+
+        /// <summary>
+        /// Email address.
+        /// </summary>
+        OneOrMany<string>? Email { get; set; }
+
+        /// <summary>
+        /// Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.
+        /// </summary>
+        OneOrMany<string>? FamilyName { get; set; }
+
+        /// <summary>
+        /// The fax number.
+        /// </summary>
+        OneOrMany<string>? FaxNumber { get; set; }
+
+        /// <summary>
+        /// The most generic uni-directional social relation.
+        /// </summary>
+        OneOrMany<IPerson>? Follows { get; set; }
+
+        /// <summary>
+        /// A person or organization that supports (sponsors) something through some kind of financial contribution.
+        /// </summary>
+        Values<IOrganization, IPerson>? Funder { get; set; }
+
+        /// <summary>
+        /// Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
+        /// </summary>
+        Values<GenderType?, string>? Gender { get; set; }
+
+        /// <summary>
+        /// Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.
+        /// </summary>
+        OneOrMany<string>? GivenName { get; set; }
+
+        /// <summary>
+        /// The &lt;a href="http://www.gs1.org/gln"&gt;Global Location Number&lt;/a&gt; (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+        /// </summary>
+        OneOrMany<string>? GlobalLocationNumber { get; set; }
+
+        /// <summary>
+        /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
+        /// </summary>
+        OneOrMany<IOfferCatalog>? HasOfferCatalog { get; set; }
+
+        /// <summary>
+        /// Points-of-Sales operated by the organization or person.
+        /// </summary>
+        OneOrMany<IPlace>? HasPOS { get; set; }
+
+        /// <summary>
+        /// The height of the item.
+        /// </summary>
+        Values<string, IQuantitativeValue>? Height { get; set; }
+
+        /// <summary>
+        /// A contact location for a person's residence.
+        /// </summary>
+        Values<IContactPoint, IPlace>? HomeLocation { get; set; }
+
+        /// <summary>
+        /// An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
+        /// </summary>
+        OneOrMany<string>? HonorificPrefix { get; set; }
+
+        /// <summary>
+        /// An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.
+        /// </summary>
+        OneOrMany<string>? HonorificSuffix { get; set; }
+
+        /// <summary>
+        /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+        /// </summary>
+        OneOrMany<string>? IsicV4 { get; set; }
+
+        /// <summary>
+        /// The job title of the person (for example, Financial Manager).
+        /// </summary>
+        OneOrMany<string>? JobTitle { get; set; }
+
+        /// <summary>
+        /// The most generic bi-directional social/work relation.
+        /// </summary>
+        OneOrMany<IPerson>? Knows { get; set; }
+
+        /// <summary>
+        /// A pointer to products or services offered by the organization or person.
+        /// </summary>
+        OneOrMany<IOffer>? MakesOffer { get; set; }
+
+        /// <summary>
+        /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
+        /// </summary>
+        Values<IOrganization, IProgramMembership>? MemberOf { get; set; }
+
+        /// <summary>
+        /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
+        /// </summary>
+        OneOrMany<string>? Naics { get; set; }
+
+        /// <summary>
+        /// Nationality of the person.
+        /// </summary>
+        OneOrMany<ICountry>? Nationality { get; set; }
+
+        /// <summary>
+        /// The total financial value of the person as calculated by subtracting assets from liabilities.
+        /// </summary>
+        Values<IMonetaryAmount, IPriceSpecification>? NetWorth { get; set; }
+
+        /// <summary>
+        /// Products owned by the organization or person.
+        /// </summary>
+        Values<IOwnershipInfo, IProduct>? Owns { get; set; }
+
+        /// <summary>
+        /// A parent of this person.
+        /// </summary>
+        OneOrMany<IPerson>? Parent { get; set; }
+
+        /// <summary>
+        /// Event that this person is a performer or participant in.
+        /// </summary>
+        OneOrMany<IEvent>? PerformerIn { get; set; }
+
+        /// <summary>
+        /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;/p&gt;
+        /// &lt;p&gt;While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
+        /// </summary>
+        Values<ICreativeWork, Uri>? PublishingPrinciples { get; set; }
+
+        /// <summary>
+        /// The most generic familial relation.
+        /// </summary>
+        OneOrMany<IPerson>? RelatedTo { get; set; }
+
+        /// <summary>
+        /// A pointer to products or services sought by the organization or person (demand).
+        /// </summary>
+        OneOrMany<IDemand>? Seeks { get; set; }
+
+        /// <summary>
+        /// A sibling of the person.
+        /// </summary>
+        OneOrMany<IPerson>? Sibling { get; set; }
+
+        /// <summary>
+        /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
+        /// </summary>
+        Values<IOrganization, IPerson>? Sponsor { get; set; }
+
+        /// <summary>
+        /// The person's spouse.
+        /// </summary>
+        OneOrMany<IPerson>? Spouse { get; set; }
+
+        /// <summary>
+        /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
+        /// </summary>
+        OneOrMany<string>? TaxID { get; set; }
+
+        /// <summary>
+        /// The telephone number.
+        /// </summary>
+        OneOrMany<string>? Telephone { get; set; }
+
+        /// <summary>
+        /// The Value-added Tax ID of the organization or person.
+        /// </summary>
+        OneOrMany<string>? VatID { get; set; }
+
+        /// <summary>
+        /// The weight of the product or person.
+        /// </summary>
+        OneOrMany<IQuantitativeValue>? Weight { get; set; }
+
+        /// <summary>
+        /// A contact location for a person's place of work.
+        /// </summary>
+        Values<IContactPoint, IPlace>? WorkLocation { get; set; }
+
+        /// <summary>
+        /// Organizations that the person works for.
+        /// </summary>
+        OneOrMany<IOrganization>? WorksFor { get; set; }
+    }
+
+    /// <summary>
+    /// A person (alive, dead, undead, or fictional).
+    /// </summary>
     [DataContract]
-    public partial class Person : Thing
+    public partial class Person : Thing, IPerson
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -28,21 +290,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "address", Order = 107)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PostalAddress, string>? Address { get; set; }
+        public Values<IPostalAddress, string>? Address { get; set; }
 
         /// <summary>
         /// An organization that this person is affiliated with. For example, a school/university, a club, or a team.
         /// </summary>
         [DataMember(Name = "affiliation", Order = 108)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Organization>? Affiliation { get; set; }
+        public OneOrMany<IOrganization>? Affiliation { get; set; }
 
         /// <summary>
         /// An organization that the person is an alumni of.
         /// </summary>
         [DataMember(Name = "alumniOf", Order = 109)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<EducationalOrganization, Organization>? AlumniOf { get; set; }
+        public Values<IEducationalOrganization, IOrganization>? AlumniOf { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -63,35 +325,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "birthPlace", Order = 112)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Place>? BirthPlace { get; set; }
+        public OneOrMany<IPlace>? BirthPlace { get; set; }
 
         /// <summary>
         /// The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
         /// </summary>
         [DataMember(Name = "brand", Order = 113)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Brand, Organization>? Brand { get; set; }
+        public Values<IBrand, IOrganization>? Brand { get; set; }
 
         /// <summary>
         /// A child of the person.
         /// </summary>
         [DataMember(Name = "children", Order = 114)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Children { get; set; }
+        public OneOrMany<IPerson>? Children { get; set; }
 
         /// <summary>
         /// A colleague of the person.
         /// </summary>
         [DataMember(Name = "colleague", Order = 115)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Person, Uri>? Colleague { get; set; }
+        public Values<IPerson, Uri>? Colleague { get; set; }
 
         /// <summary>
         /// A contact point for a person or organization.
         /// </summary>
         [DataMember(Name = "contactPoint", Order = 116)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ContactPoint>? ContactPoint { get; set; }
+        public OneOrMany<IContactPoint>? ContactPoint { get; set; }
 
         /// <summary>
         /// Date of death.
@@ -105,7 +367,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "deathPlace", Order = 118)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Place>? DeathPlace { get; set; }
+        public OneOrMany<IPlace>? DeathPlace { get; set; }
 
         /// <summary>
         /// The Dun &amp;amp; Bradstreet DUNS number for identifying an organization or business person.
@@ -140,14 +402,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "follows", Order = 123)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Follows { get; set; }
+        public OneOrMany<IPerson>? Follows { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
         /// </summary>
         [DataMember(Name = "funder", Order = 124)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Funder { get; set; }
+        public Values<IOrganization, IPerson>? Funder { get; set; }
 
         /// <summary>
         /// Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
@@ -175,28 +437,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hasOfferCatalog", Order = 128)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<OfferCatalog>? HasOfferCatalog { get; set; }
+        public OneOrMany<IOfferCatalog>? HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
         [DataMember(Name = "hasPOS", Order = 129)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Place>? HasPOS { get; set; }
+        public OneOrMany<IPlace>? HasPOS { get; set; }
 
         /// <summary>
         /// The height of the item.
         /// </summary>
         [DataMember(Name = "height", Order = 130)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, QuantitativeValue>? Height { get; set; }
+        public Values<string, IQuantitativeValue>? Height { get; set; }
 
         /// <summary>
         /// A contact location for a person's residence.
         /// </summary>
         [DataMember(Name = "homeLocation", Order = 131)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ContactPoint, Place>? HomeLocation { get; set; }
+        public Values<IContactPoint, IPlace>? HomeLocation { get; set; }
 
         /// <summary>
         /// An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
@@ -231,21 +493,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "knows", Order = 136)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Knows { get; set; }
+        public OneOrMany<IPerson>? Knows { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
         /// </summary>
         [DataMember(Name = "makesOffer", Order = 137)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Offer>? MakesOffer { get; set; }
+        public OneOrMany<IOffer>? MakesOffer { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
         /// </summary>
         [DataMember(Name = "memberOf", Order = 138)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, ProgramMembership>? MemberOf { get; set; }
+        public Values<IOrganization, IProgramMembership>? MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -259,35 +521,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "nationality", Order = 140)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Country>? Nationality { get; set; }
+        public OneOrMany<ICountry>? Nationality { get; set; }
 
         /// <summary>
         /// The total financial value of the person as calculated by subtracting assets from liabilities.
         /// </summary>
         [DataMember(Name = "netWorth", Order = 141)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MonetaryAmount, PriceSpecification>? NetWorth { get; set; }
+        public Values<IMonetaryAmount, IPriceSpecification>? NetWorth { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
         /// </summary>
         [DataMember(Name = "owns", Order = 142)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<OwnershipInfo, Product>? Owns { get; set; }
+        public Values<IOwnershipInfo, IProduct>? Owns { get; set; }
 
         /// <summary>
         /// A parent of this person.
         /// </summary>
         [DataMember(Name = "parent", Order = 143)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Parent { get; set; }
+        public OneOrMany<IPerson>? Parent { get; set; }
 
         /// <summary>
         /// Event that this person is a performer or participant in.
         /// </summary>
         [DataMember(Name = "performerIn", Order = 144)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Event>? PerformerIn { get; set; }
+        public OneOrMany<IEvent>? PerformerIn { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;/p&gt;
@@ -295,42 +557,42 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "publishingPrinciples", Order = 145)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork, Uri>? PublishingPrinciples { get; set; }
+        public Values<ICreativeWork, Uri>? PublishingPrinciples { get; set; }
 
         /// <summary>
         /// The most generic familial relation.
         /// </summary>
         [DataMember(Name = "relatedTo", Order = 146)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? RelatedTo { get; set; }
+        public OneOrMany<IPerson>? RelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
         [DataMember(Name = "seeks", Order = 147)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Demand>? Seeks { get; set; }
+        public OneOrMany<IDemand>? Seeks { get; set; }
 
         /// <summary>
         /// A sibling of the person.
         /// </summary>
         [DataMember(Name = "sibling", Order = 148)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Sibling { get; set; }
+        public OneOrMany<IPerson>? Sibling { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
         [DataMember(Name = "sponsor", Order = 149)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Sponsor { get; set; }
+        public Values<IOrganization, IPerson>? Sponsor { get; set; }
 
         /// <summary>
         /// The person's spouse.
         /// </summary>
         [DataMember(Name = "spouse", Order = 150)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Spouse { get; set; }
+        public OneOrMany<IPerson>? Spouse { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
@@ -358,20 +620,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "weight", Order = 154)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<QuantitativeValue>? Weight { get; set; }
+        public OneOrMany<IQuantitativeValue>? Weight { get; set; }
 
         /// <summary>
         /// A contact location for a person's place of work.
         /// </summary>
         [DataMember(Name = "workLocation", Order = 155)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ContactPoint, Place>? WorkLocation { get; set; }
+        public Values<IContactPoint, IPlace>? WorkLocation { get; set; }
 
         /// <summary>
         /// Organizations that the person works for.
         /// </summary>
         [DataMember(Name = "worksFor", Order = 156)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Organization>? WorksFor { get; set; }
+        public OneOrMany<IOrganization>? WorksFor { get; set; }
     }
 }

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A shop that sells alcoholic drinks such as wine, beer, whisky and other spirits.
     /// </summary>
+    public partial interface ILiquorStore : IStore
+    {
+    }
+
+    /// <summary>
+    /// A shop that sells alcoholic drinks such as wine, beer, whisky and other spirits.
+    /// </summary>
     [DataContract]
-    public partial class LiquorStore : Store
+    public partial class LiquorStore : Store, ILiquorStore
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

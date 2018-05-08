@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// The costs of settling the payment using a particular payment method.
     /// </summary>
+    public partial interface IPaymentChargeSpecification : IPriceSpecification
+    {
+        /// <summary>
+        /// The delivery method(s) to which the delivery charge or payment charge specification applies.
+        /// </summary>
+        OneOrMany<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
+
+        /// <summary>
+        /// The payment method(s) to which the payment charge specification applies.
+        /// </summary>
+        OneOrMany<PaymentMethod?>? AppliesToPaymentMethod { get; set; }
+    }
+
+    /// <summary>
+    /// The costs of settling the payment using a particular payment method.
+    /// </summary>
     [DataContract]
-    public partial class PaymentChargeSpecification : PriceSpecification
+    public partial class PaymentChargeSpecification : PriceSpecification, IPaymentChargeSpecification
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

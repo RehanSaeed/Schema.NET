@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// See LocalBusiness, Organization for more information.
     /// </summary>
+    public partial interface ILocalBusinessAndOrganization : ILocalBusiness, IOrganization
+    {
+    }
+
+    /// <summary>
+    /// See LocalBusiness, Organization for more information.
+    /// </summary>
     [DataContract]
-    public abstract partial class LocalBusinessAndOrganization : OrganizationAndPlace
+    public abstract partial class LocalBusinessAndOrganization : OrganizationAndPlace, ILocalBusinessAndOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,35 +28,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "actionableFeedbackPolicy", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<CreativeWork, Uri>? ActionableFeedbackPolicy { get; set; }
+        public override Values<ICreativeWork, Uri>? ActionableFeedbackPolicy { get; set; }
 
         /// <summary>
         /// Physical address of the item.
         /// </summary>
         [DataMember(Name = "address", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<PostalAddress, string>? Address { get; set; }
+        public override Values<IPostalAddress, string>? Address { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<AggregateRating>? AggregateRating { get; set; }
+        public override OneOrMany<IAggregateRating>? AggregateRating { get; set; }
 
         /// <summary>
         /// Alumni of an organization.
         /// </summary>
         [DataMember(Name = "alumni", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Person>? Alumni { get; set; }
+        public override OneOrMany<IPerson>? Alumni { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
         /// </summary>
         [DataMember(Name = "areaServed", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<AdministrativeArea, GeoShape, Place, string>? AreaServed { get; set; }
+        public override Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -63,21 +70,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "brand", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Brand, Organization>? Brand { get; set; }
+        public override Values<IBrand, IOrganization>? Brand { get; set; }
 
         /// <summary>
         /// A contact point for a person or organization.
         /// </summary>
         [DataMember(Name = "contactPoint", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<ContactPoint>? ContactPoint { get; set; }
+        public override OneOrMany<IContactPoint>? ContactPoint { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.
         /// </summary>
         [DataMember(Name = "correctionsPolicy", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<CreativeWork, Uri>? CorrectionsPolicy { get; set; }
+        public override Values<ICreativeWork, Uri>? CorrectionsPolicy { get; set; }
 
         /// <summary>
         /// The currency accepted (in &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt;).
@@ -91,7 +98,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "department", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Organization>? Department { get; set; }
+        public override OneOrMany<IOrganization>? Department { get; set; }
 
         /// <summary>
         /// The date that this organization was dissolved.
@@ -105,7 +112,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "diversityPolicy", Order = 218)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<CreativeWork, Uri>? DiversityPolicy { get; set; }
+        public override Values<ICreativeWork, Uri>? DiversityPolicy { get; set; }
 
         /// <summary>
         /// The Dun &amp;amp; Bradstreet DUNS number for identifying an organization or business person.
@@ -126,21 +133,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "employee", Order = 221)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Person>? Employee { get; set; }
+        public override OneOrMany<IPerson>? Employee { get; set; }
 
         /// <summary>
         /// Statement about ethics policy, e.g. of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; regarding journalistic and publishing practices, or of a &lt;a class="localLink" href="http://schema.org/Restaurant"&gt;Restaurant&lt;/a&gt;, a page describing food source policies. In the case of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.
         /// </summary>
         [DataMember(Name = "ethicsPolicy", Order = 222)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<CreativeWork, Uri>? EthicsPolicy { get; set; }
+        public override Values<ICreativeWork, Uri>? EthicsPolicy { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
         [DataMember(Name = "event", Order = 223)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Event>? Event { get; set; }
+        public override OneOrMany<IEvent>? Event { get; set; }
 
         /// <summary>
         /// The fax number.
@@ -154,7 +161,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "founder", Order = 225)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Person>? Founder { get; set; }
+        public override OneOrMany<IPerson>? Founder { get; set; }
 
         /// <summary>
         /// The date that this organization was founded.
@@ -168,14 +175,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "foundingLocation", Order = 227)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? FoundingLocation { get; set; }
+        public override OneOrMany<IPlace>? FoundingLocation { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
         /// </summary>
         [DataMember(Name = "funder", Order = 228)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Organization, Person>? Funder { get; set; }
+        public override Values<IOrganization, IPerson>? Funder { get; set; }
 
         /// <summary>
         /// The &lt;a href="http://www.gs1.org/gln"&gt;Global Location Number&lt;/a&gt; (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
@@ -189,14 +196,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hasOfferCatalog", Order = 230)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<OfferCatalog>? HasOfferCatalog { get; set; }
+        public override OneOrMany<IOfferCatalog>? HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
         [DataMember(Name = "hasPOS", Order = 231)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? HasPOS { get; set; }
+        public override OneOrMany<IPlace>? HasPOS { get; set; }
 
         /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
@@ -224,35 +231,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "location", Order = 235)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Place, PostalAddress, string>? Location { get; set; }
+        public override Values<IPlace, IPostalAddress, string>? Location { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
         [DataMember(Name = "logo", Order = 236)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<ImageObject, Uri>? Logo { get; set; }
+        public override Values<IImageObject, Uri>? Logo { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
         /// </summary>
         [DataMember(Name = "makesOffer", Order = 237)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Offer>? MakesOffer { get; set; }
+        public override OneOrMany<IOffer>? MakesOffer { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
         /// </summary>
         [DataMember(Name = "member", Order = 238)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Organization, Person>? Member { get; set; }
+        public override Values<IOrganization, IPerson>? Member { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
         /// </summary>
         [DataMember(Name = "memberOf", Order = 239)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Organization, ProgramMembership>? MemberOf { get; set; }
+        public override Values<IOrganization, IProgramMembership>? MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -266,7 +273,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberOfEmployees", Order = 241)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<QuantitativeValue>? NumberOfEmployees { get; set; }
+        public override OneOrMany<IQuantitativeValue>? NumberOfEmployees { get; set; }
 
         /// <summary>
         /// &lt;p&gt;The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;/p&gt;
@@ -286,14 +293,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "owns", Order = 243)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<OwnershipInfo, Product>? Owns { get; set; }
+        public override Values<IOwnershipInfo, IProduct>? Owns { get; set; }
 
         /// <summary>
         /// The larger organization that this organization is a &lt;a class="localLink" href="http://schema.org/subOrganization"&gt;subOrganization&lt;/a&gt; of, if any.
         /// </summary>
         [DataMember(Name = "parentOrganization", Order = 244)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Organization>? ParentOrganization { get; set; }
+        public override OneOrMany<IOrganization>? ParentOrganization { get; set; }
 
         /// <summary>
         /// Cash, credit card, etc.
@@ -315,35 +322,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "publishingPrinciples", Order = 247)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<CreativeWork, Uri>? PublishingPrinciples { get; set; }
+        public override Values<ICreativeWork, Uri>? PublishingPrinciples { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
         [DataMember(Name = "review", Order = 248)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Review>? Review { get; set; }
+        public override OneOrMany<IReview>? Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
         [DataMember(Name = "seeks", Order = 249)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Demand>? Seeks { get; set; }
+        public override OneOrMany<IDemand>? Seeks { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
         [DataMember(Name = "sponsor", Order = 250)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<Organization, Person>? Sponsor { get; set; }
+        public override Values<IOrganization, IPerson>? Sponsor { get; set; }
 
         /// <summary>
         /// A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
         /// </summary>
         [DataMember(Name = "subOrganization", Order = 251)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Organization>? SubOrganization { get; set; }
+        public override OneOrMany<IOrganization>? SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
@@ -364,7 +371,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "unnamedSourcesPolicy", Order = 254)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<CreativeWork, Uri>? UnnamedSourcesPolicy { get; set; }
+        public override Values<ICreativeWork, Uri>? UnnamedSourcesPolicy { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.

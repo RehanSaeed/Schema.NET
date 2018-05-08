@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A sports club.
     /// </summary>
+    public partial interface ISportsClub : ISportsActivityLocation
+    {
+    }
+
+    /// <summary>
+    /// A sports club.
+    /// </summary>
     [DataContract]
-    public partial class SportsClub : SportsActivityLocation
+    public partial class SportsClub : SportsActivityLocation, ISportsClub
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

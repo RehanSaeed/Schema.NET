@@ -7,8 +7,44 @@ namespace Schema.NET
     /// <summary>
     /// A MusicRelease is a specific release of a music album.
     /// </summary>
+    public partial interface IMusicRelease : IMusicPlaylist
+    {
+        /// <summary>
+        /// The catalog number for the release.
+        /// </summary>
+        OneOrMany<string>? CatalogNumber { get; set; }
+
+        /// <summary>
+        /// The group the release is credited to if different than the byArtist. For example, Red and Blue is credited to "Stefani Germanotta Band", but by Lady Gaga.
+        /// </summary>
+        Values<IOrganization, IPerson>? CreditedTo { get; set; }
+
+        /// <summary>
+        /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
+        /// </summary>
+        OneOrMany<TimeSpan?>? Duration { get; set; }
+
+        /// <summary>
+        /// Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc.).
+        /// </summary>
+        OneOrMany<MusicReleaseFormatType?>? MusicReleaseFormat { get; set; }
+
+        /// <summary>
+        /// The label that issued the release.
+        /// </summary>
+        OneOrMany<IOrganization>? RecordLabel { get; set; }
+
+        /// <summary>
+        /// The album this is a release of.
+        /// </summary>
+        OneOrMany<IMusicAlbum>? ReleaseOf { get; set; }
+    }
+
+    /// <summary>
+    /// A MusicRelease is a specific release of a music album.
+    /// </summary>
     [DataContract]
-    public partial class MusicRelease : MusicPlaylist
+    public partial class MusicRelease : MusicPlaylist, IMusicRelease
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -28,7 +64,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "creditedTo", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? CreditedTo { get; set; }
+        public Values<IOrganization, IPerson>? CreditedTo { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
@@ -49,13 +85,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "recordLabel", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Organization>? RecordLabel { get; set; }
+        public OneOrMany<IOrganization>? RecordLabel { get; set; }
 
         /// <summary>
         /// The album this is a release of.
         /// </summary>
         [DataMember(Name = "releaseOf", Order = 311)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicAlbum>? ReleaseOf { get; set; }
+        public OneOrMany<IMusicAlbum>? ReleaseOf { get; set; }
     }
 }

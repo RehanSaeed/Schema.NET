@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// The act of ingesting information/resources/food.
     /// </summary>
+    public partial interface IConsumeAction : IAction
+    {
+        /// <summary>
+        /// An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
+        /// </summary>
+        OneOrMany<IOffer>? ExpectsAcceptanceOf { get; set; }
+    }
+
+    /// <summary>
+    /// The act of ingesting information/resources/food.
+    /// </summary>
     [DataContract]
-    public partial class ConsumeAction : Action
+    public partial class ConsumeAction : Action, IConsumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "expectsAcceptanceOf", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Offer>? ExpectsAcceptanceOf { get; set; }
+        public OneOrMany<IOffer>? ExpectsAcceptanceOf { get; set; }
     }
 }

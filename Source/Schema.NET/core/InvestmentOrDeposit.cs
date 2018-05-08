@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.
     /// </summary>
+    public partial interface IInvestmentOrDeposit : IFinancialProduct
+    {
+        /// <summary>
+        /// The amount of money.
+        /// </summary>
+        Values<IMonetaryAmount, decimal?>? Amount { get; set; }
+    }
+
+    /// <summary>
+    /// A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.
+    /// </summary>
     [DataContract]
-    public partial class InvestmentOrDeposit : FinancialProduct
+    public partial class InvestmentOrDeposit : FinancialProduct, IInvestmentOrDeposit
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "amount", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MonetaryAmount, decimal?>? Amount { get; set; }
+        public Values<IMonetaryAmount, decimal?>? Amount { get; set; }
     }
 }

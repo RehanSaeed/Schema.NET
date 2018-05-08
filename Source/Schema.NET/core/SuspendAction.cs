@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of momentarily pausing a device or application (e.g. pause music playback or pause a timer).
     /// </summary>
+    public partial interface ISuspendAction : IControlAction
+    {
+    }
+
+    /// <summary>
+    /// The act of momentarily pausing a device or application (e.g. pause music playback or pause a timer).
+    /// </summary>
     [DataContract]
-    public partial class SuspendAction : ControlAction
+    public partial class SuspendAction : ControlAction, ISuspendAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

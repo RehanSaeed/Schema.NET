@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// Event type: Business event.
     /// </summary>
+    public partial interface IBusinessEvent : IEvent
+    {
+    }
+
+    /// <summary>
+    /// Event type: Business event.
+    /// </summary>
     [DataContract]
-    public partial class BusinessEvent : Event
+    public partial class BusinessEvent : Event, IBusinessEvent
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

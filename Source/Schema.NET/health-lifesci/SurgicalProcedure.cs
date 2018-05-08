@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A medical procedure involving an incision with instruments; performed for diagnose, or therapeutic purposes.
     /// </summary>
+    public partial interface ISurgicalProcedure : IMedicalProcedure
+    {
+    }
+
+    /// <summary>
+    /// A medical procedure involving an incision with instruments; performed for diagnose, or therapeutic purposes.
+    /// </summary>
     [DataContract]
-    public partial class SurgicalProcedure : MedicalProcedure
+    public partial class SurgicalProcedure : MedicalProcedure, ISurgicalProcedure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

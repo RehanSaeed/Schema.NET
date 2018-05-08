@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An historical landmark or building.
     /// </summary>
+    public partial interface ILandmarksOrHistoricalBuildings : IPlace
+    {
+    }
+
+    /// <summary>
+    /// An historical landmark or building.
+    /// </summary>
     [DataContract]
-    public partial class LandmarksOrHistoricalBuildings : Place
+    public partial class LandmarksOrHistoricalBuildings : Place, ILandmarksOrHistoricalBuildings
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

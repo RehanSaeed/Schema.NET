@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An event venue.
     /// </summary>
+    public partial interface IEventVenue : ICivicStructure
+    {
+    }
+
+    /// <summary>
+    /// An event venue.
+    /// </summary>
     [DataContract]
-    public partial class EventVenue : CivicStructure
+    public partial class EventVenue : CivicStructure, IEventVenue
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

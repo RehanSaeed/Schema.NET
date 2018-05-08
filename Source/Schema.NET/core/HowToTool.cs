@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A tool used (but not consumed) when performing instructions for how to achieve a result.
     /// </summary>
+    public partial interface IHowToTool : IHowToItem
+    {
+    }
+
+    /// <summary>
+    /// A tool used (but not consumed) when performing instructions for how to achieve a result.
+    /// </summary>
     [DataContract]
-    public partial class HowToTool : HowToItem
+    public partial class HowToTool : HowToItem, IHowToTool
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

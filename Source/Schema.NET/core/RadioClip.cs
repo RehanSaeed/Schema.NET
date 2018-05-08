@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A short radio program or a segment/part of a radio program.
     /// </summary>
+    public partial interface IRadioClip : IClip
+    {
+    }
+
+    /// <summary>
+    /// A short radio program or a segment/part of a radio program.
+    /// </summary>
     [DataContract]
-    public partial class RadioClip : Clip
+    public partial class RadioClip : Clip, IRadioClip
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
     /// </summary>
+    public partial interface IReservoir : IBodyOfWater
+    {
+    }
+
+    /// <summary>
+    /// A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
+    /// </summary>
     [DataContract]
-    public partial class Reservoir : BodyOfWater
+    public partial class Reservoir : BodyOfWater, IReservoir
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

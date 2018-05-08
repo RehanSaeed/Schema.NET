@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A permit issued by a government agency.
     /// </summary>
+    public partial interface IGovernmentPermit : IPermit
+    {
+    }
+
+    /// <summary>
+    /// A permit issued by a government agency.
+    /// </summary>
     [DataContract]
-    public partial class GovernmentPermit : Permit
+    public partial class GovernmentPermit : Permit, IGovernmentPermit
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

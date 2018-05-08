@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A subclass of Role used to describe roles within organizations.
     /// </summary>
+    public partial interface IOrganizationRole : IRole
+    {
+        /// <summary>
+        /// A number associated with a role in an organization, for example, the number on an athlete's jersey.
+        /// </summary>
+        OneOrMany<double?>? NumberedPosition { get; set; }
+    }
+
+    /// <summary>
+    /// A subclass of Role used to describe roles within organizations.
+    /// </summary>
     [DataContract]
-    public partial class OrganizationRole : Role
+    public partial class OrganizationRole : Role, IOrganizationRole
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

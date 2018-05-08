@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An image of a visual machine-readable code such as a barcode or QR code.
     /// </summary>
+    public partial interface IBarcode : IImageObject
+    {
+    }
+
+    /// <summary>
+    /// An image of a visual machine-readable code such as a barcode or QR code.
+    /// </summary>
     [DataContract]
-    public partial class Barcode : ImageObject
+    public partial class Barcode : ImageObject, IBarcode
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// Residence type: Apartment complex.
     /// </summary>
+    public partial interface IApartmentComplex : IResidence
+    {
+    }
+
+    /// <summary>
+    /// Residence type: Apartment complex.
+    /// </summary>
     [DataContract]
-    public partial class ApartmentComplex : Residence
+    public partial class ApartmentComplex : Residence, IApartmentComplex
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

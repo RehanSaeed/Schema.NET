@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A blog post.
     /// </summary>
+    public partial interface IBlogPosting : ISocialMediaPosting
+    {
+    }
+
+    /// <summary>
+    /// A blog post.
+    /// </summary>
     [DataContract]
-    public partial class BlogPosting : SocialMediaPosting
+    public partial class BlogPosting : SocialMediaPosting, IBlogPosting
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A waterfall, like Niagara.
     /// </summary>
+    public partial interface IWaterfall : IBodyOfWater
+    {
+    }
+
+    /// <summary>
+    /// A waterfall, like Niagara.
+    /// </summary>
     [DataContract]
-    public partial class Waterfall : BodyOfWater
+    public partial class Waterfall : BodyOfWater, IWaterfall
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

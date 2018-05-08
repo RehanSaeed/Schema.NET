@@ -7,8 +7,29 @@ namespace Schema.NET
     /// <summary>
     /// The act of notifying an event organizer as to whether you expect to attend the event.
     /// </summary>
+    public partial interface IRsvpAction : IInformAction
+    {
+        /// <summary>
+        /// If responding yes, the number of guests who will attend in addition to the invitee.
+        /// </summary>
+        OneOrMany<int?>? AdditionalNumberOfGuests { get; set; }
+
+        /// <summary>
+        /// Comments, typically from users.
+        /// </summary>
+        OneOrMany<IComment>? Comment { get; set; }
+
+        /// <summary>
+        /// The response (yes, no, maybe) to the RSVP.
+        /// </summary>
+        OneOrMany<RsvpResponseType?>? RsvpResponse { get; set; }
+    }
+
+    /// <summary>
+    /// The act of notifying an event organizer as to whether you expect to attend the event.
+    /// </summary>
     [DataContract]
-    public partial class RsvpAction : InformAction
+    public partial class RsvpAction : InformAction, IRsvpAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -28,7 +49,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "comment", Order = 507)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Comment>? Comment { get; set; }
+        public OneOrMany<IComment>? Comment { get; set; }
 
         /// <summary>
         /// The response (yes, no, maybe) to the RSVP.

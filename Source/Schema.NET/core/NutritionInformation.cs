@@ -7,8 +7,74 @@ namespace Schema.NET
     /// <summary>
     /// Nutritional information about the recipe.
     /// </summary>
+    public partial interface INutritionInformation : IStructuredValue
+    {
+        /// <summary>
+        /// The number of calories.
+        /// </summary>
+        OneOrMany<string>? Calories { get; set; }
+
+        /// <summary>
+        /// The number of grams of carbohydrates.
+        /// </summary>
+        OneOrMany<string>? CarbohydrateContent { get; set; }
+
+        /// <summary>
+        /// The number of milligrams of cholesterol.
+        /// </summary>
+        OneOrMany<string>? CholesterolContent { get; set; }
+
+        /// <summary>
+        /// The number of grams of fat.
+        /// </summary>
+        OneOrMany<string>? FatContent { get; set; }
+
+        /// <summary>
+        /// The number of grams of fiber.
+        /// </summary>
+        OneOrMany<string>? FiberContent { get; set; }
+
+        /// <summary>
+        /// The number of grams of protein.
+        /// </summary>
+        OneOrMany<string>? ProteinContent { get; set; }
+
+        /// <summary>
+        /// The number of grams of saturated fat.
+        /// </summary>
+        OneOrMany<string>? SaturatedFatContent { get; set; }
+
+        /// <summary>
+        /// The serving size, in terms of the number of volume or mass.
+        /// </summary>
+        OneOrMany<string>? ServingSize { get; set; }
+
+        /// <summary>
+        /// The number of milligrams of sodium.
+        /// </summary>
+        OneOrMany<string>? SodiumContent { get; set; }
+
+        /// <summary>
+        /// The number of grams of sugar.
+        /// </summary>
+        OneOrMany<string>? SugarContent { get; set; }
+
+        /// <summary>
+        /// The number of grams of trans fat.
+        /// </summary>
+        OneOrMany<string>? TransFatContent { get; set; }
+
+        /// <summary>
+        /// The number of grams of unsaturated fat.
+        /// </summary>
+        OneOrMany<string>? UnsaturatedFatContent { get; set; }
+    }
+
+    /// <summary>
+    /// Nutritional information about the recipe.
+    /// </summary>
     [DataContract]
-    public partial class NutritionInformation : StructuredValue
+    public partial class NutritionInformation : StructuredValue, INutritionInformation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

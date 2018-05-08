@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A created collection of Creative Works or other artefacts.
     /// </summary>
+    public partial interface ICollection : ICreativeWork
+    {
+    }
+
+    /// <summary>
+    /// A created collection of Creative Works or other artefacts.
+    /// </summary>
     [DataContract]
-    public partial class Collection : CreativeWork
+    public partial class Collection : CreativeWork, ICollection
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

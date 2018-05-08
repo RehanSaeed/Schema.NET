@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A component of the human body circulatory system comprised of an intricate network of hollow tubes that transport blood throughout the entire body.
     /// </summary>
+    public partial interface IVessel : IAnatomicalStructure
+    {
+    }
+
+    /// <summary>
+    /// A component of the human body circulatory system comprised of an intricate network of hollow tubes that transport blood throughout the entire body.
+    /// </summary>
     [DataContract]
-    public partial class Vessel : AnatomicalStructure
+    public partial class Vessel : AnatomicalStructure, IVessel
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

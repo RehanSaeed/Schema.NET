@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of downloading an object.
     /// </summary>
+    public partial interface IDownloadAction : ITransferAction
+    {
+    }
+
+    /// <summary>
+    /// The act of downloading an object.
+    /// </summary>
     [DataContract]
-    public partial class DownloadAction : TransferAction
+    public partial class DownloadAction : TransferAction, IDownloadAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

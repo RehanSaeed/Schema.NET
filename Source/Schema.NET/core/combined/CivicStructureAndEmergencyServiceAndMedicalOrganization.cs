@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// See CivicStructure, EmergencyService, MedicalOrganization for more information.
     /// </summary>
+    public partial interface ICivicStructureAndEmergencyServiceAndMedicalOrganization : ICivicStructure, IEmergencyService, IMedicalOrganization
+    {
+    }
+
+    /// <summary>
+    /// See CivicStructure, EmergencyService, MedicalOrganization for more information.
+    /// </summary>
     [DataContract]
-    public abstract partial class CivicStructureAndEmergencyServiceAndMedicalOrganization : LocalBusinessAndOrganizationAndPlace
+    public abstract partial class CivicStructureAndEmergencyServiceAndMedicalOrganization : LocalBusinessAndOrganizationAndPlace, ICivicStructureAndEmergencyServiceAndMedicalOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

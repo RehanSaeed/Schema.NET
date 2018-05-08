@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of allocating an action/event/task to some destination (someone or something).
     /// </summary>
+    public partial interface IAssignAction : IAllocateAction
+    {
+    }
+
+    /// <summary>
+    /// The act of allocating an action/event/task to some destination (someone or something).
+    /// </summary>
     [DataContract]
-    public partial class AssignAction : AllocateAction
+    public partial class AssignAction : AllocateAction, IAssignAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

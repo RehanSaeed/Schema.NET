@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of forming one's opinion, reaction or sentiment.
     /// </summary>
+    public partial interface IAssessAction : IAction
+    {
+    }
+
+    /// <summary>
+    /// The act of forming one's opinion, reaction or sentiment.
+    /// </summary>
     [DataContract]
-    public partial class AssessAction : Action
+    public partial class AssessAction : Action, IAssessAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

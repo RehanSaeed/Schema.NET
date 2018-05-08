@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A recycling center.
     /// </summary>
+    public partial interface IRecyclingCenter : ILocalBusiness
+    {
+    }
+
+    /// <summary>
+    /// A recycling center.
+    /// </summary>
     [DataContract]
-    public partial class RecyclingCenter : LocalBusiness
+    public partial class RecyclingCenter : LocalBusiness, IRecyclingCenter
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

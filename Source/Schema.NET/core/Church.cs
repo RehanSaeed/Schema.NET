@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A church.
     /// </summary>
+    public partial interface IChurch : IPlaceOfWorship
+    {
+    }
+
+    /// <summary>
+    /// A church.
+    /// </summary>
     [DataContract]
-    public partial class Church : PlaceOfWorship
+    public partial class Church : PlaceOfWorship, IChurch
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

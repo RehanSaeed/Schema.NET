@@ -7,8 +7,44 @@ namespace Schema.NET
     /// <summary>
     /// A music recording (track), usually a single song.
     /// </summary>
+    public partial interface IMusicRecording : ICreativeWork
+    {
+        /// <summary>
+        /// The artist that performed this album or recording.
+        /// </summary>
+        OneOrMany<IMusicGroup>? ByArtist { get; set; }
+
+        /// <summary>
+        /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
+        /// </summary>
+        OneOrMany<TimeSpan?>? Duration { get; set; }
+
+        /// <summary>
+        /// The album to which this recording belongs.
+        /// </summary>
+        OneOrMany<IMusicAlbum>? InAlbum { get; set; }
+
+        /// <summary>
+        /// The playlist to which this recording belongs.
+        /// </summary>
+        OneOrMany<IMusicPlaylist>? InPlaylist { get; set; }
+
+        /// <summary>
+        /// The International Standard Recording Code for the recording.
+        /// </summary>
+        OneOrMany<string>? IsrcCode { get; set; }
+
+        /// <summary>
+        /// The composition this track is a recording of.
+        /// </summary>
+        OneOrMany<IMusicComposition>? RecordingOf { get; set; }
+    }
+
+    /// <summary>
+    /// A music recording (track), usually a single song.
+    /// </summary>
     [DataContract]
-    public partial class MusicRecording : CreativeWork
+    public partial class MusicRecording : CreativeWork, IMusicRecording
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +57,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "byArtist", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicGroup>? ByArtist { get; set; }
+        public OneOrMany<IMusicGroup>? ByArtist { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
@@ -35,14 +71,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "inAlbum", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicAlbum>? InAlbum { get; set; }
+        public OneOrMany<IMusicAlbum>? InAlbum { get; set; }
 
         /// <summary>
         /// The playlist to which this recording belongs.
         /// </summary>
         [DataMember(Name = "inPlaylist", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicPlaylist>? InPlaylist { get; set; }
+        public OneOrMany<IMusicPlaylist>? InPlaylist { get; set; }
 
         /// <summary>
         /// The International Standard Recording Code for the recording.
@@ -56,6 +92,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "recordingOf", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicComposition>? RecordingOf { get; set; }
+        public OneOrMany<IMusicComposition>? RecordingOf { get; set; }
     }
 }

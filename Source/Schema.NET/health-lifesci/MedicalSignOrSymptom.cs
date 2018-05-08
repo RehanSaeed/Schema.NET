@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// Any feature associated or not with a medical condition. In medicine a symptom is generally subjective while a sign is objective.
     /// </summary>
+    public partial interface IMedicalSignOrSymptom : IMedicalCondition
+    {
+    }
+
+    /// <summary>
+    /// Any feature associated or not with a medical condition. In medicine a symptom is generally subjective while a sign is objective.
+    /// </summary>
     [DataContract]
-    public partial class MedicalSignOrSymptom : MedicalCondition
+    public partial class MedicalSignOrSymptom : MedicalCondition, IMedicalSignOrSymptom
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,13 +28,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "cause", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<MedicalCause>? Cause { get; set; }
+        public override OneOrMany<IMedicalCause>? Cause { get; set; }
 
         /// <summary>
         /// A possible treatment to address this condition, sign or symptom.
         /// </summary>
         [DataMember(Name = "possibleTreatment", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<MedicalTherapy>? PossibleTreatment { get; set; }
+        public override OneOrMany<IMedicalTherapy>? PossibleTreatment { get; set; }
     }
 }

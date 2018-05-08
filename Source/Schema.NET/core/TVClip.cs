@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A short TV program or a segment/part of a TV program.
     /// </summary>
+    public partial interface ITVClip : IClip
+    {
+    }
+
+    /// <summary>
+    /// A short TV program or a segment/part of a TV program.
+    /// </summary>
     [DataContract]
-    public partial class TVClip : Clip
+    public partial class TVClip : Clip, ITVClip
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

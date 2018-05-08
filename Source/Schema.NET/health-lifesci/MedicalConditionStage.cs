@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// A stage of a medical condition, such as 'Stage IIIa'.
     /// </summary>
+    public partial interface IMedicalConditionStage : IMedicalIntangible
+    {
+        /// <summary>
+        /// The stage represented as a number, e.g. 3.
+        /// </summary>
+        OneOrMany<double?>? StageAsNumber { get; set; }
+
+        /// <summary>
+        /// The substage, e.g. 'a' for Stage IIIa.
+        /// </summary>
+        OneOrMany<string>? SubStageSuffix { get; set; }
+    }
+
+    /// <summary>
+    /// A stage of a medical condition, such as 'Stage IIIa'.
+    /// </summary>
     [DataContract]
-    public partial class MedicalConditionStage : MedicalIntangible
+    public partial class MedicalConditionStage : MedicalIntangible, IMedicalConditionStage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A bridge.
     /// </summary>
+    public partial interface IBridge : ICivicStructure
+    {
+    }
+
+    /// <summary>
+    /// A bridge.
+    /// </summary>
     [DataContract]
-    public partial class Bridge : CivicStructure
+    public partial class Bridge : CivicStructure, IBridge
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

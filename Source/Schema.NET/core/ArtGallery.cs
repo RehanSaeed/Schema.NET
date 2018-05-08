@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An art gallery.
     /// </summary>
+    public partial interface IArtGallery : IEntertainmentBusiness
+    {
+    }
+
+    /// <summary>
+    /// An art gallery.
+    /// </summary>
     [DataContract]
-    public partial class ArtGallery : EntertainmentBusiness
+    public partial class ArtGallery : EntertainmentBusiness, IArtGallery
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

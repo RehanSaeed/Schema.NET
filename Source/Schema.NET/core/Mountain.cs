@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A mountain, like Mount Whitney or Mount Everest.
     /// </summary>
+    public partial interface IMountain : ILandform
+    {
+    }
+
+    /// <summary>
+    /// A mountain, like Mount Whitney or Mount Everest.
+    /// </summary>
     [DataContract]
-    public partial class Mountain : Landform
+    public partial class Mountain : Landform, IMountain
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

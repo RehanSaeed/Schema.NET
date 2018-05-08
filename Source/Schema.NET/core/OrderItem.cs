@@ -7,8 +7,39 @@ namespace Schema.NET
     /// <summary>
     /// An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
     /// </summary>
+    public partial interface IOrderItem : IIntangible
+    {
+        /// <summary>
+        /// The delivery of the parcel related to this order or order item.
+        /// </summary>
+        OneOrMany<IParcelDelivery>? OrderDelivery { get; set; }
+
+        /// <summary>
+        /// The item ordered.
+        /// </summary>
+        Values<IOrderItem, IProduct>? OrderedItem { get; set; }
+
+        /// <summary>
+        /// The identifier of the order item.
+        /// </summary>
+        OneOrMany<string>? OrderItemNumber { get; set; }
+
+        /// <summary>
+        /// The current status of the order item.
+        /// </summary>
+        OneOrMany<OrderStatus?>? OrderItemStatus { get; set; }
+
+        /// <summary>
+        /// The number of the item ordered. If the property is not set, assume the quantity is one.
+        /// </summary>
+        OneOrMany<double?>? OrderQuantity { get; set; }
+    }
+
+    /// <summary>
+    /// An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
+    /// </summary>
     [DataContract]
-    public partial class OrderItem : Intangible
+    public partial class OrderItem : Intangible, IOrderItem
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,14 +52,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "orderDelivery", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ParcelDelivery>? OrderDelivery { get; set; }
+        public OneOrMany<IParcelDelivery>? OrderDelivery { get; set; }
 
         /// <summary>
         /// The item ordered.
         /// </summary>
         [DataMember(Name = "orderedItem", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<OrderItem, Product>? OrderedItem { get; set; }
+        public Values<IOrderItem, IProduct>? OrderedItem { get; set; }
 
         /// <summary>
         /// The identifier of the order item.

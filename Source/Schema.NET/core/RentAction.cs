@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// The act of giving money in return for temporary use, but not ownership, of an object such as a vehicle or property. For example, an agent rents a property from a landlord in exchange for a periodic payment.
     /// </summary>
+    public partial interface IRentAction : ITradeAction
+    {
+        /// <summary>
+        /// A sub property of participant. The owner of the real estate property.
+        /// </summary>
+        Values<IOrganization, IPerson>? Landlord { get; set; }
+
+        /// <summary>
+        /// A sub property of participant. The real estate agent involved in the action.
+        /// </summary>
+        OneOrMany<IRealEstateAgent>? RealEstateAgent { get; set; }
+    }
+
+    /// <summary>
+    /// The act of giving money in return for temporary use, but not ownership, of an object such as a vehicle or property. For example, an agent rents a property from a landlord in exchange for a periodic payment.
+    /// </summary>
     [DataContract]
-    public partial class RentAction : TradeAction
+    public partial class RentAction : TradeAction, IRentAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,13 +37,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "landlord", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Landlord { get; set; }
+        public Values<IOrganization, IPerson>? Landlord { get; set; }
 
         /// <summary>
         /// A sub property of participant. The real estate agent involved in the action.
         /// </summary>
         [DataMember(Name = "realEstateAgent", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<RealEstateAgent>? RealEstateAgent { get; set; }
+        public OneOrMany<IRealEstateAgent>? RealEstateAgent { get; set; }
     }
 }

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A medical test performed on a sample of a patient's blood.
     /// </summary>
+    public partial interface IBloodTest : IMedicalTest
+    {
+    }
+
+    /// <summary>
+    /// A medical test performed on a sample of a patient's blood.
+    /// </summary>
     [DataContract]
-    public partial class BloodTest : MedicalTest
+    public partial class BloodTest : MedicalTest, IBloodTest
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

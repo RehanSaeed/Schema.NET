@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An employment agency.
     /// </summary>
+    public partial interface IEmploymentAgency : ILocalBusiness
+    {
+    }
+
+    /// <summary>
+    /// An employment agency.
+    /// </summary>
     [DataContract]
-    public partial class EmploymentAgency : LocalBusiness
+    public partial class EmploymentAgency : LocalBusiness, IEmploymentAgency
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

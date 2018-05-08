@@ -7,8 +7,99 @@ namespace Schema.NET
     /// <summary>
     /// An airline flight.
     /// </summary>
+    public partial interface IFlight : IIntangible
+    {
+        /// <summary>
+        /// The kind of aircraft (e.g., "Boeing 747").
+        /// </summary>
+        Values<string, IVehicle>? Aircraft { get; set; }
+
+        /// <summary>
+        /// The airport where the flight terminates.
+        /// </summary>
+        OneOrMany<IAirport>? ArrivalAirport { get; set; }
+
+        /// <summary>
+        /// Identifier of the flight's arrival gate.
+        /// </summary>
+        OneOrMany<string>? ArrivalGate { get; set; }
+
+        /// <summary>
+        /// Identifier of the flight's arrival terminal.
+        /// </summary>
+        OneOrMany<string>? ArrivalTerminal { get; set; }
+
+        /// <summary>
+        /// The expected arrival time.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? ArrivalTime { get; set; }
+
+        /// <summary>
+        /// The type of boarding policy used by the airline (e.g. zone-based or group-based).
+        /// </summary>
+        OneOrMany<BoardingPolicyType?>? BoardingPolicy { get; set; }
+
+        /// <summary>
+        /// The airport where the flight originates.
+        /// </summary>
+        OneOrMany<IAirport>? DepartureAirport { get; set; }
+
+        /// <summary>
+        /// Identifier of the flight's departure gate.
+        /// </summary>
+        OneOrMany<string>? DepartureGate { get; set; }
+
+        /// <summary>
+        /// Identifier of the flight's departure terminal.
+        /// </summary>
+        OneOrMany<string>? DepartureTerminal { get; set; }
+
+        /// <summary>
+        /// The expected departure time.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? DepartureTime { get; set; }
+
+        /// <summary>
+        /// The estimated time the flight will take.
+        /// </summary>
+        Values<TimeSpan?, string>? EstimatedFlightDuration { get; set; }
+
+        /// <summary>
+        /// The distance of the flight.
+        /// </summary>
+        OneOrMany<string>? FlightDistance { get; set; }
+
+        /// <summary>
+        /// The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
+        /// </summary>
+        OneOrMany<string>? FlightNumber { get; set; }
+
+        /// <summary>
+        /// Description of the meals that will be provided or available for purchase.
+        /// </summary>
+        OneOrMany<string>? MealService { get; set; }
+
+        /// <summary>
+        /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+        /// </summary>
+        Values<IOrganization, IPerson>? Provider { get; set; }
+
+        /// <summary>
+        /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
+        /// </summary>
+        Values<IOrganization, IPerson>? Seller { get; set; }
+
+        /// <summary>
+        /// The time when a passenger can check into the flight online.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? WebCheckinTime { get; set; }
+    }
+
+    /// <summary>
+    /// An airline flight.
+    /// </summary>
     [DataContract]
-    public partial class Flight : Intangible
+    public partial class Flight : Intangible, IFlight
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,14 +112,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "aircraft", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Vehicle>? Aircraft { get; set; }
+        public Values<string, IVehicle>? Aircraft { get; set; }
 
         /// <summary>
         /// The airport where the flight terminates.
         /// </summary>
         [DataMember(Name = "arrivalAirport", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Airport>? ArrivalAirport { get; set; }
+        public OneOrMany<IAirport>? ArrivalAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's arrival gate.
@@ -63,7 +154,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "departureAirport", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Airport>? DepartureAirport { get; set; }
+        public OneOrMany<IAirport>? DepartureAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's departure gate.
@@ -119,14 +210,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "provider", Order = 220)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Provider { get; set; }
+        public Values<IOrganization, IPerson>? Provider { get; set; }
 
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
         /// </summary>
         [DataMember(Name = "seller", Order = 221)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Seller { get; set; }
+        public Values<IOrganization, IPerson>? Seller { get; set; }
 
         /// <summary>
         /// The time when a passenger can check into the flight online.

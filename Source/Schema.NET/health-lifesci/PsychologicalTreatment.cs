@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A process of care relying upon counseling, dialogue and communication  aimed at improving a mental health condition without use of drugs.
     /// </summary>
+    public partial interface IPsychologicalTreatment : ITherapeuticProcedure
+    {
+    }
+
+    /// <summary>
+    /// A process of care relying upon counseling, dialogue and communication  aimed at improving a mental health condition without use of drugs.
+    /// </summary>
     [DataContract]
-    public partial class PsychologicalTreatment : TherapeuticProcedure
+    public partial class PsychologicalTreatment : TherapeuticProcedure, IPsychologicalTreatment
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A legislative building&amp;#x2014;for example, the state capitol.
     /// </summary>
+    public partial interface ILegislativeBuilding : IGovernmentBuilding
+    {
+    }
+
+    /// <summary>
+    /// A legislative building&amp;#x2014;for example, the state capitol.
+    /// </summary>
     [DataContract]
-    public partial class LegislativeBuilding : GovernmentBuilding
+    public partial class LegislativeBuilding : GovernmentBuilding, ILegislativeBuilding
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

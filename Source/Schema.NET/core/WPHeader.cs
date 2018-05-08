@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The header section of the page.
     /// </summary>
+    public partial interface IWPHeader : IWebPageElement
+    {
+    }
+
+    /// <summary>
+    /// The header section of the page.
+    /// </summary>
     [DataContract]
-    public partial class WPHeader : WebPageElement
+    public partial class WPHeader : WebPageElement, IWPHeader
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

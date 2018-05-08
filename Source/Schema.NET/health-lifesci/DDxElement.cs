@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// An alternative, closely-related condition typically considered later in the differential diagnosis process along with the signs that are used to distinguish it.
     /// </summary>
+    public partial interface IDDxElement : IMedicalIntangible
+    {
+        /// <summary>
+        /// One or more alternative conditions considered in the differential diagnosis process as output of a diagnosis process.
+        /// </summary>
+        OneOrMany<IMedicalCondition>? Diagnosis { get; set; }
+
+        /// <summary>
+        /// One of a set of signs and symptoms that can be used to distinguish this diagnosis from others in the differential diagnosis.
+        /// </summary>
+        OneOrMany<IMedicalSignOrSymptom>? DistinguishingSign { get; set; }
+    }
+
+    /// <summary>
+    /// An alternative, closely-related condition typically considered later in the differential diagnosis process along with the signs that are used to distinguish it.
+    /// </summary>
     [DataContract]
-    public partial class DDxElement : MedicalIntangible
+    public partial class DDxElement : MedicalIntangible, IDDxElement
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,13 +37,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "diagnosis", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MedicalCondition>? Diagnosis { get; set; }
+        public OneOrMany<IMedicalCondition>? Diagnosis { get; set; }
 
         /// <summary>
         /// One of a set of signs and symptoms that can be used to distinguish this diagnosis from others in the differential diagnosis.
         /// </summary>
         [DataMember(Name = "distinguishingSign", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MedicalSignOrSymptom>? DistinguishingSign { get; set; }
+        public OneOrMany<IMedicalSignOrSymptom>? DistinguishingSign { get; set; }
     }
 }

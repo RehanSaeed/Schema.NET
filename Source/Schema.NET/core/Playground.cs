@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A playground.
     /// </summary>
+    public partial interface IPlayground : ICivicStructure
+    {
+    }
+
+    /// <summary>
+    /// A playground.
+    /// </summary>
     [DataContract]
-    public partial class Playground : CivicStructure
+    public partial class Playground : CivicStructure, IPlayground
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// One of the continents (for example, Europe or Africa).
     /// </summary>
+    public partial interface IContinent : ILandform
+    {
+    }
+
+    /// <summary>
+    /// One of the continents (for example, Europe or Africa).
+    /// </summary>
     [DataContract]
-    public partial class Continent : Landform
+    public partial class Continent : Landform, IContinent
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

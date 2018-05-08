@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// An audio file.
     /// </summary>
+    public partial interface IAudioObject : IMediaObject
+    {
+        /// <summary>
+        /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
+        /// </summary>
+        OneOrMany<string>? Transcript { get; set; }
+    }
+
+    /// <summary>
+    /// An audio file.
+    /// </summary>
     [DataContract]
-    public partial class AudioObject : MediaObject
+    public partial class AudioObject : MediaObject, IAudioObject
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

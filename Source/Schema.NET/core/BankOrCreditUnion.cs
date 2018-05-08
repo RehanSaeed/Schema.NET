@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// Bank or credit union.
     /// </summary>
+    public partial interface IBankOrCreditUnion : IFinancialService
+    {
+    }
+
+    /// <summary>
+    /// Bank or credit union.
+    /// </summary>
     [DataContract]
-    public partial class BankOrCreditUnion : FinancialService
+    public partial class BankOrCreditUnion : FinancialService, IBankOrCreditUnion
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

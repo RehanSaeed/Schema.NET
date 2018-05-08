@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A radio station.
     /// </summary>
+    public partial interface IRadioStation : ILocalBusiness
+    {
+    }
+
+    /// <summary>
+    /// A radio station.
+    /// </summary>
     [DataContract]
-    public partial class RadioStation : LocalBusiness
+    public partial class RadioStation : LocalBusiness, IRadioStation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

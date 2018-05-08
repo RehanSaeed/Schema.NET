@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
     /// </summary>
+    public partial interface ISubstance : IMedicalEntity
+    {
+        /// <summary>
+        /// An active ingredient, typically chemical compounds and/or biologic substances.
+        /// </summary>
+        OneOrMany<string>? ActiveIngredient { get; set; }
+
+        /// <summary>
+        /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
+        /// </summary>
+        OneOrMany<IMaximumDoseSchedule>? MaximumIntake { get; set; }
+    }
+
+    /// <summary>
+    /// Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
+    /// </summary>
     [DataContract]
-    public partial class Substance : MedicalEntity
+    public partial class Substance : MedicalEntity, ISubstance
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -28,6 +44,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "maximumIntake", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<MaximumDoseSchedule>? MaximumIntake { get; set; }
+        public virtual OneOrMany<IMaximumDoseSchedule>? MaximumIntake { get; set; }
     }
 }

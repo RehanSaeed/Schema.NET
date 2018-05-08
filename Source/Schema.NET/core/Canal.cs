@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A canal, like the Panama Canal.
     /// </summary>
+    public partial interface ICanal : IBodyOfWater
+    {
+    }
+
+    /// <summary>
+    /// A canal, like the Panama Canal.
+    /// </summary>
     [DataContract]
-    public partial class Canal : BodyOfWater
+    public partial class Canal : BodyOfWater, ICanal
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

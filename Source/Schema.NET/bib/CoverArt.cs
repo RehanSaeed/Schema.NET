@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The artwork on the outer surface of a CreativeWork.
     /// </summary>
+    public partial interface ICoverArt : IVisualArtwork
+    {
+    }
+
+    /// <summary>
+    /// The artwork on the outer surface of a CreativeWork.
+    /// </summary>
     [DataContract]
-    public partial class CoverArt : VisualArtwork
+    public partial class CoverArt : VisualArtwork, ICoverArt
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

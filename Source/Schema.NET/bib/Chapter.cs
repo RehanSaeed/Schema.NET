@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// One of the sections into which a book is divided. A chapter usually has a section number or a name.
     /// </summary>
+    public partial interface IChapter : ICreativeWork
+    {
+    }
+
+    /// <summary>
+    /// One of the sections into which a book is divided. A chapter usually has a section number or a name.
+    /// </summary>
     [DataContract]
-    public partial class Chapter : CreativeWork
+    public partial class Chapter : CreativeWork, IChapter
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

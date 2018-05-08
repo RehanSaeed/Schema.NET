@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// An electronic file or document.
     /// </summary>
+    public partial interface IDigitalDocument : ICreativeWork
+    {
+        /// <summary>
+        /// A permission related to the access to this document (e.g. permission to read or write an electronic document). For a public document, specify a grantee with an Audience with audienceType equal to "public".
+        /// </summary>
+        OneOrMany<IDigitalDocumentPermission>? HasDigitalDocumentPermission { get; set; }
+    }
+
+    /// <summary>
+    /// An electronic file or document.
+    /// </summary>
     [DataContract]
-    public partial class DigitalDocument : CreativeWork
+    public partial class DigitalDocument : CreativeWork, IDigitalDocument
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hasDigitalDocumentPermission", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DigitalDocumentPermission>? HasDigitalDocumentPermission { get; set; }
+        public OneOrMany<IDigitalDocumentPermission>? HasDigitalDocumentPermission { get; set; }
     }
 }

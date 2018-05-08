@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A medical procedure intended primarily for diagnostic, as opposed to therapeutic, purposes.
     /// </summary>
+    public partial interface IDiagnosticProcedure : IMedicalProcedure
+    {
+    }
+
+    /// <summary>
+    /// A medical procedure intended primarily for diagnostic, as opposed to therapeutic, purposes.
+    /// </summary>
     [DataContract]
-    public partial class DiagnosticProcedure : MedicalProcedure
+    public partial class DiagnosticProcedure : MedicalProcedure, IDiagnosticProcedure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

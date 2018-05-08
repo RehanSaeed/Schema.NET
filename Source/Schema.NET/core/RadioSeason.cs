@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// Season dedicated to radio broadcast and associated online delivery.
     /// </summary>
+    public partial interface IRadioSeason : ICreativeWorkSeason
+    {
+    }
+
+    /// <summary>
+    /// Season dedicated to radio broadcast and associated online delivery.
+    /// </summary>
     [DataContract]
-    public partial class RadioSeason : CreativeWorkSeason
+    public partial class RadioSeason : CreativeWorkSeason, IRadioSeason
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

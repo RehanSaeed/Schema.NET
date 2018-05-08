@@ -11,8 +11,23 @@ namespace Schema.NET
     /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/AskAction"&gt;AskAction&lt;/a&gt;: Appears generally as an origin of a ReplyAction.&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
+    public partial interface IReplyAction : ICommunicateAction
+    {
+        /// <summary>
+        /// A sub property of result. The Comment created or sent as a result of this action.
+        /// </summary>
+        OneOrMany<IComment>? ResultComment { get; set; }
+    }
+
+    /// <summary>
+    /// &lt;p&gt;The act of responding to a question/message asked/sent by the object. Related to &lt;a class="localLink" href="http://schema.org/AskAction"&gt;AskAction&lt;/a&gt;&lt;/p&gt;
+    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// &lt;ul&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/AskAction"&gt;AskAction&lt;/a&gt;: Appears generally as an origin of a ReplyAction.&lt;/li&gt;
+    /// &lt;/ul&gt;
+    /// </summary>
     [DataContract]
-    public partial class ReplyAction : CommunicateAction
+    public partial class ReplyAction : CommunicateAction, IReplyAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -25,6 +40,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "resultComment", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Comment>? ResultComment { get; set; }
+        public OneOrMany<IComment>? ResultComment { get; set; }
     }
 }

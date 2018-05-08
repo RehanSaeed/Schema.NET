@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// Residence type: Gated community.
     /// </summary>
+    public partial interface IGatedResidenceCommunity : IResidence
+    {
+    }
+
+    /// <summary>
+    /// Residence type: Gated community.
+    /// </summary>
     [DataContract]
-    public partial class GatedResidenceCommunity : Residence
+    public partial class GatedResidenceCommunity : Residence, IGatedResidenceCommunity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

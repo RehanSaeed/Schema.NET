@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A notary.
     /// </summary>
+    public partial interface INotary : ILegalService
+    {
+    }
+
+    /// <summary>
+    /// A notary.
+    /// </summary>
     [DataContract]
-    public partial class Notary : LegalService
+    public partial class Notary : LegalService, INotary
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of inserting at the beginning if an ordered collection.
     /// </summary>
+    public partial interface IPrependAction : IInsertAction
+    {
+    }
+
+    /// <summary>
+    /// The act of inserting at the beginning if an ordered collection.
+    /// </summary>
     [DataContract]
-    public partial class PrependAction : InsertAction
+    public partial class PrependAction : InsertAction, IPrependAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A step in the instructions for how to achieve a result. It is an ordered list with HowToDirection and/or HowToTip items.
     /// </summary>
+    public partial interface IHowToStep : IItemList
+    {
+    }
+
+    /// <summary>
+    /// A step in the instructions for how to achieve a result. It is an ordered list with HowToDirection and/or HowToTip items.
+    /// </summary>
     [DataContract]
-    public partial class HowToStep : ItemList
+    public partial class HowToStep : ItemList, IHowToStep
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

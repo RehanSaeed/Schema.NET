@@ -7,8 +7,34 @@ namespace Schema.NET
     /// <summary>
     /// When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
     /// </summary>
+    public partial interface IAggregateOffer : IOffer
+    {
+        /// <summary>
+        /// The highest price of all offers available.
+        /// </summary>
+        Values<decimal?, string>? HighPrice { get; set; }
+
+        /// <summary>
+        /// The lowest price of all offers available.
+        /// </summary>
+        Values<decimal?, string>? LowPrice { get; set; }
+
+        /// <summary>
+        /// The number of offers for the product.
+        /// </summary>
+        OneOrMany<int?>? OfferCount { get; set; }
+
+        /// <summary>
+        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
+        /// </summary>
+        OneOrMany<IOffer>? Offers { get; set; }
+    }
+
+    /// <summary>
+    /// When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
+    /// </summary>
     [DataContract]
-    public partial class AggregateOffer : Offer
+    public partial class AggregateOffer : Offer, IAggregateOffer
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -42,6 +68,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "offers", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Offer>? Offers { get; set; }
+        public OneOrMany<IOffer>? Offers { get; set; }
     }
 }

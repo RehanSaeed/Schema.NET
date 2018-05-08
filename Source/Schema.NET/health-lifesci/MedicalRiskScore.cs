@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A simple system that adds up the number of risk factors to yield a score that is associated with prognosis, e.g. CHAD score, TIMI risk score.
     /// </summary>
+    public partial interface IMedicalRiskScore : IMedicalRiskEstimator
+    {
+        /// <summary>
+        /// The algorithm or rules to follow to compute the score.
+        /// </summary>
+        OneOrMany<string>? Algorithm { get; set; }
+    }
+
+    /// <summary>
+    /// A simple system that adds up the number of risk factors to yield a score that is associated with prognosis, e.g. CHAD score, TIMI risk score.
+    /// </summary>
     [DataContract]
-    public partial class MedicalRiskScore : MedicalRiskEstimator
+    public partial class MedicalRiskScore : MedicalRiskEstimator, IMedicalRiskScore
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

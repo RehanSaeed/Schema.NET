@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.
     /// </summary>
+    public partial interface IWebSite : ICreativeWork
+    {
+        /// <summary>
+        /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.
+        /// </summary>
+        OneOrMany<string>? Issn { get; set; }
+    }
+
+    /// <summary>
+    /// A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.
+    /// </summary>
     [DataContract]
-    public partial class WebSite : CreativeWork
+    public partial class WebSite : CreativeWork, IWebSite
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

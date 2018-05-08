@@ -7,8 +7,29 @@ namespace Schema.NET
     /// <summary>
     /// The average rating based on multiple ratings or reviews.
     /// </summary>
+    public partial interface IAggregateRating : IRating
+    {
+        /// <summary>
+        /// The item that is being reviewed/rated.
+        /// </summary>
+        OneOrMany<IThing>? ItemReviewed { get; set; }
+
+        /// <summary>
+        /// The count of total number of ratings.
+        /// </summary>
+        OneOrMany<int?>? RatingCount { get; set; }
+
+        /// <summary>
+        /// The count of total number of reviews.
+        /// </summary>
+        OneOrMany<int?>? ReviewCount { get; set; }
+    }
+
+    /// <summary>
+    /// The average rating based on multiple ratings or reviews.
+    /// </summary>
     [DataContract]
-    public partial class AggregateRating : Rating
+    public partial class AggregateRating : Rating, IAggregateRating
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +42,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "itemReviewed", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? ItemReviewed { get; set; }
+        public OneOrMany<IThing>? ItemReviewed { get; set; }
 
         /// <summary>
         /// The count of total number of ratings.

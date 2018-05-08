@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// See MedicalBusiness, MedicalOrganization for more information.
     /// </summary>
+    public partial interface IMedicalBusinessAndMedicalOrganization : IMedicalBusiness, IMedicalOrganization
+    {
+    }
+
+    /// <summary>
+    /// See MedicalBusiness, MedicalOrganization for more information.
+    /// </summary>
     [DataContract]
-    public abstract partial class MedicalBusinessAndMedicalOrganization : LocalBusinessAndOrganization
+    public abstract partial class MedicalBusinessAndMedicalOrganization : LocalBusinessAndOrganization, IMedicalBusinessAndMedicalOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A crematorium.
     /// </summary>
+    public partial interface ICrematorium : ICivicStructure
+    {
+    }
+
+    /// <summary>
+    /// A crematorium.
+    /// </summary>
     [DataContract]
-    public partial class Crematorium : CivicStructure
+    public partial class Crematorium : CivicStructure, ICrematorium
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

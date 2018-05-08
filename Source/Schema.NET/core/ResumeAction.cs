@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer).
     /// </summary>
+    public partial interface IResumeAction : IControlAction
+    {
+    }
+
+    /// <summary>
+    /// The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer).
+    /// </summary>
     [DataContract]
-    public partial class ResumeAction : ControlAction
+    public partial class ResumeAction : ControlAction, IResumeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

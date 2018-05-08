@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of inserting at the end if an ordered collection.
     /// </summary>
+    public partial interface IAppendAction : IInsertAction
+    {
+    }
+
+    /// <summary>
+    /// The act of inserting at the end if an ordered collection.
+    /// </summary>
     [DataContract]
-    public partial class AppendAction : InsertAction
+    public partial class AppendAction : InsertAction, IAppendAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

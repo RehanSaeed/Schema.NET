@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A sports location, such as a playing field.
     /// </summary>
+    public partial interface ISportsActivityLocation : ILocalBusiness
+    {
+    }
+
+    /// <summary>
+    /// A sports location, such as a playing field.
+    /// </summary>
     [DataContract]
-    public partial class SportsActivityLocation : LocalBusiness
+    public partial class SportsActivityLocation : LocalBusiness, ISportsActivityLocation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,29 @@ namespace Schema.NET
     /// <summary>
     /// A review of an item - for example, of a restaurant, movie, or store.
     /// </summary>
+    public partial interface IReview : ICreativeWork
+    {
+        /// <summary>
+        /// The item that is being reviewed/rated.
+        /// </summary>
+        OneOrMany<IThing>? ItemReviewed { get; set; }
+
+        /// <summary>
+        /// The actual body of the review.
+        /// </summary>
+        OneOrMany<string>? ReviewBody { get; set; }
+
+        /// <summary>
+        /// The rating given in this review. Note that reviews can themselves be rated. The &lt;code&gt;reviewRating&lt;/code&gt; applies to rating given by the review. The &lt;a class="localLink" href="http://schema.org/aggregateRating"&gt;aggregateRating&lt;/a&gt; property applies to the review itself, as a creative work.
+        /// </summary>
+        OneOrMany<IRating>? ReviewRating { get; set; }
+    }
+
+    /// <summary>
+    /// A review of an item - for example, of a restaurant, movie, or store.
+    /// </summary>
     [DataContract]
-    public partial class Review : CreativeWork
+    public partial class Review : CreativeWork, IReview
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +42,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "itemReviewed", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? ItemReviewed { get; set; }
+        public OneOrMany<IThing>? ItemReviewed { get; set; }
 
         /// <summary>
         /// The actual body of the review.
@@ -35,6 +56,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "reviewRating", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Rating>? ReviewRating { get; set; }
+        public OneOrMany<IRating>? ReviewRating { get; set; }
     }
 }

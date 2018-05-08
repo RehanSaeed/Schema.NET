@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// An agent approves/certifies/likes/supports/sanction an object.
     /// </summary>
+    public partial interface IEndorseAction : IReactAction
+    {
+        /// <summary>
+        /// A sub property of participant. The person/organization being supported.
+        /// </summary>
+        Values<IOrganization, IPerson>? Endorsee { get; set; }
+    }
+
+    /// <summary>
+    /// An agent approves/certifies/likes/supports/sanction an object.
+    /// </summary>
     [DataContract]
-    public partial class EndorseAction : ReactAction
+    public partial class EndorseAction : ReactAction, IEndorseAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "endorsee", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Endorsee { get; set; }
+        public Values<IOrganization, IPerson>? Endorsee { get; set; }
     }
 }

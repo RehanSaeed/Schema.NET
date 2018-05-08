@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of consuming written content.
     /// </summary>
+    public partial interface IReadAction : IConsumeAction
+    {
+    }
+
+    /// <summary>
+    /// The act of consuming written content.
+    /// </summary>
     [DataContract]
-    public partial class ReadAction : ConsumeAction
+    public partial class ReadAction : ConsumeAction, IReadAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
