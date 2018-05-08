@@ -136,7 +136,7 @@ namespace Schema.NET
                         }
                         else if (tokenType == JsonToken.StartArray)
                         {
-                            var arrayType = typeof(List<>).MakeGenericType(type);
+                            var arrayType = typeof(List<>).MakeGenericType(ToClass(type));
                             args = token.ToObject(arrayType);
                         }
                         else
@@ -152,7 +152,7 @@ namespace Schema.NET
                             }
                             else
                             {
-                                args = token.ToObject(type); // This is expected to throw on some case
+                                args = token.ToObject(ToClass(type)); // This is expected to throw on some case
                             }
                         }
 
@@ -220,6 +220,24 @@ namespace Schema.NET
         {
             var typeNameToken = token.Values().FirstOrDefault(t => t.Path.EndsWith("@type"));
             return typeNameToken?.Value<string>();
+        }
+
+        /// <summary>
+        /// Gets the class type definition.
+        /// </summary>
+        /// <param name="type">The type under consideration.</param>
+        /// <returns>
+        /// The implementing class for <paramref name="type"/> or
+        /// <paramref name="type"/> if it is already a class.
+        /// </returns>
+        private static Type ToClass(Type type)
+        {
+            if (type.GetTypeInfo().IsInterface)
+            {
+                return Type.GetType($"{type.Namespace}.{type.Name.Substring(1)}");
+            }
+
+            return type;
         }
     }
 }

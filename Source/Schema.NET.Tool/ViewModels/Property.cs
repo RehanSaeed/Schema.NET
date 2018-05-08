@@ -21,6 +21,16 @@ namespace Schema.NET.Tool.ViewModels
 
         public List<PropertyType> Types { get; set; } = new List<PropertyType>();
 
+        private string TypeString
+        {
+            get
+            {
+                var adjustedTypes = string.Join(", ", this.Types.Select(x => x.CSharpTypeString));
+                var rootType = this.Types.Count == 1 ? "OneOrMany" : "Values";
+                return $"{rootType}<{adjustedTypes}>?";
+            }
+        }
+
         public void AppendIndentLine(StringBuilder stringBuilder, int indent)
         {
             stringBuilder.AppendCommentSummary(indent, this.Description);
@@ -36,10 +46,6 @@ namespace Schema.NET.Tool.ViewModels
             var modifier = isVirtual ? " virtual" : string.Empty;
             modifier = isOverride ? " override" : modifier;
 
-            var adjustedTypes = string.Join(", ", this.Types.Select(x => x.CSharpTypeString));
-            var rootType = this.Types.Count == 1 ? "OneOrMany" : "Values";
-            var typeString = $"{rootType}<{adjustedTypes}>?";
-
             stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.JsonName}\", Order = {this.Order})]");
 
             if (this.Types.Any(x => string.Equals(x.Name, "Duration", StringComparison.OrdinalIgnoreCase)))
@@ -51,7 +57,14 @@ namespace Schema.NET.Tool.ViewModels
                 stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(ValuesConverter))]");
             }
 
-            stringBuilder.AppendIndentLine(indent, $"public{modifier} {typeString} {this.Name} {{ get; set; }}");
+            stringBuilder.AppendIndentLine(indent, $"public{modifier} {this.TypeString} {this.Name} {{ get; set; }}");
+        }
+
+        public void AppendIndentLineForInterface(StringBuilder stringBuilder, int indent)
+        {
+            stringBuilder.AppendCommentSummary(indent, this.Description);
+
+            stringBuilder.AppendIndentLine(indent, $"{this.TypeString} {this.Name} {{ get; set; }}");
         }
 
         public Property Clone() =>

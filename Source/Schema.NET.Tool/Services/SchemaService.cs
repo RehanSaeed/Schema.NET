@@ -334,7 +334,7 @@ namespace Schema.NET.Tool.Services
                     }
                     else
                     {
-                        return typeName;
+                        return "I" + typeName;
                     }
             }
         }

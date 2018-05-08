@@ -9,7 +9,7 @@ namespace Schema.NET.Test
     {
         private readonly BreadcrumbList breadcrumbList = new BreadcrumbList()
         {
-            ItemListElement = new List<ListItem>()
+            ItemListElement = new List<IListItem>()
             {
                 new ListItem()
                 {

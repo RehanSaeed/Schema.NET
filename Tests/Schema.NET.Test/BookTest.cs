@@ -17,7 +17,7 @@ namespace Schema.NET.Test
                 Name = "J.D. Salinger"
             },
             Url = new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"),
-            WorkExample = new List<CreativeWork>()
+            WorkExample = new List<ICreativeWork>()
                 {
                     new Book()
                     {

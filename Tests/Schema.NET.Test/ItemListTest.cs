@@ -14,7 +14,7 @@ namespace Schema.NET.Test
             // All items in the list must be of the same type. Recipe, Film, Course, Article, Recipe are supported.
             var itemList = new ItemList()
             {
-                ItemListElement = new List<ListItem>() // Required
+                ItemListElement = new List<IListItem>() // Required
                 {
                     new ListItem() // Required
                     {
@@ -58,7 +58,7 @@ namespace Schema.NET.Test
             // All items in the list must be of the same type. Recipe, Film, Course, Article, Recipe are supported.
             var itemList = new ItemList()
             {
-                ItemListElement = new List<ListItem>() // Required
+                ItemListElement = new List<IListItem>() // Required
                 {
                     new ListItem() // Required
                     {
@@ -113,7 +113,7 @@ namespace Schema.NET.Test
             // All items in the list must be of the same type. Recipe, Film, Course, Article, Recipe are supported.
             var itemList = new ItemList()
             {
-                ItemListElement = new List<ListItem>() // Required
+                ItemListElement = new List<IListItem>() // Required
                 {
                     new ListItem() // Required
                     {
