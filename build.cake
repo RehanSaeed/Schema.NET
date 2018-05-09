@@ -14,20 +14,22 @@ var buildNumber =
     TravisCI.IsRunningOnTravisCI ? TravisCI.Environment.Build.BuildNumber :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
+var commit =
+    HasArgument("Commit") ? Argument<string>("Commit") :
+    AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Repository.Commit.Id :
+    TravisCI.IsRunningOnTravisCI ? TravisCI.Environment.Repository.Commit :
+    EnvironmentVariable("Commit") != null ? EnvironmentVariable("Commit") :
+    string.Empty;
 
 var artifactsDirectory = Directory("./Artifacts");
-string versionSuffix = null;
-if (!string.IsNullOrEmpty(preReleaseSuffix))
-{
-    versionSuffix = preReleaseSuffix + "-" + buildNumber.ToString("D4");
-}
+var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
 
 Task("Clean")
     .Does(() =>
     {
         CleanDirectory(artifactsDirectory);
-        DeleteDirectories(GetDirectories("**/bin"), true);
-        DeleteDirectories(GetDirectories("**/obj"), true);
+        DeleteDirectories(GetDirectories("**/bin"), new DeleteDirectorySettings() { Force = true, Recursive = true });
+        DeleteDirectories(GetDirectories("**/obj"), new DeleteDirectorySettings() { Force = true, Recursive = true });
     });
 
 Task("Restore")
@@ -46,6 +48,7 @@ Task("Build")
             new DotNetCoreBuildSettings()
             {
                 Configuration = configuration,
+                NoRestore = true,
                 VersionSuffix = versionSuffix
             });
     });
@@ -92,6 +95,8 @@ Task("Pack")
             new DotNetCorePackSettings()
             {
                 Configuration = configuration,
+                NoBuild = true,
+                NoRestore = true,
                 OutputDirectory = artifactsDirectory,
                 VersionSuffix = versionSuffix
             });
