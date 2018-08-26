@@ -16,6 +16,7 @@ namespace Schema.NET.Test
                     Position = 1,
                     Item = new Book()
                     {
+                        Id = new Uri("http://example.com/books"),
                         Name = "Books",
                         Image = new Uri("http://example.com/images/icon-book.png")
                     }
@@ -25,6 +26,7 @@ namespace Schema.NET.Test
                     Position = 2,
                     Item = new Person()
                     {
+                        Id = new Uri("http://example.com/books/authors"),
                         Name = "Authors",
                         Image = new Uri("http://example.com/images/icon-author.png")
                     }
@@ -41,6 +43,7 @@ namespace Schema.NET.Test
                     "\"@type\":\"ListItem\"," +
                     "\"item\":{" + // Required
                         "\"@type\":\"Book\"," +
+                        "\"@id\":\"http://example.com/books\"," + // Required
                         "\"name\":\"Books\"," + // Required
                         "\"image\":\"http://example.com/images/icon-book.png\"" + // Optional
                     "}," +
@@ -50,6 +53,7 @@ namespace Schema.NET.Test
                     "\"@type\":\"ListItem\"," +
                     "\"item\":{" +
                         "\"@type\":\"Person\"," +
+                        "\"@id\":\"http://example.com/books/authors\"," + // Required
                         "\"name\":\"Authors\"," +
                         "\"image\":\"http://example.com/images/icon-author.png\"" +
                     "}," +
