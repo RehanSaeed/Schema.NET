@@ -45,8 +45,8 @@ namespace Schema.NET.Test
             "{" +
             "\"@context\":\"http://schema.org\"," +
             "\"@type\":\"Recipe\"," +
-            "\"name\":\"Grandma's Holiday Apple Pie\"," +
-            "\"description\":\"This is my grandmother's apple pie recipe. I like to add a dash of nutmeg.\"," +
+            "\"name\":\"Grandma\\u0027s Holiday Apple Pie\"," +
+            "\"description\":\"This is my grandmother\\u0027s apple pie recipe. I like to add a dash of nutmeg.\"," +
             "\"image\":\"https://example.com/image.jpg\"," +
             "\"aggregateRating\":{" +
                 "\"@type\":\"AggregateRating\"," +
