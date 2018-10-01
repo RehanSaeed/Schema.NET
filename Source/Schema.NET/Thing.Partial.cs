@@ -1,4 +1,4 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Collections.Generic;
     using System.Text;
@@ -8,7 +8,7 @@
     public partial class Thing : JsonLdObject
     {
         private const string ContextPropertyJson = "\"@context\":\"http://schema.org\",";
-        
+
         /// <summary>
         /// Serializer settings used.
         /// Note: Escapes HTML to avoid XSS vulnerabilities where user-supplied data is used.
