@@ -8,13 +8,19 @@
     public partial class Thing : JsonLdObject
     {
         private const string ContextPropertyJson = "\"@context\":\"http://schema.org\",";
+        
+        /// <summary>
+        /// Serializer settings used.
+        /// Note: Escapes HTML to avoid XSS vulnerabilities where user-supplied data is used.
+        /// </summary>
         private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
         {
             Converters = new List<JsonConverter>()
             {
                 new StringEnumConverter()
             },
-            NullValueHandling = NullValueHandling.Ignore
+            NullValueHandling = NullValueHandling.Ignore,
+            StringEscapeHandling = StringEscapeHandling.EscapeHtml
         };
 
         /// <summary>
