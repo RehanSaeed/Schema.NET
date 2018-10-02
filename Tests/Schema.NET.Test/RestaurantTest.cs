@@ -66,7 +66,7 @@ namespace Schema.NET.Test
             "\"@context\":\"http://schema.org\"," +
             "\"@type\":\"Restaurant\"," +
             "\"@id\":\"http://davessteakhouse.example.com\"," +
-            "\"name\":\"Dave\\u0027s Steak House\"," +
+            "\"name\":\"Dave's Steak House\"," +
             "\"image\":\"http://davessteakhouse.example.com/logo.jpg\"," +
             "\"sameAs\":\"http://davessteakhouse.example.com\"," +
             "\"address\":{" +

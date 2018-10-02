@@ -25,7 +25,7 @@ namespace Schema.NET.Test
                     "\"@type\":\"WebSite\"," +
                     "\"potentialAction\":{" +
                         "\"@type\":\"SearchAction\"," +
-                        "\"target\":\"http://example.com/search?\\u0026q={query}\"," +
+                        "\"target\":\"http://example.com/search?&q={query}\"," +
                         "\"query-input\":\"required\"" +
                     "}," +
                     "\"url\":\"https://example.com\"" +

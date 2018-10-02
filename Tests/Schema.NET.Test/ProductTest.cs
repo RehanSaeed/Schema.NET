@@ -44,7 +44,7 @@ namespace Schema.NET.Test
             "\"@context\":\"http://schema.org\"," +
             "\"@type\":\"Product\"," +
             "\"name\":\"Executive Anvil\"," +
-            "\"description\":\"Sleeker than ACME\\u0027s Classic Anvil, the Executive Anvil is perfect for the business traveller looking for something to drop from a height.\"," +
+            "\"description\":\"Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveller looking for something to drop from a height.\"," +
             "\"image\":\"http://www.example.com/anvil_executive.jpg\"," +
             "\"aggregateRating\":{" +
                 "\"@type\":\"AggregateRating\"," +
