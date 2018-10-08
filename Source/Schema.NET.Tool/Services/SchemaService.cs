@@ -268,6 +268,8 @@ namespace Schema.NET.Tool.Services
                 })
                 .Where(x => x.Types.Count > 0)
                 .OrderBy(x => x.Name, new PropertyNameComparer())
+                .GroupBy(x => x.Name) // Remove duplicates.
+                .Select(x => x.First())
                 .ToList();
             @class.Properties.AddRange(properties);
             return @class;
