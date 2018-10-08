@@ -5,8 +5,8 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A reservation for lodging at a hotel, motel, inn, etc.&lt;/p&gt;
-    /// &lt;p&gt;Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
+    /// A reservation for lodging at a hotel, motel, inn, etc.&lt;br/&gt;&lt;br/&gt;
+    /// Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
     /// </summary>
     [DataContract]
     public partial class LodgingReservation : Reservation

@@ -5,8 +5,8 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// &lt;p&gt;The act of an agent communicating (service provider, social media, etc) their arrival by registering/confirming for a previously reserved service (e.g. flight check in) or at a place (e.g. hotel), possibly resulting in a result (boarding pass, etc).&lt;/p&gt;
-    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// The act of an agent communicating (service provider, social media, etc) their arrival by registering/confirming for a previously reserved service (e.g. flight check in) or at a place (e.g. hotel), possibly resulting in a result (boarding pass, etc).&lt;br/&gt;&lt;br/&gt;
+    /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
     /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/CheckOutAction"&gt;CheckOutAction&lt;/a&gt;: The antonym of CheckInAction.&lt;/li&gt;
     /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/ArriveAction"&gt;ArriveAction&lt;/a&gt;: Unlike ArriveAction, CheckInAction implies that the agent is informing/confirming the start of a previously reserved service.&lt;/li&gt;

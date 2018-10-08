@@ -5,8 +5,8 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// &lt;p&gt;The act of an agent relocating to a place.&lt;/p&gt;
-    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// The act of an agent relocating to a place.&lt;br/&gt;&lt;br/&gt;
+    /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
     /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/TransferAction"&gt;TransferAction&lt;/a&gt;: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.&lt;/li&gt;
     /// &lt;/ul&gt;

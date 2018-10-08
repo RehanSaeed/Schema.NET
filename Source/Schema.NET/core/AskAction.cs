@@ -5,8 +5,8 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// &lt;p&gt;The act of posing a question / favor to someone.&lt;/p&gt;
-    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// The act of posing a question / favor to someone.&lt;br/&gt;&lt;br/&gt;
+    /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
     /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/ReplyAction"&gt;ReplyAction&lt;/a&gt;: Appears generally as a response to AskAction.&lt;/li&gt;
     /// &lt;/ul&gt;

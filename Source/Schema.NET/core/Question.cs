@@ -17,11 +17,11 @@ namespace Schema.NET
         public override string Type => "Question";
 
         /// <summary>
-        /// The answer that has been accepted as best, typically on a Question/Answer site. Sites vary in their selection mechanisms, e.g. drawing on community opinion and/or the view of the Question author.
+        /// The answer(s) that has been accepted as best, typically on a Question/Answer site. Sites vary in their selection mechanisms, e.g. drawing on community opinion and/or the view of the Question author.
         /// </summary>
         [DataMember(Name = "acceptedAnswer", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Answer>? AcceptedAnswer { get; set; }
+        public Values<Answer, ItemList>? AcceptedAnswer { get; set; }
 
         /// <summary>
         /// The number of answers this question has received.
@@ -42,7 +42,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "suggestedAnswer", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Answer>? SuggestedAnswer { get; set; }
+        public Values<Answer, ItemList>? SuggestedAnswer { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.

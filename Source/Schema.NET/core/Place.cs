@@ -17,8 +17,8 @@ namespace Schema.NET
         public override string Type => "Place";
 
         /// <summary>
-        /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;/p&gt;
-        /// &lt;p&gt;Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+        /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
+        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 106)]
         [JsonConverter(typeof(ValuesConverter))]
@@ -46,8 +46,8 @@ namespace Schema.NET
         public virtual OneOrMany<LocationFeatureSpecification>? AmenityFeature { get; set; }
 
         /// <summary>
-        /// A short textual code (also called "store code") that uniquely identifies a place of business. The code is typically assigned by the parentOrganization and used in structured URLs.&lt;/p&gt;
-        /// &lt;p&gt;For example, in the URL http://www.starbucks.co.uk/store-locator/etc/detail/3047 the code "3047" is a branchCode for a particular branch.
+        /// A short textual code (also called "store code") that uniquely identifies a place of business. The code is typically assigned by the parentOrganization and used in structured URLs.&lt;br/&gt;&lt;br/&gt;
+        /// For example, in the URL http://www.starbucks.co.uk/store-locator/etc/detail/3047 the code "3047" is a branchCode for a particular branch.
         /// </summary>
         [DataMember(Name = "branchCode", Order = 110)]
         [JsonConverter(typeof(ValuesConverter))]
@@ -236,8 +236,8 @@ namespace Schema.NET
         public OneOrMany<bool?>? SmokingAllowed { get; set; }
 
         /// <summary>
-        /// The special opening hours of a certain place.&lt;/p&gt;
-        /// &lt;p&gt;Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
+        /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
+        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "specialOpeningHoursSpecification", Order = 137)]
         [JsonConverter(typeof(ValuesConverter))]

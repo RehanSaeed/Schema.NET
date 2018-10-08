@@ -38,11 +38,11 @@ namespace Schema.NET
         public OneOrMany<TimeSpan?>? PrepTime { get; set; }
 
         /// <summary>
-        /// The steps in the form of a single item (text, document, video, etc.) or an ordered list with HowToStep and/or HowToSection items.
+        /// A single step item (as HowToStep, text, document, video, etc.) or a HowToSection.
         /// </summary>
-        [DataMember(Name = "steps", Order = 209)]
+        [DataMember(Name = "step", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork, ItemList, string>? Steps { get; set; }
+        public Values<CreativeWork, HowToSection, HowToStep, string>? Step { get; set; }
 
         /// <summary>
         /// A sub-property of instrument. A supply consumed when performing instructions or a direction.

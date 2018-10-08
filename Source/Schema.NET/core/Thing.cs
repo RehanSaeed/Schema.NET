@@ -93,9 +93,16 @@ namespace Schema.NET
         public OneOrMany<Uri>? SameAs { get; set; }
 
         /// <summary>
+        /// A CreativeWork or Event about this Thing..
+        /// </summary>
+        [DataMember(Name = "subjectOf", Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<CreativeWork, Event>? SubjectOf { get; set; }
+
+        /// <summary>
         /// URL of the item.
         /// </summary>
-        [DataMember(Name = "url", Order = 16)]
+        [DataMember(Name = "url", Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Uri>? Url { get; set; }
     }

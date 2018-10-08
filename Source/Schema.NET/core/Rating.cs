@@ -38,9 +38,16 @@ namespace Schema.NET
         public Values<double?, string>? RatingValue { get; set; }
 
         /// <summary>
+        /// This Review or Rating is relevant to this part or facet of the itemReviewed.
+        /// </summary>
+        [DataMember(Name = "reviewAspect", Order = 209)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<string>? ReviewAspect { get; set; }
+
+        /// <summary>
         /// The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
         /// </summary>
-        [DataMember(Name = "worstRating", Order = 209)]
+        [DataMember(Name = "worstRating", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?, string>? WorstRating { get; set; }
     }

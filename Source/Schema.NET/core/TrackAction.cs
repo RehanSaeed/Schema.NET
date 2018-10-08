@@ -5,8 +5,8 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// &lt;p&gt;An agent tracks an object for updates.&lt;/p&gt;
-    /// &lt;p&gt;Related actions:&lt;/p&gt;
+    /// An agent tracks an object for updates.&lt;br/&gt;&lt;br/&gt;
+    /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
     /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/FollowAction"&gt;FollowAction&lt;/a&gt;: Unlike FollowAction, TrackAction refers to the interest on the location of innanimates objects.&lt;/li&gt;
     /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/SubscribeAction"&gt;SubscribeAction&lt;/a&gt;: Unlike SubscribeAction, TrackAction refers to  the interest on the location of innanimate objects.&lt;/li&gt;

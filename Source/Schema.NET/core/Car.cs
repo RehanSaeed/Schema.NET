@@ -24,8 +24,8 @@ namespace Schema.NET
         public OneOrMany<string>? AcrissCode { get; set; }
 
         /// <summary>
-        /// &lt;p&gt;The permitted total weight of cargo and installations (e.g. a roof rack) on top of the vehicle.&lt;/p&gt;
-        /// &lt;p&gt;Typical unit code(s): KGM for kilogram, LBR for pound&lt;/p&gt;
+        /// The permitted total weight of cargo and installations (e.g. a roof rack) on top of the vehicle.&lt;br/&gt;&lt;br/&gt;
+        /// Typical unit code(s): KGM for kilogram, LBR for pound&lt;br/&gt;&lt;br/&gt;
         /// &lt;ul&gt;
         /// &lt;li&gt;Note 1: You can indicate additional information in the &lt;a class="localLink" href="http://schema.org/name"&gt;name&lt;/a&gt; of the &lt;a class="localLink" href="http://schema.org/QuantitativeValue"&gt;QuantitativeValue&lt;/a&gt; node.&lt;/li&gt;
         /// &lt;li&gt;Note 2: You may also link to a &lt;a class="localLink" href="http://schema.org/QualitativeValue"&gt;QualitativeValue&lt;/a&gt; node that provides additional information using &lt;a class="localLink" href="http://schema.org/valueReference"&gt;valueReference&lt;/a&gt;&lt;/li&gt;

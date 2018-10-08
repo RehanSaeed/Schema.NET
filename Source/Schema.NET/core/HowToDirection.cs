@@ -8,7 +8,7 @@ namespace Schema.NET
     /// A direction indicating a single action to do in the instructions for how to achieve a result.
     /// </summary>
     [DataContract]
-    public partial class HowToDirection : ListItem
+    public partial class HowToDirection : CreativeWorkAndListItem
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,21 +21,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "afterMedia", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MediaObject>? AfterMedia { get; set; }
+        public Values<MediaObject, Uri>? AfterMedia { get; set; }
 
         /// <summary>
         /// A media object representing the circumstances before performing this direction.
         /// </summary>
         [DataMember(Name = "beforeMedia", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MediaObject>? BeforeMedia { get; set; }
+        public Values<MediaObject, Uri>? BeforeMedia { get; set; }
 
         /// <summary>
         /// A media object representing the circumstances while performing this direction.
         /// </summary>
         [DataMember(Name = "duringMedia", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MediaObject>? DuringMedia { get; set; }
+        public Values<MediaObject, Uri>? DuringMedia { get; set; }
 
         /// <summary>
         /// The length of time it takes to perform instructions or a direction (not including time to prepare the supplies), in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
