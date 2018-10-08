@@ -130,3 +130,4 @@ This magic is all carried out using the `Value<T>`, `Value<T1, T2>`, `Value<T1, 
 ## Contributions and Thanks
 
 - [psampaio](https://github.com/psampaio) - Added deserialization support and unit tests.
+- [icunningham88](https://github.com/icunningham88) - Improved a test.
