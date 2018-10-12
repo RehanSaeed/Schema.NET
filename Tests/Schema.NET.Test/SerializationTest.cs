@@ -84,5 +84,23 @@ namespace Schema.NET.Test
         [Fact]
         public void ToStringWithCustomSerializerSettings_UnsafeAuthorData_ReturnsExpectedJsonLd() =>
             Assert.Equal(this.jsonCustom, Person.ToString(this.customSerializerSettings));
+
+        [Fact]
+        public void ToStringWithNullAssignedProperty_ReturnsExpectedJsonLd()
+        {
+            var localBusiness = new LocalBusiness()
+            {
+                PriceRange = "$$$",
+                Address = null
+            };
+            var actual = localBusiness.ToString();
+            var expected =
+            "{" +
+                "\"@context\":\"http://schema.org\"," +
+                "\"@type\":\"LocalBusiness\"," +
+                "\"priceRange\":\"$$$\"" +
+            "}";
+            Assert.Equal(expected, actual);
+        }
     }
 }
