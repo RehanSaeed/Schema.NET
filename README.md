@@ -1,4 +1,4 @@
-﻿![Schema.NET Banner](https://raw.githubusercontent.com/RehanSaeed/Schema.NET/master/Images/Banner.png)
+![Schema.NET Banner](https://raw.githubusercontent.com/RehanSaeed/Schema.NET/master/Images/Banner.png)
 
 Schema.org objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD and XML, typically used to represent structured data in the `head` section of `html` page.
 
@@ -16,7 +16,7 @@ var jsonLd = website.ToString();
 
 The code above outputs the following JSON-LD:
 
-```JSONLD
+```JSON
 {
     "@context":"http://schema.org",
     "@type":"WebSite",
@@ -25,6 +25,8 @@ The code above outputs the following JSON-LD:
     "url":"https://example.com"
 }
 ```
+
+If writing the result into a `<script>` element, be sure to use the `.ToHtmlEscapedString()` method instead to avoid exposing your website to a Cross-Site Scripting attack. See the [example below](#important-security-notice).
 
 ## What is Schema.org?
 
@@ -55,6 +57,17 @@ Using structured data in `html` requires the use of a `script` tag with a MIME t
 }
 </script>
 ```
+
+##### Important Security Notice
+When serializing the result for a website's `<script>` tag, you should use the alternate `.ToHtmlEscapedString()` to avoid exposing yourself to a Cross-Site Scripting (XSS) vulnerability if some of the properties in your schema have been set from untrusted sources.
+Usage in an ASP.NET MVC project might look like this:
+
+```HTML
+<script type="application/ld+json">
+    @Html.Raw(Model.Schema.ToHtmlEscapedString())
+</script>
+```
+ 
 
 #### Windows UWP Sharing
 
