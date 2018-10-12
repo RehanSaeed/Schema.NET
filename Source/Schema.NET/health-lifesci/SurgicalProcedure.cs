@@ -5,7 +5,7 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A medical procedure involving an incision with instruments; performed for diagnose, or therapeutic purposes.
+    /// A type of medical procedure that involves invasive surgical techniques.
     /// </summary>
     [DataContract]
     public partial class SurgicalProcedure : MedicalProcedure

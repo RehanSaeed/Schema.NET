@@ -128,12 +128,6 @@ namespace Schema.NET
         Obstetric,
 
         /// <summary>
-        /// A treatment of people with physical, emotional, or social problems, using purposeful activity to help them overcome or learn to deal with their problems.
-        /// </summary>
-        [EnumMember(Value = "http://schema.org/OccupationalTherapy")]
-        OccupationalTherapy,
-
-        /// <summary>
         /// A specific branch of medical science that deals with benign and malignant tumors, including the study of their development, diagnosis, treatment and prevention.
         /// </summary>
         [EnumMember(Value = "http://schema.org/Oncologic")]

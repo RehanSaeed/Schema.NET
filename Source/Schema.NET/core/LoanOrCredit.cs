@@ -24,44 +24,51 @@ namespace Schema.NET
         public Values<MonetaryAmount, decimal?>? Amount { get; set; }
 
         /// <summary>
+        /// The currency in which the monetary amount is expressed (in 3-letter &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; format).
+        /// </summary>
+        [DataMember(Name = "currency", Order = 407)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<string>? Currency { get; set; }
+
+        /// <summary>
         /// The period of time after any due date that the borrower has to fulfil its obligations before a default (failure to pay) is deemed to have occurred.
         /// </summary>
-        [DataMember(Name = "gracePeriod", Order = 407)]
+        [DataMember(Name = "gracePeriod", Order = 408)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
         public OneOrMany<TimeSpan?>? GracePeriod { get; set; }
 
         /// <summary>
         /// The duration of the loan or credit agreement.
         /// </summary>
-        [DataMember(Name = "loanTerm", Order = 408)]
+        [DataMember(Name = "loanTerm", Order = 409)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<QuantitativeValue>? LoanTerm { get; set; }
 
         /// <summary>
         /// The type of a loan or credit.
         /// </summary>
-        [DataMember(Name = "loanType", Order = 409)]
+        [DataMember(Name = "loanType", Order = 410)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? LoanType { get; set; }
 
         /// <summary>
         /// The only way you get the money back in the event of default is the security. Recourse is where you still have the opportunity to go back to the borrower for the rest of the money.
         /// </summary>
-        [DataMember(Name = "recourseLoan", Order = 410)]
+        [DataMember(Name = "recourseLoan", Order = 411)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<bool?>? RecourseLoan { get; set; }
 
         /// <summary>
         /// Whether the terms for payment of interest can be renegotiated during the life of the loan.
         /// </summary>
-        [DataMember(Name = "renegotiableLoan", Order = 411)]
+        [DataMember(Name = "renegotiableLoan", Order = 412)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<bool?>? RenegotiableLoan { get; set; }
 
         /// <summary>
         /// Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)
         /// </summary>
-        [DataMember(Name = "requiredCollateral", Order = 412)]
+        [DataMember(Name = "requiredCollateral", Order = 413)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Thing>? RequiredCollateral { get; set; }
     }

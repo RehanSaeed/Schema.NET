@@ -3,8 +3,8 @@ namespace Schema.NET
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// &lt;p&gt;A payment method is a standardized procedure for transferring the monetary amount for a purchase. Payment methods are characterized by the legal and technical structures used, and by the organization or group carrying out the transaction.&lt;/p&gt;
-    /// &lt;p&gt;Commonly used values:&lt;/p&gt;
+    /// A payment method is a standardized procedure for transferring the monetary amount for a purchase. Payment methods are characterized by the legal and technical structures used, and by the organization or group carrying out the transaction.&lt;br/&gt;&lt;br/&gt;
+    /// Commonly used values:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
     /// &lt;li&gt;http://purl.org/goodrelations/v1#ByBankTransferInAdvance&lt;/li&gt;
     /// &lt;li&gt;http://purl.org/goodrelations/v1#ByInvoice&lt;/li&gt;

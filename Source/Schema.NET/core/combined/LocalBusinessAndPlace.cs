@@ -17,8 +17,8 @@ namespace Schema.NET
         public override string Type => "LocalBusinessAndPlace";
 
         /// <summary>
-        /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;/p&gt;
-        /// &lt;p&gt;Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+        /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
+        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
@@ -46,8 +46,8 @@ namespace Schema.NET
         public override OneOrMany<LocationFeatureSpecification>? AmenityFeature { get; set; }
 
         /// <summary>
-        /// A short textual code (also called "store code") that uniquely identifies a place of business. The code is typically assigned by the parentOrganization and used in structured URLs.&lt;/p&gt;
-        /// &lt;p&gt;For example, in the URL http://www.starbucks.co.uk/store-locator/etc/detail/3047 the code "3047" is a branchCode for a particular branch.
+        /// A short textual code (also called "store code") that uniquely identifies a place of business. The code is typically assigned by the parentOrganization and used in structured URLs.&lt;br/&gt;&lt;br/&gt;
+        /// For example, in the URL http://www.starbucks.co.uk/store-locator/etc/detail/3047 the code "3047" is a branchCode for a particular branch.
         /// </summary>
         [DataMember(Name = "branchCode", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
@@ -68,7 +68,8 @@ namespace Schema.NET
         public override OneOrMany<Place>? ContainsPlace { get; set; }
 
         /// <summary>
-        /// The currency accepted (in &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt;).
+        /// The currency accepted.&lt;br/&gt;&lt;br/&gt;
+        /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
         [DataMember(Name = "currenciesAccepted", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
@@ -208,7 +209,7 @@ namespace Schema.NET
         public override OneOrMany<int?>? MaximumAttendeeCapacity { get; set; }
 
         /// <summary>
-        /// &lt;p&gt;The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;/p&gt;
+        /// The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;br/&gt;&lt;br/&gt;
         /// &lt;ul&gt;
         /// &lt;li&gt;Days are specified using the following two-letter combinations: &lt;code&gt;Mo&lt;/code&gt;, &lt;code&gt;Tu&lt;/code&gt;, &lt;code&gt;We&lt;/code&gt;, &lt;code&gt;Th&lt;/code&gt;, &lt;code&gt;Fr&lt;/code&gt;, &lt;code&gt;Sa&lt;/code&gt;, &lt;code&gt;Su&lt;/code&gt;.&lt;/li&gt;
         /// &lt;li&gt;Times are specified using 24:00 time. For example, 3pm is specified as &lt;code&gt;15:00&lt;/code&gt;. &lt;/li&gt;
@@ -228,7 +229,7 @@ namespace Schema.NET
         public override OneOrMany<OpeningHoursSpecification>? OpeningHoursSpecification { get; set; }
 
         /// <summary>
-        /// Cash, credit card, etc.
+        /// Cash, Credit Card, Cryptocurrency, Local Exchange Tradings System, etc.
         /// </summary>
         [DataMember(Name = "paymentAccepted", Order = 235)]
         [JsonConverter(typeof(ValuesConverter))]
@@ -270,8 +271,8 @@ namespace Schema.NET
         public override OneOrMany<bool?>? SmokingAllowed { get; set; }
 
         /// <summary>
-        /// The special opening hours of a certain place.&lt;/p&gt;
-        /// &lt;p&gt;Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
+        /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
+        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "specialOpeningHoursSpecification", Order = 241)]
         [JsonConverter(typeof(ValuesConverter))]

@@ -3,8 +3,8 @@ namespace Schema.NET
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// &lt;p&gt;A card payment method of a particular brand or name.  Used to mark up a particular payment method and/or the financial product/service that supplies the card account.&lt;/p&gt;
-    /// &lt;p&gt;Commonly used values:&lt;/p&gt;
+    /// A card payment method of a particular brand or name.  Used to mark up a particular payment method and/or the financial product/service that supplies the card account.&lt;br/&gt;&lt;br/&gt;
+    /// Commonly used values:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
     /// &lt;li&gt;http://purl.org/goodrelations/v1#AmericanExpress&lt;/li&gt;
     /// &lt;li&gt;http://purl.org/goodrelations/v1#DinersClub&lt;/li&gt;

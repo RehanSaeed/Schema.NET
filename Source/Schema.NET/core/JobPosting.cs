@@ -52,7 +52,7 @@ namespace Schema.NET
         public OneOrMany<string>? EmploymentType { get; set; }
 
         /// <summary>
-        /// A property describing the estimated salary for a job posting based on a variety of variables including, but not limited to industry, job title, and location. The estimated salary is usually computed by outside organizations and therefore the hiring organization is not bound to this estimated salary.
+        /// The estimated salary for this occupation in the given occupationLocation.
         /// </summary>
         [DataMember(Name = "estimatedSalary", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
