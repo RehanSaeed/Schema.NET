@@ -10,7 +10,7 @@ namespace Schema.NET.Test
         private readonly JobPosting jobPosting = new JobPosting()
         {
             Title = "Fitter and Turner", // Required
-            Description = "Widget assembly role for pressing wheel assemblies. Educational Requirements: Completed level 2 ISTA Machinist Apprenticeship. Required Experience: At least 3 years in a machinist role.", // Required
+            Description = "<p>Widget assembly role for pressing wheel assemblies.</p><p><strong>Educational Requirements:</strong> Completed level 2 ISTA Machinist Apprenticeship.</p><p><strong>Required Experience:</strong> At least 3 years in a machinist role.</p>", // Required
             Identifier = new PropertyValue() // Recommended
             {
                 Name = "MagsRUs Wheel Company",
@@ -51,7 +51,7 @@ namespace Schema.NET.Test
             "\"@context\":\"http://schema.org\"," +
             "\"@type\":\"JobPosting\"," +
             "\"title\":\"Fitter and Turner\"," +
-            "\"description\":\"Widget assembly role for pressing wheel assemblies. Educational Requirements: Completed level 2 ISTA Machinist Apprenticeship. Required Experience: At least 3 years in a machinist role.\"," +
+            "\"description\":\"<p>Widget assembly role for pressing wheel assemblies.</p><p><strong>Educational Requirements:</strong> Completed level 2 ISTA Machinist Apprenticeship.</p><p><strong>Required Experience:</strong> At least 3 years in a machinist role.</p>\"," +
             "\"identifier\":{" +
                 "\"@type\":\"PropertyValue\"," +
                 "\"name\":\"MagsRUs Wheel Company\"," +
