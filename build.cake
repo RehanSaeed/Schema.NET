@@ -14,12 +14,6 @@ var buildNumber =
     TravisCI.IsRunningOnTravisCI ? TravisCI.Environment.Build.BuildNumber :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
-var commit =
-    HasArgument("Commit") ? Argument<string>("Commit") :
-    AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Repository.Commit.Id :
-    TravisCI.IsRunningOnTravisCI ? TravisCI.Environment.Repository.Commit :
-    EnvironmentVariable("Commit") != null ? EnvironmentVariable("Commit") :
-    string.Empty;
 
 var artifactsDirectory = Directory("./Artifacts");
 var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
