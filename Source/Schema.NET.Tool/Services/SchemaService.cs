@@ -1,6 +1,7 @@
 namespace Schema.NET.Tool.Services
 {
     using System;
+    using System.IO;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -102,7 +103,7 @@ namespace Schema.NET.Tool.Services
                             Description = classDescription,
                             Id = new Uri($"http://CombinedClass/{className}"),
                             IsCombined = true,
-                            Layer = @class.IsCombined ? @class.Layer : $"{@class.Layer}\\combined",
+                            Layer = @class.IsCombined ? @class.Layer : $"{@class.Layer}{Path.DirectorySeparatorChar}combined",
                             Name = className
                         };
                         combinedClass.Properties = @class
@@ -200,7 +201,7 @@ namespace Schema.NET.Tool.Services
             return new Enumeration()
             {
                 Description = schemaClass.Comment,
-                Layer = schemaClass.Layer + "\\enumerations",
+                Layer = $"{schemaClass.Layer}{Path.DirectorySeparatorChar}enumerations",
                 Name = schemaClass.Label,
                 Values = values
             };
