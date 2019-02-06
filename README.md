@@ -142,6 +142,7 @@ This magic is all carried out using the `Value<T>`, `Value<T1, T2>`, `Value<T1, 
 
 ## Contributions and Thanks
 
+- [AndreSteenbergen](https://github.com/AndreSteenbergen) - For enabling the tool to work on linux.
 - [benmccallum](https://github.com/benmccallum) - For adding XSS vlnerability protection.
 - [psampaio](https://github.com/psampaio) - Added deserialization support and unit tests.
 - [icunningham88](https://github.com/icunningham88) - Improved a test.
