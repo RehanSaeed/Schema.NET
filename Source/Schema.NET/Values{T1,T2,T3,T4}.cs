@@ -12,10 +12,10 @@ namespace Schema.NET
     /// <typeparam name="T3">The third type the values can take.</typeparam>
     /// <typeparam name="T4">The fourth type the values can take.</typeparam>
     /// <seealso cref="IValue" />
-    public struct Values<T1, T2, T3> : IValue
+    public struct Values<T1, T2, T3, T4> : IValue
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1, T2, T3}"/> struct.
+        /// Initializes a new instance of the <see cref="Values{T1, T2, T3, T4}"/> struct.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T1"/>.</param>
         public Values(T1 value)
@@ -25,7 +25,7 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1, T2, T3}"/> struct.
+        /// Initializes a new instance of the <see cref="Values{T1, T2, T3, T4}"/> struct.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T2"/>.</param>
         public Values(T2 value)
@@ -35,7 +35,7 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1, T2, T3}"/> struct.
+        /// Initializes a new instance of the <see cref="Values{T1, T2, T3, T4}"/> struct.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T3"/>.</param>
         public Values(T3 value)
@@ -45,7 +45,17 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1, T2}, T3"/> struct
+        /// Initializes a new instance of the <see cref="Values{T1, T2, T3, T4}"/> struct.
+        /// </summary>
+        /// <param name="value">The value of type <typeparamref name="T4"/>.</param>
+        public Values(T4 value)
+        {
+            this.Value = value;
+            this.ExplicitlySet = false;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Values{T1, T2, T3, T4}"/> struct
         /// </summary>
         /// <param name="value">The value of type string.</param>
         public Values(string value)
@@ -65,31 +75,38 @@ namespace Schema.NET
         public bool ExplicitlySet { get; private set; }
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1, T2, T3}"/>.
+        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1, T2, T3, T4}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3>(T1 item) => new Values<T1, T2, T3>(item);
+        public static implicit operator Values<T1, T2, T3, T4>(T1 item) => new Values<T1, T2, T3, T4>(item);
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1, T2, T3}"/>.
+        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1, T2, T3, T4}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3>(T2 item) => new Values<T1, T2, T3>(item);
+        public static implicit operator Values<T1, T2, T3, T4>(T2 item) => new Values<T1, T2, T3, T4>(item);
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T3"/> to <see cref="Values{T1, T2, T3}"/>.
+        /// Performs an implicit conversion from <typeparamref name="T3"/> to <see cref="Values{T1, T2, T3, T4}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3>(T3 item) => new Values<T1, T2, T3>(item);
+        public static implicit operator Values<T1, T2, T3, T4>(T3 item) => new Values<T1, T2, T3, T4>(item);
+
+        /// <summary>
+        /// Performs an implicit conversion from <typeparamref name="T4"/> to <see cref="Values{T1, T2, T3, T4}"/>.
+        /// </summary>
+        /// <param name="item">The single item value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator Values<T1, T2, T3, T4>(T4 item) => new Values<T1, T2, T3, T4>(item);
 
         /// <summary>
         /// Performs an explicit conversion from string to <see cref="Values{T1, T2, T3}"/>, also sets the <see cref="ExplicitlySet"/> to true.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static explicit operator Values<T1, T2, T3>(string item) => new Values<T1, T2, T3>(item);
+        public static explicit operator Values<T1, T2, T3, T4>(string item) => new Values<T1, T2, T3, T4>(item);
     }
 }
