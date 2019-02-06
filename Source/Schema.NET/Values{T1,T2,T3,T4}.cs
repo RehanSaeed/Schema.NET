@@ -1,172 +1,95 @@
 namespace Schema.NET
 {
-    using System.Collections.Generic;
+    using System;
 
     /// <summary>
-    /// A single or list of values which can be any of the specified types.
+    /// An implementation for IValue, containing either type T, or string.
+    /// e.g. Brand="Volvo"; is Volvo a brand or an organization, leaving it in the middle
+    /// but ExplicitlySet will be set to true.
     /// </summary>
     /// <typeparam name="T1">The first type the values can take.</typeparam>
     /// <typeparam name="T2">The second type the values can take.</typeparam>
     /// <typeparam name="T3">The third type the values can take.</typeparam>
     /// <typeparam name="T4">The fourth type the values can take.</typeparam>
     /// <seealso cref="IValue" />
-    public struct Values<T1, T2, T3, T4> : IValue
+    public struct Values<T1, T2, T3> : IValue
     {
-        private readonly OneOrMany<T1> value1;
-        private readonly OneOrMany<T2> value2;
-        private readonly OneOrMany<T3> value3;
-        private readonly OneOrMany<T4> value4;
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
+        /// Initializes a new instance of the <see cref="Values{T1, T2, T3}"/> struct.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T1"/>.</param>
-        public Values(OneOrMany<T1> value)
+        public Values(T1 value)
         {
-            this.value1 = value;
-            this.value2 = default;
-            this.value3 = default;
-            this.value4 = default;
+            this.Value = value;
+            this.ExplicitlySet = false;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
+        /// Initializes a new instance of the <see cref="Values{T1, T2, T3}"/> struct.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T2"/>.</param>
-        public Values(OneOrMany<T2> value)
+        public Values(T2 value)
         {
-            this.value1 = default;
-            this.value2 = value;
-            this.value3 = default;
-            this.value4 = default;
+            this.Value = value;
+            this.ExplicitlySet = false;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
+        /// Initializes a new instance of the <see cref="Values{T1, T2, T3}"/> struct.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T3"/>.</param>
-        public Values(OneOrMany<T3> value)
+        public Values(T3 value)
         {
-            this.value1 = default;
-            this.value2 = default;
-            this.value3 = value;
-            this.value4 = default;
+            this.Value = value;
+            this.ExplicitlySet = false;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
+        /// Initializes a new instance of the <see cref="Values{T1, T2}, T3"/> struct
         /// </summary>
-        /// <param name="values">The value of type <typeparamref name="T4"/>.</param>
-        public Values(OneOrMany<T4> values)
+        /// <param name="value">The value of type string.</param>
+        public Values(string value)
         {
-            this.value1 = default;
-            this.value2 = default;
-            this.value3 = default;
-            this.value4 = values;
+            this.Value = value;
+            this.ExplicitlySet = true;
         }
 
         /// <summary>
-        /// Gets the value of type <typeparamref name="T1" />.
+        /// Get the value set as constructor
         /// </summary>
-        public OneOrMany<T1> Value1 => this.value1;
+        public object Value { get; private set; }
 
         /// <summary>
-        /// Gets the value of type <typeparamref name="T2" />.
+        /// True, when the object is explicitly set as a string
         /// </summary>
-        public OneOrMany<T2> Value2 => this.value2;
+        public bool ExplicitlySet { get; private set; }
 
         /// <summary>
-        /// Gets the value of type <typeparamref name="T3" />.
-        /// </summary>
-        public OneOrMany<T3> Value3 => this.value3;
-
-        /// <summary>
-        /// Gets the value of type <typeparamref name="T4" />.
-        /// </summary>
-        public OneOrMany<T4> Value4 => this.value4;
-
-        /// <summary>
-        /// Gets the non-null object representing the instance.
-        /// </summary>
-        object IValue.Value
-        {
-            get
-            {
-                if (this.value1.Count > 0)
-                {
-                    return ((IValue)this.value1).Value;
-                }
-                else if (this.value2.Count > 0)
-                {
-                    return ((IValue)this.value2).Value;
-                }
-                else if (this.value3.Count > 0)
-                {
-                    return ((IValue)this.value3).Value;
-                }
-                else if (this.value4.Count > 0)
-                {
-                    return ((IValue)this.value4).Value;
-                }
-
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1,T2}"/>.
+        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1, T2, T3}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3, T4>(T1 item) => new Values<T1, T2, T3, T4>(item);
+        public static implicit operator Values<T1, T2, T3>(T1 item) => new Values<T1, T2, T3>(item);
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T2"/> to <see cref="Values{T1,T2}"/>.
+        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1, T2, T3}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3, T4>(T2 item) => new Values<T1, T2, T3, T4>(item);
+        public static implicit operator Values<T1, T2, T3>(T2 item) => new Values<T1, T2, T3>(item);
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T3"/> to <see cref="Values{T1,T2}"/>.
+        /// Performs an implicit conversion from <typeparamref name="T3"/> to <see cref="Values{T1, T2, T3}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3, T4>(T3 item) => new Values<T1, T2, T3, T4>(item);
+        public static implicit operator Values<T1, T2, T3>(T3 item) => new Values<T1, T2, T3>(item);
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T4"/> to <see cref="Values{T1,T2}"/>.
+        /// Performs an explicit conversion from string to <see cref="Values{T1, T2, T3}"/>, also sets the <see cref="ExplicitlySet"/> to true.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3, T4>(T4 item) => new Values<T1, T2, T3, T4>(item);
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="List{T1}"/> to <see cref="Values{T1,T2}"/>.
-        /// </summary>
-        /// <param name="list">The list of values.</param>
-        /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3, T4>(List<T1> list) => new Values<T1, T2, T3, T4>(list);
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="List{T2}"/> to <see cref="Values{T1,T2}"/>.
-        /// </summary>
-        /// <param name="list">The list of values.</param>
-        /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3, T4>(List<T2> list) => new Values<T1, T2, T3, T4>(list);
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="List{T3}"/> to <see cref="Values{T1,T2}"/>.
-        /// </summary>
-        /// <param name="list">The list of values.</param>
-        /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3, T4>(List<T3> list) => new Values<T1, T2, T3, T4>(list);
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="List{T4}"/> to <see cref="Values{T1,T2}"/>.
-        /// </summary>
-        /// <param name="list">The list of values.</param>
-        /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2, T3, T4>(List<T4> list) => new Values<T1, T2, T3, T4>(list);
+        public static explicit operator Values<T1, T2, T3>(string item) => new Values<T1, T2, T3>(item);
     }
 }
