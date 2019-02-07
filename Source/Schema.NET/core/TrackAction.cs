@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// An agent tracks an object for updates.&lt;br/&gt;&lt;br/&gt;
@@ -15,6 +16,24 @@ namespace Schema.NET
     [DataContract]
     public partial class TrackAction : FindAction
     {
+        public interface IDeliveryMethod : IValue {}
+        public interface IDeliveryMethod<T> : IDeliveryMethod { new T Value { get; } }
+        public class OneOrManyDeliveryMethod : OneOrMany<IDeliveryMethod>
+        {
+            public OneOrManyDeliveryMethod(IDeliveryMethod item) : base(item) { }
+            public OneOrManyDeliveryMethod(IEnumerable<IDeliveryMethod> items) : base(items) { }
+            public static implicit operator OneOrManyDeliveryMethod (DeliveryMethod value) { return new OneOrManyDeliveryMethod (new DeliveryMethodDeliveryMethod (value)); }
+            public static implicit operator OneOrManyDeliveryMethod (DeliveryMethod[] values) { return new OneOrManyDeliveryMethod (values.Select(v => (IDeliveryMethod) new DeliveryMethodDeliveryMethod (v))); }
+            public static implicit operator OneOrManyDeliveryMethod (List<DeliveryMethod> values) { return new OneOrManyDeliveryMethod (values.Select(v => (IDeliveryMethod) new DeliveryMethodDeliveryMethod (v))); }
+        }
+        public struct DeliveryMethodDeliveryMethod : IDeliveryMethod<DeliveryMethod>
+        {
+            object IValue.Value => this.Value;
+            public DeliveryMethod Value { get; }
+            public DeliveryMethodDeliveryMethod (DeliveryMethod value) { Value = value; }
+            public static implicit operator DeliveryMethodDeliveryMethod (DeliveryMethod value) { return new DeliveryMethodDeliveryMethod (value); }
+        }
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -25,7 +44,6 @@ namespace Schema.NET
         /// A sub property of instrument. The method of delivery.
         /// </summary>
         [DataMember(Name = "deliveryMethod", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DeliveryMethod?>? DeliveryMethod { get; set; }
+        public OneOrManyDeliveryMethod DeliveryMethod { get; set; }
     }
 }

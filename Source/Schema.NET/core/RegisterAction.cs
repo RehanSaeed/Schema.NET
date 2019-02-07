@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of registering to be a user of a service, product or web page.&lt;br/&gt;&lt;br/&gt;

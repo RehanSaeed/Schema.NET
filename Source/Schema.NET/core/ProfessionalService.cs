@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// Original definition: "provider of professional services."&lt;br/&gt;&lt;br/&gt;

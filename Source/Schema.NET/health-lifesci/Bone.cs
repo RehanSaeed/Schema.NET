@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// Rigid connective tissue that comprises up the skeletal structure of the human body.

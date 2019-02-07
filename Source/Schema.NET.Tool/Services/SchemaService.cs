@@ -309,36 +309,31 @@ namespace Schema.NET.Tool.Services
             switch (typeName)
             {
                 case "Boolean":
-                    return "bool?";
+                    return "bool";
                 case "Date":
                 case "DateTime":
-                    return "DateTimeOffset?";
+                    return "DateTimeOffset";
                 case "Integer":
                 case "Number" when propertyName.Contains("NumberOf") || propertyName.Contains("Year") || propertyName.Contains("Count") || propertyName.Contains("Age"):
-                    return "int?";
+                    return "int";
                 case "Number" when propertyName.Contains("Price") || propertyName.Contains("Amount") || propertyName.Contains("Salary") || propertyName.Contains("Discount"):
-                    return "decimal?";
+                    return "decimal";
                 case "Number":
-                    return "double?";
+                    return "double";
                 case "Text":
                 case "Distance":
                 case "Energy":
                 case "Mass":
+                case "CssSelectorType":
+                case "XPathType":
                     return "string";
                 case "Time":
                 case "Duration":
-                    return "TimeSpan?";
+                    return "TimeSpan";
                 case "URL":
                     return "Uri";
                 default:
-                    if (isTypeEnum)
-                    {
-                        return typeName + "?";
-                    }
-                    else
-                    {
-                        return typeName;
-                    }
+                    return typeName;
             }
         }
 

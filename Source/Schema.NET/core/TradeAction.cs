@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The act of participating in an exchange of goods and services for monetary compensation. An agent trades an object, product or service with a participant in exchange for a one time or periodic payment.
@@ -10,6 +11,52 @@ namespace Schema.NET
     [DataContract]
     public partial class TradeAction : Action
     {
+        public interface IPrice : IValue {}
+        public interface IPrice<T> : IPrice { new T Value { get; } }
+        public class OneOrManyPrice : OneOrMany<IPrice>
+        {
+            public OneOrManyPrice(IPrice item) : base(item) { }
+            public OneOrManyPrice(IEnumerable<IPrice> items) : base(items) { }
+            public static implicit operator OneOrManyPrice (decimal value) { return new OneOrManyPrice (new Pricedecimal (value)); }
+            public static implicit operator OneOrManyPrice (decimal[] values) { return new OneOrManyPrice (values.Select(v => (IPrice) new Pricedecimal (v))); }
+            public static implicit operator OneOrManyPrice (List<decimal> values) { return new OneOrManyPrice (values.Select(v => (IPrice) new Pricedecimal (v))); }
+            public static implicit operator OneOrManyPrice (string value) { return new OneOrManyPrice (new Pricestring (value)); }
+            public static implicit operator OneOrManyPrice (string[] values) { return new OneOrManyPrice (values.Select(v => (IPrice) new Pricestring (v))); }
+            public static implicit operator OneOrManyPrice (List<string> values) { return new OneOrManyPrice (values.Select(v => (IPrice) new Pricestring (v))); }
+        }
+        public struct Pricedecimal : IPrice<decimal>
+        {
+            object IValue.Value => this.Value;
+            public decimal Value { get; }
+            public Pricedecimal (decimal value) { Value = value; }
+            public static implicit operator Pricedecimal (decimal value) { return new Pricedecimal (value); }
+        }
+        public struct Pricestring : IPrice<string>
+        {
+            object IValue.Value => this.Value;
+            public string Value { get; }
+            public Pricestring (string value) { Value = value; }
+            public static implicit operator Pricestring (string value) { return new Pricestring (value); }
+        }
+
+        public interface IPriceSpecification : IValue {}
+        public interface IPriceSpecification<T> : IPriceSpecification { new T Value { get; } }
+        public class OneOrManyPriceSpecification : OneOrMany<IPriceSpecification>
+        {
+            public OneOrManyPriceSpecification(IPriceSpecification item) : base(item) { }
+            public OneOrManyPriceSpecification(IEnumerable<IPriceSpecification> items) : base(items) { }
+            public static implicit operator OneOrManyPriceSpecification (PriceSpecification value) { return new OneOrManyPriceSpecification (new PriceSpecificationPriceSpecification (value)); }
+            public static implicit operator OneOrManyPriceSpecification (PriceSpecification[] values) { return new OneOrManyPriceSpecification (values.Select(v => (IPriceSpecification) new PriceSpecificationPriceSpecification (v))); }
+            public static implicit operator OneOrManyPriceSpecification (List<PriceSpecification> values) { return new OneOrManyPriceSpecification (values.Select(v => (IPriceSpecification) new PriceSpecificationPriceSpecification (v))); }
+        }
+        public struct PriceSpecificationPriceSpecification : IPriceSpecification<PriceSpecification>
+        {
+            object IValue.Value => this.Value;
+            public PriceSpecification Value { get; }
+            public PriceSpecificationPriceSpecification (PriceSpecification value) { Value = value; }
+            public static implicit operator PriceSpecificationPriceSpecification (PriceSpecification value) { return new PriceSpecificationPriceSpecification (value); }
+        }
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -27,14 +74,12 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "price", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<decimal?, string>? Price { get; set; }
+        public OneOrManyPrice Price { get; set; }
 
         /// <summary>
         /// One or more detailed price specifications, indicating the unit price and delivery or payment charges.
         /// </summary>
         [DataMember(Name = "priceSpecification", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<PriceSpecification>? PriceSpecification { get; set; }
+        public OneOrManyPriceSpecification PriceSpecification { get; set; }
     }
 }

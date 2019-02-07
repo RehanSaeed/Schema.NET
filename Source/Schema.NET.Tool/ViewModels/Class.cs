@@ -56,8 +56,9 @@
 
             // Using statements
             stringBuilder.AppendIndentLine(4, "using System;");
+            stringBuilder.AppendIndentLine(4, "using System.Collections.Generic;");
+            stringBuilder.AppendIndentLine(4, "using System.Linq;");
             stringBuilder.AppendIndentLine(4, "using System.Runtime.Serialization;");
-            stringBuilder.AppendIndentLine(4, "using Newtonsoft.Json;");
             stringBuilder.AppendLine();
 
             // Comment
@@ -90,6 +91,16 @@
 
             stringBuilder.AppendIndentLine(4, "{");
 
+            // for every property in this class generate an interface
+            // this way users can extend classes quite easily about
+            // what types a certain property is allowed to have
+            var properties = this.Properties.OrderBy(x => x.Order).ToList();
+            foreach (var property in properties)
+            {
+                property.AppendIndentInterface(stringBuilder, 8);
+                stringBuilder.AppendLine();
+            }
+
             if (string.Equals(this.Name, "Thing", StringComparison.OrdinalIgnoreCase))
             {
                 // Context Property
@@ -109,7 +120,6 @@
             stringBuilder.AppendIndentLine(8, $"public override string Type => \"{this.Name}\";");
 
             // Properties
-            var properties = this.Properties.OrderBy(x => x.Order).ToList();
             if (properties.Count > 0)
             {
                 stringBuilder.AppendLine();

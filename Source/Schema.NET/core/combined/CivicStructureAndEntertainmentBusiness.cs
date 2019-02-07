@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// See CivicStructure, EntertainmentBusiness for more information.
@@ -10,6 +11,7 @@ namespace Schema.NET
     [DataContract]
     public abstract partial class CivicStructureAndEntertainmentBusiness : LocalBusinessAndPlace
     {
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -26,7 +28,6 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "openingHours", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<string>? OpeningHours { get; set; }
+        public override OneOrManyOpeningHours OpeningHours { get; set; }
     }
 }

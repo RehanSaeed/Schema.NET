@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// An agent joins an event/group with participants/friends at a location.&lt;br/&gt;&lt;br/&gt;
@@ -16,6 +17,24 @@ namespace Schema.NET
     [DataContract]
     public partial class JoinAction : InteractAction
     {
+        public interface IEvent : IValue {}
+        public interface IEvent<T> : IEvent { new T Value { get; } }
+        public class OneOrManyEvent : OneOrMany<IEvent>
+        {
+            public OneOrManyEvent(IEvent item) : base(item) { }
+            public OneOrManyEvent(IEnumerable<IEvent> items) : base(items) { }
+            public static implicit operator OneOrManyEvent (Event value) { return new OneOrManyEvent (new EventEvent (value)); }
+            public static implicit operator OneOrManyEvent (Event[] values) { return new OneOrManyEvent (values.Select(v => (IEvent) new EventEvent (v))); }
+            public static implicit operator OneOrManyEvent (List<Event> values) { return new OneOrManyEvent (values.Select(v => (IEvent) new EventEvent (v))); }
+        }
+        public struct EventEvent : IEvent<Event>
+        {
+            object IValue.Value => this.Value;
+            public Event Value { get; }
+            public EventEvent (Event value) { Value = value; }
+            public static implicit operator EventEvent (Event value) { return new EventEvent (value); }
+        }
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -26,7 +45,6 @@ namespace Schema.NET
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
         [DataMember(Name = "event", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Event>? Event { get; set; }
+        public OneOrManyEvent Event { get; set; }
     }
 }

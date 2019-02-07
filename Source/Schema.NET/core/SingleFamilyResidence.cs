@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// Residence type: Single-family home.
@@ -10,6 +11,25 @@ namespace Schema.NET
     [DataContract]
     public partial class SingleFamilyResidence : House
     {
+
+        public interface IOccupancy : IValue {}
+        public interface IOccupancy<T> : IOccupancy { new T Value { get; } }
+        public class OneOrManyOccupancy : OneOrMany<IOccupancy>
+        {
+            public OneOrManyOccupancy(IOccupancy item) : base(item) { }
+            public OneOrManyOccupancy(IEnumerable<IOccupancy> items) : base(items) { }
+            public static implicit operator OneOrManyOccupancy (QuantitativeValue value) { return new OneOrManyOccupancy (new OccupancyQuantitativeValue (value)); }
+            public static implicit operator OneOrManyOccupancy (QuantitativeValue[] values) { return new OneOrManyOccupancy (values.Select(v => (IOccupancy) new OccupancyQuantitativeValue (v))); }
+            public static implicit operator OneOrManyOccupancy (List<QuantitativeValue> values) { return new OneOrManyOccupancy (values.Select(v => (IOccupancy) new OccupancyQuantitativeValue (v))); }
+        }
+        public struct OccupancyQuantitativeValue : IOccupancy<QuantitativeValue>
+        {
+            object IValue.Value => this.Value;
+            public QuantitativeValue Value { get; }
+            public OccupancyQuantitativeValue (QuantitativeValue value) { Value = value; }
+            public static implicit operator OccupancyQuantitativeValue (QuantitativeValue value) { return new OccupancyQuantitativeValue (value); }
+        }
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -21,15 +41,13 @@ namespace Schema.NET
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override Values<int?, QuantitativeValue>? NumberOfRooms { get; set; }
+        public override OneOrManyNumberOfRooms NumberOfRooms { get; set; }
 
         /// <summary>
         /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
         /// Typical unit code(s): C62 for person
         /// </summary>
         [DataMember(Name = "occupancy", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<QuantitativeValue>? Occupancy { get; set; }
+        public OneOrManyOccupancy Occupancy { get; set; }
     }
 }

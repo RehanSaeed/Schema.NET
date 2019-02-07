@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// A car is a wheeled, self-powered motor vehicle used for transportation.
@@ -10,6 +11,42 @@ namespace Schema.NET
     [DataContract]
     public partial class Car : Vehicle
     {
+        public interface IAcrissCode : IValue {}
+        public interface IAcrissCode<T> : IAcrissCode { new T Value { get; } }
+        public class OneOrManyAcrissCode : OneOrMany<IAcrissCode>
+        {
+            public OneOrManyAcrissCode(IAcrissCode item) : base(item) { }
+            public OneOrManyAcrissCode(IEnumerable<IAcrissCode> items) : base(items) { }
+            public static implicit operator OneOrManyAcrissCode (string value) { return new OneOrManyAcrissCode (new AcrissCodestring (value)); }
+            public static implicit operator OneOrManyAcrissCode (string[] values) { return new OneOrManyAcrissCode (values.Select(v => (IAcrissCode) new AcrissCodestring (v))); }
+            public static implicit operator OneOrManyAcrissCode (List<string> values) { return new OneOrManyAcrissCode (values.Select(v => (IAcrissCode) new AcrissCodestring (v))); }
+        }
+        public struct AcrissCodestring : IAcrissCode<string>
+        {
+            object IValue.Value => this.Value;
+            public string Value { get; }
+            public AcrissCodestring (string value) { Value = value; }
+            public static implicit operator AcrissCodestring (string value) { return new AcrissCodestring (value); }
+        }
+
+        public interface IRoofLoad : IValue {}
+        public interface IRoofLoad<T> : IRoofLoad { new T Value { get; } }
+        public class OneOrManyRoofLoad : OneOrMany<IRoofLoad>
+        {
+            public OneOrManyRoofLoad(IRoofLoad item) : base(item) { }
+            public OneOrManyRoofLoad(IEnumerable<IRoofLoad> items) : base(items) { }
+            public static implicit operator OneOrManyRoofLoad (QuantitativeValue value) { return new OneOrManyRoofLoad (new RoofLoadQuantitativeValue (value)); }
+            public static implicit operator OneOrManyRoofLoad (QuantitativeValue[] values) { return new OneOrManyRoofLoad (values.Select(v => (IRoofLoad) new RoofLoadQuantitativeValue (v))); }
+            public static implicit operator OneOrManyRoofLoad (List<QuantitativeValue> values) { return new OneOrManyRoofLoad (values.Select(v => (IRoofLoad) new RoofLoadQuantitativeValue (v))); }
+        }
+        public struct RoofLoadQuantitativeValue : IRoofLoad<QuantitativeValue>
+        {
+            object IValue.Value => this.Value;
+            public QuantitativeValue Value { get; }
+            public RoofLoadQuantitativeValue (QuantitativeValue value) { Value = value; }
+            public static implicit operator RoofLoadQuantitativeValue (QuantitativeValue value) { return new RoofLoadQuantitativeValue (value); }
+        }
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -20,8 +57,7 @@ namespace Schema.NET
         /// The ACRISS Car Classification Code is a code used by many car rental companies, for classifying vehicles. ACRISS stands for Association of Car Rental Industry Systems and Standards.
         /// </summary>
         [DataMember(Name = "acrissCode", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AcrissCode { get; set; }
+        public OneOrManyAcrissCode AcrissCode { get; set; }
 
         /// <summary>
         /// The permitted total weight of cargo and installations (e.g. a roof rack) on top of the vehicle.&lt;br/&gt;&lt;br/&gt;
@@ -33,7 +69,6 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "roofLoad", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<QuantitativeValue>? RoofLoad { get; set; }
+        public OneOrManyRoofLoad RoofLoad { get; set; }
     }
 }

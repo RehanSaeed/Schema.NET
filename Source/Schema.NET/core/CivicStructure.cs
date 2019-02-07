@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// A public structure, such as a town hall or concert hall.
@@ -10,6 +11,24 @@ namespace Schema.NET
     [DataContract]
     public partial class CivicStructure : Place
     {
+        public interface IOpeningHours : IValue {}
+        public interface IOpeningHours<T> : IOpeningHours { new T Value { get; } }
+        public class OneOrManyOpeningHours : OneOrMany<IOpeningHours>
+        {
+            public OneOrManyOpeningHours(IOpeningHours item) : base(item) { }
+            public OneOrManyOpeningHours(IEnumerable<IOpeningHours> items) : base(items) { }
+            public static implicit operator OneOrManyOpeningHours (string value) { return new OneOrManyOpeningHours (new OpeningHoursstring (value)); }
+            public static implicit operator OneOrManyOpeningHours (string[] values) { return new OneOrManyOpeningHours (values.Select(v => (IOpeningHours) new OpeningHoursstring (v))); }
+            public static implicit operator OneOrManyOpeningHours (List<string> values) { return new OneOrManyOpeningHours (values.Select(v => (IOpeningHours) new OpeningHoursstring (v))); }
+        }
+        public struct OpeningHoursstring : IOpeningHours<string>
+        {
+            object IValue.Value => this.Value;
+            public string Value { get; }
+            public OpeningHoursstring (string value) { Value = value; }
+            public static implicit operator OpeningHoursstring (string value) { return new OpeningHoursstring (value); }
+        }
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -26,7 +45,6 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "openingHours", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? OpeningHours { get; set; }
+        public OneOrManyOpeningHours OpeningHours { get; set; }
     }
 }

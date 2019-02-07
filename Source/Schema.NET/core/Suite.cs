@@ -1,8 +1,9 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// A suite in a hotel or other public accommodation, denotes a class of luxury accommodations, the key feature of which is multiple rooms (Source: Wikipedia, the free encyclopedia, see &lt;a href="http://en.wikipedia.org/wiki/Suite_(hotel)"&gt;http://en.wikipedia.org/wiki/Suite_(hotel)&lt;/a&gt;).
@@ -12,6 +13,53 @@ namespace Schema.NET
     [DataContract]
     public partial class Suite : Accommodation
     {
+        public interface IBed : IValue {}
+        public interface IBed<T> : IBed { new T Value { get; } }
+        public class OneOrManyBed : OneOrMany<IBed>
+        {
+            public OneOrManyBed(IBed item) : base(item) { }
+            public OneOrManyBed(IEnumerable<IBed> items) : base(items) { }
+            public static implicit operator OneOrManyBed (BedDetails value) { return new OneOrManyBed (new BedBedDetails (value)); }
+            public static implicit operator OneOrManyBed (BedDetails[] values) { return new OneOrManyBed (values.Select(v => (IBed) new BedBedDetails (v))); }
+            public static implicit operator OneOrManyBed (List<BedDetails> values) { return new OneOrManyBed (values.Select(v => (IBed) new BedBedDetails (v))); }
+            public static implicit operator OneOrManyBed (string value) { return new OneOrManyBed (new Bedstring (value)); }
+            public static implicit operator OneOrManyBed (string[] values) { return new OneOrManyBed (values.Select(v => (IBed) new Bedstring (v))); }
+            public static implicit operator OneOrManyBed (List<string> values) { return new OneOrManyBed (values.Select(v => (IBed) new Bedstring (v))); }
+        }
+        public struct BedBedDetails : IBed<BedDetails>
+        {
+            object IValue.Value => this.Value;
+            public BedDetails Value { get; }
+            public BedBedDetails (BedDetails value) { Value = value; }
+            public static implicit operator BedBedDetails (BedDetails value) { return new BedBedDetails (value); }
+        }
+        public struct Bedstring : IBed<string>
+        {
+            object IValue.Value => this.Value;
+            public string Value { get; }
+            public Bedstring (string value) { Value = value; }
+            public static implicit operator Bedstring (string value) { return new Bedstring (value); }
+        }
+
+
+        public interface IOccupancy : IValue {}
+        public interface IOccupancy<T> : IOccupancy { new T Value { get; } }
+        public class OneOrManyOccupancy : OneOrMany<IOccupancy>
+        {
+            public OneOrManyOccupancy(IOccupancy item) : base(item) { }
+            public OneOrManyOccupancy(IEnumerable<IOccupancy> items) : base(items) { }
+            public static implicit operator OneOrManyOccupancy (QuantitativeValue value) { return new OneOrManyOccupancy (new OccupancyQuantitativeValue (value)); }
+            public static implicit operator OneOrManyOccupancy (QuantitativeValue[] values) { return new OneOrManyOccupancy (values.Select(v => (IOccupancy) new OccupancyQuantitativeValue (v))); }
+            public static implicit operator OneOrManyOccupancy (List<QuantitativeValue> values) { return new OneOrManyOccupancy (values.Select(v => (IOccupancy) new OccupancyQuantitativeValue (v))); }
+        }
+        public struct OccupancyQuantitativeValue : IOccupancy<QuantitativeValue>
+        {
+            object IValue.Value => this.Value;
+            public QuantitativeValue Value { get; }
+            public OccupancyQuantitativeValue (QuantitativeValue value) { Value = value; }
+            public static implicit operator OccupancyQuantitativeValue (QuantitativeValue value) { return new OccupancyQuantitativeValue (value); }
+        }
+
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
@@ -23,23 +71,20 @@ namespace Schema.NET
         ///       If you want to indicate the quantity of a certain kind of bed, use an instance of BedDetails. For more detailed information, use the amenityFeature property.
         /// </summary>
         [DataMember(Name = "bed", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<BedDetails, string>? Bed { get; set; }
+        public OneOrManyBed Bed { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override Values<int?, QuantitativeValue>? NumberOfRooms { get; set; }
+        public override OneOrManyNumberOfRooms NumberOfRooms { get; set; }
 
         /// <summary>
         /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
         /// Typical unit code(s): C62 for person
         /// </summary>
         [DataMember(Name = "occupancy", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<QuantitativeValue>? Occupancy { get; set; }
+        public OneOrManyOccupancy Occupancy { get; set; }
     }
 }

@@ -21,8 +21,7 @@ namespace Schema.NET.Tool
                 {
                     new AddQueryInputPropertyToSearchAction(),
                     new AddTextTypeToActionTarget(),
-                    new AddNumberTypeToMediaObjectHeightAndWidth(),
-                    new AddStringTypeToWebpageElementForCssSelectorAndXPath()
+                    new AddNumberTypeToMediaObjectHeightAndWidth()
                 },
                 new List<IEnumerationOverride>()
                 {
