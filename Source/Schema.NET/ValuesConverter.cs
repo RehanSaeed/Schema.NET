@@ -190,7 +190,7 @@ namespace Schema.NET
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             var values = (IValue)value;
-            var obj = values.Value;
+            var obj = values?.Value;
             if (obj == null)
             {
                 writer.WriteNull();

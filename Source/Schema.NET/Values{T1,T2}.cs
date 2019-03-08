@@ -8,13 +8,13 @@ namespace Schema.NET
     /// <typeparam name="T1">The first type the values can take.</typeparam>
     /// <typeparam name="T2">The second type the values can take.</typeparam>
     /// <seealso cref="IValue" />
-    public struct Values<T1, T2> : IValue
+    public class Values<T1, T2> : IValue
     {
         private readonly OneOrMany<T1> value1;
         private readonly OneOrMany<T2> value2;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1,T2}"/> struct.
+        /// Initializes a new instance of the <see cref="Values{T1,T2}"/> class.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T1"/>.</param>
         public Values(OneOrMany<T1> value)
@@ -24,7 +24,7 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1,T2}"/> struct.
+        /// Initializes a new instance of the <see cref="Values{T1,T2}"/> class.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T2"/>.</param>
         public Values(OneOrMany<T2> value)
@@ -50,11 +50,11 @@ namespace Schema.NET
         {
             get
             {
-                if (this.value1.Count > 0)
+                if (this.value1?.Count > 0)
                 {
                     return ((IValue)this.value1).Value;
                 }
-                else if (this.value2.Count > 0)
+                else if (this.value2?.Count > 0)
                 {
                     return ((IValue)this.value2).Value;
                 }
@@ -68,27 +68,27 @@ namespace Schema.NET
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2>(T1 item) => new Values<T1, T2>(item);
+        public static implicit operator Values<T1, T2>(T1 item) => item == null || (item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string)) ? null : new Values<T1, T2>(item);
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T2"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2>(T2 item) => new Values<T1, T2>(item);
+        public static implicit operator Values<T1, T2>(T2 item) => item == null || (item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string)) ? null : new Values<T1, T2>(item);
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T1}"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2>(List<T1> list) => new Values<T1, T2>(list);
+        public static implicit operator Values<T1, T2>(List<T1> list) => list == null || list.Count == 0 ? null : new Values<T1, T2>(list);
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T2}"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Values<T1, T2>(List<T2> list) => new Values<T1, T2>(list);
+        public static implicit operator Values<T1, T2>(List<T2> list) => list == null || list.Count == 0 ? null : new Values<T1, T2>(list);
     }
 }

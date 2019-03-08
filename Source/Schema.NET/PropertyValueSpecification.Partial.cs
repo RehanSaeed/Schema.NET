@@ -16,34 +16,34 @@ namespace Schema.NET
         {
             var stringBuilder = new StringBuilder();
 
-            if (this.ValueMaxLength.HasValue && this.ValueMaxLength.Value.First().HasValue)
+            if (this.ValueMaxLength != null && this.ValueMaxLength.First() != null)
             {
                 stringBuilder.Append("maxlength=");
-                stringBuilder.Append(this.ValueMaxLength.Value.First().Value);
+                stringBuilder.Append(this.ValueMaxLength.First().Value);
             }
 
-            if (this.ValueMinLength.HasValue && this.ValueMinLength.Value.First().HasValue)
+            if (this.ValueMinLength != null && this.ValueMinLength.First() != null)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("minlength=");
-                stringBuilder.Append(this.ValueMinLength.Value.First().Value);
+                stringBuilder.Append(this.ValueMinLength.First().Value);
             }
 
-            if (this.ValueName.HasValue && this.ValueName.Value.First() != null)
+            if (this.ValueName != null && this.ValueName.First() != null)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("name=");
-                stringBuilder.Append(this.ValueName.Value.First());
+                stringBuilder.Append(this.ValueName.First());
             }
 
-            if (this.ValuePattern.HasValue && this.ValuePattern.Value.First() != null)
+            if (this.ValuePattern != null && this.ValuePattern.First() != null)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("pattern=");
-                stringBuilder.Append(this.ValuePattern.Value.First());
+                stringBuilder.Append(this.ValuePattern.First());
             }
 
-            if (this.ValueRequired.HasValue && this.ValueRequired.Value.First().HasValue)
+            if (this.ValueRequired != null && this.ValueRequired.First() != null)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("required");

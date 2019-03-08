@@ -9,13 +9,13 @@ namespace Schema.NET
     /// </summary>
     /// <typeparam name="T">The type of the values.</typeparam>
     /// <seealso cref="ICollection{T}" />
-    public struct OneOrMany<T> : IEnumerable<T>, IValue
+    public class OneOrMany<T> : IEnumerable<T>, IValue
     {
         private readonly List<T> collection;
         private readonly T item;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
+        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> class.
         /// </summary>
         /// <param name="item">The single item value.</param>
         public OneOrMany(T item)
@@ -30,7 +30,7 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
+        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> class.
         /// </summary>
         /// <param name="collection">The collection of values.</param>
         public OneOrMany(IEnumerable<T> collection)
@@ -39,7 +39,7 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
+        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> class.
         /// </summary>
         /// <param name="list">The list of values.</param>
         public OneOrMany(List<T> list)
@@ -92,8 +92,12 @@ namespace Schema.NET
                 {
                     return this.item;
                 }
+                else if (this.HasMany)
+                {
+                    return this.collection;
+                }
 
-                return this.collection;
+                return null;
             }
         }
 
@@ -114,27 +118,27 @@ namespace Schema.NET
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator OneOrMany<T>(T item) => new OneOrMany<T>(item);
+        public static implicit operator OneOrMany<T>(T item) => item == null || (item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string)) ? null : new OneOrMany<T>(item);
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T[]"/> to <see cref="OneOrMany{T}"/>.
         /// </summary>
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator OneOrMany<T>(T[] array) => new OneOrMany<T>(array);
+        public static implicit operator OneOrMany<T>(T[] array) => array == null || array.Length == 0 ? null : new OneOrMany<T>(array);
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T}"/> to <see cref="OneOrMany{T}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator OneOrMany<T>(List<T> list) => new OneOrMany<T>(list);
+        public static implicit operator OneOrMany<T>(List<T> list) => list == null || list.Count == 0 ? null : new OneOrMany<T>(list);
 
         /// <summary>
         /// Returns an enumerator that iterates through the <see cref="OneOrMany{T}"/>.
         /// </summary>
         /// <returns>An enumerator for the <see cref="OneOrMany{T}"/>.</returns>
-        public IEnumerator<T> GetEnumerator() => (this.collection ?? new List<T>() { this.item }).GetEnumerator();
+        public IEnumerator<T> GetEnumerator() => (this.collection ?? (this.item == null ? new List<T>() : new List<T>() { this.item })).GetEnumerator();
 
         /// <summary>
         /// Returns an enumerator that iterates through the <see cref="OneOrMany{T}"/>.

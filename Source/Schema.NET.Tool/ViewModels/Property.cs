@@ -38,7 +38,7 @@ namespace Schema.NET.Tool.ViewModels
 
             var adjustedTypes = string.Join(", ", this.Types.Select(x => x.CSharpTypeString));
             var rootType = this.Types.Count == 1 ? "OneOrMany" : "Values";
-            var typeString = $"{rootType}<{adjustedTypes}>?";
+            var typeString = $"{rootType}<{adjustedTypes}>";
 
             stringBuilder.AppendIndentLine(indent, $"[DataMember(Name = \"{this.JsonName}\", Order = {this.Order})]");
 
