@@ -324,6 +324,8 @@ namespace Schema.NET.Tool.Services
                 case "Distance":
                 case "Energy":
                 case "Mass":
+                case "XPathType":
+                case "CssSelectorType":
                     return "string";
                 case "Time":
                 case "Duration":
