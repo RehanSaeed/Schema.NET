@@ -17,9 +17,8 @@ namespace Schema.NET.Tool.Repositories
             if (reader.TokenType == JsonToken.StartObject)
             {
                 var token = JToken.Load(reader);
-                var graphArray = (JArray)token["@graph"];
-                var subGraphArray = graphArray.SelectMany(x => (JArray)x["@graph"]).ToList();
-                return subGraphArray.Select(Read).Where(x => x != null).ToList();
+                var graphArray = ((JArray)token["@graph"]).ToList();
+                return graphArray.Select(Read).Where(x => x != null).ToList();
             }
 
             return Enumerable.Empty<SchemaObject>();
