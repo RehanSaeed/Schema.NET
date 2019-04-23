@@ -24,7 +24,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "bed", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<BedDetails, string>? Bed { get; set; }
+        public Values<BedDetails, BedType?, string>? Bed { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.

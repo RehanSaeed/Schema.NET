@@ -49,7 +49,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "duration", Order = 210)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public OneOrMany<TimeSpan?>? Duration { get; set; }
+        public virtual OneOrMany<TimeSpan?>? Duration { get; set; }
 
         /// <summary>
         /// A URL pointing to a player for a specific video. In general, this is the information in the &lt;code&gt;src&lt;/code&gt; element of an &lt;code&gt;embed&lt;/code&gt; tag and should not be the same as the content of the &lt;code&gt;loc&lt;/code&gt; tag.
@@ -75,51 +75,67 @@ namespace Schema.NET
         public override Values<string, Uri>? EncodingFormat { get; set; }
 
         /// <summary>
+        /// The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to &lt;em&gt;December&lt;/em&gt;. For media, including audio and video, it's the time offset of the end of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
+        /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+        /// </summary>
+        [DataMember(Name = "endTime", Order = 214)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<DateTimeOffset?>? EndTime { get; set; }
+
+        /// <summary>
         /// The height of the item.
         /// </summary>
-        [DataMember(Name = "height", Order = 214)]
+        [DataMember(Name = "height", Order = 215)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, QuantitativeValue, int>? Height { get; set; }
 
         /// <summary>
         /// Player type required&amp;#x2014;for example, Flash or Silverlight.
         /// </summary>
-        [DataMember(Name = "playerType", Order = 215)]
+        [DataMember(Name = "playerType", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? PlayerType { get; set; }
 
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
-        [DataMember(Name = "productionCompany", Order = 216)]
+        [DataMember(Name = "productionCompany", Order = 217)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Organization>? ProductionCompany { get; set; }
 
         /// <summary>
         /// The regions where the media is allowed. If not specified, then it's assumed to be allowed everywhere. Specify the countries in &lt;a href="http://en.wikipedia.org/wiki/ISO_3166"&gt;ISO 3166 format&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "regionsAllowed", Order = 217)]
+        [DataMember(Name = "regionsAllowed", Order = 218)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Place>? RegionsAllowed { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').
         /// </summary>
-        [DataMember(Name = "requiresSubscription", Order = 218)]
+        [DataMember(Name = "requiresSubscription", Order = 219)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<bool?>? RequiresSubscription { get; set; }
+        public Values<bool?, MediaSubscription>? RequiresSubscription { get; set; }
+
+        /// <summary>
+        /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
+        /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+        /// </summary>
+        [DataMember(Name = "startTime", Order = 220)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<DateTimeOffset?>? StartTime { get; set; }
 
         /// <summary>
         /// Date when this media object was uploaded to this site.
         /// </summary>
-        [DataMember(Name = "uploadDate", Order = 219)]
+        [DataMember(Name = "uploadDate", Order = 221)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<DateTimeOffset?>? UploadDate { get; set; }
 
         /// <summary>
         /// The width of the item.
         /// </summary>
-        [DataMember(Name = "width", Order = 220)]
+        [DataMember(Name = "width", Order = 222)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, QuantitativeValue, int>? Width { get; set; }
     }

@@ -5,15 +5,15 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A pharmacy or drugstore.
+    /// A radio channel that uses FM.
     /// </summary>
     [DataContract]
-    public partial class Pharmacy : MedicalBusinessAndMedicalOrganization
+    public partial class FMRadioChannel : RadioChannel
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "Pharmacy";
+        public override string Type => "FMRadioChannel";
     }
 }

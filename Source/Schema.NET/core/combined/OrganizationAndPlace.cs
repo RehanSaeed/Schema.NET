@@ -224,72 +224,72 @@ namespace Schema.NET
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a containing geometry to a contained geometry. "a contains b iff no points of b lie in the exterior of a, and at least one point of the interior of b lies in the interior of a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyContains", Order = 135)]
+        [DataMember(Name = "geoContains", Order = 135)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyContains { get; set; }
+        public virtual OneOrMany<Place>? GeoContains { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that covers it. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyCoveredBy", Order = 136)]
+        [DataMember(Name = "geoCoveredBy", Order = 136)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyCoveredBy { get; set; }
+        public virtual OneOrMany<Place>? GeoCoveredBy { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a covering geometry to a covered geometry. "Every point of b is a point of (the interior or boundary of) a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyCovers", Order = 137)]
+        [DataMember(Name = "geoCovers", Order = 137)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyCovers { get; set; }
+        public virtual OneOrMany<Place>? GeoCovers { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that crosses it: "a crosses b: they have some but not all interior points in common, and the dimension of the intersection is less than that of at least one of them". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyCrosses", Order = 138)]
+        [DataMember(Name = "geoCrosses", Order = 138)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyCrosses { get; set; }
+        public virtual OneOrMany<Place>? GeoCrosses { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically disjoint: they have no point in common. They form a set of disconnected geometries." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;)
         /// </summary>
-        [DataMember(Name = "geospatiallyDisjoint", Order = 139)]
+        [DataMember(Name = "geoDisjoint", Order = 139)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyDisjoint { get; set; }
+        public virtual OneOrMany<Place>? GeoDisjoint { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically equal, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;. "Two geometries are topologically equal if their interiors intersect and no part of the interior or boundary of one geometry intersects the exterior of the other" (a symmetric relationship)
         /// </summary>
-        [DataMember(Name = "geospatiallyEquals", Order = 140)]
+        [DataMember(Name = "geoEquals", Order = 140)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyEquals { get; set; }
+        public virtual OneOrMany<Place>? GeoEquals { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) have at least one point in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyIntersects", Order = 141)]
+        [DataMember(Name = "geoIntersects", Order = 141)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyIntersects { get; set; }
+        public virtual OneOrMany<Place>? GeoIntersects { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that geospatially overlaps it, i.e. they have some but not all points in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyOverlaps", Order = 142)]
+        [DataMember(Name = "geoOverlaps", Order = 142)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyOverlaps { get; set; }
+        public virtual OneOrMany<Place>? GeoOverlaps { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) touch: they have at least one boundary point in common, but no interior points." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt; )
         /// </summary>
-        [DataMember(Name = "geospatiallyTouches", Order = 143)]
+        [DataMember(Name = "geoTouches", Order = 143)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyTouches { get; set; }
+        public virtual OneOrMany<Place>? GeoTouches { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to one that contains it, i.e. it is inside (i.e. within) its interior. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyWithin", Order = 144)]
+        [DataMember(Name = "geoWithin", Order = 144)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<Place>? GeospatiallyWithin { get; set; }
+        public virtual OneOrMany<Place>? GeoWithin { get; set; }
 
         /// <summary>
         /// The &lt;a href="http://www.gs1.org/gln"&gt;Global Location Number&lt;/a&gt; (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
@@ -482,9 +482,16 @@ namespace Schema.NET
         public virtual OneOrMany<Demand>? Seeks { get; set; }
 
         /// <summary>
+        /// A slogan or motto associated with the item.
+        /// </summary>
+        [DataMember(Name = "slogan", Order = 172)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual OneOrMany<string>? Slogan { get; set; }
+
+        /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
         /// </summary>
-        [DataMember(Name = "smokingAllowed", Order = 172)]
+        [DataMember(Name = "smokingAllowed", Order = 173)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OneOrMany<bool?>? SmokingAllowed { get; set; }
 
@@ -492,49 +499,49 @@ namespace Schema.NET
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
         /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "specialOpeningHoursSpecification", Order = 173)]
+        [DataMember(Name = "specialOpeningHoursSpecification", Order = 174)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OneOrMany<OpeningHoursSpecification>? SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 174)]
+        [DataMember(Name = "sponsor", Order = 175)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Values<Organization, Person>? Sponsor { get; set; }
 
         /// <summary>
         /// A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
         /// </summary>
-        [DataMember(Name = "subOrganization", Order = 175)]
+        [DataMember(Name = "subOrganization", Order = 176)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OneOrMany<Organization>? SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
         /// </summary>
-        [DataMember(Name = "taxID", Order = 176)]
+        [DataMember(Name = "taxID", Order = 177)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OneOrMany<string>? TaxID { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 177)]
+        [DataMember(Name = "telephone", Order = 178)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OneOrMany<string>? Telephone { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (typically a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement about policy on use of unnamed sources and the decision process required.
         /// </summary>
-        [DataMember(Name = "unnamedSourcesPolicy", Order = 178)]
+        [DataMember(Name = "unnamedSourcesPolicy", Order = 179)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Values<CreativeWork, Uri>? UnnamedSourcesPolicy { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.
         /// </summary>
-        [DataMember(Name = "vatID", Order = 179)]
+        [DataMember(Name = "vatID", Order = 180)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OneOrMany<string>? VatID { get; set; }
     }

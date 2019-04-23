@@ -42,7 +42,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "category", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Thing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, Thing>? Category { get; set; }
 
         /// <summary>
         /// A number that confirms the given order or payment has been received.

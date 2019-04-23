@@ -99,72 +99,72 @@ namespace Schema.NET
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a containing geometry to a contained geometry. "a contains b iff no points of b lie in the exterior of a, and at least one point of the interior of b lies in the interior of a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyContains", Order = 217)]
+        [DataMember(Name = "geoContains", Order = 217)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyContains { get; set; }
+        public override OneOrMany<Place>? GeoContains { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that covers it. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyCoveredBy", Order = 218)]
+        [DataMember(Name = "geoCoveredBy", Order = 218)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyCoveredBy { get; set; }
+        public override OneOrMany<Place>? GeoCoveredBy { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a covering geometry to a covered geometry. "Every point of b is a point of (the interior or boundary of) a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyCovers", Order = 219)]
+        [DataMember(Name = "geoCovers", Order = 219)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyCovers { get; set; }
+        public override OneOrMany<Place>? GeoCovers { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that crosses it: "a crosses b: they have some but not all interior points in common, and the dimension of the intersection is less than that of at least one of them". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyCrosses", Order = 220)]
+        [DataMember(Name = "geoCrosses", Order = 220)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyCrosses { get; set; }
+        public override OneOrMany<Place>? GeoCrosses { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically disjoint: they have no point in common. They form a set of disconnected geometries." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;)
         /// </summary>
-        [DataMember(Name = "geospatiallyDisjoint", Order = 221)]
+        [DataMember(Name = "geoDisjoint", Order = 221)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyDisjoint { get; set; }
+        public override OneOrMany<Place>? GeoDisjoint { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically equal, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;. "Two geometries are topologically equal if their interiors intersect and no part of the interior or boundary of one geometry intersects the exterior of the other" (a symmetric relationship)
         /// </summary>
-        [DataMember(Name = "geospatiallyEquals", Order = 222)]
+        [DataMember(Name = "geoEquals", Order = 222)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyEquals { get; set; }
+        public override OneOrMany<Place>? GeoEquals { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) have at least one point in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyIntersects", Order = 223)]
+        [DataMember(Name = "geoIntersects", Order = 223)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyIntersects { get; set; }
+        public override OneOrMany<Place>? GeoIntersects { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that geospatially overlaps it, i.e. they have some but not all points in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyOverlaps", Order = 224)]
+        [DataMember(Name = "geoOverlaps", Order = 224)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyOverlaps { get; set; }
+        public override OneOrMany<Place>? GeoOverlaps { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) touch: they have at least one boundary point in common, but no interior points." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt; )
         /// </summary>
-        [DataMember(Name = "geospatiallyTouches", Order = 225)]
+        [DataMember(Name = "geoTouches", Order = 225)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyTouches { get; set; }
+        public override OneOrMany<Place>? GeoTouches { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to one that contains it, i.e. it is inside (i.e. within) its interior. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "geospatiallyWithin", Order = 226)]
+        [DataMember(Name = "geoWithin", Order = 226)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<Place>? GeospatiallyWithin { get; set; }
+        public override OneOrMany<Place>? GeoWithin { get; set; }
 
         /// <summary>
         /// The &lt;a href="http://www.gs1.org/gln"&gt;Global Location Number&lt;/a&gt; (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
@@ -264,9 +264,16 @@ namespace Schema.NET
         public override OneOrMany<Review>? Review { get; set; }
 
         /// <summary>
+        /// A slogan or motto associated with the item.
+        /// </summary>
+        [DataMember(Name = "slogan", Order = 240)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override OneOrMany<string>? Slogan { get; set; }
+
+        /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
         /// </summary>
-        [DataMember(Name = "smokingAllowed", Order = 240)]
+        [DataMember(Name = "smokingAllowed", Order = 241)]
         [JsonConverter(typeof(ValuesConverter))]
         public override OneOrMany<bool?>? SmokingAllowed { get; set; }
 
@@ -274,14 +281,14 @@ namespace Schema.NET
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
         /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "specialOpeningHoursSpecification", Order = 241)]
+        [DataMember(Name = "specialOpeningHoursSpecification", Order = 242)]
         [JsonConverter(typeof(ValuesConverter))]
         public override OneOrMany<OpeningHoursSpecification>? SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 242)]
+        [DataMember(Name = "telephone", Order = 243)]
         [JsonConverter(typeof(ValuesConverter))]
         public override OneOrMany<string>? Telephone { get; set; }
     }

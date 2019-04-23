@@ -31,7 +31,7 @@ namespace Schema.NET
         public Values<Country, string>? AddressCountry { get; set; }
 
         /// <summary>
-        /// The elevation of a location (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
+        /// The elevation of a location (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;). Values may be of the form 'NUMBER UNIT&lt;em&gt;OF&lt;/em&gt;MEASUREMENT' (e.g., '1,000 m', '3,200 ft') while numbers alone should be assumed to be a value in meters.
         /// </summary>
         [DataMember(Name = "elevation", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]

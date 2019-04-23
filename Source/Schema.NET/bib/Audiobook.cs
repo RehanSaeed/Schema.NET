@@ -17,9 +17,16 @@ namespace Schema.NET
         public override string Type => "Audiobook";
 
         /// <summary>
+        /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "duration", Order = 406)]
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        public override OneOrMany<TimeSpan?>? Duration { get; set; }
+
+        /// <summary>
         /// A person who reads (performs) the audiobook.
         /// </summary>
-        [DataMember(Name = "readBy", Order = 406)]
+        [DataMember(Name = "readBy", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Person>? ReadBy { get; set; }
     }

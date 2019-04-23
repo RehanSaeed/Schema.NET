@@ -17,11 +17,11 @@ namespace Schema.NET
         public override string Type => "ImageObject";
 
         /// <summary>
-        /// The caption for this object.
+        /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "caption", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Caption { get; set; }
+        public Values<MediaObject, string>? Caption { get; set; }
 
         /// <summary>
         /// exif data for this object.

@@ -8,7 +8,7 @@ namespace Schema.NET
     /// A doctor's office.
     /// </summary>
     [DataContract]
-    public partial class Physician : MedicalOrganization
+    public partial class Physician : MedicalBusinessAndMedicalOrganization
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -19,21 +19,21 @@ namespace Schema.NET
         /// <summary>
         /// A medical service available from this provider.
         /// </summary>
-        [DataMember(Name = "availableService", Order = 306)]
+        [DataMember(Name = "availableService", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MedicalProcedure, MedicalTest, MedicalTherapy>? AvailableService { get; set; }
 
         /// <summary>
         /// A hospital with which the physician or office is affiliated.
         /// </summary>
-        [DataMember(Name = "hospitalAffiliation", Order = 307)]
+        [DataMember(Name = "hospitalAffiliation", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Hospital>? HospitalAffiliation { get; set; }
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
-        [DataMember(Name = "medicalSpecialty", Order = 308)]
+        [DataMember(Name = "medicalSpecialty", Order = 408)]
         [JsonConverter(typeof(ValuesConverter))]
         public override OneOrMany<MedicalSpecialty?>? MedicalSpecialty { get; set; }
     }

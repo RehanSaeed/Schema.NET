@@ -99,7 +99,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "category", Order = 217)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Thing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, Thing>? Category { get; set; }
 
         /// <summary>
         /// The typical delay between the receipt of the order and the goods either leaving the warehouse or being prepared for pickup, in case the delivery method is on site pickup.

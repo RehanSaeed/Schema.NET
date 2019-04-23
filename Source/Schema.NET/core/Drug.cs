@@ -136,86 +136,93 @@ namespace Schema.NET
         public override Values<DrugLegalStatus, MedicalEnumeration?, string>? LegalStatus { get; set; }
 
         /// <summary>
+        /// The manufacturer of the product.
+        /// </summary>
+        [DataMember(Name = "manufacturer", Order = 323)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<Organization>? Manufacturer { get; set; }
+
+        /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
-        [DataMember(Name = "maximumIntake", Order = 323)]
+        [DataMember(Name = "maximumIntake", Order = 324)]
         [JsonConverter(typeof(ValuesConverter))]
         public override OneOrMany<MaximumDoseSchedule>? MaximumIntake { get; set; }
 
         /// <summary>
         /// The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
         /// </summary>
-        [DataMember(Name = "mechanismOfAction", Order = 324)]
+        [DataMember(Name = "mechanismOfAction", Order = 325)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? MechanismOfAction { get; set; }
 
         /// <summary>
         /// The generic name of this drug or supplement.
         /// </summary>
-        [DataMember(Name = "nonProprietaryName", Order = 325)]
+        [DataMember(Name = "nonProprietaryName", Order = 326)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? NonProprietaryName { get; set; }
 
         /// <summary>
         /// Any information related to overdose on a drug, including signs or symptoms, treatments, contact information for emergency response.
         /// </summary>
-        [DataMember(Name = "overdosage", Order = 326)]
+        [DataMember(Name = "overdosage", Order = 327)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? Overdosage { get; set; }
 
         /// <summary>
         /// Pregnancy category of this drug.
         /// </summary>
-        [DataMember(Name = "pregnancyCategory", Order = 327)]
+        [DataMember(Name = "pregnancyCategory", Order = 328)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<DrugPregnancyCategory?>? PregnancyCategory { get; set; }
 
         /// <summary>
         /// Any precaution, guidance, contraindication, etc. related to this drug's use during pregnancy.
         /// </summary>
-        [DataMember(Name = "pregnancyWarning", Order = 328)]
+        [DataMember(Name = "pregnancyWarning", Order = 329)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? PregnancyWarning { get; set; }
 
         /// <summary>
         /// Link to prescribing information for the drug.
         /// </summary>
-        [DataMember(Name = "prescribingInfo", Order = 329)]
+        [DataMember(Name = "prescribingInfo", Order = 330)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Uri>? PrescribingInfo { get; set; }
 
         /// <summary>
         /// Indicates the status of drug prescription eg. local catalogs classifications or whether the drug is available by prescription or over-the-counter, etc.
         /// </summary>
-        [DataMember(Name = "prescriptionStatus", Order = 330)]
+        [DataMember(Name = "prescriptionStatus", Order = 331)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DrugPrescriptionStatus?, string>? PrescriptionStatus { get; set; }
 
         /// <summary>
         /// Proprietary name given to the diet plan, typically by its originator or creator.
         /// </summary>
-        [DataMember(Name = "proprietaryName", Order = 331)]
+        [DataMember(Name = "proprietaryName", Order = 332)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? ProprietaryName { get; set; }
 
         /// <summary>
         /// Any other drug related to this one, for example commonly-prescribed alternatives.
         /// </summary>
-        [DataMember(Name = "relatedDrug", Order = 332)]
+        [DataMember(Name = "relatedDrug", Order = 333)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Drug>? RelatedDrug { get; set; }
 
         /// <summary>
         /// The RxCUI drug identifier from RXNORM.
         /// </summary>
-        [DataMember(Name = "rxcui", Order = 333)]
+        [DataMember(Name = "rxcui", Order = 334)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? Rxcui { get; set; }
 
         /// <summary>
         /// Any FDA or other warnings about the drug (text or URL).
         /// </summary>
-        [DataMember(Name = "warning", Order = 334)]
+        [DataMember(Name = "warning", Order = 335)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? Warning { get; set; }
     }

@@ -24,42 +24,42 @@ namespace Schema.NET
         public OneOrMany<string>? Title { get; set; }
 
         /// <summary>
+        /// The location(s) applicants can apply from. This is usually used for telecommuting jobs where the applicant does not need to be in a physical office. Note: This should not be used for citizenship or work visa requirements.
+        /// </summary>
+        [DataMember(Name = "applicantLocationRequirements", Order = 207)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<AdministrativeArea>? ApplicantLocationRequirements { get; set; }
+
+        /// <summary>
         /// The base salary of the job or of an employee in an EmployeeRole.
         /// </summary>
-        [DataMember(Name = "baseSalary", Order = 207)]
+        [DataMember(Name = "baseSalary", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MonetaryAmount, decimal?, PriceSpecification>? BaseSalary { get; set; }
 
         /// <summary>
         /// Publication date for the job posting.
         /// </summary>
-        [DataMember(Name = "datePosted", Order = 208)]
+        [DataMember(Name = "datePosted", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<DateTimeOffset?>? DatePosted { get; set; }
 
         /// <summary>
-        /// Educational background needed for the position.
+        /// Educational background needed for the position or Occupation.
         /// </summary>
-        [DataMember(Name = "educationRequirements", Order = 209)]
+        [DataMember(Name = "educationRequirements", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? EducationRequirements { get; set; }
 
         /// <summary>
         /// Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).
         /// </summary>
-        [DataMember(Name = "employmentType", Order = 210)]
+        [DataMember(Name = "employmentType", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? EmploymentType { get; set; }
 
         /// <summary>
-        /// The estimated salary for this occupation in the given occupationLocation.
-        /// </summary>
-        [DataMember(Name = "estimatedSalary", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public Values<MonetaryAmount, decimal?, PriceSpecification>? EstimatedSalary { get; set; }
-
-        /// <summary>
-        /// Description of skills and experience needed for the position.
+        /// Description of skills and experience needed for the position or Occupation.
         /// </summary>
         [DataMember(Name = "experienceRequirements", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
@@ -101,58 +101,72 @@ namespace Schema.NET
         public OneOrMany<Place>? JobLocation { get; set; }
 
         /// <summary>
+        /// A description of the job location (e.g TELECOMMUTE for telecommute jobs).
+        /// </summary>
+        [DataMember(Name = "jobLocationType", Order = 218)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<string>? JobLocationType { get; set; }
+
+        /// <summary>
         /// Category or categories describing the job. Use BLS O*NET-SOC taxonomy: http://www.onetcenter.org/taxonomy.html. Ideally includes textual label and formal code, with the property repeated for each applicable value.
         /// </summary>
-        [DataMember(Name = "occupationalCategory", Order = 218)]
+        [DataMember(Name = "occupationalCategory", Order = 219)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? OccupationalCategory { get; set; }
 
         /// <summary>
-        /// Specific qualifications required for this role.
+        /// Specific qualifications required for this role or Occupation.
         /// </summary>
-        [DataMember(Name = "qualifications", Order = 219)]
+        [DataMember(Name = "qualifications", Order = 220)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? Qualifications { get; set; }
 
         /// <summary>
-        /// Responsibilities associated with this role.
+        /// The Occupation for the JobPosting.
         /// </summary>
-        [DataMember(Name = "responsibilities", Order = 220)]
+        [DataMember(Name = "relevantOccupation", Order = 221)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<Occupation>? RelevantOccupation { get; set; }
+
+        /// <summary>
+        /// Responsibilities associated with this role or Occupation.
+        /// </summary>
+        [DataMember(Name = "responsibilities", Order = 222)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? Responsibilities { get; set; }
 
         /// <summary>
         /// The currency (coded using &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; ) used for the main salary information in this job posting or for this employee.
         /// </summary>
-        [DataMember(Name = "salaryCurrency", Order = 221)]
+        [DataMember(Name = "salaryCurrency", Order = 223)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? SalaryCurrency { get; set; }
 
         /// <summary>
-        /// Skills required to fulfill this role.
+        /// Skills required to fulfill this role or in this Occupation.
         /// </summary>
-        [DataMember(Name = "skills", Order = 222)]
+        [DataMember(Name = "skills", Order = 224)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? Skills { get; set; }
 
         /// <summary>
         /// Any special commitments associated with this job posting. Valid entries include VeteranCommit, MilitarySpouseCommit, etc.
         /// </summary>
-        [DataMember(Name = "specialCommitments", Order = 223)]
+        [DataMember(Name = "specialCommitments", Order = 225)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? SpecialCommitments { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        [DataMember(Name = "validThrough", Order = 224)]
+        [DataMember(Name = "validThrough", Order = 226)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
 
         /// <summary>
         /// The typical working hours for this job (e.g. 1st shift, night shift, 8am-5pm).
         /// </summary>
-        [DataMember(Name = "workHours", Order = 225)]
+        [DataMember(Name = "workHours", Order = 227)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? WorkHours { get; set; }
     }

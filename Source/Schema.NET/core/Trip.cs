@@ -45,10 +45,24 @@ namespace Schema.NET
         public OneOrMany<Offer>? Offers { get; set; }
 
         /// <summary>
+        /// Identifies that this &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; is a subTrip of another Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
+        /// </summary>
+        [DataMember(Name = "partOfTrip", Order = 210)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<Trip>? PartOfTrip { get; set; }
+
+        /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        [DataMember(Name = "provider", Order = 210)]
+        [DataMember(Name = "provider", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Provider { get; set; }
+
+        /// <summary>
+        /// Identifies a &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; that is a subTrip of this Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
+        /// </summary>
+        [DataMember(Name = "subTrip", Order = 212)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<Trip>? SubTrip { get; set; }
     }
 }

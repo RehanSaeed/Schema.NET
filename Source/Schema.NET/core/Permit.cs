@@ -38,7 +38,7 @@ namespace Schema.NET
         public OneOrMany<Audience>? PermitAudience { get; set; }
 
         /// <summary>
-        /// The time validity of the permit.
+        /// The duration of validity of a permit or similar thing.
         /// </summary>
         [DataMember(Name = "validFor", Order = 209)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
@@ -52,7 +52,7 @@ namespace Schema.NET
         public OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
 
         /// <summary>
-        /// The geographic area where the permit is valid.
+        /// The geographic area where a permit or similar thing is valid.
         /// </summary>
         [DataMember(Name = "validIn", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]

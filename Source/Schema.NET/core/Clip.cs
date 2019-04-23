@@ -38,31 +38,45 @@ namespace Schema.NET
         public OneOrMany<Person>? Director { get; set; }
 
         /// <summary>
+        /// The end time of the clip expressed as the number of seconds from the beginning of the work.
+        /// </summary>
+        [DataMember(Name = "endOffset", Order = 209)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<double?>? EndOffset { get; set; }
+
+        /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
-        [DataMember(Name = "musicBy", Order = 209)]
+        [DataMember(Name = "musicBy", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<MusicGroup, Person>? MusicBy { get; set; }
 
         /// <summary>
         /// The episode to which this clip belongs.
         /// </summary>
-        [DataMember(Name = "partOfEpisode", Order = 210)]
+        [DataMember(Name = "partOfEpisode", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Episode>? PartOfEpisode { get; set; }
 
         /// <summary>
         /// The season to which this episode belongs.
         /// </summary>
-        [DataMember(Name = "partOfSeason", Order = 211)]
+        [DataMember(Name = "partOfSeason", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<CreativeWorkSeason>? PartOfSeason { get; set; }
 
         /// <summary>
         /// The series to which this episode or season belongs.
         /// </summary>
-        [DataMember(Name = "partOfSeries", Order = 212)]
+        [DataMember(Name = "partOfSeries", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<CreativeWorkSeries>? PartOfSeries { get; set; }
+
+        /// <summary>
+        /// The start time of the clip expressed as the number of seconds from the beginning of the work.
+        /// </summary>
+        [DataMember(Name = "startOffset", Order = 214)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<double?>? StartOffset { get; set; }
     }
 }

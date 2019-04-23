@@ -76,7 +76,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "speakable", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Uri>? Speakable { get; set; }
+        public Values<SpeakableSpecification, Uri>? Speakable { get; set; }
 
         /// <summary>
         /// One of the domain specialities to which this web page's content applies.

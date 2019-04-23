@@ -42,7 +42,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "broadcastFrequency", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BroadcastFrequency { get; set; }
+        public Values<BroadcastFrequencySpecification, string>? BroadcastFrequency { get; set; }
 
         /// <summary>
         /// The timezone in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 format&lt;/a&gt; for which the service bases its broadcasts

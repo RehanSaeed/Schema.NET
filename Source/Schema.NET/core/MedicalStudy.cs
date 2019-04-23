@@ -38,23 +38,30 @@ namespace Schema.NET
         public OneOrMany<string>? Population { get; set; }
 
         /// <summary>
+        /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
+        /// </summary>
+        [DataMember(Name = "sponsor", Order = 209)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<Organization, Person>? Sponsor { get; set; }
+
+        /// <summary>
         /// The status of the study (enumerated).
         /// </summary>
-        [DataMember(Name = "status", Order = 209)]
+        [DataMember(Name = "status", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<EventStatusType?, MedicalStudyStatus?, string>? Status { get; set; }
 
         /// <summary>
         /// The location in which the study is taking/took place.
         /// </summary>
-        [DataMember(Name = "studyLocation", Order = 210)]
+        [DataMember(Name = "studyLocation", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<AdministrativeArea>? StudyLocation { get; set; }
 
         /// <summary>
         /// A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
         /// </summary>
-        [DataMember(Name = "studySubject", Order = 211)]
+        [DataMember(Name = "studySubject", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<MedicalEntity>? StudySubject { get; set; }
     }

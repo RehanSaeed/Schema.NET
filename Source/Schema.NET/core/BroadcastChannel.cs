@@ -28,7 +28,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "broadcastFrequency", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BroadcastFrequency { get; set; }
+        public Values<BroadcastFrequencySpecification, string>? BroadcastFrequency { get; set; }
 
         /// <summary>
         /// The type of service required to have access to the channel (e.g. Standard or Premium).

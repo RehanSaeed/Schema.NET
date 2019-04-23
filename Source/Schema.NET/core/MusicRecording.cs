@@ -21,7 +21,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "byArtist", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicGroup>? ByArtist { get; set; }
+        public Values<MusicGroup, Person>? ByArtist { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.

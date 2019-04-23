@@ -70,7 +70,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "category", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Thing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, Thing>? Category { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
@@ -150,9 +150,16 @@ namespace Schema.NET
         public OneOrMany<string>? ServiceType { get; set; }
 
         /// <summary>
+        /// A slogan or motto associated with the item.
+        /// </summary>
+        [DataMember(Name = "slogan", Order = 225)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<string>? Slogan { get; set; }
+
+        /// <summary>
         /// Human-readable terms of service documentation.
         /// </summary>
-        [DataMember(Name = "termsOfService", Order = 225)]
+        [DataMember(Name = "termsOfService", Order = 226)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? TermsOfService { get; set; }
     }

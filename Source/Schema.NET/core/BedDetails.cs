@@ -28,6 +28,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "typeOfBed", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TypeOfBed { get; set; }
+        public Values<BedType?, string>? TypeOfBed { get; set; }
     }
 }

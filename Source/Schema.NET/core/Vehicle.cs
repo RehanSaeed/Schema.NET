@@ -303,7 +303,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "vehicleSpecialUsage", Order = 240)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? VehicleSpecialUsage { get; set; }
+        public Values<CarUsageType?, string>? VehicleSpecialUsage { get; set; }
 
         /// <summary>
         /// The type of component used for transmitting the power from a rotating power source to the wheels or other relevant component(s) ("gearbox" for cars).

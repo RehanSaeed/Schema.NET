@@ -70,7 +70,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "speakable", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Uri>? Speakable { get; set; }
+        public Values<SpeakableSpecification, Uri>? Speakable { get; set; }
 
         /// <summary>
         /// The number of words in the text of the Article.

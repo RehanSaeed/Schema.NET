@@ -57,7 +57,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "category", Order = 111)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Thing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, Thing>? Category { get; set; }
 
         /// <summary>
         /// The color of the product.
@@ -179,65 +179,79 @@ namespace Schema.NET
         public OneOrMany<string>? Mpn { get; set; }
 
         /// <summary>
+        /// Indicates the &lt;a href="https://en.wikipedia.org/wiki/NATO_Stock_Number"&gt;NATO stock number&lt;/a&gt; (nsn) of a &lt;a class="localLink" href="http://schema.org/Product"&gt;Product&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "nsn", Order = 129)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<string>? Nsn { get; set; }
+
+        /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        [DataMember(Name = "offers", Order = 129)]
+        [DataMember(Name = "offers", Order = 130)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Offer>? Offers { get; set; }
 
         /// <summary>
         /// The product identifier, such as ISBN. For example: &lt;code&gt;meta itemprop="productID" content="isbn:123-456-789"&lt;/code&gt;.
         /// </summary>
-        [DataMember(Name = "productID", Order = 130)]
+        [DataMember(Name = "productID", Order = 131)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? ProductID { get; set; }
 
         /// <summary>
         /// The date of production of the item, e.g. vehicle.
         /// </summary>
-        [DataMember(Name = "productionDate", Order = 131)]
+        [DataMember(Name = "productionDate", Order = 132)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OneOrMany<DateTimeOffset?>? ProductionDate { get; set; }
 
         /// <summary>
         /// The date the item e.g. vehicle was purchased by the current owner.
         /// </summary>
-        [DataMember(Name = "purchaseDate", Order = 132)]
+        [DataMember(Name = "purchaseDate", Order = 133)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OneOrMany<DateTimeOffset?>? PurchaseDate { get; set; }
 
         /// <summary>
         /// The release date of a product or product model. This can be used to distinguish the exact variant of a product.
         /// </summary>
-        [DataMember(Name = "releaseDate", Order = 133)]
+        [DataMember(Name = "releaseDate", Order = 134)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<DateTimeOffset?>? ReleaseDate { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 134)]
+        [DataMember(Name = "review", Order = 135)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Review>? Review { get; set; }
 
         /// <summary>
         /// The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
         /// </summary>
-        [DataMember(Name = "sku", Order = 135)]
+        [DataMember(Name = "sku", Order = 136)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? Sku { get; set; }
 
         /// <summary>
+        /// A slogan or motto associated with the item.
+        /// </summary>
+        [DataMember(Name = "slogan", Order = 137)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<string>? Slogan { get; set; }
+
+        /// <summary>
         /// The weight of the product or person.
         /// </summary>
-        [DataMember(Name = "weight", Order = 136)]
+        [DataMember(Name = "weight", Order = 138)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<QuantitativeValue>? Weight { get; set; }
 
         /// <summary>
         /// The width of the item.
         /// </summary>
-        [DataMember(Name = "width", Order = 137)]
+        [DataMember(Name = "width", Order = 139)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, QuantitativeValue>? Width { get; set; }
     }

@@ -38,9 +38,16 @@ namespace Schema.NET
         public OneOrMany<string>? MembershipNumber { get; set; }
 
         /// <summary>
+        /// The number of membership points earned by the member. If necessary, the unitText can be used to express the units the points are issued in. (e.g. stars, miles, etc.)
+        /// </summary>
+        [DataMember(Name = "membershipPointsEarned", Order = 209)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<double?, QuantitativeValue>? MembershipPointsEarned { get; set; }
+
+        /// <summary>
         /// The program providing the membership.
         /// </summary>
-        [DataMember(Name = "programName", Order = 209)]
+        [DataMember(Name = "programName", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? ProgramName { get; set; }
     }

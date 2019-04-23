@@ -5,15 +5,15 @@ namespace Schema.NET
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A type of medical procedure that involves invasive surgical techniques.
+    /// An aggregate rating of an Organization related to its role as an employer.
     /// </summary>
     [DataContract]
-    public partial class SurgicalProcedure : MedicalProcedure
+    public partial class EmployerAggregateRating : AggregateRating
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "SurgicalProcedure";
+        public override string Type => "EmployerAggregateRating";
     }
 }

@@ -36,5 +36,12 @@ namespace Schema.NET
         [DataMember(Name = "review", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Review>? Review { get; set; }
+
+        /// <summary>
+        /// A slogan or motto associated with the item.
+        /// </summary>
+        [DataMember(Name = "slogan", Order = 209)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<string>? Slogan { get; set; }
     }
 }

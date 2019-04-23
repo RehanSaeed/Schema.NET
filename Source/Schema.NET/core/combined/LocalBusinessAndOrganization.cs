@@ -361,44 +361,51 @@ namespace Schema.NET
         public override OneOrMany<Demand>? Seeks { get; set; }
 
         /// <summary>
+        /// A slogan or motto associated with the item.
+        /// </summary>
+        [DataMember(Name = "slogan", Order = 254)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override OneOrMany<string>? Slogan { get; set; }
+
+        /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 254)]
+        [DataMember(Name = "sponsor", Order = 255)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<Organization, Person>? Sponsor { get; set; }
 
         /// <summary>
         /// A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
         /// </summary>
-        [DataMember(Name = "subOrganization", Order = 255)]
+        [DataMember(Name = "subOrganization", Order = 256)]
         [JsonConverter(typeof(ValuesConverter))]
         public override OneOrMany<Organization>? SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
         /// </summary>
-        [DataMember(Name = "taxID", Order = 256)]
+        [DataMember(Name = "taxID", Order = 257)]
         [JsonConverter(typeof(ValuesConverter))]
         public override OneOrMany<string>? TaxID { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 257)]
+        [DataMember(Name = "telephone", Order = 258)]
         [JsonConverter(typeof(ValuesConverter))]
         public override OneOrMany<string>? Telephone { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (typically a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement about policy on use of unnamed sources and the decision process required.
         /// </summary>
-        [DataMember(Name = "unnamedSourcesPolicy", Order = 258)]
+        [DataMember(Name = "unnamedSourcesPolicy", Order = 259)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Values<CreativeWork, Uri>? UnnamedSourcesPolicy { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.
         /// </summary>
-        [DataMember(Name = "vatID", Order = 259)]
+        [DataMember(Name = "vatID", Order = 260)]
         [JsonConverter(typeof(ValuesConverter))]
         public override OneOrMany<string>? VatID { get; set; }
     }

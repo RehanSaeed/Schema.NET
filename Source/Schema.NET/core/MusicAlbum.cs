@@ -42,6 +42,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "byArtist", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicGroup>? ByArtist { get; set; }
+        public Values<MusicGroup, Person>? ByArtist { get; set; }
     }
 }

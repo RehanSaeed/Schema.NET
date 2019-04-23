@@ -24,11 +24,11 @@ namespace Schema.NET
         public OneOrMany<Person>? Actor { get; set; }
 
         /// <summary>
-        /// The caption for this object.
+        /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "caption", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Caption { get; set; }
+        public Values<MediaObject, string>? Caption { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.

@@ -112,7 +112,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "audio", Order = 219)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<AudioObject>? Audio { get; set; }
+        public Values<AudioObject, Clip>? Audio { get; set; }
 
         /// <summary>
         /// The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
@@ -434,79 +434,86 @@ namespace Schema.NET
         public Values<Product, string, Uri>? Material { get; set; }
 
         /// <summary>
+        /// The quantity of the materials being described or an expression of the physical space they occupy.
+        /// </summary>
+        [DataMember(Name = "materialExtent", Order = 265)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<QuantitativeValue, string>? MaterialExtent { get; set; }
+
+        /// <summary>
         /// Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
         /// </summary>
-        [DataMember(Name = "mentions", Order = 265)]
+        [DataMember(Name = "mentions", Order = 266)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Thing>? Mentions { get; set; }
 
         /// <summary>
         /// A link to the ListItem that follows the current one.
         /// </summary>
-        [DataMember(Name = "nextItem", Order = 266)]
+        [DataMember(Name = "nextItem", Order = 267)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<ListItem>? NextItem { get; set; }
 
         /// <summary>
         /// The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
         /// </summary>
-        [DataMember(Name = "numberOfItems", Order = 267)]
+        [DataMember(Name = "numberOfItems", Order = 268)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<int?>? NumberOfItems { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        [DataMember(Name = "offers", Order = 268)]
+        [DataMember(Name = "offers", Order = 269)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Offer>? Offers { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
         /// </summary>
-        [DataMember(Name = "position", Order = 269)]
+        [DataMember(Name = "position", Order = 270)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<int?, string>? Position { get; set; }
 
         /// <summary>
         /// A link to the ListItem that preceeds the current one.
         /// </summary>
-        [DataMember(Name = "previousItem", Order = 270)]
+        [DataMember(Name = "previousItem", Order = 271)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<ListItem>? PreviousItem { get; set; }
 
         /// <summary>
         /// The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
         /// </summary>
-        [DataMember(Name = "producer", Order = 271)]
+        [DataMember(Name = "producer", Order = 272)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Producer { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        [DataMember(Name = "provider", Order = 272)]
+        [DataMember(Name = "provider", Order = 273)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Provider { get; set; }
 
         /// <summary>
         /// A publication event associated with the item.
         /// </summary>
-        [DataMember(Name = "publication", Order = 273)]
+        [DataMember(Name = "publication", Order = 274)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<PublicationEvent>? Publication { get; set; }
 
         /// <summary>
         /// The publisher of the creative work.
         /// </summary>
-        [DataMember(Name = "publisher", Order = 274)]
+        [DataMember(Name = "publisher", Order = 275)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Publisher { get; set; }
 
         /// <summary>
         /// The publishing division which published the comic.
         /// </summary>
-        [DataMember(Name = "publisherImprint", Order = 275)]
+        [DataMember(Name = "publisherImprint", Order = 276)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Organization>? PublisherImprint { get; set; }
 
@@ -514,49 +521,49 @@ namespace Schema.NET
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
         /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
-        [DataMember(Name = "publishingPrinciples", Order = 276)]
+        [DataMember(Name = "publishingPrinciples", Order = 277)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork, Uri>? PublishingPrinciples { get; set; }
 
         /// <summary>
         /// The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
         /// </summary>
-        [DataMember(Name = "recordedAt", Order = 277)]
+        [DataMember(Name = "recordedAt", Order = 278)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Event>? RecordedAt { get; set; }
 
         /// <summary>
         /// The place and time the release was issued, expressed as a PublicationEvent.
         /// </summary>
-        [DataMember(Name = "releasedEvent", Order = 278)]
+        [DataMember(Name = "releasedEvent", Order = 279)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<PublicationEvent>? ReleasedEvent { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 279)]
+        [DataMember(Name = "review", Order = 280)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Review>? Review { get; set; }
 
         /// <summary>
         /// Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application.
         /// </summary>
-        [DataMember(Name = "schemaVersion", Order = 280)]
+        [DataMember(Name = "schemaVersion", Order = 281)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<string, Uri>? SchemaVersion { get; set; }
 
         /// <summary>
         /// Indicates the date on which the current structured data was generated / published. Typically used alongside &lt;a class="localLink" href="http://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt;
         /// </summary>
-        [DataMember(Name = "sdDatePublished", Order = 281)]
+        [DataMember(Name = "sdDatePublished", Order = 282)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<DateTimeOffset?>? SdDatePublished { get; set; }
 
         /// <summary>
         /// A license document that applies to this structured data, typically indicated by URL.
         /// </summary>
-        [DataMember(Name = "sdLicense", Order = 282)]
+        [DataMember(Name = "sdLicense", Order = 283)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<CreativeWork, Uri>? SdLicense { get; set; }
 
@@ -564,109 +571,126 @@ namespace Schema.NET
         /// Indicates the party responsible for generating and publishing the current structured data markup, typically in cases where the structured data is derived automatically from existing published content but published on a different site. For example, student projects and open data initiatives often re-publish existing content with more explicitly structured metadata. The
         /// &lt;a class="localLink" href="http://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt; property helps make such practices more explicit.
         /// </summary>
-        [DataMember(Name = "sdPublisher", Order = 283)]
+        [DataMember(Name = "sdPublisher", Order = 284)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? SdPublisher { get; set; }
 
         /// <summary>
         /// The Organization on whose behalf the creator was working.
         /// </summary>
-        [DataMember(Name = "sourceOrganization", Order = 284)]
+        [DataMember(Name = "sourceOrganization", Order = 285)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Organization>? SourceOrganization { get; set; }
+
+        /// <summary>
+        /// The "spatial" property can be used in cases when more specific properties
+        /// (e.g. &lt;a class="localLink" href="http://schema.org/locationCreated"&gt;locationCreated&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/spatialCoverage"&gt;spatialCoverage&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/contentLocation"&gt;contentLocation&lt;/a&gt;) are not known to be appropriate.
+        /// </summary>
+        [DataMember(Name = "spatial", Order = 286)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public OneOrMany<Place>? Spatial { get; set; }
 
         /// <summary>
         /// The spatialCoverage of a CreativeWork indicates the place(s) which are the focus of the content. It is a subproperty of
         ///       contentLocation intended primarily for more technical and detailed materials. For example with a Dataset, it indicates
         ///       areas that the dataset describes: a dataset of New York weather would have spatialCoverage which was the place: the state of New York.
         /// </summary>
-        [DataMember(Name = "spatialCoverage", Order = 285)]
+        [DataMember(Name = "spatialCoverage", Order = 287)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Place>? SpatialCoverage { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 286)]
+        [DataMember(Name = "sponsor", Order = 288)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Sponsor { get; set; }
 
         /// <summary>
+        /// The "temporal" property can be used in cases where more specific properties
+        /// (e.g. &lt;a class="localLink" href="http://schema.org/temporalCoverage"&gt;temporalCoverage&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/dateCreated"&gt;dateCreated&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/dateModified"&gt;dateModified&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/datePublished"&gt;datePublished&lt;/a&gt;) are not known to be appropriate.
+        /// </summary>
+        [DataMember(Name = "temporal", Order = 289)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public Values<DateTimeOffset?, string>? Temporal { get; set; }
+
+        /// <summary>
         /// The temporalCoverage of a CreativeWork indicates the period that the content applies to, i.e. that it describes, either as a DateTime or as a textual string indicating a time period in &lt;a href="https://en.wikipedia.org/wiki/ISO_8601#Time_intervals"&gt;ISO 8601 time interval format&lt;/a&gt;. In
         ///       the case of a Dataset it will typically indicate the relevant time period in a precise notation (e.g. for a 2011 census dataset, the year 2011 would be written "2011/2012"). Other forms of content e.g. ScholarlyArticle, Book, TVSeries or TVEpisode may indicate their temporalCoverage in broader terms - textually or via well-known URL.
-        ///       Written works such as books may sometimes have precise temporal coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601 interval format format via "1939/1945".
+        ///       Written works such as books may sometimes have precise temporal coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601 interval format format via "1939/1945".&lt;br/&gt;&lt;br/&gt;
+        /// Open-ended date ranges can be written with ".." in place of the end date. For example, "2015-11/.." indicates a range beginning in November 2015 and with no specified final date. This is tentative and might be updated in future when ISO 8601 is officially updated.
         /// </summary>
-        [DataMember(Name = "temporalCoverage", Order = 287)]
+        [DataMember(Name = "temporalCoverage", Order = 290)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<DateTimeOffset?, string, Uri>? TemporalCoverage { get; set; }
 
         /// <summary>
         /// The textual content of this CreativeWork.
         /// </summary>
-        [DataMember(Name = "text", Order = 288)]
+        [DataMember(Name = "text", Order = 291)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? Text { get; set; }
 
         /// <summary>
         /// A thumbnail image relevant to the Thing.
         /// </summary>
-        [DataMember(Name = "thumbnailUrl", Order = 289)]
+        [DataMember(Name = "thumbnailUrl", Order = 292)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<Uri>? ThumbnailUrl { get; set; }
 
         /// <summary>
         /// Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
         /// </summary>
-        [DataMember(Name = "timeRequired", Order = 290)]
+        [DataMember(Name = "timeRequired", Order = 293)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
         public OneOrMany<TimeSpan?>? TimeRequired { get; set; }
 
         /// <summary>
         /// The work that this work has been translated from. e.g. 物种起源 is a translationOf “On the Origin of Species”
         /// </summary>
-        [DataMember(Name = "translationOfWork", Order = 291)]
+        [DataMember(Name = "translationOfWork", Order = 294)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<CreativeWork>? TranslationOfWork { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
         /// </summary>
-        [DataMember(Name = "translator", Order = 292)]
+        [DataMember(Name = "translator", Order = 295)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<Organization, Person>? Translator { get; set; }
 
         /// <summary>
         /// The typical expected age range, e.g. '7-9', '11-'.
         /// </summary>
-        [DataMember(Name = "typicalAgeRange", Order = 293)]
+        [DataMember(Name = "typicalAgeRange", Order = 296)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<string>? TypicalAgeRange { get; set; }
 
         /// <summary>
         /// The version of the CreativeWork embodied by a specified resource.
         /// </summary>
-        [DataMember(Name = "version", Order = 294)]
+        [DataMember(Name = "version", Order = 297)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<double?, string>? Version { get; set; }
 
         /// <summary>
         /// An embedded video object.
         /// </summary>
-        [DataMember(Name = "video", Order = 295)]
+        [DataMember(Name = "video", Order = 298)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<VideoObject>? Video { get; set; }
+        public Values<Clip, VideoObject>? Video { get; set; }
 
         /// <summary>
         /// Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
         /// </summary>
-        [DataMember(Name = "workExample", Order = 296)]
+        [DataMember(Name = "workExample", Order = 299)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<CreativeWork>? WorkExample { get; set; }
 
         /// <summary>
         /// A work that is a translation of the content of this work. e.g. 西遊記 has an English workTranslation “Journey to the West”,a German workTranslation “Monkeys Pilgerfahrt” and a Vietnamese  translation Tây du ký bình khảo.
         /// </summary>
-        [DataMember(Name = "workTranslation", Order = 297)]
+        [DataMember(Name = "workTranslation", Order = 300)]
         [JsonConverter(typeof(ValuesConverter))]
         public OneOrMany<CreativeWork>? WorkTranslation { get; set; }
     }
