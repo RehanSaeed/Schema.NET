@@ -18,66 +18,66 @@ namespace Schema.NET.Test
             },
             Url = new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"),
             WorkExample = new List<CreativeWork>()
+            {
+                new Book()
                 {
-                    new Book()
+                    Isbn = "031676948",
+                    BookEdition = "2nd Edition",
+                    BookFormat = BookFormatType.Hardcover,
+                    PotentialAction = new ReadAction()
                     {
-                        Isbn = "031676948",
-                        BookEdition = "2nd Edition",
-                        BookFormat = BookFormatType.Hardcover,
-                        PotentialAction = new ReadAction()
+                        Target = new EntryPoint()
                         {
-                            Target = new EntryPoint()
+                            UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true",
+                            ActionPlatform = new List<Uri>()
                             {
-                                UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true",
-                                ActionPlatform = new List<Uri>()
-                                {
-                                    new Uri("http://schema.org/DesktopWebPlatform"),
-                                    new Uri("http://schema.org/IOSPlatform"),
-                                    new Uri("http://schema.org/AndroidPlatform")
-                                }
-                            },
-                            ExpectsAcceptanceOf = new Offer()
-                            {
-                                Price = 6.99M,
-                                PriceCurrency = "USD",
-                                EligibleRegion = new Country()
-                                {
-                                    Name = "US"
-                                },
-                                Availability = ItemAvailability.InStock
+                                new Uri("http://schema.org/DesktopWebPlatform"),
+                                new Uri("http://schema.org/IOSPlatform"),
+                                new Uri("http://schema.org/AndroidPlatform")
                             }
                         },
+                        ExpectsAcceptanceOf = new Offer()
+                        {
+                            Price = 6.99M,
+                            PriceCurrency = "USD",
+                            EligibleRegion = new Country()
+                            {
+                                Name = "US"
+                            },
+                            Availability = ItemAvailability.InStock
+                        }
                     },
-                    new Book()
+                },
+                new Book()
+                {
+                    Isbn = "031676947",
+                    BookEdition = "1st Edition",
+                    BookFormat = BookFormatType.EBook,
+                    PotentialAction = new ReadAction()
                     {
-                        Isbn = "031676947",
-                        BookEdition = "1st Edition",
-                        BookFormat = BookFormatType.EBook,
-                        PotentialAction = new ReadAction()
+                        Target = new EntryPoint()
                         {
-                            Target = new EntryPoint()
+                            UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/031676947?purchase=true",
+                            ActionPlatform = new List<Uri>()
                             {
-                                UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/031676947?purchase=true",
-                                ActionPlatform = new List<Uri>()
-                                {
-                                    new Uri("http://schema.org/DesktopWebPlatform"),
-                                    new Uri("http://schema.org/IOSPlatform"),
-                                    new Uri("http://schema.org/AndroidPlatform")
-                                }
-                            },
-                            ExpectsAcceptanceOf = new Offer()
-                            {
-                                Price = 1.99M,
-                                PriceCurrency = "USD",
-                                EligibleRegion = new Country()
-                                {
-                                    Name = "UK"
-                                },
-                                Availability = ItemAvailability.InStock
+                                new Uri("http://schema.org/DesktopWebPlatform"),
+                                new Uri("http://schema.org/IOSPlatform"),
+                                new Uri("http://schema.org/AndroidPlatform")
                             }
                         },
-                    }
+                        ExpectsAcceptanceOf = new Offer()
+                        {
+                            Price = 1.99M,
+                            PriceCurrency = "USD",
+                            EligibleRegion = new Country()
+                            {
+                                Name = "UK"
+                            },
+                            Availability = ItemAvailability.InStock
+                        }
+                    },
                 }
+            }
         };
 
         private readonly string json =
@@ -158,5 +158,28 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_BookJsonLd_ReturnsBook() =>
             Assert.Equal(this.book.ToString(), JsonConvert.DeserializeObject<Book>(this.json).ToString());
+
+        [Fact]
+        public void Deserializing_HasPersonAsAuthor_OrganizationIsNullAndHasPerson()
+        {
+            var json =
+                "{" +
+                    "\"@context\" : \"http://schema.org\"," +
+                    "\"@type\" : \"Book\"," +
+                    "\"author\" : [" +
+                        "{" +
+                            "\"@type\" : \"Person\"," +
+                            "\"name\" : \"NameOfPerson1\"," +
+                        "}," +
+                    "]," +
+                    "\"typicalAgeRange\" : \"14\"," +
+                    "\"isbn\" : \"3333\"" +
+                "}";
+            var book = JsonConvert.DeserializeObject<Book>(json);
+
+            Assert.Equal(0, book.Author.Value.Value1.Count);
+            var person = Assert.Single(book.Author.Value.Value2);
+            Assert.Equal("NameOfPerson1", person.Name);
+        }
     }
 }

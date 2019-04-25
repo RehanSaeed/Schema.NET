@@ -52,26 +52,7 @@ namespace Schema.NET
                 var type = mainType.GenericTypeArguments[0].GetUnderlyingTypeFromNullable();
                 if (tokenType == JsonToken.StartArray)
                 {
-                    var listType = typeof(List<>).MakeGenericType(type);
-                    if (token.Any(t => !string.IsNullOrEmpty(GetTypeNameFromToken(t))))
-                    {
-                        var list = Activator.CreateInstance(listType);
-                        foreach (var childToken in token.Children())
-                        {
-                            var typeName = GetTypeNameFromToken(childToken);
-                            var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                            var child = (Thing)childToken.ToObject(builtType);
-                            listType
-                                .GetRuntimeMethod(nameof(List<object>.Add), new[] { type })
-                                .Invoke(list, new object[] { child });
-                        }
-
-                        argument = list;
-                    }
-                    else
-                    {
-                        argument = token.ToObject(listType);
-                    }
+                    argument = ReadJsonArray(token, type);
                 }
                 else if (type.IsPrimitiveType())
                 {
@@ -136,8 +117,7 @@ namespace Schema.NET
                         }
                         else if (tokenType == JsonToken.StartArray)
                         {
-                            var arrayType = typeof(List<>).MakeGenericType(type);
-                            args = token.ToObject(arrayType);
+                            args = ReadJsonArray(token, type);
                         }
                         else
                         {
@@ -158,7 +138,6 @@ namespace Schema.NET
 
                         var genericType = typeof(OneOrMany<>).MakeGenericType(type);
                         argument = Activator.CreateInstance(genericType, args);
-                        break;
                     }
                     catch
                     {
@@ -211,6 +190,54 @@ namespace Schema.NET
         {
             var token = JToken.FromObject(value, serializer);
             token.WriteTo(writer);
+        }
+
+        private static object ReadJsonArray(JToken token, Type type)
+        {
+            var listType = typeof(List<>).MakeGenericType(type);
+            var list = Activator.CreateInstance(listType);
+
+            foreach (var childToken in token.Children())
+            {
+                var typeName = GetTypeNameFromToken(childToken);
+                if (string.IsNullOrEmpty(typeName))
+                {
+                    var item = childToken.ToObject(type);
+                    listType
+                        .GetRuntimeMethod(nameof(List<object>.Add), new[] { type })
+                        .Invoke(list, new object[] { item });
+                }
+                else
+                {
+                    var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
+                    if (builtType != null && GetTypeHierarchy(builtType).Any(x => x == type))
+                    {
+                        var child = (Thing)childToken.ToObject(builtType);
+                        listType
+                            .GetRuntimeMethod(nameof(List<object>.Add), new[] { type })
+                            .Invoke(list, new object[] { child });
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        private static IEnumerable<Type> GetTypeHierarchy(Type type)
+        {
+            if (type == null)
+            {
+                yield break;
+            }
+
+            yield return type;
+
+            var baseType = type.GetTypeInfo().BaseType;
+            while (baseType != null)
+            {
+                yield return baseType;
+                baseType = baseType.GetTypeInfo().BaseType;
+            }
         }
 
         private static object SanitizeReaderValue(JsonReader reader, JsonToken tokenType) =>
