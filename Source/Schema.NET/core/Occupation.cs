@@ -24,7 +24,7 @@ namespace Schema.NET
         public OneOrMany<string>? EducationRequirements { get; set; }
 
         /// <summary>
-        /// An estimated salary for a job posting based on a variety of variables including, but not limited to industry, job title, and location. Estimated salaries  are often computed by outside organizations rather than the hiring organization, who may not have committed to the estimated value.
+        /// An estimated salary for a job posting or occupation, based on a variety of variables including, but not limited to industry, job title, and location. Estimated salaries  are often computed by outside organizations rather than the hiring organization, who may not have committed to the estimated value.
         /// </summary>
         [DataMember(Name = "estimatedSalary", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]

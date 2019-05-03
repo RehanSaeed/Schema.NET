@@ -623,7 +623,7 @@ namespace Schema.NET
         public OneOrMany<Uri>? ThumbnailUrl { get; set; }
 
         /// <summary>
-        /// Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
+        /// Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'PT30M', 'PT1H25M'.
         /// </summary>
         [DataMember(Name = "timeRequired", Order = 391)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]

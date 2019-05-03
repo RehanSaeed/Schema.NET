@@ -17,14 +17,24 @@ namespace Schema.NET
         public override string Type => "AggregateOffer";
 
         /// <summary>
-        /// The highest price of all offers available.
+        /// The highest price of all offers available.&lt;br/&gt;&lt;br/&gt;
+        /// Usage guidelines:&lt;br/&gt;&lt;br/&gt;
+        /// &lt;ul&gt;
+        /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
+        /// &lt;li&gt;Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.&lt;/li&gt;
+        /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "highPrice", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
         public Values<decimal?, string>? HighPrice { get; set; }
 
         /// <summary>
-        /// The lowest price of all offers available.
+        /// The lowest price of all offers available.&lt;br/&gt;&lt;br/&gt;
+        /// Usage guidelines:&lt;br/&gt;&lt;br/&gt;
+        /// &lt;ul&gt;
+        /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
+        /// &lt;li&gt;Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.&lt;/li&gt;
+        /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "lowPrice", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]

@@ -89,7 +89,12 @@ namespace Schema.NET
         public OneOrMany<Ticket>? ReservedTicket { get; set; }
 
         /// <summary>
-        /// The total price for the reservation or ticket, including applicable taxes, shipping, etc.
+        /// The total price for the reservation or ticket, including applicable taxes, shipping, etc.&lt;br/&gt;&lt;br/&gt;
+        /// Usage guidelines:&lt;br/&gt;&lt;br/&gt;
+        /// &lt;ul&gt;
+        /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
+        /// &lt;li&gt;Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.&lt;/li&gt;
+        /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "totalPrice", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]

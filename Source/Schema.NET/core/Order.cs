@@ -99,7 +99,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "orderedItem", Order = 217)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<OrderItem, Product>? OrderedItem { get; set; }
+        public Values<OrderItem, Product, Service>? OrderedItem { get; set; }
 
         /// <summary>
         /// The identifier of the transaction.
