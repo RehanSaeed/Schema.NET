@@ -46,8 +46,8 @@ namespace Schema.NET.Tool.Models
             "DataType"
         }.Contains(this.Label);
 
-        public List<SchemaClass> SubClassOf { get; set; } = new List<SchemaClass>();
+        public List<SchemaClass> SubClassOf { get; } = new List<SchemaClass>();
 
-        public List<Uri> SubClassOfIds { get; set; } = new List<Uri>();
+        public List<Uri> SubClassOfIds { get; } = new List<Uri>();
     }
 }

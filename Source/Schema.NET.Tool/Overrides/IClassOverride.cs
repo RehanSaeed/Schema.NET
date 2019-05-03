@@ -1,11 +1,11 @@
-﻿namespace Schema.NET.Tool.Overrides
+namespace Schema.NET.Tool.Overrides
 {
     using Schema.NET.Tool.ViewModels;
 
     public interface IClassOverride
     {
-        bool CanOverride(Class @class);
+        bool CanOverride(Class c);
 
-        void Override(Class @class);
+        void Override(Class c);
     }
 }

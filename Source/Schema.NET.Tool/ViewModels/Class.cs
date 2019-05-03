@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.ViewModels
+namespace Schema.NET.Tool.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -8,15 +8,17 @@
     using Schema.NET.Tool.Constants;
 
     [DebuggerDisplay("{Name}")]
+#pragma warning disable CA1716 // Identifiers should not match keywords
     public class Class : SchemaObject
+#pragma warning restore CA1716 // Identifiers should not match keywords
     {
         public IEnumerable<Class> Ancestors => EnumerableExtensions
             .Traverse(this, x => x.Parents)
             .Where(x => x != this);
 
-        public List<Class> Children { get; set; } = new List<Class>();
+        public List<Class> Children { get; } = new List<Class>();
 
-        public List<Class> CombinationOf { get; set; } = new List<Class>();
+        public List<Class> CombinationOf { get; } = new List<Class>();
 
         public IEnumerable<Class> Descendants => EnumerableExtensions
             .Traverse(this, x => x.Children)
@@ -42,9 +44,9 @@
 
         public bool IsThingType => string.Equals(this.Name, "Thing", StringComparison.Ordinal);
 
-        public List<Class> Parents { get; set; } = new List<Class>();
+        public List<Class> Parents { get; } = new List<Class>();
 
-        public List<Property> Properties { get; set; } = new List<Property>();
+        public List<Property> Properties { get; } = new List<Property>();
 
         public override string ToString()
         {
@@ -85,7 +87,9 @@
             }
             else
             {
+#pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
                 throw new Exception("A class should only have one parent at this stage.");
+#pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
             }
 
             stringBuilder.AppendIndentLine(4, "{");

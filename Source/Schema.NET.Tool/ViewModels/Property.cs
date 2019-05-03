@@ -7,7 +7,9 @@ namespace Schema.NET.Tool.ViewModels
     using System.Text;
 
     [DebuggerDisplay("{Name}")]
+#pragma warning disable CA1716 // Identifiers should not match keywords
     public class Property : ICloneable<Property>
+#pragma warning restore CA1716 // Identifiers should not match keywords
     {
         public Class Class { get; set; }
 
@@ -19,7 +21,7 @@ namespace Schema.NET.Tool.ViewModels
 
         public int Order { get; set; }
 
-        public List<PropertyType> Types { get; set; } = new List<PropertyType>();
+        public List<PropertyType> Types { get; } = new List<PropertyType>();
 
         public void AppendIndentLine(StringBuilder stringBuilder, int indent)
         {
@@ -54,14 +56,17 @@ namespace Schema.NET.Tool.ViewModels
             stringBuilder.AppendIndentLine(indent, $"public{modifier} {typeString} {this.Name} {{ get; set; }}");
         }
 
-        public Property Clone() =>
-            new Property()
+        public Property Clone()
+        {
+            var property = new Property()
             {
                 Description = this.Description,
                 JsonName = this.JsonName,
                 Name = this.Name,
                 Order = this.Order,
-                Types = this.Types.Select(x => x.Clone()).ToList()
             };
+            property.Types.AddRange(this.Types.Select(x => x.Clone()));
+            return property;
+        }
     }
 }

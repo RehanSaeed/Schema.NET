@@ -3,6 +3,7 @@ namespace Schema.NET
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Globalization;
     using System.Linq;
     using System.Reflection;
     using Newtonsoft.Json;
@@ -60,7 +61,7 @@ namespace Schema.NET
                 }
                 else if (type == typeof(decimal))
                 {
-                    argument = Convert.ToDecimal(value);
+                    argument = Convert.ToDecimal(value, CultureInfo.InvariantCulture);
                 }
                 else
                 {
@@ -128,7 +129,7 @@ namespace Schema.NET
                             }
                             else if (unwrappedType == typeof(decimal))
                             {
-                                args = Convert.ToDecimal(value);
+                                args = Convert.ToDecimal(value, CultureInfo.InvariantCulture);
                             }
                             else
                             {
@@ -139,11 +140,14 @@ namespace Schema.NET
                         var genericType = typeof(OneOrMany<>).MakeGenericType(type);
                         argument = Activator.CreateInstance(genericType, args);
                     }
-                    catch
+#pragma warning disable CA1031 // Do not catch general exception types
+                    catch (Exception e)
                     {
                         // Nasty, but we're trying brute force as a last resort, to
                         // see which type has the right constructor for this value
+                        Debug.WriteLine(e);
                     }
+#pragma warning restore CA1031 // Do not catch general exception types
                 }
             }
 
@@ -152,10 +156,12 @@ namespace Schema.NET
             {
                 instance = Activator.CreateInstance(mainType, argument);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 Debug.WriteLine(e);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             return instance;
         }
@@ -241,11 +247,11 @@ namespace Schema.NET
         }
 
         private static object SanitizeReaderValue(JsonReader reader, JsonToken tokenType) =>
-            tokenType == JsonToken.Integer ? Convert.ToInt32(reader.Value) : reader.Value;
+            tokenType == JsonToken.Integer ? Convert.ToInt32(reader.Value, CultureInfo.InvariantCulture) : reader.Value;
 
         private static string GetTypeNameFromToken(JToken token)
         {
-            var typeNameToken = token.Values().FirstOrDefault(t => t.Path.EndsWith("@type"));
+            var typeNameToken = token.Values().FirstOrDefault(t => t.Path.EndsWith("@type", StringComparison.Ordinal));
             return typeNameToken?.Value<string>();
         }
     }

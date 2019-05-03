@@ -29,19 +29,19 @@ namespace Schema.NET.Tool
                 },
                 new SchemaRepository());
 
-        public static void Main(string[] args) => new Program().Execute().Wait();
+        public static void Main() => new Program().Execute().Wait();
 
         public async Task Execute()
         {
             Console.WriteLine("Executing Class and Property Download");
-            var (enumerations, classes) = await this.schemaService.GetObjects();
+            var (enumerations, classes) = await this.schemaService.GetObjects().ConfigureAwait(false);
             Console.WriteLine("Finished Class and Property Download");
 
             var assemblyLocation = typeof(Program).GetTypeInfo().Assembly.Location;
             var outputDirectory = GetOutputDirectory(Path.GetDirectoryName(assemblyLocation));
 
             Console.WriteLine("Executing Clean Project Folder");
-            await ClearOutputDirectory(outputDirectory);
+            await ClearOutputDirectory(outputDirectory).ConfigureAwait(false);
             Console.WriteLine("Finished Clean Project Folder");
 
             Console.WriteLine("Executing Write Classes");
@@ -82,10 +82,12 @@ namespace Schema.NET.Tool
                             File.Delete(filePath);
                             break;
                         }
+#pragma warning disable CA1031 // Do not catch general exception types
                         catch
                         {
-                            await Task.Delay(100);
+                            await Task.Delay(100).ConfigureAwait(false);
                         }
+#pragma warning restore CA1031 // Do not catch general exception types
                     }
                 }
             }
@@ -107,7 +109,7 @@ namespace Schema.NET.Tool
             var projectFilePath = directory
                 .GetFiles("*.csproj", SearchOption.AllDirectories)
                 .Select(x => x.FullName)
-                .Where(x => x.EndsWith("Schema.NET.csproj"))
+                .Where(x => x.EndsWith("Schema.NET.csproj", StringComparison.Ordinal))
                 .FirstOrDefault();
             if (projectFilePath == null)
             {

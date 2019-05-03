@@ -1,5 +1,6 @@
-﻿namespace Schema.NET.Tool
+namespace Schema.NET.Tool
 {
+    using System;
     using System.Text;
     using System.Xml;
 
@@ -24,14 +25,14 @@
 
         public static void AppendCommentLine(this StringBuilder stringBuilder, int count, string value)
         {
-            value = value.Trim().Replace("\n\n", "\n").Replace(" \n", "\n");
+            value = value.Trim().Replace("\n\n", "\n", StringComparison.Ordinal).Replace(" \n", "\n", StringComparison.Ordinal);
             var escapedValue = XmlEscape(value);
 
             stringBuilder.AppendIndent(count);
             stringBuilder.Append("/// ");
             stringBuilder.AppendLine(escapedValue
-                .Replace("\n", $"\n{new string(Space, count)}/// ")
-                .Replace("/// \n", "///\n"));
+                .Replace("\n", $"\n{new string(Space, count)}/// ", StringComparison.Ordinal)
+                .Replace("/// \n", "///\n", StringComparison.Ordinal));
         }
 
         public static void AppendCommentSummary(this StringBuilder stringBuilder, int count, string value)

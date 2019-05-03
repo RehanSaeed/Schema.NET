@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.Overrides
+namespace Schema.NET.Tool.Overrides
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,9 @@
                 Description = "Gets or sets the query input search parameter.",
                 JsonName = "query-input",
                 Name = "QueryInput",
-                Types = new List<PropertyType>()
+            };
+            property.Types.AddRange(
+                new List<PropertyType>()
                 {
                     new PropertyType()
                     {
@@ -29,8 +31,7 @@
                         CSharpTypeString = "PropertyValueSpecification",
                         Name = "PropertyValueSpecification"
                     }
-                }
-            };
+                });
             @class.Properties.Add(property);
         }
     }

@@ -9,9 +9,11 @@ namespace Schema.NET.Tool.Repositories
     using Newtonsoft.Json.Serialization;
     using Schema.NET.Tool.Models;
 
-    public class SchemaRepository : ISchemaRepository
+    public class SchemaRepository : Disposable, ISchemaRepository
     {
+#pragma warning disable CA2213 // Members should be disposed
         private readonly HttpClient httpClient;
+#pragma warning restore CA2213 // Members should be disposed
 
         public SchemaRepository() =>
             this.httpClient = new HttpClient()
@@ -21,8 +23,8 @@ namespace Schema.NET.Tool.Repositories
 
         public async Task<(List<SchemaClass> classes, List<SchemaProperty> properties, List<SchemaEnumerationValue> enumerationValues)> GetObjects()
         {
-            var schemaObjects = await this.GetSchemaObjects();
-            var schemaTreeClasses = await this.GetSchemaTreeClasses();
+            var schemaObjects = await this.GetSchemaObjects().ConfigureAwait(false);
+            var schemaTreeClasses = await this.GetSchemaTreeClasses().ConfigureAwait(false);
             var enumerations = schemaObjects.OfType<SchemaClass>().ToList();
             var classes = schemaObjects.OfType<SchemaClass>().ToList();
 
@@ -35,15 +37,15 @@ namespace Schema.NET.Tool.Repositories
                 }
             }
 
-            foreach (var @class in classes)
+            foreach (var c in classes)
             {
-                var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("http://schema.org/" + x.Name) == @class.Id);
+                var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("http://schema.org/" + x.Name) == c.Id);
                 if (schemaTreeClass != null)
                 {
-                    @class.Layer = schemaTreeClass.Layer;
+                    c.Layer = schemaTreeClass.Layer;
                 }
 
-                @class.SubClassOf = classes.Where(x => @class.SubClassOfIds.Contains(x.Id)).ToList();
+                c.SubClassOf.AddRange(classes.Where(x => c.SubClassOfIds.Contains(x.Id)));
             }
 
             return (classes,
@@ -53,22 +55,28 @@ namespace Schema.NET.Tool.Repositories
 
         public async Task<List<SchemaObject>> GetSchemaObjects()
         {
-            var response = await this.httpClient.GetAsync("/version/latest/all-layers.jsonld");
+            var response = await this.httpClient
+                .GetAsync(new Uri("/version/latest/all-layers.jsonld", UriKind.Relative))
+                .ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            var json = await response.Content.ReadAsStringAsync();
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return Deserialize<List<SchemaObject>>(json, new SchemaPropertyJsonConverter());
         }
 
         public async Task<List<SchemaTreeClass>> GetSchemaTreeClasses()
         {
-            var response = await this.httpClient.GetAsync("/docs/tree.jsonld");
+            var response = await this.httpClient
+                .GetAsync(new Uri("/docs/tree.jsonld", UriKind.Relative))
+                .ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            var json = await response.Content.ReadAsStringAsync();
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var schemaClass = Deserialize<SchemaTreeClass>(json);
             return EnumerableExtensions
                 .Traverse(schemaClass, x => x.Children)
                 .ToList();
         }
+
+        protected override void DisposeManaged() => this.httpClient.Dispose();
 
         private static T Deserialize<T>(string json, JsonConverter converter) =>
             JsonConvert.DeserializeObject<T>(

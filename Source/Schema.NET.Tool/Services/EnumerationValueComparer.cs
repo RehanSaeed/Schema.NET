@@ -1,24 +1,25 @@
-﻿namespace Schema.NET.Tool.Services
+namespace Schema.NET.Tool.Services
 {
+    using System;
     using System.Collections.Generic;
 
     public class EnumerationValueComparer : IComparer<string>
     {
-        public static readonly Dictionary<string, int> KnownEnumerationValueOrders = new Dictionary<string, int>
+        private static readonly Dictionary<string, int> KnownEnumerationValueOrders = new Dictionary<string, int>
         {
-            { "sunday", 0 },
-            { "monday", 1 },
-            { "tuesday", 2 },
-            { "wednesday", 3 },
-            { "thursday", 4 },
-            { "friday", 5 },
-            { "saturday", 6 }
+            { "SUNDAY", 0 },
+            { "MONDAY", 1 },
+            { "TUESDAY", 2 },
+            { "WEDNESDAY", 3 },
+            { "THURSDAY", 4 },
+            { "FRIDAY", 5 },
+            { "SATURDAY", 6 }
         };
 
         public int Compare(string x, string y)
         {
-            x = x.ToLower();
-            y = y.ToLower();
+            x = x.ToUpperInvariant();
+            y = y.ToUpperInvariant();
 
             var isXKnown = KnownEnumerationValueOrders.ContainsKey(x);
             var isYKnown = KnownEnumerationValueOrders.ContainsKey(y);
@@ -37,7 +38,7 @@
                 return 1;
             }
 
-            return x.CompareTo(y);
+            return string.Compare(x, y, StringComparison.Ordinal);
         }
     }
 }

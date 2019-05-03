@@ -52,43 +52,46 @@ namespace Schema.NET.Tool.Repositories
             var isPartOf = GetTokenValues(token["http://schema.org/isPartOf"]).FirstOrDefault();
             var layer = isPartOf == null ?
                 LayerName.Core :
-                isPartOf.Replace("http://", string.Empty).Replace(".schema.org", string.Empty);
+                isPartOf.Replace("http://", string.Empty, StringComparison.Ordinal).Replace(".schema.org", string.Empty, StringComparison.Ordinal);
 
             if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.OrdinalIgnoreCase)))
             {
-                return new SchemaClass()
+                var schemaClass = new SchemaClass()
                 {
                     Comment = comment,
                     Id = id,
                     Label = label,
                     Layer = layer,
-                    SubClassOfIds = subClassOf,
-                    Types = types
                 };
+                schemaClass.SubClassOfIds.AddRange(subClassOf);
+                schemaClass.Types.AddRange(types);
+                return schemaClass;
             }
             else if (types.Any(type => string.Equals(type, "rdf:Property", StringComparison.OrdinalIgnoreCase)))
             {
-                return new SchemaProperty()
+                var schemaProperty = new SchemaProperty()
                 {
                     Comment = comment,
-                    DomainIncludes = domainIncludes,
                     Id = id,
                     Label = label,
                     Layer = layer,
-                    RangeIncludes = rangeIncludes,
-                    Types = types
                 };
+                schemaProperty.DomainIncludes.AddRange(domainIncludes);
+                schemaProperty.RangeIncludes.AddRange(rangeIncludes);
+                schemaProperty.Types.AddRange(types);
+                return schemaProperty;
             }
             else
             {
-                return new SchemaEnumerationValue()
+                var schemaEnumerationValue = new SchemaEnumerationValue()
                 {
                     Comment = comment,
                     Id = id,
                     Label = label,
                     Layer = layer,
-                    Types = types
                 };
+                schemaEnumerationValue.Types.AddRange(types);
+                return schemaEnumerationValue;
             }
         }
 

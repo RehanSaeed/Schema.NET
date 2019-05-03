@@ -1,6 +1,8 @@
 namespace Schema.NET
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// A single or list of values which can be any of the specified types.
@@ -10,7 +12,7 @@ namespace Schema.NET
     /// <typeparam name="T3">The third type the values can take.</typeparam>
     /// <typeparam name="T4">The fourth type the values can take.</typeparam>
     /// <seealso cref="IValue" />
-    public struct Values<T1, T2, T3, T4> : IValue
+    public struct Values<T1, T2, T3, T4> : IEquatable<Values<T1, T2, T3, T4>>, IValue
     {
         private readonly OneOrMany<T1> value1;
         private readonly OneOrMany<T2> value2;
@@ -27,6 +29,10 @@ namespace Schema.NET
             this.value2 = default;
             this.value3 = default;
             this.value4 = default;
+            this.HasValue1 = true;
+            this.HasValue2 = false;
+            this.HasValue3 = false;
+            this.HasValue4 = false;
         }
 
         /// <summary>
@@ -39,6 +45,10 @@ namespace Schema.NET
             this.value2 = value;
             this.value3 = default;
             this.value4 = default;
+            this.HasValue1 = false;
+            this.HasValue2 = true;
+            this.HasValue3 = false;
+            this.HasValue4 = false;
         }
 
         /// <summary>
@@ -51,6 +61,10 @@ namespace Schema.NET
             this.value2 = default;
             this.value3 = value;
             this.value4 = default;
+            this.HasValue1 = false;
+            this.HasValue2 = false;
+            this.HasValue3 = true;
+            this.HasValue4 = false;
         }
 
         /// <summary>
@@ -63,7 +77,31 @@ namespace Schema.NET
             this.value2 = default;
             this.value3 = default;
             this.value4 = values;
+            this.HasValue1 = false;
+            this.HasValue2 = false;
+            this.HasValue3 = false;
+            this.HasValue4 = true;
         }
+
+        /// <summary>
+        /// Gets whether the value of type <typeparamref name="T1" /> has a value.
+        /// </summary>
+        public bool HasValue1 { get; }
+
+        /// <summary>
+        /// Gets whether the value of type <typeparamref name="T2" /> has a value.
+        /// </summary>
+        public bool HasValue2 { get; }
+
+        /// <summary>
+        /// Gets whether the value of type <typeparamref name="T3" /> has a value.
+        /// </summary>
+        public bool HasValue3 { get; }
+
+        /// <summary>
+        /// Gets whether the value of type <typeparamref name="T4" /> has a value.
+        /// </summary>
+        public bool HasValue4 { get; }
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T1" />.
@@ -92,19 +130,19 @@ namespace Schema.NET
         {
             get
             {
-                if (this.value1.Count > 0)
+                if (this.HasValue1)
                 {
                     return ((IValue)this.value1).Value;
                 }
-                else if (this.value2.Count > 0)
+                else if (this.HasValue2)
                 {
                     return ((IValue)this.value2).Value;
                 }
-                else if (this.value3.Count > 0)
+                else if (this.HasValue3)
                 {
                     return ((IValue)this.value3).Value;
                 }
-                else if (this.value4.Count > 0)
+                else if (this.HasValue4)
                 {
                     return ((IValue)this.value4).Value;
                 }
@@ -118,13 +156,16 @@ namespace Schema.NET
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(T1 item) => new Values<T1, T2, T3, T4>(item);
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T2"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(T2 item) => new Values<T1, T2, T3, T4>(item);
 
         /// <summary>
@@ -132,41 +173,235 @@ namespace Schema.NET
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(T3 item) => new Values<T1, T2, T3, T4>(item);
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T4"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(T4 item) => new Values<T1, T2, T3, T4>(item);
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T1}"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(List<T1> list) => new Values<T1, T2, T3, T4>(list);
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T2}"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(List<T2> list) => new Values<T1, T2, T3, T4>(list);
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T3}"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(List<T3> list) => new Values<T1, T2, T3, T4>(list);
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T4}"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(List<T4> list) => new Values<T1, T2, T3, T4>(list);
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T1}"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator List<T1>(Values<T1, T2, T3, T4> values) => values.Value1.ToList();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T1"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T1[](Values<T1, T2, T3, T4> values) => values.Value1.ToArray();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T2}"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator List<T2>(Values<T1, T2, T3, T4> values) => values.Value2.ToList();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T2"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T2[](Values<T1, T2, T3, T4> values) => values.Value2.ToArray();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T3}"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator List<T3>(Values<T1, T2, T3, T4> values) => values.Value3.ToList();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T3"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T3[](Values<T1, T2, T3, T4> values) => values.Value3.ToArray();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T4}"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator List<T4>(Values<T1, T2, T3, T4> values) => values.Value4.ToList();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T4"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T4[](Values<T1, T2, T3, T4> values) => values.Value4.ToArray();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
+        public static bool operator ==(Values<T1, T2, T3, T4> left, Values<T1, T2, T3, T4> right) => left.Equals(right);
+
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
+        public static bool operator !=(Values<T1, T2, T3, T4> left, Values<T1, T2, T3, T4> right) => !(left == right);
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(Values<T1, T2, T3, T4> other)
+        {
+            if (other.HasValue1)
+            {
+                if (this.HasValue1)
+                {
+                    return this.value1.Equals(other.value1);
+                }
+            }
+            else if (other.HasValue2)
+            {
+                if (this.HasValue2)
+                {
+                    return this.value2.Equals(other.value2);
+                }
+            }
+            else if (other.HasValue3)
+            {
+                if (this.HasValue3)
+                {
+                    return this.value3.Equals(other.value3);
+                }
+            }
+            else if (other.HasValue4)
+            {
+                if (this.HasValue4)
+                {
+                    return this.value4.Equals(other.value4);
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="object" />, is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool Equals(object obj) => obj is Values<T1, T2, T3, T4> ? this.Equals((Values<T1, T2, T3, T4>)obj) : false;
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            if (this.HasValue1)
+            {
+                return this.value1.GetHashCode();
+            }
+            else if (this.HasValue2)
+            {
+                return this.value2.GetHashCode();
+            }
+            else if (this.HasValue3)
+            {
+                return this.value3.GetHashCode();
+            }
+
+            return this.value4.GetHashCode();
+        }
     }
 }

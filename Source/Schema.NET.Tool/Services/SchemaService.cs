@@ -2,6 +2,7 @@ namespace Schema.NET.Tool.Services
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -28,7 +29,9 @@ namespace Schema.NET.Tool.Services
 
         public async Task<(List<Enumeration> enumerations, List<Class> classes)> GetObjects()
         {
-            var (schemaClasses, schemaProperties, schemaValues) = await this.schemaRepository.GetObjects();
+            var (schemaClasses, schemaProperties, schemaValues) = await this.schemaRepository
+                .GetObjects()
+                .ConfigureAwait(false);
 
             var enumerations = new List<Enumeration>();
             var classes = new List<Class>();
@@ -99,14 +102,14 @@ namespace Schema.NET.Tool.Services
                         var parents = @class.Parents.SelectMany(x => x.Parents).GroupBy(x => x.Name).Select(x => x.First()).ToList();
                         combinedClass = new Class()
                         {
-                            CombinationOf = @class.Parents.ToList(),
                             Description = classDescription,
                             Id = new Uri($"http://CombinedClass/{className}"),
                             IsCombined = true,
                             Layer = @class.IsCombined ? @class.Layer : $"{@class.Layer}{Path.DirectorySeparatorChar}combined",
                             Name = className
                         };
-                        combinedClass.Properties = @class
+                        combinedClass.CombinationOf.AddRange(@class.Parents);
+                        combinedClass.Properties.AddRange(@class
                             .Parents
                             .SelectMany(x => x.Properties)
                             .Select(x =>
@@ -117,8 +120,7 @@ namespace Schema.NET.Tool.Services
                             })
                             .GroupBy(x => x.Name)
                             .Select(x => x.First())
-                            .OrderBy(x => x.Name)
-                            .ToList();
+                            .OrderBy(x => x.Name));
                         foreach (var parent in parents)
                         {
                             parent.Children.Add(combinedClass);
@@ -145,10 +147,10 @@ namespace Schema.NET.Tool.Services
                 {
                     property.Order = propertyOrder;
 
-                    var lowerPropertyName = property.Name.ToLower();
-                    if (PropertyNameComparer.KnownPropertyNameOrders.ContainsKey(lowerPropertyName))
+                    var upperPropertyName = property.Name.ToUpperInvariant();
+                    if (PropertyNameComparer.KnownPropertyNameOrders.ContainsKey(upperPropertyName))
                     {
-                        property.Order = PropertyNameComparer.KnownPropertyNameOrders[lowerPropertyName];
+                        property.Order = PropertyNameComparer.KnownPropertyNameOrders[upperPropertyName];
                     }
 
                     ++propertyOrder;
@@ -159,7 +161,7 @@ namespace Schema.NET.Tool.Services
         private static string CamelCase(string value)
         {
             var stringBuilder = new StringBuilder(value);
-            stringBuilder[0] = char.ToLower(stringBuilder[0]);
+            stringBuilder[0] = char.ToLower(stringBuilder[0], CultureInfo.InvariantCulture);
             return stringBuilder.ToString();
         }
 
@@ -188,23 +190,23 @@ namespace Schema.NET.Tool.Services
             Models.SchemaClass schemaClass,
             List<Models.SchemaEnumerationValue> schemaValues)
         {
-            var values = schemaValues
-                .Where(x => x.Types.Contains(schemaClass.Id.ToString()))
-                .Select(x => new EnumerationValue()
-                {
-                    Description = x.Comment,
-                    Name = x.Label,
-                    Uri = x.Id
-                })
-                .OrderBy(x => x.Name, new EnumerationValueComparer())
-                .ToList();
-            return new Enumeration()
+            var enumeration = new Enumeration()
             {
                 Description = schemaClass.Comment,
                 Layer = $"{schemaClass.Layer}{Path.DirectorySeparatorChar}enumerations",
                 Name = schemaClass.Label,
-                Values = values
             };
+            enumeration.Values.AddRange(schemaValues
+                .Where(x => x.Types.Contains(schemaClass.Id.ToString()))
+                .Select(
+                    x => new EnumerationValue()
+                    {
+                        Description = x.Comment,
+                        Name = x.Label,
+                        Uri = x.Id
+                    })
+                .OrderBy(x => x.Name, new EnumerationValueComparer()));
+            return enumeration;
         }
 
         private static Class TranslateClass(
@@ -218,54 +220,53 @@ namespace Schema.NET.Tool.Services
                 Id = schemaClass.Id,
                 Layer = schemaClass.Layer,
                 Name = schemaClass.Label,
-                Parents = schemaClasses
-                    .Where(x => schemaClass.SubClassOfIds.Contains(x.Id))
-                    .Select(x => new Class() { Id = x.Id })
-                    .ToList()
             };
+            @class.Parents.AddRange(schemaClasses
+                .Where(x => schemaClass.SubClassOfIds.Contains(x.Id))
+                .Select(x => new Class() { Id = x.Id }));
 
             var properties = schemaProperties
                 .Where(x => x.DomainIncludes.Contains(schemaClass.Id) && !x.IsArchived && !x.IsMeta && !x.IsPending)
                 .Select(x =>
                 {
                     var propertyName = GetPropertyName(x.Label);
-                    return new Property()
+                    var property = new Property()
                     {
                         Class = @class,
                         Description = x.Comment,
                         JsonName = CamelCase(propertyName),
                         Name = propertyName,
-                        Types = x.RangeIncludes
-                            .Where(y =>
-                            {
-                                var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty);
-                                var propertyTypeClass = schemaClasses
-                                    .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
-                                return propertyTypeClass == null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
-                            })
-                            .Select(y =>
-                            {
-                                var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty);
-                                var isPropertyTypeEnum = schemaClasses
-                                    .Any(z => z.IsEnum && string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
-                                var csharpTypeString = GetCSharpTypeString(
-                                    propertyName,
-                                    propertyTypeName,
-                                    isPropertyTypeEnum);
-                                var propertyType = new PropertyType()
-                                {
-                                    CSharpTypeString = csharpTypeString,
-                                    Name = propertyTypeName,
-                                };
-                                return propertyType;
-                            })
-                            .Where(y => !string.Equals(y.Name, "Enumeration", StringComparison.OrdinalIgnoreCase) &&
-                                !string.Equals(y.Name, "QualitativeValue", StringComparison.OrdinalIgnoreCase))
-                            .GroupBy(y => y.CSharpTypeString)
-                            .Select(y => y.First())
-                            .OrderBy(y => y.Name)
-                            .ToList(),
                     };
+                    property.Types.AddRange(x.RangeIncludes
+                        .Where(y =>
+                        {
+                            var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty, StringComparison.Ordinal);
+                            var propertyTypeClass = schemaClasses
+                                .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
+                            return propertyTypeClass == null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
+                        })
+                        .Select(y =>
+                        {
+                            var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty, StringComparison.Ordinal);
+                            var isPropertyTypeEnum = schemaClasses
+                                .Any(z => z.IsEnum && string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
+                            var csharpTypeString = GetCSharpTypeString(
+                                propertyName,
+                                propertyTypeName,
+                                isPropertyTypeEnum);
+                            var propertyType = new PropertyType()
+                            {
+                                CSharpTypeString = csharpTypeString,
+                                Name = propertyTypeName,
+                            };
+                            return propertyType;
+                        })
+                        .Where(y => !string.Equals(y.Name, "Enumeration", StringComparison.OrdinalIgnoreCase) &&
+                            !string.Equals(y.Name, "QualitativeValue", StringComparison.OrdinalIgnoreCase))
+                        .GroupBy(y => y.CSharpTypeString)
+                        .Select(y => y.First())
+                        .OrderBy(y => y.Name));
+                    return property;
                 })
                 .Where(x => x.Types.Count > 0)
                 .OrderBy(x => x.Name, new PropertyNameComparer())
@@ -287,7 +288,7 @@ namespace Schema.NET.Tool.Services
 
                 if (upper && !char.IsUpper(character))
                 {
-                    stringBuilder.Append(char.ToUpper(character));
+                    stringBuilder.Append(char.ToUpper(character, CultureInfo.InvariantCulture));
                     upper = false;
                 }
                 else if (character == '-')
@@ -314,9 +315,17 @@ namespace Schema.NET.Tool.Services
                 case "DateTime":
                     return "DateTimeOffset?";
                 case "Integer":
-                case "Number" when propertyName.Contains("NumberOf") || propertyName.Contains("Year") || propertyName.Contains("Count") || propertyName.Contains("Age"):
+                case "Number" when
+                    propertyName.Contains("NumberOf", StringComparison.Ordinal) ||
+                    propertyName.Contains("Year", StringComparison.Ordinal) ||
+                    propertyName.Contains("Count", StringComparison.Ordinal) ||
+                    propertyName.Contains("Age", StringComparison.Ordinal):
                     return "int?";
-                case "Number" when propertyName.Contains("Price") || propertyName.Contains("Amount") || propertyName.Contains("Salary") || propertyName.Contains("Discount"):
+                case "Number" when
+                    propertyName.Contains("Price", StringComparison.Ordinal) ||
+                    propertyName.Contains("Amount", StringComparison.Ordinal) ||
+                    propertyName.Contains("Salary", StringComparison.Ordinal) ||
+                    propertyName.Contains("Discount", StringComparison.Ordinal):
                     return "decimal?";
                 case "Number":
                     return "double?";

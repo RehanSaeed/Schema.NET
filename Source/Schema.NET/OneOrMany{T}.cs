@@ -9,7 +9,9 @@ namespace Schema.NET
     /// </summary>
     /// <typeparam name="T">The type of the values.</typeparam>
     /// <seealso cref="ICollection{T}" />
-    public struct OneOrMany<T> : IEnumerable<T>, IValue
+#pragma warning disable CA1710 // Identifiers should have correct suffix
+    public struct OneOrMany<T> : IEquatable<OneOrMany<T>>, IEnumerable<T>, IValue
+#pragma warning restore CA1710 // Identifiers should have correct suffix
     {
         private readonly List<T> collection;
         private readonly T item;
@@ -27,6 +29,15 @@ namespace Schema.NET
 
             this.collection = null;
             this.item = item;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
+        /// </summary>
+        /// <param name="array">The array of values.</param>
+        public OneOrMany(params T[] array)
+            : this(array == null ? null : new List<T>(array))
+        {
         }
 
         /// <summary>
@@ -101,7 +112,7 @@ namespace Schema.NET
         /// Gets a value indicating whether this instance has a single item value.
         /// </summary>
         /// <value><c>true</c> if this instance has a single item value; otherwise, <c>false</c>.</value>
-        public bool HasOne => this.item != null;
+        public bool HasOne => this.collection == null && this.item != null;
 
         /// <summary>
         /// Gets a value indicating whether this instance has more than one value.
@@ -114,32 +125,140 @@ namespace Schema.NET
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator OneOrMany<T>(T item) => new OneOrMany<T>(item);
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T[]"/> to <see cref="OneOrMany{T}"/>.
         /// </summary>
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator OneOrMany<T>(T[] array) => new OneOrMany<T>(array);
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T}"/> to <see cref="OneOrMany{T}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator OneOrMany<T>(List<T> list) => new OneOrMany<T>(list);
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
+        public static bool operator ==(OneOrMany<T> left, OneOrMany<T> right) => left.Equals(right);
+
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
+        public static bool operator !=(OneOrMany<T> left, OneOrMany<T> right) => !(left == right);
 
         /// <summary>
         /// Returns an enumerator that iterates through the <see cref="OneOrMany{T}"/>.
         /// </summary>
         /// <returns>An enumerator for the <see cref="OneOrMany{T}"/>.</returns>
-        public IEnumerator<T> GetEnumerator() => (this.collection ?? new List<T>() { this.item }).GetEnumerator();
+        public IEnumerator<T> GetEnumerator()
+        {
+            if (this.HasMany)
+            {
+                foreach (var item in this.collection)
+                {
+                    yield return item;
+                }
+            }
+            else if (this.HasOne)
+            {
+                yield return this.item;
+            }
+        }
 
         /// <summary>
         /// Returns an enumerator that iterates through the <see cref="OneOrMany{T}"/>.
         /// </summary>
         /// <returns>An enumerator for the <see cref="OneOrMany{T}"/>.</returns>
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(OneOrMany<T> other)
+        {
+            if (other.collection == null)
+            {
+                if (this.collection == null)
+                {
+                    return this.item.Equals(other.item);
+                }
+            }
+            else
+            {
+                if (this.collection != null)
+                {
+                    if (this.collection.Count != other.collection.Count)
+                    {
+                        return false;
+                    }
+
+                    for (var i = 0; i < this.collection.Count; i++)
+                    {
+                        if (!EqualityComparer<T>.Default.Equals(this.collection[i], other.collection[i]))
+                        {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="object" />, is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool Equals(object obj) => obj is OneOrMany<T> ? this.Equals((OneOrMany<T>)obj) : false;
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            if (this.HasMany)
+            {
+                return HashCode.OfEach(this.collection);
+            }
+            else if (this.HasOne)
+            {
+                return HashCode.Of(this.item);
+            }
+
+            return this.GetHashCode();
+        }
     }
 }

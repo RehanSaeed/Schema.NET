@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.Models
+namespace Schema.NET.Tool.Models
 {
     using System;
     using System.Collections.Generic;
@@ -13,6 +13,6 @@
 
         public string Layer { get; set; }
 
-        public List<string> Types { get; set; } = new List<string>();
+        public List<string> Types { get; } = new List<string>();
     }
 }

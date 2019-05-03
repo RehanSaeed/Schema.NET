@@ -1,31 +1,32 @@
-﻿namespace Schema.NET.Tool.Services
+namespace Schema.NET.Tool.Services
 {
+    using System;
     using System.Collections.Generic;
 
     public class PropertyNameComparer : IComparer<string>
     {
         public static readonly Dictionary<string, int> KnownPropertyNameOrders = new Dictionary<string, int>
         {
-            { "context", 0 },
-            { "type", 1 },
-            { "id", 2 },
-            { "title", 3 },
-            { "name", 4 },
-            { "description", 5 }
+            { "CONTEXT", 0 },
+            { "TYPE", 1 },
+            { "ID", 2 },
+            { "TITLE", 3 },
+            { "NAME", 4 },
+            { "DESCRIPTION", 5 }
         };
 
         public int Compare(string x, string y)
         {
-            x = x.ToLower();
-            y = y.ToLower();
+            x = x.ToUpperInvariant();
+            y = y.ToUpperInvariant();
 
-            if (x.Equals("enddate"))
+            if (x.Equals("ENDDATE", StringComparison.Ordinal))
             {
-                x = "startdate1";
+                x = "STARTDATE1";
             }
-            else if (y.Equals("enddate"))
+            else if (y.Equals("ENDDATE", StringComparison.Ordinal))
             {
-                y = "startdate1";
+                y = "STARTDATE1";
             }
 
             var isXKnown = KnownPropertyNameOrders.ContainsKey(x);
@@ -45,7 +46,7 @@
                 return 1;
             }
 
-            return x.CompareTo(y);
+            return string.Compare(x, y, StringComparison.Ordinal);
         }
     }
 }
