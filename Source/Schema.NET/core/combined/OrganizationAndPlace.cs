@@ -127,8 +127,8 @@ namespace Schema.NET
         /// The date that this organization was dissolved.
         /// </summary>
         [DataMember(Name = "dissolutionDate", Order = 121)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<DateTimeOffset?>? DissolutionDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public virtual OneOrMany<IsoDate>? DissolutionDate { get; set; }
 
         /// <summary>
         /// Statement on diversity policy by an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; e.g. a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;. For a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, a statement describing the newsroom’s diversity policy on both staffing and sources, typically providing staffing data.
@@ -197,8 +197,8 @@ namespace Schema.NET
         /// The date that this organization was founded.
         /// </summary>
         [DataMember(Name = "foundingDate", Order = 131)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<DateTimeOffset?>? FoundingDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public virtual OneOrMany<IsoDate>? FoundingDate { get; set; }
 
         /// <summary>
         /// The place where the Organization was founded.

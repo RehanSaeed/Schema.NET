@@ -153,8 +153,8 @@ namespace Schema.NET
         /// Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
         /// </summary>
         [DataMember(Name = "previousStartDate", Order = 125)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? PreviousStartDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public OneOrMany<IsoDate>? PreviousStartDate { get; set; }
 
         /// <summary>
         /// The CreativeWork that captured all or part of this Event.
@@ -188,15 +188,15 @@ namespace Schema.NET
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "startDate", Order = 130)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? StartDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public Values<IsoDate, DateTimeOffset?>? StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "endDate", Order = 131)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? EndDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public Values<IsoDate, DateTimeOffset?>? EndDate { get; set; }
 
         /// <summary>
         /// An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.

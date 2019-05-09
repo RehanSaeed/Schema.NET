@@ -34,8 +34,8 @@ namespace Schema.NET
         /// Date on which this guideline's recommendation was made.
         /// </summary>
         [DataMember(Name = "guidelineDate", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? GuidelineDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public OneOrMany<IsoDate>? GuidelineDate { get; set; }
 
         /// <summary>
         /// The medical conditions, treatments, etc. that are the subject of the guideline.

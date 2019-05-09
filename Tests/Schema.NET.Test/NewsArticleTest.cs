@@ -16,7 +16,7 @@ namespace Schema.NET.Test
                 Height = 800, // Recommended
                 Width = 800 // Recommended
             },
-            DatePublished = new DateTimeOffset(2015, 2, 5, 8, 0, 0, TimeSpan.Zero), // Ignored
+            DatePublished = new IsoDate(2015, 2, 5), // Ignored
             DateModified = new DateTimeOffset(2015, 2, 5, 9, 20, 0, TimeSpan.Zero), // Ignored
             Author = new Person() // Ignored
             {
@@ -52,7 +52,7 @@ namespace Schema.NET.Test
                 "\"name\":\"John Doe\"" +
             "}," +
             "\"dateModified\":\"2015-02-05T09:20:00+00:00\"," +
-            "\"datePublished\":\"2015-02-05T08:00:00+00:00\"," +
+            "\"datePublished\":\"2015-02-05\"," +
             "\"headline\":\"Article headline\"," +
             "\"publisher\":{" +
                 "\"@type\":\"Organization\"," +

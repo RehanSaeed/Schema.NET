@@ -48,6 +48,10 @@ namespace Schema.NET.Tool.ViewModels
             {
                 stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]");
             }
+            else if (this.Types.Any(x => string.Equals(x.Name, "Date", StringComparison.OrdinalIgnoreCase)))
+            {
+                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(DateToIsoDateValuesConverter))]");
+            }
             else
             {
                 stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(ValuesConverter))]");

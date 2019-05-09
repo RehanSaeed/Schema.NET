@@ -27,8 +27,8 @@ namespace Schema.NET
         /// Date on which the content on this web page was last reviewed for accuracy and/or completeness.
         /// </summary>
         [DataMember(Name = "lastReviewed", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? LastReviewed { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public OneOrMany<IsoDate>? LastReviewed { get; set; }
 
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.

@@ -111,8 +111,8 @@ namespace Schema.NET
         /// The date the invoice is scheduled to be paid.
         /// </summary>
         [DataMember(Name = "scheduledPaymentDate", Order = 219)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ScheduledPaymentDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public OneOrMany<IsoDate>? ScheduledPaymentDate { get; set; }
 
         /// <summary>
         /// The total amount due.

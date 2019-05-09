@@ -203,22 +203,22 @@ namespace Schema.NET
         /// The date of production of the item, e.g. vehicle.
         /// </summary>
         [DataMember(Name = "productionDate", Order = 132)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<DateTimeOffset?>? ProductionDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public virtual OneOrMany<IsoDate>? ProductionDate { get; set; }
 
         /// <summary>
         /// The date the item e.g. vehicle was purchased by the current owner.
         /// </summary>
         [DataMember(Name = "purchaseDate", Order = 133)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<DateTimeOffset?>? PurchaseDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public virtual OneOrMany<IsoDate>? PurchaseDate { get; set; }
 
         /// <summary>
         /// The release date of a product or product model. This can be used to distinguish the exact variant of a product.
         /// </summary>
         [DataMember(Name = "releaseDate", Order = 134)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ReleaseDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public OneOrMany<IsoDate>? ReleaseDate { get; set; }
 
         /// <summary>
         /// A review of the item.

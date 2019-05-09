@@ -41,8 +41,8 @@ namespace Schema.NET
         /// Publication date for the job posting.
         /// </summary>
         [DataMember(Name = "datePosted", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? DatePosted { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public OneOrMany<IsoDate>? DatePosted { get; set; }
 
         /// <summary>
         /// Educational background needed for the position or Occupation.

@@ -129,8 +129,8 @@ namespace Schema.NET
         /// Date when this media object was uploaded to this site.
         /// </summary>
         [DataMember(Name = "uploadDate", Order = 221)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? UploadDate { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public OneOrMany<IsoDate>? UploadDate { get; set; }
 
         /// <summary>
         /// The width of the item.

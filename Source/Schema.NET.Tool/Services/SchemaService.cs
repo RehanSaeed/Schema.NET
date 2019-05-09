@@ -312,6 +312,7 @@ namespace Schema.NET.Tool.Services
                 case "Boolean":
                     return "bool?";
                 case "Date":
+                    return "IsoDate";
                 case "DateTime":
                     return "DateTimeOffset?";
                 case "Integer":

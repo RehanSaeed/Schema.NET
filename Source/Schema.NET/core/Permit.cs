@@ -62,7 +62,7 @@ namespace Schema.NET
         /// The date when the item is no longer valid.
         /// </summary>
         [DataMember(Name = "validUntil", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidUntil { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public OneOrMany<IsoDate>? ValidUntil { get; set; }
     }
 }

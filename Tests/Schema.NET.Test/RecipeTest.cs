@@ -16,7 +16,7 @@ namespace Schema.NET.Test
             {
                 Name = "Carol Smith"
             },
-            DatePublished = new DateTimeOffset(2009, 11, 5, 0, 0, 0, TimeSpan.Zero),
+            DatePublished = new IsoDate(2009, 11, 5),
             Description = "This is my grandmother's apple pie recipe. I like to add a dash of nutmeg.",
             AggregateRating = new AggregateRating()
             {
@@ -57,7 +57,7 @@ namespace Schema.NET.Test
                 "\"@type\":\"Person\"," +
                 "\"name\":\"Carol Smith\"" +
             "}," +
-            "\"datePublished\":\"2009-11-05T00:00:00+00:00\"," +
+            "\"datePublished\":\"2009-11-05\"," +
             "\"prepTime\":\"PT30M\"," +
             "\"totalTime\":\"PT1H30M\"," +
             "\"cookTime\":\"PT1H\"," +

@@ -29,7 +29,7 @@ namespace Schema.NET.Test
                 ItemOffered = null, // Recommended
                 PriceCurrency = "USD", // Required
                 Price = 119.99M, // Required
-                PriceValidUntil = new DateTimeOffset(2020, 11, 5, 0, 0, 0, TimeSpan.Zero), // Recommended
+                PriceValidUntil = new IsoDate(2020, 11, 5), // Recommended
                 ItemCondition = OfferItemCondition.UsedCondition,
                 Availability = ItemAvailability.InStock, // Recommended
                 Seller = new Organization()
@@ -62,7 +62,7 @@ namespace Schema.NET.Test
                 "\"itemCondition\":\"http://schema.org/UsedCondition\"," +
                 "\"price\":119.99," +
                 "\"priceCurrency\":\"USD\"," +
-                "\"priceValidUntil\":\"2020-11-05T00:00:00+00:00\"," +
+                "\"priceValidUntil\":\"2020-11-05\"," +
                 "\"seller\":{" +
                     "\"@type\":\"Organization\"," +
                     "\"name\":\"Executive Objects\"" +

@@ -20,8 +20,8 @@ namespace Schema.NET
         /// The date on which the CreativeWork was created or the item was added to a DataFeed.
         /// </summary>
         [DataMember(Name = "dateCreated", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? DateCreated { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public Values<IsoDate, DateTimeOffset?>? DateCreated { get; set; }
 
         /// <summary>
         /// The datetime the item was removed from the DataFeed.
@@ -34,8 +34,8 @@ namespace Schema.NET
         /// The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed.
         /// </summary>
         [DataMember(Name = "dateModified", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? DateModified { get; set; }
+        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
+        public Values<IsoDate, DateTimeOffset?>? DateModified { get; set; }
 
         /// <summary>
         /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.
