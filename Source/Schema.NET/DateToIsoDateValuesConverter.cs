@@ -5,7 +5,7 @@ namespace Schema.NET
 
     /// <summary>
     /// Converts an <see cref="IValue"/> object to JSON. If the <see cref="IValue"/> contains a Date, converts it
-    /// to Date object which handles ISO 8601 format for dates.
+    /// to IsoDate object which handles ISO 8601 format for dates.
     /// </summary>
     public class DateToIsoDateValuesConverter : ValuesConverter
     {
