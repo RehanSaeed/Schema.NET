@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// Web applications.
     /// </summary>
+    public partial interface IWebApplication : ISoftwareApplication
+    {
+        /// <summary>
+        /// Specifies browser requirements in human-readable text. For example, 'requires HTML5 support'.
+        /// </summary>
+        OneOrMany<string>? BrowserRequirements { get; set; }
+    }
+
+    /// <summary>
+    /// Web applications.
+    /// </summary>
     [DataContract]
-    public partial class WebApplication : SoftwareApplication
+    public partial class WebApplication : SoftwareApplication, IWebApplication
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

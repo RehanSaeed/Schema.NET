@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A patient-reported or observed dosing schedule for a drug or supplement.
     /// </summary>
+    public partial interface IReportedDoseSchedule : IDoseSchedule
+    {
+    }
+
+    /// <summary>
+    /// A patient-reported or observed dosing schedule for a drug or supplement.
+    /// </summary>
     [DataContract]
-    public partial class ReportedDoseSchedule : DoseSchedule
+    public partial class ReportedDoseSchedule : DoseSchedule, IReportedDoseSchedule
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

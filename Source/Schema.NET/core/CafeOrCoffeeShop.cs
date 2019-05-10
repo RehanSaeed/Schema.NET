@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A cafe or coffee shop.
     /// </summary>
+    public partial interface ICafeOrCoffeeShop : IFoodEstablishment
+    {
+    }
+
+    /// <summary>
+    /// A cafe or coffee shop.
+    /// </summary>
     [DataContract]
-    public partial class CafeOrCoffeeShop : FoodEstablishment
+    public partial class CafeOrCoffeeShop : FoodEstablishment, ICafeOrCoffeeShop
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

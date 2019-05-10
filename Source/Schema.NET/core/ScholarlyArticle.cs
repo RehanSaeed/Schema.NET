@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A scholarly article.
     /// </summary>
+    public partial interface IScholarlyArticle : IArticle
+    {
+    }
+
+    /// <summary>
+    /// A scholarly article.
+    /// </summary>
     [DataContract]
-    public partial class ScholarlyArticle : Article
+    public partial class ScholarlyArticle : Article, IScholarlyArticle
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

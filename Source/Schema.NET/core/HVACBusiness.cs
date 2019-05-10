@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A business that provide Heating, Ventilation and Air Conditioning services.
     /// </summary>
+    public partial interface IHVACBusiness : IHomeAndConstructionBusiness
+    {
+    }
+
+    /// <summary>
+    /// A business that provide Heating, Ventilation and Air Conditioning services.
+    /// </summary>
     [DataContract]
-    public partial class HVACBusiness : HomeAndConstructionBusiness
+    public partial class HVACBusiness : HomeAndConstructionBusiness, IHVACBusiness
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

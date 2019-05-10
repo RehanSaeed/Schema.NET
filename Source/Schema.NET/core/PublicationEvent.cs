@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media.
     /// </summary>
+    public partial interface IPublicationEvent : IEvent
+    {
+        /// <summary>
+        /// An agent associated with the publication event.
+        /// </summary>
+        Values<IOrganization, IPerson>? PublishedBy { get; set; }
+
+        /// <summary>
+        /// A broadcast service associated with the publication event.
+        /// </summary>
+        OneOrMany<IBroadcastService>? PublishedOn { get; set; }
+    }
+
+    /// <summary>
+    /// A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media.
+    /// </summary>
     [DataContract]
-    public partial class PublicationEvent : Event
+    public partial class PublicationEvent : Event, IPublicationEvent
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -28,13 +44,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "publishedBy", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? PublishedBy { get; set; }
+        public Values<IOrganization, IPerson>? PublishedBy { get; set; }
 
         /// <summary>
         /// A broadcast service associated with the publication event.
         /// </summary>
         [DataMember(Name = "publishedOn", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<BroadcastService>? PublishedOn { get; set; }
+        public OneOrMany<IBroadcastService>? PublishedOn { get; set; }
     }
 }

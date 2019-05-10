@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// Vital signs are measures of various physiological functions in order to assess the most basic body functions.
     /// </summary>
+    public partial interface IVitalSign : IMedicalSign
+    {
+    }
+
+    /// <summary>
+    /// Vital signs are measures of various physiological functions in order to assess the most basic body functions.
+    /// </summary>
     [DataContract]
-    public partial class VitalSign : MedicalSign
+    public partial class VitalSign : MedicalSign, IVitalSign
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

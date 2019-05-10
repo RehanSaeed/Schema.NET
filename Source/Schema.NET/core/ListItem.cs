@@ -7,8 +7,34 @@ namespace Schema.NET
     /// <summary>
     /// An list item, e.g. a step in a checklist or how-to description.
     /// </summary>
+    public partial interface IListItem : IIntangible
+    {
+        /// <summary>
+        /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.
+        /// </summary>
+        OneOrMany<IThing>? Item { get; set; }
+
+        /// <summary>
+        /// A link to the ListItem that follows the current one.
+        /// </summary>
+        OneOrMany<IListItem>? NextItem { get; set; }
+
+        /// <summary>
+        /// The position of an item in a series or sequence of items.
+        /// </summary>
+        Values<int?, string>? Position { get; set; }
+
+        /// <summary>
+        /// A link to the ListItem that preceeds the current one.
+        /// </summary>
+        OneOrMany<IListItem>? PreviousItem { get; set; }
+    }
+
+    /// <summary>
+    /// An list item, e.g. a step in a checklist or how-to description.
+    /// </summary>
     [DataContract]
-    public partial class ListItem : Intangible
+    public partial class ListItem : Intangible, IListItem
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,14 +47,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "item", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? Item { get; set; }
+        public OneOrMany<IThing>? Item { get; set; }
 
         /// <summary>
         /// A link to the ListItem that follows the current one.
         /// </summary>
         [DataMember(Name = "nextItem", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ListItem>? NextItem { get; set; }
+        public OneOrMany<IListItem>? NextItem { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
@@ -42,6 +68,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "previousItem", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ListItem>? PreviousItem { get; set; }
+        public OneOrMany<IListItem>? PreviousItem { get; set; }
     }
 }

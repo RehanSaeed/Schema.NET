@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A file containing slides or used for a presentation.
     /// </summary>
+    public partial interface IPresentationDigitalDocument : IDigitalDocument
+    {
+    }
+
+    /// <summary>
+    /// A file containing slides or used for a presentation.
+    /// </summary>
     [DataContract]
-    public partial class PresentationDigitalDocument : DigitalDocument
+    public partial class PresentationDigitalDocument : DigitalDocument, IPresentationDigitalDocument
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

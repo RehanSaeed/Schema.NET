@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A house is a building or structure that has the ability to be occupied for habitation by humans or other creatures (Source: Wikipedia, the free encyclopedia, see &lt;a href="http://en.wikipedia.org/wiki/House"&gt;http://en.wikipedia.org/wiki/House&lt;/a&gt;).
     /// </summary>
+    public partial interface IHouse : IAccommodation
+    {
+    }
+
+    /// <summary>
+    /// A house is a building or structure that has the ability to be occupied for habitation by humans or other creatures (Source: Wikipedia, the free encyclopedia, see &lt;a href="http://en.wikipedia.org/wiki/House"&gt;http://en.wikipedia.org/wiki/House&lt;/a&gt;).
+    /// </summary>
     [DataContract]
-    public partial class House : Accommodation
+    public partial class House : Accommodation, IHouse
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -22,6 +29,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<int?, QuantitativeValue>? NumberOfRooms { get; set; }
+        public override Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
     }
 }

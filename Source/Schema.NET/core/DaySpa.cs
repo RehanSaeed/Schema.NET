@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A day spa.
     /// </summary>
+    public partial interface IDaySpa : IHealthAndBeautyBusiness
+    {
+    }
+
+    /// <summary>
+    /// A day spa.
+    /// </summary>
     [DataContract]
-    public partial class DaySpa : HealthAndBeautyBusiness
+    public partial class DaySpa : HealthAndBeautyBusiness, IDaySpa
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

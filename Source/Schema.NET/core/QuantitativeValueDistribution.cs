@@ -7,8 +7,44 @@ namespace Schema.NET
     /// <summary>
     /// A statistical distribution of values.
     /// </summary>
+    public partial interface IQuantitativeValueDistribution : IStructuredValue
+    {
+        /// <summary>
+        /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
+        /// </summary>
+        OneOrMany<TimeSpan?>? Duration { get; set; }
+
+        /// <summary>
+        /// The median value.
+        /// </summary>
+        OneOrMany<double?>? Median { get; set; }
+
+        /// <summary>
+        /// The 10th percentile value.
+        /// </summary>
+        OneOrMany<double?>? Percentile10 { get; set; }
+
+        /// <summary>
+        /// The 25th percentile value.
+        /// </summary>
+        OneOrMany<double?>? Percentile25 { get; set; }
+
+        /// <summary>
+        /// The 75th percentile value.
+        /// </summary>
+        OneOrMany<double?>? Percentile75 { get; set; }
+
+        /// <summary>
+        /// The 90th percentile value.
+        /// </summary>
+        OneOrMany<double?>? Percentile90 { get; set; }
+    }
+
+    /// <summary>
+    /// A statistical distribution of values.
+    /// </summary>
     [DataContract]
-    public partial class QuantitativeValueDistribution : StructuredValue
+    public partial class QuantitativeValueDistribution : StructuredValue, IQuantitativeValueDistribution
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

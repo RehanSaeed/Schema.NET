@@ -7,8 +7,44 @@ namespace Schema.NET
     /// <summary>
     /// A book.
     /// </summary>
+    public partial interface IBook : ICreativeWork
+    {
+        /// <summary>
+        /// Indicates whether the book is an abridged edition.
+        /// </summary>
+        OneOrMany<bool?>? Abridged { get; set; }
+
+        /// <summary>
+        /// The edition of the book.
+        /// </summary>
+        OneOrMany<string>? BookEdition { get; set; }
+
+        /// <summary>
+        /// The format of the book.
+        /// </summary>
+        OneOrMany<BookFormatType?>? BookFormat { get; set; }
+
+        /// <summary>
+        /// The illustrator of the book.
+        /// </summary>
+        OneOrMany<IPerson>? Illustrator { get; set; }
+
+        /// <summary>
+        /// The ISBN of the book.
+        /// </summary>
+        OneOrMany<string>? Isbn { get; set; }
+
+        /// <summary>
+        /// The number of pages in the book.
+        /// </summary>
+        OneOrMany<int?>? NumberOfPages { get; set; }
+    }
+
+    /// <summary>
+    /// A book.
+    /// </summary>
     [DataContract]
-    public partial class Book : CreativeWork
+    public partial class Book : CreativeWork, IBook
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -42,7 +78,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "illustrator", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Illustrator { get; set; }
+        public OneOrMany<IPerson>? Illustrator { get; set; }
 
         /// <summary>
         /// The ISBN of the book.

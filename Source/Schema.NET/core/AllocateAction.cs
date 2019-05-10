@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// The act of organizing tasks/objects/events by associating resources to it.
     /// </summary>
+    public partial interface IAllocateAction : IOrganizeAction
+    {
+        /// <summary>
+        /// A goal towards an action is taken. Can be concrete or abstract.
+        /// </summary>
+        Values<MedicalDevicePurpose?, IThing>? Purpose { get; set; }
+    }
+
+    /// <summary>
+    /// The act of organizing tasks/objects/events by associating resources to it.
+    /// </summary>
     [DataContract]
-    public partial class AllocateAction : OrganizeAction
+    public partial class AllocateAction : OrganizeAction, IAllocateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "purpose", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalDevicePurpose?, Thing>? Purpose { get; set; }
+        public Values<MedicalDevicePurpose?, IThing>? Purpose { get; set; }
     }
 }

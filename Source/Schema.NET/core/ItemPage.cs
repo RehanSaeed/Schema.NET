@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A page devoted to a single item, such as a particular product or hotel.
     /// </summary>
+    public partial interface IItemPage : IWebPage
+    {
+    }
+
+    /// <summary>
+    /// A page devoted to a single item, such as a particular product or hotel.
+    /// </summary>
     [DataContract]
-    public partial class ItemPage : WebPage
+    public partial class ItemPage : WebPage, IItemPage
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

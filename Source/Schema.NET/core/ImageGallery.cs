@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// Web page type: Image gallery page.
     /// </summary>
+    public partial interface IImageGallery : ICollectionPage
+    {
+    }
+
+    /// <summary>
+    /// Web page type: Image gallery page.
+    /// </summary>
     [DataContract]
-    public partial class ImageGallery : CollectionPage
+    public partial class ImageGallery : CollectionPage, IImageGallery
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

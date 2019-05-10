@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// The act of participating in performance arts.
     /// </summary>
+    public partial interface IPerformAction : IPlayAction
+    {
+        /// <summary>
+        /// A sub property of location. The entertainment business where the action occurred.
+        /// </summary>
+        OneOrMany<IEntertainmentBusiness>? EntertainmentBusiness { get; set; }
+    }
+
+    /// <summary>
+    /// The act of participating in performance arts.
+    /// </summary>
     [DataContract]
-    public partial class PerformAction : PlayAction
+    public partial class PerformAction : PlayAction, IPerformAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "entertainmentBusiness", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<EntertainmentBusiness>? EntertainmentBusiness { get; set; }
+        public OneOrMany<IEntertainmentBusiness>? EntertainmentBusiness { get; set; }
     }
 }

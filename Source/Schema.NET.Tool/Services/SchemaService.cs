@@ -7,7 +7,7 @@ namespace Schema.NET.Tool.Services
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Schema.NET.Tool.Overrides;
+    using Schema.NET.Tool.CustomOverrides;
     using Schema.NET.Tool.Repositories;
     using Schema.NET.Tool.ViewModels;
 
@@ -141,7 +141,7 @@ namespace Schema.NET.Tool.Services
         {
             foreach (var @class in classes)
             {
-                var propertyOrder = (PropertyNameComparer.KnownPropertyNameOrders.Values.Max() + 1) +
+                var propertyOrder = PropertyNameComparer.KnownPropertyNameOrders.Values.Max() + 1 +
                     (@class.Ancestors.Count() * 100);
                 foreach (var property in @class.Properties)
                 {
@@ -348,7 +348,7 @@ namespace Schema.NET.Tool.Services
                     }
                     else
                     {
-                        return typeName;
+                        return "I" + typeName;
                     }
             }
         }

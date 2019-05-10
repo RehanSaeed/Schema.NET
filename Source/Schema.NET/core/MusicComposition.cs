@@ -7,8 +7,64 @@ namespace Schema.NET
     /// <summary>
     /// A musical composition.
     /// </summary>
+    public partial interface IMusicComposition : ICreativeWork
+    {
+        /// <summary>
+        /// The person or organization who wrote a composition, or who is the composer of a work performed at some event.
+        /// </summary>
+        Values<IOrganization, IPerson>? Composer { get; set; }
+
+        /// <summary>
+        /// The date and place the work was first performed.
+        /// </summary>
+        OneOrMany<IEvent>? FirstPerformance { get; set; }
+
+        /// <summary>
+        /// Smaller compositions included in this work (e.g. a movement in a symphony).
+        /// </summary>
+        OneOrMany<IMusicComposition>? IncludedComposition { get; set; }
+
+        /// <summary>
+        /// The International Standard Musical Work Code for the composition.
+        /// </summary>
+        OneOrMany<string>? IswcCode { get; set; }
+
+        /// <summary>
+        /// The person who wrote the words.
+        /// </summary>
+        OneOrMany<IPerson>? Lyricist { get; set; }
+
+        /// <summary>
+        /// The words in the song.
+        /// </summary>
+        OneOrMany<ICreativeWork>? Lyrics { get; set; }
+
+        /// <summary>
+        /// The key, mode, or scale this composition uses.
+        /// </summary>
+        OneOrMany<string>? MusicalKey { get; set; }
+
+        /// <summary>
+        /// An arrangement derived from the composition.
+        /// </summary>
+        OneOrMany<IMusicComposition>? MusicArrangement { get; set; }
+
+        /// <summary>
+        /// The type of composition (e.g. overture, sonata, symphony, etc.).
+        /// </summary>
+        OneOrMany<string>? MusicCompositionForm { get; set; }
+
+        /// <summary>
+        /// An audio recording of the work.
+        /// </summary>
+        OneOrMany<IMusicRecording>? RecordedAs { get; set; }
+    }
+
+    /// <summary>
+    /// A musical composition.
+    /// </summary>
     [DataContract]
-    public partial class MusicComposition : CreativeWork
+    public partial class MusicComposition : CreativeWork, IMusicComposition
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,21 +77,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "composer", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Composer { get; set; }
+        public Values<IOrganization, IPerson>? Composer { get; set; }
 
         /// <summary>
         /// The date and place the work was first performed.
         /// </summary>
         [DataMember(Name = "firstPerformance", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Event>? FirstPerformance { get; set; }
+        public OneOrMany<IEvent>? FirstPerformance { get; set; }
 
         /// <summary>
         /// Smaller compositions included in this work (e.g. a movement in a symphony).
         /// </summary>
         [DataMember(Name = "includedComposition", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicComposition>? IncludedComposition { get; set; }
+        public OneOrMany<IMusicComposition>? IncludedComposition { get; set; }
 
         /// <summary>
         /// The International Standard Musical Work Code for the composition.
@@ -49,14 +105,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "lyricist", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Lyricist { get; set; }
+        public OneOrMany<IPerson>? Lyricist { get; set; }
 
         /// <summary>
         /// The words in the song.
         /// </summary>
         [DataMember(Name = "lyrics", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<CreativeWork>? Lyrics { get; set; }
+        public OneOrMany<ICreativeWork>? Lyrics { get; set; }
 
         /// <summary>
         /// The key, mode, or scale this composition uses.
@@ -70,7 +126,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "musicArrangement", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicComposition>? MusicArrangement { get; set; }
+        public OneOrMany<IMusicComposition>? MusicArrangement { get; set; }
 
         /// <summary>
         /// The type of composition (e.g. overture, sonata, symphony, etc.).
@@ -84,6 +140,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "recordedAs", Order = 215)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicRecording>? RecordedAs { get; set; }
+        public OneOrMany<IMusicRecording>? RecordedAs { get; set; }
     }
 }

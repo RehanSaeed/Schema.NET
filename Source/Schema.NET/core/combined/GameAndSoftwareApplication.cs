@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// See Game, SoftwareApplication for more information.
     /// </summary>
+    public partial interface IGameAndSoftwareApplication : IGame, ISoftwareApplication
+    {
+    }
+
+    /// <summary>
+    /// See Game, SoftwareApplication for more information.
+    /// </summary>
     [DataContract]
-    public abstract partial class GameAndSoftwareApplication : CreativeWork
+    public abstract partial class GameAndSoftwareApplication : CreativeWork, IGameAndSoftwareApplication
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -49,7 +56,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "characterAttribute", Order = 210)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? CharacterAttribute { get; set; }
+        public OneOrMany<IThing>? CharacterAttribute { get; set; }
 
         /// <summary>
         /// Countries for which the application is not supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
@@ -91,14 +98,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "gameItem", Order = 216)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? GameItem { get; set; }
+        public OneOrMany<IThing>? GameItem { get; set; }
 
         /// <summary>
         /// Real or fictional location of the game (or part of game).
         /// </summary>
         [DataMember(Name = "gameLocation", Order = 217)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Place, PostalAddress, Uri>? GameLocation { get; set; }
+        public Values<IPlace, IPostalAddress, Uri>? GameLocation { get; set; }
 
         /// <summary>
         /// URL at which the app may be installed, if different from the URL of the item.
@@ -119,7 +126,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberOfPlayers", Order = 220)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<QuantitativeValue>? NumberOfPlayers { get; set; }
+        public OneOrMany<IQuantitativeValue>? NumberOfPlayers { get; set; }
 
         /// <summary>
         /// Operating systems supported (Windows 7, OSX 10.6, Android 1.6).
@@ -147,7 +154,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "quest", Order = 224)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? Quest { get; set; }
+        public OneOrMany<IThing>? Quest { get; set; }
 
         /// <summary>
         /// Description of what changed in this version.
@@ -161,21 +168,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "screenshot", Order = 226)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ImageObject, Uri>? Screenshot { get; set; }
+        public Values<IImageObject, Uri>? Screenshot { get; set; }
 
         /// <summary>
         /// Additional content for a software application.
         /// </summary>
         [DataMember(Name = "softwareAddOn", Order = 227)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<SoftwareApplication>? SoftwareAddOn { get; set; }
+        public OneOrMany<ISoftwareApplication>? SoftwareAddOn { get; set; }
 
         /// <summary>
         /// Software application help.
         /// </summary>
         [DataMember(Name = "softwareHelp", Order = 228)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<CreativeWork>? SoftwareHelp { get; set; }
+        public OneOrMany<ICreativeWork>? SoftwareHelp { get; set; }
 
         /// <summary>
         /// Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).
@@ -203,6 +210,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "supportingData", Order = 232)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DataFeed>? SupportingData { get; set; }
+        public OneOrMany<IDataFeed>? SupportingData { get; set; }
     }
 }

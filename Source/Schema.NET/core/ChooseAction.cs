@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
     /// </summary>
+    public partial interface IChooseAction : IAssessAction
+    {
+        /// <summary>
+        /// A sub property of object. The options subject to this action.
+        /// </summary>
+        Values<string, IThing>? ActionOption { get; set; }
+    }
+
+    /// <summary>
+    /// The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
+    /// </summary>
     [DataContract]
-    public partial class ChooseAction : AssessAction
+    public partial class ChooseAction : AssessAction, IChooseAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "actionOption", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, Thing>? ActionOption { get; set; }
+        public Values<string, IThing>? ActionOption { get; set; }
     }
 }

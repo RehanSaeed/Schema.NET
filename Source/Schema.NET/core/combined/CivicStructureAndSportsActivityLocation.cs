@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// See CivicStructure, SportsActivityLocation for more information.
     /// </summary>
+    public partial interface ICivicStructureAndSportsActivityLocation : ISportsActivityLocation, ICivicStructure
+    {
+    }
+
+    /// <summary>
+    /// See CivicStructure, SportsActivityLocation for more information.
+    /// </summary>
     [DataContract]
-    public abstract partial class CivicStructureAndSportsActivityLocation : LocalBusinessAndPlace
+    public abstract partial class CivicStructureAndSportsActivityLocation : LocalBusinessAndPlace, ICivicStructureAndSportsActivityLocation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

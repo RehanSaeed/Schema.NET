@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A dry-cleaning business.
     /// </summary>
+    public partial interface IDryCleaningOrLaundry : ILocalBusiness
+    {
+    }
+
+    /// <summary>
+    /// A dry-cleaning business.
+    /// </summary>
     [DataContract]
-    public partial class DryCleaningOrLaundry : LocalBusiness
+    public partial class DryCleaningOrLaundry : LocalBusiness, IDryCleaningOrLaundry
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

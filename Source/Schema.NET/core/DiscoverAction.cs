@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of discovering/finding an object.
     /// </summary>
+    public partial interface IDiscoverAction : IFindAction
+    {
+    }
+
+    /// <summary>
+    /// The act of discovering/finding an object.
+    /// </summary>
     [DataContract]
-    public partial class DiscoverAction : FindAction
+    public partial class DiscoverAction : FindAction, IDiscoverAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

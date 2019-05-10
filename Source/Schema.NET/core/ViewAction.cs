@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of consuming static visual content.
     /// </summary>
+    public partial interface IViewAction : IConsumeAction
+    {
+    }
+
+    /// <summary>
+    /// The act of consuming static visual content.
+    /// </summary>
     [DataContract]
-    public partial class ViewAction : ConsumeAction
+    public partial class ViewAction : ConsumeAction, IViewAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of marrying a person.
     /// </summary>
+    public partial interface IMarryAction : IInteractAction
+    {
+    }
+
+    /// <summary>
+    /// The act of marrying a person.
+    /// </summary>
     [DataContract]
-    public partial class MarryAction : InteractAction
+    public partial class MarryAction : InteractAction, IMarryAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

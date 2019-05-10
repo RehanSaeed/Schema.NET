@@ -7,8 +7,20 @@ namespace Schema.NET
     /// <summary>
     /// Residence type: Single-family home.
     /// </summary>
+    public partial interface ISingleFamilyResidence : IHouse
+    {
+        /// <summary>
+        /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
+        /// Typical unit code(s): C62 for person
+        /// </summary>
+        OneOrMany<IQuantitativeValue>? Occupancy { get; set; }
+    }
+
+    /// <summary>
+    /// Residence type: Single-family home.
+    /// </summary>
     [DataContract]
-    public partial class SingleFamilyResidence : House
+    public partial class SingleFamilyResidence : House, ISingleFamilyResidence
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -22,7 +34,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override Values<int?, QuantitativeValue>? NumberOfRooms { get; set; }
+        public override Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
 
         /// <summary>
         /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
@@ -30,6 +42,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "occupancy", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<QuantitativeValue>? Occupancy { get; set; }
+        public OneOrMany<IQuantitativeValue>? Occupancy { get; set; }
     }
 }

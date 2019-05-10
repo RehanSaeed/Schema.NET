@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// See CreativeWork, PhysicalActivity for more information.
     /// </summary>
+    public partial interface ICreativeWorkAndPhysicalActivity : ICreativeWork, IPhysicalActivity
+    {
+    }
+
+    /// <summary>
+    /// See CreativeWork, PhysicalActivity for more information.
+    /// </summary>
     [DataContract]
-    public abstract partial class CreativeWorkAndPhysicalActivity : LifestyleModification
+    public abstract partial class CreativeWorkAndPhysicalActivity : LifestyleModification, ICreativeWorkAndPhysicalActivity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +28,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "about", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? About { get; set; }
+        public OneOrMany<IThing>? About { get; set; }
 
         /// <summary>
         /// Indicates that the resource is compatible with the referenced accessibility API (&lt;a href="http://www.w3.org/wiki/WebSchemas/Accessibility"&gt;WebSchemas wiki lists possible values&lt;/a&gt;).
@@ -77,14 +84,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "accountablePerson", Order = 314)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? AccountablePerson { get; set; }
+        public OneOrMany<IPerson>? AccountablePerson { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 315)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<AggregateRating>? AggregateRating { get; set; }
+        public OneOrMany<IAggregateRating>? AggregateRating { get; set; }
 
         /// <summary>
         /// A secondary title of the CreativeWork.
@@ -98,35 +105,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "associatedAnatomy", Order = 317)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AnatomicalStructure, AnatomicalSystem, SuperficialAnatomy>? AssociatedAnatomy { get; set; }
+        public Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy>? AssociatedAnatomy { get; set; }
 
         /// <summary>
         /// A media object that encodes this CreativeWork. This property is a synonym for encoding.
         /// </summary>
         [DataMember(Name = "associatedMedia", Order = 318)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MediaObject>? AssociatedMedia { get; set; }
+        public OneOrMany<IMediaObject>? AssociatedMedia { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
         [DataMember(Name = "audience", Order = 319)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Audience>? Audience { get; set; }
+        public OneOrMany<IAudience>? Audience { get; set; }
 
         /// <summary>
         /// An embedded audio object.
         /// </summary>
         [DataMember(Name = "audio", Order = 320)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<AudioObject, Clip>? Audio { get; set; }
+        public Values<IAudioObject, IClip>? Audio { get; set; }
 
         /// <summary>
         /// The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
         /// </summary>
         [DataMember(Name = "author", Order = 321)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Author { get; set; }
+        public Values<IOrganization, IPerson>? Author { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -140,28 +147,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "category", Order = 323)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<PhysicalActivityCategory?, string, Thing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
 
         /// <summary>
         /// Fictional person connected with a creative work.
         /// </summary>
         [DataMember(Name = "character", Order = 324)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Character { get; set; }
+        public OneOrMany<IPerson>? Character { get; set; }
 
         /// <summary>
         /// A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
         /// </summary>
         [DataMember(Name = "citation", Order = 325)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork, string>? Citation { get; set; }
+        public Values<ICreativeWork, string>? Citation { get; set; }
 
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
         [DataMember(Name = "comment", Order = 326)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Comment>? Comment { get; set; }
+        public OneOrMany<IComment>? Comment { get; set; }
 
         /// <summary>
         /// The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.
@@ -175,14 +182,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "contentLocation", Order = 328)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Place>? ContentLocation { get; set; }
+        public OneOrMany<IPlace>? ContentLocation { get; set; }
 
         /// <summary>
         /// Official rating of a piece of content&amp;#x2014;for example,'MPAA PG-13'.
         /// </summary>
         [DataMember(Name = "contentRating", Order = 329)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Rating, string>? ContentRating { get; set; }
+        public Values<IRating, string>? ContentRating { get; set; }
 
         /// <summary>
         /// The specific time described by a creative work, for works (e.g. articles, video objects etc.) that emphasise a particular moment within an Event.
@@ -196,14 +203,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "contributor", Order = 331)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Contributor { get; set; }
+        public Values<IOrganization, IPerson>? Contributor { get; set; }
 
         /// <summary>
         /// The party holding the legal copyright to the CreativeWork.
         /// </summary>
         [DataMember(Name = "copyrightHolder", Order = 332)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? CopyrightHolder { get; set; }
+        public Values<IOrganization, IPerson>? CopyrightHolder { get; set; }
 
         /// <summary>
         /// The year during which the claimed copyright for the CreativeWork was first asserted.
@@ -224,7 +231,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "creator", Order = 335)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Creator { get; set; }
+        public Values<IOrganization, IPerson>? Creator { get; set; }
 
         /// <summary>
         /// The date on which the CreativeWork was created or the item was added to a DataFeed.
@@ -259,14 +266,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "editor", Order = 340)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Editor { get; set; }
+        public OneOrMany<IPerson>? Editor { get; set; }
 
         /// <summary>
         /// An alignment to an established educational framework.
         /// </summary>
         [DataMember(Name = "educationalAlignment", Order = 341)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<AlignmentObject>? EducationalAlignment { get; set; }
+        public OneOrMany<IAlignmentObject>? EducationalAlignment { get; set; }
 
         /// <summary>
         /// The purpose of a work in the context of education; for example, 'assignment', 'group work'.
@@ -280,7 +287,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "encoding", Order = 343)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MediaObject>? Encoding { get; set; }
+        public OneOrMany<IMediaObject>? Encoding { get; set; }
 
         /// <summary>
         /// Media type typically expressed using a MIME format (see &lt;a href="http://www.iana.org/assignments/media-types/media-types.xhtml"&gt;IANA site&lt;/a&gt; and &lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types"&gt;MDN reference&lt;/a&gt;) e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.).&lt;br/&gt;&lt;br/&gt;
@@ -303,7 +310,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "exampleOfWork", Order = 346)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<CreativeWork>? ExampleOfWork { get; set; }
+        public OneOrMany<ICreativeWork>? ExampleOfWork { get; set; }
 
         /// <summary>
         /// Date the content expires and is no longer useful or available. For example a &lt;a class="localLink" href="http://schema.org/VideoObject"&gt;VideoObject&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt; whose availability or relevance is time-limited, or a &lt;a class="localLink" href="http://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt; fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date.
@@ -317,7 +324,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "funder", Order = 348)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Funder { get; set; }
+        public Values<IOrganization, IPerson>? Funder { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
@@ -331,7 +338,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hasPart", Order = 350)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<CreativeWork>? HasPart { get; set; }
+        public OneOrMany<ICreativeWork>? HasPart { get; set; }
 
         /// <summary>
         /// Headline of the article.
@@ -345,14 +352,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "inLanguage", Order = 352)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Language, string>? InLanguage { get; set; }
+        public Values<ILanguage, string>? InLanguage { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
         /// </summary>
         [DataMember(Name = "interactionStatistic", Order = 353)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<InteractionCounter>? InteractionStatistic { get; set; }
+        public OneOrMany<IInteractionCounter>? InteractionStatistic { get; set; }
 
         /// <summary>
         /// The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
@@ -373,7 +380,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "isBasedOn", Order = 356)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork, Product, Uri>? IsBasedOn { get; set; }
+        public Values<ICreativeWork, IProduct, Uri>? IsBasedOn { get; set; }
 
         /// <summary>
         /// Indicates whether this content is family friendly.
@@ -387,7 +394,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "isPartOf", Order = 358)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<CreativeWork>? IsPartOf { get; set; }
+        public OneOrMany<ICreativeWork>? IsPartOf { get; set; }
 
         /// <summary>
         /// Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
@@ -408,49 +415,49 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "license", Order = 361)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork, Uri>? License { get; set; }
+        public Values<ICreativeWork, Uri>? License { get; set; }
 
         /// <summary>
         /// The location where the CreativeWork was created, which may not be the same as the location depicted in the CreativeWork.
         /// </summary>
         [DataMember(Name = "locationCreated", Order = 362)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Place>? LocationCreated { get; set; }
+        public OneOrMany<IPlace>? LocationCreated { get; set; }
 
         /// <summary>
         /// Indicates the primary entity described in some page or other CreativeWork.
         /// </summary>
         [DataMember(Name = "mainEntity", Order = 363)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? MainEntity { get; set; }
+        public OneOrMany<IThing>? MainEntity { get; set; }
 
         /// <summary>
         /// A material that something is made from, e.g. leather, wool, cotton, paper.
         /// </summary>
         [DataMember(Name = "material", Order = 364)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Product, string, Uri>? Material { get; set; }
+        public Values<IProduct, string, Uri>? Material { get; set; }
 
         /// <summary>
         /// The quantity of the materials being described or an expression of the physical space they occupy.
         /// </summary>
         [DataMember(Name = "materialExtent", Order = 365)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<QuantitativeValue, string>? MaterialExtent { get; set; }
+        public Values<IQuantitativeValue, string>? MaterialExtent { get; set; }
 
         /// <summary>
         /// Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
         /// </summary>
         [DataMember(Name = "mentions", Order = 366)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? Mentions { get; set; }
+        public OneOrMany<IThing>? Mentions { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
         [DataMember(Name = "offers", Order = 367)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Offer>? Offers { get; set; }
+        public OneOrMany<IOffer>? Offers { get; set; }
 
         /// <summary>
         /// Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
@@ -471,35 +478,35 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "producer", Order = 370)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Producer { get; set; }
+        public Values<IOrganization, IPerson>? Producer { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
         [DataMember(Name = "provider", Order = 371)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Provider { get; set; }
+        public Values<IOrganization, IPerson>? Provider { get; set; }
 
         /// <summary>
         /// A publication event associated with the item.
         /// </summary>
         [DataMember(Name = "publication", Order = 372)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<PublicationEvent>? Publication { get; set; }
+        public OneOrMany<IPublicationEvent>? Publication { get; set; }
 
         /// <summary>
         /// The publisher of the creative work.
         /// </summary>
         [DataMember(Name = "publisher", Order = 373)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Publisher { get; set; }
+        public Values<IOrganization, IPerson>? Publisher { get; set; }
 
         /// <summary>
         /// The publishing division which published the comic.
         /// </summary>
         [DataMember(Name = "publisherImprint", Order = 374)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Organization>? PublisherImprint { get; set; }
+        public OneOrMany<IOrganization>? PublisherImprint { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
@@ -507,28 +514,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "publishingPrinciples", Order = 375)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork, Uri>? PublishingPrinciples { get; set; }
+        public Values<ICreativeWork, Uri>? PublishingPrinciples { get; set; }
 
         /// <summary>
         /// The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
         /// </summary>
         [DataMember(Name = "recordedAt", Order = 376)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Event>? RecordedAt { get; set; }
+        public OneOrMany<IEvent>? RecordedAt { get; set; }
 
         /// <summary>
         /// The place and time the release was issued, expressed as a PublicationEvent.
         /// </summary>
         [DataMember(Name = "releasedEvent", Order = 377)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<PublicationEvent>? ReleasedEvent { get; set; }
+        public OneOrMany<IPublicationEvent>? ReleasedEvent { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
         [DataMember(Name = "review", Order = 378)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Review>? Review { get; set; }
+        public OneOrMany<IReview>? Review { get; set; }
 
         /// <summary>
         /// Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application.
@@ -549,7 +556,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "sdLicense", Order = 381)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<CreativeWork, Uri>? SdLicense { get; set; }
+        public Values<ICreativeWork, Uri>? SdLicense { get; set; }
 
         /// <summary>
         /// Indicates the party responsible for generating and publishing the current structured data markup, typically in cases where the structured data is derived automatically from existing published content but published on a different site. For example, student projects and open data initiatives often re-publish existing content with more explicitly structured metadata. The
@@ -557,14 +564,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "sdPublisher", Order = 382)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? SdPublisher { get; set; }
+        public Values<IOrganization, IPerson>? SdPublisher { get; set; }
 
         /// <summary>
         /// The Organization on whose behalf the creator was working.
         /// </summary>
         [DataMember(Name = "sourceOrganization", Order = 383)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Organization>? SourceOrganization { get; set; }
+        public OneOrMany<IOrganization>? SourceOrganization { get; set; }
 
         /// <summary>
         /// The "spatial" property can be used in cases when more specific properties
@@ -572,7 +579,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "spatial", Order = 384)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Place>? Spatial { get; set; }
+        public OneOrMany<IPlace>? Spatial { get; set; }
 
         /// <summary>
         /// The spatialCoverage of a CreativeWork indicates the place(s) which are the focus of the content. It is a subproperty of
@@ -581,14 +588,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "spatialCoverage", Order = 385)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Place>? SpatialCoverage { get; set; }
+        public OneOrMany<IPlace>? SpatialCoverage { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
         [DataMember(Name = "sponsor", Order = 386)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Sponsor { get; set; }
+        public Values<IOrganization, IPerson>? Sponsor { get; set; }
 
         /// <summary>
         /// The "temporal" property can be used in cases where more specific properties
@@ -634,14 +641,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "translationOfWork", Order = 392)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<CreativeWork>? TranslationOfWork { get; set; }
+        public OneOrMany<ICreativeWork>? TranslationOfWork { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
         /// </summary>
         [DataMember(Name = "translator", Order = 393)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Translator { get; set; }
+        public Values<IOrganization, IPerson>? Translator { get; set; }
 
         /// <summary>
         /// The typical expected age range, e.g. '7-9', '11-'.
@@ -662,20 +669,20 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "video", Order = 396)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Clip, VideoObject>? Video { get; set; }
+        public Values<IClip, IVideoObject>? Video { get; set; }
 
         /// <summary>
         /// Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
         /// </summary>
         [DataMember(Name = "workExample", Order = 397)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<CreativeWork>? WorkExample { get; set; }
+        public OneOrMany<ICreativeWork>? WorkExample { get; set; }
 
         /// <summary>
         /// A work that is a translation of the content of this work. e.g. 西遊記 has an English workTranslation “Journey to the West”,a German workTranslation “Monkeys Pilgerfahrt” and a Vietnamese  translation Tây du ký bình khảo.
         /// </summary>
         [DataMember(Name = "workTranslation", Order = 398)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<CreativeWork>? WorkTranslation { get; set; }
+        public OneOrMany<ICreativeWork>? WorkTranslation { get; set; }
     }
 }

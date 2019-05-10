@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A graveyard.
     /// </summary>
+    public partial interface ICemetery : ICivicStructure
+    {
+    }
+
+    /// <summary>
+    /// A graveyard.
+    /// </summary>
     [DataContract]
-    public partial class Cemetery : CivicStructure
+    public partial class Cemetery : CivicStructure, ICemetery
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

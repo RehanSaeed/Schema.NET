@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A dentist.
     /// </summary>
+    public partial interface IDentist : IMedicalBusinessAndMedicalOrganization
+    {
+    }
+
+    /// <summary>
+    /// A dentist.
+    /// </summary>
     [DataContract]
-    public partial class Dentist : MedicalBusinessAndMedicalOrganization
+    public partial class Dentist : MedicalBusinessAndMedicalOrganization, IDentist
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

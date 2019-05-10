@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A fast-food restaurant.
     /// </summary>
+    public partial interface IFastFoodRestaurant : IFoodEstablishment
+    {
+    }
+
+    /// <summary>
+    /// A fast-food restaurant.
+    /// </summary>
     [DataContract]
-    public partial class FastFoodRestaurant : FoodEstablishment
+    public partial class FastFoodRestaurant : FoodEstablishment, IFastFoodRestaurant
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

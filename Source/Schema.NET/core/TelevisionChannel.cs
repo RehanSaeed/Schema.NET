@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
     /// </summary>
+    public partial interface ITelevisionChannel : IBroadcastChannel
+    {
+    }
+
+    /// <summary>
+    /// A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
+    /// </summary>
     [DataContract]
-    public partial class TelevisionChannel : BroadcastChannel
+    public partial class TelevisionChannel : BroadcastChannel, ITelevisionChannel
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

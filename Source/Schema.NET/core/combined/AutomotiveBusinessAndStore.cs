@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// See AutomotiveBusiness, Store for more information.
     /// </summary>
+    public partial interface IAutomotiveBusinessAndStore : IStore, IAutomotiveBusiness
+    {
+    }
+
+    /// <summary>
+    /// See AutomotiveBusiness, Store for more information.
+    /// </summary>
     [DataContract]
-    public abstract partial class AutomotiveBusinessAndStore : LocalBusiness
+    public abstract partial class AutomotiveBusinessAndStore : LocalBusiness, IAutomotiveBusinessAndStore
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

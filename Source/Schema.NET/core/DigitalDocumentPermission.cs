@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// A permission for a particular person or group to access a particular file.
     /// </summary>
+    public partial interface IDigitalDocumentPermission : IIntangible
+    {
+        /// <summary>
+        /// The person, organization, contact point, or audience that has been granted this permission.
+        /// </summary>
+        Values<IAudience, IContactPoint, IOrganization, IPerson>? Grantee { get; set; }
+
+        /// <summary>
+        /// The type of permission granted the person, organization, or audience.
+        /// </summary>
+        OneOrMany<DigitalDocumentPermissionType?>? PermissionType { get; set; }
+    }
+
+    /// <summary>
+    /// A permission for a particular person or group to access a particular file.
+    /// </summary>
     [DataContract]
-    public partial class DigitalDocumentPermission : Intangible
+    public partial class DigitalDocumentPermission : Intangible, IDigitalDocumentPermission
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +37,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "grantee", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Audience, ContactPoint, Organization, Person>? Grantee { get; set; }
+        public Values<IAudience, IContactPoint, IOrganization, IPerson>? Grantee { get; set; }
 
         /// <summary>
         /// The type of permission granted the person, organization, or audience.

@@ -7,8 +7,29 @@ namespace Schema.NET
     /// <summary>
     /// A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
     /// </summary>
+    public partial interface IMusicGroup : IPerformingGroup
+    {
+        /// <summary>
+        /// A music album.
+        /// </summary>
+        OneOrMany<IMusicAlbum>? Album { get; set; }
+
+        /// <summary>
+        /// Genre of the creative work, broadcast channel or group.
+        /// </summary>
+        Values<string, Uri>? Genre { get; set; }
+
+        /// <summary>
+        /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
+        /// </summary>
+        Values<IItemList, IMusicRecording>? Track { get; set; }
+    }
+
+    /// <summary>
+    /// A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
+    /// </summary>
     [DataContract]
-    public partial class MusicGroup : PerformingGroup
+    public partial class MusicGroup : PerformingGroup, IMusicGroup
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +42,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "album", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MusicAlbum>? Album { get; set; }
+        public OneOrMany<IMusicAlbum>? Album { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
@@ -35,6 +56,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "track", Order = 308)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<ItemList, MusicRecording>? Track { get; set; }
+        public Values<IItemList, IMusicRecording>? Track { get; set; }
     }
 }

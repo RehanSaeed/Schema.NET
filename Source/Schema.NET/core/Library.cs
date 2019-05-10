@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A library.
     /// </summary>
+    public partial interface ILibrary : ILocalBusiness
+    {
+    }
+
+    /// <summary>
+    /// A library.
+    /// </summary>
     [DataContract]
-    public partial class Library : LocalBusiness
+    public partial class Library : LocalBusiness, ILibrary
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

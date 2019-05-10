@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of producing a painting, typically with paint and canvas as instruments.
     /// </summary>
+    public partial interface IPaintAction : ICreateAction
+    {
+    }
+
+    /// <summary>
+    /// The act of producing a painting, typically with paint and canvas as instruments.
+    /// </summary>
     [DataContract]
-    public partial class PaintAction : CreateAction
+    public partial class PaintAction : CreateAction, IPaintAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

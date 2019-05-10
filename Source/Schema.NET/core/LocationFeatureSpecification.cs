@@ -7,8 +7,29 @@ namespace Schema.NET
     /// <summary>
     /// Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.
     /// </summary>
+    public partial interface ILocationFeatureSpecification : IPropertyValue
+    {
+        /// <summary>
+        /// The hours during which this service or contact is available.
+        /// </summary>
+        OneOrMany<IOpeningHoursSpecification>? HoursAvailable { get; set; }
+
+        /// <summary>
+        /// The date when the item becomes valid.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+
+        /// <summary>
+        /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.
+    /// </summary>
     [DataContract]
-    public partial class LocationFeatureSpecification : PropertyValue
+    public partial class LocationFeatureSpecification : PropertyValue, ILocationFeatureSpecification
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,7 +42,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "hoursAvailable", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<OpeningHoursSpecification>? HoursAvailable { get; set; }
+        public OneOrMany<IOpeningHoursSpecification>? HoursAvailable { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.

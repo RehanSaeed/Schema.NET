@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A guideline recommendation that is regarded as efficacious and where quality of the data supporting the recommendation is sound.
     /// </summary>
+    public partial interface IMedicalGuidelineRecommendation : IMedicalGuideline
+    {
+        /// <summary>
+        /// Strength of the guideline's recommendation (e.g. 'class I').
+        /// </summary>
+        OneOrMany<string>? RecommendationStrength { get; set; }
+    }
+
+    /// <summary>
+    /// A guideline recommendation that is regarded as efficacious and where quality of the data supporting the recommendation is sound.
+    /// </summary>
     [DataContract]
-    public partial class MedicalGuidelineRecommendation : MedicalGuideline
+    public partial class MedicalGuidelineRecommendation : MedicalGuideline, IMedicalGuidelineRecommendation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

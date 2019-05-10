@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// Any medical imaging modality typically used for diagnostic purposes.
     /// </summary>
+    public partial interface IImagingTest : IMedicalTest
+    {
+        /// <summary>
+        /// Imaging technique used.
+        /// </summary>
+        OneOrMany<MedicalImagingTechnique?>? ImagingTechnique { get; set; }
+    }
+
+    /// <summary>
+    /// Any medical imaging modality typically used for diagnostic purposes.
+    /// </summary>
     [DataContract]
-    public partial class ImagingTest : MedicalTest
+    public partial class ImagingTest : MedicalTest, IImagingTest
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

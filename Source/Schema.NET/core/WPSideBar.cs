@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A sidebar section of the page.
     /// </summary>
+    public partial interface IWPSideBar : IWebPageElement
+    {
+    }
+
+    /// <summary>
+    /// A sidebar section of the page.
+    /// </summary>
     [DataContract]
-    public partial class WPSideBar : WebPageElement
+    public partial class WPSideBar : WebPageElement, IWPSideBar
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

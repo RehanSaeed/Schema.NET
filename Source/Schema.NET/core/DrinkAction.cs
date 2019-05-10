@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of swallowing liquids.
     /// </summary>
+    public partial interface IDrinkAction : IConsumeAction
+    {
+    }
+
+    /// <summary>
+    /// The act of swallowing liquids.
+    /// </summary>
     [DataContract]
-    public partial class DrinkAction : ConsumeAction
+    public partial class DrinkAction : ConsumeAction, IDrinkAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
