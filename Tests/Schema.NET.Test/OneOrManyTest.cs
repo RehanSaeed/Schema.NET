@@ -8,13 +8,13 @@ namespace Schema.NET.Test
     public class OneOrManyTest
     {
         [Fact]
-        public void Count_DefaultStructConstructor_ReturnsOne() => Assert.Equal(1, default(OneOrMany<int>).Count);
+        public void Count_DefaultStructConstructor_ReturnsOne() => Assert.Single(default(OneOrMany<int>));
 
         [Fact]
-        public void Count_DefaultClassConstructor_ReturnsZero() => Assert.Equal(0, default(OneOrMany<string>).Count);
+        public void Count_DefaultClassConstructor_ReturnsZero() => Assert.Empty(default(OneOrMany<string>));
 
         [Fact]
-        public void Count_OneItem_ReturnsOne() => Assert.Equal(1, new OneOrMany<int>(1).Count);
+        public void Count_OneItem_ReturnsOne() => Assert.Single(new OneOrMany<int>(1));
 
         [Fact]
         public void Count_Array_ReturnsTwo() => Assert.Equal(2, new OneOrMany<int>(1, 2).Count);
@@ -56,43 +56,50 @@ namespace Schema.NET.Test
             Assert.True(new OneOrMany<int>(new List<int>() { 1, 2 }).HasMany);
 
         [Fact]
-        public void Value_DefaultStructConstructor_ReturnsZero() =>
-            Assert.Equal(0, ((IValue)default(OneOrMany<int>)).Value);
+        public void Value_DefaultStructConstructor_ReturnsZero()
+        {
+            var item = Assert.Single(((IValues)default(OneOrMany<int>)).Cast<object>());
+            Assert.Equal(0, item);
+        }
 
         [Fact]
         public void Value_DefaultClassConstructor_ReturnsNull() =>
-            Assert.Null(((IValue)default(OneOrMany<string>)).Value);
+            Assert.Empty(((IValues)default(OneOrMany<string>)).Cast<object>());
 
         [Fact]
-        public void Value_OneItem_ReturnsOne() => Assert.Equal(1, ((IValue)new OneOrMany<int>(1)).Value);
+        public void Value_OneItem_ReturnsOne()
+        {
+            var item = Assert.Single(((IValues)new OneOrMany<int>(1)).Cast<object>());
+            Assert.Equal(1, item);
+        }
 
         [Fact]
         public void Value_Array_ReturnsTwo() =>
-            Assert.Equal(new List<int>() { 1, 2 }, ((IValue)new OneOrMany<int>(1, 2)).Value);
+            Assert.Equal(new List<object>() { 1, 2 }, ((IValues)new OneOrMany<int>(1, 2)).Cast<object>());
 
         [Fact]
         public void Value_Enumerable_ReturnsTwo() =>
-            Assert.Equal(new List<int>() { 1, 2 }, ((IValue)new OneOrMany<int>(new List<int>() { 1, 2 })).Value);
+            Assert.Equal(new List<object>() { 1, 2 }, ((IValues)new OneOrMany<int>(new List<int>() { 1, 2 })).Cast<object>());
 
         [Fact]
         public void ImplicitConversionOperator_Item_HasOneItem()
         {
             OneOrMany<int> oneOrMany = 1;
-            Assert.Equal(1, ((IValue)oneOrMany).Value);
+            Assert.Equal(new List<object>() { 1 }, ((IValues)oneOrMany).Cast<object>());
         }
 
         [Fact]
         public void ImplicitConversionOperator_Array_HasTwoItems()
         {
             OneOrMany<int> oneOrMany = new int[] { 1, 2 };
-            Assert.Equal(new List<int>() { 1, 2 }, ((IValue)oneOrMany).Value);
+            Assert.Equal(new List<object>() { 1, 2 }, ((IValues)oneOrMany).Cast<object>());
         }
 
         [Fact]
         public void ImplicitConversionOperator_List_HasTwoItems()
         {
             OneOrMany<int> oneOrMany = new List<int>() { 1, 2 };
-            Assert.Equal(new List<int>() { 1, 2 }, ((IValue)oneOrMany).Value);
+            Assert.Equal(new List<object>() { 1, 2 }, ((IValues)oneOrMany).Cast<object>());
         }
 
         [Fact]

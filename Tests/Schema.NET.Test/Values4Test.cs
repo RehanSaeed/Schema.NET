@@ -1,6 +1,7 @@
 namespace Schema.NET.Test
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Xunit;
 
     public class Values4Test
@@ -11,10 +12,10 @@ namespace Schema.NET.Test
             var values = new Values<int, string, DayOfWeek, Person>(1);
 
             Assert.True(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.False(values.HasValue2);
-            Assert.Equal(0, values.Value2.Count);
-            Assert.Equal(1, ((IValue)values).Value);
+            Assert.Empty(values.Value2);
+            Assert.Equal(new List<object>() { 1 }, ((IValues)values).Cast<object>().ToList());
         }
 
         [Fact]
@@ -23,10 +24,10 @@ namespace Schema.NET.Test
             var values = new Values<int, string, DayOfWeek, Person>("Foo");
 
             Assert.False(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.True(values.HasValue2);
-            Assert.Equal(1, values.Value2.Count);
-            Assert.Equal("Foo", ((IValue)values).Value);
+            Assert.Single(values.Value2);
+            Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
         }
 
         [Fact]
@@ -35,12 +36,12 @@ namespace Schema.NET.Test
             var values = new Values<int, string, DayOfWeek, Person>(DayOfWeek.Friday);
 
             Assert.False(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.False(values.HasValue2);
-            Assert.Equal(0, values.Value2.Count);
+            Assert.Empty(values.Value2);
             Assert.True(values.HasValue3);
-            Assert.Equal(1, values.Value3.Count);
-            Assert.Equal(DayOfWeek.Friday, ((IValue)values).Value);
+            Assert.Single(values.Value3);
+            Assert.Equal(new List<object>() { DayOfWeek.Friday }, ((IValues)values).Cast<object>().ToList());
         }
 
         [Fact]
@@ -49,14 +50,15 @@ namespace Schema.NET.Test
             var values = new Values<int, string, DayOfWeek, Person>(new Person());
 
             Assert.False(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.False(values.HasValue2);
-            Assert.Equal(0, values.Value2.Count);
+            Assert.Empty(values.Value2);
             Assert.False(values.HasValue3);
-            Assert.Equal(1, values.Value3.Count);
+            Assert.Single(values.Value3);
             Assert.True(values.HasValue4);
-            Assert.Equal(1, values.Value4.Count);
-            Assert.IsType<Person>(((IValue)values).Value);
+            Assert.Single(values.Value4);
+            var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+            Assert.IsType<Person>(item);
         }
 
         [Fact]
@@ -65,10 +67,10 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = 1;
 
             Assert.True(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.False(values.HasValue2);
-            Assert.Equal(0, values.Value2.Count);
-            Assert.Equal(1, ((IValue)values).Value);
+            Assert.Empty(values.Value2);
+            Assert.Equal(new List<object>() { 1 }, ((IValues)values).Cast<object>().ToList());
         }
 
         [Fact]
@@ -77,10 +79,10 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = "Foo";
 
             Assert.False(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.True(values.HasValue2);
-            Assert.Equal(1, values.Value2.Count);
-            Assert.Equal("Foo", ((IValue)values).Value);
+            Assert.Single(values.Value2);
+            Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
         }
 
         [Fact]
@@ -89,12 +91,12 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = DayOfWeek.Friday;
 
             Assert.False(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.False(values.HasValue2);
-            Assert.Equal(0, values.Value2.Count);
+            Assert.Empty(values.Value2);
             Assert.True(values.HasValue3);
-            Assert.Equal(1, values.Value3.Count);
-            Assert.Equal(DayOfWeek.Friday, ((IValue)values).Value);
+            Assert.Single(values.Value3);
+            Assert.Equal(new List<object>() { DayOfWeek.Friday }, ((IValues)values).Cast<object>().ToList());
         }
 
         [Fact]
@@ -103,14 +105,15 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = new Person();
 
             Assert.False(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.False(values.HasValue2);
-            Assert.Equal(0, values.Value2.Count);
+            Assert.Empty(values.Value2);
             Assert.False(values.HasValue3);
-            Assert.Equal(1, values.Value3.Count);
+            Assert.Single(values.Value3);
             Assert.True(values.HasValue4);
-            Assert.Equal(1, values.Value4.Count);
-            Assert.IsType<Person>(((IValue)values).Value);
+            Assert.Single(values.Value4);
+            var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+            Assert.IsType<Person>(item);
         }
 
         [Fact]
@@ -121,8 +124,8 @@ namespace Schema.NET.Test
             Assert.True(values.HasValue1);
             Assert.Equal(2, values.Value1.Count);
             Assert.False(values.HasValue2);
-            Assert.Equal(0, values.Value2.Count);
-            Assert.Equal(new List<int>() { 1, 2 }, ((IValue)values).Value);
+            Assert.Empty(values.Value2);
+            Assert.Equal(new List<object>() { 1, 2 }, ((IValues)values).Cast<object>().ToList());
         }
 
         [Fact]
@@ -131,10 +134,10 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = new List<string>() { "Foo", "Bar" };
 
             Assert.False(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.True(values.HasValue2);
             Assert.Equal(2, values.Value2.Count);
-            Assert.Equal(new List<string>() { "Foo", "Bar" }, ((IValue)values).Value);
+            Assert.Equal(new List<object>() { "Foo", "Bar" }, ((IValues)values).Cast<object>().ToList());
         }
 
         [Fact]
@@ -143,12 +146,12 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = new List<DayOfWeek>() { DayOfWeek.Friday, DayOfWeek.Monday };
 
             Assert.False(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.False(values.HasValue2);
-            Assert.Equal(0, values.Value2.Count);
+            Assert.Empty(values.Value2);
             Assert.True(values.HasValue3);
             Assert.Equal(2, values.Value3.Count);
-            Assert.Equal(new List<DayOfWeek>() { DayOfWeek.Friday, DayOfWeek.Monday }, ((IValue)values).Value);
+            Assert.Equal(new List<object>() { DayOfWeek.Friday, DayOfWeek.Monday }, ((IValues)values).Cast<object>().ToList());
         }
 
         [Fact]
@@ -157,15 +160,14 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = new List<Person>() { new Person(), new Person() };
 
             Assert.False(values.HasValue1);
-            Assert.Equal(1, values.Value1.Count);
+            Assert.Single(values.Value1);
             Assert.False(values.HasValue2);
-            Assert.Equal(0, values.Value2.Count);
+            Assert.Empty(values.Value2);
             Assert.False(values.HasValue3);
-            Assert.Equal(1, values.Value3.Count);
+            Assert.Single(values.Value3);
             Assert.True(values.HasValue4);
             Assert.Equal(2, values.Value4.Count);
-            var people = Assert.IsType<List<Person>>(((IValue)values).Value);
-            Assert.Equal(2, people.Count);
+            Assert.Equal(2, ((IValues)values).Cast<object>().ToList().Count);
         }
 
         [Fact]
@@ -308,21 +310,21 @@ namespace Schema.NET.Test
 
         [Fact]
         public void GetHashCode_Value1Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal(1.GetHashCode(), new Values<int, string, DayOfWeek, Person>(1).GetHashCode());
+            Assert.Equal(1.GetHashCode(), new Values<int, string, DayOfWeek?, Person>(1).GetHashCode());
 
         [Fact]
         public void GetHashCode_Value2Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal("Foo".GetHashCode(), new Values<int, string, DayOfWeek, Person>("Foo").GetHashCode());
+            Assert.Equal("Foo".GetHashCode(), new Values<int, string, DayOfWeek?, Person>("Foo").GetHashCode());
 
         [Fact]
         public void GetHashCode_Value3Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal(DayOfWeek.Friday.GetHashCode(), new Values<int, string, DayOfWeek, Person>(DayOfWeek.Friday).GetHashCode());
+            Assert.Equal(DayOfWeek.Friday.GetHashCode(), new Values<int, string, DayOfWeek?, Person>(DayOfWeek.Friday).GetHashCode());
 
         [Fact]
         public void GetHashCode_Value4Passed_ReturnsMatchingHashCode()
         {
             var person = new Person();
-            Assert.Equal(person.GetHashCode(), new Values<int, string, DayOfWeek, Person>(person).GetHashCode());
+            Assert.Equal(person.GetHashCode(), new Values<int, string, DayOfWeek?, Person>(person).GetHashCode());
         }
     }
 }

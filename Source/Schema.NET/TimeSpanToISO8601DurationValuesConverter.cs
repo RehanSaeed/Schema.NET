@@ -1,12 +1,11 @@
 namespace Schema.NET
 {
     using System;
-    using System.Reflection;
     using System.Xml;
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Converts an <see cref="IValue"/> object to JSON. If the <see cref="IValue"/> contains a TimeSpan, converts it
+    /// Converts an <see cref="IValues"/> object to JSON. If the <see cref="IValues"/> contains a TimeSpan, converts it
     /// to ISO 8601 format first.
     /// </summary>
     /// <seealso cref="JsonConverter" />
@@ -39,7 +38,7 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Writes the object retrieved from <see cref="IValue"/> when one is found.
+        /// Writes the object retrieved from <see cref="IValues"/> when one is found.
         /// </summary>
         /// <param name="writer">The JSON writer.</param>
         /// <param name="value">The value to write.</param>

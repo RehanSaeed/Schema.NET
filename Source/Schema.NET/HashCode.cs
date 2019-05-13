@@ -70,6 +70,16 @@ namespace Schema.NET
 
         private static int CombineHashCodes(int h1, int h2)
         {
+            if (h1 == 0)
+            {
+                return h2;
+            }
+
+            if (h2 == 0)
+            {
+                return h1;
+            }
+
             unchecked
             {
                 // Code copied from System.Tuple so it must be the best way to combine hash codes or at least a good one.

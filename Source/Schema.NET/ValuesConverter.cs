@@ -10,7 +10,7 @@ namespace Schema.NET
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Converts an <see cref="IValue"/> object to JSON.
+    /// Converts a <see cref="IValues"/> object to JSON.
     /// </summary>
     /// <seealso cref="JsonConverter" />
     public class ValuesConverter : JsonConverter
@@ -24,7 +24,7 @@ namespace Schema.NET
         /// <returns>
         /// <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
         /// </returns>
-        public override bool CanConvert(Type objectType) => objectType == typeof(IValue);
+        public override bool CanConvert(Type objectType) => objectType == typeof(IValues);
 
         /// <summary>
         /// Reads the JSON representation of the object.
@@ -87,67 +87,79 @@ namespace Schema.NET
             }
             else
             {
-                foreach (var type in mainType.GenericTypeArguments)
+                if (tokenType == JsonToken.StartArray)
                 {
-                    try
+                    var items = new List<object>();
+                    foreach (var type in mainType.GenericTypeArguments)
                     {
-                        object args;
-                        if (tokenType == JsonToken.StartObject)
+                        var args = ReadJsonArray(token, type);
+                        var genericType = typeof(OneOrMany<>).MakeGenericType(type);
+                        var item = (IValues)Activator.CreateInstance(genericType, args);
+                        items.Add(item);
+                    }
+
+                    argument = items;
+                }
+                else
+                {
+                    foreach (var type in mainType.GenericTypeArguments)
+                    {
+                        try
                         {
-                            var typeName = GetTypeNameFromToken(token);
-                            if (string.IsNullOrEmpty(typeName))
+                            object args;
+                            if (tokenType == JsonToken.StartObject)
                             {
-                                args = token.ToObject(type);
-                            }
-                            else if (typeName == type.Name)
-                            {
-                                args = token.ToObject(type);
-                            }
-                            else
-                            {
-                                var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                                if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
+                                var typeName = GetTypeNameFromToken(token);
+                                if (string.IsNullOrEmpty(typeName))
                                 {
-                                    args = token.ToObject(builtType);
+                                    args = token.ToObject(type);
+                                }
+                                else if (typeName == type.Name)
+                                {
+                                    args = token.ToObject(type);
                                 }
                                 else
                                 {
-                                    continue;
+                                    var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
+                                    if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
+                                    {
+                                        args = token.ToObject(builtType);
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
                                 }
-                            }
-                        }
-                        else if (tokenType == JsonToken.StartArray)
-                        {
-                            args = ReadJsonArray(token, type);
-                        }
-                        else
-                        {
-                            var unwrappedType = type.GetUnderlyingTypeFromNullable();
-                            if (unwrappedType.IsPrimitiveType())
-                            {
-                                args = value;
-                            }
-                            else if (unwrappedType == typeof(decimal))
-                            {
-                                args = Convert.ToDecimal(value, CultureInfo.InvariantCulture);
                             }
                             else
                             {
-                                args = token.ToObject(ToClass(type)); // This is expected to throw on some case
+                                var unwrappedType = type.GetUnderlyingTypeFromNullable();
+                                if (unwrappedType.IsPrimitiveType())
+                                {
+                                    args = value;
+                                }
+                                else if (unwrappedType == typeof(decimal))
+                                {
+                                    args = Convert.ToDecimal(value, CultureInfo.InvariantCulture);
+                                }
+                                else
+                                {
+                                    args = token.ToObject(ToClass(type)); // This is expected to throw on some case
+                                }
                             }
-                        }
 
-                        var genericType = typeof(OneOrMany<>).MakeGenericType(type);
-                        argument = Activator.CreateInstance(genericType, args);
-                    }
+                            var genericType = typeof(OneOrMany<>).MakeGenericType(type);
+                            argument = Activator.CreateInstance(genericType, args);
+                        }
 #pragma warning disable CA1031 // Do not catch general exception types
-                    catch (Exception e)
-                    {
-                        // Nasty, but we're trying brute force as a last resort, to
-                        // see which type has the right constructor for this value
-                        Debug.WriteLine(e);
-                    }
+                        catch (Exception e)
+                        {
+                            // Nasty, but we're trying brute force as a last resort, to
+                            // see which type has the right constructor for this value
+                            Debug.WriteLine(e);
+                        }
 #pragma warning restore CA1031 // Do not catch general exception types
+                    }
                 }
             }
 
@@ -167,27 +179,32 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Writes the specified <see cref="IValue"/> object using the JSON writer.
+        /// Writes the specified <see cref="IValues"/> object using the JSON writer.
         /// </summary>
         /// <param name="writer">The JSON writer.</param>
-        /// <param name="value">The <see cref="IValue"/> object.</param>
+        /// <param name="value">The <see cref="IValues"/> object.</param>
         /// <param name="serializer">The JSON serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var values = (IValue)value;
-            var obj = values.Value;
-            if (obj == null)
+            var values = (IValues)value;
+            if (values.Count == 0)
             {
                 writer.WriteNull();
             }
+            else if (values.Count == 1)
+            {
+                var enumerator = values.GetEnumerator();
+                enumerator.MoveNext();
+                this.WriteObject(writer, enumerator.Current, serializer);
+            }
             else
             {
-                this.WriteObject(writer, obj, serializer);
+                this.WriteObject(writer, values.Cast<object>().ToList(), serializer);
             }
         }
 
         /// <summary>
-        /// Writes the object retrieved from <see cref="IValue"/> when one is found.
+        /// Writes the object retrieved from <see cref="IValues"/> when one is found.
         /// </summary>
         /// <param name="writer">The JSON writer.</param>
         /// <param name="value">The value to write.</param>

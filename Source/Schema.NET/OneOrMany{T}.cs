@@ -3,6 +3,7 @@ namespace Schema.NET
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// A single or list of values.
@@ -10,7 +11,8 @@ namespace Schema.NET
     /// <typeparam name="T">The type of the values.</typeparam>
     /// <seealso cref="ICollection{T}" />
 #pragma warning disable CA1710 // Identifiers should have correct suffix
-    public struct OneOrMany<T> : IEquatable<OneOrMany<T>>, IEnumerable<T>, IValue
+    public struct OneOrMany<T>
+        : IReadOnlyCollection<T>, IEnumerable<T>, IValues, IEquatable<OneOrMany<T>>
 #pragma warning restore CA1710 // Identifiers should have correct suffix
     {
         private readonly List<T> collection;
@@ -93,22 +95,6 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Gets the non-null object representing the instance.
-        /// </summary>
-        object IValue.Value
-        {
-            get
-            {
-                if (this.HasOne)
-                {
-                    return this.item;
-                }
-
-                return this.collection;
-            }
-        }
-
-        /// <summary>
         /// Gets a value indicating whether this instance has a single item value.
         /// </summary>
         /// <value><c>true</c> if this instance has a single item value; otherwise, <c>false</c>.</value>
@@ -145,6 +131,28 @@ namespace Schema.NET
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator OneOrMany<T>(List<T> list) => new OneOrMany<T>(list);
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="OneOrMany{T}"/> to <see cref="List{T}"/>.
+        /// </summary>
+        /// <param name="oneOrMany">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator List<T>(OneOrMany<T> oneOrMany) => oneOrMany.ToList();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="OneOrMany{T}"/> to <typeparamref name="T"/>.
+        /// </summary>
+        /// <param name="oneOrMany">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T(OneOrMany<T> oneOrMany) => oneOrMany.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -258,7 +266,7 @@ namespace Schema.NET
                 return HashCode.Of(this.item);
             }
 
-            return this.GetHashCode();
+            return 0;
         }
     }
 }

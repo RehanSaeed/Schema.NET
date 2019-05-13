@@ -1,6 +1,7 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -11,8 +12,10 @@ namespace Schema.NET
     /// <typeparam name="T2">The second type the values can take.</typeparam>
     /// <typeparam name="T3">The third type the values can take.</typeparam>
     /// <typeparam name="T4">The fourth type the values can take.</typeparam>
-    /// <seealso cref="IValue" />
-    public struct Values<T1, T2, T3, T4> : IEquatable<Values<T1, T2, T3, T4>>, IValue
+#pragma warning disable CA1710 // Identifiers should have correct suffix
+    public struct Values<T1, T2, T3, T4>
+        : IReadOnlyCollection<object>, IEnumerable<object>, IValues, IEquatable<Values<T1, T2, T3, T4>>
+#pragma warning restore CA1710 // Identifiers should have correct suffix
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
@@ -79,6 +82,38 @@ namespace Schema.NET
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        public Values(IEnumerable<object> items)
+        {
+            if (items == null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+
+            var items1 = items.OfType<T1>().Concat(items.OfType<OneOrMany<T1>>().SelectMany(x => x)).ToList();
+            var items2 = items.OfType<T2>().Concat(items.OfType<OneOrMany<T2>>().SelectMany(x => x)).ToList();
+            var items3 = items.OfType<T3>().Concat(items.OfType<OneOrMany<T3>>().SelectMany(x => x)).ToList();
+            var items4 = items.OfType<T4>().Concat(items.OfType<OneOrMany<T4>>().SelectMany(x => x)).ToList();
+
+            this.HasValue1 = items1.Count > 0;
+            this.HasValue2 = items2.Count > 0;
+            this.HasValue3 = items3.Count > 0;
+            this.HasValue4 = items4.Count > 0;
+
+            this.Value1 = items1;
+            this.Value2 = items2;
+            this.Value3 = items3;
+            this.Value4 = items4;
+        }
+
+        /// <summary>
+        /// Gets the number of elements contained in the <see cref="Values{T1,T2,T3,T4}"/>.
+        /// </summary>
+        public int Count => this.Value1.Count + this.Value2.Count + this.Value3.Count + this.Value4.Count;
+
+        /// <summary>
         /// Gets whether the value of type <typeparamref name="T1" /> has a value.
         /// </summary>
         public bool HasValue1 { get; }
@@ -117,34 +152,6 @@ namespace Schema.NET
         /// Gets the value of type <typeparamref name="T4" />.
         /// </summary>
         public OneOrMany<T4> Value4 { get; }
-
-        /// <summary>
-        /// Gets the non-null object representing the instance.
-        /// </summary>
-        object IValue.Value
-        {
-            get
-            {
-                if (this.HasValue1)
-                {
-                    return ((IValue)this.Value1).Value;
-                }
-                else if (this.HasValue2)
-                {
-                    return ((IValue)this.Value2).Value;
-                }
-                else if (this.HasValue3)
-                {
-                    return ((IValue)this.Value3).Value;
-                }
-                else if (this.HasValue4)
-                {
-                    return ((IValue)this.Value4).Value;
-                }
-
-                return null;
-            }
-        }
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1,T2}"/>.
@@ -215,6 +222,15 @@ namespace Schema.NET
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(List<T4> list) => new Values<T1, T2, T3, T4>(list);
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="List{Object}"/> to <see cref="Values{T1,T2,T3,T4}"/>.
+        /// </summary>
+        /// <param name="list">The list of values.</param>
+        /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator Values<T1, T2, T3, T4>(List<object> list) => new Values<T1, T2, T3, T4>(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -306,6 +322,50 @@ namespace Schema.NET
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to the first item of type <typeparamref name="T1"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T1(Values<T1, T2, T3, T4> values) => values.Value1.FirstOrDefault();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to the first item of type <typeparamref name="T2"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T2(Values<T1, T2, T3, T4> values) => values.Value2.FirstOrDefault();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to the first item of type <typeparamref name="T3"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T3(Values<T1, T2, T3, T4> values) => values.Value3.FirstOrDefault();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to the first item of type <typeparamref name="T4"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T4(Values<T1, T2, T3, T4> values) => values.Value4.FirstOrDefault();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
         /// Implements the operator ==.
         /// </summary>
         /// <param name="left">The left.</param>
@@ -324,6 +384,49 @@ namespace Schema.NET
         /// The result of the operator.
         /// </returns>
         public static bool operator !=(Values<T1, T2, T3, T4> left, Values<T1, T2, T3, T4> right) => !(left == right);
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns>An enumerator that can be used to iterate through the collection.</returns>
+        public IEnumerator<object> GetEnumerator()
+        {
+            if (this.HasValue1)
+            {
+                foreach (var item1 in this.Value1)
+                {
+                    yield return item1;
+                }
+            }
+
+            if (this.HasValue2)
+            {
+                foreach (var item2 in this.Value2)
+                {
+                    yield return item2;
+                }
+            }
+
+            if (this.HasValue3)
+            {
+                foreach (var item3 in this.Value3)
+                {
+                    yield return item3;
+                }
+            }
+
+            if (this.HasValue4)
+            {
+                foreach (var item4 in this.Value4)
+                {
+                    yield return item4;
+                }
+            }
+        }
+
+        /// <summary>Returns an enumerator that iterates through a collection.</summary>
+        /// <returns>An <see cref="IEnumerator"/> object that can be used to iterate through the collection.</returns>
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
         /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.
@@ -381,22 +484,7 @@ namespace Schema.NET
         /// <returns>
         /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
-        public override int GetHashCode()
-        {
-            if (this.HasValue1)
-            {
-                return this.Value1.GetHashCode();
-            }
-            else if (this.HasValue2)
-            {
-                return this.Value2.GetHashCode();
-            }
-            else if (this.HasValue3)
-            {
-                return this.Value3.GetHashCode();
-            }
-
-            return this.Value4.GetHashCode();
-        }
+        public override int GetHashCode() =>
+            HashCode.Of(this.Value1).And(this.Value2).And(this.Value3).And(this.Value4);
     }
 }

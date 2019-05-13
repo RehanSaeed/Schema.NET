@@ -2,6 +2,7 @@ namespace Schema.NET.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json;
     using Xunit;
 
@@ -156,8 +157,33 @@ namespace Schema.NET.Test
             Assert.Equal(this.json, this.book.ToString());
 
         [Fact]
-        public void Deserializing_BookJsonLd_ReturnsBook() =>
-            Assert.Equal(this.book.ToString(), JsonConvert.DeserializeObject<Book>(this.json).ToString());
+        public void Deserializing_BookJsonLd_ReturnsBook()
+        {
+            var book = JsonConvert.DeserializeObject<Book>(this.json);
+
+            Assert.Equal("The Catcher in the Rye", book.Name);
+            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)book.Url);
+            Assert.True(book.Author.HasValue);
+
+            List<IPerson> people = book.Author.Value;
+            var person = Assert.Single(people);
+            Assert.Equal("J.D. Salinger", person.Name);
+
+            List<ICreativeWork> creativeWorks = book.WorkExample;
+            Assert.Equal(2, creativeWorks.Count);
+            var books = creativeWorks.OfType<IBook>().ToList();
+            Assert.Equal(2, books.Count);
+
+            var book1 = books.First();
+            Assert.Equal("2nd Edition", book1.BookEdition);
+            Assert.Equal(BookFormatType.Hardcover, book1.BookFormat);
+            Assert.Equal("031676948", book1.Isbn);
+
+            var book2 = books.Last();
+            Assert.Equal("1st Edition", book2.BookEdition);
+            Assert.Equal(BookFormatType.EBook, book2.BookFormat);
+            Assert.Equal("031676947", book2.Isbn);
+        }
 
         [Fact]
         public void Deserializing_HasPersonAsAuthor_OrganizationIsNullAndHasPerson()
@@ -177,7 +203,7 @@ namespace Schema.NET.Test
                 "}";
             var book = JsonConvert.DeserializeObject<Book>(json);
 
-            Assert.Equal(0, book.Author.Value.Value1.Count);
+            Assert.Empty(book.Author.Value.Value1);
             var person = Assert.Single(book.Author.Value.Value2);
             Assert.Equal("NameOfPerson1", person.Name);
         }

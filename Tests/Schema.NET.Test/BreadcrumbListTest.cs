@@ -2,6 +2,7 @@ namespace Schema.NET.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json;
     using Xunit;
 
@@ -67,7 +68,26 @@ namespace Schema.NET.Test
             Assert.Equal(this.json, this.breadcrumbList.ToString());
 
         [Fact]
-        public void Deserializing_BreadcrumbListJsonLd_ReturnsBreadcrumbList() =>
-            Assert.Equal(this.breadcrumbList.ToString(), JsonConvert.DeserializeObject<BreadcrumbList>(this.json).ToString());
+        public void Deserializing_BreadcrumbListJsonLd_ReturnsBreadcrumbList()
+        {
+            var breadcrumbList = JsonConvert.DeserializeObject<BreadcrumbList>(this.json);
+
+            List<IListItem> listItems = breadcrumbList.ItemListElement;
+            Assert.Equal(2, listItems.Count);
+            var listItem1 = listItems.First();
+            var listItem2 = listItems.Last();
+            Assert.Equal(1, listItem1.Position);
+            Assert.Equal(2, listItem2.Position);
+            Assert.True(listItem1.Item.HasValue);
+            Assert.True(listItem2.Item.HasValue);
+            var book = listItem1.Item.Value.OfType<IBook>().FirstOrDefault();
+            Assert.NotNull(book);
+            Assert.Equal("Books", book.Name);
+            Assert.Equal(new Uri("http://example.com/images/icon-book.png"), (Uri)book.Image);
+            var person = listItem2.Item.Value.OfType<IPerson>().FirstOrDefault();
+            Assert.NotNull(person);
+            Assert.Equal("Authors", person.Name);
+            Assert.Equal(new Uri("http://example.com/images/icon-author.png"), (Uri)person.Image);
+        }
     }
 }
