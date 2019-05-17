@@ -24,11 +24,6 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         public OneOrMany(T item)
         {
-            if (item == null)
-            {
-                throw new ArgumentNullException(nameof(item));
-            }
-
             this.collection = null;
             this.item = item;
         }
