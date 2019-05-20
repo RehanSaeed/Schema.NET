@@ -183,7 +183,7 @@ namespace Schema.NET
         /// <summary>
         /// The date after which the price is no longer available.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? PriceValidUntil { get; set; }
+        Values<int?, DateTime?>? PriceValidUntil { get; set; }
 
         /// <summary>
         /// A review of the item.
@@ -472,8 +472,8 @@ namespace Schema.NET
         /// The date after which the price is no longer available.
         /// </summary>
         [DataMember(Name = "priceValidUntil", Order = 238)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? PriceValidUntil { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? PriceValidUntil { get; set; }
 
         /// <summary>
         /// A review of the item.

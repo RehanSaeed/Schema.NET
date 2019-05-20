@@ -22,7 +22,7 @@ namespace Schema.NET
         /// <summary>
         /// Date on which this guideline's recommendation was made.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? GuidelineDate { get; set; }
+        Values<int?, DateTime?>? GuidelineDate { get; set; }
 
         /// <summary>
         /// The medical conditions, treatments, etc. that are the subject of the guideline.
@@ -60,8 +60,8 @@ namespace Schema.NET
         /// Date on which this guideline's recommendation was made.
         /// </summary>
         [DataMember(Name = "guidelineDate", Order = 208)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? GuidelineDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? GuidelineDate { get; set; }
 
         /// <summary>
         /// The medical conditions, treatments, etc. that are the subject of the guideline.

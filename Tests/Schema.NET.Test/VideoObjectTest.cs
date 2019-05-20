@@ -12,8 +12,8 @@ namespace Schema.NET.Test
             Name = "Title", // Required
             Description = "Video description", // Required
             ThumbnailUrl = new Uri("https://www.example.com/thumbnail.jpg"), // Required
-            Expires = new IsoDate(2016, 2, 5), // Recommended
-            UploadDate = new IsoDate(2015, 2, 5), // Required
+            Expires = new DateTime(2016, 2, 5), // Recommended
+            UploadDate = new DateTime(2015, 2, 5), // Required
             Duration = new TimeSpan(0, 1, 33), // Recommended
             Publisher = new Organization()
             {

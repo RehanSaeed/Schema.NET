@@ -37,7 +37,7 @@ namespace Schema.NET
         /// <summary>
         /// Date of birth.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? BirthDate { get; set; }
+        Values<int?, DateTime?>? BirthDate { get; set; }
 
         /// <summary>
         /// The place where the person was born.
@@ -67,7 +67,7 @@ namespace Schema.NET
         /// <summary>
         /// Date of death.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? DeathDate { get; set; }
+        Values<int?, DateTime?>? DeathDate { get; set; }
 
         /// <summary>
         /// The place where the person died.
@@ -332,8 +332,8 @@ namespace Schema.NET
         /// Date of birth.
         /// </summary>
         [DataMember(Name = "birthDate", Order = 111)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? BirthDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? BirthDate { get; set; }
 
         /// <summary>
         /// The place where the person was born.
@@ -374,8 +374,8 @@ namespace Schema.NET
         /// Date of death.
         /// </summary>
         [DataMember(Name = "deathDate", Order = 117)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? DeathDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? DeathDate { get; set; }
 
         /// <summary>
         /// The place where the person died.

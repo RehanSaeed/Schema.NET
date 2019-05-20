@@ -9,7 +9,7 @@ namespace Schema.NET.Test
     {
         private readonly ClaimReview claimReview = new ClaimReview()
         {
-            DatePublished = new IsoDate(2016, 6, 22), // Required
+            DatePublished = new DateTime(2016, 6, 22), // Required
             Url = new Uri("http://example.com/news/science/worldisflat.html"), // Required
             ItemReviewed = new CreativeWork() // Required
             {
@@ -18,7 +18,7 @@ namespace Schema.NET.Test
                     Name = "Square World Society", // Required
                     SameAs = new Uri("https://example.flatworlders.com/we-know-that-the-world-is-flat") // Recommended
                 },
-                DatePublished = new IsoDate(2016, 6, 20), // Optional
+                DatePublished = new DateTime(2016, 6, 20), // Optional
             },
             ClaimReviewed = "The world is flat", // Required
             Author = new Organization() // Required

@@ -27,8 +27,9 @@ namespace Schema.NET.Tool.ViewModels
         {
             get
             {
-                var adjustedTypes = string.Join(", ", this.Types.Select(x => x.CSharpTypeString));
-                var rootType = this.Types.Count == 1 ? "OneOrMany" : "Values";
+                var adjustedTypesList = this.Types.SelectMany(x => x.CSharpTypeStrings).ToList();
+                var adjustedTypes = string.Join(", ", adjustedTypesList);
+                var rootType = adjustedTypesList.Count == 1 ? "OneOrMany" : "Values";
                 return $"{rootType}<{adjustedTypes}>?";
             }
         }
@@ -56,7 +57,7 @@ namespace Schema.NET.Tool.ViewModels
             }
             else if (this.Types.Any(x => string.Equals(x.Name, "Date", StringComparison.OrdinalIgnoreCase)))
             {
-                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(DateToIsoDateValuesConverter))]");
+                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]");
             }
             else
             {

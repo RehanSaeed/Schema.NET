@@ -16,7 +16,7 @@ namespace Schema.NET.Test
             {
                 Name = "Carol Smith"
             },
-            DatePublished = new IsoDate(2009, 11, 5),
+            DatePublished = new DateTime(2009, 11, 5),
             Description = "This is my grandmother's apple pie recipe. I like to add a dash of nutmeg.",
             AggregateRating = new AggregateRating()
             {

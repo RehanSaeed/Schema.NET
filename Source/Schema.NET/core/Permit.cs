@@ -42,7 +42,7 @@ namespace Schema.NET
         /// <summary>
         /// The date when the item is no longer valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidUntil { get; set; }
+        Values<int?, DateTime?>? ValidUntil { get; set; }
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ namespace Schema.NET
         /// The date when the item is no longer valid.
         /// </summary>
         [DataMember(Name = "validUntil", Order = 212)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? ValidUntil { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? ValidUntil { get; set; }
     }
 }

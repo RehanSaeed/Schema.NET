@@ -29,7 +29,7 @@ namespace Schema.NET.Test
                 ItemOffered = null, // Recommended
                 PriceCurrency = "USD", // Required
                 Price = 119.99M, // Required
-                PriceValidUntil = new IsoDate(2020, 11, 5), // Recommended
+                PriceValidUntil = new DateTime(2020, 11, 5), // Recommended
                 ItemCondition = OfferItemCondition.UsedCondition,
                 Availability = ItemAvailability.InStock, // Recommended
                 Seller = new Organization()

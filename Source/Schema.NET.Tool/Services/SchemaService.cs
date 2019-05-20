@@ -142,7 +142,7 @@ namespace Schema.NET.Tool.Services
             foreach (var @class in classes)
             {
                 var propertyOrder = PropertyNameComparer.KnownPropertyNameOrders.Values.Max() + 1 +
-                    (@class.Ancestors.Count() * 100);
+                    ( @class.Ancestors.Count() * 100 );
                 foreach (var property in @class.Properties)
                 {
                     property.Order = propertyOrder;
@@ -243,27 +243,27 @@ namespace Schema.NET.Tool.Services
                             var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty, StringComparison.Ordinal);
                             var propertyTypeClass = schemaClasses
                                 .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
-                            return propertyTypeClass == null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
+                            return propertyTypeClass == null || ( !propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending );
                         })
                         .Select(y =>
                         {
                             var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty, StringComparison.Ordinal);
                             var isPropertyTypeEnum = schemaClasses
                                 .Any(z => z.IsEnum && string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
-                            var csharpTypeString = GetCSharpTypeString(
+                            var csharpTypeStrings = GetCSharpTypeStrings(
                                 propertyName,
                                 propertyTypeName,
                                 isPropertyTypeEnum);
                             var propertyType = new PropertyType()
                             {
-                                CSharpTypeString = csharpTypeString,
+                                CSharpTypeStrings = csharpTypeStrings,
                                 Name = propertyTypeName,
                             };
                             return propertyType;
                         })
                         .Where(y => !string.Equals(y.Name, "Enumeration", StringComparison.OrdinalIgnoreCase) &&
                             !string.Equals(y.Name, "QualitativeValue", StringComparison.OrdinalIgnoreCase))
-                        .GroupBy(y => y.CSharpTypeString)
+                        .GroupBy(y => y.CSharpTypeStrings)
                         .Select(y => y.First())
                         .OrderBy(y => y.Name));
                     return property;
@@ -305,51 +305,51 @@ namespace Schema.NET.Tool.Services
             return stringBuilder.ToString();
         }
 
-        private static string GetCSharpTypeString(string propertyName, string typeName, bool isTypeEnum)
+        private static List<string> GetCSharpTypeStrings(string propertyName, string typeName, bool isTypeEnum)
         {
             switch (typeName)
             {
                 case "Boolean":
-                    return "bool?";
+                    return new List<string> { "bool?" };
                 case "Date":
-                    return "IsoDate";
+                    return new List<string> { "int?", "DateTime?" };
                 case "DateTime":
-                    return "DateTimeOffset?";
+                    return new List<string> { "DateTimeOffset?" };
                 case "Integer":
                 case "Number" when
                     propertyName.Contains("NumberOf", StringComparison.Ordinal) ||
                     propertyName.Contains("Year", StringComparison.Ordinal) ||
                     propertyName.Contains("Count", StringComparison.Ordinal) ||
                     propertyName.Contains("Age", StringComparison.Ordinal):
-                    return "int?";
+                    return new List<string> { "int?" };
                 case "Number" when
                     propertyName.Contains("Price", StringComparison.Ordinal) ||
                     propertyName.Contains("Amount", StringComparison.Ordinal) ||
                     propertyName.Contains("Salary", StringComparison.Ordinal) ||
                     propertyName.Contains("Discount", StringComparison.Ordinal):
-                    return "decimal?";
+                    return new List<string> { "decimal?" };
                 case "Number":
-                    return "double?";
+                    return new List<string> { "double?" };
                 case "Text":
                 case "Distance":
                 case "Energy":
                 case "Mass":
                 case "XPathType":
                 case "CssSelectorType":
-                    return "string";
+                    return new List<string> { "string" };
                 case "Time":
                 case "Duration":
-                    return "TimeSpan?";
+                    return new List<string> { "TimeSpan?" };
                 case "URL":
-                    return "Uri";
+                    return new List<string> { "Uri" };
                 default:
                     if (isTypeEnum)
                     {
-                        return typeName + "?";
+                        return new List<string> { typeName + "?"};
                     }
                     else
                     {
-                        return "I" + typeName;
+                        return new List<string> { "I" + typeName };
                     }
             }
         }

@@ -1,6 +1,7 @@
 namespace Schema.NET.Tool.CustomOverrides
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Schema.NET.Tool.ViewModels;
 
@@ -16,7 +17,7 @@ namespace Schema.NET.Tool.CustomOverrides
             property.Types.Add(
                 new PropertyType()
                 {
-                    CSharpTypeString = "Uri",
+                    CSharpTypeStrings = new List<string> { "Uri" },
                     Name = "URL"
                 });
         }

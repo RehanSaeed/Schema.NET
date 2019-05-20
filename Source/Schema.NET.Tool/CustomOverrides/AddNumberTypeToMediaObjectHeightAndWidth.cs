@@ -1,6 +1,7 @@
 namespace Schema.NET.Tool.CustomOverrides
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Schema.NET.Tool.ViewModels;
 
@@ -18,7 +19,7 @@ namespace Schema.NET.Tool.CustomOverrides
                 .Types
                 .Add(new PropertyType()
                 {
-                    CSharpTypeString = "int",
+                    CSharpTypeStrings = new List<string> { "int" },
                     Name = "Integer"
                 });
             @class
@@ -27,7 +28,7 @@ namespace Schema.NET.Tool.CustomOverrides
                 .Types
                 .Add(new PropertyType()
                 {
-                    CSharpTypeString = "int",
+                    CSharpTypeStrings = new List<string> { "int" },
                     Name = "Integer"
                 });
         }

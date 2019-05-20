@@ -21,7 +21,7 @@ namespace Schema.NET.Test
                 ItemOffered = null, // Recommended
                 PriceCurrency = "USD", // Required
                 Price = 47200M, // Required
-                PriceValidUntil = new IsoDate(2020, 11, 5), // Recommended
+                PriceValidUntil = new DateTime(2020, 11, 5), // Recommended
                 ItemCondition = OfferItemCondition.NewCondition,
                 Availability = ItemAvailability.InStock, // Recommended
                 Seller = new Organization
@@ -29,8 +29,8 @@ namespace Schema.NET.Test
                     Name = "Volvo Dealer"
                 }
             },
-            ModelDate = new IsoDate(2019),
-            VehicleModelDate = new IsoDate(2019)
+            ModelDate = 2019,
+            VehicleModelDate = 2019
         };
 
         private readonly string json =
@@ -56,8 +56,8 @@ namespace Schema.NET.Test
             "\"name\":\"Volvo Dealer\"" +
             "}" +
             "}," +
-            "\"modelDate\":\"2019\"," +
-            "\"vehicleModelDate\":\"2019\"" +
+            "\"modelDate\":2019," +
+            "\"vehicleModelDate\":2019" +
             "}";
 
         [Fact]

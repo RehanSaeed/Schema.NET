@@ -19,7 +19,7 @@ namespace Schema.NET
         /// <summary>
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).
         /// </summary>
-        Values<string, double?>? GeoRadius { get; set; }
+        Values<string, double?, string>? GeoRadius { get; set; }
     }
 
     /// <summary>
@@ -48,6 +48,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "geoRadius", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<string, double?>? GeoRadius { get; set; }
+        public Values<string, double?, string>? GeoRadius { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace Schema.NET
         /// <summary>
         /// The date of the first registration of the vehicle with the respective public authorities.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? DateVehicleFirstRegistered { get; set; }
+        Values<int?, DateTime?>? DateVehicleFirstRegistered { get; set; }
 
         /// <summary>
         /// The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's engine via the drivetrain.
@@ -95,7 +95,7 @@ namespace Schema.NET
         /// <summary>
         /// The release date of a vehicle model (often used to differentiate versions of the same make and model).
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ModelDate { get; set; }
+        Values<int?, DateTime?>? ModelDate { get; set; }
 
         /// <summary>
         /// The number or type of airbags in the vehicle.
@@ -205,7 +205,7 @@ namespace Schema.NET
         /// <summary>
         /// The release date of a vehicle model (often used to differentiate versions of the same make and model).
         /// </summary>
-        OneOrMany<DateTimeOffset?>? VehicleModelDate { get; set; }
+        Values<int?, DateTime?>? VehicleModelDate { get; set; }
 
         /// <summary>
         /// The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.&lt;br/&gt;&lt;br/&gt;
@@ -284,8 +284,8 @@ namespace Schema.NET
         /// The date of the first registration of the vehicle with the respective public authorities.
         /// </summary>
         [DataMember(Name = "dateVehicleFirstRegistered", Order = 209)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? DateVehicleFirstRegistered { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? DateVehicleFirstRegistered { get; set; }
 
         /// <summary>
         /// The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's engine via the drivetrain.
@@ -366,8 +366,8 @@ namespace Schema.NET
         /// The release date of a vehicle model (often used to differentiate versions of the same make and model).
         /// </summary>
         [DataMember(Name = "modelDate", Order = 219)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? ModelDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? ModelDate { get; set; }
 
         /// <summary>
         /// The number or type of airbags in the vehicle.
@@ -426,15 +426,15 @@ namespace Schema.NET
         /// The date of production of the item, e.g. vehicle.
         /// </summary>
         [DataMember(Name = "productionDate", Order = 226)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public override OneOrMany<IsoDate>? ProductionDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public override Values<int?, DateTime?>? ProductionDate { get; set; }
 
         /// <summary>
         /// The date the item e.g. vehicle was purchased by the current owner.
         /// </summary>
         [DataMember(Name = "purchaseDate", Order = 227)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public override OneOrMany<IsoDate>? PurchaseDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public override Values<int?, DateTime?>? PurchaseDate { get; set; }
 
         /// <summary>
         /// The number of persons that can be seated (e.g. in a vehicle), both in terms of the physical space available, and in terms of limitations set by law.&lt;br/&gt;&lt;br/&gt;
@@ -524,8 +524,8 @@ namespace Schema.NET
         /// The release date of a vehicle model (often used to differentiate versions of the same make and model).
         /// </summary>
         [DataMember(Name = "vehicleModelDate", Order = 238)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? VehicleModelDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? VehicleModelDate { get; set; }
 
         /// <summary>
         /// The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.&lt;br/&gt;&lt;br/&gt;

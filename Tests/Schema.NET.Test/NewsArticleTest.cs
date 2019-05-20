@@ -16,7 +16,7 @@ namespace Schema.NET.Test
                 Height = 800, // Recommended
                 Width = 800 // Recommended
             },
-            DatePublished = new IsoDate(2015, 2, 5), // Ignored
+            DatePublished = new DateTime(2015, 2, 5), // Ignored
             DateModified = new DateTimeOffset(2015, 2, 5, 9, 20, 0, TimeSpan.Zero), // Ignored
             Author = new Person() // Ignored
             {

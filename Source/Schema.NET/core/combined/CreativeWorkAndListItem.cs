@@ -223,22 +223,22 @@ namespace Schema.NET
         /// The date on which the CreativeWork was created or the item was added to a DataFeed.
         /// </summary>
         [DataMember(Name = "dateCreated", Order = 234)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public Values<IsoDate, DateTimeOffset?>? DateCreated { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?>? DateCreated { get; set; }
 
         /// <summary>
         /// The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed.
         /// </summary>
         [DataMember(Name = "dateModified", Order = 235)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public Values<IsoDate, DateTimeOffset?>? DateModified { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?>? DateModified { get; set; }
 
         /// <summary>
         /// Date of first broadcast/publication.
         /// </summary>
         [DataMember(Name = "datePublished", Order = 236)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? DatePublished { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? DatePublished { get; set; }
 
         /// <summary>
         /// A link to the page containing the comments of the CreativeWork.
@@ -295,8 +295,8 @@ namespace Schema.NET
         /// Date the content expires and is no longer useful or available. For example a &lt;a class="localLink" href="http://schema.org/VideoObject"&gt;VideoObject&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt; whose availability or relevance is time-limited, or a &lt;a class="localLink" href="http://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt; fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date.
         /// </summary>
         [DataMember(Name = "expires", Order = 244)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? Expires { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? Expires { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -541,8 +541,8 @@ namespace Schema.NET
         /// Indicates the date on which the current structured data was generated / published. Typically used alongside &lt;a class="localLink" href="http://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt;
         /// </summary>
         [DataMember(Name = "sdDatePublished", Order = 279)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? SdDatePublished { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? SdDatePublished { get; set; }
 
         /// <summary>
         /// A license document that applies to this structured data, typically indicated by URL.

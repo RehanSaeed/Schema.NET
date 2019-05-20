@@ -57,7 +57,7 @@ namespace Schema.NET
         /// <summary>
         /// The distance of the flight.
         /// </summary>
-        OneOrMany<string>? FlightDistance { get; set; }
+        Values<string, string>? FlightDistance { get; set; }
 
         /// <summary>
         /// The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
@@ -160,7 +160,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "flightDistance", Order = 315)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? FlightDistance { get; set; }
+        public Values<string, string>? FlightDistance { get; set; }
 
         /// <summary>
         /// The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.

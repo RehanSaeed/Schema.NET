@@ -143,17 +143,17 @@ namespace Schema.NET
         /// <summary>
         /// The date of production of the item, e.g. vehicle.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ProductionDate { get; set; }
+        Values<int?, DateTime?>? ProductionDate { get; set; }
 
         /// <summary>
         /// The date the item e.g. vehicle was purchased by the current owner.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? PurchaseDate { get; set; }
+        Values<int?, DateTime?>? PurchaseDate { get; set; }
 
         /// <summary>
         /// The release date of a product or product model. This can be used to distinguish the exact variant of a product.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ReleaseDate { get; set; }
+        Values<int?, DateTime?>? ReleaseDate { get; set; }
 
         /// <summary>
         /// A review of the item.
@@ -380,22 +380,22 @@ namespace Schema.NET
         /// The date of production of the item, e.g. vehicle.
         /// </summary>
         [DataMember(Name = "productionDate", Order = 132)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public virtual OneOrMany<IsoDate>? ProductionDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public virtual Values<int?, DateTime?>? ProductionDate { get; set; }
 
         /// <summary>
         /// The date the item e.g. vehicle was purchased by the current owner.
         /// </summary>
         [DataMember(Name = "purchaseDate", Order = 133)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public virtual OneOrMany<IsoDate>? PurchaseDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public virtual Values<int?, DateTime?>? PurchaseDate { get; set; }
 
         /// <summary>
         /// The release date of a product or product model. This can be used to distinguish the exact variant of a product.
         /// </summary>
         [DataMember(Name = "releaseDate", Order = 134)]
-        [JsonConverter(typeof(DateToIsoDateValuesConverter))]
-        public OneOrMany<IsoDate>? ReleaseDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesConverter))]
+        public Values<int?, DateTime?>? ReleaseDate { get; set; }
 
         /// <summary>
         /// A review of the item.

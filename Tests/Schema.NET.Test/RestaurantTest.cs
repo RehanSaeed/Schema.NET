@@ -50,7 +50,7 @@ namespace Schema.NET.Test
                     Name = "Denver Post",
                     SameAs = new Uri("http://www.denverpost.com")
                 },
-                DatePublished = new IsoDate(2014, 3, 13),
+                DatePublished = new DateTime(2014, 3, 13),
                 InLanguage = "en",
                 ReviewRating = new Rating()
                 {

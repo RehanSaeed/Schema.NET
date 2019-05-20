@@ -23,12 +23,12 @@ namespace Schema.NET.Tool.CustomOverrides
                 {
                     new PropertyType()
                     {
-                        CSharpTypeString = "string",
+                        CSharpTypeStrings = new List<string> { "string" },
                         Name = "Text"
                     },
                     new PropertyType()
                     {
-                        CSharpTypeString = "PropertyValueSpecification",
+                        CSharpTypeStrings = new List<string> { "PropertyValueSpecification" },
                         Name = "PropertyValueSpecification"
                     }
                 });
