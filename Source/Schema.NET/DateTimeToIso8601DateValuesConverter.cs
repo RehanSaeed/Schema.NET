@@ -20,7 +20,7 @@ namespace Schema.NET
         {
             if (value is DateTime dateTimeType)
             {
-                if (dateTimeType.Hour != 0 && dateTimeType.Minute != 0 && dateTimeType.Second != 0)
+                if (dateTimeType.Hour != 0 || dateTimeType.Minute != 0 || dateTimeType.Second != 0)
                 {
                     writer.WriteValue(dateTimeType.ToString("s", CultureInfo.InvariantCulture));
                 }
