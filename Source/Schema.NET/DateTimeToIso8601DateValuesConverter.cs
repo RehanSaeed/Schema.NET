@@ -6,7 +6,7 @@ namespace Schema.NET
 
     /// <summary>
     /// Converts an <see cref="IValue"/> object to JSON. If the <see cref="IValue"/> contains a DateTime, converts it
-    /// to ISO 8601 format for dates with or without time.
+    /// to ISO 8601 format for date without time.
     /// </summary>
     public class DateTimeToIso8601DateValuesConverter : ValuesConverter
     {
@@ -20,14 +20,7 @@ namespace Schema.NET
         {
             if (value is DateTime dateTimeType)
             {
-                if (dateTimeType.Hour != 0 || dateTimeType.Minute != 0 || dateTimeType.Second != 0)
-                {
-                    writer.WriteValue(dateTimeType.ToString("s", CultureInfo.InvariantCulture));
-                }
-                else
-                {
-                    writer.WriteValue(dateTimeType.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
-                }
+                writer.WriteValue(dateTimeType.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
             }
             else
             {
