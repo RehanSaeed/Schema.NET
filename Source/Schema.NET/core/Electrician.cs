@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An electrician.
     /// </summary>
+    public partial interface IElectrician : IHomeAndConstructionBusiness
+    {
+    }
+
+    /// <summary>
+    /// An electrician.
+    /// </summary>
     [DataContract]
-    public partial class Electrician : HomeAndConstructionBusiness
+    public partial class Electrician : HomeAndConstructionBusiness, IElectrician
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
     /// </summary>
+    public partial interface ITravelAction : IMoveAction
+    {
+        /// <summary>
+        /// The distance travelled, e.g. exercising or travelling.
+        /// </summary>
+        OneOrMany<string>? Distance { get; set; }
+    }
+
+    /// <summary>
+    /// The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
+    /// </summary>
     [DataContract]
-    public partial class TravelAction : MoveAction
+    public partial class TravelAction : MoveAction, ITravelAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

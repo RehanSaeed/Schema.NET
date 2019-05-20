@@ -6,7 +6,7 @@ namespace Schema.NET.Tool
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
-    using Schema.NET.Tool.Overrides;
+    using Schema.NET.Tool.CustomOverrides;
     using Schema.NET.Tool.Repositories;
     using Schema.NET.Tool.Services;
     using Schema.NET.Tool.ViewModels;

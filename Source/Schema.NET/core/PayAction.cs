@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// An agent pays a price to a participant.
     /// </summary>
+    public partial interface IPayAction : ITradeAction
+    {
+        /// <summary>
+        /// A goal towards an action is taken. Can be concrete or abstract.
+        /// </summary>
+        Values<MedicalDevicePurpose?, IThing>? Purpose { get; set; }
+
+        /// <summary>
+        /// A sub property of participant. The participant who is at the receiving end of the action.
+        /// </summary>
+        Values<IAudience, IContactPoint, IOrganization, IPerson>? Recipient { get; set; }
+    }
+
+    /// <summary>
+    /// An agent pays a price to a participant.
+    /// </summary>
     [DataContract]
-    public partial class PayAction : TradeAction
+    public partial class PayAction : TradeAction, IPayAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,13 +37,13 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "purpose", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalDevicePurpose?, Thing>? Purpose { get; set; }
+        public Values<MedicalDevicePurpose?, IThing>? Purpose { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
         [DataMember(Name = "recipient", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Audience, ContactPoint, Organization, Person>? Recipient { get; set; }
+        public Values<IAudience, IContactPoint, IOrganization, IPerson>? Recipient { get; set; }
     }
 }

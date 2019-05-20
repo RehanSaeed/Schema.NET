@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// Place of worship, such as a church, synagogue, or mosque.
     /// </summary>
+    public partial interface IPlaceOfWorship : ICivicStructure
+    {
+    }
+
+    /// <summary>
+    /// Place of worship, such as a church, synagogue, or mosque.
+    /// </summary>
     [DataContract]
-    public partial class PlaceOfWorship : CivicStructure
+    public partial class PlaceOfWorship : CivicStructure, IPlaceOfWorship
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

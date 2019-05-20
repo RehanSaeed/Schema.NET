@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of manipulating/administering/supervising/controlling one or more objects.
     /// </summary>
+    public partial interface IOrganizeAction : IAction
+    {
+    }
+
+    /// <summary>
+    /// The act of manipulating/administering/supervising/controlling one or more objects.
+    /// </summary>
     [DataContract]
-    public partial class OrganizeAction : Action
+    public partial class OrganizeAction : Action, IOrganizeAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

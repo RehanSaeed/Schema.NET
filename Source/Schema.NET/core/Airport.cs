@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// An airport.
     /// </summary>
+    public partial interface IAirport : ICivicStructure
+    {
+        /// <summary>
+        /// IATA identifier for an airline or airport.
+        /// </summary>
+        OneOrMany<string>? IataCode { get; set; }
+
+        /// <summary>
+        /// ICAO identifier for an airport.
+        /// </summary>
+        OneOrMany<string>? IcaoCode { get; set; }
+    }
+
+    /// <summary>
+    /// An airport.
+    /// </summary>
     [DataContract]
-    public partial class Airport : CivicStructure
+    public partial class Airport : CivicStructure, IAirport
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

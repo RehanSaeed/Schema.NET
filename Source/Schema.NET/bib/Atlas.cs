@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A collection or bound volume of maps, charts, plates or tables, physical or in media form illustrating any subject.
     /// </summary>
+    public partial interface IAtlas : ICreativeWork
+    {
+    }
+
+    /// <summary>
+    /// A collection or bound volume of maps, charts, plates or tables, physical or in media form illustrating any subject.
+    /// </summary>
     [DataContract]
-    public partial class Atlas : CreativeWork
+    public partial class Atlas : CreativeWork, IAtlas
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

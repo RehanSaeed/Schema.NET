@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A single feed providing structured information about one or more entities or topics.
     /// </summary>
+    public partial interface IDataFeed : IDataset
+    {
+        /// <summary>
+        /// An item within in a data feed. Data feeds may have many elements.
+        /// </summary>
+        Values<IDataFeedItem, string, IThing>? DataFeedElement { get; set; }
+    }
+
+    /// <summary>
+    /// A single feed providing structured information about one or more entities or topics.
+    /// </summary>
     [DataContract]
-    public partial class DataFeed : Dataset
+    public partial class DataFeed : Dataset, IDataFeed
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "dataFeedElement", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<DataFeedItem, string, Thing>? DataFeedElement { get; set; }
+        public Values<IDataFeedItem, string, IThing>? DataFeedElement { get; set; }
     }
 }

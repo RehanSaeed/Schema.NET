@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of intentionally disregarding the object. An agent ignores an object.
     /// </summary>
+    public partial interface IIgnoreAction : IAssessAction
+    {
+    }
+
+    /// <summary>
+    /// The act of intentionally disregarding the object. An agent ignores an object.
+    /// </summary>
     [DataContract]
-    public partial class IgnoreAction : AssessAction
+    public partial class IgnoreAction : AssessAction, IIgnoreAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

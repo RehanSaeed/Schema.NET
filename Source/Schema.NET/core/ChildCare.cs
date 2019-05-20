@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A Childcare center.
     /// </summary>
+    public partial interface IChildCare : ILocalBusiness
+    {
+    }
+
+    /// <summary>
+    /// A Childcare center.
+    /// </summary>
     [DataContract]
-    public partial class ChildCare : LocalBusiness
+    public partial class ChildCare : LocalBusiness, IChildCare
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An Insurance agency.
     /// </summary>
+    public partial interface IInsuranceAgency : IFinancialService
+    {
+    }
+
+    /// <summary>
+    /// An Insurance agency.
+    /// </summary>
     [DataContract]
-    public partial class InsuranceAgency : FinancialService
+    public partial class InsuranceAgency : FinancialService, IInsuranceAgency
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

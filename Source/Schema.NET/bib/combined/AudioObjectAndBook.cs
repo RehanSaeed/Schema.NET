@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// See AudioObject, Book for more information.
     /// </summary>
+    public partial interface IAudioObjectAndBook : IAudioObject, IBook
+    {
+    }
+
+    /// <summary>
+    /// See AudioObject, Book for more information.
+    /// </summary>
     [DataContract]
-    public abstract partial class AudioObjectAndBook : MediaObject
+    public abstract partial class AudioObjectAndBook : MediaObject, IAudioObjectAndBook
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -42,14 +49,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "caption", Order = 309)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MediaObject, string>? Caption { get; set; }
+        public Values<IMediaObject, string>? Caption { get; set; }
 
         /// <summary>
         /// The illustrator of the book.
         /// </summary>
         [DataMember(Name = "illustrator", Order = 310)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? Illustrator { get; set; }
+        public OneOrMany<IPerson>? Illustrator { get; set; }
 
         /// <summary>
         /// The ISBN of the book.

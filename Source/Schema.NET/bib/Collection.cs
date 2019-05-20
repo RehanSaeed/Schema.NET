@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A created collection of Creative Works or other artefacts.
     /// </summary>
+    public partial interface ICollection : ICreativeWork
+    {
+        /// <summary>
+        /// The number of items in the &lt;a class="localLink" href="http://schema.org/Collection"&gt;Collection&lt;/a&gt;.
+        /// </summary>
+        OneOrMany<int?>? CollectionSize { get; set; }
+    }
+
+    /// <summary>
+    /// A created collection of Creative Works or other artefacts.
+    /// </summary>
     [DataContract]
-    public partial class Collection : CreativeWork
+    public partial class Collection : CreativeWork, ICollection
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

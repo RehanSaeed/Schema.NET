@@ -7,8 +7,29 @@ namespace Schema.NET
     /// <summary>
     /// A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
     /// </summary>
+    public partial interface ILiveBlogPosting : IBlogPosting
+    {
+        /// <summary>
+        /// The time when the live blog will stop covering the Event. Note that coverage may continue after the Event concludes.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? CoverageEndTime { get; set; }
+
+        /// <summary>
+        /// The time when the live blog will begin covering the Event. Note that coverage may begin before the Event's start time. The LiveBlogPosting may also be created before coverage begins.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? CoverageStartTime { get; set; }
+
+        /// <summary>
+        /// An update to the LiveBlog.
+        /// </summary>
+        OneOrMany<IBlogPosting>? LiveBlogUpdate { get; set; }
+    }
+
+    /// <summary>
+    /// A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
+    /// </summary>
     [DataContract]
-    public partial class LiveBlogPosting : BlogPosting
+    public partial class LiveBlogPosting : BlogPosting, ILiveBlogPosting
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -35,6 +56,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "liveBlogUpdate", Order = 508)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<BlogPosting>? LiveBlogUpdate { get; set; }
+        public OneOrMany<IBlogPosting>? LiveBlogUpdate { get; set; }
     }
 }

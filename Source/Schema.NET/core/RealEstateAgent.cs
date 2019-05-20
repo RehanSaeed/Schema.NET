@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A real-estate agent.
     /// </summary>
+    public partial interface IRealEstateAgent : ILocalBusiness
+    {
+    }
+
+    /// <summary>
+    /// A real-estate agent.
+    /// </summary>
     [DataContract]
-    public partial class RealEstateAgent : LocalBusiness
+    public partial class RealEstateAgent : LocalBusiness, IRealEstateAgent
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// The act of notifying someone of information pertinent to them, with no expectation of a response.
     /// </summary>
+    public partial interface IInformAction : ICommunicateAction
+    {
+        /// <summary>
+        /// Upcoming or past event associated with this place, organization, or action.
+        /// </summary>
+        OneOrMany<IEvent>? Event { get; set; }
+    }
+
+    /// <summary>
+    /// The act of notifying someone of information pertinent to them, with no expectation of a response.
+    /// </summary>
     [DataContract]
-    public partial class InformAction : CommunicateAction
+    public partial class InformAction : CommunicateAction, IInformAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "event", Order = 406)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Event>? Event { get; set; }
+        public OneOrMany<IEvent>? Event { get; set; }
     }
 }

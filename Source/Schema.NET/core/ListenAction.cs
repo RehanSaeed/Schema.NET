@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of consuming audio content.
     /// </summary>
+    public partial interface IListenAction : IConsumeAction
+    {
+    }
+
+    /// <summary>
+    /// The act of consuming audio content.
+    /// </summary>
     [DataContract]
-    public partial class ListenAction : ConsumeAction
+    public partial class ListenAction : ConsumeAction, IListenAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

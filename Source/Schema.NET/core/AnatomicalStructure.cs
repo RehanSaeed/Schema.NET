@@ -7,8 +7,59 @@ namespace Schema.NET
     /// <summary>
     /// Any part of the human body, typically a component of an anatomical system. Organs, tissues, and cells are all anatomical structures.
     /// </summary>
+    public partial interface IAnatomicalStructure : IMedicalEntity
+    {
+        /// <summary>
+        /// If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
+        /// </summary>
+        OneOrMany<string>? AssociatedPathophysiology { get; set; }
+
+        /// <summary>
+        /// Location in the body of the anatomical structure.
+        /// </summary>
+        OneOrMany<string>? BodyLocation { get; set; }
+
+        /// <summary>
+        /// Other anatomical structures to which this structure is connected.
+        /// </summary>
+        OneOrMany<IAnatomicalStructure>? ConnectedTo { get; set; }
+
+        /// <summary>
+        /// An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
+        /// </summary>
+        OneOrMany<IImageObject>? Diagram { get; set; }
+
+        /// <summary>
+        /// Function of the anatomical structure.
+        /// </summary>
+        OneOrMany<string>? Function { get; set; }
+
+        /// <summary>
+        /// The anatomical or organ system that this structure is part of.
+        /// </summary>
+        OneOrMany<IAnatomicalSystem>? PartOfSystem { get; set; }
+
+        /// <summary>
+        /// A medical condition associated with this anatomy.
+        /// </summary>
+        OneOrMany<IMedicalCondition>? RelatedCondition { get; set; }
+
+        /// <summary>
+        /// A medical therapy related to this anatomy.
+        /// </summary>
+        OneOrMany<IMedicalTherapy>? RelatedTherapy { get; set; }
+
+        /// <summary>
+        /// Component (sub-)structure(s) that comprise this anatomical structure.
+        /// </summary>
+        OneOrMany<IAnatomicalStructure>? SubStructure { get; set; }
+    }
+
+    /// <summary>
+    /// Any part of the human body, typically a component of an anatomical system. Organs, tissues, and cells are all anatomical structures.
+    /// </summary>
     [DataContract]
-    public partial class AnatomicalStructure : MedicalEntity
+    public partial class AnatomicalStructure : MedicalEntity, IAnatomicalStructure
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -35,14 +86,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "connectedTo", Order = 208)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<AnatomicalStructure>? ConnectedTo { get; set; }
+        public OneOrMany<IAnatomicalStructure>? ConnectedTo { get; set; }
 
         /// <summary>
         /// An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
         /// </summary>
         [DataMember(Name = "diagram", Order = 209)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ImageObject>? Diagram { get; set; }
+        public OneOrMany<IImageObject>? Diagram { get; set; }
 
         /// <summary>
         /// Function of the anatomical structure.
@@ -56,27 +107,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "partOfSystem", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<AnatomicalSystem>? PartOfSystem { get; set; }
+        public OneOrMany<IAnatomicalSystem>? PartOfSystem { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MedicalCondition>? RelatedCondition { get; set; }
+        public OneOrMany<IMedicalCondition>? RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MedicalTherapy>? RelatedTherapy { get; set; }
+        public OneOrMany<IMedicalTherapy>? RelatedTherapy { get; set; }
 
         /// <summary>
         /// Component (sub-)structure(s) that comprise this anatomical structure.
         /// </summary>
         [DataMember(Name = "subStructure", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<AnatomicalStructure>? SubStructure { get; set; }
+        public OneOrMany<IAnatomicalStructure>? SubStructure { get; set; }
     }
 }

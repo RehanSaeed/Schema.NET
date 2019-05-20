@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A defence establishment, such as an army or navy base.
     /// </summary>
+    public partial interface IDefenceEstablishment : IGovernmentBuilding
+    {
+    }
+
+    /// <summary>
+    /// A defence establishment, such as an army or navy base.
+    /// </summary>
     [DataContract]
-    public partial class DefenceEstablishment : GovernmentBuilding
+    public partial class DefenceEstablishment : GovernmentBuilding, IDefenceEstablishment
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

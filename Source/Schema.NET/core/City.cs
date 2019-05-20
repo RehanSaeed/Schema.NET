@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A city or town.
     /// </summary>
+    public partial interface ICity : IAdministrativeArea
+    {
+    }
+
+    /// <summary>
+    /// A city or town.
+    /// </summary>
     [DataContract]
-    public partial class City : AdministrativeArea
+    public partial class City : AdministrativeArea, ICity
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

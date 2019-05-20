@@ -13,19 +13,15 @@ namespace Schema.NET
     /// <seealso cref="IValue" />
     public struct Values<T1, T2, T3> : IEquatable<Values<T1, T2, T3>>, IValue
     {
-        private readonly OneOrMany<T1> value1;
-        private readonly OneOrMany<T2> value2;
-        private readonly OneOrMany<T3> value3;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3}"/> struct.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T1"/>.</param>
         public Values(OneOrMany<T1> value)
         {
-            this.value1 = value;
-            this.value2 = default;
-            this.value3 = default;
+            this.Value1 = value;
+            this.Value2 = default;
+            this.Value3 = default;
             this.HasValue1 = true;
             this.HasValue2 = false;
             this.HasValue3 = false;
@@ -37,9 +33,9 @@ namespace Schema.NET
         /// <param name="value">The value of type <typeparamref name="T2"/>.</param>
         public Values(OneOrMany<T2> value)
         {
-            this.value1 = default;
-            this.value2 = value;
-            this.value3 = default;
+            this.Value1 = default;
+            this.Value2 = value;
+            this.Value3 = default;
             this.HasValue1 = false;
             this.HasValue2 = true;
             this.HasValue3 = false;
@@ -51,9 +47,9 @@ namespace Schema.NET
         /// <param name="value">The value of type <typeparamref name="T3"/>.</param>
         public Values(OneOrMany<T3> value)
         {
-            this.value1 = default;
-            this.value2 = default;
-            this.value3 = value;
+            this.Value1 = default;
+            this.Value2 = default;
+            this.Value3 = value;
             this.HasValue1 = false;
             this.HasValue2 = false;
             this.HasValue3 = true;
@@ -77,17 +73,17 @@ namespace Schema.NET
         /// <summary>
         /// Gets the value of type <typeparamref name="T1" />.
         /// </summary>
-        public OneOrMany<T1> Value1 => this.value1;
+        public OneOrMany<T1> Value1 { get; }
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T2" />.
         /// </summary>
-        public OneOrMany<T2> Value2 => this.value2;
+        public OneOrMany<T2> Value2 { get; }
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T3" />.
         /// </summary>
-        public OneOrMany<T3> Value3 => this.value3;
+        public OneOrMany<T3> Value3 { get; }
 
         /// <summary>
         /// Gets the non-null object representing the instance.
@@ -98,15 +94,15 @@ namespace Schema.NET
             {
                 if (this.HasValue1)
                 {
-                    return ((IValue)this.value1).Value;
+                    return ((IValue)this.Value1).Value;
                 }
                 else if (this.HasValue2)
                 {
-                    return ((IValue)this.value2).Value;
+                    return ((IValue)this.Value2).Value;
                 }
                 else if (this.HasValue3)
                 {
-                    return ((IValue)this.value3).Value;
+                    return ((IValue)this.Value3).Value;
                 }
 
                 return null;
@@ -266,21 +262,21 @@ namespace Schema.NET
             {
                 if (this.HasValue1)
                 {
-                    return this.value1.Equals(other.value1);
+                    return this.Value1.Equals(other.Value1);
                 }
             }
             else if (other.HasValue2)
             {
                 if (this.HasValue2)
                 {
-                    return this.value2.Equals(other.value2);
+                    return this.Value2.Equals(other.Value2);
                 }
             }
             else if (other.HasValue3)
             {
                 if (this.HasValue3)
                 {
-                    return this.value3.Equals(other.value3);
+                    return this.Value3.Equals(other.Value3);
                 }
             }
 
@@ -306,14 +302,14 @@ namespace Schema.NET
         {
             if (this.HasValue1)
             {
-                return this.value1.GetHashCode();
+                return this.Value1.GetHashCode();
             }
             else if (this.HasValue2)
             {
-                return this.value2.GetHashCode();
+                return this.Value2.GetHashCode();
             }
 
-            return this.value3.GetHashCode();
+            return this.Value3.GetHashCode();
         }
     }
 }

@@ -7,8 +7,69 @@ namespace Schema.NET
     /// <summary>
     /// The delivery of a parcel either via the postal service or a commercial service.
     /// </summary>
+    public partial interface IParcelDelivery : IIntangible
+    {
+        /// <summary>
+        /// Destination address.
+        /// </summary>
+        OneOrMany<IPostalAddress>? DeliveryAddress { get; set; }
+
+        /// <summary>
+        /// New entry added as the package passes through each leg of its journey (from shipment to final delivery).
+        /// </summary>
+        OneOrMany<IDeliveryEvent>? DeliveryStatus { get; set; }
+
+        /// <summary>
+        /// The earliest date the package may arrive.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? ExpectedArrivalFrom { get; set; }
+
+        /// <summary>
+        /// The latest date the package may arrive.
+        /// </summary>
+        OneOrMany<DateTimeOffset?>? ExpectedArrivalUntil { get; set; }
+
+        /// <summary>
+        /// Method used for delivery or shipping.
+        /// </summary>
+        OneOrMany<DeliveryMethod?>? HasDeliveryMethod { get; set; }
+
+        /// <summary>
+        /// Item(s) being shipped.
+        /// </summary>
+        OneOrMany<IProduct>? ItemShipped { get; set; }
+
+        /// <summary>
+        /// Shipper's address.
+        /// </summary>
+        OneOrMany<IPostalAddress>? OriginAddress { get; set; }
+
+        /// <summary>
+        /// The overall order the items in this delivery were included in.
+        /// </summary>
+        OneOrMany<IOrder>? PartOfOrder { get; set; }
+
+        /// <summary>
+        /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+        /// </summary>
+        Values<IOrganization, IPerson>? Provider { get; set; }
+
+        /// <summary>
+        /// Shipper tracking number.
+        /// </summary>
+        OneOrMany<string>? TrackingNumber { get; set; }
+
+        /// <summary>
+        /// Tracking url for the parcel delivery.
+        /// </summary>
+        OneOrMany<Uri>? TrackingUrl { get; set; }
+    }
+
+    /// <summary>
+    /// The delivery of a parcel either via the postal service or a commercial service.
+    /// </summary>
     [DataContract]
-    public partial class ParcelDelivery : Intangible
+    public partial class ParcelDelivery : Intangible, IParcelDelivery
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,14 +82,14 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "deliveryAddress", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<PostalAddress>? DeliveryAddress { get; set; }
+        public OneOrMany<IPostalAddress>? DeliveryAddress { get; set; }
 
         /// <summary>
         /// New entry added as the package passes through each leg of its journey (from shipment to final delivery).
         /// </summary>
         [DataMember(Name = "deliveryStatus", Order = 207)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DeliveryEvent>? DeliveryStatus { get; set; }
+        public OneOrMany<IDeliveryEvent>? DeliveryStatus { get; set; }
 
         /// <summary>
         /// The earliest date the package may arrive.
@@ -56,28 +117,28 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "itemShipped", Order = 211)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Product>? ItemShipped { get; set; }
+        public OneOrMany<IProduct>? ItemShipped { get; set; }
 
         /// <summary>
         /// Shipper's address.
         /// </summary>
         [DataMember(Name = "originAddress", Order = 212)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<PostalAddress>? OriginAddress { get; set; }
+        public OneOrMany<IPostalAddress>? OriginAddress { get; set; }
 
         /// <summary>
         /// The overall order the items in this delivery were included in.
         /// </summary>
         [DataMember(Name = "partOfOrder", Order = 213)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Order>? PartOfOrder { get; set; }
+        public OneOrMany<IOrder>? PartOfOrder { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
         [DataMember(Name = "provider", Order = 214)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<Organization, Person>? Provider { get; set; }
+        public Values<IOrganization, IPerson>? Provider { get; set; }
 
         /// <summary>
         /// Shipper tracking number.

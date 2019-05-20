@@ -7,8 +7,29 @@ namespace Schema.NET
     /// <summary>
     /// The anatomical location at which two or more bones make contact.
     /// </summary>
+    public partial interface IJoint : IAnatomicalStructure
+    {
+        /// <summary>
+        /// The biomechanical properties of the bone.
+        /// </summary>
+        OneOrMany<string>? BiomechnicalClass { get; set; }
+
+        /// <summary>
+        /// The degree of mobility the joint allows.
+        /// </summary>
+        Values<IMedicalEntity, string>? FunctionalClass { get; set; }
+
+        /// <summary>
+        /// The name given to how bone physically connects to each other.
+        /// </summary>
+        OneOrMany<string>? StructuralClass { get; set; }
+    }
+
+    /// <summary>
+    /// The anatomical location at which two or more bones make contact.
+    /// </summary>
     [DataContract]
-    public partial class Joint : AnatomicalStructure
+    public partial class Joint : AnatomicalStructure, IJoint
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -28,7 +49,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "functionalClass", Order = 307)]
         [JsonConverter(typeof(ValuesConverter))]
-        public Values<MedicalEntity, string>? FunctionalClass { get; set; }
+        public Values<IMedicalEntity, string>? FunctionalClass { get; set; }
 
         /// <summary>
         /// The name given to how bone physically connects to each other.

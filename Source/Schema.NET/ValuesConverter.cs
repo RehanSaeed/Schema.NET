@@ -133,7 +133,7 @@ namespace Schema.NET
                             }
                             else
                             {
-                                args = token.ToObject(type); // This is expected to throw on some case
+                                args = token.ToObject(ToClass(type)); // This is expected to throw on some case
                             }
                         }
 
@@ -198,9 +198,27 @@ namespace Schema.NET
             token.WriteTo(writer);
         }
 
+        /// <summary>
+        /// Gets the class type definition.
+        /// </summary>
+        /// <param name="type">The type under consideration.</param>
+        /// <returns>
+        /// The implementing class for <paramref name="type" /> or <paramref name="type" /> if it is already a class.
+        /// </returns>
+        private static Type ToClass(Type type)
+        {
+            if (type.GetTypeInfo().IsInterface)
+            {
+                return Type.GetType($"{type.Namespace}.{type.Name.Substring(1)}");
+            }
+
+            return type;
+        }
+
         private static object ReadJsonArray(JToken token, Type type)
         {
-            var listType = typeof(List<>).MakeGenericType(type);
+            var classType = ToClass(type);
+            var listType = typeof(List<>).MakeGenericType(classType);
             var list = Activator.CreateInstance(listType);
 
             foreach (var childToken in token.Children())
@@ -208,19 +226,19 @@ namespace Schema.NET
                 var typeName = GetTypeNameFromToken(childToken);
                 if (string.IsNullOrEmpty(typeName))
                 {
-                    var item = childToken.ToObject(type);
+                    var item = childToken.ToObject(classType);
                     listType
-                        .GetRuntimeMethod(nameof(List<object>.Add), new[] { type })
+                        .GetRuntimeMethod(nameof(List<object>.Add), new[] { classType })
                         .Invoke(list, new object[] { item });
                 }
                 else
                 {
                     var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                    if (builtType != null && GetTypeHierarchy(builtType).Any(x => x == type))
+                    if (builtType != null && GetTypeHierarchy(builtType).Any(x => x == classType))
                     {
                         var child = (Thing)childToken.ToObject(builtType);
                         listType
-                            .GetRuntimeMethod(nameof(List<object>.Add), new[] { type })
+                            .GetRuntimeMethod(nameof(List<object>.Add), new[] { classType })
                             .Invoke(list, new object[] { child });
                     }
                 }

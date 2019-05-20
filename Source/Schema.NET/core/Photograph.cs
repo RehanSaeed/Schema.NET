@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A photograph.
     /// </summary>
+    public partial interface IPhotograph : ICreativeWork
+    {
+    }
+
+    /// <summary>
+    /// A photograph.
+    /// </summary>
     [DataContract]
-    public partial class Photograph : CreativeWork
+    public partial class Photograph : CreativeWork, IPhotograph
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

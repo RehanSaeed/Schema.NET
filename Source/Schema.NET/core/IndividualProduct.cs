@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// A single, identifiable product instance (e.g. a laptop with a particular serial number).
     /// </summary>
+    public partial interface IIndividualProduct : IProduct
+    {
+        /// <summary>
+        /// The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
+        /// </summary>
+        OneOrMany<string>? SerialNumber { get; set; }
+    }
+
+    /// <summary>
+    /// A single, identifiable product instance (e.g. a laptop with a particular serial number).
+    /// </summary>
     [DataContract]
-    public partial class IndividualProduct : Product
+    public partial class IndividualProduct : Product, IIndividualProduct
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

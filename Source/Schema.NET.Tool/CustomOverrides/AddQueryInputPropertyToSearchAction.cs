@@ -1,4 +1,4 @@
-namespace Schema.NET.Tool.Overrides
+namespace Schema.NET.Tool.CustomOverrides
 {
     using System;
     using System.Collections.Generic;

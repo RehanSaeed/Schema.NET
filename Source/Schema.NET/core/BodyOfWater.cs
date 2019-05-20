@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A body of water, such as a sea, ocean, or lake.
     /// </summary>
+    public partial interface IBodyOfWater : ILandform
+    {
+    }
+
+    /// <summary>
+    /// A body of water, such as a sea, ocean, or lake.
+    /// </summary>
     [DataContract]
-    public partial class BodyOfWater : Landform
+    public partial class BodyOfWater : Landform, IBodyOfWater
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A spreadsheet file.
     /// </summary>
+    public partial interface ISpreadsheetDigitalDocument : IDigitalDocument
+    {
+    }
+
+    /// <summary>
+    /// A spreadsheet file.
+    /// </summary>
     [DataContract]
-    public partial class SpreadsheetDigitalDocument : DigitalDocument
+    public partial class SpreadsheetDigitalDocument : DigitalDocument, ISpreadsheetDigitalDocument
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A theater or other performing art center.
     /// </summary>
+    public partial interface IPerformingArtsTheater : ICivicStructure
+    {
+    }
+
+    /// <summary>
+    /// A theater or other performing art center.
+    /// </summary>
     [DataContract]
-    public partial class PerformingArtsTheater : CivicStructure
+    public partial class PerformingArtsTheater : CivicStructure, IPerformingArtsTheater
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// The act of reaching a draw in a competitive activity.
     /// </summary>
+    public partial interface ITieAction : IAchieveAction
+    {
+    }
+
+    /// <summary>
+    /// The act of reaching a draw in a competitive activity.
+    /// </summary>
     [DataContract]
-    public partial class TieAction : AchieveAction
+    public partial class TieAction : AchieveAction, ITieAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A courthouse.
     /// </summary>
+    public partial interface ICourthouse : IGovernmentBuilding
+    {
+    }
+
+    /// <summary>
+    /// A courthouse.
+    /// </summary>
     [DataContract]
-    public partial class Courthouse : GovernmentBuilding
+    public partial class Courthouse : GovernmentBuilding, ICourthouse
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

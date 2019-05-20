@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A tattoo parlor.
     /// </summary>
+    public partial interface ITattooParlor : IHealthAndBeautyBusiness
+    {
+    }
+
+    /// <summary>
+    /// A tattoo parlor.
+    /// </summary>
     [DataContract]
-    public partial class TattooParlor : HealthAndBeautyBusiness
+    public partial class TattooParlor : HealthAndBeautyBusiness, ITattooParlor
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

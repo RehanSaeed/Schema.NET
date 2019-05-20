@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A pond.
     /// </summary>
+    public partial interface IPond : IBodyOfWater
+    {
+    }
+
+    /// <summary>
+    /// A pond.
+    /// </summary>
     [DataContract]
-    public partial class Pond : BodyOfWater
+    public partial class Pond : BodyOfWater, IPond
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

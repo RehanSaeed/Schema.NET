@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// An agent orders a (not yet released) object/product/service to be delivered/sent.
     /// </summary>
+    public partial interface IPreOrderAction : ITradeAction
+    {
+    }
+
+    /// <summary>
+    /// An agent orders a (not yet released) object/product/service to be delivered/sent.
+    /// </summary>
     [DataContract]
-    public partial class PreOrderAction : TradeAction
+    public partial class PreOrderAction : TradeAction, IPreOrderAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

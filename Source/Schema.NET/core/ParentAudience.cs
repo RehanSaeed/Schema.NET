@@ -7,8 +7,24 @@ namespace Schema.NET
     /// <summary>
     /// A set of characteristics describing parents, who can be interested in viewing some content.
     /// </summary>
+    public partial interface IParentAudience : IPeopleAudience
+    {
+        /// <summary>
+        /// Maximal age of the child.
+        /// </summary>
+        OneOrMany<int?>? ChildMaxAge { get; set; }
+
+        /// <summary>
+        /// Minimal age of the child.
+        /// </summary>
+        OneOrMany<int?>? ChildMinAge { get; set; }
+    }
+
+    /// <summary>
+    /// A set of characteristics describing parents, who can be interested in viewing some content.
+    /// </summary>
     [DataContract]
-    public partial class ParentAudience : PeopleAudience
+    public partial class ParentAudience : PeopleAudience, IParentAudience
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

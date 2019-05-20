@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// An audiobook.
     /// </summary>
+    public partial interface IAudiobook : IAudioObjectAndBook
+    {
+        /// <summary>
+        /// A person who reads (performs) the audiobook.
+        /// </summary>
+        OneOrMany<IPerson>? ReadBy { get; set; }
+    }
+
+    /// <summary>
+    /// An audiobook.
+    /// </summary>
     [DataContract]
-    public partial class Audiobook : AudioObjectAndBook
+    public partial class Audiobook : AudioObjectAndBook, IAudiobook
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -28,6 +39,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "readBy", Order = 407)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Person>? ReadBy { get; set; }
+        public OneOrMany<IPerson>? ReadBy { get; set; }
     }
 }

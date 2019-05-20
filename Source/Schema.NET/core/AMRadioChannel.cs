@@ -7,8 +7,15 @@ namespace Schema.NET
     /// <summary>
     /// A radio channel that uses AM.
     /// </summary>
+    public partial interface IAMRadioChannel : IRadioChannel
+    {
+    }
+
+    /// <summary>
+    /// A radio channel that uses AM.
+    /// </summary>
     [DataContract]
-    public partial class AMRadioChannel : RadioChannel
+    public partial class AMRadioChannel : RadioChannel, IAMRadioChannel
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

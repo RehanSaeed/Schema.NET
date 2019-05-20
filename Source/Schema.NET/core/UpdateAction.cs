@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// The act of managing by changing/editing the state of the object.
     /// </summary>
+    public partial interface IUpdateAction : IAction
+    {
+        /// <summary>
+        /// A sub property of object. The collection target of the action.
+        /// </summary>
+        OneOrMany<IThing>? TargetCollection { get; set; }
+    }
+
+    /// <summary>
+    /// The act of managing by changing/editing the state of the object.
+    /// </summary>
     [DataContract]
-    public partial class UpdateAction : Action
+    public partial class UpdateAction : Action, IUpdateAction
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "targetCollection", Order = 206)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Thing>? TargetCollection { get; set; }
+        public OneOrMany<IThing>? TargetCollection { get; set; }
     }
 }

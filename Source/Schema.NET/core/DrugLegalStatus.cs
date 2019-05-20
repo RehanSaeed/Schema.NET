@@ -7,8 +7,19 @@ namespace Schema.NET
     /// <summary>
     /// The legal availability status of a medical drug.
     /// </summary>
+    public partial interface IDrugLegalStatus : IMedicalIntangible
+    {
+        /// <summary>
+        /// The location in which the status applies.
+        /// </summary>
+        OneOrMany<IAdministrativeArea>? ApplicableLocation { get; set; }
+    }
+
+    /// <summary>
+    /// The legal availability status of a medical drug.
+    /// </summary>
     [DataContract]
-    public partial class DrugLegalStatus : MedicalIntangible
+    public partial class DrugLegalStatus : MedicalIntangible, IDrugLegalStatus
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -21,6 +32,6 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "applicableLocation", Order = 306)]
         [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<AdministrativeArea>? ApplicableLocation { get; set; }
+        public OneOrMany<IAdministrativeArea>? ApplicableLocation { get; set; }
     }
 }
