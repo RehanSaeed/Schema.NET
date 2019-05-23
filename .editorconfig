@@ -1,5 +1,5 @@
-# Version: 1.0.0 (Using https://semver.org/)
-# Updated: 08/05/2019
+# Version: 1.0.2 (Using https://semver.org/)
+# Updated: 2019-05-22
 # See https://github.com/RehanSaeed/EditorConfig for updates to this file.
 # See http://EditorConfig.org for more information about .editorconfig files.
 
@@ -219,10 +219,14 @@ dotnet_naming_style.prefix_interface_with_i_style.required_prefix = I
 # prefix_type_parameters_with_t_style - Generic Type Parameters must be PascalCase and the first character must be a 'T'
 dotnet_naming_style.prefix_type_parameters_with_t_style.capitalization = pascal_case
 dotnet_naming_style.prefix_type_parameters_with_t_style.required_prefix = T
-# invalid_style - Anything that has this style applied is marked as invalid
-dotnet_naming_style.invalid_style.capitalization  = pascal_case
-dotnet_naming_style.invalid_style.required_prefix = ____INVALID____
-dotnet_naming_style.invalid_style.required_suffix = ____INVALID____
+# disallowed_style - Anything that has this style applied is marked as disallowed
+dotnet_naming_style.disallowed_style.capitalization  = pascal_case
+dotnet_naming_style.disallowed_style.required_prefix = ____RULE_VIOLATION____
+dotnet_naming_style.disallowed_style.required_suffix = ____RULE_VIOLATION____
+# internal_error_style - This style should never occur... if it does, it's indicates a bug in file or in the parser using the file
+dotnet_naming_style.internal_error_style.capitalization  = pascal_case
+dotnet_naming_style.internal_error_style.required_prefix = ____INTERNAL_ERROR____
+dotnet_naming_style.internal_error_style.required_suffix = ____INTERNAL_ERROR____
 
 ##########################################
 # .NET Design Guideline Field Naming Rules
@@ -248,18 +252,18 @@ dotnet_naming_rule.public_protected_static_readonly_fields_must_be_pascal_case_r
 dotnet_naming_rule.public_protected_static_readonly_fields_must_be_pascal_case_rule.style      = pascal_case_style
 dotnet_naming_rule.public_protected_static_readonly_fields_must_be_pascal_case_rule.severity   = warning
 
-# Other public/protected/protected_internal fields are invalid
+# No other public/protected/protected_internal fields are allowed
 # https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/field
 dotnet_naming_symbols.other_public_protected_fields_group.applicable_accessibilities = public, protected, protected_internal
 dotnet_naming_symbols.other_public_protected_fields_group.applicable_kinds           = field
-dotnet_naming_rule.other_public_protected_fields_invalid_rule.symbols                = other_public_protected_fields_group
-dotnet_naming_rule.other_public_protected_fields_invalid_rule.style                  = invalid_style
-dotnet_naming_rule.other_public_protected_fields_invalid_rule.severity               = error
+dotnet_naming_rule.other_public_protected_fields_disallowed_rule.symbols             = other_public_protected_fields_group
+dotnet_naming_rule.other_public_protected_fields_disallowed_rule.style               = disallowed_style
+dotnet_naming_rule.other_public_protected_fields_disallowed_rule.severity            = error
 
 ##########################################
 # StyleCop Field Naming Rules
 # Naming rules for fields follow the StyleCop analyzers
-# This does not override any rules using invalid_style above
+# This does not override any rules using disallowed_style above
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers
 ##########################################
 
@@ -281,15 +285,15 @@ dotnet_naming_rule.stylecop_static_readonly_fields_must_be_pascal_case_rule.symb
 dotnet_naming_rule.stylecop_static_readonly_fields_must_be_pascal_case_rule.style      = pascal_case_style
 dotnet_naming_rule.stylecop_static_readonly_fields_must_be_pascal_case_rule.severity   = warning
 
-# All non-private instance fields are invalid
+# No non-private instance fields are allowed
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1401.md
 dotnet_naming_symbols.stylecop_fields_must_be_private_group.applicable_accessibilities = public, internal, protected_internal, protected, private_protected
 dotnet_naming_symbols.stylecop_fields_must_be_private_group.applicable_kinds           = field
 dotnet_naming_rule.stylecop_instance_fields_must_be_private_rule.symbols               = stylecop_fields_must_be_private_group
-dotnet_naming_rule.stylecop_instance_fields_must_be_private_rule.style                 = invalid_style
+dotnet_naming_rule.stylecop_instance_fields_must_be_private_rule.style                 = disallowed_style
 dotnet_naming_rule.stylecop_instance_fields_must_be_private_rule.severity              = error
 
-# private fields must be camelCase
+# Private fields must be camelCase
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1306.md
 dotnet_naming_symbols.stylecop_private_fields_group.applicable_accessibilities = private
 dotnet_naming_symbols.stylecop_private_fields_group.applicable_kinds           = field
@@ -300,10 +304,20 @@ dotnet_naming_rule.stylecop_private_fields_must_be_camel_case_rule.severity    =
 # Local variables must be camelCase
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1312.md
 dotnet_naming_symbols.stylecop_local_fields_group.applicable_accessibilities = local
-dotnet_naming_symbols.stylecop_local_fields_group.applicable_kinds           = field
+dotnet_naming_symbols.stylecop_local_fields_group.applicable_kinds           = local
 dotnet_naming_rule.stylecop_local_fields_must_be_camel_case_rule.symbols     = stylecop_local_fields_group
 dotnet_naming_rule.stylecop_local_fields_must_be_camel_case_rule.style       = camel_case_style
 dotnet_naming_rule.stylecop_local_fields_must_be_camel_case_rule.severity    = silent
+
+# This rule should never fire.  However, it's included for at least two purposes:
+# First, it helps to understand, reason about, and root-case certain types of issues, such as bugs in .editorconfig parsers.
+# Second, it helps to raise immediate awareness if a new field type is added (as occurred recently in C#).
+dotnet_naming_symbols.sanity_check_uncovered_field_case_group.applicable_accessibilities = *
+dotnet_naming_symbols.sanity_check_uncovered_field_case_group.applicable_kinds           = field
+dotnet_naming_rule.sanity_check_uncovered_field_case_rule.symbols  = sanity_check_uncovered_field_case_group
+dotnet_naming_rule.sanity_check_uncovered_field_case_rule.style    = internal_error_style
+dotnet_naming_rule.sanity_check_uncovered_field_case_rule.severity = error
+
 
 ##########################################
 # Other Naming Rules
@@ -349,7 +363,6 @@ dotnet_naming_rule.parameters_rule.severity             = warning
 ##########################################
 # License
 ##########################################
-
 # The following applies as to the .editorconfig file ONLY, and is
 # included below for reference, per the requirements of the license
 # corresponding to this .editorconfig file.
@@ -380,3 +393,4 @@ dotnet_naming_rule.parameters_rule.severity             = warning
 # WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
+##########################################
