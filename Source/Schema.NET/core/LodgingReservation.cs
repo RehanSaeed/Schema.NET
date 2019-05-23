@@ -13,22 +13,22 @@ namespace Schema.NET
         /// <summary>
         /// The earliest someone may check into a lodging establishment.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? CheckinTime { get; set; }
+        OneOrMany<DateTimeOffset?> CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? CheckoutTime { get; set; }
+        OneOrMany<DateTimeOffset?> CheckoutTime { get; set; }
 
         /// <summary>
         /// A full description of the lodging unit.
         /// </summary>
-        OneOrMany<string>? LodgingUnitDescription { get; set; }
+        OneOrMany<string> LodgingUnitDescription { get; set; }
 
         /// <summary>
         /// Textual description of the unit type (including suite vs. room, size of bed, etc.).
         /// </summary>
-        OneOrMany<string>? LodgingUnitType { get; set; }
+        OneOrMany<string> LodgingUnitType { get; set; }
 
         /// <summary>
         /// The number of adults staying in the unit.
@@ -58,42 +58,42 @@ namespace Schema.NET
         /// The earliest someone may check into a lodging establishment.
         /// </summary>
         [DataMember(Name = "checkinTime", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? CheckinTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
         [DataMember(Name = "checkoutTime", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? CheckoutTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> CheckoutTime { get; set; }
 
         /// <summary>
         /// A full description of the lodging unit.
         /// </summary>
         [DataMember(Name = "lodgingUnitDescription", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? LodgingUnitDescription { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> LodgingUnitDescription { get; set; }
 
         /// <summary>
         /// Textual description of the unit type (including suite vs. room, size of bed, etc.).
         /// </summary>
         [DataMember(Name = "lodgingUnitType", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? LodgingUnitType { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> LodgingUnitType { get; set; }
 
         /// <summary>
         /// The number of adults staying in the unit.
         /// </summary>
         [DataMember(Name = "numAdults", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<int?, IQuantitativeValue>? NumAdults { get; set; }
 
         /// <summary>
         /// The number of children staying in the unit.
         /// </summary>
         [DataMember(Name = "numChildren", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<int?, IQuantitativeValue>? NumChildren { get; set; }
     }
 }

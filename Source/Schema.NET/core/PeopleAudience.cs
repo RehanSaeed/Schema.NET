@@ -12,37 +12,37 @@ namespace Schema.NET
         /// <summary>
         /// Specifying the health condition(s) of a patient, medical study, or other target audience.
         /// </summary>
-        OneOrMany<IMedicalCondition>? HealthCondition { get; set; }
+        OneOrMany<IMedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's gender.
         /// </summary>
-        OneOrMany<string>? RequiredGender { get; set; }
+        OneOrMany<string> RequiredGender { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's maximum age.
         /// </summary>
-        OneOrMany<int?>? RequiredMaxAge { get; set; }
+        OneOrMany<int?> RequiredMaxAge { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's minimum age.
         /// </summary>
-        OneOrMany<int?>? RequiredMinAge { get; set; }
+        OneOrMany<int?> RequiredMinAge { get; set; }
 
         /// <summary>
         /// The gender of the person or audience.
         /// </summary>
-        OneOrMany<string>? SuggestedGender { get; set; }
+        OneOrMany<string> SuggestedGender { get; set; }
 
         /// <summary>
         /// Maximal age recommended for viewing content.
         /// </summary>
-        OneOrMany<int?>? SuggestedMaxAge { get; set; }
+        OneOrMany<int?> SuggestedMaxAge { get; set; }
 
         /// <summary>
         /// Minimal age recommended for viewing content.
         /// </summary>
-        OneOrMany<int?>? SuggestedMinAge { get; set; }
+        OneOrMany<int?> SuggestedMinAge { get; set; }
     }
 
     /// <summary>
@@ -61,49 +61,49 @@ namespace Schema.NET
         /// Specifying the health condition(s) of a patient, medical study, or other target audience.
         /// </summary>
         [DataMember(Name = "healthCondition", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalCondition>? HealthCondition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's gender.
         /// </summary>
         [DataMember(Name = "requiredGender", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? RequiredGender { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> RequiredGender { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's maximum age.
         /// </summary>
         [DataMember(Name = "requiredMaxAge", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? RequiredMaxAge { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> RequiredMaxAge { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's minimum age.
         /// </summary>
         [DataMember(Name = "requiredMinAge", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? RequiredMinAge { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> RequiredMinAge { get; set; }
 
         /// <summary>
         /// The gender of the person or audience.
         /// </summary>
         [DataMember(Name = "suggestedGender", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SuggestedGender { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SuggestedGender { get; set; }
 
         /// <summary>
         /// Maximal age recommended for viewing content.
         /// </summary>
         [DataMember(Name = "suggestedMaxAge", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? SuggestedMaxAge { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> SuggestedMaxAge { get; set; }
 
         /// <summary>
         /// Minimal age recommended for viewing content.
         /// </summary>
         [DataMember(Name = "suggestedMinAge", Order = 312)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? SuggestedMinAge { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> SuggestedMinAge { get; set; }
     }
 }

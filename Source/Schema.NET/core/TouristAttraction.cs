@@ -36,14 +36,14 @@ namespace Schema.NET
         /// A language someone may use with or at the item, service or place. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/inLanguage"&gt;inLanguage&lt;/a&gt;
         /// </summary>
         [DataMember(Name = "availableLanguage", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ILanguage, string>? AvailableLanguage { get; set; }
 
         /// <summary>
         /// Attraction suitable for type(s) of tourist. eg. Children, visitors from a particular country, etc.
         /// </summary>
         [DataMember(Name = "touristType", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAudience, string>? TouristType { get; set; }
     }
 }

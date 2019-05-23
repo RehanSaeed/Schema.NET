@@ -12,47 +12,47 @@ namespace Schema.NET
         /// <summary>
         /// If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
         /// </summary>
-        OneOrMany<string>? AssociatedPathophysiology { get; set; }
+        OneOrMany<string> AssociatedPathophysiology { get; set; }
 
         /// <summary>
         /// Location in the body of the anatomical structure.
         /// </summary>
-        OneOrMany<string>? BodyLocation { get; set; }
+        OneOrMany<string> BodyLocation { get; set; }
 
         /// <summary>
         /// Other anatomical structures to which this structure is connected.
         /// </summary>
-        OneOrMany<IAnatomicalStructure>? ConnectedTo { get; set; }
+        OneOrMany<IAnatomicalStructure> ConnectedTo { get; set; }
 
         /// <summary>
         /// An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
         /// </summary>
-        OneOrMany<IImageObject>? Diagram { get; set; }
+        OneOrMany<IImageObject> Diagram { get; set; }
 
         /// <summary>
         /// Function of the anatomical structure.
         /// </summary>
-        OneOrMany<string>? Function { get; set; }
+        OneOrMany<string> Function { get; set; }
 
         /// <summary>
         /// The anatomical or organ system that this structure is part of.
         /// </summary>
-        OneOrMany<IAnatomicalSystem>? PartOfSystem { get; set; }
+        OneOrMany<IAnatomicalSystem> PartOfSystem { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
-        OneOrMany<IMedicalCondition>? RelatedCondition { get; set; }
+        OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
-        OneOrMany<IMedicalTherapy>? RelatedTherapy { get; set; }
+        OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
 
         /// <summary>
         /// Component (sub-)structure(s) that comprise this anatomical structure.
         /// </summary>
-        OneOrMany<IAnatomicalStructure>? SubStructure { get; set; }
+        OneOrMany<IAnatomicalStructure> SubStructure { get; set; }
     }
 
     /// <summary>
@@ -71,63 +71,63 @@ namespace Schema.NET
         /// If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
         /// </summary>
         [DataMember(Name = "associatedPathophysiology", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AssociatedPathophysiology { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AssociatedPathophysiology { get; set; }
 
         /// <summary>
         /// Location in the body of the anatomical structure.
         /// </summary>
         [DataMember(Name = "bodyLocation", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BodyLocation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> BodyLocation { get; set; }
 
         /// <summary>
         /// Other anatomical structures to which this structure is connected.
         /// </summary>
         [DataMember(Name = "connectedTo", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalStructure>? ConnectedTo { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalStructure> ConnectedTo { get; set; }
 
         /// <summary>
         /// An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
         /// </summary>
         [DataMember(Name = "diagram", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IImageObject>? Diagram { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IImageObject> Diagram { get; set; }
 
         /// <summary>
         /// Function of the anatomical structure.
         /// </summary>
         [DataMember(Name = "function", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Function { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Function { get; set; }
 
         /// <summary>
         /// The anatomical or organ system that this structure is part of.
         /// </summary>
         [DataMember(Name = "partOfSystem", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalSystem>? PartOfSystem { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalSystem> PartOfSystem { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalCondition>? RelatedCondition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 213)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalTherapy>? RelatedTherapy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
 
         /// <summary>
         /// Component (sub-)structure(s) that comprise this anatomical structure.
         /// </summary>
         [DataMember(Name = "subStructure", Order = 214)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalStructure>? SubStructure { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalStructure> SubStructure { get; set; }
     }
 }

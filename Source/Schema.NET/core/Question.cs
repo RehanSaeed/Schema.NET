@@ -17,12 +17,12 @@ namespace Schema.NET
         /// <summary>
         /// The number of answers this question has received.
         /// </summary>
-        OneOrMany<int?>? AnswerCount { get; set; }
+        OneOrMany<int?> AnswerCount { get; set; }
 
         /// <summary>
         /// The number of downvotes this question, answer or comment has received from the community.
         /// </summary>
-        OneOrMany<int?>? DownvoteCount { get; set; }
+        OneOrMany<int?> DownvoteCount { get; set; }
 
         /// <summary>
         /// An answer (possibly one of several, possibly incorrect) to a Question, e.g. on a Question/Answer site.
@@ -32,7 +32,7 @@ namespace Schema.NET
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.
         /// </summary>
-        OneOrMany<int?>? UpvoteCount { get; set; }
+        OneOrMany<int?> UpvoteCount { get; set; }
     }
 
     /// <summary>
@@ -51,35 +51,35 @@ namespace Schema.NET
         /// The answer(s) that has been accepted as best, typically on a Question/Answer site. Sites vary in their selection mechanisms, e.g. drawing on community opinion and/or the view of the Question author.
         /// </summary>
         [DataMember(Name = "acceptedAnswer", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAnswer, IItemList>? AcceptedAnswer { get; set; }
 
         /// <summary>
         /// The number of answers this question has received.
         /// </summary>
         [DataMember(Name = "answerCount", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? AnswerCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> AnswerCount { get; set; }
 
         /// <summary>
         /// The number of downvotes this question, answer or comment has received from the community.
         /// </summary>
         [DataMember(Name = "downvoteCount", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? DownvoteCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> DownvoteCount { get; set; }
 
         /// <summary>
         /// An answer (possibly one of several, possibly incorrect) to a Question, e.g. on a Question/Answer site.
         /// </summary>
         [DataMember(Name = "suggestedAnswer", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAnswer, IItemList>? SuggestedAnswer { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.
         /// </summary>
         [DataMember(Name = "upvoteCount", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? UpvoteCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> UpvoteCount { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The end of the availability of the product or service included in the offer.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? AvailabilityEnds { get; set; }
+        OneOrMany<DateTimeOffset?> AvailabilityEnds { get; set; }
 
         /// <summary>
         /// The beginning of the availability of the product or service included in the offer.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? AvailabilityStarts { get; set; }
+        OneOrMany<DateTimeOffset?> AvailabilityStarts { get; set; }
 
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
@@ -33,7 +33,7 @@ namespace Schema.NET
         /// <summary>
         /// An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
         /// </summary>
-        OneOrMany<IOffer>? ExpectsAcceptanceOf { get; set; }
+        OneOrMany<IOffer> ExpectsAcceptanceOf { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').
@@ -57,21 +57,21 @@ namespace Schema.NET
         /// The end of the availability of the product or service included in the offer.
         /// </summary>
         [DataMember(Name = "availabilityEnds", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? AvailabilityEnds { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> AvailabilityEnds { get; set; }
 
         /// <summary>
         /// The beginning of the availability of the product or service included in the offer.
         /// </summary>
         [DataMember(Name = "availabilityStarts", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? AvailabilityStarts { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> AvailabilityStarts { get; set; }
 
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
         [DataMember(Name = "category", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
 
         /// <summary>
@@ -79,21 +79,21 @@ namespace Schema.NET
         /// See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "eligibleRegion", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IGeoShape, IPlace, string>? EligibleRegion { get; set; }
 
         /// <summary>
         /// An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
         /// </summary>
         [DataMember(Name = "expectsAcceptanceOf", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOffer>? ExpectsAcceptanceOf { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOffer> ExpectsAcceptanceOf { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').
         /// </summary>
         [DataMember(Name = "requiresSubscription", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<bool?, IMediaSubscription>? RequiresSubscription { get; set; }
     }
 }

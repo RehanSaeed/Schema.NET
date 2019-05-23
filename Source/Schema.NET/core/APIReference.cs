@@ -12,22 +12,22 @@ namespace Schema.NET
         /// <summary>
         /// Associated product/technology version. e.g., .NET Framework 4.5.
         /// </summary>
-        OneOrMany<string>? AssemblyVersion { get; set; }
+        OneOrMany<string> AssemblyVersion { get; set; }
 
         /// <summary>
         /// Library file name e.g., mscorlib.dll, system.web.dll.
         /// </summary>
-        OneOrMany<string>? ExecutableLibraryName { get; set; }
+        OneOrMany<string> ExecutableLibraryName { get; set; }
 
         /// <summary>
         /// Indicates whether API is managed or unmanaged.
         /// </summary>
-        OneOrMany<string>? ProgrammingModel { get; set; }
+        OneOrMany<string> ProgrammingModel { get; set; }
 
         /// <summary>
         /// Type of app development: phone, Metro style, desktop, XBox, etc.
         /// </summary>
-        OneOrMany<string>? TargetPlatform { get; set; }
+        OneOrMany<string> TargetPlatform { get; set; }
     }
 
     /// <summary>
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// Associated product/technology version. e.g., .NET Framework 4.5.
         /// </summary>
         [DataMember(Name = "assemblyVersion", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AssemblyVersion { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AssemblyVersion { get; set; }
 
         /// <summary>
         /// Library file name e.g., mscorlib.dll, system.web.dll.
         /// </summary>
         [DataMember(Name = "executableLibraryName", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ExecutableLibraryName { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ExecutableLibraryName { get; set; }
 
         /// <summary>
         /// Indicates whether API is managed or unmanaged.
         /// </summary>
         [DataMember(Name = "programmingModel", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ProgrammingModel { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ProgrammingModel { get; set; }
 
         /// <summary>
         /// Type of app development: phone, Metro style, desktop, XBox, etc.
         /// </summary>
         [DataMember(Name = "targetPlatform", Order = 409)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TargetPlatform { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> TargetPlatform { get; set; }
     }
 }

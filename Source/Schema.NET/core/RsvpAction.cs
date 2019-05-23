@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// If responding yes, the number of guests who will attend in addition to the invitee.
         /// </summary>
-        OneOrMany<int?>? AdditionalNumberOfGuests { get; set; }
+        OneOrMany<int?> AdditionalNumberOfGuests { get; set; }
 
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
-        OneOrMany<IComment>? Comment { get; set; }
+        OneOrMany<IComment> Comment { get; set; }
 
         /// <summary>
         /// The response (yes, no, maybe) to the RSVP.
         /// </summary>
-        OneOrMany<RsvpResponseType?>? RsvpResponse { get; set; }
+        OneOrMany<RsvpResponseType?> RsvpResponse { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// If responding yes, the number of guests who will attend in addition to the invitee.
         /// </summary>
         [DataMember(Name = "additionalNumberOfGuests", Order = 506)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? AdditionalNumberOfGuests { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> AdditionalNumberOfGuests { get; set; }
 
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
         [DataMember(Name = "comment", Order = 507)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IComment>? Comment { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IComment> Comment { get; set; }
 
         /// <summary>
         /// The response (yes, no, maybe) to the RSVP.
         /// </summary>
         [DataMember(Name = "rsvpResponse", Order = 508)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<RsvpResponseType?>? RsvpResponse { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<RsvpResponseType?> RsvpResponse { get; set; }
     }
 }

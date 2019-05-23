@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The ACRISS Car Classification Code is a code used by many car rental companies, for classifying vehicles. ACRISS stands for Association of Car Rental Industry Systems and Standards.
         /// </summary>
-        OneOrMany<string>? AcrissCode { get; set; }
+        OneOrMany<string> AcrissCode { get; set; }
 
         /// <summary>
         /// The permitted total weight of cargo and installations (e.g. a roof rack) on top of the vehicle.&lt;br/&gt;&lt;br/&gt;
@@ -23,7 +23,7 @@ namespace Schema.NET
         /// &lt;li&gt;Note 3: Note that you can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        OneOrMany<IQuantitativeValue>? RoofLoad { get; set; }
+        OneOrMany<IQuantitativeValue> RoofLoad { get; set; }
     }
 
     /// <summary>
@@ -42,8 +42,8 @@ namespace Schema.NET
         /// The ACRISS Car Classification Code is a code used by many car rental companies, for classifying vehicles. ACRISS stands for Association of Car Rental Industry Systems and Standards.
         /// </summary>
         [DataMember(Name = "acrissCode", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AcrissCode { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AcrissCode { get; set; }
 
         /// <summary>
         /// The permitted total weight of cargo and installations (e.g. a roof rack) on top of the vehicle.&lt;br/&gt;&lt;br/&gt;
@@ -55,7 +55,7 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "roofLoad", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IQuantitativeValue>? RoofLoad { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuantitativeValue> RoofLoad { get; set; }
     }
 }

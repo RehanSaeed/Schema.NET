@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
         /// </summary>
-        OneOrMany<string>? AssociatedPathophysiology { get; set; }
+        OneOrMany<string> AssociatedPathophysiology { get; set; }
 
         /// <summary>
         /// Specifying something physically contained by something else. Typically used here for the underlying anatomical structures, such as organs, that comprise the anatomical system.
@@ -22,17 +22,17 @@ namespace Schema.NET
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
-        OneOrMany<IMedicalCondition>? RelatedCondition { get; set; }
+        OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// Related anatomical structure(s) that are not part of the system but relate or connect to it, such as vascular bundles associated with an organ system.
         /// </summary>
-        OneOrMany<IAnatomicalStructure>? RelatedStructure { get; set; }
+        OneOrMany<IAnatomicalStructure> RelatedStructure { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
-        OneOrMany<IMedicalTherapy>? RelatedTherapy { get; set; }
+        OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
     }
 
     /// <summary>
@@ -51,35 +51,35 @@ namespace Schema.NET
         /// If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
         /// </summary>
         [DataMember(Name = "associatedPathophysiology", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AssociatedPathophysiology { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AssociatedPathophysiology { get; set; }
 
         /// <summary>
         /// Specifying something physically contained by something else. Typically used here for the underlying anatomical structures, such as organs, that comprise the anatomical system.
         /// </summary>
         [DataMember(Name = "comprisedOf", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAnatomicalStructure, IAnatomicalSystem>? ComprisedOf { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalCondition>? RelatedCondition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// Related anatomical structure(s) that are not part of the system but relate or connect to it, such as vascular bundles associated with an organ system.
         /// </summary>
         [DataMember(Name = "relatedStructure", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalStructure>? RelatedStructure { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalStructure> RelatedStructure { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalTherapy>? RelatedTherapy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
     }
 }

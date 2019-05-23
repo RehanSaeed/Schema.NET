@@ -16,7 +16,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of instrument. The query used on this action.
         /// </summary>
-        OneOrMany<string>? Query { get; set; }
+        OneOrMany<string> Query { get; set; }
 
         /// <summary>
         /// Gets or sets the query input search parameter.
@@ -44,14 +44,14 @@ namespace Schema.NET
         /// A sub property of instrument. The query used on this action.
         /// </summary>
         [DataMember(Name = "query", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Query { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Query { get; set; }
 
         /// <summary>
         /// Gets or sets the query input search parameter.
         /// </summary>
         [DataMember(Name = "query-input", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, PropertyValueSpecification>? QueryInput { get; set; }
     }
 }

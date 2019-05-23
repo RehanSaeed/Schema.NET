@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The organization (airline, travelers' club, etc.) the membership is made with.
         /// </summary>
-        OneOrMany<IOrganization>? HostingOrganization { get; set; }
+        OneOrMany<IOrganization> HostingOrganization { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
@@ -22,7 +22,7 @@ namespace Schema.NET
         /// <summary>
         /// A unique identifier for the membership.
         /// </summary>
-        OneOrMany<string>? MembershipNumber { get; set; }
+        OneOrMany<string> MembershipNumber { get; set; }
 
         /// <summary>
         /// The number of membership points earned by the member. If necessary, the unitText can be used to express the units the points are issued in. (e.g. stars, miles, etc.)
@@ -32,7 +32,7 @@ namespace Schema.NET
         /// <summary>
         /// The program providing the membership.
         /// </summary>
-        OneOrMany<string>? ProgramName { get; set; }
+        OneOrMany<string> ProgramName { get; set; }
     }
 
     /// <summary>
@@ -51,35 +51,35 @@ namespace Schema.NET
         /// The organization (airline, travelers' club, etc.) the membership is made with.
         /// </summary>
         [DataMember(Name = "hostingOrganization", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOrganization>? HostingOrganization { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOrganization> HostingOrganization { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
         /// </summary>
         [DataMember(Name = "member", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Member { get; set; }
 
         /// <summary>
         /// A unique identifier for the membership.
         /// </summary>
         [DataMember(Name = "membershipNumber", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? MembershipNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> MembershipNumber { get; set; }
 
         /// <summary>
         /// The number of membership points earned by the member. If necessary, the unitText can be used to express the units the points are issued in. (e.g. stars, miles, etc.)
         /// </summary>
         [DataMember(Name = "membershipPointsEarned", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, IQuantitativeValue>? MembershipPointsEarned { get; set; }
 
         /// <summary>
         /// The program providing the membership.
         /// </summary>
         [DataMember(Name = "programName", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ProgramName { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ProgramName { get; set; }
     }
 }

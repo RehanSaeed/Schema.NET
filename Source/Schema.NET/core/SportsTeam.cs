@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// A person that acts as performing member of a sports team; a player as opposed to a coach.
         /// </summary>
-        OneOrMany<IPerson>? Athlete { get; set; }
+        OneOrMany<IPerson> Athlete { get; set; }
 
         /// <summary>
         /// A person that acts in a coaching role for a sports team.
         /// </summary>
-        OneOrMany<IPerson>? Coach { get; set; }
+        OneOrMany<IPerson> Coach { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// A person that acts as performing member of a sports team; a player as opposed to a coach.
         /// </summary>
         [DataMember(Name = "athlete", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Athlete { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Athlete { get; set; }
 
         /// <summary>
         /// A person that acts in a coaching role for a sports team.
         /// </summary>
         [DataMember(Name = "coach", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Coach { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Coach { get; set; }
     }
 }

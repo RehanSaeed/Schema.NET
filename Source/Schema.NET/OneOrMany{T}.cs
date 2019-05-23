@@ -204,32 +204,30 @@ namespace Schema.NET
         /// </returns>
         public bool Equals(OneOrMany<T> other)
         {
-            if (other.collection == null)
+            if (!this.HasOne && !other.HasOne && !this.HasMany && !other.HasMany)
             {
-                if (this.collection == null)
-                {
-                    return this.item.Equals(other.item);
-                }
+                return true;
             }
-            else
+            else if (this.HasOne && other.HasOne)
             {
-                if (this.collection != null)
+                return this.item.Equals(other.item);
+            }
+            else if (this.HasMany && other.HasMany)
+            {
+                if (this.collection.Count != other.collection.Count)
                 {
-                    if (this.collection.Count != other.collection.Count)
+                    return false;
+                }
+
+                for (var i = 0; i < this.collection.Count; i++)
+                {
+                    if (!EqualityComparer<T>.Default.Equals(this.collection[i], other.collection[i]))
                     {
                         return false;
                     }
-
-                    for (var i = 0; i < this.collection.Count; i++)
-                    {
-                        if (!EqualityComparer<T>.Default.Equals(this.collection[i], other.collection[i]))
-                        {
-                            return false;
-                        }
-                    }
-
-                    return true;
                 }
+
+                return true;
             }
 
             return false;
@@ -252,13 +250,13 @@ namespace Schema.NET
         /// </returns>
         public override int GetHashCode()
         {
-            if (this.HasMany)
-            {
-                return HashCode.OfEach(this.collection);
-            }
-            else if (this.HasOne)
+            if (this.HasOne)
             {
                 return HashCode.Of(this.item);
+            }
+            else if (this.HasMany)
+            {
+                return HashCode.OfEach(this.collection);
             }
 
             return 0;

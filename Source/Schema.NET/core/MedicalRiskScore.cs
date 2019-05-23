@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The algorithm or rules to follow to compute the score.
         /// </summary>
-        OneOrMany<string>? Algorithm { get; set; }
+        OneOrMany<string> Algorithm { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The algorithm or rules to follow to compute the score.
         /// </summary>
         [DataMember(Name = "algorithm", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Algorithm { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Algorithm { get; set; }
     }
 }

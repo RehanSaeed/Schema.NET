@@ -13,17 +13,17 @@ namespace Schema.NET
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
         /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
-        OneOrMany<IPropertyValue>? AdditionalProperty { get; set; }
+        OneOrMany<IPropertyValue> AdditionalProperty { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
         /// </summary>
-        OneOrMany<double?>? MaxValue { get; set; }
+        OneOrMany<double?> MaxValue { get; set; }
 
         /// <summary>
         /// The lower value of some characteristic or property.
         /// </summary>
-        OneOrMany<double?>? MinValue { get; set; }
+        OneOrMany<double?> MinValue { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
@@ -34,7 +34,7 @@ namespace Schema.NET
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
         /// &lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
         /// </summary>
-        OneOrMany<string>? UnitText { get; set; }
+        OneOrMany<string> UnitText { get; set; }
 
         /// <summary>
         /// The value of the quantitative value or property value node.&lt;br/&gt;&lt;br/&gt;
@@ -70,28 +70,28 @@ namespace Schema.NET
         /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPropertyValue>? AdditionalProperty { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPropertyValue> AdditionalProperty { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
         /// </summary>
         [DataMember(Name = "maxValue", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? MaxValue { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> MaxValue { get; set; }
 
         /// <summary>
         /// The lower value of some characteristic or property.
         /// </summary>
         [DataMember(Name = "minValue", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? MinValue { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> MinValue { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
         /// </summary>
         [DataMember(Name = "unitCode", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri>? UnitCode { get; set; }
 
         /// <summary>
@@ -99,8 +99,8 @@ namespace Schema.NET
         /// &lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "unitText", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? UnitText { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> UnitText { get; set; }
 
         /// <summary>
         /// The value of the quantitative value or property value node.&lt;br/&gt;&lt;br/&gt;
@@ -112,14 +112,14 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "value", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<bool?, double?, IStructuredValue, string>? Value { get; set; }
 
         /// <summary>
         /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
         /// </summary>
         [DataMember(Name = "valueReference", Order = 312)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPropertyValue, IQuantitativeValue, IStructuredValue>? ValueReference { get; set; }
     }
 }

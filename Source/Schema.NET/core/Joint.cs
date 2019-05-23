@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The biomechanical properties of the bone.
         /// </summary>
-        OneOrMany<string>? BiomechnicalClass { get; set; }
+        OneOrMany<string> BiomechnicalClass { get; set; }
 
         /// <summary>
         /// The degree of mobility the joint allows.
@@ -22,7 +22,7 @@ namespace Schema.NET
         /// <summary>
         /// The name given to how bone physically connects to each other.
         /// </summary>
-        OneOrMany<string>? StructuralClass { get; set; }
+        OneOrMany<string> StructuralClass { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The biomechanical properties of the bone.
         /// </summary>
         [DataMember(Name = "biomechnicalClass", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BiomechnicalClass { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> BiomechnicalClass { get; set; }
 
         /// <summary>
         /// The degree of mobility the joint allows.
         /// </summary>
         [DataMember(Name = "functionalClass", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMedicalEntity, string>? FunctionalClass { get; set; }
 
         /// <summary>
         /// The name given to how bone physically connects to each other.
         /// </summary>
         [DataMember(Name = "structuralClass", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? StructuralClass { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> StructuralClass { get; set; }
     }
 }

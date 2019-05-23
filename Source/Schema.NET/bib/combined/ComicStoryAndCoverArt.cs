@@ -29,35 +29,35 @@ namespace Schema.NET
         ///     primary artwork is done in watercolors or digital paints.
         /// </summary>
         [DataMember(Name = "artist", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<IPerson>? Artist { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<IPerson> Artist { get; set; }
 
         /// <summary>
         /// The individual who adds color to inked drawings.
         /// </summary>
         [DataMember(Name = "colorist", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<IPerson>? Colorist { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<IPerson> Colorist { get; set; }
 
         /// <summary>
         /// The individual who traces over the pencil drawings in ink after pencils are complete.
         /// </summary>
         [DataMember(Name = "inker", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<IPerson>? Inker { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<IPerson> Inker { get; set; }
 
         /// <summary>
         /// The individual who adds lettering, including speech balloons and sound effects, to artwork.
         /// </summary>
         [DataMember(Name = "letterer", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<IPerson>? Letterer { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<IPerson> Letterer { get; set; }
 
         /// <summary>
         /// The individual who draws the primary narrative artwork.
         /// </summary>
         [DataMember(Name = "penciler", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<IPerson>? Penciler { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<IPerson> Penciler { get; set; }
     }
 }

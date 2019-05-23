@@ -13,27 +13,27 @@ namespace Schema.NET
         /// The currency in which the monetary amount is expressed.&lt;br/&gt;&lt;br/&gt;
         /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
-        OneOrMany<string>? Currency { get; set; }
+        OneOrMany<string> Currency { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
         /// </summary>
-        OneOrMany<double?>? MaxValue { get; set; }
+        OneOrMany<double?> MaxValue { get; set; }
 
         /// <summary>
         /// The lower value of some characteristic or property.
         /// </summary>
-        OneOrMany<double?>? MinValue { get; set; }
+        OneOrMany<double?> MinValue { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
+        OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
 
         /// <summary>
         /// The value of the quantitative value or property value node.&lt;br/&gt;&lt;br/&gt;
@@ -64,36 +64,36 @@ namespace Schema.NET
         /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
         [DataMember(Name = "currency", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Currency { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Currency { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
         /// </summary>
         [DataMember(Name = "maxValue", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? MaxValue { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> MaxValue { get; set; }
 
         /// <summary>
         /// The lower value of some characteristic or property.
         /// </summary>
         [DataMember(Name = "minValue", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? MinValue { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> MinValue { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
         [DataMember(Name = "validFrom", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
         [DataMember(Name = "validThrough", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
 
         /// <summary>
         /// The value of the quantitative value or property value node.&lt;br/&gt;&lt;br/&gt;
@@ -105,7 +105,7 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "value", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<bool?, double?, IStructuredValue, string>? Value { get; set; }
     }
 }

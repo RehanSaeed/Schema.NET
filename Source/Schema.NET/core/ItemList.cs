@@ -24,7 +24,7 @@ namespace Schema.NET
         /// <summary>
         /// The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
         /// </summary>
-        OneOrMany<int?>? NumberOfItems { get; set; }
+        OneOrMany<int?> NumberOfItems { get; set; }
     }
 
     /// <summary>
@@ -45,21 +45,21 @@ namespace Schema.NET
         /// Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
         /// </summary>
         [DataMember(Name = "itemListElement", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IListItem, string, IThing>? ItemListElement { get; set; }
 
         /// <summary>
         /// Type of ordering (e.g. Ascending, Descending, Unordered).
         /// </summary>
         [DataMember(Name = "itemListOrder", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ItemListOrderType?, string>? ItemListOrder { get; set; }
 
         /// <summary>
         /// The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
         /// </summary>
         [DataMember(Name = "numberOfItems", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? NumberOfItems { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> NumberOfItems { get; set; }
     }
 }

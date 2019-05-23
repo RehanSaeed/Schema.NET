@@ -13,22 +13,22 @@ namespace Schema.NET
         /// <summary>
         /// Where a rental car can be dropped off.
         /// </summary>
-        OneOrMany<IPlace>? DropoffLocation { get; set; }
+        OneOrMany<IPlace> DropoffLocation { get; set; }
 
         /// <summary>
         /// When a rental car can be dropped off.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? DropoffTime { get; set; }
+        OneOrMany<DateTimeOffset?> DropoffTime { get; set; }
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
-        OneOrMany<IPlace>? PickupLocation { get; set; }
+        OneOrMany<IPlace> PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? PickupTime { get; set; }
+        OneOrMany<DateTimeOffset?> PickupTime { get; set; }
     }
 
     /// <summary>
@@ -48,28 +48,28 @@ namespace Schema.NET
         /// Where a rental car can be dropped off.
         /// </summary>
         [DataMember(Name = "dropoffLocation", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPlace>? DropoffLocation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPlace> DropoffLocation { get; set; }
 
         /// <summary>
         /// When a rental car can be dropped off.
         /// </summary>
         [DataMember(Name = "dropoffTime", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? DropoffTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> DropoffTime { get; set; }
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
         [DataMember(Name = "pickupLocation", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPlace>? PickupLocation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPlace> PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
         /// </summary>
         [DataMember(Name = "pickupTime", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? PickupTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> PickupTime { get; set; }
     }
 }

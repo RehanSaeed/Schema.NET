@@ -12,22 +12,22 @@ namespace Schema.NET
         /// <summary>
         /// Password, PIN, or access code needed for delivery (e.g. from a locker).
         /// </summary>
-        OneOrMany<string>? AccessCode { get; set; }
+        OneOrMany<string> AccessCode { get; set; }
 
         /// <summary>
         /// When the item is available for pickup from the store, locker, etc.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? AvailableFrom { get; set; }
+        OneOrMany<DateTimeOffset?> AvailableFrom { get; set; }
 
         /// <summary>
         /// After this date, the item will no longer be available for pickup.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? AvailableThrough { get; set; }
+        OneOrMany<DateTimeOffset?> AvailableThrough { get; set; }
 
         /// <summary>
         /// Method used for delivery or shipping.
         /// </summary>
-        OneOrMany<DeliveryMethod?>? HasDeliveryMethod { get; set; }
+        OneOrMany<DeliveryMethod?> HasDeliveryMethod { get; set; }
     }
 
     /// <summary>
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// Password, PIN, or access code needed for delivery (e.g. from a locker).
         /// </summary>
         [DataMember(Name = "accessCode", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AccessCode { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AccessCode { get; set; }
 
         /// <summary>
         /// When the item is available for pickup from the store, locker, etc.
         /// </summary>
         [DataMember(Name = "availableFrom", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? AvailableFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> AvailableFrom { get; set; }
 
         /// <summary>
         /// After this date, the item will no longer be available for pickup.
         /// </summary>
         [DataMember(Name = "availableThrough", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? AvailableThrough { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> AvailableThrough { get; set; }
 
         /// <summary>
         /// Method used for delivery or shipping.
         /// </summary>
         [DataMember(Name = "hasDeliveryMethod", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DeliveryMethod?>? HasDeliveryMethod { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DeliveryMethod?> HasDeliveryMethod { get; set; }
     }
 }

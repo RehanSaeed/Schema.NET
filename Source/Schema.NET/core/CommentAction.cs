@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of result. The Comment created or sent as a result of this action.
         /// </summary>
-        OneOrMany<IComment>? ResultComment { get; set; }
+        OneOrMany<IComment> ResultComment { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A sub property of result. The Comment created or sent as a result of this action.
         /// </summary>
         [DataMember(Name = "resultComment", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IComment>? ResultComment { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IComment> ResultComment { get; set; }
     }
 }

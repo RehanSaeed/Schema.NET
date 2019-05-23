@@ -12,37 +12,37 @@ namespace Schema.NET
         /// <summary>
         /// Obsolete term for &lt;a class="localLink" href="http://schema.org/muscleAction"&gt;muscleAction&lt;/a&gt;. Not to be confused with &lt;a class="localLink" href="http://schema.org/potentialAction"&gt;potentialAction&lt;/a&gt;.
         /// </summary>
-        OneOrMany<string>? Action { get; set; }
+        OneOrMany<string> Action { get; set; }
 
         /// <summary>
         /// The muscle whose action counteracts the specified muscle.
         /// </summary>
-        OneOrMany<IMuscle>? Antagonist { get; set; }
+        OneOrMany<IMuscle> Antagonist { get; set; }
 
         /// <summary>
         /// The blood vessel that carries blood from the heart to the muscle.
         /// </summary>
-        OneOrMany<IVessel>? BloodSupply { get; set; }
+        OneOrMany<IVessel> BloodSupply { get; set; }
 
         /// <summary>
         /// The place of attachment of a muscle, or what the muscle moves.
         /// </summary>
-        OneOrMany<IAnatomicalStructure>? Insertion { get; set; }
+        OneOrMany<IAnatomicalStructure> Insertion { get; set; }
 
         /// <summary>
         /// The movement the muscle generates.
         /// </summary>
-        OneOrMany<string>? MuscleAction { get; set; }
+        OneOrMany<string> MuscleAction { get; set; }
 
         /// <summary>
         /// The underlying innervation associated with the muscle.
         /// </summary>
-        OneOrMany<INerve>? Nerve { get; set; }
+        OneOrMany<INerve> Nerve { get; set; }
 
         /// <summary>
         /// The place or point where a muscle arises.
         /// </summary>
-        OneOrMany<IAnatomicalStructure>? Origin { get; set; }
+        OneOrMany<IAnatomicalStructure> Origin { get; set; }
     }
 
     /// <summary>
@@ -61,49 +61,49 @@ namespace Schema.NET
         /// Obsolete term for &lt;a class="localLink" href="http://schema.org/muscleAction"&gt;muscleAction&lt;/a&gt;. Not to be confused with &lt;a class="localLink" href="http://schema.org/potentialAction"&gt;potentialAction&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "action", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Action { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Action { get; set; }
 
         /// <summary>
         /// The muscle whose action counteracts the specified muscle.
         /// </summary>
         [DataMember(Name = "antagonist", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMuscle>? Antagonist { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMuscle> Antagonist { get; set; }
 
         /// <summary>
         /// The blood vessel that carries blood from the heart to the muscle.
         /// </summary>
         [DataMember(Name = "bloodSupply", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IVessel>? BloodSupply { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IVessel> BloodSupply { get; set; }
 
         /// <summary>
         /// The place of attachment of a muscle, or what the muscle moves.
         /// </summary>
         [DataMember(Name = "insertion", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalStructure>? Insertion { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalStructure> Insertion { get; set; }
 
         /// <summary>
         /// The movement the muscle generates.
         /// </summary>
         [DataMember(Name = "muscleAction", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? MuscleAction { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> MuscleAction { get; set; }
 
         /// <summary>
         /// The underlying innervation associated with the muscle.
         /// </summary>
         [DataMember(Name = "nerve", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<INerve>? Nerve { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<INerve> Nerve { get; set; }
 
         /// <summary>
         /// The place or point where a muscle arises.
         /// </summary>
         [DataMember(Name = "origin", Order = 312)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalStructure>? Origin { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalStructure> Origin { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The type of boarding policy used by the airline (e.g. zone-based or group-based).
         /// </summary>
-        OneOrMany<BoardingPolicyType?>? BoardingPolicy { get; set; }
+        OneOrMany<BoardingPolicyType?> BoardingPolicy { get; set; }
 
         /// <summary>
         /// IATA identifier for an airline or airport.
         /// </summary>
-        OneOrMany<string>? IataCode { get; set; }
+        OneOrMany<string> IataCode { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The type of boarding policy used by the airline (e.g. zone-based or group-based).
         /// </summary>
         [DataMember(Name = "boardingPolicy", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<BoardingPolicyType?>? BoardingPolicy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<BoardingPolicyType?> BoardingPolicy { get; set; }
 
         /// <summary>
         /// IATA identifier for an airline or airport.
         /// </summary>
         [DataMember(Name = "iataCode", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? IataCode { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> IataCode { get; set; }
     }
 }

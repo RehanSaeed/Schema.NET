@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A diagnostic test or procedure offered by this lab.
         /// </summary>
-        OneOrMany<IMedicalTest>? AvailableTest { get; set; }
+        OneOrMany<IMedicalTest> AvailableTest { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A diagnostic test or procedure offered by this lab.
         /// </summary>
         [DataMember(Name = "availableTest", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalTest>? AvailableTest { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalTest> AvailableTest { get; set; }
     }
 }

@@ -17,12 +17,12 @@ namespace Schema.NET
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).
         /// </summary>
-        OneOrMany<string>? VideoFormat { get; set; }
+        OneOrMany<string> VideoFormat { get; set; }
 
         /// <summary>
         /// The movie presented during this event.
         /// </summary>
-        OneOrMany<IMovie>? WorkPresented { get; set; }
+        OneOrMany<IMovie> WorkPresented { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "subtitleLanguage", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ILanguage, string>? SubtitleLanguage { get; set; }
 
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).
         /// </summary>
         [DataMember(Name = "videoFormat", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? VideoFormat { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> VideoFormat { get; set; }
 
         /// <summary>
         /// The movie presented during this event.
         /// </summary>
         [DataMember(Name = "workPresented", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMovie>? WorkPresented { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMovie> WorkPresented { get; set; }
     }
 }

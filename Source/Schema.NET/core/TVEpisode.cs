@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
-        OneOrMany<ICountry>? CountryOfOrigin { get; set; }
+        OneOrMany<ICountry> CountryOfOrigin { get; set; }
 
         /// <summary>
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
         [DataMember(Name = "countryOfOrigin", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ICountry>? CountryOfOrigin { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ICountry> CountryOfOrigin { get; set; }
 
         /// <summary>
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "subtitleLanguage", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ILanguage, string>? SubtitleLanguage { get; set; }
     }
 }

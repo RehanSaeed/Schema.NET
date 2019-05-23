@@ -12,37 +12,37 @@ namespace Schema.NET
         /// <summary>
         /// The organization issuing the ticket or permit.
         /// </summary>
-        OneOrMany<IOrganization>? IssuedBy { get; set; }
+        OneOrMany<IOrganization> IssuedBy { get; set; }
 
         /// <summary>
         /// The service through with the permit was granted.
         /// </summary>
-        OneOrMany<IService>? IssuedThrough { get; set; }
+        OneOrMany<IService> IssuedThrough { get; set; }
 
         /// <summary>
         /// The target audience for this permit.
         /// </summary>
-        OneOrMany<IAudience>? PermitAudience { get; set; }
+        OneOrMany<IAudience> PermitAudience { get; set; }
 
         /// <summary>
         /// The duration of validity of a permit or similar thing.
         /// </summary>
-        OneOrMany<TimeSpan?>? ValidFor { get; set; }
+        OneOrMany<TimeSpan?> ValidFor { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The geographic area where a permit or similar thing is valid.
         /// </summary>
-        OneOrMany<IAdministrativeArea>? ValidIn { get; set; }
+        OneOrMany<IAdministrativeArea> ValidIn { get; set; }
 
         /// <summary>
         /// The date when the item is no longer valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidUntil { get; set; }
+        OneOrMany<DateTimeOffset?> ValidUntil { get; set; }
     }
 
     /// <summary>
@@ -61,49 +61,49 @@ namespace Schema.NET
         /// The organization issuing the ticket or permit.
         /// </summary>
         [DataMember(Name = "issuedBy", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOrganization>? IssuedBy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOrganization> IssuedBy { get; set; }
 
         /// <summary>
         /// The service through with the permit was granted.
         /// </summary>
         [DataMember(Name = "issuedThrough", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IService>? IssuedThrough { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IService> IssuedThrough { get; set; }
 
         /// <summary>
         /// The target audience for this permit.
         /// </summary>
         [DataMember(Name = "permitAudience", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAudience>? PermitAudience { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAudience> PermitAudience { get; set; }
 
         /// <summary>
         /// The duration of validity of a permit or similar thing.
         /// </summary>
         [DataMember(Name = "validFor", Order = 209)]
-        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public OneOrMany<TimeSpan?>? ValidFor { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
+        public OneOrMany<TimeSpan?> ValidFor { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
         [DataMember(Name = "validFrom", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The geographic area where a permit or similar thing is valid.
         /// </summary>
         [DataMember(Name = "validIn", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAdministrativeArea>? ValidIn { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAdministrativeArea> ValidIn { get; set; }
 
         /// <summary>
         /// The date when the item is no longer valid.
         /// </summary>
         [DataMember(Name = "validUntil", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidUntil { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidUntil { get; set; }
     }
 }

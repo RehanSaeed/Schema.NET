@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A music album.
         /// </summary>
-        OneOrMany<IMusicAlbum>? Album { get; set; }
+        OneOrMany<IMusicAlbum> Album { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// A music album.
         /// </summary>
         [DataMember(Name = "album", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMusicAlbum>? Album { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMusicAlbum> Album { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
         /// </summary>
         [DataMember(Name = "genre", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri>? Genre { get; set; }
 
         /// <summary>
         /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
         /// </summary>
         [DataMember(Name = "track", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IItemList, IMusicRecording>? Track { get; set; }
     }
 }

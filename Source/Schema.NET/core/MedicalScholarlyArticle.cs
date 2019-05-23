@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The type of the medical article, taken from the US NLM MeSH publication type catalog. See also &lt;a href="http://www.nlm.nih.gov/mesh/pubtypes.html"&gt;MeSH documentation&lt;/a&gt;.
         /// </summary>
-        OneOrMany<string>? PublicationType { get; set; }
+        OneOrMany<string> PublicationType { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The type of the medical article, taken from the US NLM MeSH publication type catalog. See also &lt;a href="http://www.nlm.nih.gov/mesh/pubtypes.html"&gt;MeSH documentation&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "publicationType", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PublicationType { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PublicationType { get; set; }
     }
 }

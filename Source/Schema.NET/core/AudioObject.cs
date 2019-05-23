@@ -17,7 +17,7 @@ namespace Schema.NET
         /// <summary>
         /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
         /// </summary>
-        OneOrMany<string>? Transcript { get; set; }
+        OneOrMany<string> Transcript { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "caption", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMediaObject, string>? Caption { get; set; }
 
         /// <summary>
         /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
         /// </summary>
         [DataMember(Name = "transcript", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Transcript { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Transcript { get; set; }
     }
 }

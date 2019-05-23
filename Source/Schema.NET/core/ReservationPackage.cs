@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The individual reservations included in the package. Typically a repeated property.
         /// </summary>
-        OneOrMany<IReservation>? SubReservation { get; set; }
+        OneOrMany<IReservation> SubReservation { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The individual reservations included in the package. Typically a repeated property.
         /// </summary>
         [DataMember(Name = "subReservation", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IReservation>? SubReservation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IReservation> SubReservation { get; set; }
     }
 }

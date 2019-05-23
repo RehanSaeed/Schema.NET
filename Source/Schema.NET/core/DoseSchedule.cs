@@ -12,22 +12,22 @@ namespace Schema.NET
         /// <summary>
         /// The unit of the dose, e.g. 'mg'.
         /// </summary>
-        OneOrMany<string>? DoseUnit { get; set; }
+        OneOrMany<string> DoseUnit { get; set; }
 
         /// <summary>
         /// The value of the dose, e.g. 500.
         /// </summary>
-        OneOrMany<double?>? DoseValue { get; set; }
+        OneOrMany<double?> DoseValue { get; set; }
 
         /// <summary>
         /// How often the dose is taken, e.g. 'daily'.
         /// </summary>
-        OneOrMany<string>? Frequency { get; set; }
+        OneOrMany<string> Frequency { get; set; }
 
         /// <summary>
         /// Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
         /// </summary>
-        OneOrMany<string>? TargetPopulation { get; set; }
+        OneOrMany<string> TargetPopulation { get; set; }
     }
 
     /// <summary>
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// The unit of the dose, e.g. 'mg'.
         /// </summary>
         [DataMember(Name = "doseUnit", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? DoseUnit { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> DoseUnit { get; set; }
 
         /// <summary>
         /// The value of the dose, e.g. 500.
         /// </summary>
         [DataMember(Name = "doseValue", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? DoseValue { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> DoseValue { get; set; }
 
         /// <summary>
         /// How often the dose is taken, e.g. 'daily'.
         /// </summary>
         [DataMember(Name = "frequency", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Frequency { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Frequency { get; set; }
 
         /// <summary>
         /// Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
         /// </summary>
         [DataMember(Name = "targetPopulation", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TargetPopulation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> TargetPopulation { get; set; }
     }
 }

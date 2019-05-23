@@ -17,12 +17,12 @@ namespace Schema.NET
         /// <summary>
         /// The name of the bus (e.g. Bolt Express).
         /// </summary>
-        OneOrMany<string>? BusName { get; set; }
+        OneOrMany<string> BusName { get; set; }
 
         /// <summary>
         /// The unique identifier for the bus.
         /// </summary>
-        OneOrMany<string>? BusNumber { get; set; }
+        OneOrMany<string> BusNumber { get; set; }
 
         /// <summary>
         /// The stop or station from which the bus departs.
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// The stop or station from which the bus arrives.
         /// </summary>
         [DataMember(Name = "arrivalBusStop", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IBusStation, IBusStop>? ArrivalBusStop { get; set; }
 
         /// <summary>
         /// The name of the bus (e.g. Bolt Express).
         /// </summary>
         [DataMember(Name = "busName", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BusName { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> BusName { get; set; }
 
         /// <summary>
         /// The unique identifier for the bus.
         /// </summary>
         [DataMember(Name = "busNumber", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BusNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> BusNumber { get; set; }
 
         /// <summary>
         /// The stop or station from which the bus departs.
         /// </summary>
         [DataMember(Name = "departureBusStop", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IBusStation, IBusStop>? DepartureBusStop { get; set; }
     }
 }

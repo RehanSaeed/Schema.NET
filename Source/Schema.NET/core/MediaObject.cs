@@ -12,43 +12,43 @@ namespace Schema.NET
         /// <summary>
         /// A NewsArticle associated with the Media Object.
         /// </summary>
-        OneOrMany<INewsArticle>? AssociatedArticle { get; set; }
+        OneOrMany<INewsArticle> AssociatedArticle { get; set; }
 
         /// <summary>
         /// The bitrate of the media object.
         /// </summary>
-        OneOrMany<string>? Bitrate { get; set; }
+        OneOrMany<string> Bitrate { get; set; }
 
         /// <summary>
         /// File size in (mega/kilo) bytes.
         /// </summary>
-        OneOrMany<string>? ContentSize { get; set; }
+        OneOrMany<string> ContentSize { get; set; }
 
         /// <summary>
         /// Actual bytes of the media object, for example the image file or video file.
         /// </summary>
-        OneOrMany<Uri>? ContentUrl { get; set; }
+        OneOrMany<Uri> ContentUrl { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
         /// </summary>
-        OneOrMany<TimeSpan?>? Duration { get; set; }
+        OneOrMany<TimeSpan?> Duration { get; set; }
 
         /// <summary>
         /// A URL pointing to a player for a specific video. In general, this is the information in the &lt;code&gt;src&lt;/code&gt; element of an &lt;code&gt;embed&lt;/code&gt; tag and should not be the same as the content of the &lt;code&gt;loc&lt;/code&gt; tag.
         /// </summary>
-        OneOrMany<Uri>? EmbedUrl { get; set; }
+        OneOrMany<Uri> EmbedUrl { get; set; }
 
         /// <summary>
         /// The CreativeWork encoded by this media object.
         /// </summary>
-        OneOrMany<ICreativeWork>? EncodesCreativeWork { get; set; }
+        OneOrMany<ICreativeWork> EncodesCreativeWork { get; set; }
 
         /// <summary>
         /// The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to &lt;em&gt;December&lt;/em&gt;. For media, including audio and video, it's the time offset of the end of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? EndTime { get; set; }
+        OneOrMany<DateTimeOffset?> EndTime { get; set; }
 
         /// <summary>
         /// The height of the item.
@@ -58,17 +58,17 @@ namespace Schema.NET
         /// <summary>
         /// Player type required&amp;#x2014;for example, Flash or Silverlight.
         /// </summary>
-        OneOrMany<string>? PlayerType { get; set; }
+        OneOrMany<string> PlayerType { get; set; }
 
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
-        OneOrMany<IOrganization>? ProductionCompany { get; set; }
+        OneOrMany<IOrganization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The regions where the media is allowed. If not specified, then it's assumed to be allowed everywhere. Specify the countries in &lt;a href="http://en.wikipedia.org/wiki/ISO_3166"&gt;ISO 3166 format&lt;/a&gt;.
         /// </summary>
-        OneOrMany<IPlace>? RegionsAllowed { get; set; }
+        OneOrMany<IPlace> RegionsAllowed { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').
@@ -79,12 +79,12 @@ namespace Schema.NET
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? StartTime { get; set; }
+        OneOrMany<DateTimeOffset?> StartTime { get; set; }
 
         /// <summary>
         /// Date when this media object was uploaded to this site.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? UploadDate { get; set; }
+        OneOrMany<DateTimeOffset?> UploadDate { get; set; }
 
         /// <summary>
         /// The width of the item.
@@ -108,50 +108,50 @@ namespace Schema.NET
         /// A NewsArticle associated with the Media Object.
         /// </summary>
         [DataMember(Name = "associatedArticle", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<INewsArticle>? AssociatedArticle { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<INewsArticle> AssociatedArticle { get; set; }
 
         /// <summary>
         /// The bitrate of the media object.
         /// </summary>
         [DataMember(Name = "bitrate", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Bitrate { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Bitrate { get; set; }
 
         /// <summary>
         /// File size in (mega/kilo) bytes.
         /// </summary>
         [DataMember(Name = "contentSize", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ContentSize { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ContentSize { get; set; }
 
         /// <summary>
         /// Actual bytes of the media object, for example the image file or video file.
         /// </summary>
         [DataMember(Name = "contentUrl", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Uri>? ContentUrl { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<Uri> ContentUrl { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "duration", Order = 210)]
-        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public virtual OneOrMany<TimeSpan?>? Duration { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
+        public virtual OneOrMany<TimeSpan?> Duration { get; set; }
 
         /// <summary>
         /// A URL pointing to a player for a specific video. In general, this is the information in the &lt;code&gt;src&lt;/code&gt; element of an &lt;code&gt;embed&lt;/code&gt; tag and should not be the same as the content of the &lt;code&gt;loc&lt;/code&gt; tag.
         /// </summary>
         [DataMember(Name = "embedUrl", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Uri>? EmbedUrl { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<Uri> EmbedUrl { get; set; }
 
         /// <summary>
         /// The CreativeWork encoded by this media object.
         /// </summary>
         [DataMember(Name = "encodesCreativeWork", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ICreativeWork>? EncodesCreativeWork { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ICreativeWork> EncodesCreativeWork { get; set; }
 
         /// <summary>
         /// Media type typically expressed using a MIME format (see &lt;a href="http://www.iana.org/assignments/media-types/media-types.xhtml"&gt;IANA site&lt;/a&gt; and &lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types"&gt;MDN reference&lt;/a&gt;) e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.).&lt;br/&gt;&lt;br/&gt;
@@ -159,7 +159,7 @@ namespace Schema.NET
         /// Unregistered or niche encoding and file formats can be indicated instead via the most appropriate URL, e.g. defining Web page or a Wikipedia/Wikidata entry.
         /// </summary>
         [DataMember(Name = "encodingFormat", Order = 213)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<string, Uri>? EncodingFormat { get; set; }
 
         /// <summary>
@@ -167,42 +167,42 @@ namespace Schema.NET
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
         [DataMember(Name = "endTime", Order = 214)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? EndTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> EndTime { get; set; }
 
         /// <summary>
         /// The height of the item.
         /// </summary>
         [DataMember(Name = "height", Order = 215)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IQuantitativeValue, int>? Height { get; set; }
 
         /// <summary>
         /// Player type required&amp;#x2014;for example, Flash or Silverlight.
         /// </summary>
         [DataMember(Name = "playerType", Order = 216)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PlayerType { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PlayerType { get; set; }
 
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
         [DataMember(Name = "productionCompany", Order = 217)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOrganization>? ProductionCompany { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOrganization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The regions where the media is allowed. If not specified, then it's assumed to be allowed everywhere. Specify the countries in &lt;a href="http://en.wikipedia.org/wiki/ISO_3166"&gt;ISO 3166 format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "regionsAllowed", Order = 218)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPlace>? RegionsAllowed { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPlace> RegionsAllowed { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').
         /// </summary>
         [DataMember(Name = "requiresSubscription", Order = 219)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<bool?, IMediaSubscription>? RequiresSubscription { get; set; }
 
         /// <summary>
@@ -210,21 +210,21 @@ namespace Schema.NET
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
         [DataMember(Name = "startTime", Order = 220)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? StartTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> StartTime { get; set; }
 
         /// <summary>
         /// Date when this media object was uploaded to this site.
         /// </summary>
         [DataMember(Name = "uploadDate", Order = 221)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? UploadDate { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> UploadDate { get; set; }
 
         /// <summary>
         /// The width of the item.
         /// </summary>
         [DataMember(Name = "width", Order = 222)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IQuantitativeValue, int>? Width { get; set; }
     }
 }

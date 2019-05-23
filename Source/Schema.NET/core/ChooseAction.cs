@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A sub property of object. The options subject to this action.
         /// </summary>
         [DataMember(Name = "actionOption", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IThing>? ActionOption { get; set; }
     }
 }

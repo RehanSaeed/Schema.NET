@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// Specifies browser requirements in human-readable text. For example, 'requires HTML5 support'.
         /// </summary>
-        OneOrMany<string>? BrowserRequirements { get; set; }
+        OneOrMany<string> BrowserRequirements { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// Specifies browser requirements in human-readable text. For example, 'requires HTML5 support'.
         /// </summary>
         [DataMember(Name = "browserRequirements", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BrowserRequirements { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> BrowserRequirements { get; set; }
     }
 }

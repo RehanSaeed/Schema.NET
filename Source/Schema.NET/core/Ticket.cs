@@ -12,28 +12,28 @@ namespace Schema.NET
         /// <summary>
         /// The date the ticket was issued.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? DateIssued { get; set; }
+        OneOrMany<DateTimeOffset?> DateIssued { get; set; }
 
         /// <summary>
         /// The organization issuing the ticket or permit.
         /// </summary>
-        OneOrMany<IOrganization>? IssuedBy { get; set; }
+        OneOrMany<IOrganization> IssuedBy { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
         /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
-        OneOrMany<string>? PriceCurrency { get; set; }
+        OneOrMany<string> PriceCurrency { get; set; }
 
         /// <summary>
         /// The seat associated with the ticket.
         /// </summary>
-        OneOrMany<ISeat>? TicketedSeat { get; set; }
+        OneOrMany<ISeat> TicketedSeat { get; set; }
 
         /// <summary>
         /// The unique identifier for the ticket.
         /// </summary>
-        OneOrMany<string>? TicketNumber { get; set; }
+        OneOrMany<string> TicketNumber { get; set; }
 
         /// <summary>
         /// Reference to an asset (e.g., Barcode, QR code image or PDF) usable for entrance.
@@ -72,43 +72,43 @@ namespace Schema.NET
         /// The date the ticket was issued.
         /// </summary>
         [DataMember(Name = "dateIssued", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? DateIssued { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> DateIssued { get; set; }
 
         /// <summary>
         /// The organization issuing the ticket or permit.
         /// </summary>
         [DataMember(Name = "issuedBy", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOrganization>? IssuedBy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOrganization> IssuedBy { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
         /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
         [DataMember(Name = "priceCurrency", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PriceCurrency { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PriceCurrency { get; set; }
 
         /// <summary>
         /// The seat associated with the ticket.
         /// </summary>
         [DataMember(Name = "ticketedSeat", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ISeat>? TicketedSeat { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ISeat> TicketedSeat { get; set; }
 
         /// <summary>
         /// The unique identifier for the ticket.
         /// </summary>
         [DataMember(Name = "ticketNumber", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TicketNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> TicketNumber { get; set; }
 
         /// <summary>
         /// Reference to an asset (e.g., Barcode, QR code image or PDF) usable for entrance.
         /// </summary>
         [DataMember(Name = "ticketToken", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri>? TicketToken { get; set; }
 
         /// <summary>
@@ -120,14 +120,14 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "totalPrice", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<decimal?, IPriceSpecification, string>? TotalPrice { get; set; }
 
         /// <summary>
         /// The person or organization the reservation or ticket is for.
         /// </summary>
         [DataMember(Name = "underName", Order = 213)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? UnderName { get; set; }
     }
 }

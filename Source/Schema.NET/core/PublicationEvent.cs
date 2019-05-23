@@ -17,7 +17,7 @@ namespace Schema.NET
         /// <summary>
         /// A broadcast service associated with the publication event.
         /// </summary>
-        OneOrMany<IBroadcastService>? PublishedOn { get; set; }
+        OneOrMany<IBroadcastService> PublishedOn { get; set; }
     }
 
     /// <summary>
@@ -36,21 +36,21 @@ namespace Schema.NET
         /// A flag to signal that the item, event, or place is accessible for free.
         /// </summary>
         [DataMember(Name = "isAccessibleForFree", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<bool?>? IsAccessibleForFree { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<bool?> IsAccessibleForFree { get; set; }
 
         /// <summary>
         /// An agent associated with the publication event.
         /// </summary>
         [DataMember(Name = "publishedBy", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? PublishedBy { get; set; }
 
         /// <summary>
         /// A broadcast service associated with the publication event.
         /// </summary>
         [DataMember(Name = "publishedOn", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IBroadcastService>? PublishedOn { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IBroadcastService> PublishedOn { get; set; }
     }
 }

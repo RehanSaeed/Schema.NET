@@ -153,10 +153,10 @@ namespace Schema.NET.Test
             Assert.Equal(2, listItem2.Position);
             Assert.Equal(1, thingListItem1.Position);
             Assert.Equal(2, thingListItem2.Position);
-            var recipe1 = Assert.IsType<Recipe>(listItem1.Item.Value.Single());
-            var recipe2 = Assert.IsType<Recipe>(listItem2.Item.Value.Single());
-            var recipe3 = Assert.IsType<Recipe>(thingListItem1.Item.Value.Single());
-            var recipe4 = Assert.IsType<Recipe>(thingListItem2.Item.Value.Single());
+            var recipe1 = Assert.IsType<Recipe>(listItem1.Item.Single());
+            var recipe2 = Assert.IsType<Recipe>(listItem2.Item.Single());
+            var recipe3 = Assert.IsType<Recipe>(thingListItem1.Item.Single());
+            var recipe4 = Assert.IsType<Recipe>(thingListItem2.Item.Single());
             Assert.Equal("Recipe 1", recipe1.Name);
             Assert.Equal("Recipe 2", recipe2.Name);
             Assert.Equal("Recipe 1", recipe3.Name);

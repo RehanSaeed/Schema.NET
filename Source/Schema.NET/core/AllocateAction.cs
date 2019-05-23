@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A goal towards an action is taken. Can be concrete or abstract.
         /// </summary>
         [DataMember(Name = "purpose", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<MedicalDevicePurpose?, IThing>? Purpose { get; set; }
     }
 }

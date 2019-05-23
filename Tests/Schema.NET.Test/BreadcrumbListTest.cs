@@ -78,13 +78,11 @@ namespace Schema.NET.Test
             var listItem2 = listItems.Last();
             Assert.Equal(1, listItem1.Position);
             Assert.Equal(2, listItem2.Position);
-            Assert.True(listItem1.Item.HasValue);
-            Assert.True(listItem2.Item.HasValue);
-            var book = listItem1.Item.Value.OfType<IBook>().FirstOrDefault();
+            var book = listItem1.Item.OfType<IBook>().FirstOrDefault();
             Assert.NotNull(book);
             Assert.Equal("Books", book.Name);
             Assert.Equal(new Uri("http://example.com/images/icon-book.png"), (Uri)book.Image);
-            var person = listItem2.Item.Value.OfType<IPerson>().FirstOrDefault();
+            var person = listItem2.Item.OfType<IPerson>().FirstOrDefault();
             Assert.NotNull(person);
             Assert.Equal("Authors", person.Name);
             Assert.Equal(new Uri("http://example.com/images/icon-author.png"), (Uri)person.Image);

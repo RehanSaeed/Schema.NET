@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The time the object is scheduled to.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ScheduledTime { get; set; }
+        OneOrMany<DateTimeOffset?> ScheduledTime { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The time the object is scheduled to.
         /// </summary>
         [DataMember(Name = "scheduledTime", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ScheduledTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ScheduledTime { get; set; }
     }
 }

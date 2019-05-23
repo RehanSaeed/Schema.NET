@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A person who reads (performs) the audiobook.
         /// </summary>
-        OneOrMany<IPerson>? ReadBy { get; set; }
+        OneOrMany<IPerson> ReadBy { get; set; }
     }
 
     /// <summary>
@@ -31,14 +31,14 @@ namespace Schema.NET
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "duration", Order = 406)]
-        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public override OneOrMany<TimeSpan?>? Duration { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
+        public override OneOrMany<TimeSpan?> Duration { get; set; }
 
         /// <summary>
         /// A person who reads (performs) the audiobook.
         /// </summary>
         [DataMember(Name = "readBy", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? ReadBy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> ReadBy { get; set; }
     }
 }

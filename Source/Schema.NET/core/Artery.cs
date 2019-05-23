@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// The branches that comprise the arterial structure.
         /// </summary>
-        OneOrMany<IAnatomicalStructure>? ArterialBranch { get; set; }
+        OneOrMany<IAnatomicalStructure> ArterialBranch { get; set; }
 
         /// <summary>
         /// The anatomical or organ system that the artery originates from.
         /// </summary>
-        OneOrMany<IAnatomicalStructure>? Source { get; set; }
+        OneOrMany<IAnatomicalStructure> Source { get; set; }
 
         /// <summary>
         /// The area to which the artery supplies blood.
         /// </summary>
-        OneOrMany<IAnatomicalStructure>? SupplyTo { get; set; }
+        OneOrMany<IAnatomicalStructure> SupplyTo { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The branches that comprise the arterial structure.
         /// </summary>
         [DataMember(Name = "arterialBranch", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalStructure>? ArterialBranch { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalStructure> ArterialBranch { get; set; }
 
         /// <summary>
         /// The anatomical or organ system that the artery originates from.
         /// </summary>
         [DataMember(Name = "source", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalStructure>? Source { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalStructure> Source { get; set; }
 
         /// <summary>
         /// The area to which the artery supplies blood.
         /// </summary>
         [DataMember(Name = "supplyTo", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalStructure>? SupplyTo { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalStructure> SupplyTo { get; set; }
     }
 }

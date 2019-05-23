@@ -18,17 +18,17 @@ namespace Schema.NET
         /// The currency in which the monetary amount is expressed.&lt;br/&gt;&lt;br/&gt;
         /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
-        OneOrMany<string>? Currency { get; set; }
+        OneOrMany<string> Currency { get; set; }
 
         /// <summary>
         /// The period of time after any due date that the borrower has to fulfil its obligations before a default (failure to pay) is deemed to have occurred.
         /// </summary>
-        OneOrMany<TimeSpan?>? GracePeriod { get; set; }
+        OneOrMany<TimeSpan?> GracePeriod { get; set; }
 
         /// <summary>
         /// The duration of the loan or credit agreement.
         /// </summary>
-        OneOrMany<IQuantitativeValue>? LoanTerm { get; set; }
+        OneOrMany<IQuantitativeValue> LoanTerm { get; set; }
 
         /// <summary>
         /// The type of a loan or credit.
@@ -38,12 +38,12 @@ namespace Schema.NET
         /// <summary>
         /// The only way you get the money back in the event of default is the security. Recourse is where you still have the opportunity to go back to the borrower for the rest of the money.
         /// </summary>
-        OneOrMany<bool?>? RecourseLoan { get; set; }
+        OneOrMany<bool?> RecourseLoan { get; set; }
 
         /// <summary>
         /// Whether the terms for payment of interest can be renegotiated during the life of the loan.
         /// </summary>
-        OneOrMany<bool?>? RenegotiableLoan { get; set; }
+        OneOrMany<bool?> RenegotiableLoan { get; set; }
 
         /// <summary>
         /// Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)
@@ -67,7 +67,7 @@ namespace Schema.NET
         /// The amount of money.
         /// </summary>
         [DataMember(Name = "amount", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMonetaryAmount, decimal?>? Amount { get; set; }
 
         /// <summary>
@@ -75,49 +75,49 @@ namespace Schema.NET
         /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
         [DataMember(Name = "currency", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Currency { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Currency { get; set; }
 
         /// <summary>
         /// The period of time after any due date that the borrower has to fulfil its obligations before a default (failure to pay) is deemed to have occurred.
         /// </summary>
         [DataMember(Name = "gracePeriod", Order = 408)]
-        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public OneOrMany<TimeSpan?>? GracePeriod { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
+        public OneOrMany<TimeSpan?> GracePeriod { get; set; }
 
         /// <summary>
         /// The duration of the loan or credit agreement.
         /// </summary>
         [DataMember(Name = "loanTerm", Order = 409)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IQuantitativeValue>? LoanTerm { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuantitativeValue> LoanTerm { get; set; }
 
         /// <summary>
         /// The type of a loan or credit.
         /// </summary>
         [DataMember(Name = "loanType", Order = 410)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri>? LoanType { get; set; }
 
         /// <summary>
         /// The only way you get the money back in the event of default is the security. Recourse is where you still have the opportunity to go back to the borrower for the rest of the money.
         /// </summary>
         [DataMember(Name = "recourseLoan", Order = 411)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<bool?>? RecourseLoan { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<bool?> RecourseLoan { get; set; }
 
         /// <summary>
         /// Whether the terms for payment of interest can be renegotiated during the life of the loan.
         /// </summary>
         [DataMember(Name = "renegotiableLoan", Order = 412)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<bool?>? RenegotiableLoan { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<bool?> RenegotiableLoan { get; set; }
 
         /// <summary>
         /// Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)
         /// </summary>
         [DataMember(Name = "requiredCollateral", Order = 413)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IThing>? RequiredCollateral { get; set; }
     }
 }

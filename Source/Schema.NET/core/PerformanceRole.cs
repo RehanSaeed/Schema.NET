@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The name of a character played in some acting or performing role, i.e. in a PerformanceRole.
         /// </summary>
-        OneOrMany<string>? CharacterName { get; set; }
+        OneOrMany<string> CharacterName { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The name of a character played in some acting or performing role, i.e. in a PerformanceRole.
         /// </summary>
         [DataMember(Name = "characterName", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? CharacterName { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> CharacterName { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// This property links to all &lt;a class="localLink" href="http://schema.org/UnitPriceSpecification"&gt;UnitPriceSpecification&lt;/a&gt; nodes that apply in parallel for the &lt;a class="localLink" href="http://schema.org/CompoundPriceSpecification"&gt;CompoundPriceSpecification&lt;/a&gt; node.
         /// </summary>
-        OneOrMany<IUnitPriceSpecification>? PriceComponent { get; set; }
+        OneOrMany<IUnitPriceSpecification> PriceComponent { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// This property links to all &lt;a class="localLink" href="http://schema.org/UnitPriceSpecification"&gt;UnitPriceSpecification&lt;/a&gt; nodes that apply in parallel for the &lt;a class="localLink" href="http://schema.org/CompoundPriceSpecification"&gt;CompoundPriceSpecification&lt;/a&gt; node.
         /// </summary>
         [DataMember(Name = "priceComponent", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IUnitPriceSpecification>? PriceComponent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IUnitPriceSpecification> PriceComponent { get; set; }
     }
 }

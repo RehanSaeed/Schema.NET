@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The vasculature the lymphatic structure originates, or afferents, from.
         /// </summary>
-        OneOrMany<IVessel>? OriginatesFrom { get; set; }
+        OneOrMany<IVessel> OriginatesFrom { get; set; }
 
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
@@ -22,7 +22,7 @@ namespace Schema.NET
         /// <summary>
         /// The vasculature the lymphatic structure runs, or efferents, to.
         /// </summary>
-        OneOrMany<IVessel>? RunsTo { get; set; }
+        OneOrMany<IVessel> RunsTo { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The vasculature the lymphatic structure originates, or afferents, from.
         /// </summary>
         [DataMember(Name = "originatesFrom", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IVessel>? OriginatesFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IVessel> OriginatesFrom { get; set; }
 
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
         /// </summary>
         [DataMember(Name = "regionDrained", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAnatomicalStructure, IAnatomicalSystem>? RegionDrained { get; set; }
 
         /// <summary>
         /// The vasculature the lymphatic structure runs, or efferents, to.
         /// </summary>
         [DataMember(Name = "runsTo", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IVessel>? RunsTo { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IVessel> RunsTo { get; set; }
     }
 }

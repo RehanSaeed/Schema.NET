@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The neurological pathway extension that involves muscle control.
         /// </summary>
-        OneOrMany<IMuscle>? NerveMotor { get; set; }
+        OneOrMany<IMuscle> NerveMotor { get; set; }
 
         /// <summary>
         /// The neurological pathway extension that inputs and sends information to the brain or spinal cord.
@@ -22,7 +22,7 @@ namespace Schema.NET
         /// <summary>
         /// The neurological pathway that originates the neurons.
         /// </summary>
-        OneOrMany<IBrainStructure>? SourcedFrom { get; set; }
+        OneOrMany<IBrainStructure> SourcedFrom { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The neurological pathway extension that involves muscle control.
         /// </summary>
         [DataMember(Name = "nerveMotor", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMuscle>? NerveMotor { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMuscle> NerveMotor { get; set; }
 
         /// <summary>
         /// The neurological pathway extension that inputs and sends information to the brain or spinal cord.
         /// </summary>
         [DataMember(Name = "sensoryUnit", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAnatomicalStructure, ISuperficialAnatomy>? SensoryUnit { get; set; }
 
         /// <summary>
         /// The neurological pathway that originates the neurons.
         /// </summary>
         [DataMember(Name = "sourcedFrom", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IBrainStructure>? SourcedFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IBrainStructure> SourcedFrom { get; set; }
     }
 }

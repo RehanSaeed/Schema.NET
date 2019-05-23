@@ -12,22 +12,22 @@ namespace Schema.NET
         /// <summary>
         /// The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
         /// </summary>
-        OneOrMany<IQuantitativeValue>? EligibleQuantity { get; set; }
+        OneOrMany<IQuantitativeValue> EligibleQuantity { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
         /// </summary>
-        OneOrMany<IPriceSpecification>? EligibleTransactionVolume { get; set; }
+        OneOrMany<IPriceSpecification> EligibleTransactionVolume { get; set; }
 
         /// <summary>
         /// The highest price if the price is a range.
         /// </summary>
-        OneOrMany<decimal?>? MaxPrice { get; set; }
+        OneOrMany<decimal?> MaxPrice { get; set; }
 
         /// <summary>
         /// The lowest price if the price is a range.
         /// </summary>
-        OneOrMany<decimal?>? MinPrice { get; set; }
+        OneOrMany<decimal?> MinPrice { get; set; }
 
         /// <summary>
         /// The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -45,22 +45,22 @@ namespace Schema.NET
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
         /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
-        OneOrMany<string>? PriceCurrency { get; set; }
+        OneOrMany<string> PriceCurrency { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
+        OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
 
         /// <summary>
         /// Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
         /// </summary>
-        OneOrMany<bool?>? ValueAddedTaxIncluded { get; set; }
+        OneOrMany<bool?> ValueAddedTaxIncluded { get; set; }
     }
 
     /// <summary>
@@ -79,29 +79,29 @@ namespace Schema.NET
         /// The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
         /// </summary>
         [DataMember(Name = "eligibleQuantity", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IQuantitativeValue>? EligibleQuantity { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuantitativeValue> EligibleQuantity { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
         /// </summary>
         [DataMember(Name = "eligibleTransactionVolume", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPriceSpecification>? EligibleTransactionVolume { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPriceSpecification> EligibleTransactionVolume { get; set; }
 
         /// <summary>
         /// The highest price if the price is a range.
         /// </summary>
         [DataMember(Name = "maxPrice", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<decimal?>? MaxPrice { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<decimal?> MaxPrice { get; set; }
 
         /// <summary>
         /// The lowest price if the price is a range.
         /// </summary>
         [DataMember(Name = "minPrice", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<decimal?>? MinPrice { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<decimal?> MinPrice { get; set; }
 
         /// <summary>
         /// The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -114,7 +114,7 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "price", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<decimal?, string>? Price { get; set; }
 
         /// <summary>
@@ -122,28 +122,28 @@ namespace Schema.NET
         /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
         [DataMember(Name = "priceCurrency", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PriceCurrency { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PriceCurrency { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
         [DataMember(Name = "validFrom", Order = 312)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
         [DataMember(Name = "validThrough", Order = 313)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
 
         /// <summary>
         /// Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
         /// </summary>
         [DataMember(Name = "valueAddedTaxIncluded", Order = 314)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<bool?>? ValueAddedTaxIncluded { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<bool?> ValueAddedTaxIncluded { get; set; }
     }
 }

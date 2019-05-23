@@ -17,12 +17,12 @@ namespace Schema.NET
         /// <summary>
         /// A therapy that duplicates or overlaps this one.
         /// </summary>
-        OneOrMany<IMedicalTherapy>? DuplicateTherapy { get; set; }
+        OneOrMany<IMedicalTherapy> DuplicateTherapy { get; set; }
 
         /// <summary>
         /// A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
         /// </summary>
-        OneOrMany<IMedicalEntity>? SeriousAdverseOutcome { get; set; }
+        OneOrMany<IMedicalEntity> SeriousAdverseOutcome { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// A contraindication for this therapy.
         /// </summary>
         [DataMember(Name = "contraindication", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMedicalContraindication, string>? Contraindication { get; set; }
 
         /// <summary>
         /// A therapy that duplicates or overlaps this one.
         /// </summary>
         [DataMember(Name = "duplicateTherapy", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalTherapy>? DuplicateTherapy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalTherapy> DuplicateTherapy { get; set; }
 
         /// <summary>
         /// A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
         /// </summary>
         [DataMember(Name = "seriousAdverseOutcome", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalEntity>? SeriousAdverseOutcome { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalEntity> SeriousAdverseOutcome { get; set; }
     }
 }

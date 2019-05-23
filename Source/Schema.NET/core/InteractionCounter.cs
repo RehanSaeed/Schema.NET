@@ -17,12 +17,12 @@ namespace Schema.NET
         /// <summary>
         /// The Action representing the type of interaction. For up votes, +1s, etc. use &lt;a class="localLink" href="http://schema.org/LikeAction"&gt;LikeAction&lt;/a&gt;. For down votes use &lt;a class="localLink" href="http://schema.org/DislikeAction"&gt;DislikeAction&lt;/a&gt;. Otherwise, use the most specific Action.
         /// </summary>
-        OneOrMany<IAction>? InteractionType { get; set; }
+        OneOrMany<IAction> InteractionType { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication.
         /// </summary>
-        OneOrMany<int?>? UserInteractionCount { get; set; }
+        OneOrMany<int?> UserInteractionCount { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The WebSite or SoftwareApplication where the interactions took place.
         /// </summary>
         [DataMember(Name = "interactionService", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ISoftwareApplication, IWebSite>? InteractionService { get; set; }
 
         /// <summary>
         /// The Action representing the type of interaction. For up votes, +1s, etc. use &lt;a class="localLink" href="http://schema.org/LikeAction"&gt;LikeAction&lt;/a&gt;. For down votes use &lt;a class="localLink" href="http://schema.org/DislikeAction"&gt;DislikeAction&lt;/a&gt;. Otherwise, use the most specific Action.
         /// </summary>
         [DataMember(Name = "interactionType", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAction>? InteractionType { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAction> InteractionType { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication.
         /// </summary>
         [DataMember(Name = "userInteractionCount", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? UserInteractionCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> UserInteractionCount { get; set; }
     }
 }

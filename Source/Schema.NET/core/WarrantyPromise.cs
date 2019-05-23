@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
         /// </summary>
-        OneOrMany<IQuantitativeValue>? DurationOfWarranty { get; set; }
+        OneOrMany<IQuantitativeValue> DurationOfWarranty { get; set; }
 
         /// <summary>
         /// The scope of the warranty promise.
         /// </summary>
-        OneOrMany<WarrantyScope?>? WarrantyScope { get; set; }
+        OneOrMany<WarrantyScope?> WarrantyScope { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
         /// </summary>
         [DataMember(Name = "durationOfWarranty", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IQuantitativeValue>? DurationOfWarranty { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuantitativeValue> DurationOfWarranty { get; set; }
 
         /// <summary>
         /// The scope of the warranty promise.
         /// </summary>
         [DataMember(Name = "warrantyScope", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<WarrantyScope?>? WarrantyScope { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<WarrantyScope?> WarrantyScope { get; set; }
     }
 }

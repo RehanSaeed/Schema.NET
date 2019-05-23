@@ -47,7 +47,7 @@ namespace Schema.NET
         /// A sub property of object. The person or organization being followed.
         /// </summary>
         [DataMember(Name = "followee", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Followee { get; set; }
     }
 }

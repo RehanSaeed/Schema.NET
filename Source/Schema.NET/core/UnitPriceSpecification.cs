@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
         /// </summary>
-        OneOrMany<double?>? BillingIncrement { get; set; }
+        OneOrMany<double?> BillingIncrement { get; set; }
 
         /// <summary>
         /// A short text or acronym indicating multiple price specifications for the same offer, e.g. SRP for the suggested retail price or INVOICE for the invoice price, mostly used in the car industry.
         /// </summary>
-        OneOrMany<string>? PriceType { get; set; }
+        OneOrMany<string> PriceType { get; set; }
 
         /// <summary>
         /// The reference quantity for which a certain price applies, e.g. 1 EUR per 4 kWh of electricity. This property is a replacement for unitOfMeasurement for the advanced cases where the price does not relate to a standard unit.
         /// </summary>
-        OneOrMany<IQuantitativeValue>? ReferenceQuantity { get; set; }
+        OneOrMany<IQuantitativeValue> ReferenceQuantity { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
@@ -33,7 +33,7 @@ namespace Schema.NET
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
         /// &lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
         /// </summary>
-        OneOrMany<string>? UnitText { get; set; }
+        OneOrMany<string> UnitText { get; set; }
     }
 
     /// <summary>
@@ -52,28 +52,28 @@ namespace Schema.NET
         /// This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
         /// </summary>
         [DataMember(Name = "billingIncrement", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? BillingIncrement { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> BillingIncrement { get; set; }
 
         /// <summary>
         /// A short text or acronym indicating multiple price specifications for the same offer, e.g. SRP for the suggested retail price or INVOICE for the invoice price, mostly used in the car industry.
         /// </summary>
         [DataMember(Name = "priceType", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PriceType { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PriceType { get; set; }
 
         /// <summary>
         /// The reference quantity for which a certain price applies, e.g. 1 EUR per 4 kWh of electricity. This property is a replacement for unitOfMeasurement for the advanced cases where the price does not relate to a standard unit.
         /// </summary>
         [DataMember(Name = "referenceQuantity", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IQuantitativeValue>? ReferenceQuantity { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuantitativeValue> ReferenceQuantity { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
         /// </summary>
         [DataMember(Name = "unitCode", Order = 409)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri>? UnitCode { get; set; }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Schema.NET
         /// &lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "unitText", Order = 410)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? UnitText { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> UnitText { get; set; }
     }
 }

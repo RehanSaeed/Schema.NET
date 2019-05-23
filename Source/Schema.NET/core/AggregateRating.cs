@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// The item that is being reviewed/rated.
         /// </summary>
-        OneOrMany<IThing>? ItemReviewed { get; set; }
+        OneOrMany<IThing> ItemReviewed { get; set; }
 
         /// <summary>
         /// The count of total number of ratings.
         /// </summary>
-        OneOrMany<int?>? RatingCount { get; set; }
+        OneOrMany<int?> RatingCount { get; set; }
 
         /// <summary>
         /// The count of total number of reviews.
         /// </summary>
-        OneOrMany<int?>? ReviewCount { get; set; }
+        OneOrMany<int?> ReviewCount { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The item that is being reviewed/rated.
         /// </summary>
         [DataMember(Name = "itemReviewed", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IThing>? ItemReviewed { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IThing> ItemReviewed { get; set; }
 
         /// <summary>
         /// The count of total number of ratings.
         /// </summary>
         [DataMember(Name = "ratingCount", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? RatingCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> RatingCount { get; set; }
 
         /// <summary>
         /// The count of total number of reviews.
         /// </summary>
         [DataMember(Name = "reviewCount", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? ReviewCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> ReviewCount { get; set; }
     }
 }

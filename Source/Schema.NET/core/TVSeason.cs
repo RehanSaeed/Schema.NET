@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
-        OneOrMany<ICountry>? CountryOfOrigin { get; set; }
+        OneOrMany<ICountry> CountryOfOrigin { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
         [DataMember(Name = "countryOfOrigin", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ICountry>? CountryOfOrigin { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ICountry> CountryOfOrigin { get; set; }
     }
 }

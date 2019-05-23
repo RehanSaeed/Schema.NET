@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// A physical examination that can identify this sign.
         /// </summary>
-        OneOrMany<PhysicalExam?>? IdentifyingExam { get; set; }
+        OneOrMany<PhysicalExam?> IdentifyingExam { get; set; }
 
         /// <summary>
         /// A diagnostic test that can identify this sign.
         /// </summary>
-        OneOrMany<IMedicalTest>? IdentifyingTest { get; set; }
+        OneOrMany<IMedicalTest> IdentifyingTest { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// A physical examination that can identify this sign.
         /// </summary>
         [DataMember(Name = "identifyingExam", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<PhysicalExam?>? IdentifyingExam { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<PhysicalExam?> IdentifyingExam { get; set; }
 
         /// <summary>
         /// A diagnostic test that can identify this sign.
         /// </summary>
         [DataMember(Name = "identifyingTest", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalTest>? IdentifyingTest { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalTest> IdentifyingTest { get; set; }
     }
 }

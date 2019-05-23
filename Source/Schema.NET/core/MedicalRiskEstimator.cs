@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The condition, complication, or symptom whose risk is being estimated.
         /// </summary>
-        OneOrMany<IMedicalEntity>? EstimatesRiskOf { get; set; }
+        OneOrMany<IMedicalEntity> EstimatesRiskOf { get; set; }
 
         /// <summary>
         /// A modifiable or non-modifiable risk factor included in the calculation, e.g. age, coexisting condition.
         /// </summary>
-        OneOrMany<IMedicalRiskFactor>? IncludedRiskFactor { get; set; }
+        OneOrMany<IMedicalRiskFactor> IncludedRiskFactor { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The condition, complication, or symptom whose risk is being estimated.
         /// </summary>
         [DataMember(Name = "estimatesRiskOf", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalEntity>? EstimatesRiskOf { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalEntity> EstimatesRiskOf { get; set; }
 
         /// <summary>
         /// A modifiable or non-modifiable risk factor included in the calculation, e.g. age, coexisting condition.
         /// </summary>
         [DataMember(Name = "includedRiskFactor", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalRiskFactor>? IncludedRiskFactor { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalRiskFactor> IncludedRiskFactor { get; set; }
     }
 }

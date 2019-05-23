@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// Imaging technique used.
         /// </summary>
-        OneOrMany<MedicalImagingTechnique?>? ImagingTechnique { get; set; }
+        OneOrMany<MedicalImagingTechnique?> ImagingTechnique { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// Imaging technique used.
         /// </summary>
         [DataMember(Name = "imagingTechnique", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MedicalImagingTechnique?>? ImagingTechnique { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<MedicalImagingTechnique?> ImagingTechnique { get; set; }
     }
 }

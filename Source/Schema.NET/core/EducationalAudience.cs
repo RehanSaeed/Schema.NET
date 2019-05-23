@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// An educationalRole of an EducationalAudience.
         /// </summary>
-        OneOrMany<string>? EducationalRole { get; set; }
+        OneOrMany<string> EducationalRole { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// An educationalRole of an EducationalAudience.
         /// </summary>
         [DataMember(Name = "educationalRole", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? EducationalRole { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> EducationalRole { get; set; }
     }
 }

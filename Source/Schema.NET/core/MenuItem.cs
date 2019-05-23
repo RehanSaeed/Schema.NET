@@ -17,17 +17,17 @@ namespace Schema.NET
         /// <summary>
         /// Nutrition information about the recipe or menu item.
         /// </summary>
-        OneOrMany<INutritionInformation>? Nutrition { get; set; }
+        OneOrMany<INutritionInformation> Nutrition { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        OneOrMany<IOffer>? Offers { get; set; }
+        OneOrMany<IOffer> Offers { get; set; }
 
         /// <summary>
         /// Indicates a dietary restriction or guideline for which this recipe or menu item is suitable, e.g. diabetic, halal etc.
         /// </summary>
-        OneOrMany<RestrictedDiet?>? SuitableForDiet { get; set; }
+        OneOrMany<RestrictedDiet?> SuitableForDiet { get; set; }
     }
 
     /// <summary>
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// Additional menu item(s) such as a side dish of salad or side order of fries that can be added to this menu item. Additionally it can be a menu section containing allowed add-on menu items for this menu item.
         /// </summary>
         [DataMember(Name = "menuAddOn", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMenuItem, IMenuSection>? MenuAddOn { get; set; }
 
         /// <summary>
         /// Nutrition information about the recipe or menu item.
         /// </summary>
         [DataMember(Name = "nutrition", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<INutritionInformation>? Nutrition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<INutritionInformation> Nutrition { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
         [DataMember(Name = "offers", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOffer>? Offers { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOffer> Offers { get; set; }
 
         /// <summary>
         /// Indicates a dietary restriction or guideline for which this recipe or menu item is suitable, e.g. diabetic, halal etc.
         /// </summary>
         [DataMember(Name = "suitableForDiet", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<RestrictedDiet?>? SuitableForDiet { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<RestrictedDiet?> SuitableForDiet { get; set; }
     }
 }

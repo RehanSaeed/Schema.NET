@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// Indicates the kind of Map, from the MapCategoryType Enumeration.
         /// </summary>
-        OneOrMany<MapCategoryType?>? MapType { get; set; }
+        OneOrMany<MapCategoryType?> MapType { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// Indicates the kind of Map, from the MapCategoryType Enumeration.
         /// </summary>
         [DataMember(Name = "mapType", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MapCategoryType?>? MapType { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<MapCategoryType?> MapType { get; set; }
     }
 }

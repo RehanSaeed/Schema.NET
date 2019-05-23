@@ -12,22 +12,22 @@ namespace Schema.NET
         /// <summary>
         /// The item that is being reviewed/rated.
         /// </summary>
-        OneOrMany<IThing>? ItemReviewed { get; set; }
+        OneOrMany<IThing> ItemReviewed { get; set; }
 
         /// <summary>
         /// This Review or Rating is relevant to this part or facet of the itemReviewed.
         /// </summary>
-        OneOrMany<string>? ReviewAspect { get; set; }
+        OneOrMany<string> ReviewAspect { get; set; }
 
         /// <summary>
         /// The actual body of the review.
         /// </summary>
-        OneOrMany<string>? ReviewBody { get; set; }
+        OneOrMany<string> ReviewBody { get; set; }
 
         /// <summary>
         /// The rating given in this review. Note that reviews can themselves be rated. The &lt;code&gt;reviewRating&lt;/code&gt; applies to rating given by the review. The &lt;a class="localLink" href="http://schema.org/aggregateRating"&gt;aggregateRating&lt;/a&gt; property applies to the review itself, as a creative work.
         /// </summary>
-        OneOrMany<IRating>? ReviewRating { get; set; }
+        OneOrMany<IRating> ReviewRating { get; set; }
     }
 
     /// <summary>
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// The item that is being reviewed/rated.
         /// </summary>
         [DataMember(Name = "itemReviewed", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IThing>? ItemReviewed { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IThing> ItemReviewed { get; set; }
 
         /// <summary>
         /// This Review or Rating is relevant to this part or facet of the itemReviewed.
         /// </summary>
         [DataMember(Name = "reviewAspect", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ReviewAspect { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ReviewAspect { get; set; }
 
         /// <summary>
         /// The actual body of the review.
         /// </summary>
         [DataMember(Name = "reviewBody", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ReviewBody { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ReviewBody { get; set; }
 
         /// <summary>
         /// The rating given in this review. Note that reviews can themselves be rated. The &lt;code&gt;reviewRating&lt;/code&gt; applies to rating given by the review. The &lt;a class="localLink" href="http://schema.org/aggregateRating"&gt;aggregateRating&lt;/a&gt; property applies to the review itself, as a creative work.
         /// </summary>
         [DataMember(Name = "reviewRating", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IRating>? ReviewRating { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IRating> ReviewRating { get; set; }
     }
 }

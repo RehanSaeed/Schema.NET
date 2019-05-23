@@ -16,7 +16,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of object. A question.
         /// </summary>
-        OneOrMany<IQuestion>? Question { get; set; }
+        OneOrMany<IQuestion> Question { get; set; }
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ namespace Schema.NET
         /// A sub property of object. A question.
         /// </summary>
         [DataMember(Name = "question", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IQuestion>? Question { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuestion> Question { get; set; }
     }
 }

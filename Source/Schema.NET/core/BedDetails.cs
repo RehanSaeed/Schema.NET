@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The quantity of the given bed type available in the HotelRoom, Suite, House, or Apartment.
         /// </summary>
-        OneOrMany<int?>? NumberOfBeds { get; set; }
+        OneOrMany<int?> NumberOfBeds { get; set; }
 
         /// <summary>
         /// The type of bed to which the BedDetail refers, i.e. the type of bed available in the quantity indicated by quantity.
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The quantity of the given bed type available in the HotelRoom, Suite, House, or Apartment.
         /// </summary>
         [DataMember(Name = "numberOfBeds", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? NumberOfBeds { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> NumberOfBeds { get; set; }
 
         /// <summary>
         /// The type of bed to which the BedDetail refers, i.e. the type of bed available in the quantity indicated by quantity.
         /// </summary>
         [DataMember(Name = "typeOfBed", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<BedType?, string>? TypeOfBed { get; set; }
     }
 }

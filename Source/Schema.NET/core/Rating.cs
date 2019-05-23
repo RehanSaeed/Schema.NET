@@ -32,7 +32,7 @@ namespace Schema.NET
         /// <summary>
         /// This Review or Rating is relevant to this part or facet of the itemReviewed.
         /// </summary>
-        OneOrMany<string>? ReviewAspect { get; set; }
+        OneOrMany<string> ReviewAspect { get; set; }
 
         /// <summary>
         /// The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
@@ -56,14 +56,14 @@ namespace Schema.NET
         /// The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
         /// </summary>
         [DataMember(Name = "author", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Author { get; set; }
 
         /// <summary>
         /// The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
         /// </summary>
         [DataMember(Name = "bestRating", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, string>? BestRating { get; set; }
 
         /// <summary>
@@ -75,21 +75,21 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "ratingValue", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, string>? RatingValue { get; set; }
 
         /// <summary>
         /// This Review or Rating is relevant to this part or facet of the itemReviewed.
         /// </summary>
         [DataMember(Name = "reviewAspect", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ReviewAspect { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ReviewAspect { get; set; }
 
         /// <summary>
         /// The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
         /// </summary>
         [DataMember(Name = "worstRating", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, string>? WorstRating { get; set; }
     }
 }

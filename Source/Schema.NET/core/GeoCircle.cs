@@ -14,7 +14,7 @@ namespace Schema.NET
         /// <summary>
         /// Indicates the GeoCoordinates at the centre of a GeoShape e.g. GeoCircle.
         /// </summary>
-        OneOrMany<IGeoCoordinates>? GeoMidpoint { get; set; }
+        OneOrMany<IGeoCoordinates> GeoMidpoint { get; set; }
 
         /// <summary>
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).
@@ -40,14 +40,14 @@ namespace Schema.NET
         /// Indicates the GeoCoordinates at the centre of a GeoShape e.g. GeoCircle.
         /// </summary>
         [DataMember(Name = "geoMidpoint", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IGeoCoordinates>? GeoMidpoint { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IGeoCoordinates> GeoMidpoint { get; set; }
 
         /// <summary>
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).
         /// </summary>
         [DataMember(Name = "geoRadius", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, double?>? GeoRadius { get; set; }
     }
 }

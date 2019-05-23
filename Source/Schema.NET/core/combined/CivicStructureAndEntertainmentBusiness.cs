@@ -33,7 +33,7 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "openingHours", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<string>? OpeningHours { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<string> OpeningHours { get; set; }
     }
 }

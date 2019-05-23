@@ -12,32 +12,32 @@ namespace Schema.NET
         /// <summary>
         /// The method of cooking, such as Frying, Steaming, ...
         /// </summary>
-        OneOrMany<string>? CookingMethod { get; set; }
+        OneOrMany<string> CookingMethod { get; set; }
 
         /// <summary>
         /// The time it takes to actually cook the dish, in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
         /// </summary>
-        OneOrMany<TimeSpan?>? CookTime { get; set; }
+        OneOrMany<TimeSpan?> CookTime { get; set; }
 
         /// <summary>
         /// Nutrition information about the recipe or menu item.
         /// </summary>
-        OneOrMany<INutritionInformation>? Nutrition { get; set; }
+        OneOrMany<INutritionInformation> Nutrition { get; set; }
 
         /// <summary>
         /// The category of the recipe—for example, appetizer, entree, etc.
         /// </summary>
-        OneOrMany<string>? RecipeCategory { get; set; }
+        OneOrMany<string> RecipeCategory { get; set; }
 
         /// <summary>
         /// The cuisine of the recipe (for example, French or Ethiopian).
         /// </summary>
-        OneOrMany<string>? RecipeCuisine { get; set; }
+        OneOrMany<string> RecipeCuisine { get; set; }
 
         /// <summary>
         /// A single ingredient used in the recipe, e.g. sugar, flour or garlic.
         /// </summary>
-        OneOrMany<string>? RecipeIngredient { get; set; }
+        OneOrMany<string> RecipeIngredient { get; set; }
 
         /// <summary>
         /// A step in making the recipe, in the form of a single item (document, video, etc.) or an ordered list with HowToStep and/or HowToSection items.
@@ -52,7 +52,7 @@ namespace Schema.NET
         /// <summary>
         /// Indicates a dietary restriction or guideline for which this recipe or menu item is suitable, e.g. diabetic, halal etc.
         /// </summary>
-        OneOrMany<RestrictedDiet?>? SuitableForDiet { get; set; }
+        OneOrMany<RestrictedDiet?> SuitableForDiet { get; set; }
     }
 
     /// <summary>
@@ -71,63 +71,63 @@ namespace Schema.NET
         /// The method of cooking, such as Frying, Steaming, ...
         /// </summary>
         [DataMember(Name = "cookingMethod", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? CookingMethod { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> CookingMethod { get; set; }
 
         /// <summary>
         /// The time it takes to actually cook the dish, in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "cookTime", Order = 307)]
-        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
-        public OneOrMany<TimeSpan?>? CookTime { get; set; }
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
+        public OneOrMany<TimeSpan?> CookTime { get; set; }
 
         /// <summary>
         /// Nutrition information about the recipe or menu item.
         /// </summary>
         [DataMember(Name = "nutrition", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<INutritionInformation>? Nutrition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<INutritionInformation> Nutrition { get; set; }
 
         /// <summary>
         /// The category of the recipe—for example, appetizer, entree, etc.
         /// </summary>
         [DataMember(Name = "recipeCategory", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? RecipeCategory { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> RecipeCategory { get; set; }
 
         /// <summary>
         /// The cuisine of the recipe (for example, French or Ethiopian).
         /// </summary>
         [DataMember(Name = "recipeCuisine", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? RecipeCuisine { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> RecipeCuisine { get; set; }
 
         /// <summary>
         /// A single ingredient used in the recipe, e.g. sugar, flour or garlic.
         /// </summary>
         [DataMember(Name = "recipeIngredient", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? RecipeIngredient { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> RecipeIngredient { get; set; }
 
         /// <summary>
         /// A step in making the recipe, in the form of a single item (document, video, etc.) or an ordered list with HowToStep and/or HowToSection items.
         /// </summary>
         [DataMember(Name = "recipeInstructions", Order = 312)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICreativeWork, IItemList, string>? RecipeInstructions { get; set; }
 
         /// <summary>
         /// The quantity produced by the recipe (for example, number of people served, number of servings, etc).
         /// </summary>
         [DataMember(Name = "recipeYield", Order = 313)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IQuantitativeValue, string>? RecipeYield { get; set; }
 
         /// <summary>
         /// Indicates a dietary restriction or guideline for which this recipe or menu item is suitable, e.g. diabetic, halal etc.
         /// </summary>
         [DataMember(Name = "suitableForDiet", Order = 314)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<RestrictedDiet?>? SuitableForDiet { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<RestrictedDiet?> SuitableForDiet { get; set; }
     }
 }

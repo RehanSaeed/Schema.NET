@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of object. The object that is being replaced.
         /// </summary>
-        OneOrMany<IThing>? Replacee { get; set; }
+        OneOrMany<IThing> Replacee { get; set; }
 
         /// <summary>
         /// A sub property of object. The object that replaces.
         /// </summary>
-        OneOrMany<IThing>? Replacer { get; set; }
+        OneOrMany<IThing> Replacer { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// A sub property of object. The object that is being replaced.
         /// </summary>
         [DataMember(Name = "replacee", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IThing>? Replacee { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IThing> Replacee { get; set; }
 
         /// <summary>
         /// A sub property of object. The object that replaces.
         /// </summary>
         [DataMember(Name = "replacer", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IThing>? Replacer { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IThing> Replacer { get; set; }
     }
 }

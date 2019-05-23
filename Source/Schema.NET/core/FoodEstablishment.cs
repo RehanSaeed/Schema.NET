@@ -22,12 +22,12 @@ namespace Schema.NET
         /// <summary>
         /// The cuisine of the restaurant.
         /// </summary>
-        OneOrMany<string>? ServesCuisine { get; set; }
+        OneOrMany<string> ServesCuisine { get; set; }
 
         /// <summary>
         /// An official rating for a lodging business or food establishment, e.g. from national associations or standards bodies. Use the author property to indicate the rating organization, e.g. as an Organization with name such as (e.g. HOTREC, DEHOGA, WHR, or Hotelstars).
         /// </summary>
-        OneOrMany<IRating>? StarRating { get; set; }
+        OneOrMany<IRating> StarRating { get; set; }
     }
 
     /// <summary>
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// Indicates whether a FoodEstablishment accepts reservations. Values can be Boolean, an URL at which reservations can be made or (for backwards compatibility) the strings &lt;code&gt;Yes&lt;/code&gt; or &lt;code&gt;No&lt;/code&gt;.
         /// </summary>
         [DataMember(Name = "acceptsReservations", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<bool?, string, Uri>? AcceptsReservations { get; set; }
 
         /// <summary>
         /// Either the actual menu as a structured representation, as text, or a URL of the menu.
         /// </summary>
         [DataMember(Name = "hasMenu", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMenu, string, Uri>? HasMenu { get; set; }
 
         /// <summary>
         /// The cuisine of the restaurant.
         /// </summary>
         [DataMember(Name = "servesCuisine", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ServesCuisine { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ServesCuisine { get; set; }
 
         /// <summary>
         /// An official rating for a lodging business or food establishment, e.g. from national associations or standards bodies. Use the author property to indicate the rating organization, e.g. as an Organization with name such as (e.g. HOTREC, DEHOGA, WHR, or Hotelstars).
         /// </summary>
         [DataMember(Name = "starRating", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IRating>? StarRating { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IRating> StarRating { get; set; }
     }
 }

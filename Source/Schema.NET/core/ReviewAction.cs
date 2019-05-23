@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of result. The review that resulted in the performing of the action.
         /// </summary>
-        OneOrMany<IReview>? ResultReview { get; set; }
+        OneOrMany<IReview> ResultReview { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A sub property of result. The review that resulted in the performing of the action.
         /// </summary>
         [DataMember(Name = "resultReview", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IReview>? ResultReview { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IReview> ResultReview { get; set; }
     }
 }

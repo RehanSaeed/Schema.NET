@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A number associated with a role in an organization, for example, the number on an athlete's jersey.
         /// </summary>
-        OneOrMany<double?>? NumberedPosition { get; set; }
+        OneOrMany<double?> NumberedPosition { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A number associated with a role in an organization, for example, the number on an athlete's jersey.
         /// </summary>
         [DataMember(Name = "numberedPosition", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? NumberedPosition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> NumberedPosition { get; set; }
     }
 }

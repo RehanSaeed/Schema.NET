@@ -27,22 +27,22 @@ namespace Schema.NET
         /// Name or unique ID of network. (Networks are often reused across different insurance plans).
         /// </summary>
         [DataMember(Name = "healthPlanNetworkId", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? HealthPlanNetworkId { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> HealthPlanNetworkId { get; set; }
 
         /// <summary>
         /// Whether the provider is accepting new patients.
         /// </summary>
         [DataMember(Name = "isAcceptingNewPatients", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<bool?>? IsAcceptingNewPatients { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<bool?> IsAcceptingNewPatients { get; set; }
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
         [DataMember(Name = "medicalSpecialty", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual OneOrMany<MedicalSpecialty?> MedicalSpecialty { get; set; }
 
         /// <summary>
         /// The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;br/&gt;&lt;br/&gt;
@@ -54,7 +54,7 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "openingHours", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<string>? OpeningHours { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<string> OpeningHours { get; set; }
     }
 }

@@ -19,34 +19,34 @@ namespace Schema.NET
         ///     in a medium other than pencils or digital line art--for example, if the
         ///     primary artwork is done in watercolors or digital paints.
         /// </summary>
-        OneOrMany<IPerson>? Artist { get; set; }
+        OneOrMany<IPerson> Artist { get; set; }
 
         /// <summary>
         /// The individual who adds color to inked drawings.
         /// </summary>
-        OneOrMany<IPerson>? Colorist { get; set; }
+        OneOrMany<IPerson> Colorist { get; set; }
 
         /// <summary>
         /// The individual who traces over the pencil drawings in ink after pencils are complete.
         /// </summary>
-        OneOrMany<IPerson>? Inker { get; set; }
+        OneOrMany<IPerson> Inker { get; set; }
 
         /// <summary>
         /// The individual who adds lettering, including speech balloons and sound effects, to artwork.
         /// </summary>
-        OneOrMany<IPerson>? Letterer { get; set; }
+        OneOrMany<IPerson> Letterer { get; set; }
 
         /// <summary>
         /// The individual who draws the primary narrative artwork.
         /// </summary>
-        OneOrMany<IPerson>? Penciler { get; set; }
+        OneOrMany<IPerson> Penciler { get; set; }
 
         /// <summary>
         /// A description of the variant cover
         ///     for the issue, if the issue is a variant printing. For example, "Bryan Hitch
         ///     Variant Cover" or "2nd Printing Variant".
         /// </summary>
-        OneOrMany<string>? VariantCover { get; set; }
+        OneOrMany<string> VariantCover { get; set; }
     }
 
     /// <summary>
@@ -72,36 +72,36 @@ namespace Schema.NET
         ///     primary artwork is done in watercolors or digital paints.
         /// </summary>
         [DataMember(Name = "artist", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Artist { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Artist { get; set; }
 
         /// <summary>
         /// The individual who adds color to inked drawings.
         /// </summary>
         [DataMember(Name = "colorist", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Colorist { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Colorist { get; set; }
 
         /// <summary>
         /// The individual who traces over the pencil drawings in ink after pencils are complete.
         /// </summary>
         [DataMember(Name = "inker", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Inker { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Inker { get; set; }
 
         /// <summary>
         /// The individual who adds lettering, including speech balloons and sound effects, to artwork.
         /// </summary>
         [DataMember(Name = "letterer", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Letterer { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Letterer { get; set; }
 
         /// <summary>
         /// The individual who draws the primary narrative artwork.
         /// </summary>
         [DataMember(Name = "penciler", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Penciler { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Penciler { get; set; }
 
         /// <summary>
         /// A description of the variant cover
@@ -109,7 +109,7 @@ namespace Schema.NET
         ///     Variant Cover" or "2nd Printing Variant".
         /// </summary>
         [DataMember(Name = "variantCover", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? VariantCover { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> VariantCover { get; set; }
     }
 }

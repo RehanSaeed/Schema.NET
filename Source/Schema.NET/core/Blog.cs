@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// A posting that is part of this blog.
         /// </summary>
-        OneOrMany<IBlogPosting>? BlogPost { get; set; }
+        OneOrMany<IBlogPosting> BlogPost { get; set; }
 
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.
         /// </summary>
-        OneOrMany<string>? Issn { get; set; }
+        OneOrMany<string> Issn { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// A posting that is part of this blog.
         /// </summary>
         [DataMember(Name = "blogPost", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IBlogPosting>? BlogPost { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IBlogPosting> BlogPost { get; set; }
 
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.
         /// </summary>
         [DataMember(Name = "issn", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Issn { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Issn { get; set; }
     }
 }

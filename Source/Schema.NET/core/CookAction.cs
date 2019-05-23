@@ -17,12 +17,12 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of location. The specific food event where the action occurred.
         /// </summary>
-        OneOrMany<IFoodEvent>? FoodEvent { get; set; }
+        OneOrMany<IFoodEvent> FoodEvent { get; set; }
 
         /// <summary>
         /// A sub property of instrument. The recipe/instructions used to perform the action.
         /// </summary>
-        OneOrMany<IRecipe>? Recipe { get; set; }
+        OneOrMany<IRecipe> Recipe { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// A sub property of location. The specific food establishment where the action occurred.
         /// </summary>
         [DataMember(Name = "foodEstablishment", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IFoodEstablishment, IPlace>? FoodEstablishment { get; set; }
 
         /// <summary>
         /// A sub property of location. The specific food event where the action occurred.
         /// </summary>
         [DataMember(Name = "foodEvent", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IFoodEvent>? FoodEvent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IFoodEvent> FoodEvent { get; set; }
 
         /// <summary>
         /// A sub property of instrument. The recipe/instructions used to perform the action.
         /// </summary>
         [DataMember(Name = "recipe", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IRecipe>? Recipe { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IRecipe> Recipe { get; set; }
     }
 }

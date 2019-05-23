@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The type of tissue sample required for the test.
         /// </summary>
-        OneOrMany<string>? TissueSample { get; set; }
+        OneOrMany<string> TissueSample { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The type of tissue sample required for the test.
         /// </summary>
         [DataMember(Name = "tissueSample", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TissueSample { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> TissueSample { get; set; }
     }
 }

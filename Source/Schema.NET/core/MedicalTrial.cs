@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The phase of the clinical trial.
         /// </summary>
-        OneOrMany<string>? Phase { get; set; }
+        OneOrMany<string> Phase { get; set; }
 
         /// <summary>
         /// Specifics about the trial design (enumerated).
         /// </summary>
-        OneOrMany<MedicalTrialDesign?>? TrialDesign { get; set; }
+        OneOrMany<MedicalTrialDesign?> TrialDesign { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The phase of the clinical trial.
         /// </summary>
         [DataMember(Name = "phase", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Phase { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Phase { get; set; }
 
         /// <summary>
         /// Specifics about the trial design (enumerated).
         /// </summary>
         [DataMember(Name = "trialDesign", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MedicalTrialDesign?>? TrialDesign { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<MedicalTrialDesign?> TrialDesign { get; set; }
     }
 }

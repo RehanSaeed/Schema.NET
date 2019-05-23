@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// A pointer to a base product from which this product is a variant. It is safe to infer that the variant inherits all product features from the base model, unless defined locally. This is not transitive.
         /// </summary>
-        OneOrMany<IProductModel>? IsVariantOf { get; set; }
+        OneOrMany<IProductModel> IsVariantOf { get; set; }
 
         /// <summary>
         /// A pointer from a previous, often discontinued variant of the product to its newer variant.
         /// </summary>
-        OneOrMany<IProductModel>? PredecessorOf { get; set; }
+        OneOrMany<IProductModel> PredecessorOf { get; set; }
 
         /// <summary>
         /// A pointer from a newer variant of a product  to its previous, often discontinued predecessor.
         /// </summary>
-        OneOrMany<IProductModel>? SuccessorOf { get; set; }
+        OneOrMany<IProductModel> SuccessorOf { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// A pointer to a base product from which this product is a variant. It is safe to infer that the variant inherits all product features from the base model, unless defined locally. This is not transitive.
         /// </summary>
         [DataMember(Name = "isVariantOf", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IProductModel>? IsVariantOf { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IProductModel> IsVariantOf { get; set; }
 
         /// <summary>
         /// A pointer from a previous, often discontinued variant of the product to its newer variant.
         /// </summary>
         [DataMember(Name = "predecessorOf", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IProductModel>? PredecessorOf { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IProductModel> PredecessorOf { get; set; }
 
         /// <summary>
         /// A pointer from a newer variant of a product  to its previous, often discontinued predecessor.
         /// </summary>
         [DataMember(Name = "successorOf", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IProductModel>? SuccessorOf { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IProductModel> SuccessorOf { get; set; }
     }
 }

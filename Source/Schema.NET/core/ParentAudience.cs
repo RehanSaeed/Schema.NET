@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// Maximal age of the child.
         /// </summary>
-        OneOrMany<int?>? ChildMaxAge { get; set; }
+        OneOrMany<int?> ChildMaxAge { get; set; }
 
         /// <summary>
         /// Minimal age of the child.
         /// </summary>
-        OneOrMany<int?>? ChildMinAge { get; set; }
+        OneOrMany<int?> ChildMinAge { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// Maximal age of the child.
         /// </summary>
         [DataMember(Name = "childMaxAge", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? ChildMaxAge { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> ChildMaxAge { get; set; }
 
         /// <summary>
         /// Minimal age of the child.
         /// </summary>
         [DataMember(Name = "childMinAge", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? ChildMinAge { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> ChildMinAge { get; set; }
     }
 }

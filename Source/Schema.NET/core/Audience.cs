@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).
         /// </summary>
-        OneOrMany<string>? AudienceType { get; set; }
+        OneOrMany<string> AudienceType { get; set; }
 
         /// <summary>
         /// The geographic area associated with the audience.
         /// </summary>
-        OneOrMany<IAdministrativeArea>? GeographicArea { get; set; }
+        OneOrMany<IAdministrativeArea> GeographicArea { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).
         /// </summary>
         [DataMember(Name = "audienceType", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AudienceType { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AudienceType { get; set; }
 
         /// <summary>
         /// The geographic area associated with the audience.
         /// </summary>
         [DataMember(Name = "geographicArea", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAdministrativeArea>? GeographicArea { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAdministrativeArea> GeographicArea { get; set; }
     }
 }

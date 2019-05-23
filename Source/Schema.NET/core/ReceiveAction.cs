@@ -17,7 +17,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of instrument. The method of delivery.
         /// </summary>
-        OneOrMany<DeliveryMethod?>? DeliveryMethod { get; set; }
+        OneOrMany<DeliveryMethod?> DeliveryMethod { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the sending end of the action.
@@ -46,14 +46,14 @@ namespace Schema.NET
         /// A sub property of instrument. The method of delivery.
         /// </summary>
         [DataMember(Name = "deliveryMethod", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DeliveryMethod?>? DeliveryMethod { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DeliveryMethod?> DeliveryMethod { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the sending end of the action.
         /// </summary>
         [DataMember(Name = "sender", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAudience, IOrganization, IPerson>? Sender { get; set; }
     }
 }

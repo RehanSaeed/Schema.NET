@@ -17,27 +17,27 @@ namespace Schema.NET
         /// <summary>
         /// The locality. For example, Mountain View.
         /// </summary>
-        OneOrMany<string>? AddressLocality { get; set; }
+        OneOrMany<string> AddressLocality { get; set; }
 
         /// <summary>
         /// The region. For example, CA.
         /// </summary>
-        OneOrMany<string>? AddressRegion { get; set; }
+        OneOrMany<string> AddressRegion { get; set; }
 
         /// <summary>
         /// The postal code. For example, 94043.
         /// </summary>
-        OneOrMany<string>? PostalCode { get; set; }
+        OneOrMany<string> PostalCode { get; set; }
 
         /// <summary>
         /// The post office box number for PO box addresses.
         /// </summary>
-        OneOrMany<string>? PostOfficeBoxNumber { get; set; }
+        OneOrMany<string> PostOfficeBoxNumber { get; set; }
 
         /// <summary>
         /// The street address. For example, 1600 Amphitheatre Pkwy.
         /// </summary>
-        OneOrMany<string>? StreetAddress { get; set; }
+        OneOrMany<string> StreetAddress { get; set; }
     }
 
     /// <summary>
@@ -56,42 +56,42 @@ namespace Schema.NET
         /// The country. For example, USA. You can also provide the two-letter &lt;a href="http://en.wikipedia.org/wiki/ISO_3166-1"&gt;ISO 3166-1 alpha-2 country code&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "addressCountry", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICountry, string>? AddressCountry { get; set; }
 
         /// <summary>
         /// The locality. For example, Mountain View.
         /// </summary>
         [DataMember(Name = "addressLocality", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AddressLocality { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AddressLocality { get; set; }
 
         /// <summary>
         /// The region. For example, CA.
         /// </summary>
         [DataMember(Name = "addressRegion", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AddressRegion { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AddressRegion { get; set; }
 
         /// <summary>
         /// The postal code. For example, 94043.
         /// </summary>
         [DataMember(Name = "postalCode", Order = 409)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PostalCode { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PostalCode { get; set; }
 
         /// <summary>
         /// The post office box number for PO box addresses.
         /// </summary>
         [DataMember(Name = "postOfficeBoxNumber", Order = 410)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PostOfficeBoxNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PostOfficeBoxNumber { get; set; }
 
         /// <summary>
         /// The street address. For example, 1600 Amphitheatre Pkwy.
         /// </summary>
         [DataMember(Name = "streetAddress", Order = 411)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? StreetAddress { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> StreetAddress { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The winner of the action.
         /// </summary>
-        OneOrMany<IPerson>? Winner { get; set; }
+        OneOrMany<IPerson> Winner { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A sub property of participant. The winner of the action.
         /// </summary>
         [DataMember(Name = "winner", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Winner { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Winner { get; set; }
     }
 }

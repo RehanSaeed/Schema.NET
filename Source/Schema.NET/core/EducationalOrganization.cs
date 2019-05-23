@@ -27,7 +27,7 @@ namespace Schema.NET
         /// Alumni of an organization.
         /// </summary>
         [DataMember(Name = "alumni", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<IPerson>? Alumni { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<IPerson> Alumni { get; set; }
     }
 }

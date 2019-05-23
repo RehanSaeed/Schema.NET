@@ -13,7 +13,7 @@ namespace Schema.NET
     /// Converts a <see cref="IValues"/> object to JSON.
     /// </summary>
     /// <seealso cref="JsonConverter" />
-    public class ValuesConverter : JsonConverter
+    public class ValuesJsonConverter : JsonConverter
     {
         private const string NamespacePrefix = "Schema.NET.";
 
@@ -189,7 +189,7 @@ namespace Schema.NET
             var values = (IValues)value;
             if (values.Count == 0)
             {
-                writer.WriteNull();
+                serializer.Serialize(writer, null);
             }
             else if (values.Count == 1)
             {
@@ -209,11 +209,8 @@ namespace Schema.NET
         /// <param name="writer">The JSON writer.</param>
         /// <param name="value">The value to write.</param>
         /// <param name="serializer">The JSON serializer.</param>
-        public virtual void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            var token = JToken.FromObject(value, serializer);
-            token.WriteTo(writer);
-        }
+        public virtual void WriteObject(JsonWriter writer, object value, JsonSerializer serializer) =>
+            serializer.Serialize(writer, value);
 
         /// <summary>
         /// Gets the class type definition.

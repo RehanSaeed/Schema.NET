@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The delivery method(s) to which the delivery charge or payment charge specification applies.
         /// </summary>
-        OneOrMany<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
+        OneOrMany<DeliveryMethod?> AppliesToDeliveryMethod { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
@@ -48,14 +48,14 @@ namespace Schema.NET
         /// The delivery method(s) to which the delivery charge or payment charge specification applies.
         /// </summary>
         [DataMember(Name = "appliesToDeliveryMethod", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DeliveryMethod?> AppliesToDeliveryMethod { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
         /// </summary>
         [DataMember(Name = "areaServed", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Schema.NET
         /// See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "eligibleRegion", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IGeoShape, IPlace, string>? EligibleRegion { get; set; }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Schema.NET
         /// See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "ineligibleRegion", Order = 409)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IGeoShape, IPlace, string>? IneligibleRegion { get; set; }
     }
 }

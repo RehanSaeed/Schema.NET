@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The location in which the status applies.
         /// </summary>
-        OneOrMany<IAdministrativeArea>? ApplicableLocation { get; set; }
+        OneOrMany<IAdministrativeArea> ApplicableLocation { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The location in which the status applies.
         /// </summary>
         [DataMember(Name = "applicableLocation", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAdministrativeArea>? ApplicableLocation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAdministrativeArea> ApplicableLocation { get; set; }
     }
 }

@@ -12,62 +12,62 @@ namespace Schema.NET
         /// <summary>
         /// The number of calories.
         /// </summary>
-        OneOrMany<string>? Calories { get; set; }
+        OneOrMany<string> Calories { get; set; }
 
         /// <summary>
         /// The number of grams of carbohydrates.
         /// </summary>
-        OneOrMany<string>? CarbohydrateContent { get; set; }
+        OneOrMany<string> CarbohydrateContent { get; set; }
 
         /// <summary>
         /// The number of milligrams of cholesterol.
         /// </summary>
-        OneOrMany<string>? CholesterolContent { get; set; }
+        OneOrMany<string> CholesterolContent { get; set; }
 
         /// <summary>
         /// The number of grams of fat.
         /// </summary>
-        OneOrMany<string>? FatContent { get; set; }
+        OneOrMany<string> FatContent { get; set; }
 
         /// <summary>
         /// The number of grams of fiber.
         /// </summary>
-        OneOrMany<string>? FiberContent { get; set; }
+        OneOrMany<string> FiberContent { get; set; }
 
         /// <summary>
         /// The number of grams of protein.
         /// </summary>
-        OneOrMany<string>? ProteinContent { get; set; }
+        OneOrMany<string> ProteinContent { get; set; }
 
         /// <summary>
         /// The number of grams of saturated fat.
         /// </summary>
-        OneOrMany<string>? SaturatedFatContent { get; set; }
+        OneOrMany<string> SaturatedFatContent { get; set; }
 
         /// <summary>
         /// The serving size, in terms of the number of volume or mass.
         /// </summary>
-        OneOrMany<string>? ServingSize { get; set; }
+        OneOrMany<string> ServingSize { get; set; }
 
         /// <summary>
         /// The number of milligrams of sodium.
         /// </summary>
-        OneOrMany<string>? SodiumContent { get; set; }
+        OneOrMany<string> SodiumContent { get; set; }
 
         /// <summary>
         /// The number of grams of sugar.
         /// </summary>
-        OneOrMany<string>? SugarContent { get; set; }
+        OneOrMany<string> SugarContent { get; set; }
 
         /// <summary>
         /// The number of grams of trans fat.
         /// </summary>
-        OneOrMany<string>? TransFatContent { get; set; }
+        OneOrMany<string> TransFatContent { get; set; }
 
         /// <summary>
         /// The number of grams of unsaturated fat.
         /// </summary>
-        OneOrMany<string>? UnsaturatedFatContent { get; set; }
+        OneOrMany<string> UnsaturatedFatContent { get; set; }
     }
 
     /// <summary>
@@ -86,84 +86,84 @@ namespace Schema.NET
         /// The number of calories.
         /// </summary>
         [DataMember(Name = "calories", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Calories { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Calories { get; set; }
 
         /// <summary>
         /// The number of grams of carbohydrates.
         /// </summary>
         [DataMember(Name = "carbohydrateContent", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? CarbohydrateContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> CarbohydrateContent { get; set; }
 
         /// <summary>
         /// The number of milligrams of cholesterol.
         /// </summary>
         [DataMember(Name = "cholesterolContent", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? CholesterolContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> CholesterolContent { get; set; }
 
         /// <summary>
         /// The number of grams of fat.
         /// </summary>
         [DataMember(Name = "fatContent", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? FatContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> FatContent { get; set; }
 
         /// <summary>
         /// The number of grams of fiber.
         /// </summary>
         [DataMember(Name = "fiberContent", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? FiberContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> FiberContent { get; set; }
 
         /// <summary>
         /// The number of grams of protein.
         /// </summary>
         [DataMember(Name = "proteinContent", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ProteinContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ProteinContent { get; set; }
 
         /// <summary>
         /// The number of grams of saturated fat.
         /// </summary>
         [DataMember(Name = "saturatedFatContent", Order = 312)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SaturatedFatContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SaturatedFatContent { get; set; }
 
         /// <summary>
         /// The serving size, in terms of the number of volume or mass.
         /// </summary>
         [DataMember(Name = "servingSize", Order = 313)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ServingSize { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ServingSize { get; set; }
 
         /// <summary>
         /// The number of milligrams of sodium.
         /// </summary>
         [DataMember(Name = "sodiumContent", Order = 314)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SodiumContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SodiumContent { get; set; }
 
         /// <summary>
         /// The number of grams of sugar.
         /// </summary>
         [DataMember(Name = "sugarContent", Order = 315)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SugarContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SugarContent { get; set; }
 
         /// <summary>
         /// The number of grams of trans fat.
         /// </summary>
         [DataMember(Name = "transFatContent", Order = 316)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TransFatContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> TransFatContent { get; set; }
 
         /// <summary>
         /// The number of grams of unsaturated fat.
         /// </summary>
         [DataMember(Name = "unsaturatedFatContent", Order = 317)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? UnsaturatedFatContent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> UnsaturatedFatContent { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The condition, complication, symptom, sign, etc. caused.
         /// </summary>
-        OneOrMany<IMedicalEntity>? CauseOf { get; set; }
+        OneOrMany<IMedicalEntity> CauseOf { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The condition, complication, symptom, sign, etc. caused.
         /// </summary>
         [DataMember(Name = "causeOf", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalEntity>? CauseOf { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalEntity> CauseOf { get; set; }
     }
 }

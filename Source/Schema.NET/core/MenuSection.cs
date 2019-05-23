@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// A food or drink item contained in a menu or menu section.
         /// </summary>
-        OneOrMany<IMenuItem>? HasMenuItem { get; set; }
+        OneOrMany<IMenuItem> HasMenuItem { get; set; }
 
         /// <summary>
         /// A subgrouping of the menu (by dishes, course, serving time period, etc.).
         /// </summary>
-        OneOrMany<IMenuSection>? HasMenuSection { get; set; }
+        OneOrMany<IMenuSection> HasMenuSection { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// A food or drink item contained in a menu or menu section.
         /// </summary>
         [DataMember(Name = "hasMenuItem", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMenuItem>? HasMenuItem { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMenuItem> HasMenuItem { get; set; }
 
         /// <summary>
         /// A subgrouping of the menu (by dishes, course, serving time period, etc.).
         /// </summary>
         [DataMember(Name = "hasMenuSection", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMenuSection>? HasMenuSection { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMenuSection> HasMenuSection { get; set; }
     }
 }

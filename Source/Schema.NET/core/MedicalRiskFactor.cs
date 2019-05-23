@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The condition, complication, etc. influenced by this factor.
         /// </summary>
-        OneOrMany<IMedicalEntity>? IncreasesRiskOf { get; set; }
+        OneOrMany<IMedicalEntity> IncreasesRiskOf { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The condition, complication, etc. influenced by this factor.
         /// </summary>
         [DataMember(Name = "increasesRiskOf", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalEntity>? IncreasesRiskOf { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalEntity> IncreasesRiskOf { get; set; }
     }
 }

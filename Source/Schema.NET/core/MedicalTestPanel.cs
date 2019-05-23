@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A component test of the panel.
         /// </summary>
-        OneOrMany<IMedicalTest>? SubTest { get; set; }
+        OneOrMany<IMedicalTest> SubTest { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A component test of the panel.
         /// </summary>
         [DataMember(Name = "subTest", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalTest>? SubTest { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalTest> SubTest { get; set; }
     }
 }

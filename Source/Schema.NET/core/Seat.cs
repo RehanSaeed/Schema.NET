@@ -12,22 +12,22 @@ namespace Schema.NET
         /// <summary>
         /// The type/class of the seat.
         /// </summary>
-        OneOrMany<string>? SeatingType { get; set; }
+        OneOrMany<string> SeatingType { get; set; }
 
         /// <summary>
         /// The location of the reserved seat (e.g., 27).
         /// </summary>
-        OneOrMany<string>? SeatNumber { get; set; }
+        OneOrMany<string> SeatNumber { get; set; }
 
         /// <summary>
         /// The row location of the reserved seat (e.g., B).
         /// </summary>
-        OneOrMany<string>? SeatRow { get; set; }
+        OneOrMany<string> SeatRow { get; set; }
 
         /// <summary>
         /// The section location of the reserved seat (e.g. Orchestra).
         /// </summary>
-        OneOrMany<string>? SeatSection { get; set; }
+        OneOrMany<string> SeatSection { get; set; }
     }
 
     /// <summary>
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// The type/class of the seat.
         /// </summary>
         [DataMember(Name = "seatingType", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SeatingType { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SeatingType { get; set; }
 
         /// <summary>
         /// The location of the reserved seat (e.g., 27).
         /// </summary>
         [DataMember(Name = "seatNumber", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SeatNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SeatNumber { get; set; }
 
         /// <summary>
         /// The row location of the reserved seat (e.g., B).
         /// </summary>
         [DataMember(Name = "seatRow", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SeatRow { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SeatRow { get; set; }
 
         /// <summary>
         /// The section location of the reserved seat (e.g. Orchestra).
         /// </summary>
         [DataMember(Name = "seatSection", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SeatSection { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SeatSection { get; set; }
     }
 }

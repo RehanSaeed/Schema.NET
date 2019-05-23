@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The number or other unique designator assigned to a Report by the publishing organization.
         /// </summary>
-        OneOrMany<string>? ReportNumber { get; set; }
+        OneOrMany<string> ReportNumber { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The number or other unique designator assigned to a Report by the publishing organization.
         /// </summary>
         [DataMember(Name = "reportNumber", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ReportNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ReportNumber { get; set; }
     }
 }

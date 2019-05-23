@@ -21,7 +21,7 @@ namespace Schema.NET
         /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).
         /// Typical unit code(s): C62 for person
         /// </summary>
-        OneOrMany<IQuantitativeValue>? Occupancy { get; set; }
+        OneOrMany<IQuantitativeValue> Occupancy { get; set; }
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ namespace Schema.NET
         ///       If you want to indicate the quantity of a certain kind of bed, use an instance of BedDetails. For more detailed information, use the amenityFeature property.
         /// </summary>
         [DataMember(Name = "bed", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IBedDetails, BedType?, string>? Bed { get; set; }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Schema.NET
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Schema.NET
         /// Typical unit code(s): C62 for person
         /// </summary>
         [DataMember(Name = "occupancy", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IQuantitativeValue>? Occupancy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuantitativeValue> Occupancy { get; set; }
     }
 }

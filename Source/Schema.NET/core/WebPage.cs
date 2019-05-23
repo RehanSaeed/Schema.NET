@@ -17,22 +17,22 @@ namespace Schema.NET
         /// <summary>
         /// Date on which the content on this web page was last reviewed for accuracy and/or completeness.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? LastReviewed { get; set; }
+        OneOrMany<DateTimeOffset?> LastReviewed { get; set; }
 
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.
         /// </summary>
-        OneOrMany<IWebPageElement>? MainContentOfPage { get; set; }
+        OneOrMany<IWebPageElement> MainContentOfPage { get; set; }
 
         /// <summary>
         /// Indicates the main image on the page.
         /// </summary>
-        OneOrMany<IImageObject>? PrimaryImageOfPage { get; set; }
+        OneOrMany<IImageObject> PrimaryImageOfPage { get; set; }
 
         /// <summary>
         /// A link related to this web page, for example to other related web pages.
         /// </summary>
-        OneOrMany<Uri>? RelatedLink { get; set; }
+        OneOrMany<Uri> RelatedLink { get; set; }
 
         /// <summary>
         /// People or organizations that have reviewed the content on this web page for accuracy and/or completeness.
@@ -42,7 +42,7 @@ namespace Schema.NET
         /// <summary>
         /// One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most.
         /// </summary>
-        OneOrMany<Uri>? SignificantLink { get; set; }
+        OneOrMany<Uri> SignificantLink { get; set; }
 
         /// <summary>
         /// Indicates sections of a Web page that are particularly 'speakable' in the sense of being highlighted as being especially appropriate for text-to-speech conversion. Other sections of a page may also be usefully spoken in particular circumstances; the 'speakable' property serves to indicate the parts most likely to be generally useful for speech.&lt;br/&gt;&lt;br/&gt;
@@ -58,7 +58,7 @@ namespace Schema.NET
         /// <summary>
         /// One of the domain specialities to which this web page's content applies.
         /// </summary>
-        OneOrMany<Specialty?>? Specialty { get; set; }
+        OneOrMany<Specialty?> Specialty { get; set; }
     }
 
     /// <summary>
@@ -77,50 +77,50 @@ namespace Schema.NET
         /// A set of links that can help a user understand and navigate a website hierarchy.
         /// </summary>
         [DataMember(Name = "breadcrumb", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IBreadcrumbList, string>? Breadcrumb { get; set; }
 
         /// <summary>
         /// Date on which the content on this web page was last reviewed for accuracy and/or completeness.
         /// </summary>
         [DataMember(Name = "lastReviewed", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? LastReviewed { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> LastReviewed { get; set; }
 
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.
         /// </summary>
         [DataMember(Name = "mainContentOfPage", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IWebPageElement>? MainContentOfPage { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IWebPageElement> MainContentOfPage { get; set; }
 
         /// <summary>
         /// Indicates the main image on the page.
         /// </summary>
         [DataMember(Name = "primaryImageOfPage", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IImageObject>? PrimaryImageOfPage { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IImageObject> PrimaryImageOfPage { get; set; }
 
         /// <summary>
         /// A link related to this web page, for example to other related web pages.
         /// </summary>
         [DataMember(Name = "relatedLink", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Uri>? RelatedLink { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<Uri> RelatedLink { get; set; }
 
         /// <summary>
         /// People or organizations that have reviewed the content on this web page for accuracy and/or completeness.
         /// </summary>
         [DataMember(Name = "reviewedBy", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? ReviewedBy { get; set; }
 
         /// <summary>
         /// One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most.
         /// </summary>
         [DataMember(Name = "significantLink", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Uri>? SignificantLink { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<Uri> SignificantLink { get; set; }
 
         /// <summary>
         /// Indicates sections of a Web page that are particularly 'speakable' in the sense of being highlighted as being especially appropriate for text-to-speech conversion. Other sections of a page may also be usefully spoken in particular circumstances; the 'speakable' property serves to indicate the parts most likely to be generally useful for speech.&lt;br/&gt;&lt;br/&gt;
@@ -132,14 +132,14 @@ namespace Schema.NET
         /// we define a supporting type, &lt;a class="localLink" href="http://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt;  which is defined to be a possible value of the &lt;em&gt;speakable&lt;/em&gt; property.
         /// </summary>
         [DataMember(Name = "speakable", Order = 213)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ISpeakableSpecification, Uri>? Speakable { get; set; }
 
         /// <summary>
         /// One of the domain specialities to which this web page's content applies.
         /// </summary>
         [DataMember(Name = "specialty", Order = 214)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Specialty?>? Specialty { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<Specialty?> Specialty { get; set; }
     }
 }

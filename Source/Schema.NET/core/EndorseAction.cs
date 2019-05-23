@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A sub property of participant. The person/organization being supported.
         /// </summary>
         [DataMember(Name = "endorsee", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Endorsee { get; set; }
     }
 }

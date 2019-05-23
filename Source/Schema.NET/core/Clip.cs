@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson>? Actor { get; set; }
+        OneOrMany<IPerson> Actor { get; set; }
 
         /// <summary>
         /// Position of the clip within an ordered group of clips.
@@ -22,12 +22,12 @@ namespace Schema.NET
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson>? Director { get; set; }
+        OneOrMany<IPerson> Director { get; set; }
 
         /// <summary>
         /// The end time of the clip expressed as the number of seconds from the beginning of the work.
         /// </summary>
-        OneOrMany<double?>? EndOffset { get; set; }
+        OneOrMany<double?> EndOffset { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -37,22 +37,22 @@ namespace Schema.NET
         /// <summary>
         /// The episode to which this clip belongs.
         /// </summary>
-        OneOrMany<IEpisode>? PartOfEpisode { get; set; }
+        OneOrMany<IEpisode> PartOfEpisode { get; set; }
 
         /// <summary>
         /// The season to which this episode belongs.
         /// </summary>
-        OneOrMany<ICreativeWorkSeason>? PartOfSeason { get; set; }
+        OneOrMany<ICreativeWorkSeason> PartOfSeason { get; set; }
 
         /// <summary>
         /// The series to which this episode or season belongs.
         /// </summary>
-        OneOrMany<ICreativeWorkSeries>? PartOfSeries { get; set; }
+        OneOrMany<ICreativeWorkSeries> PartOfSeries { get; set; }
 
         /// <summary>
         /// The start time of the clip expressed as the number of seconds from the beginning of the work.
         /// </summary>
-        OneOrMany<double?>? StartOffset { get; set; }
+        OneOrMany<double?> StartOffset { get; set; }
     }
 
     /// <summary>
@@ -71,63 +71,63 @@ namespace Schema.NET
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "actor", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Actor { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Actor { get; set; }
 
         /// <summary>
         /// Position of the clip within an ordered group of clips.
         /// </summary>
         [DataMember(Name = "clipNumber", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<int?, string>? ClipNumber { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "director", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Director { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Director { get; set; }
 
         /// <summary>
         /// The end time of the clip expressed as the number of seconds from the beginning of the work.
         /// </summary>
         [DataMember(Name = "endOffset", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? EndOffset { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> EndOffset { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
         [DataMember(Name = "musicBy", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMusicGroup, IPerson>? MusicBy { get; set; }
 
         /// <summary>
         /// The episode to which this clip belongs.
         /// </summary>
         [DataMember(Name = "partOfEpisode", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IEpisode>? PartOfEpisode { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IEpisode> PartOfEpisode { get; set; }
 
         /// <summary>
         /// The season to which this episode belongs.
         /// </summary>
         [DataMember(Name = "partOfSeason", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ICreativeWorkSeason>? PartOfSeason { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ICreativeWorkSeason> PartOfSeason { get; set; }
 
         /// <summary>
         /// The series to which this episode or season belongs.
         /// </summary>
         [DataMember(Name = "partOfSeries", Order = 213)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ICreativeWorkSeries>? PartOfSeries { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ICreativeWorkSeries> PartOfSeries { get; set; }
 
         /// <summary>
         /// The start time of the clip expressed as the number of seconds from the beginning of the work.
         /// </summary>
         [DataMember(Name = "startOffset", Order = 214)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? StartOffset { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> StartOffset { get; set; }
     }
 }

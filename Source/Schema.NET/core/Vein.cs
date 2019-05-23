@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The vasculature that the vein drains into.
         /// </summary>
-        OneOrMany<IVessel>? DrainsTo { get; set; }
+        OneOrMany<IVessel> DrainsTo { get; set; }
 
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
@@ -22,7 +22,7 @@ namespace Schema.NET
         /// <summary>
         /// The anatomical or organ system that the vein flows into; a larger structure that the vein connects to.
         /// </summary>
-        OneOrMany<IAnatomicalStructure>? Tributary { get; set; }
+        OneOrMany<IAnatomicalStructure> Tributary { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The vasculature that the vein drains into.
         /// </summary>
         [DataMember(Name = "drainsTo", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IVessel>? DrainsTo { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IVessel> DrainsTo { get; set; }
 
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
         /// </summary>
         [DataMember(Name = "regionDrained", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAnatomicalStructure, IAnatomicalSystem>? RegionDrained { get; set; }
 
         /// <summary>
         /// The anatomical or organ system that the vein flows into; a larger structure that the vein connects to.
         /// </summary>
         [DataMember(Name = "tributary", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAnatomicalStructure>? Tributary { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAnatomicalStructure> Tributary { get; set; }
     }
 }

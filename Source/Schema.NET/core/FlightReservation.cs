@@ -13,22 +13,22 @@ namespace Schema.NET
         /// <summary>
         /// The airline-specific indicator of boarding order / preference.
         /// </summary>
-        OneOrMany<string>? BoardingGroup { get; set; }
+        OneOrMany<string> BoardingGroup { get; set; }
 
         /// <summary>
         /// The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
         /// </summary>
-        OneOrMany<string>? PassengerPriorityStatus { get; set; }
+        OneOrMany<string> PassengerPriorityStatus { get; set; }
 
         /// <summary>
         /// The passenger's sequence number as assigned by the airline.
         /// </summary>
-        OneOrMany<string>? PassengerSequenceNumber { get; set; }
+        OneOrMany<string> PassengerSequenceNumber { get; set; }
 
         /// <summary>
         /// The type of security screening the passenger is subject to.
         /// </summary>
-        OneOrMany<string>? SecurityScreening { get; set; }
+        OneOrMany<string> SecurityScreening { get; set; }
     }
 
     /// <summary>
@@ -48,28 +48,28 @@ namespace Schema.NET
         /// The airline-specific indicator of boarding order / preference.
         /// </summary>
         [DataMember(Name = "boardingGroup", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BoardingGroup { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> BoardingGroup { get; set; }
 
         /// <summary>
         /// The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
         /// </summary>
         [DataMember(Name = "passengerPriorityStatus", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PassengerPriorityStatus { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PassengerPriorityStatus { get; set; }
 
         /// <summary>
         /// The passenger's sequence number as assigned by the airline.
         /// </summary>
         [DataMember(Name = "passengerSequenceNumber", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PassengerSequenceNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PassengerSequenceNumber { get; set; }
 
         /// <summary>
         /// The type of security screening the passenger is subject to.
         /// </summary>
         [DataMember(Name = "securityScreening", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SecurityScreening { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SecurityScreening { get; set; }
     }
 }

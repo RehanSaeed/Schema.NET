@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// One or more alternative conditions considered in the differential diagnosis process as output of a diagnosis process.
         /// </summary>
-        OneOrMany<IMedicalCondition>? Diagnosis { get; set; }
+        OneOrMany<IMedicalCondition> Diagnosis { get; set; }
 
         /// <summary>
         /// One of a set of signs and symptoms that can be used to distinguish this diagnosis from others in the differential diagnosis.
         /// </summary>
-        OneOrMany<IMedicalSignOrSymptom>? DistinguishingSign { get; set; }
+        OneOrMany<IMedicalSignOrSymptom> DistinguishingSign { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// One or more alternative conditions considered in the differential diagnosis process as output of a diagnosis process.
         /// </summary>
         [DataMember(Name = "diagnosis", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalCondition>? Diagnosis { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalCondition> Diagnosis { get; set; }
 
         /// <summary>
         /// One of a set of signs and symptoms that can be used to distinguish this diagnosis from others in the differential diagnosis.
         /// </summary>
         [DataMember(Name = "distinguishingSign", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalSignOrSymptom>? DistinguishingSign { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalSignOrSymptom> DistinguishingSign { get; set; }
     }
 }

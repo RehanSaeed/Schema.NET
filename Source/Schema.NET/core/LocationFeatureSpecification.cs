@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// The hours during which this service or contact is available.
         /// </summary>
-        OneOrMany<IOpeningHoursSpecification>? HoursAvailable { get; set; }
+        OneOrMany<IOpeningHoursSpecification> HoursAvailable { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
+        OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The hours during which this service or contact is available.
         /// </summary>
         [DataMember(Name = "hoursAvailable", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOpeningHoursSpecification>? HoursAvailable { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOpeningHoursSpecification> HoursAvailable { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
         [DataMember(Name = "validFrom", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
         [DataMember(Name = "validThrough", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
     }
 }

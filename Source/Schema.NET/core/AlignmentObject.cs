@@ -12,27 +12,27 @@ namespace Schema.NET
         /// <summary>
         /// A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationalLevel'.
         /// </summary>
-        OneOrMany<string>? AlignmentType { get; set; }
+        OneOrMany<string> AlignmentType { get; set; }
 
         /// <summary>
         /// The framework to which the resource being described is aligned.
         /// </summary>
-        OneOrMany<string>? EducationalFramework { get; set; }
+        OneOrMany<string> EducationalFramework { get; set; }
 
         /// <summary>
         /// The description of a node in an established educational framework.
         /// </summary>
-        OneOrMany<string>? TargetDescription { get; set; }
+        OneOrMany<string> TargetDescription { get; set; }
 
         /// <summary>
         /// The name of a node in an established educational framework.
         /// </summary>
-        OneOrMany<string>? TargetName { get; set; }
+        OneOrMany<string> TargetName { get; set; }
 
         /// <summary>
         /// The URL of a node in an established educational framework.
         /// </summary>
-        OneOrMany<Uri>? TargetUrl { get; set; }
+        OneOrMany<Uri> TargetUrl { get; set; }
     }
 
     /// <summary>
@@ -51,35 +51,35 @@ namespace Schema.NET
         /// A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationalLevel'.
         /// </summary>
         [DataMember(Name = "alignmentType", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AlignmentType { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AlignmentType { get; set; }
 
         /// <summary>
         /// The framework to which the resource being described is aligned.
         /// </summary>
         [DataMember(Name = "educationalFramework", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? EducationalFramework { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> EducationalFramework { get; set; }
 
         /// <summary>
         /// The description of a node in an established educational framework.
         /// </summary>
         [DataMember(Name = "targetDescription", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TargetDescription { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> TargetDescription { get; set; }
 
         /// <summary>
         /// The name of a node in an established educational framework.
         /// </summary>
         [DataMember(Name = "targetName", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TargetName { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> TargetName { get; set; }
 
         /// <summary>
         /// The URL of a node in an established educational framework.
         /// </summary>
         [DataMember(Name = "targetUrl", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Uri>? TargetUrl { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<Uri> TargetUrl { get; set; }
     }
 }

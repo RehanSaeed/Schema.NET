@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of location. The entertainment business where the action occurred.
         /// </summary>
-        OneOrMany<IEntertainmentBusiness>? EntertainmentBusiness { get; set; }
+        OneOrMany<IEntertainmentBusiness> EntertainmentBusiness { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A sub property of location. The entertainment business where the action occurred.
         /// </summary>
         [DataMember(Name = "entertainmentBusiness", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IEntertainmentBusiness>? EntertainmentBusiness { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IEntertainmentBusiness> EntertainmentBusiness { get; set; }
     }
 }

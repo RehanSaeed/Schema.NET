@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A permission related to the access to this document (e.g. permission to read or write an electronic document). For a public document, specify a grantee with an Audience with audienceType equal to "public".
         /// </summary>
-        OneOrMany<IDigitalDocumentPermission>? HasDigitalDocumentPermission { get; set; }
+        OneOrMany<IDigitalDocumentPermission> HasDigitalDocumentPermission { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A permission related to the access to this document (e.g. permission to read or write an electronic document). For a public document, specify a grantee with an Audience with audienceType equal to "public".
         /// </summary>
         [DataMember(Name = "hasDigitalDocumentPermission", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IDigitalDocumentPermission>? HasDigitalDocumentPermission { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IDigitalDocumentPermission> HasDigitalDocumentPermission { get; set; }
     }
 }

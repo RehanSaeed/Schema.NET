@@ -22,10 +22,10 @@ namespace Schema.NET.Test
                 ReviewCount = 89,
                 RatingValue = 4.4D
             },
-            Review = null, // Recommended
+            Review = new OneOrMany<IReview>((IReview)null), // Recommended
             Offers = new Offer() // Recommended
             {
-                Url = null, // Recommended
+                Url = (Uri)null, // Recommended
                 ItemOffered = null, // Recommended
                 PriceCurrency = "USD", // Required
                 Price = 119.99M, // Required

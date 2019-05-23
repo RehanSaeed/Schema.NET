@@ -18,6 +18,7 @@ namespace Schema.NET
             {
                 new StringEnumConverter()
             },
+            DefaultValueHandling = DefaultValueHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore
         };
 
@@ -31,6 +32,7 @@ namespace Schema.NET
             {
                 new StringEnumConverter()
             },
+            DefaultValueHandling = DefaultValueHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
             StringEscapeHandling = StringEscapeHandling.EscapeHtml
         };

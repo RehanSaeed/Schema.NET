@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of object. The collection target of the action.
         /// </summary>
-        OneOrMany<IThing>? TargetCollection { get; set; }
+        OneOrMany<IThing> TargetCollection { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A sub property of object. The collection target of the action.
         /// </summary>
         [DataMember(Name = "targetCollection", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IThing>? TargetCollection { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IThing> TargetCollection { get; set; }
     }
 }

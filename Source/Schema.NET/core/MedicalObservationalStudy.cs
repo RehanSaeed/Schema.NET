@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// Specifics about the observational study design (enumerated).
         /// </summary>
-        OneOrMany<MedicalObservationalStudyDesign?>? StudyDesign { get; set; }
+        OneOrMany<MedicalObservationalStudyDesign?> StudyDesign { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// Specifics about the observational study design (enumerated).
         /// </summary>
         [DataMember(Name = "studyDesign", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<MedicalObservationalStudyDesign?>? StudyDesign { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<MedicalObservationalStudyDesign?> StudyDesign { get; set; }
     }
 }

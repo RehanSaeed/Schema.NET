@@ -27,21 +27,21 @@ namespace Schema.NET
         /// Name or unique ID of network. (Networks are often reused across different insurance plans).
         /// </summary>
         [DataMember(Name = "healthPlanNetworkId", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? HealthPlanNetworkId { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> HealthPlanNetworkId { get; set; }
 
         /// <summary>
         /// Whether the provider is accepting new patients.
         /// </summary>
         [DataMember(Name = "isAcceptingNewPatients", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<bool?>? IsAcceptingNewPatients { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<bool?> IsAcceptingNewPatients { get; set; }
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
         [DataMember(Name = "medicalSpecialty", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual OneOrMany<MedicalSpecialty?> MedicalSpecialty { get; set; }
     }
 }

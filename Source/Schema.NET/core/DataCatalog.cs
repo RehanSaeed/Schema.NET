@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A dataset contained in this catalog.
         /// </summary>
-        OneOrMany<IDataset>? Dataset { get; set; }
+        OneOrMany<IDataset> Dataset { get; set; }
 
         /// <summary>
         /// A technique or technology used in a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt; (or &lt;a class="localLink" href="http://schema.org/DataDownload"&gt;DataDownload&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/DataCatalog"&gt;DataCatalog&lt;/a&gt;),
@@ -40,8 +40,8 @@ namespace Schema.NET
         /// A dataset contained in this catalog.
         /// </summary>
         [DataMember(Name = "dataset", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IDataset>? Dataset { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IDataset> Dataset { get; set; }
 
         /// <summary>
         /// A technique or technology used in a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt; (or &lt;a class="localLink" href="http://schema.org/DataDownload"&gt;DataDownload&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/DataCatalog"&gt;DataCatalog&lt;/a&gt;),
@@ -51,7 +51,7 @@ namespace Schema.NET
         /// If there are several &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; properties recorded for some given data object, use a &lt;a class="localLink" href="http://schema.org/PropertyValue"&gt;PropertyValue&lt;/a&gt; for each &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; and attach the corresponding &lt;a class="localLink" href="http://schema.org/measurementTechnique"&gt;measurementTechnique&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "measurementTechnique", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri>? MeasurementTechnique { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
         /// </summary>
-        OneOrMany<string>? SerialNumber { get; set; }
+        OneOrMany<string> SerialNumber { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
         /// </summary>
         [DataMember(Name = "serialNumber", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SerialNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SerialNumber { get; set; }
     }
 }

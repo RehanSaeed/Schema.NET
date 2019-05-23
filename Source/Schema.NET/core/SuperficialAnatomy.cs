@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
         /// </summary>
-        OneOrMany<string>? AssociatedPathophysiology { get; set; }
+        OneOrMany<string> AssociatedPathophysiology { get; set; }
 
         /// <summary>
         /// Anatomical systems or structures that relate to the superficial anatomy.
@@ -22,17 +22,17 @@ namespace Schema.NET
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
-        OneOrMany<IMedicalCondition>? RelatedCondition { get; set; }
+        OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
-        OneOrMany<IMedicalTherapy>? RelatedTherapy { get; set; }
+        OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
 
         /// <summary>
         /// The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.
         /// </summary>
-        OneOrMany<string>? Significance { get; set; }
+        OneOrMany<string> Significance { get; set; }
     }
 
     /// <summary>
@@ -51,35 +51,35 @@ namespace Schema.NET
         /// If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
         /// </summary>
         [DataMember(Name = "associatedPathophysiology", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? AssociatedPathophysiology { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> AssociatedPathophysiology { get; set; }
 
         /// <summary>
         /// Anatomical systems or structures that relate to the superficial anatomy.
         /// </summary>
         [DataMember(Name = "relatedAnatomy", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAnatomicalStructure, IAnatomicalSystem>? RelatedAnatomy { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalCondition>? RelatedCondition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalTherapy>? RelatedTherapy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
 
         /// <summary>
         /// The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.
         /// </summary>
         [DataMember(Name = "significance", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Significance { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Significance { get; set; }
     }
 }

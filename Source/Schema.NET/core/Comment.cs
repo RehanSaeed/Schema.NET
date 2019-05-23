@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// The number of downvotes this question, answer or comment has received from the community.
         /// </summary>
-        OneOrMany<int?>? DownvoteCount { get; set; }
+        OneOrMany<int?> DownvoteCount { get; set; }
 
         /// <summary>
         /// The parent of a question, answer or item in general.
         /// </summary>
-        OneOrMany<IQuestion>? ParentItem { get; set; }
+        OneOrMany<IQuestion> ParentItem { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.
         /// </summary>
-        OneOrMany<int?>? UpvoteCount { get; set; }
+        OneOrMany<int?> UpvoteCount { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The number of downvotes this question, answer or comment has received from the community.
         /// </summary>
         [DataMember(Name = "downvoteCount", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? DownvoteCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> DownvoteCount { get; set; }
 
         /// <summary>
         /// The parent of a question, answer or item in general.
         /// </summary>
         [DataMember(Name = "parentItem", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IQuestion>? ParentItem { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuestion> ParentItem { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.
         /// </summary>
         [DataMember(Name = "upvoteCount", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? UpvoteCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> UpvoteCount { get; set; }
     }
 }

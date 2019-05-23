@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// Qualification, candidature, degree, application that Thesis supports.
         /// </summary>
-        OneOrMany<string>? InSupportOf { get; set; }
+        OneOrMany<string> InSupportOf { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// Qualification, candidature, degree, application that Thesis supports.
         /// </summary>
         [DataMember(Name = "inSupportOf", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? InSupportOf { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> InSupportOf { get; set; }
     }
 }

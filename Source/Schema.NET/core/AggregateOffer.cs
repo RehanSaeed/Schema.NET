@@ -32,12 +32,12 @@ namespace Schema.NET
         /// <summary>
         /// The number of offers for the product.
         /// </summary>
-        OneOrMany<int?>? OfferCount { get; set; }
+        OneOrMany<int?> OfferCount { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        OneOrMany<IOffer>? Offers { get; set; }
+        OneOrMany<IOffer> Offers { get; set; }
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "highPrice", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<decimal?, string>? HighPrice { get; set; }
 
         /// <summary>
@@ -73,21 +73,21 @@ namespace Schema.NET
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "lowPrice", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<decimal?, string>? LowPrice { get; set; }
 
         /// <summary>
         /// The number of offers for the product.
         /// </summary>
         [DataMember(Name = "offerCount", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? OfferCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> OfferCount { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
         [DataMember(Name = "offers", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOffer>? Offers { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOffer> Offers { get; set; }
     }
 }

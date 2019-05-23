@@ -31,7 +31,7 @@ namespace Schema.NET
         /// An item within in a data feed. Data feeds may have many elements.
         /// </summary>
         [DataMember(Name = "dataFeedElement", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IDataFeedItem, string, IThing>? DataFeedElement { get; set; }
     }
 }

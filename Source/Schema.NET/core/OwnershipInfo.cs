@@ -17,12 +17,12 @@ namespace Schema.NET
         /// <summary>
         /// The date and time of obtaining the product.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? OwnedFrom { get; set; }
+        OneOrMany<DateTimeOffset?> OwnedFrom { get; set; }
 
         /// <summary>
         /// The date and time of giving up ownership on the product.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? OwnedThrough { get; set; }
+        OneOrMany<DateTimeOffset?> OwnedThrough { get; set; }
 
         /// <summary>
         /// The product that this structured value is referring to.
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// The organization or person from which the product was acquired.
         /// </summary>
         [DataMember(Name = "acquiredFrom", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? AcquiredFrom { get; set; }
 
         /// <summary>
         /// The date and time of obtaining the product.
         /// </summary>
         [DataMember(Name = "ownedFrom", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? OwnedFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> OwnedFrom { get; set; }
 
         /// <summary>
         /// The date and time of giving up ownership on the product.
         /// </summary>
         [DataMember(Name = "ownedThrough", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? OwnedThrough { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> OwnedThrough { get; set; }
 
         /// <summary>
         /// The product that this structured value is referring to.
         /// </summary>
         [DataMember(Name = "typeOfGood", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IProduct, IService>? TypeOfGood { get; set; }
     }
 }

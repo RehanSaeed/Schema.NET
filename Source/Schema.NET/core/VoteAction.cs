@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of object. The candidate subject of this action.
         /// </summary>
-        OneOrMany<IPerson>? Candidate { get; set; }
+        OneOrMany<IPerson> Candidate { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A sub property of object. The candidate subject of this action.
         /// </summary>
         [DataMember(Name = "candidate", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Candidate { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Candidate { get; set; }
     }
 }

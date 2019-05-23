@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The participant/person/organization that bought the object.
         /// </summary>
-        OneOrMany<IPerson>? Buyer { get; set; }
+        OneOrMany<IPerson> Buyer { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A sub property of participant. The participant/person/organization that bought the object.
         /// </summary>
         [DataMember(Name = "buyer", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Buyer { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Buyer { get; set; }
     }
 }

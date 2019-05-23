@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// Specifying the health condition(s) of a patient, medical study, or other target audience.
         /// </summary>
-        OneOrMany<IMedicalCondition>? HealthCondition { get; set; }
+        OneOrMany<IMedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
         /// Expected or actual outcomes of the study.
@@ -22,7 +22,7 @@ namespace Schema.NET
         /// <summary>
         /// Any characteristics of the population used in the study, e.g. 'males under 65'.
         /// </summary>
-        OneOrMany<string>? Population { get; set; }
+        OneOrMany<string> Population { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -37,12 +37,12 @@ namespace Schema.NET
         /// <summary>
         /// The location in which the study is taking/took place.
         /// </summary>
-        OneOrMany<IAdministrativeArea>? StudyLocation { get; set; }
+        OneOrMany<IAdministrativeArea> StudyLocation { get; set; }
 
         /// <summary>
         /// A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
         /// </summary>
-        OneOrMany<IMedicalEntity>? StudySubject { get; set; }
+        OneOrMany<IMedicalEntity> StudySubject { get; set; }
     }
 
     /// <summary>
@@ -61,49 +61,49 @@ namespace Schema.NET
         /// Specifying the health condition(s) of a patient, medical study, or other target audience.
         /// </summary>
         [DataMember(Name = "healthCondition", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalCondition>? HealthCondition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
         /// Expected or actual outcomes of the study.
         /// </summary>
         [DataMember(Name = "outcome", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMedicalEntity, string>? Outcome { get; set; }
 
         /// <summary>
         /// Any characteristics of the population used in the study, e.g. 'males under 65'.
         /// </summary>
         [DataMember(Name = "population", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Population { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Population { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
         [DataMember(Name = "sponsor", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Sponsor { get; set; }
 
         /// <summary>
         /// The status of the study (enumerated).
         /// </summary>
         [DataMember(Name = "status", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<EventStatusType?, MedicalStudyStatus?, string>? Status { get; set; }
 
         /// <summary>
         /// The location in which the study is taking/took place.
         /// </summary>
         [DataMember(Name = "studyLocation", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAdministrativeArea>? StudyLocation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAdministrativeArea> StudyLocation { get; set; }
 
         /// <summary>
         /// A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
         /// </summary>
         [DataMember(Name = "studySubject", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IMedicalEntity>? StudySubject { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IMedicalEntity> StudySubject { get; set; }
     }
 }

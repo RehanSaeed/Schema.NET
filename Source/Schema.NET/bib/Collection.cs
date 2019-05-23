@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The number of items in the &lt;a class="localLink" href="http://schema.org/Collection"&gt;Collection&lt;/a&gt;.
         /// </summary>
-        OneOrMany<int?>? CollectionSize { get; set; }
+        OneOrMany<int?> CollectionSize { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The number of items in the &lt;a class="localLink" href="http://schema.org/Collection"&gt;Collection&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "collectionSize", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? CollectionSize { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> CollectionSize { get; set; }
     }
 }

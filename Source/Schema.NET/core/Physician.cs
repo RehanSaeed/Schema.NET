@@ -17,7 +17,7 @@ namespace Schema.NET
         /// <summary>
         /// A hospital with which the physician or office is affiliated.
         /// </summary>
-        OneOrMany<IHospital>? HospitalAffiliation { get; set; }
+        OneOrMany<IHospital> HospitalAffiliation { get; set; }
     }
 
     /// <summary>
@@ -36,21 +36,21 @@ namespace Schema.NET
         /// A medical service available from this provider.
         /// </summary>
         [DataMember(Name = "availableService", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy>? AvailableService { get; set; }
 
         /// <summary>
         /// A hospital with which the physician or office is affiliated.
         /// </summary>
         [DataMember(Name = "hospitalAffiliation", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IHospital>? HospitalAffiliation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IHospital> HospitalAffiliation { get; set; }
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
         [DataMember(Name = "medicalSpecialty", Order = 408)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<MedicalSpecialty?> MedicalSpecialty { get; set; }
     }
 }

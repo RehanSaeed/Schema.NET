@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
-        OneOrMany<IAggregateRating>? AggregateRating { get; set; }
+        OneOrMany<IAggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// An associated logo.
@@ -22,12 +22,12 @@ namespace Schema.NET
         /// <summary>
         /// A review of the item.
         /// </summary>
-        OneOrMany<IReview>? Review { get; set; }
+        OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
         /// </summary>
-        OneOrMany<string>? Slogan { get; set; }
+        OneOrMany<string> Slogan { get; set; }
     }
 
     /// <summary>
@@ -46,28 +46,28 @@ namespace Schema.NET
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAggregateRating>? AggregateRating { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
         [DataMember(Name = "logo", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IImageObject, Uri>? Logo { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
         [DataMember(Name = "review", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IReview>? Review { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
         /// </summary>
         [DataMember(Name = "slogan", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Slogan { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Slogan { get; set; }
     }
 }

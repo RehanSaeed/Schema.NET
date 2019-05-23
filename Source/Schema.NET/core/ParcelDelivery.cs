@@ -12,42 +12,42 @@ namespace Schema.NET
         /// <summary>
         /// Destination address.
         /// </summary>
-        OneOrMany<IPostalAddress>? DeliveryAddress { get; set; }
+        OneOrMany<IPostalAddress> DeliveryAddress { get; set; }
 
         /// <summary>
         /// New entry added as the package passes through each leg of its journey (from shipment to final delivery).
         /// </summary>
-        OneOrMany<IDeliveryEvent>? DeliveryStatus { get; set; }
+        OneOrMany<IDeliveryEvent> DeliveryStatus { get; set; }
 
         /// <summary>
         /// The earliest date the package may arrive.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ExpectedArrivalFrom { get; set; }
+        OneOrMany<DateTimeOffset?> ExpectedArrivalFrom { get; set; }
 
         /// <summary>
         /// The latest date the package may arrive.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ExpectedArrivalUntil { get; set; }
+        OneOrMany<DateTimeOffset?> ExpectedArrivalUntil { get; set; }
 
         /// <summary>
         /// Method used for delivery or shipping.
         /// </summary>
-        OneOrMany<DeliveryMethod?>? HasDeliveryMethod { get; set; }
+        OneOrMany<DeliveryMethod?> HasDeliveryMethod { get; set; }
 
         /// <summary>
         /// Item(s) being shipped.
         /// </summary>
-        OneOrMany<IProduct>? ItemShipped { get; set; }
+        OneOrMany<IProduct> ItemShipped { get; set; }
 
         /// <summary>
         /// Shipper's address.
         /// </summary>
-        OneOrMany<IPostalAddress>? OriginAddress { get; set; }
+        OneOrMany<IPostalAddress> OriginAddress { get; set; }
 
         /// <summary>
         /// The overall order the items in this delivery were included in.
         /// </summary>
-        OneOrMany<IOrder>? PartOfOrder { get; set; }
+        OneOrMany<IOrder> PartOfOrder { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
@@ -57,12 +57,12 @@ namespace Schema.NET
         /// <summary>
         /// Shipper tracking number.
         /// </summary>
-        OneOrMany<string>? TrackingNumber { get; set; }
+        OneOrMany<string> TrackingNumber { get; set; }
 
         /// <summary>
         /// Tracking url for the parcel delivery.
         /// </summary>
-        OneOrMany<Uri>? TrackingUrl { get; set; }
+        OneOrMany<Uri> TrackingUrl { get; set; }
     }
 
     /// <summary>
@@ -81,77 +81,77 @@ namespace Schema.NET
         /// Destination address.
         /// </summary>
         [DataMember(Name = "deliveryAddress", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPostalAddress>? DeliveryAddress { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPostalAddress> DeliveryAddress { get; set; }
 
         /// <summary>
         /// New entry added as the package passes through each leg of its journey (from shipment to final delivery).
         /// </summary>
         [DataMember(Name = "deliveryStatus", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IDeliveryEvent>? DeliveryStatus { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IDeliveryEvent> DeliveryStatus { get; set; }
 
         /// <summary>
         /// The earliest date the package may arrive.
         /// </summary>
         [DataMember(Name = "expectedArrivalFrom", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ExpectedArrivalFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ExpectedArrivalFrom { get; set; }
 
         /// <summary>
         /// The latest date the package may arrive.
         /// </summary>
         [DataMember(Name = "expectedArrivalUntil", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ExpectedArrivalUntil { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ExpectedArrivalUntil { get; set; }
 
         /// <summary>
         /// Method used for delivery or shipping.
         /// </summary>
         [DataMember(Name = "hasDeliveryMethod", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DeliveryMethod?>? HasDeliveryMethod { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DeliveryMethod?> HasDeliveryMethod { get; set; }
 
         /// <summary>
         /// Item(s) being shipped.
         /// </summary>
         [DataMember(Name = "itemShipped", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IProduct>? ItemShipped { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IProduct> ItemShipped { get; set; }
 
         /// <summary>
         /// Shipper's address.
         /// </summary>
         [DataMember(Name = "originAddress", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPostalAddress>? OriginAddress { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPostalAddress> OriginAddress { get; set; }
 
         /// <summary>
         /// The overall order the items in this delivery were included in.
         /// </summary>
         [DataMember(Name = "partOfOrder", Order = 213)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOrder>? PartOfOrder { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOrder> PartOfOrder { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
         [DataMember(Name = "provider", Order = 214)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Provider { get; set; }
 
         /// <summary>
         /// Shipper tracking number.
         /// </summary>
         [DataMember(Name = "trackingNumber", Order = 215)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TrackingNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> TrackingNumber { get; set; }
 
         /// <summary>
         /// Tracking url for the parcel delivery.
         /// </summary>
         [DataMember(Name = "trackingUrl", Order = 216)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<Uri>? TrackingUrl { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<Uri> TrackingUrl { get; set; }
     }
 }

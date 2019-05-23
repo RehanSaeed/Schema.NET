@@ -8,7 +8,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/events
     public class EventTest
     {
-        private static readonly Organization NullOrganization = null;
+        private static readonly string NullTelephone = null;
         private static readonly ItemAvailability? NullItemAvailability = null;
 
         private readonly Event @event = new Event()
@@ -53,7 +53,7 @@ namespace Schema.NET.Test
             Performer = new Person() // Recommended
             {
                 Name = "Andy Lagunoff", // Recommended
-                Telephone = NullOrganization?.Telephone // Should be ignored
+                Telephone = NullTelephone // Should be ignored
             }
         };
 

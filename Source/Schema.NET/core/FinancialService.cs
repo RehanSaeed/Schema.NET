@@ -31,7 +31,7 @@ namespace Schema.NET
         /// Description of fees, commissions, and other terms applied either to a class of financial product, or by a financial service organization.
         /// </summary>
         [DataMember(Name = "feesAndCommissionsSpecification", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri>? FeesAndCommissionsSpecification { get; set; }
     }
 }

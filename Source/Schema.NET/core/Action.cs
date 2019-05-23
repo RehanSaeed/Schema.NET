@@ -13,7 +13,7 @@ namespace Schema.NET
         /// <summary>
         /// Indicates the current disposition of the Action.
         /// </summary>
-        OneOrMany<ActionStatusType?>? ActionStatus { get; set; }
+        OneOrMany<ActionStatusType?> ActionStatus { get; set; }
 
         /// <summary>
         /// The direct performer or driver of the action (animate or inanimate). e.g. &lt;em&gt;John&lt;/em&gt; wrote a book.
@@ -24,17 +24,17 @@ namespace Schema.NET
         /// The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to &lt;em&gt;December&lt;/em&gt;. For media, including audio and video, it's the time offset of the end of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? EndTime { get; set; }
+        OneOrMany<DateTimeOffset?> EndTime { get; set; }
 
         /// <summary>
         /// For failed actions, more information on the cause of the failure.
         /// </summary>
-        OneOrMany<IThing>? Error { get; set; }
+        OneOrMany<IThing> Error { get; set; }
 
         /// <summary>
         /// The object that helped the agent perform the action. e.g. John wrote a book with &lt;em&gt;a pen&lt;/em&gt;.
         /// </summary>
-        OneOrMany<IThing>? Instrument { get; set; }
+        OneOrMany<IThing> Instrument { get; set; }
 
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
@@ -44,7 +44,7 @@ namespace Schema.NET
         /// <summary>
         /// The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read &lt;em&gt;a book&lt;/em&gt;.
         /// </summary>
-        OneOrMany<IThing>? Object { get; set; }
+        OneOrMany<IThing> Object { get; set; }
 
         /// <summary>
         /// Other co-agents that participated in the action indirectly. e.g. John wrote a book with &lt;em&gt;Steve&lt;/em&gt;.
@@ -54,13 +54,13 @@ namespace Schema.NET
         /// <summary>
         /// The result produced in the action. e.g. John wrote &lt;em&gt;a book&lt;/em&gt;.
         /// </summary>
-        OneOrMany<IThing>? Result { get; set; }
+        OneOrMany<IThing> Result { get; set; }
 
         /// <summary>
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? StartTime { get; set; }
+        OneOrMany<DateTimeOffset?> StartTime { get; set; }
 
         /// <summary>
         /// Indicates a target EntryPoint for an Action.
@@ -85,14 +85,14 @@ namespace Schema.NET
         /// Indicates the current disposition of the Action.
         /// </summary>
         [DataMember(Name = "actionStatus", Order = 106)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ActionStatusType?>? ActionStatus { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ActionStatusType?> ActionStatus { get; set; }
 
         /// <summary>
         /// The direct performer or driver of the action (animate or inanimate). e.g. &lt;em&gt;John&lt;/em&gt; wrote a book.
         /// </summary>
         [DataMember(Name = "agent", Order = 107)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Agent { get; set; }
 
         /// <summary>
@@ -100,64 +100,64 @@ namespace Schema.NET
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
         [DataMember(Name = "endTime", Order = 108)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? EndTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> EndTime { get; set; }
 
         /// <summary>
         /// For failed actions, more information on the cause of the failure.
         /// </summary>
         [DataMember(Name = "error", Order = 109)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IThing>? Error { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IThing> Error { get; set; }
 
         /// <summary>
         /// The object that helped the agent perform the action. e.g. John wrote a book with &lt;em&gt;a pen&lt;/em&gt;.
         /// </summary>
         [DataMember(Name = "instrument", Order = 110)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IThing>? Instrument { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IThing> Instrument { get; set; }
 
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
         /// </summary>
         [DataMember(Name = "location", Order = 111)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPlace, IPostalAddress, string>? Location { get; set; }
 
         /// <summary>
         /// The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read &lt;em&gt;a book&lt;/em&gt;.
         /// </summary>
         [DataMember(Name = "object", Order = 112)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IThing>? Object { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IThing> Object { get; set; }
 
         /// <summary>
         /// Other co-agents that participated in the action indirectly. e.g. John wrote a book with &lt;em&gt;Steve&lt;/em&gt;.
         /// </summary>
         [DataMember(Name = "participant", Order = 113)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Participant { get; set; }
 
         /// <summary>
         /// The result produced in the action. e.g. John wrote &lt;em&gt;a book&lt;/em&gt;.
         /// </summary>
         [DataMember(Name = "result", Order = 114)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IThing>? Result { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IThing> Result { get; set; }
 
         /// <summary>
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
         [DataMember(Name = "startTime", Order = 115)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? StartTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> StartTime { get; set; }
 
         /// <summary>
         /// Indicates a target EntryPoint for an Action.
         /// </summary>
         [DataMember(Name = "target", Order = 116)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IEntryPoint, Uri>? Target { get; set; }
     }
 }

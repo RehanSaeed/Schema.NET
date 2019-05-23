@@ -28,7 +28,7 @@ namespace Schema.NET
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
     }
 }

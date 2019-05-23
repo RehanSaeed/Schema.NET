@@ -17,7 +17,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The real estate agent involved in the action.
         /// </summary>
-        OneOrMany<IRealEstateAgent>? RealEstateAgent { get; set; }
+        OneOrMany<IRealEstateAgent> RealEstateAgent { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// A sub property of participant. The owner of the real estate property.
         /// </summary>
         [DataMember(Name = "landlord", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Landlord { get; set; }
 
         /// <summary>
         /// A sub property of participant. The real estate agent involved in the action.
         /// </summary>
         [DataMember(Name = "realEstateAgent", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IRealEstateAgent>? RealEstateAgent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IRealEstateAgent> RealEstateAgent { get; set; }
     }
 }

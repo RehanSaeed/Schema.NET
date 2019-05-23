@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// The actual infectious agent, such as a specific bacterium.
         /// </summary>
-        OneOrMany<string>? InfectiousAgent { get; set; }
+        OneOrMany<string> InfectiousAgent { get; set; }
 
         /// <summary>
         /// The class of infectious agent (bacteria, prion, etc.) that causes the disease.
         /// </summary>
-        OneOrMany<InfectiousAgentClass?>? InfectiousAgentClass { get; set; }
+        OneOrMany<InfectiousAgentClass?> InfectiousAgentClass { get; set; }
 
         /// <summary>
         /// How the disease spreads, either as a route or vector, for example 'direct contact', 'Aedes aegypti', etc.
         /// </summary>
-        OneOrMany<string>? TransmissionMethod { get; set; }
+        OneOrMany<string> TransmissionMethod { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The actual infectious agent, such as a specific bacterium.
         /// </summary>
         [DataMember(Name = "infectiousAgent", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? InfectiousAgent { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> InfectiousAgent { get; set; }
 
         /// <summary>
         /// The class of infectious agent (bacteria, prion, etc.) that causes the disease.
         /// </summary>
         [DataMember(Name = "infectiousAgentClass", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<InfectiousAgentClass?>? InfectiousAgentClass { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<InfectiousAgentClass?> InfectiousAgentClass { get; set; }
 
         /// <summary>
         /// How the disease spreads, either as a route or vector, for example 'direct contact', 'Aedes aegypti', etc.
         /// </summary>
         [DataMember(Name = "transmissionMethod", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? TransmissionMethod { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> TransmissionMethod { get; set; }
     }
 }

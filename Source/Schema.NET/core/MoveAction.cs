@@ -16,12 +16,12 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of location. The original location of the object or the agent before the action.
         /// </summary>
-        OneOrMany<IPlace>? FromLocation { get; set; }
+        OneOrMany<IPlace> FromLocation { get; set; }
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
-        OneOrMany<IPlace>? ToLocation { get; set; }
+        OneOrMany<IPlace> ToLocation { get; set; }
     }
 
     /// <summary>
@@ -44,14 +44,14 @@ namespace Schema.NET
         /// A sub property of location. The original location of the object or the agent before the action.
         /// </summary>
         [DataMember(Name = "fromLocation", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPlace>? FromLocation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPlace> FromLocation { get; set; }
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
         [DataMember(Name = "toLocation", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPlace>? ToLocation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPlace> ToLocation { get; set; }
     }
 }

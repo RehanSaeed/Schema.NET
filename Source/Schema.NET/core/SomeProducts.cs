@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The current approximate inventory level for the item or items.
         /// </summary>
-        OneOrMany<IQuantitativeValue>? InventoryLevel { get; set; }
+        OneOrMany<IQuantitativeValue> InventoryLevel { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The current approximate inventory level for the item or items.
         /// </summary>
         [DataMember(Name = "inventoryLevel", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IQuantitativeValue>? InventoryLevel { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuantitativeValue> InventoryLevel { get; set; }
     }
 }

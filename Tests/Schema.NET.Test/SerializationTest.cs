@@ -43,7 +43,7 @@ namespace Schema.NET.Test
         private static readonly Person Person = new Person()
         {
             Name = "J.D. Salinger</script><script>alert('gotcha');</script>",
-            Description = null
+            Description = (string)null
         };
 
         private readonly Book book = new Book()
@@ -59,6 +59,7 @@ namespace Schema.NET.Test
             {
                 new StringEnumConverter()
             },
+            DefaultValueHandling = DefaultValueHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
             StringEscapeHandling = StringEscapeHandling.EscapeHtml,
             Formatting = Formatting.Indented

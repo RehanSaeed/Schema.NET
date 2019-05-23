@@ -12,32 +12,32 @@ namespace Schema.NET
         /// <summary>
         /// Indicates whether the book is an abridged edition.
         /// </summary>
-        OneOrMany<bool?>? Abridged { get; set; }
+        OneOrMany<bool?> Abridged { get; set; }
 
         /// <summary>
         /// The edition of the book.
         /// </summary>
-        OneOrMany<string>? BookEdition { get; set; }
+        OneOrMany<string> BookEdition { get; set; }
 
         /// <summary>
         /// The format of the book.
         /// </summary>
-        OneOrMany<BookFormatType?>? BookFormat { get; set; }
+        OneOrMany<BookFormatType?> BookFormat { get; set; }
 
         /// <summary>
         /// The illustrator of the book.
         /// </summary>
-        OneOrMany<IPerson>? Illustrator { get; set; }
+        OneOrMany<IPerson> Illustrator { get; set; }
 
         /// <summary>
         /// The ISBN of the book.
         /// </summary>
-        OneOrMany<string>? Isbn { get; set; }
+        OneOrMany<string> Isbn { get; set; }
 
         /// <summary>
         /// The number of pages in the book.
         /// </summary>
-        OneOrMany<int?>? NumberOfPages { get; set; }
+        OneOrMany<int?> NumberOfPages { get; set; }
     }
 
     /// <summary>
@@ -56,42 +56,42 @@ namespace Schema.NET
         /// Indicates whether the book is an abridged edition.
         /// </summary>
         [DataMember(Name = "abridged", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<bool?>? Abridged { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<bool?> Abridged { get; set; }
 
         /// <summary>
         /// The edition of the book.
         /// </summary>
         [DataMember(Name = "bookEdition", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BookEdition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> BookEdition { get; set; }
 
         /// <summary>
         /// The format of the book.
         /// </summary>
         [DataMember(Name = "bookFormat", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<BookFormatType?>? BookFormat { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<BookFormatType?> BookFormat { get; set; }
 
         /// <summary>
         /// The illustrator of the book.
         /// </summary>
         [DataMember(Name = "illustrator", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Illustrator { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Illustrator { get; set; }
 
         /// <summary>
         /// The ISBN of the book.
         /// </summary>
         [DataMember(Name = "isbn", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Isbn { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Isbn { get; set; }
 
         /// <summary>
         /// The number of pages in the book.
         /// </summary>
         [DataMember(Name = "numberOfPages", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? NumberOfPages { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> NumberOfPages { get; set; }
     }
 }

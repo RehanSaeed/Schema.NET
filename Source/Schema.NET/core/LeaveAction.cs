@@ -17,7 +17,7 @@ namespace Schema.NET
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        OneOrMany<IEvent>? Event { get; set; }
+        OneOrMany<IEvent> Event { get; set; }
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ namespace Schema.NET
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
         [DataMember(Name = "event", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IEvent>? Event { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IEvent> Event { get; set; }
     }
 }

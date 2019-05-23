@@ -29,7 +29,8 @@ namespace Schema.NET.Tool.ViewModels
             {
                 var adjustedTypes = string.Join(", ", this.Types.Select(x => x.CSharpTypeString));
                 var rootType = this.Types.Count == 1 ? "OneOrMany" : "Values";
-                return $"{rootType}<{adjustedTypes}>?";
+                var nullable = this.Types.Count == 1 ? string.Empty : "?";
+                return $"{rootType}<{adjustedTypes}>{nullable}";
             }
         }
 
@@ -52,11 +53,11 @@ namespace Schema.NET.Tool.ViewModels
 
             if (this.Types.Any(x => string.Equals(x.Name, "Duration", StringComparison.OrdinalIgnoreCase)))
             {
-                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]");
+                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]");
             }
             else
             {
-                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(ValuesConverter))]");
+                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(ValuesJsonConverter))]");
             }
 
             stringBuilder.AppendIndentLine(indent, $"public{modifier} {this.TypeString} {this.Name} {{ get; set; }}");

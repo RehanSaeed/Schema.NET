@@ -14,27 +14,27 @@ namespace Schema.NET
         /// <summary>
         /// The closing hour of the place or service on the given day(s) of the week.
         /// </summary>
-        OneOrMany<TimeSpan?>? Closes { get; set; }
+        OneOrMany<TimeSpan?> Closes { get; set; }
 
         /// <summary>
         /// The day of the week for which these opening hours are valid.
         /// </summary>
-        OneOrMany<DayOfWeek?>? DayOfWeek { get; set; }
+        OneOrMany<DayOfWeek?> DayOfWeek { get; set; }
 
         /// <summary>
         /// The opening hour of the place or service on the given day(s) of the week.
         /// </summary>
-        OneOrMany<TimeSpan?>? Opens { get; set; }
+        OneOrMany<TimeSpan?> Opens { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
+        OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
     }
 
     /// <summary>
@@ -55,35 +55,35 @@ namespace Schema.NET
         /// The closing hour of the place or service on the given day(s) of the week.
         /// </summary>
         [DataMember(Name = "closes", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<TimeSpan?>? Closes { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<TimeSpan?> Closes { get; set; }
 
         /// <summary>
         /// The day of the week for which these opening hours are valid.
         /// </summary>
         [DataMember(Name = "dayOfWeek", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DayOfWeek?>? DayOfWeek { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DayOfWeek?> DayOfWeek { get; set; }
 
         /// <summary>
         /// The opening hour of the place or service on the given day(s) of the week.
         /// </summary>
         [DataMember(Name = "opens", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<TimeSpan?>? Opens { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<TimeSpan?> Opens { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
         [DataMember(Name = "validFrom", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidFrom { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
         [DataMember(Name = "validThrough", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? ValidThrough { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
     }
 }

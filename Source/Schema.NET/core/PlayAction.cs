@@ -17,12 +17,12 @@ namespace Schema.NET
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
-        OneOrMany<IAudience>? Audience { get; set; }
+        OneOrMany<IAudience> Audience { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        OneOrMany<IEvent>? Event { get; set; }
+        OneOrMany<IEvent> Event { get; set; }
     }
 
     /// <summary>
@@ -46,14 +46,14 @@ namespace Schema.NET
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
         [DataMember(Name = "audience", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAudience>? Audience { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAudience> Audience { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
         [DataMember(Name = "event", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IEvent>? Event { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IEvent> Event { get; set; }
     }
 }

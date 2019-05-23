@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// Strength of the guideline's recommendation (e.g. 'class I').
         /// </summary>
-        OneOrMany<string>? RecommendationStrength { get; set; }
+        OneOrMany<string> RecommendationStrength { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// Strength of the guideline's recommendation (e.g. 'class I').
         /// </summary>
         [DataMember(Name = "recommendationStrength", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? RecommendationStrength { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> RecommendationStrength { get; set; }
     }
 }

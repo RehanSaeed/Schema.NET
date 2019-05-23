@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// A short summary of the specific claims reviewed in a ClaimReview.
         /// </summary>
-        OneOrMany<string>? ClaimReviewed { get; set; }
+        OneOrMany<string> ClaimReviewed { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// A short summary of the specific claims reviewed in a ClaimReview.
         /// </summary>
         [DataMember(Name = "claimReviewed", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ClaimReviewed { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ClaimReviewed { get; set; }
     }
 }

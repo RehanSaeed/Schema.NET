@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson>? Actor { get; set; }
+        OneOrMany<IPerson> Actor { get; set; }
 
         /// <summary>
         /// Cheat codes to the game.
         /// </summary>
-        OneOrMany<ICreativeWork>? CheatCode { get; set; }
+        OneOrMany<ICreativeWork> CheatCode { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson>? Director { get; set; }
+        OneOrMany<IPerson> Director { get; set; }
 
         /// <summary>
         /// The electronic systems used to play &lt;a href="http://en.wikipedia.org/wiki/Category:Video_game_platforms"&gt;video games&lt;/a&gt;.
@@ -32,12 +32,12 @@ namespace Schema.NET
         /// <summary>
         /// The server on which  it is possible to play the game.
         /// </summary>
-        OneOrMany<IGameServer>? GameServer { get; set; }
+        OneOrMany<IGameServer> GameServer { get; set; }
 
         /// <summary>
         /// Links to tips, tactics, etc.
         /// </summary>
-        OneOrMany<ICreativeWork>? GameTip { get; set; }
+        OneOrMany<ICreativeWork> GameTip { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -47,12 +47,12 @@ namespace Schema.NET
         /// <summary>
         /// Indicates whether this game is multi-player, co-op or single-player.  The game can be marked as multi-player, co-op and single-player at the same time.
         /// </summary>
-        OneOrMany<GamePlayMode?>? PlayMode { get; set; }
+        OneOrMany<GamePlayMode?> PlayMode { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
-        OneOrMany<IVideoObject>? Trailer { get; set; }
+        OneOrMany<IVideoObject> Trailer { get; set; }
     }
 
     /// <summary>
@@ -71,63 +71,63 @@ namespace Schema.NET
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "actor", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Actor { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Actor { get; set; }
 
         /// <summary>
         /// Cheat codes to the game.
         /// </summary>
         [DataMember(Name = "cheatCode", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ICreativeWork>? CheatCode { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ICreativeWork> CheatCode { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "director", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Director { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Director { get; set; }
 
         /// <summary>
         /// The electronic systems used to play &lt;a href="http://en.wikipedia.org/wiki/Category:Video_game_platforms"&gt;video games&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "gamePlatform", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IThing, Uri>? GamePlatform { get; set; }
 
         /// <summary>
         /// The server on which  it is possible to play the game.
         /// </summary>
         [DataMember(Name = "gameServer", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IGameServer>? GameServer { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IGameServer> GameServer { get; set; }
 
         /// <summary>
         /// Links to tips, tactics, etc.
         /// </summary>
         [DataMember(Name = "gameTip", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ICreativeWork>? GameTip { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ICreativeWork> GameTip { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
         [DataMember(Name = "musicBy", Order = 312)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMusicGroup, IPerson>? MusicBy { get; set; }
 
         /// <summary>
         /// Indicates whether this game is multi-player, co-op or single-player.  The game can be marked as multi-player, co-op and single-player at the same time.
         /// </summary>
         [DataMember(Name = "playMode", Order = 313)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<GamePlayMode?>? PlayMode { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<GamePlayMode?> PlayMode { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
         [DataMember(Name = "trailer", Order = 314)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IVideoObject>? Trailer { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IVideoObject> Trailer { get; set; }
     }
 }

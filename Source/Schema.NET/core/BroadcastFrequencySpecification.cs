@@ -17,12 +17,12 @@ namespace Schema.NET
         /// <summary>
         /// The modulation (e.g. FM, AM, etc) used by a particular broadcast service
         /// </summary>
-        OneOrMany<string>? BroadcastSignalModulation { get; set; }
+        OneOrMany<string> BroadcastSignalModulation { get; set; }
 
         /// <summary>
         /// The subchannel used for the broadcast.
         /// </summary>
-        OneOrMany<string>? BroadcastSubChannel { get; set; }
+        OneOrMany<string> BroadcastSubChannel { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The frequency in MHz for a particular broadcast.
         /// </summary>
         [DataMember(Name = "broadcastFrequencyValue", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, IQuantitativeValue>? BroadcastFrequencyValue { get; set; }
 
         /// <summary>
         /// The modulation (e.g. FM, AM, etc) used by a particular broadcast service
         /// </summary>
         [DataMember(Name = "broadcastSignalModulation", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BroadcastSignalModulation { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> BroadcastSignalModulation { get; set; }
 
         /// <summary>
         /// The subchannel used for the broadcast.
         /// </summary>
         [DataMember(Name = "broadcastSubChannel", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? BroadcastSubChannel { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> BroadcastSubChannel { get; set; }
     }
 }

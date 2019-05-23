@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The stage represented as a number, e.g. 3.
         /// </summary>
-        OneOrMany<double?>? StageAsNumber { get; set; }
+        OneOrMany<double?> StageAsNumber { get; set; }
 
         /// <summary>
         /// The substage, e.g. 'a' for Stage IIIa.
         /// </summary>
-        OneOrMany<string>? SubStageSuffix { get; set; }
+        OneOrMany<string> SubStageSuffix { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The stage represented as a number, e.g. 3.
         /// </summary>
         [DataMember(Name = "stageAsNumber", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<double?>? StageAsNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<double?> StageAsNumber { get; set; }
 
         /// <summary>
         /// The substage, e.g. 'a' for Stage IIIa.
         /// </summary>
         [DataMember(Name = "subStageSuffix", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? SubStageSuffix { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> SubStageSuffix { get; set; }
     }
 }

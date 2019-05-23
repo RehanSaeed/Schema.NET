@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// Video game which is played on this server.
         /// </summary>
-        OneOrMany<IVideoGame>? Game { get; set; }
+        OneOrMany<IVideoGame> Game { get; set; }
 
         /// <summary>
         /// Number of players on the server.
         /// </summary>
-        OneOrMany<int?>? PlayersOnline { get; set; }
+        OneOrMany<int?> PlayersOnline { get; set; }
 
         /// <summary>
         /// Status of a game server.
         /// </summary>
-        OneOrMany<GameServerStatus?>? ServerStatus { get; set; }
+        OneOrMany<GameServerStatus?> ServerStatus { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// Video game which is played on this server.
         /// </summary>
         [DataMember(Name = "game", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IVideoGame>? Game { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IVideoGame> Game { get; set; }
 
         /// <summary>
         /// Number of players on the server.
         /// </summary>
         [DataMember(Name = "playersOnline", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? PlayersOnline { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> PlayersOnline { get; set; }
 
         /// <summary>
         /// Status of a game server.
         /// </summary>
         [DataMember(Name = "serverStatus", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<GameServerStatus?>? ServerStatus { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<GameServerStatus?> ServerStatus { get; set; }
     }
 }

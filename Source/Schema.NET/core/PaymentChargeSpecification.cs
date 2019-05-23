@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The delivery method(s) to which the delivery charge or payment charge specification applies.
         /// </summary>
-        OneOrMany<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
+        OneOrMany<DeliveryMethod?> AppliesToDeliveryMethod { get; set; }
 
         /// <summary>
         /// The payment method(s) to which the payment charge specification applies.
         /// </summary>
-        OneOrMany<PaymentMethod?>? AppliesToPaymentMethod { get; set; }
+        OneOrMany<PaymentMethod?> AppliesToPaymentMethod { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The delivery method(s) to which the delivery charge or payment charge specification applies.
         /// </summary>
         [DataMember(Name = "appliesToDeliveryMethod", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DeliveryMethod?>? AppliesToDeliveryMethod { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DeliveryMethod?> AppliesToDeliveryMethod { get; set; }
 
         /// <summary>
         /// The payment method(s) to which the payment charge specification applies.
         /// </summary>
         [DataMember(Name = "appliesToPaymentMethod", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<PaymentMethod?>? AppliesToPaymentMethod { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<PaymentMethod?> AppliesToPaymentMethod { get; set; }
     }
 }

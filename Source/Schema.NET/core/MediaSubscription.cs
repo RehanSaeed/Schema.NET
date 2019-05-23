@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The Organization responsible for authenticating the user's subscription. For example, many media apps require a cable/satellite provider to authenticate your subscription before playing media.
         /// </summary>
-        OneOrMany<IOrganization>? Authenticator { get; set; }
+        OneOrMany<IOrganization> Authenticator { get; set; }
 
         /// <summary>
         /// An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
         /// </summary>
-        OneOrMany<IOffer>? ExpectsAcceptanceOf { get; set; }
+        OneOrMany<IOffer> ExpectsAcceptanceOf { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// The Organization responsible for authenticating the user's subscription. For example, many media apps require a cable/satellite provider to authenticate your subscription before playing media.
         /// </summary>
         [DataMember(Name = "authenticator", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOrganization>? Authenticator { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOrganization> Authenticator { get; set; }
 
         /// <summary>
         /// An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
         /// </summary>
         [DataMember(Name = "expectsAcceptanceOf", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOffer>? ExpectsAcceptanceOf { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOffer> ExpectsAcceptanceOf { get; set; }
     }
 }

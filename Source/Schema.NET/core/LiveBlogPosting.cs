@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// The time when the live blog will stop covering the Event. Note that coverage may continue after the Event concludes.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? CoverageEndTime { get; set; }
+        OneOrMany<DateTimeOffset?> CoverageEndTime { get; set; }
 
         /// <summary>
         /// The time when the live blog will begin covering the Event. Note that coverage may begin before the Event's start time. The LiveBlogPosting may also be created before coverage begins.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? CoverageStartTime { get; set; }
+        OneOrMany<DateTimeOffset?> CoverageStartTime { get; set; }
 
         /// <summary>
         /// An update to the LiveBlog.
         /// </summary>
-        OneOrMany<IBlogPosting>? LiveBlogUpdate { get; set; }
+        OneOrMany<IBlogPosting> LiveBlogUpdate { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// The time when the live blog will stop covering the Event. Note that coverage may continue after the Event concludes.
         /// </summary>
         [DataMember(Name = "coverageEndTime", Order = 506)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? CoverageEndTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> CoverageEndTime { get; set; }
 
         /// <summary>
         /// The time when the live blog will begin covering the Event. Note that coverage may begin before the Event's start time. The LiveBlogPosting may also be created before coverage begins.
         /// </summary>
         [DataMember(Name = "coverageStartTime", Order = 507)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? CoverageStartTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> CoverageStartTime { get; set; }
 
         /// <summary>
         /// An update to the LiveBlog.
         /// </summary>
         [DataMember(Name = "liveBlogUpdate", Order = 508)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IBlogPosting>? LiveBlogUpdate { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IBlogPosting> LiveBlogUpdate { get; set; }
     }
 }

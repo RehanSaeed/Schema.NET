@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// The quantity of the goods included in the offer.
         /// </summary>
-        OneOrMany<decimal?>? AmountOfThisGood { get; set; }
+        OneOrMany<decimal?> AmountOfThisGood { get; set; }
 
         /// <summary>
         /// The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
         /// </summary>
-        OneOrMany<BusinessFunction?>? BusinessFunction { get; set; }
+        OneOrMany<BusinessFunction?> BusinessFunction { get; set; }
 
         /// <summary>
         /// The product that this structured value is referring to.
@@ -33,7 +33,7 @@ namespace Schema.NET
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
         /// &lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
         /// </summary>
-        OneOrMany<string>? UnitText { get; set; }
+        OneOrMany<string> UnitText { get; set; }
     }
 
     /// <summary>
@@ -52,28 +52,28 @@ namespace Schema.NET
         /// The quantity of the goods included in the offer.
         /// </summary>
         [DataMember(Name = "amountOfThisGood", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<decimal?>? AmountOfThisGood { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<decimal?> AmountOfThisGood { get; set; }
 
         /// <summary>
         /// The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
         /// </summary>
         [DataMember(Name = "businessFunction", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<BusinessFunction?>? BusinessFunction { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<BusinessFunction?> BusinessFunction { get; set; }
 
         /// <summary>
         /// The product that this structured value is referring to.
         /// </summary>
         [DataMember(Name = "typeOfGood", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IProduct, IService>? TypeOfGood { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
         /// </summary>
         [DataMember(Name = "unitCode", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri>? UnitCode { get; set; }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Schema.NET
         /// &lt;a href='unitCode'&gt;unitCode&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "unitText", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? UnitText { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> UnitText { get; set; }
     }
 }

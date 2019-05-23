@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// The number of screens in the movie theater.
         /// </summary>
-        OneOrMany<int?>? ScreenCount { get; set; }
+        OneOrMany<int?> ScreenCount { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The number of screens in the movie theater.
         /// </summary>
         [DataMember(Name = "screenCount", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<int?>? ScreenCount { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> ScreenCount { get; set; }
     }
 }

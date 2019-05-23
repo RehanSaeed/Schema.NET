@@ -31,14 +31,14 @@ namespace Schema.NET
         /// A medical service available from this provider.
         /// </summary>
         [DataMember(Name = "availableService", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy>? AvailableService { get; set; }
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
         [DataMember(Name = "medicalSpecialty", Order = 407)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override OneOrMany<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<MedicalSpecialty?> MedicalSpecialty { get; set; }
     }
 }

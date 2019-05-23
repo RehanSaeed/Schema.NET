@@ -12,17 +12,17 @@ namespace Schema.NET
         /// <summary>
         /// Name or unique ID of network. (Networks are often reused across different insurance plans).
         /// </summary>
-        OneOrMany<string>? HealthPlanNetworkId { get; set; }
+        OneOrMany<string> HealthPlanNetworkId { get; set; }
 
         /// <summary>
         /// Whether the provider is accepting new patients.
         /// </summary>
-        OneOrMany<bool?>? IsAcceptingNewPatients { get; set; }
+        OneOrMany<bool?> IsAcceptingNewPatients { get; set; }
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
-        OneOrMany<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        OneOrMany<MedicalSpecialty?> MedicalSpecialty { get; set; }
     }
 
     /// <summary>
@@ -41,21 +41,21 @@ namespace Schema.NET
         /// Name or unique ID of network. (Networks are often reused across different insurance plans).
         /// </summary>
         [DataMember(Name = "healthPlanNetworkId", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? HealthPlanNetworkId { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> HealthPlanNetworkId { get; set; }
 
         /// <summary>
         /// Whether the provider is accepting new patients.
         /// </summary>
         [DataMember(Name = "isAcceptingNewPatients", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<bool?>? IsAcceptingNewPatients { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<bool?> IsAcceptingNewPatients { get; set; }
 
         /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
         [DataMember(Name = "medicalSpecialty", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<MedicalSpecialty?>? MedicalSpecialty { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual OneOrMany<MedicalSpecialty?> MedicalSpecialty { get; set; }
     }
 }

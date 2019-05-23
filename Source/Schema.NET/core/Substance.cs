@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// An active ingredient, typically chemical compounds and/or biologic substances.
         /// </summary>
-        OneOrMany<string>? ActiveIngredient { get; set; }
+        OneOrMany<string> ActiveIngredient { get; set; }
 
         /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
-        OneOrMany<IMaximumDoseSchedule>? MaximumIntake { get; set; }
+        OneOrMany<IMaximumDoseSchedule> MaximumIntake { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// An active ingredient, typically chemical compounds and/or biologic substances.
         /// </summary>
         [DataMember(Name = "activeIngredient", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<string>? ActiveIngredient { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual OneOrMany<string> ActiveIngredient { get; set; }
 
         /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
         [DataMember(Name = "maximumIntake", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual OneOrMany<IMaximumDoseSchedule>? MaximumIntake { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual OneOrMany<IMaximumDoseSchedule> MaximumIntake { get; set; }
     }
 }

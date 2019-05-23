@@ -16,7 +16,7 @@ namespace Schema.NET
         /// <summary>
         /// A sub property of participant. The person that borrows the object being lent.
         /// </summary>
-        OneOrMany<IPerson>? Borrower { get; set; }
+        OneOrMany<IPerson> Borrower { get; set; }
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ namespace Schema.NET
         /// A sub property of participant. The person that borrows the object being lent.
         /// </summary>
         [DataMember(Name = "borrower", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Borrower { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Borrower { get; set; }
     }
 }

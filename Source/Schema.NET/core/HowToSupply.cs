@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The estimated cost of the supply or supplies consumed when performing instructions.
         /// </summary>
         [DataMember(Name = "estimatedCost", Order = 406)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMonetaryAmount, string>? EstimatedCost { get; set; }
     }
 }

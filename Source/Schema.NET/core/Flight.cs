@@ -17,37 +17,37 @@ namespace Schema.NET
         /// <summary>
         /// The airport where the flight terminates.
         /// </summary>
-        OneOrMany<IAirport>? ArrivalAirport { get; set; }
+        OneOrMany<IAirport> ArrivalAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's arrival gate.
         /// </summary>
-        OneOrMany<string>? ArrivalGate { get; set; }
+        OneOrMany<string> ArrivalGate { get; set; }
 
         /// <summary>
         /// Identifier of the flight's arrival terminal.
         /// </summary>
-        OneOrMany<string>? ArrivalTerminal { get; set; }
+        OneOrMany<string> ArrivalTerminal { get; set; }
 
         /// <summary>
         /// The type of boarding policy used by the airline (e.g. zone-based or group-based).
         /// </summary>
-        OneOrMany<BoardingPolicyType?>? BoardingPolicy { get; set; }
+        OneOrMany<BoardingPolicyType?> BoardingPolicy { get; set; }
 
         /// <summary>
         /// The airport where the flight originates.
         /// </summary>
-        OneOrMany<IAirport>? DepartureAirport { get; set; }
+        OneOrMany<IAirport> DepartureAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's departure gate.
         /// </summary>
-        OneOrMany<string>? DepartureGate { get; set; }
+        OneOrMany<string> DepartureGate { get; set; }
 
         /// <summary>
         /// Identifier of the flight's departure terminal.
         /// </summary>
-        OneOrMany<string>? DepartureTerminal { get; set; }
+        OneOrMany<string> DepartureTerminal { get; set; }
 
         /// <summary>
         /// The estimated time the flight will take.
@@ -57,17 +57,17 @@ namespace Schema.NET
         /// <summary>
         /// The distance of the flight.
         /// </summary>
-        OneOrMany<string>? FlightDistance { get; set; }
+        OneOrMany<string> FlightDistance { get; set; }
 
         /// <summary>
         /// The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
         /// </summary>
-        OneOrMany<string>? FlightNumber { get; set; }
+        OneOrMany<string> FlightNumber { get; set; }
 
         /// <summary>
         /// Description of the meals that will be provided or available for purchase.
         /// </summary>
-        OneOrMany<string>? MealService { get; set; }
+        OneOrMany<string> MealService { get; set; }
 
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
@@ -77,7 +77,7 @@ namespace Schema.NET
         /// <summary>
         /// The time when a passenger can check into the flight online.
         /// </summary>
-        OneOrMany<DateTimeOffset?>? WebCheckinTime { get; set; }
+        OneOrMany<DateTimeOffset?> WebCheckinTime { get; set; }
     }
 
     /// <summary>
@@ -96,98 +96,98 @@ namespace Schema.NET
         /// The kind of aircraft (e.g., "Boeing 747").
         /// </summary>
         [DataMember(Name = "aircraft", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IVehicle>? Aircraft { get; set; }
 
         /// <summary>
         /// The airport where the flight terminates.
         /// </summary>
         [DataMember(Name = "arrivalAirport", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAirport>? ArrivalAirport { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAirport> ArrivalAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's arrival gate.
         /// </summary>
         [DataMember(Name = "arrivalGate", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ArrivalGate { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ArrivalGate { get; set; }
 
         /// <summary>
         /// Identifier of the flight's arrival terminal.
         /// </summary>
         [DataMember(Name = "arrivalTerminal", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ArrivalTerminal { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ArrivalTerminal { get; set; }
 
         /// <summary>
         /// The type of boarding policy used by the airline (e.g. zone-based or group-based).
         /// </summary>
         [DataMember(Name = "boardingPolicy", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<BoardingPolicyType?>? BoardingPolicy { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<BoardingPolicyType?> BoardingPolicy { get; set; }
 
         /// <summary>
         /// The airport where the flight originates.
         /// </summary>
         [DataMember(Name = "departureAirport", Order = 311)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IAirport>? DepartureAirport { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IAirport> DepartureAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's departure gate.
         /// </summary>
         [DataMember(Name = "departureGate", Order = 312)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? DepartureGate { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> DepartureGate { get; set; }
 
         /// <summary>
         /// Identifier of the flight's departure terminal.
         /// </summary>
         [DataMember(Name = "departureTerminal", Order = 313)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? DepartureTerminal { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> DepartureTerminal { get; set; }
 
         /// <summary>
         /// The estimated time the flight will take.
         /// </summary>
         [DataMember(Name = "estimatedFlightDuration", Order = 314)]
-        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesConverter))]
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
         public Values<TimeSpan?, string>? EstimatedFlightDuration { get; set; }
 
         /// <summary>
         /// The distance of the flight.
         /// </summary>
         [DataMember(Name = "flightDistance", Order = 315)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? FlightDistance { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> FlightDistance { get; set; }
 
         /// <summary>
         /// The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
         /// </summary>
         [DataMember(Name = "flightNumber", Order = 316)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? FlightNumber { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> FlightNumber { get; set; }
 
         /// <summary>
         /// Description of the meals that will be provided or available for purchase.
         /// </summary>
         [DataMember(Name = "mealService", Order = 317)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? MealService { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> MealService { get; set; }
 
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
         /// </summary>
         [DataMember(Name = "seller", Order = 318)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson>? Seller { get; set; }
 
         /// <summary>
         /// The time when a passenger can check into the flight online.
         /// </summary>
         [DataMember(Name = "webCheckinTime", Order = 319)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<DateTimeOffset?>? WebCheckinTime { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<DateTimeOffset?> WebCheckinTime { get; set; }
     }
 }

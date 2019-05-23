@@ -31,7 +31,7 @@ namespace Schema.NET
         /// The required quantity of the item(s).
         /// </summary>
         [DataMember(Name = "requiredQuantity", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, IQuantitativeValue, string>? RequiredQuantity { get; set; }
     }
 }

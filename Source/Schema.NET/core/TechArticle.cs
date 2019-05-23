@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// Prerequisites needed to fulfill steps in article.
         /// </summary>
-        OneOrMany<string>? Dependencies { get; set; }
+        OneOrMany<string> Dependencies { get; set; }
 
         /// <summary>
         /// Proficiency needed for this content; expected values: 'Beginner', 'Expert'.
         /// </summary>
-        OneOrMany<string>? ProficiencyLevel { get; set; }
+        OneOrMany<string> ProficiencyLevel { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// Prerequisites needed to fulfill steps in article.
         /// </summary>
         [DataMember(Name = "dependencies", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Dependencies { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Dependencies { get; set; }
 
         /// <summary>
         /// Proficiency needed for this content; expected values: 'Beginner', 'Expert'.
         /// </summary>
         [DataMember(Name = "proficiencyLevel", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? ProficiencyLevel { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> ProficiencyLevel { get; set; }
     }
 }

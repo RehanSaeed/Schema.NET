@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// IATA identifier for an airline or airport.
         /// </summary>
-        OneOrMany<string>? IataCode { get; set; }
+        OneOrMany<string> IataCode { get; set; }
 
         /// <summary>
         /// ICAO identifier for an airport.
         /// </summary>
-        OneOrMany<string>? IcaoCode { get; set; }
+        OneOrMany<string> IcaoCode { get; set; }
     }
 
     /// <summary>
@@ -36,14 +36,14 @@ namespace Schema.NET
         /// IATA identifier for an airline or airport.
         /// </summary>
         [DataMember(Name = "iataCode", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? IataCode { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> IataCode { get; set; }
 
         /// <summary>
         /// ICAO identifier for an airport.
         /// </summary>
         [DataMember(Name = "icaoCode", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? IcaoCode { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> IcaoCode { get; set; }
     }
 }

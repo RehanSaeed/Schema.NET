@@ -15,27 +15,27 @@ namespace Schema.NET
         /// Structured representations of dateline-related information can also be expressed more explicitly using &lt;a class="localLink" href="http://schema.org/locationCreated"&gt;locationCreated&lt;/a&gt; (which represents where a work was created e.g. where a news report was written).  For location depicted or described in the content, use &lt;a class="localLink" href="http://schema.org/contentLocation"&gt;contentLocation&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
         /// Dateline summaries are oriented more towards human readers than towards automated processing, and can vary substantially. Some examples: "BEIRUT, Lebanon, June 2.", "Paris, France", "December 19, 2017 11:43AM Reporting from Washington", "Beijing/Moscow", "QUEZON CITY, Philippines".
         /// </summary>
-        OneOrMany<string>? Dateline { get; set; }
+        OneOrMany<string> Dateline { get; set; }
 
         /// <summary>
         /// The number of the column in which the NewsArticle appears in the print edition.
         /// </summary>
-        OneOrMany<string>? PrintColumn { get; set; }
+        OneOrMany<string> PrintColumn { get; set; }
 
         /// <summary>
         /// The edition of the print product in which the NewsArticle appears.
         /// </summary>
-        OneOrMany<string>? PrintEdition { get; set; }
+        OneOrMany<string> PrintEdition { get; set; }
 
         /// <summary>
         /// If this NewsArticle appears in print, this field indicates the name of the page on which the article is found. Please note that this field is intended for the exact page name (e.g. A5, B18).
         /// </summary>
-        OneOrMany<string>? PrintPage { get; set; }
+        OneOrMany<string> PrintPage { get; set; }
 
         /// <summary>
         /// If this NewsArticle appears in print, this field indicates the print section in which the article appeared.
         /// </summary>
-        OneOrMany<string>? PrintSection { get; set; }
+        OneOrMany<string> PrintSection { get; set; }
     }
 
     /// <summary>
@@ -57,35 +57,35 @@ namespace Schema.NET
         /// Dateline summaries are oriented more towards human readers than towards automated processing, and can vary substantially. Some examples: "BEIRUT, Lebanon, June 2.", "Paris, France", "December 19, 2017 11:43AM Reporting from Washington", "Beijing/Moscow", "QUEZON CITY, Philippines".
         /// </summary>
         [DataMember(Name = "dateline", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? Dateline { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Dateline { get; set; }
 
         /// <summary>
         /// The number of the column in which the NewsArticle appears in the print edition.
         /// </summary>
         [DataMember(Name = "printColumn", Order = 307)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PrintColumn { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PrintColumn { get; set; }
 
         /// <summary>
         /// The edition of the print product in which the NewsArticle appears.
         /// </summary>
         [DataMember(Name = "printEdition", Order = 308)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PrintEdition { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PrintEdition { get; set; }
 
         /// <summary>
         /// If this NewsArticle appears in print, this field indicates the name of the page on which the article is found. Please note that this field is intended for the exact page name (e.g. A5, B18).
         /// </summary>
         [DataMember(Name = "printPage", Order = 309)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PrintPage { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PrintPage { get; set; }
 
         /// <summary>
         /// If this NewsArticle appears in print, this field indicates the print section in which the article appeared.
         /// </summary>
         [DataMember(Name = "printSection", Order = 310)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? PrintSection { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> PrintSection { get; set; }
     }
 }

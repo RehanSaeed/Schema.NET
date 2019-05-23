@@ -12,12 +12,12 @@ namespace Schema.NET
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson>? Actor { get; set; }
+        OneOrMany<IPerson> Actor { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson>? Director { get; set; }
+        OneOrMany<IPerson> Director { get; set; }
 
         /// <summary>
         /// Position of the episode within an ordered group of episodes.
@@ -32,22 +32,22 @@ namespace Schema.NET
         /// <summary>
         /// The season to which this episode belongs.
         /// </summary>
-        OneOrMany<ICreativeWorkSeason>? PartOfSeason { get; set; }
+        OneOrMany<ICreativeWorkSeason> PartOfSeason { get; set; }
 
         /// <summary>
         /// The series to which this episode or season belongs.
         /// </summary>
-        OneOrMany<ICreativeWorkSeries>? PartOfSeries { get; set; }
+        OneOrMany<ICreativeWorkSeries> PartOfSeries { get; set; }
 
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
-        OneOrMany<IOrganization>? ProductionCompany { get; set; }
+        OneOrMany<IOrganization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
-        OneOrMany<IVideoObject>? Trailer { get; set; }
+        OneOrMany<IVideoObject> Trailer { get; set; }
     }
 
     /// <summary>
@@ -66,56 +66,56 @@ namespace Schema.NET
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "actor", Order = 206)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Actor { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Actor { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "director", Order = 207)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IPerson>? Director { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IPerson> Director { get; set; }
 
         /// <summary>
         /// Position of the episode within an ordered group of episodes.
         /// </summary>
         [DataMember(Name = "episodeNumber", Order = 208)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<int?, string>? EpisodeNumber { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
         [DataMember(Name = "musicBy", Order = 209)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMusicGroup, IPerson>? MusicBy { get; set; }
 
         /// <summary>
         /// The season to which this episode belongs.
         /// </summary>
         [DataMember(Name = "partOfSeason", Order = 210)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ICreativeWorkSeason>? PartOfSeason { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ICreativeWorkSeason> PartOfSeason { get; set; }
 
         /// <summary>
         /// The series to which this episode or season belongs.
         /// </summary>
         [DataMember(Name = "partOfSeries", Order = 211)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<ICreativeWorkSeries>? PartOfSeries { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<ICreativeWorkSeries> PartOfSeries { get; set; }
 
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
         [DataMember(Name = "productionCompany", Order = 212)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IOrganization>? ProductionCompany { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IOrganization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
         [DataMember(Name = "trailer", Order = 213)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<IVideoObject>? Trailer { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IVideoObject> Trailer { get; set; }
     }
 }

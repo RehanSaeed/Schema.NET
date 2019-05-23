@@ -12,7 +12,7 @@ namespace Schema.NET
         /// <summary>
         /// Specifies specific carrier(s) requirements for the application (e.g. an application may only work on a specific carrier network).
         /// </summary>
-        OneOrMany<string>? CarrierRequirements { get; set; }
+        OneOrMany<string> CarrierRequirements { get; set; }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace Schema.NET
         /// Specifies specific carrier(s) requirements for the application (e.g. an application may only work on a specific carrier network).
         /// </summary>
         [DataMember(Name = "carrierRequirements", Order = 306)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public OneOrMany<string>? CarrierRequirements { get; set; }
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> CarrierRequirements { get; set; }
     }
 }
