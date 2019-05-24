@@ -135,7 +135,11 @@ new Book()
 };
 ```
 
-This magic is all carried out using the `Value<T>`, `Value<T1, T2>`, `Value<T1, T2, T3>` etc. types. These types are all `structs` for best performance too.
+This magic is all carried out using [implicit conversion operators](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/implicit) in the `OneOrMany<T>`, `Values<T1, T2>`, `Values<T1, T2, T3>` and `Values<T1, T2, T3, T4>` types. These types are all `structs` for best performance too.
+
+## More Examples
+
+For more examples and actual running code samples, take a look at the unit tests in the project source code.
 
 ## Continuous Integration
 
