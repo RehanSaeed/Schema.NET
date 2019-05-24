@@ -123,6 +123,16 @@ var organization = new Organization()
         }
     }
 };
+
+// Mixed Author types
+new Book()
+{
+    Author = new List<object>()
+    {
+        new Organization() { Name = "Penguin" },
+        new Person() { Name = "J.D. Salinger" }
+    }
+};
 ```
 
 This magic is all carried out using the `Value<T>`, `Value<T1, T2>`, `Value<T1, T2, T3>` etc. types. These types are all `structs` for best performance too.
