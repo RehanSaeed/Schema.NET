@@ -5,6 +5,7 @@ namespace Schema.NET.Tool
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Text;
     using System.Threading.Tasks;
     using Schema.NET.Tool.CustomOverrides;
     using Schema.NET.Tool.Repositories;
@@ -60,7 +61,7 @@ namespace Schema.NET.Tool
                 foreach (var schemaObject in schemaObjectGroup)
                 {
                     var filePath = Path.Combine(directoryPath, schemaObject.Name + ".cs");
-                    File.WriteAllText(filePath, schemaObject.ToString());
+                    File.WriteAllText(filePath, schemaObject.ToString(), Encoding.UTF8);
                     Console.WriteLine(Path.GetFileName(filePath));
                 }
             }
