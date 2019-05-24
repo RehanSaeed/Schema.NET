@@ -1,5 +1,6 @@
 namespace Schema.NET.Test
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Xunit;
@@ -60,6 +61,72 @@ namespace Schema.NET.Test
             var item = Assert.Single(((IValues)values).Cast<object>().ToList());
             Assert.IsType<Person>(item);
         }
+
+        [Fact]
+        public void Constructor_Items_HasAllItems()
+        {
+            var person = new Person();
+            var values = new Values<int, string, DayOfWeek, Person>(1, "Foo", DayOfWeek.Friday, person);
+
+            Assert.True(values.HasValue1);
+            Assert.Single(values.Value1);
+            Assert.True(values.HasValue2);
+            Assert.Single(values.Value2);
+            Assert.True(values.HasValue3);
+            Assert.Single(values.Value3);
+            Assert.True(values.HasValue4);
+            Assert.Single(values.Value4);
+            Assert.Equal(new List<object>() { 1, "Foo", DayOfWeek.Friday, person }, ((IValues)values).Cast<object>().ToList());
+        }
+
+        [Fact]
+        public void Constructor_NullList_ThrowsArgumentNullException() =>
+            Assert.Throws<ArgumentNullException>(() => new Values<int, string, DayOfWeek, Person>((List<object>)null));
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1, 1)]
+        [InlineData(2, 1, 2)]
+        [InlineData(1, "Foo")]
+        [InlineData(2, "Foo", "Bar")]
+        [InlineData(1, DayOfWeek.Friday)]
+        [InlineData(2, DayOfWeek.Friday, DayOfWeek.Monday)]
+        [InlineData(3, 1, "Foo", DayOfWeek.Friday)]
+        [InlineData(6, 1, 2, "Foo", "Bar", DayOfWeek.Friday, DayOfWeek.Monday)]
+        public void Count_Items_ReturnsExpectedCount(int expectedCount, params object[] items) =>
+            Assert.Equal(expectedCount, new Values<int, string, DayOfWeek, Person>(items).Count);
+
+        [Fact]
+        public void HasValue1_HasValue_ReturnsTrue() =>
+            Assert.True(new Values<int, string, DayOfWeek, Person>(1).HasValue1);
+
+        [Fact]
+        public void HasValue1_DoesntHaveValue_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>("Foo").HasValue1);
+
+        [Fact]
+        public void HasValue2_HasValue_ReturnsTrue() =>
+            Assert.True(new Values<int, string, DayOfWeek, Person>("Foo").HasValue2);
+
+        [Fact]
+        public void HasValue2_DoesntHaveValue_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(1).HasValue2);
+
+        [Fact]
+        public void HasValue3_HasValue_ReturnsTrue() =>
+            Assert.True(new Values<int, string, DayOfWeek, Person>(DayOfWeek.Friday).HasValue3);
+
+        [Fact]
+        public void HasValue3_DoesntHaveValue_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(1).HasValue3);
+
+        [Fact]
+        public void HasValue4_HasValue_ReturnsTrue() =>
+            Assert.True(new Values<int, string, DayOfWeek, Person>(new Person()).HasValue4);
+
+        [Fact]
+        public void HasValue4_DoesntHaveValue_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(1).HasValue4);
 
         [Fact]
         public void ImplicitConversionOperator_Value1Passed_OnlyValue1HasValue()

@@ -1,5 +1,6 @@
 namespace Schema.NET.Test
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Xunit;
@@ -29,6 +30,45 @@ namespace Schema.NET.Test
             Assert.Single(values.Value2);
             Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
         }
+
+        [Fact]
+        public void Constructor_Items_HasAllItems()
+        {
+            var values = new Values<int, string>(1, "Foo");
+
+            Assert.True(values.HasValue1);
+            Assert.Single(values.Value1);
+            Assert.True(values.HasValue2);
+            Assert.Single(values.Value2);
+            Assert.Equal(new List<object>() { 1, "Foo" }, ((IValues)values).Cast<object>().ToList());
+        }
+
+        [Fact]
+        public void Constructor_NullList_ThrowsArgumentNullException() =>
+            Assert.Throws<ArgumentNullException>(() => new Values<int, string>((List<object>)null));
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1, 1)]
+        [InlineData(2, 1, 2)]
+        [InlineData(1, "Foo")]
+        [InlineData(2, "Foo", "Bar")]
+        [InlineData(2, 1, "Foo")]
+        [InlineData(4, 1, 2, "Foo", "Bar")]
+        public void Count_Items_ReturnsExpectedCount(int expectedCount, params object[] items) =>
+            Assert.Equal(expectedCount, new Values<int, string>(items).Count);
+
+        [Fact]
+        public void HasValue1_HasValue_ReturnsTrue() => Assert.True(new Values<int, string>(1).HasValue1);
+
+        [Fact]
+        public void HasValue1_DoesntHaveValue_ReturnsFalse() => Assert.False(new Values<int, string>("Foo").HasValue1);
+
+        [Fact]
+        public void HasValue2_HasValue_ReturnsTrue() => Assert.True(new Values<int, string>("Foo").HasValue2);
+
+        [Fact]
+        public void HasValue2_DoesntHaveValue_ReturnsFalse() => Assert.False(new Values<int, string>(1).HasValue2);
 
         [Fact]
         public void ImplicitConversionOperator_Value1Passed_OnlyValue1HasValue()
@@ -153,7 +193,7 @@ namespace Schema.NET.Test
         [Fact]
         public void GetHashCode_Value1And2Passed_ReturnsMatchingHashCode() =>
             Assert.Equal(
-                HashCode.Of(1).And("Foo"),
+                NET.HashCode.Of(1).And("Foo"),
                 new Values<int, string>(new List<object>() { 1, "Foo" }).GetHashCode());
     }
 }

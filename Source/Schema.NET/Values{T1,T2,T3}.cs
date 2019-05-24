@@ -62,6 +62,15 @@ namespace Schema.NET
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3}"/> struct.
         /// </summary>
         /// <param name="items">The items.</param>
+        public Values(params object[] items)
+            : this(items.AsEnumerable())
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Values{T1,T2,T3}"/> struct.
+        /// </summary>
+        /// <param name="items">The items.</param>
         public Values(IEnumerable<object> items)
         {
             if (items == null)
