@@ -95,7 +95,7 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void ImplicitConversionOperator_Value1CollectionPassed_OnlyValue1HasValue()
+        public void ImplicitConversionOperator_Value1ListPassed_OnlyValue1HasValue()
         {
             Values<int, string> values = new List<int>() { 1, 2 };
 
@@ -107,7 +107,7 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void ImplicitConversionOperator_Value2CollectionPassed_OnlyValue2HasValue()
+        public void ImplicitConversionOperator_Value2ListPassed_OnlyValue2HasValue()
         {
             Values<int, string> values = new List<string>() { "Foo", "Bar" };
 

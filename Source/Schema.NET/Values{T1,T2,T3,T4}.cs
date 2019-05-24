@@ -234,100 +234,21 @@ namespace Schema.NET
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
+        /// Performs an implicit conversion from <see cref="object"/> array to <see cref="Values{T1,T2,T3,T4}"/>.
+        /// </summary>
+        /// <param name="array">The array of values.</param>
+        /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator Values<T1, T2, T3, T4>(object[] array) => new Values<T1, T2, T3, T4>(array);
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
         /// Performs an implicit conversion from <see cref="List{Object}"/> to <see cref="Values{T1,T2,T3,T4}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2, T3, T4>(List<object> list) => new Values<T1, T2, T3, T4>(list);
-#pragma warning restore CA2225 // Operator overloads have named alternates
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T1}"/>.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator List<T1>(Values<T1, T2, T3, T4> values) => values.Value1.ToList();
-#pragma warning restore CA2225 // Operator overloads have named alternates
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T1"/>.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T1[](Values<T1, T2, T3, T4> values) => values.Value1.ToArray();
-#pragma warning restore CA2225 // Operator overloads have named alternates
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T2}"/>.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator List<T2>(Values<T1, T2, T3, T4> values) => values.Value2.ToList();
-#pragma warning restore CA2225 // Operator overloads have named alternates
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T2"/>.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T2[](Values<T1, T2, T3, T4> values) => values.Value2.ToArray();
-#pragma warning restore CA2225 // Operator overloads have named alternates
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T3}"/>.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator List<T3>(Values<T1, T2, T3, T4> values) => values.Value3.ToList();
-#pragma warning restore CA2225 // Operator overloads have named alternates
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T3"/>.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T3[](Values<T1, T2, T3, T4> values) => values.Value3.ToArray();
-#pragma warning restore CA2225 // Operator overloads have named alternates
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T4}"/>.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator List<T4>(Values<T1, T2, T3, T4> values) => values.Value4.ToList();
-#pragma warning restore CA2225 // Operator overloads have named alternates
-
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T4"/>.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T4[](Values<T1, T2, T3, T4> values) => values.Value4.ToArray();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -372,6 +293,94 @@ namespace Schema.NET
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator T4(Values<T1, T2, T3, T4> values) => values.Value4.FirstOrDefault();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T1"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T1[](Values<T1, T2, T3, T4> values) => values.Value1.ToArray();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T1}"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator List<T1>(Values<T1, T2, T3, T4> values) => values.Value1.ToList();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T2"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T2[](Values<T1, T2, T3, T4> values) => values.Value2.ToArray();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T2}"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator List<T2>(Values<T1, T2, T3, T4> values) => values.Value2.ToList();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T3"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T3[](Values<T1, T2, T3, T4> values) => values.Value3.ToArray();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T3}"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator List<T3>(Values<T1, T2, T3, T4> values) => values.Value3.ToList();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to an array of <typeparamref name="T4"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator T4[](Values<T1, T2, T3, T4> values) => values.Value4.ToArray();
+#pragma warning restore CA2225 // Operator overloads have named alternates
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to <see cref="List{T4}"/>.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
+        public static implicit operator List<T4>(Values<T1, T2, T3, T4> values) => values.Value4.ToList();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
