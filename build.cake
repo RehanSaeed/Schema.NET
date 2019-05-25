@@ -90,6 +90,8 @@ Task("Pack")
             new DotNetCorePackSettings()
             {
                 Configuration = configuration,
+                IncludeSymbols = true,
+                MSBuildSettings = new DotNetCoreMSBuildSettings().WithProperty("SymbolPackageFormat", "snupkg"),
                 NoBuild = true,
                 NoRestore = true,
                 OutputDirectory = artifactsDirectory,
