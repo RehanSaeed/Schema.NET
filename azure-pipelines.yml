@@ -14,6 +14,11 @@ env:
 
 steps:
 - task: Bash@3
+  displayName: 'Dotnet Version'
+  inputs:
+    targetType: 'inline'
+    script: 'dotnet --version'
+- task: Bash@3
   displayName: 'Install .NET Core SDK'
   inputs:
     targetType: 'inline'
