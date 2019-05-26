@@ -62,7 +62,7 @@
         /// <summary>
         /// The date that this organization was dissolved.
         /// </summary>
-        OneOrMany<DateTimeOffset?> DissolutionDate { get; set; }
+        Values<int?, DateTime?>? DissolutionDate { get; set; }
 
         /// <summary>
         /// Statement on diversity policy by an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; e.g. a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;. For a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, a statement describing the newsroom’s diversity policy on both staffing and sources, typically providing staffing data.
@@ -112,7 +112,7 @@
         /// <summary>
         /// The date that this organization was founded.
         /// </summary>
-        OneOrMany<DateTimeOffset?> FoundingDate { get; set; }
+        Values<int?, DateTime?>? FoundingDate { get; set; }
 
         /// <summary>
         /// The place where the Organization was founded.
@@ -352,8 +352,8 @@
         /// The date that this organization was dissolved.
         /// </summary>
         [DataMember(Name = "dissolutionDate", Order = 116)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> DissolutionDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? DissolutionDate { get; set; }
 
         /// <summary>
         /// Statement on diversity policy by an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; e.g. a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;. For a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, a statement describing the newsroom’s diversity policy on both staffing and sources, typically providing staffing data.
@@ -422,8 +422,8 @@
         /// The date that this organization was founded.
         /// </summary>
         [DataMember(Name = "foundingDate", Order = 126)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> FoundingDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? FoundingDate { get; set; }
 
         /// <summary>
         /// The place where the Organization was founded.

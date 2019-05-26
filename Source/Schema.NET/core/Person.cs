@@ -37,7 +37,7 @@
         /// <summary>
         /// Date of birth.
         /// </summary>
-        OneOrMany<DateTimeOffset?> BirthDate { get; set; }
+        Values<int?, DateTime?>? BirthDate { get; set; }
 
         /// <summary>
         /// The place where the person was born.
@@ -67,7 +67,7 @@
         /// <summary>
         /// Date of death.
         /// </summary>
-        OneOrMany<DateTimeOffset?> DeathDate { get; set; }
+        Values<int?, DateTime?>? DeathDate { get; set; }
 
         /// <summary>
         /// The place where the person died.
@@ -332,8 +332,8 @@
         /// Date of birth.
         /// </summary>
         [DataMember(Name = "birthDate", Order = 111)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> BirthDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? BirthDate { get; set; }
 
         /// <summary>
         /// The place where the person was born.
@@ -374,8 +374,8 @@
         /// Date of death.
         /// </summary>
         [DataMember(Name = "deathDate", Order = 117)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> DeathDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? DeathDate { get; set; }
 
         /// <summary>
         /// The place where the person died.

@@ -9,6 +9,7 @@ namespace Schema.NET
     /// <see cref="TimeSpan"/>, converts it to ISO 8601 format first.
     /// </summary>
     /// <seealso cref="JsonConverter" />
+    /// <seealso cref="ValuesJsonConverter" />
     public class TimeSpanToISO8601DurationValuesJsonConverter : ValuesJsonConverter
     {
         /// <inheritdoc />

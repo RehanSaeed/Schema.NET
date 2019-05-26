@@ -107,7 +107,7 @@
         /// <summary>
         /// Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
         /// </summary>
-        OneOrMany<DateTimeOffset?> PreviousStartDate { get; set; }
+        Values<int?, DateTime?>? PreviousStartDate { get; set; }
 
         /// <summary>
         /// The CreativeWork that captured all or part of this Event.
@@ -132,12 +132,12 @@
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        OneOrMany<DateTimeOffset?> StartDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?>? StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        OneOrMany<DateTimeOffset?> EndDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?>? EndDate { get; set; }
 
         /// <summary>
         /// An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
@@ -320,8 +320,8 @@
         /// Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
         /// </summary>
         [DataMember(Name = "previousStartDate", Order = 125)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> PreviousStartDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? PreviousStartDate { get; set; }
 
         /// <summary>
         /// The CreativeWork that captured all or part of this Event.
@@ -355,15 +355,15 @@
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "startDate", Order = 130)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> StartDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?>? StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "endDate", Order = 131)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> EndDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?>? EndDate { get; set; }
 
         /// <summary>
         /// An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
