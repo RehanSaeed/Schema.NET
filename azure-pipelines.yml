@@ -37,10 +37,6 @@ jobs:
       script: 'dotnet cake'
       failOnStderr: true
   - task: PublishTestResults@2
-    inputs:
-      testResultsFormat: 'VSTest'
-      testResultsFiles: '**/*.trx'
-  - task: PublishTestResults@2
     displayName: 'Publish Test Results'
     inputs:
       testResultsFormat: 'VSTest'
