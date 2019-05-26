@@ -31,7 +31,7 @@ jobs:
       script: 'dotnet tool install --global Cake.Tool'
       failOnStderr: true
   - task: Bash@3
-    displayName: 'Run Cake'
+    displayName: 'Dotnet Cake'
     inputs:
       targetType: 'inline'
       script: 'dotnet cake'
@@ -70,7 +70,7 @@ jobs:
       failOnStderr: true
       pwsh: true
   - task: PowerShell@2
-    displayName: 'Run Cake'
+    displayName: 'Dotnet Cake'
     inputs:
       targetType: 'inline'
       script: 'dotnet cake'
