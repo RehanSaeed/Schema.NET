@@ -50,7 +50,7 @@ namespace Schema.NET.Test
                     Name = "Denver Post",
                     SameAs = new Uri("http://www.denverpost.com")
                 },
-                DatePublished = new DateTimeOffset(2014, 3, 13, 20, 0, 0, TimeSpan.Zero),
+                DatePublished = new DateTime(2014, 3, 13),
                 InLanguage = "en",
                 ReviewRating = new Rating()
                 {
@@ -98,7 +98,7 @@ namespace Schema.NET.Test
                     "\"name\":\"Lisa Kennedy\"," +
                     "\"sameAs\":\"https://plus.google.com/114108465800532712602\"" +
                 "}," +
-                "\"datePublished\":\"2014-03-13T20:00:00+00:00\"," +
+                "\"datePublished\":\"2014-03-13\"," +
                 "\"inLanguage\":\"en\"," +
                 "\"publisher\":{" +
                     "\"@type\":\"Organization\"," +

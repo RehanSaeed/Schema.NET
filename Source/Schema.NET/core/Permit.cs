@@ -42,7 +42,7 @@
         /// <summary>
         /// The date when the item is no longer valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?> ValidUntil { get; set; }
+        Values<int?, DateTime?>? ValidUntil { get; set; }
     }
 
     /// <summary>
@@ -103,7 +103,7 @@
         /// The date when the item is no longer valid.
         /// </summary>
         [DataMember(Name = "validUntil", Order = 212)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> ValidUntil { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? ValidUntil { get; set; }
     }
 }

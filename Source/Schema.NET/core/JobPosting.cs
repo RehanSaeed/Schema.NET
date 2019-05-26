@@ -27,7 +27,7 @@
         /// <summary>
         /// Publication date for the job posting.
         /// </summary>
-        OneOrMany<DateTimeOffset?> DatePosted { get; set; }
+        Values<int?, DateTime?>? DatePosted { get; set; }
 
         /// <summary>
         /// Educational background needed for the position or Occupation.
@@ -162,8 +162,8 @@
         /// Publication date for the job posting.
         /// </summary>
         [DataMember(Name = "datePosted", Order = 209)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> DatePosted { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? DatePosted { get; set; }
 
         /// <summary>
         /// Educational background needed for the position or Occupation.

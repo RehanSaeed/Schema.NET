@@ -84,7 +84,7 @@
         /// <summary>
         /// Date when this media object was uploaded to this site.
         /// </summary>
-        OneOrMany<DateTimeOffset?> UploadDate { get; set; }
+        Values<int?, DateTime?>? UploadDate { get; set; }
 
         /// <summary>
         /// The width of the item.
@@ -217,8 +217,8 @@
         /// Date when this media object was uploaded to this site.
         /// </summary>
         [DataMember(Name = "uploadDate", Order = 221)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> UploadDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? UploadDate { get; set; }
 
         /// <summary>
         /// The width of the item.
