@@ -33,5 +33,5 @@ env:
   - DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 script:
-  - dotnet tool install --global Cake.Tool
+  - 'dotnet tool install --global Cake.Tool && bash'
   - dotnet cake
