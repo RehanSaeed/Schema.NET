@@ -5,11 +5,14 @@ var configuration =
     "Release";
 var preReleaseSuffix =
     HasArgument("PreReleaseSuffix") ? Argument<string>("PreReleaseSuffix") :
+    // See https://github.com/MicrosoftDocs/vsts-docs/issues/4343
+    // (TFBuild.IsRunningOnAzurePipelines && TFBuild.Environment.Build.SourceBranchName)
     (AppVeyor.IsRunningOnAppVeyor && AppVeyor.Environment.Repository.Tag.IsTag) ? null :
     EnvironmentVariable("PreReleaseSuffix") != null ? EnvironmentVariable("PreReleaseSuffix") :
     "beta";
 var buildNumber =
     HasArgument("BuildNumber") ? Argument<int>("BuildNumber") :
+    TFBuild.IsRunningOnAzurePipelines ? TFBuild.Environment.Build.Id :
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
     TravisCI.IsRunningOnTravisCI ? TravisCI.Environment.Build.BuildNumber :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
