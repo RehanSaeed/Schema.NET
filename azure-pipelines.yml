@@ -36,6 +36,10 @@ jobs:
       targetType: 'inline'
       script: 'dotnet cake'
       failOnStderr: true
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/*.trx'
 - job: Windows
   pool:
     vmImage: 'windows-latest'
@@ -61,3 +65,7 @@ jobs:
       script: 'dotnet cake'
       failOnStderr: true
       pwsh: true
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/*.trx'
