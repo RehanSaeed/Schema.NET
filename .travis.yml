@@ -34,4 +34,4 @@ env:
 
 script:
   - 'dotnet tool install --global Cake.Tool'
-  - 'bash && dotnet cake'
+  - 'exec bash && dotnet cake'
