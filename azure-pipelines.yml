@@ -11,6 +11,5 @@ steps:
   displayName: 'Install .NET Core SDK'
   inputs:
     targetType: 'inline'
-    script: 'apt-get update
-      apt-get install dotnet-sdk-2.2=2.2.300'
+    script: 'apt-get update && apt-get install -y dotnet-sdk-2.2=2.2.300'
     failOnStderr: true
