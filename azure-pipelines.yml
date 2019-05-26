@@ -6,13 +6,14 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-env:
-  # Set the DOTNET_SKIP_FIRST_TIME_EXPERIENCE environment variable to stop wasting time caching packages
-- DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
-  # Disable sending usage data to Microsoft
-- DOTNET_CLI_TELEMETRY_OPTOUT=true
-
 steps:
+
+  env:
+    # Set the DOTNET_SKIP_FIRST_TIME_EXPERIENCE environment variable to stop wasting time caching packages
+  - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+    # Disable sending usage data to Microsoft
+  - DOTNET_CLI_TELEMETRY_OPTOUT=true
+
 - task: Bash@3
   displayName: 'Dotnet Version'
   inputs:
