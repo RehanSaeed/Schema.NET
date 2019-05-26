@@ -17,7 +17,12 @@ steps:
   displayName: 'Install .NET Core SDK'
   inputs:
     targetType: 'inline'
-    script: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2 && dotnet version'
+    script: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
+- task: Bash@3
+  displayName: 'Dotnet Version'
+  inputs:
+    targetType: 'inline'
+    script: 'dotnet --version'
 - task: Bash@3
   displayName: 'Install Cake Tool'
   inputs:
