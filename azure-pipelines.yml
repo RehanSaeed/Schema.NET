@@ -11,5 +11,17 @@ steps:
   displayName: 'Install .NET Core SDK'
   inputs:
     targetType: 'inline'
-    script: 'apt-get update && apt-get install -y dotnet-sdk-2.2=2.2.300'
+    script: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2=2.2.300'
+    failOnStderr: true
+- task: Bash@3
+  displayName: 'Install Cake Tool'
+  inputs:
+    targetType: 'inline'
+    script: 'dotnet tool install --global Cake.Tool'
+    failOnStderr: true
+- task: Bash@3
+  displayName: 'Run Cake'
+  inputs:
+    targetType: 'inline'
+    script: 'dotnet cake'
     failOnStderr: true
