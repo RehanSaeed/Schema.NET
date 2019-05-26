@@ -271,6 +271,17 @@ namespace Schema.NET.Test
         }
 
         [Fact]
+        public void Deconstruct_Values_ReturnsAllEnumerables()
+        {
+            var person = new Person();
+            var (integers, strings, daysOfWeek, people) = new Values<int, string, DayOfWeek, Person>(1, "Foo", DayOfWeek.Friday, person);
+            Assert.Equal(new List<int>() { 1 }, integers);
+            Assert.Equal(new List<string>() { "Foo" }, strings);
+            Assert.Equal(new List<DayOfWeek>() { DayOfWeek.Friday }, daysOfWeek);
+            Assert.Equal(new List<Person>() { person }, people);
+        }
+
+        [Fact]
         public void EqualsOperator_EqualValue1Passed_ReturnsTrue() =>
             Assert.True(new Values<int, string, DayOfWeek, Person>(1) == new Values<int, string, DayOfWeek, Person>(1));
 

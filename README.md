@@ -125,7 +125,7 @@ var organization = new Organization()
 };
 
 // Mixed Author types
-new Book()
+var book = new Book()
 {
     Author = new List<object>()
     {
@@ -133,6 +133,12 @@ new Book()
         new Person() { Name = "J.D. Salinger" }
     }
 };
+
+// Deconstruct a property containing mixed types
+if (book.Author.HasValue)
+{
+    var (organisations, people) = book.Author.Value;
+}
 ```
 
 This magic is all carried out using [implicit conversion operators](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/implicit) in the `OneOrMany<T>`, `Values<T1, T2>`, `Values<T1, T2, T3>` and `Values<T1, T2, T3, T4>` types. These types are all `structs` for best performance too.
