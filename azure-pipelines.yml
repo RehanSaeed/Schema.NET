@@ -48,7 +48,7 @@ jobs:
   - task: PublishPipelineArtifact@0
     displayName: 'Publish Artifacts'
     inputs:
-      artifactName: 'NuGet Packages'
+      artifactName: 'Ubuntu Artifacts'
       targetPath: './Artifacts'
 
 - job: Windows
@@ -84,5 +84,5 @@ jobs:
   - task: PublishPipelineArtifact@0
     displayName: 'Publish Artifacts'
     inputs:
-      artifactName: 'NuGet Packages'
+      artifactName: 'Windows Artifacts'
       targetPath: './Artifacts'
