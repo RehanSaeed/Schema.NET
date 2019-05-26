@@ -16,6 +16,10 @@ var buildNumber =
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
+var nuGetApiKey =
+    HasArgument("NuGetApiKey") ? Argument<string>("NuGetApiKey") :
+    EnvironmentVariable("NuGetApiKey") != null ? EnvironmentVariable("NuGetApiKey") :
+    null;
 
 var artifactsDirectory = Directory("./Artifacts");
 var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
@@ -97,7 +101,18 @@ Task("Pack")
                 NoBuild = true,
                 NoRestore = true,
                 OutputDirectory = artifactsDirectory,
-                VersionSuffix = versionSuffix
+                VersionSuffix = versionSuffix,
+            });
+    });
+
+Task("Push")
+    .Does(() =>
+    {
+        DotNetCoreNuGetPush(
+            "**/*.nupkg",
+            new DotNetCoreNuGetPushSettings()
+            {
+                ApiKey = nuGetApiKey,
             });
     });
 
