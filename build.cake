@@ -20,7 +20,7 @@ var buildNumber =
 var artifactsDirectory = Directory("./Artifacts");
 var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
 
-Information($"{TFBuild.IsRunningOnAzurePipelines} {TFBuild.Environment.Build.Id} {TFBuild.Environment.Build.Number}")
+Information($"{TFBuild.IsRunningOnAzurePipelines} {TFBuild.Environment.Build.Id} {TFBuild.Environment.Build.Number}");
 
 Task("Clean")
     .Does(() =>
