@@ -40,6 +40,17 @@ jobs:
     inputs:
       testResultsFormat: 'VSTest'
       testResultsFiles: '**/*.trx'
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results'
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/*.trx'
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Artefacts'
+    inputs:
+      artifactName: 'NuGet Packages'
+      targetPath: './Artefacts'
+
 - job: Windows
   pool:
     vmImage: 'windows-latest'
@@ -66,6 +77,12 @@ jobs:
       failOnStderr: true
       pwsh: true
   - task: PublishTestResults@2
+    displayName: 'Publish Test Results'
     inputs:
       testResultsFormat: 'VSTest'
       testResultsFiles: '**/*.trx'
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Artefacts'
+    inputs:
+      artifactName: 'NuGet Packages'
+      targetPath: './Artefacts'
