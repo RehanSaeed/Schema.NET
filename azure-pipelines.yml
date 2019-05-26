@@ -46,10 +46,10 @@ jobs:
       testResultsFormat: 'VSTest'
       testResultsFiles: '**/*.trx'
   - task: PublishPipelineArtifact@0
-    displayName: 'Publish Artefacts'
+    displayName: 'Publish Artifacts'
     inputs:
       artifactName: 'NuGet Packages'
-      targetPath: './Artefacts'
+      targetPath: './Artifacts'
 
 - job: Windows
   pool:
@@ -82,7 +82,7 @@ jobs:
       testResultsFormat: 'VSTest'
       testResultsFiles: '**/*.trx'
   - task: PublishPipelineArtifact@0
-    displayName: 'Publish Artefacts'
+    displayName: 'Publish Artifacts'
     inputs:
       artifactName: 'NuGet Packages'
-      targetPath: './Artefacts'
+      targetPath: './Artifacts'
