@@ -19,11 +19,20 @@ steps:
     targetType: 'inline'
     script: 'dotnet --version'
 - task: Bash@3
+  displayName: 'Print Environment Variables'
+  inputs:
+    targetType: 'inline'
+    script: 'printenv'
+- task: Bash@3
   displayName: 'Install .NET Core SDK'
   inputs:
     targetType: 'inline'
     script: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
-    failOnStderr: true
+- task: Bash@3
+  displayName: 'Dotnet Version'
+  inputs:
+    targetType: 'inline'
+    script: 'dotnet --version'
 - task: Bash@3
   displayName: 'Install Cake Tool'
   inputs:
