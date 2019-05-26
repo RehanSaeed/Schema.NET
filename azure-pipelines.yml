@@ -9,29 +9,50 @@ variables:
   # Disable sending usage data to Microsoft
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- task: Bash@3
-  displayName: 'Install .NET Core SDK'
-  inputs:
-    targetType: 'inline'
-    script: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
-- task: Bash@3
-  displayName: 'Dotnet Version'
-  inputs:
-    targetType: 'inline'
-    script: 'dotnet --version'
-- task: Bash@3
-  displayName: 'Install Cake Tool'
-  inputs:
-    targetType: 'inline'
-    script: 'dotnet tool install --global Cake.Tool'
-    failOnStderr: true
-- task: Bash@3
-  displayName: 'Run Cake'
-  inputs:
-    targetType: 'inline'
-    script: 'dotnet cake'
-    failOnStderr: true
+jobs:
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: Bash@3
+    displayName: 'Install .NET Core SDK'
+    inputs:
+      targetType: 'inline'
+      script: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
+  - task: Bash@3
+    displayName: 'Install Cake Tool'
+    inputs:
+      targetType: 'inline'
+      script: 'dotnet tool install --global Cake.Tool'
+      failOnStderr: true
+  - task: Bash@3
+    displayName: 'Run Cake'
+    inputs:
+      targetType: 'inline'
+      script: 'dotnet cake'
+      failOnStderr: true
+- job: Windows
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - task: PowerShell@2
+    displayName: 'Install .NET Core SDK'
+    inputs:
+      targetType: 'inline'
+      script: 'choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300'
+      failOnStderr: true
+      pwsh: true
+  - task: PowerShell@2
+    displayName: 'Install Cake Tool'
+    inputs:
+      targetType: 'inline'
+      script: 'dotnet tool install --global Cake.Tool'
+      failOnStderr: true
+      pwsh: true
+  - task: PowerShell@2
+    displayName: 'Run Cake'
+    inputs:
+      targetType: 'inline'
+      script: 'dotnet cake'
+      failOnStderr: true
+      pwsh: true
