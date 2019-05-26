@@ -14,7 +14,6 @@ var buildNumber =
     HasArgument("BuildNumber") ? Argument<int>("BuildNumber") :
     TFBuild.IsRunningOnAzurePipelines ? TFBuild.Environment.Build.Id :
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
-    TravisCI.IsRunningOnTravisCI ? TravisCI.Environment.Build.BuildNumber :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
 
