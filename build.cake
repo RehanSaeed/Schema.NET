@@ -6,13 +6,13 @@ var configuration =
 var preReleaseSuffix =
     HasArgument("PreReleaseSuffix") ? Argument<string>("PreReleaseSuffix") :
     // See https://github.com/MicrosoftDocs/vsts-docs/issues/4343
-    // (TFBuild.IsRunningOnAzurePipelines && TFBuild.Environment.Build.SourceBranchName)
+    // (TFBuild.IsRunningOnAzurePipelinesHosted && TFBuild.Environment.Build.SourceBranchName)
     (AppVeyor.IsRunningOnAppVeyor && AppVeyor.Environment.Repository.Tag.IsTag) ? null :
     EnvironmentVariable("PreReleaseSuffix") != null ? EnvironmentVariable("PreReleaseSuffix") :
     "beta";
 var buildNumber =
     HasArgument("BuildNumber") ? Argument<int>("BuildNumber") :
-    TFBuild.IsRunningOnAzurePipelines ? TFBuild.Environment.Build.Id :
+    TFBuild.IsRunningOnAzurePipelinesHosted ? TFBuild.Environment.Build.Id :
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
@@ -20,7 +20,7 @@ var buildNumber =
 var artifactsDirectory = Directory("./Artifacts");
 var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
 
-Information($"{TFBuild.IsRunningOnAzurePipelines} {TFBuild.Environment.Build.Id} {TFBuild.Environment.Build.Number}");
+Information($"{TFBuild.IsRunningOnAzurePipelinesHosted} {TFBuild.Environment.Build.Id} {TFBuild.Environment.Build.Number}");
 
 Task("Clean")
     .Does(() =>
