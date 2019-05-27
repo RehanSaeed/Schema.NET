@@ -40,7 +40,6 @@ namespace Schema.NET.Test
                     PriceCurrency = "USD", // Recommended
                     Availability = ItemAvailability.InStock, // Recommended
                     ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)), // Recommended
-                    Category = NullString,
                 },
                 new Offer
                 {
