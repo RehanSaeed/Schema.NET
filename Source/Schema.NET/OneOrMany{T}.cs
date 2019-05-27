@@ -107,7 +107,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator OneOrMany<T>(T item) => item != null && item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string) ? default : new OneOrMany<T>(item);
+        public static implicit operator OneOrMany<T>(T item) => item != null && IsStringNullOrWhiteSpace(item) ? default : new OneOrMany<T>(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator OneOrMany<T>(T[] array) => new OneOrMany<T>(array);
+        public static implicit operator OneOrMany<T>(T[] array) => new OneOrMany<T>(array?.Where(x => x != null && !IsStringNullOrWhiteSpace(x)));
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator OneOrMany<T>(List<T> list) => new OneOrMany<T>(list.Where(x => x != null && !(x.GetType() == typeof(string) && string.IsNullOrWhiteSpace(x as string))));
+        public static implicit operator OneOrMany<T>(List<T> list) => new OneOrMany<T>(list?.Where(x => x != null && !IsStringNullOrWhiteSpace(x)));
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -272,5 +272,7 @@ namespace Schema.NET
 
             return 0;
         }
+
+        private static bool IsStringNullOrWhiteSpace(T item) => item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string);
     }
 }
