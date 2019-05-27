@@ -153,7 +153,7 @@ For more examples and actual running code samples, take a look at the unit tests
 | :---            | :---             | :---   |
 | Azure Pipelines | Windows          | [![Azure Pipelines Windows Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&jobName=Windows)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
 | Azure Pipelines | Ubuntu           | [![Azure Pipelines Ubuntu Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&jobName=Ubuntu)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
-| AppVeyor        | Windows          | [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/djxrpkw8ckyf24c1?svg=true)](https://ci.appveyor.com/project/RehanSaeed/schema-net) |
+| AppVeyor        | Ubuntu & Windows | [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/djxrpkw8ckyf24c1?svg=true)](https://ci.appveyor.com/project/RehanSaeed/schema-net) |
 
 ## NuGet Packages
 
