@@ -31,11 +31,11 @@ test: off
 
 artifacts:
 - name: NuGet Packages
-  path: .\Artifacts\**\*.nupkg
+  path: ./Artifacts/**/*.nupkg
 - name: NuGet Symbol Packages
-  path: .\Artifacts\**\*.snupkg'
+  path: ./Artifacts/**/*.snupkg'
 - name: xUnit Test Results
-  path: .\Artifacts\**\*.xml
+  path: ./Artifacts/**/*.xml
 
 deploy:
 # Publish MyGet packages
