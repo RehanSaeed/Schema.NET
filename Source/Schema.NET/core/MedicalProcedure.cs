@@ -32,12 +32,12 @@
         /// <summary>
         /// Expected or actual outcomes of the study.
         /// </summary>
-        Values<IMedicalEntity, string>? Outcome { get; set; }
+        Values<IMedicalEntity, string> Outcome { get; set; }
 
         /// <summary>
         /// Typical preparation that a patient must undergo before having the procedure performed.
         /// </summary>
-        Values<IMedicalEntity, string>? Preparation { get; set; }
+        Values<IMedicalEntity, string> Preparation { get; set; }
 
         /// <summary>
         /// The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
@@ -47,7 +47,7 @@
         /// <summary>
         /// The status of the study (enumerated).
         /// </summary>
-        Values<EventStatusType?, MedicalStudyStatus?, string>? Status { get; set; }
+        Values<EventStatusType?, MedicalStudyStatus?, string> Status { get; set; }
     }
 
     /// <summary>
@@ -95,14 +95,14 @@
         /// </summary>
         [DataMember(Name = "outcome", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMedicalEntity, string>? Outcome { get; set; }
+        public Values<IMedicalEntity, string> Outcome { get; set; }
 
         /// <summary>
         /// Typical preparation that a patient must undergo before having the procedure performed.
         /// </summary>
         [DataMember(Name = "preparation", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMedicalEntity, string>? Preparation { get; set; }
+        public Values<IMedicalEntity, string> Preparation { get; set; }
 
         /// <summary>
         /// The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
@@ -116,6 +116,6 @@
         /// </summary>
         [DataMember(Name = "status", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<EventStatusType?, MedicalStudyStatus?, string>? Status { get; set; }
+        public Values<EventStatusType?, MedicalStudyStatus?, string> Status { get; set; }
     }
 }

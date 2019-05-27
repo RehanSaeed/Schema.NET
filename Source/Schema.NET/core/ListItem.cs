@@ -22,7 +22,7 @@
         /// <summary>
         /// The position of an item in a series or sequence of items.
         /// </summary>
-        Values<int?, string>? Position { get; set; }
+        Values<int?, string> Position { get; set; }
 
         /// <summary>
         /// A link to the ListItem that preceeds the current one.
@@ -61,7 +61,7 @@
         /// </summary>
         [DataMember(Name = "position", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? Position { get; set; }
+        public Values<int?, string> Position { get; set; }
 
         /// <summary>
         /// A link to the ListItem that preceeds the current one.

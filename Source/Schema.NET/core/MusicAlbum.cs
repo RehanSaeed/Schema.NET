@@ -27,7 +27,7 @@
         /// <summary>
         /// The artist that performed this album or recording.
         /// </summary>
-        Values<IMusicGroup, IPerson>? ByArtist { get; set; }
+        Values<IMusicGroup, IPerson> ByArtist { get; set; }
     }
 
     /// <summary>
@@ -68,6 +68,6 @@
         /// </summary>
         [DataMember(Name = "byArtist", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMusicGroup, IPerson>? ByArtist { get; set; }
+        public Values<IMusicGroup, IPerson> ByArtist { get; set; }
     }
 }

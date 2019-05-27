@@ -18,7 +18,7 @@
         /// <summary>
         /// An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
         /// </summary>
-        Values<IOrganization, IPerson>? Broker { get; set; }
+        Values<IOrganization, IPerson> Broker { get; set; }
 
         /// <summary>
         /// The date and time the reservation was modified.
@@ -39,7 +39,7 @@
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        Values<IOrganization, IPerson>? Provider { get; set; }
+        Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// The thing -- flight, event, restaurant,etc. being reserved.
@@ -69,12 +69,12 @@
         /// &lt;li&gt;Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        Values<decimal?, IPriceSpecification, string>? TotalPrice { get; set; }
+        Values<decimal?, IPriceSpecification, string> TotalPrice { get; set; }
 
         /// <summary>
         /// The person or organization the reservation or ticket is for.
         /// </summary>
-        Values<IOrganization, IPerson>? UnderName { get; set; }
+        Values<IOrganization, IPerson> UnderName { get; set; }
     }
 
     /// <summary>
@@ -102,7 +102,7 @@
         /// </summary>
         [DataMember(Name = "broker", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Broker { get; set; }
+        public Values<IOrganization, IPerson> Broker { get; set; }
 
         /// <summary>
         /// The date and time the reservation was modified.
@@ -131,7 +131,7 @@
         /// </summary>
         [DataMember(Name = "provider", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Provider { get; set; }
+        public Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// The thing -- flight, event, restaurant,etc. being reserved.
@@ -171,13 +171,13 @@
         /// </summary>
         [DataMember(Name = "totalPrice", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<decimal?, IPriceSpecification, string>? TotalPrice { get; set; }
+        public Values<decimal?, IPriceSpecification, string> TotalPrice { get; set; }
 
         /// <summary>
         /// The person or organization the reservation or ticket is for.
         /// </summary>
         [DataMember(Name = "underName", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? UnderName { get; set; }
+        public Values<IOrganization, IPerson> UnderName { get; set; }
     }
 }

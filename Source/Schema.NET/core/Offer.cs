@@ -13,7 +13,7 @@
         /// <summary>
         /// The payment method(s) accepted by seller for this offer.
         /// </summary>
-        Values<ILoanOrCredit, PaymentMethod?>? AcceptedPaymentMethod { get; set; }
+        Values<ILoanOrCredit, PaymentMethod?> AcceptedPaymentMethod { get; set; }
 
         /// <summary>
         /// An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
@@ -33,7 +33,7 @@
         /// <summary>
         /// The geographic area where a service or offered item is provided.
         /// </summary>
-        Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
+        Values<IAdministrativeArea, IGeoShape, IPlace, string> AreaServed { get; set; }
 
         /// <summary>
         /// The availability of this item&amp;#x2014;for example In stock, Out of stock, Pre-order, etc.
@@ -68,7 +68,7 @@
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
-        Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
+        Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
 
         /// <summary>
         /// The typical delay between the receipt of the order and the goods either leaving the warehouse or being prepared for pickup, in case the delivery method is on site pickup.
@@ -94,7 +94,7 @@
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;br/&gt;&lt;br/&gt;
         /// See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
-        Values<IGeoShape, IPlace, string>? EligibleRegion { get; set; }
+        Values<IGeoShape, IPlace, string> EligibleRegion { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
@@ -130,7 +130,7 @@
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;br/&gt;&lt;br/&gt;
         /// See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
         /// </summary>
-        Values<IGeoShape, IPlace, string>? IneligibleRegion { get; set; }
+        Values<IGeoShape, IPlace, string> IneligibleRegion { get; set; }
 
         /// <summary>
         /// The current approximate inventory level for the item or items.
@@ -145,7 +145,7 @@
         /// <summary>
         /// The item being offered.
         /// </summary>
-        Values<IProduct, IService>? ItemOffered { get; set; }
+        Values<IProduct, IService> ItemOffered { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
@@ -155,7 +155,7 @@
         /// <summary>
         /// A pointer to the organization or person making the offer.
         /// </summary>
-        Values<IOrganization, IPerson>? OfferedBy { get; set; }
+        Values<IOrganization, IPerson> OfferedBy { get; set; }
 
         /// <summary>
         /// The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -167,7 +167,7 @@
         /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        Values<decimal?, string>? Price { get; set; }
+        Values<decimal?, string> Price { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -183,7 +183,7 @@
         /// <summary>
         /// The date after which the price is no longer available.
         /// </summary>
-        Values<int?, DateTime?>? PriceValidUntil { get; set; }
+        Values<int?, DateTime?> PriceValidUntil { get; set; }
 
         /// <summary>
         /// A review of the item.
@@ -193,7 +193,7 @@
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
         /// </summary>
-        Values<IOrganization, IPerson>? Seller { get; set; }
+        Values<IOrganization, IPerson> Seller { get; set; }
 
         /// <summary>
         /// The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
@@ -239,7 +239,7 @@
         /// </summary>
         [DataMember(Name = "acceptedPaymentMethod", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILoanOrCredit, PaymentMethod?>? AcceptedPaymentMethod { get; set; }
+        public Values<ILoanOrCredit, PaymentMethod?> AcceptedPaymentMethod { get; set; }
 
         /// <summary>
         /// An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
@@ -267,7 +267,7 @@
         /// </summary>
         [DataMember(Name = "areaServed", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
+        public Values<IAdministrativeArea, IGeoShape, IPlace, string> AreaServed { get; set; }
 
         /// <summary>
         /// The availability of this item&amp;#x2014;for example In stock, Out of stock, Pre-order, etc.
@@ -316,7 +316,7 @@
         /// </summary>
         [DataMember(Name = "category", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
 
         /// <summary>
         /// The typical delay between the receipt of the order and the goods either leaving the warehouse or being prepared for pickup, in case the delivery method is on site pickup.
@@ -352,7 +352,7 @@
         /// </summary>
         [DataMember(Name = "eligibleRegion", Order = 222)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IGeoShape, IPlace, string>? EligibleRegion { get; set; }
+        public Values<IGeoShape, IPlace, string> EligibleRegion { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
@@ -402,7 +402,7 @@
         /// </summary>
         [DataMember(Name = "ineligibleRegion", Order = 229)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IGeoShape, IPlace, string>? IneligibleRegion { get; set; }
+        public Values<IGeoShape, IPlace, string> IneligibleRegion { get; set; }
 
         /// <summary>
         /// The current approximate inventory level for the item or items.
@@ -423,7 +423,7 @@
         /// </summary>
         [DataMember(Name = "itemOffered", Order = 232)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService>? ItemOffered { get; set; }
+        public Values<IProduct, IService> ItemOffered { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
@@ -437,7 +437,7 @@
         /// </summary>
         [DataMember(Name = "offeredBy", Order = 234)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? OfferedBy { get; set; }
+        public Values<IOrganization, IPerson> OfferedBy { get; set; }
 
         /// <summary>
         /// The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -451,7 +451,7 @@
         /// </summary>
         [DataMember(Name = "price", Order = 235)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<decimal?, string>? Price { get; set; }
+        public Values<decimal?, string> Price { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -473,7 +473,7 @@
         /// </summary>
         [DataMember(Name = "priceValidUntil", Order = 238)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? PriceValidUntil { get; set; }
+        public Values<int?, DateTime?> PriceValidUntil { get; set; }
 
         /// <summary>
         /// A review of the item.
@@ -487,7 +487,7 @@
         /// </summary>
         [DataMember(Name = "seller", Order = 240)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Seller { get; set; }
+        public Values<IOrganization, IPerson> Seller { get; set; }
 
         /// <summary>
         /// The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.

@@ -22,12 +22,12 @@
         /// <summary>
         /// The base salary of the job or of an employee in an EmployeeRole.
         /// </summary>
-        Values<IMonetaryAmount, decimal?, IPriceSpecification>? BaseSalary { get; set; }
+        Values<IMonetaryAmount, decimal?, IPriceSpecification> BaseSalary { get; set; }
 
         /// <summary>
         /// Publication date for the job posting.
         /// </summary>
-        Values<int?, DateTime?>? DatePosted { get; set; }
+        Values<int?, DateTime?> DatePosted { get; set; }
 
         /// <summary>
         /// Educational background needed for the position or Occupation.
@@ -156,14 +156,14 @@
         /// </summary>
         [DataMember(Name = "baseSalary", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMonetaryAmount, decimal?, IPriceSpecification>? BaseSalary { get; set; }
+        public Values<IMonetaryAmount, decimal?, IPriceSpecification> BaseSalary { get; set; }
 
         /// <summary>
         /// Publication date for the job posting.
         /// </summary>
         [DataMember(Name = "datePosted", Order = 209)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? DatePosted { get; set; }
+        public Values<int?, DateTime?> DatePosted { get; set; }
 
         /// <summary>
         /// Educational background needed for the position or Occupation.

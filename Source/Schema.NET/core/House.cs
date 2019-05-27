@@ -29,6 +29,6 @@
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
+        public override Values<int?, IQuantitativeValue> NumberOfRooms { get; set; }
     }
 }

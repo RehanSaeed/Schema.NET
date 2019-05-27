@@ -12,7 +12,7 @@
         /// <summary>
         /// The medium or means of delivery of the course instance or the mode of study, either as a text label (e.g. "online", "onsite" or "blended"; "synchronous" or "asynchronous"; "full-time" or "part-time") or as a URL reference to a term from a controlled vocabulary (e.g. https://ceds.ed.gov/element/001311#Asynchronous ).
         /// </summary>
-        Values<string, Uri>? CourseMode { get; set; }
+        Values<string, Uri> CourseMode { get; set; }
 
         /// <summary>
         /// The amount of work expected of students taking the course, often provided as a figure per week or per month, and may be broken down by type. For example, "2 hours of lectures, 1 hour of lab work and 3 hours of independent study per week".
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "courseMode", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? CourseMode { get; set; }
+        public Values<string, Uri> CourseMode { get; set; }
 
         /// <summary>
         /// The amount of work expected of students taking the course, often provided as a figure per week or per month, and may be broken down by type. For example, "2 hours of lectures, 1 hour of lab work and 3 hours of independent study per week".

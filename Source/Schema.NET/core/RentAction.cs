@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of participant. The owner of the real estate property.
         /// </summary>
-        Values<IOrganization, IPerson>? Landlord { get; set; }
+        Values<IOrganization, IPerson> Landlord { get; set; }
 
         /// <summary>
         /// A sub property of participant. The real estate agent involved in the action.
@@ -37,7 +37,7 @@
         /// </summary>
         [DataMember(Name = "landlord", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Landlord { get; set; }
+        public Values<IOrganization, IPerson> Landlord { get; set; }
 
         /// <summary>
         /// A sub property of participant. The real estate agent involved in the action.

@@ -33,12 +33,12 @@
         /// <summary>
         /// The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
         /// </summary>
-        Values<IBrand, IOrganization>? Brand { get; set; }
+        Values<IBrand, IOrganization> Brand { get; set; }
 
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
-        Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
+        Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
 
         /// <summary>
         /// The color of the product.
@@ -48,7 +48,7 @@
         /// <summary>
         /// The depth of the item.
         /// </summary>
-        Values<string, IQuantitativeValue>? Depth { get; set; }
+        Values<string, IQuantitativeValue> Depth { get; set; }
 
         /// <summary>
         /// The GTIN-12 code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GS1 GTIN Summary&lt;/a&gt; for more details.
@@ -73,7 +73,7 @@
         /// <summary>
         /// The height of the item.
         /// </summary>
-        Values<string, IQuantitativeValue>? Height { get; set; }
+        Values<string, IQuantitativeValue> Height { get; set; }
 
         /// <summary>
         /// A pointer to another product (or multiple products) for which this product is an accessory or spare part.
@@ -88,12 +88,12 @@
         /// <summary>
         /// A pointer to another, somehow related product (or multiple products).
         /// </summary>
-        Values<IProduct, IService>? IsRelatedTo { get; set; }
+        Values<IProduct, IService> IsRelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to another, functionally similar product (or multiple products).
         /// </summary>
-        Values<IProduct, IService>? IsSimilarTo { get; set; }
+        Values<IProduct, IService> IsSimilarTo { get; set; }
 
         /// <summary>
         /// A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
@@ -103,7 +103,7 @@
         /// <summary>
         /// An associated logo.
         /// </summary>
-        Values<IImageObject, Uri>? Logo { get; set; }
+        Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// The manufacturer of the product.
@@ -113,12 +113,12 @@
         /// <summary>
         /// A material that something is made from, e.g. leather, wool, cotton, paper.
         /// </summary>
-        Values<IProduct, string, Uri>? Material { get; set; }
+        Values<IProduct, string, Uri> Material { get; set; }
 
         /// <summary>
         /// The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
         /// </summary>
-        Values<IProductModel, string>? Model { get; set; }
+        Values<IProductModel, string> Model { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
@@ -143,17 +143,17 @@
         /// <summary>
         /// The date of production of the item, e.g. vehicle.
         /// </summary>
-        Values<int?, DateTime?>? ProductionDate { get; set; }
+        Values<int?, DateTime?> ProductionDate { get; set; }
 
         /// <summary>
         /// The date the item e.g. vehicle was purchased by the current owner.
         /// </summary>
-        Values<int?, DateTime?>? PurchaseDate { get; set; }
+        Values<int?, DateTime?> PurchaseDate { get; set; }
 
         /// <summary>
         /// The release date of a product or product model. This can be used to distinguish the exact variant of a product.
         /// </summary>
-        Values<int?, DateTime?>? ReleaseDate { get; set; }
+        Values<int?, DateTime?> ReleaseDate { get; set; }
 
         /// <summary>
         /// A review of the item.
@@ -178,7 +178,7 @@
         /// <summary>
         /// The width of the item.
         /// </summary>
-        Values<string, IQuantitativeValue>? Width { get; set; }
+        Values<string, IQuantitativeValue> Width { get; set; }
     }
 
     /// <summary>
@@ -227,14 +227,14 @@
         /// </summary>
         [DataMember(Name = "brand", Order = 110)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IBrand, IOrganization>? Brand { get; set; }
+        public Values<IBrand, IOrganization> Brand { get; set; }
 
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
         [DataMember(Name = "category", Order = 111)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
 
         /// <summary>
         /// The color of the product.
@@ -248,7 +248,7 @@
         /// </summary>
         [DataMember(Name = "depth", Order = 113)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IQuantitativeValue>? Depth { get; set; }
+        public Values<string, IQuantitativeValue> Depth { get; set; }
 
         /// <summary>
         /// The GTIN-12 code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GS1 GTIN Summary&lt;/a&gt; for more details.
@@ -283,7 +283,7 @@
         /// </summary>
         [DataMember(Name = "height", Order = 118)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IQuantitativeValue>? Height { get; set; }
+        public Values<string, IQuantitativeValue> Height { get; set; }
 
         /// <summary>
         /// A pointer to another product (or multiple products) for which this product is an accessory or spare part.
@@ -304,14 +304,14 @@
         /// </summary>
         [DataMember(Name = "isRelatedTo", Order = 121)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService>? IsRelatedTo { get; set; }
+        public Values<IProduct, IService> IsRelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to another, functionally similar product (or multiple products).
         /// </summary>
         [DataMember(Name = "isSimilarTo", Order = 122)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService>? IsSimilarTo { get; set; }
+        public Values<IProduct, IService> IsSimilarTo { get; set; }
 
         /// <summary>
         /// A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
@@ -325,7 +325,7 @@
         /// </summary>
         [DataMember(Name = "logo", Order = 124)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IImageObject, Uri>? Logo { get; set; }
+        public Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// The manufacturer of the product.
@@ -339,14 +339,14 @@
         /// </summary>
         [DataMember(Name = "material", Order = 126)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, string, Uri>? Material { get; set; }
+        public Values<IProduct, string, Uri> Material { get; set; }
 
         /// <summary>
         /// The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
         /// </summary>
         [DataMember(Name = "model", Order = 127)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProductModel, string>? Model { get; set; }
+        public Values<IProductModel, string> Model { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
@@ -381,21 +381,21 @@
         /// </summary>
         [DataMember(Name = "productionDate", Order = 132)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public virtual Values<int?, DateTime?>? ProductionDate { get; set; }
+        public virtual Values<int?, DateTime?> ProductionDate { get; set; }
 
         /// <summary>
         /// The date the item e.g. vehicle was purchased by the current owner.
         /// </summary>
         [DataMember(Name = "purchaseDate", Order = 133)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public virtual Values<int?, DateTime?>? PurchaseDate { get; set; }
+        public virtual Values<int?, DateTime?> PurchaseDate { get; set; }
 
         /// <summary>
         /// The release date of a product or product model. This can be used to distinguish the exact variant of a product.
         /// </summary>
         [DataMember(Name = "releaseDate", Order = 134)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? ReleaseDate { get; set; }
+        public Values<int?, DateTime?> ReleaseDate { get; set; }
 
         /// <summary>
         /// A review of the item.
@@ -430,6 +430,6 @@
         /// </summary>
         [DataMember(Name = "width", Order = 139)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IQuantitativeValue>? Width { get; set; }
+        public Values<string, IQuantitativeValue> Width { get; set; }
     }
 }

@@ -12,7 +12,7 @@
         /// <summary>
         /// Description of fees, commissions, and other terms applied either to a class of financial product, or by a financial service organization.
         /// </summary>
-        Values<string, Uri>? FeesAndCommissionsSpecification { get; set; }
+        Values<string, Uri> FeesAndCommissionsSpecification { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "feesAndCommissionsSpecification", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? FeesAndCommissionsSpecification { get; set; }
+        public Values<string, Uri> FeesAndCommissionsSpecification { get; set; }
     }
 }

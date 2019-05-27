@@ -17,7 +17,7 @@
         /// <summary>
         /// The drug or supplement's legal status, including any controlled substance schedules that apply.
         /// </summary>
-        Values<IDrugLegalStatus, MedicalEnumeration?, string>? LegalStatus { get; set; }
+        Values<IDrugLegalStatus, MedicalEnumeration?, string> LegalStatus { get; set; }
 
         /// <summary>
         /// The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
@@ -64,7 +64,7 @@
         /// </summary>
         [DataMember(Name = "legalStatus", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IDrugLegalStatus, MedicalEnumeration?, string>? LegalStatus { get; set; }
+        public virtual Values<IDrugLegalStatus, MedicalEnumeration?, string> LegalStatus { get; set; }
 
         /// <summary>
         /// The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.

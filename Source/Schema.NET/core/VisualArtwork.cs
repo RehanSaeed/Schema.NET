@@ -12,12 +12,12 @@
         /// <summary>
         /// The number of copies when multiple copies of a piece of artwork are produced - e.g. for a limited edition of 20 prints, 'artEdition' refers to the total number of copies (in this example "20").
         /// </summary>
-        Values<int?, string>? ArtEdition { get; set; }
+        Values<int?, string> ArtEdition { get; set; }
 
         /// <summary>
         /// e.g. Painting, Drawing, Sculpture, Print, Photograph, Assemblage, Collage, etc.
         /// </summary>
-        Values<string, Uri>? Artform { get; set; }
+        Values<string, Uri> Artform { get; set; }
 
         /// <summary>
         /// The primary artist for a work
@@ -29,12 +29,12 @@
         /// <summary>
         /// The material used. (e.g. Oil, Watercolour, Acrylic, Linoprint, Marble, Cyanotype, Digital, Lithograph, DryPoint, Intaglio, Pastel, Woodcut, Pencil, Mixed Media, etc.)
         /// </summary>
-        Values<string, Uri>? ArtMedium { get; set; }
+        Values<string, Uri> ArtMedium { get; set; }
 
         /// <summary>
         /// The supporting materials for the artwork, e.g. Canvas, Paper, Wood, Board, etc.
         /// </summary>
-        Values<string, Uri>? ArtworkSurface { get; set; }
+        Values<string, Uri> ArtworkSurface { get; set; }
 
         /// <summary>
         /// The individual who adds color to inked drawings.
@@ -44,12 +44,12 @@
         /// <summary>
         /// The depth of the item.
         /// </summary>
-        Values<string, IQuantitativeValue>? Depth { get; set; }
+        Values<string, IQuantitativeValue> Depth { get; set; }
 
         /// <summary>
         /// The height of the item.
         /// </summary>
-        Values<string, IQuantitativeValue>? Height { get; set; }
+        Values<string, IQuantitativeValue> Height { get; set; }
 
         /// <summary>
         /// The individual who traces over the pencil drawings in ink after pencils are complete.
@@ -69,7 +69,7 @@
         /// <summary>
         /// The width of the item.
         /// </summary>
-        Values<string, IQuantitativeValue>? Width { get; set; }
+        Values<string, IQuantitativeValue> Width { get; set; }
     }
 
     /// <summary>
@@ -89,14 +89,14 @@
         /// </summary>
         [DataMember(Name = "artEdition", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? ArtEdition { get; set; }
+        public Values<int?, string> ArtEdition { get; set; }
 
         /// <summary>
         /// e.g. Painting, Drawing, Sculpture, Print, Photograph, Assemblage, Collage, etc.
         /// </summary>
         [DataMember(Name = "artform", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? Artform { get; set; }
+        public Values<string, Uri> Artform { get; set; }
 
         /// <summary>
         /// The primary artist for a work
@@ -112,14 +112,14 @@
         /// </summary>
         [DataMember(Name = "artMedium", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? ArtMedium { get; set; }
+        public Values<string, Uri> ArtMedium { get; set; }
 
         /// <summary>
         /// The supporting materials for the artwork, e.g. Canvas, Paper, Wood, Board, etc.
         /// </summary>
         [DataMember(Name = "artworkSurface", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? ArtworkSurface { get; set; }
+        public Values<string, Uri> ArtworkSurface { get; set; }
 
         /// <summary>
         /// The individual who adds color to inked drawings.
@@ -133,14 +133,14 @@
         /// </summary>
         [DataMember(Name = "depth", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IQuantitativeValue>? Depth { get; set; }
+        public Values<string, IQuantitativeValue> Depth { get; set; }
 
         /// <summary>
         /// The height of the item.
         /// </summary>
         [DataMember(Name = "height", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IQuantitativeValue>? Height { get; set; }
+        public Values<string, IQuantitativeValue> Height { get; set; }
 
         /// <summary>
         /// The individual who traces over the pencil drawings in ink after pencils are complete.
@@ -168,6 +168,6 @@
         /// </summary>
         [DataMember(Name = "width", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IQuantitativeValue>? Width { get; set; }
+        public Values<string, IQuantitativeValue> Width { get; set; }
     }
 }

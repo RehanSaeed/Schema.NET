@@ -22,12 +22,12 @@
         /// <summary>
         /// Position of the episode within an ordered group of episodes.
         /// </summary>
-        Values<int?, string>? EpisodeNumber { get; set; }
+        Values<int?, string> EpisodeNumber { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
-        Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// The season to which this episode belongs.
@@ -81,14 +81,14 @@
         /// </summary>
         [DataMember(Name = "episodeNumber", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? EpisodeNumber { get; set; }
+        public Values<int?, string> EpisodeNumber { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
         [DataMember(Name = "musicBy", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        public Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// The season to which this episode belongs.

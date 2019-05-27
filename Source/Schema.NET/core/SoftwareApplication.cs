@@ -12,12 +12,12 @@
         /// <summary>
         /// Type of software application, e.g. 'Game, Multimedia'.
         /// </summary>
-        Values<string, Uri>? ApplicationCategory { get; set; }
+        Values<string, Uri> ApplicationCategory { get; set; }
 
         /// <summary>
         /// Subcategory of the application, e.g. 'Arcade Game'.
         /// </summary>
-        Values<string, Uri>? ApplicationSubCategory { get; set; }
+        Values<string, Uri> ApplicationSubCategory { get; set; }
 
         /// <summary>
         /// The name of the application suite to which the application belongs (e.g. Excel belongs to Office).
@@ -47,7 +47,7 @@
         /// <summary>
         /// Features or modules provided by this application (and possibly required by other applications).
         /// </summary>
-        Values<string, Uri>? FeatureList { get; set; }
+        Values<string, Uri> FeatureList { get; set; }
 
         /// <summary>
         /// Size of the application / package (e.g. 18MB). In the absence of a unit (MB, KB etc.), KB will be assumed.
@@ -62,7 +62,7 @@
         /// <summary>
         /// Minimum memory requirements.
         /// </summary>
-        Values<string, Uri>? MemoryRequirements { get; set; }
+        Values<string, Uri> MemoryRequirements { get; set; }
 
         /// <summary>
         /// Operating systems supported (Windows 7, OSX 10.6, Android 1.6).
@@ -82,12 +82,12 @@
         /// <summary>
         /// Description of what changed in this version.
         /// </summary>
-        Values<string, Uri>? ReleaseNotes { get; set; }
+        Values<string, Uri> ReleaseNotes { get; set; }
 
         /// <summary>
         /// A link to a screenshot image of the app.
         /// </summary>
-        Values<IImageObject, Uri>? Screenshot { get; set; }
+        Values<IImageObject, Uri> Screenshot { get; set; }
 
         /// <summary>
         /// Additional content for a software application.
@@ -102,7 +102,7 @@
         /// <summary>
         /// Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).
         /// </summary>
-        Values<string, Uri>? SoftwareRequirements { get; set; }
+        Values<string, Uri> SoftwareRequirements { get; set; }
 
         /// <summary>
         /// Version of the software instance.
@@ -112,7 +112,7 @@
         /// <summary>
         /// Storage requirements (free space required).
         /// </summary>
-        Values<string, Uri>? StorageRequirements { get; set; }
+        Values<string, Uri> StorageRequirements { get; set; }
 
         /// <summary>
         /// Supporting data for a SoftwareApplication.
@@ -137,14 +137,14 @@
         /// </summary>
         [DataMember(Name = "applicationCategory", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? ApplicationCategory { get; set; }
+        public Values<string, Uri> ApplicationCategory { get; set; }
 
         /// <summary>
         /// Subcategory of the application, e.g. 'Arcade Game'.
         /// </summary>
         [DataMember(Name = "applicationSubCategory", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? ApplicationSubCategory { get; set; }
+        public Values<string, Uri> ApplicationSubCategory { get; set; }
 
         /// <summary>
         /// The name of the application suite to which the application belongs (e.g. Excel belongs to Office).
@@ -186,7 +186,7 @@
         /// </summary>
         [DataMember(Name = "featureList", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? FeatureList { get; set; }
+        public Values<string, Uri> FeatureList { get; set; }
 
         /// <summary>
         /// Size of the application / package (e.g. 18MB). In the absence of a unit (MB, KB etc.), KB will be assumed.
@@ -207,7 +207,7 @@
         /// </summary>
         [DataMember(Name = "memoryRequirements", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? MemoryRequirements { get; set; }
+        public Values<string, Uri> MemoryRequirements { get; set; }
 
         /// <summary>
         /// Operating systems supported (Windows 7, OSX 10.6, Android 1.6).
@@ -235,14 +235,14 @@
         /// </summary>
         [DataMember(Name = "releaseNotes", Order = 220)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? ReleaseNotes { get; set; }
+        public Values<string, Uri> ReleaseNotes { get; set; }
 
         /// <summary>
         /// A link to a screenshot image of the app.
         /// </summary>
         [DataMember(Name = "screenshot", Order = 221)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IImageObject, Uri>? Screenshot { get; set; }
+        public Values<IImageObject, Uri> Screenshot { get; set; }
 
         /// <summary>
         /// Additional content for a software application.
@@ -263,7 +263,7 @@
         /// </summary>
         [DataMember(Name = "softwareRequirements", Order = 224)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? SoftwareRequirements { get; set; }
+        public Values<string, Uri> SoftwareRequirements { get; set; }
 
         /// <summary>
         /// Version of the software instance.
@@ -277,7 +277,7 @@
         /// </summary>
         [DataMember(Name = "storageRequirements", Order = 226)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? StorageRequirements { get; set; }
+        public Values<string, Uri> StorageRequirements { get; set; }
 
         /// <summary>
         /// Supporting data for a SoftwareApplication.

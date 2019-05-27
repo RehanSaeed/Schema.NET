@@ -17,7 +17,7 @@
         /// <summary>
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
         /// </summary>
-        Values<ILanguage, string>? SubtitleLanguage { get; set; }
+        Values<ILanguage, string> SubtitleLanguage { get; set; }
     }
 
     /// <summary>
@@ -44,6 +44,6 @@
         /// </summary>
         [DataMember(Name = "subtitleLanguage", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILanguage, string>? SubtitleLanguage { get; set; }
+        public Values<ILanguage, string> SubtitleLanguage { get; set; }
     }
 }

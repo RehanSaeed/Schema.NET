@@ -93,7 +93,7 @@
         /// </summary>
         [DataMember(Name = "legalStatus", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IDrugLegalStatus, MedicalEnumeration?, string>? LegalStatus { get; set; }
+        public override Values<IDrugLegalStatus, MedicalEnumeration?, string> LegalStatus { get; set; }
 
         /// <summary>
         /// The manufacturer of the product.

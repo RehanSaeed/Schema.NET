@@ -12,7 +12,7 @@
         /// <summary>
         /// The frequency in MHz for a particular broadcast.
         /// </summary>
-        Values<double?, IQuantitativeValue>? BroadcastFrequencyValue { get; set; }
+        Values<double?, IQuantitativeValue> BroadcastFrequencyValue { get; set; }
 
         /// <summary>
         /// The modulation (e.g. FM, AM, etc) used by a particular broadcast service
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "broadcastFrequencyValue", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<double?, IQuantitativeValue>? BroadcastFrequencyValue { get; set; }
+        public Values<double?, IQuantitativeValue> BroadcastFrequencyValue { get; set; }
 
         /// <summary>
         /// The modulation (e.g. FM, AM, etc) used by a particular broadcast service

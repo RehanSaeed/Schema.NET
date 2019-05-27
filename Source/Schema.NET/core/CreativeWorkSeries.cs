@@ -19,12 +19,12 @@
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        Values<int?, DateTime?, DateTimeOffset?>? StartDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        Values<int?, DateTime?, DateTimeOffset?>? EndDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> EndDate { get; set; }
     }
 
     /// <summary>
@@ -53,13 +53,13 @@
         /// </summary>
         [DataMember(Name = "startDate", Order = 307)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? StartDate { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "endDate", Order = 308)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? EndDate { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> EndDate { get; set; }
     }
 }

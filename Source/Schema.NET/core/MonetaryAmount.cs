@@ -44,7 +44,7 @@
         /// &lt;li&gt;Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        Values<bool?, double?, IStructuredValue, string>? Value { get; set; }
+        Values<bool?, double?, IStructuredValue, string> Value { get; set; }
     }
 
     /// <summary>
@@ -106,6 +106,6 @@
         /// </summary>
         [DataMember(Name = "value", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<bool?, double?, IStructuredValue, string>? Value { get; set; }
+        public Values<bool?, double?, IStructuredValue, string> Value { get; set; }
     }
 }

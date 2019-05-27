@@ -105,7 +105,7 @@
         /// </summary>
         [DataMember(Name = "associatedAnatomy", Order = 317)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy>? AssociatedAnatomy { get; set; }
+        public Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy> AssociatedAnatomy { get; set; }
 
         /// <summary>
         /// A media object that encodes this CreativeWork. This property is a synonym for encoding.
@@ -126,14 +126,14 @@
         /// </summary>
         [DataMember(Name = "audio", Order = 320)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAudioObject, IClip>? Audio { get; set; }
+        public Values<IAudioObject, IClip> Audio { get; set; }
 
         /// <summary>
         /// The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
         /// </summary>
         [DataMember(Name = "author", Order = 321)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Author { get; set; }
+        public Values<IOrganization, IPerson> Author { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -147,7 +147,7 @@
         /// </summary>
         [DataMember(Name = "category", Order = 323)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
 
         /// <summary>
         /// Fictional person connected with a creative work.
@@ -161,7 +161,7 @@
         /// </summary>
         [DataMember(Name = "citation", Order = 325)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, string>? Citation { get; set; }
+        public Values<ICreativeWork, string> Citation { get; set; }
 
         /// <summary>
         /// Comments, typically from users.
@@ -189,7 +189,7 @@
         /// </summary>
         [DataMember(Name = "contentRating", Order = 329)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IRating, string>? ContentRating { get; set; }
+        public Values<IRating, string> ContentRating { get; set; }
 
         /// <summary>
         /// The specific time described by a creative work, for works (e.g. articles, video objects etc.) that emphasise a particular moment within an Event.
@@ -203,14 +203,14 @@
         /// </summary>
         [DataMember(Name = "contributor", Order = 331)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Contributor { get; set; }
+        public Values<IOrganization, IPerson> Contributor { get; set; }
 
         /// <summary>
         /// The party holding the legal copyright to the CreativeWork.
         /// </summary>
         [DataMember(Name = "copyrightHolder", Order = 332)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? CopyrightHolder { get; set; }
+        public Values<IOrganization, IPerson> CopyrightHolder { get; set; }
 
         /// <summary>
         /// The year during which the claimed copyright for the CreativeWork was first asserted.
@@ -224,35 +224,35 @@
         /// </summary>
         [DataMember(Name = "correction", Order = 334)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? Correction { get; set; }
+        public Values<string, Uri> Correction { get; set; }
 
         /// <summary>
         /// The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
         /// </summary>
         [DataMember(Name = "creator", Order = 335)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Creator { get; set; }
+        public Values<IOrganization, IPerson> Creator { get; set; }
 
         /// <summary>
         /// The date on which the CreativeWork was created or the item was added to a DataFeed.
         /// </summary>
         [DataMember(Name = "dateCreated", Order = 336)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? DateCreated { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> DateCreated { get; set; }
 
         /// <summary>
         /// The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed.
         /// </summary>
         [DataMember(Name = "dateModified", Order = 337)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? DateModified { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> DateModified { get; set; }
 
         /// <summary>
         /// Date of first broadcast/publication.
         /// </summary>
         [DataMember(Name = "datePublished", Order = 338)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? DatePublished { get; set; }
+        public Values<int?, DateTime?> DatePublished { get; set; }
 
         /// <summary>
         /// A link to the page containing the comments of the CreativeWork.
@@ -296,7 +296,7 @@
         /// </summary>
         [DataMember(Name = "encodingFormat", Order = 344)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? EncodingFormat { get; set; }
+        public Values<string, Uri> EncodingFormat { get; set; }
 
         /// <summary>
         /// The characteristics of associated patients, such as age, gender, race etc.
@@ -317,21 +317,21 @@
         /// </summary>
         [DataMember(Name = "expires", Order = 347)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? Expires { get; set; }
+        public Values<int?, DateTime?> Expires { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
         /// </summary>
         [DataMember(Name = "funder", Order = 348)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Funder { get; set; }
+        public Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
         /// </summary>
         [DataMember(Name = "genre", Order = 349)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? Genre { get; set; }
+        public Values<string, Uri> Genre { get; set; }
 
         /// <summary>
         /// Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense).
@@ -352,7 +352,7 @@
         /// </summary>
         [DataMember(Name = "inLanguage", Order = 352)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILanguage, string>? InLanguage { get; set; }
+        public Values<ILanguage, string> InLanguage { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
@@ -380,7 +380,7 @@
         /// </summary>
         [DataMember(Name = "isBasedOn", Order = 356)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, IProduct, Uri>? IsBasedOn { get; set; }
+        public Values<ICreativeWork, IProduct, Uri> IsBasedOn { get; set; }
 
         /// <summary>
         /// Indicates whether this content is family friendly.
@@ -415,7 +415,7 @@
         /// </summary>
         [DataMember(Name = "license", Order = 361)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, Uri>? License { get; set; }
+        public Values<ICreativeWork, Uri> License { get; set; }
 
         /// <summary>
         /// The location where the CreativeWork was created, which may not be the same as the location depicted in the CreativeWork.
@@ -436,14 +436,14 @@
         /// </summary>
         [DataMember(Name = "material", Order = 364)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, string, Uri>? Material { get; set; }
+        public Values<IProduct, string, Uri> Material { get; set; }
 
         /// <summary>
         /// The quantity of the materials being described or an expression of the physical space they occupy.
         /// </summary>
         [DataMember(Name = "materialExtent", Order = 365)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IQuantitativeValue, string>? MaterialExtent { get; set; }
+        public Values<IQuantitativeValue, string> MaterialExtent { get; set; }
 
         /// <summary>
         /// Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
@@ -471,21 +471,21 @@
         /// </summary>
         [DataMember(Name = "position", Order = 369)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? Position { get; set; }
+        public Values<int?, string> Position { get; set; }
 
         /// <summary>
         /// The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
         /// </summary>
         [DataMember(Name = "producer", Order = 370)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Producer { get; set; }
+        public Values<IOrganization, IPerson> Producer { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
         [DataMember(Name = "provider", Order = 371)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Provider { get; set; }
+        public Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// A publication event associated with the item.
@@ -499,7 +499,7 @@
         /// </summary>
         [DataMember(Name = "publisher", Order = 373)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Publisher { get; set; }
+        public Values<IOrganization, IPerson> Publisher { get; set; }
 
         /// <summary>
         /// The publishing division which published the comic.
@@ -514,7 +514,7 @@
         /// </summary>
         [DataMember(Name = "publishingPrinciples", Order = 375)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, Uri>? PublishingPrinciples { get; set; }
+        public Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
@@ -542,21 +542,21 @@
         /// </summary>
         [DataMember(Name = "schemaVersion", Order = 379)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? SchemaVersion { get; set; }
+        public Values<string, Uri> SchemaVersion { get; set; }
 
         /// <summary>
         /// Indicates the date on which the current structured data was generated / published. Typically used alongside &lt;a class="localLink" href="http://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt;
         /// </summary>
         [DataMember(Name = "sdDatePublished", Order = 380)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? SdDatePublished { get; set; }
+        public Values<int?, DateTime?> SdDatePublished { get; set; }
 
         /// <summary>
         /// A license document that applies to this structured data, typically indicated by URL.
         /// </summary>
         [DataMember(Name = "sdLicense", Order = 381)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, Uri>? SdLicense { get; set; }
+        public Values<ICreativeWork, Uri> SdLicense { get; set; }
 
         /// <summary>
         /// Indicates the party responsible for generating and publishing the current structured data markup, typically in cases where the structured data is derived automatically from existing published content but published on a different site. For example, student projects and open data initiatives often re-publish existing content with more explicitly structured metadata. The
@@ -564,7 +564,7 @@
         /// </summary>
         [DataMember(Name = "sdPublisher", Order = 382)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? SdPublisher { get; set; }
+        public Values<IOrganization, IPerson> SdPublisher { get; set; }
 
         /// <summary>
         /// The Organization on whose behalf the creator was working.
@@ -595,7 +595,7 @@
         /// </summary>
         [DataMember(Name = "sponsor", Order = 386)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Sponsor { get; set; }
+        public Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// The "temporal" property can be used in cases where more specific properties
@@ -603,7 +603,7 @@
         /// </summary>
         [DataMember(Name = "temporal", Order = 387)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<DateTimeOffset?, string>? Temporal { get; set; }
+        public Values<DateTimeOffset?, string> Temporal { get; set; }
 
         /// <summary>
         /// The temporalCoverage of a CreativeWork indicates the period that the content applies to, i.e. that it describes, either as a DateTime or as a textual string indicating a time period in &lt;a href="https://en.wikipedia.org/wiki/ISO_8601#Time_intervals"&gt;ISO 8601 time interval format&lt;/a&gt;. In
@@ -613,7 +613,7 @@
         /// </summary>
         [DataMember(Name = "temporalCoverage", Order = 388)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<DateTimeOffset?, string, Uri>? TemporalCoverage { get; set; }
+        public Values<DateTimeOffset?, string, Uri> TemporalCoverage { get; set; }
 
         /// <summary>
         /// The textual content of this CreativeWork.
@@ -648,7 +648,7 @@
         /// </summary>
         [DataMember(Name = "translator", Order = 393)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Translator { get; set; }
+        public Values<IOrganization, IPerson> Translator { get; set; }
 
         /// <summary>
         /// The typical expected age range, e.g. '7-9', '11-'.
@@ -662,14 +662,14 @@
         /// </summary>
         [DataMember(Name = "version", Order = 395)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<double?, string>? Version { get; set; }
+        public Values<double?, string> Version { get; set; }
 
         /// <summary>
         /// An embedded video object.
         /// </summary>
         [DataMember(Name = "video", Order = 396)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IClip, IVideoObject>? Video { get; set; }
+        public Values<IClip, IVideoObject> Video { get; set; }
 
         /// <summary>
         /// Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.

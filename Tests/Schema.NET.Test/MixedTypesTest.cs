@@ -47,14 +47,14 @@ namespace Schema.NET.Test
             var book = JsonConvert.DeserializeObject<Book>(this.json);
 
             Assert.True(book.Author.HasValue);
-            Assert.True(book.Author.Value.HasValue1);
-            Assert.True(book.Author.Value.HasValue2);
-            Assert.True(book.Author.Value.Value1.HasOne);
-            Assert.True(book.Author.Value.Value2.HasOne);
-            Assert.False(book.Author.Value.Value1.HasMany);
-            Assert.False(book.Author.Value.Value2.HasMany);
-            Assert.Single(book.Author.Value.Value1);
-            Assert.Single(book.Author.Value.Value2);
+            Assert.True(book.Author.HasValue1);
+            Assert.True(book.Author.HasValue2);
+            Assert.True(book.Author.Value1.HasOne);
+            Assert.True(book.Author.Value2.HasOne);
+            Assert.False(book.Author.Value1.HasMany);
+            Assert.False(book.Author.Value2.HasMany);
+            Assert.Single(book.Author.Value1);
+            Assert.Single(book.Author.Value2);
 
             List<IPerson> people = book.Author;
             List<IOrganization> organizations = book.Author;
@@ -82,7 +82,7 @@ namespace Schema.NET.Test
             Assert.True(bankAccount.BankAccountType.HasValue);
             Assert.Equal(
                 new List<object>() { "http://example.com/1", new Uri("http://example.com/1") },
-                bankAccount.BankAccountType.Value);
+                bankAccount.BankAccountType);
         }
 
         [Fact]

@@ -23,17 +23,17 @@
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Article"&gt;Article&lt;/a&gt;, typically a &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;, the backstory property provides a textual summary giving a brief explanation of why and how an article was created. In a journalistic setting this could include information about reporting process, methods, interviews, data sources, etc.
         /// </summary>
-        Values<ICreativeWork, string>? Backstory { get; set; }
+        Values<ICreativeWork, string> Backstory { get; set; }
 
         /// <summary>
         /// The page on which the work ends; for example "138" or "xvi".
         /// </summary>
-        Values<int?, string>? PageEnd { get; set; }
+        Values<int?, string> PageEnd { get; set; }
 
         /// <summary>
         /// The page on which the work starts; for example "135" or "xiii".
         /// </summary>
-        Values<int?, string>? PageStart { get; set; }
+        Values<int?, string> PageStart { get; set; }
 
         /// <summary>
         /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".
@@ -49,7 +49,7 @@
         /// For more sophisticated markup of speakable sections beyond simple ID references, either CSS selectors or XPath expressions to pick out document section(s) as speakable. For this
         /// we define a supporting type, &lt;a class="localLink" href="http://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt;  which is defined to be a possible value of the &lt;em&gt;speakable&lt;/em&gt; property.
         /// </summary>
-        Values<ISpeakableSpecification, Uri>? Speakable { get; set; }
+        Values<ISpeakableSpecification, Uri> Speakable { get; set; }
 
         /// <summary>
         /// The number of words in the text of the Article.
@@ -89,21 +89,21 @@
         /// </summary>
         [DataMember(Name = "backstory", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, string>? Backstory { get; set; }
+        public Values<ICreativeWork, string> Backstory { get; set; }
 
         /// <summary>
         /// The page on which the work ends; for example "138" or "xvi".
         /// </summary>
         [DataMember(Name = "pageEnd", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? PageEnd { get; set; }
+        public Values<int?, string> PageEnd { get; set; }
 
         /// <summary>
         /// The page on which the work starts; for example "135" or "xiii".
         /// </summary>
         [DataMember(Name = "pageStart", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? PageStart { get; set; }
+        public Values<int?, string> PageStart { get; set; }
 
         /// <summary>
         /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".
@@ -123,7 +123,7 @@
         /// </summary>
         [DataMember(Name = "speakable", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ISpeakableSpecification, Uri>? Speakable { get; set; }
+        public Values<ISpeakableSpecification, Uri> Speakable { get; set; }
 
         /// <summary>
         /// The number of words in the text of the Article.

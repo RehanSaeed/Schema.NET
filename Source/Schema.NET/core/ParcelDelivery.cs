@@ -52,7 +52,7 @@
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        Values<IOrganization, IPerson>? Provider { get; set; }
+        Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// Shipper tracking number.
@@ -138,7 +138,7 @@
         /// </summary>
         [DataMember(Name = "provider", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Provider { get; set; }
+        public Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// Shipper tracking number.

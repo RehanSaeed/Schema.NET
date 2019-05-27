@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of participant. The person/organization being supported.
         /// </summary>
-        Values<IOrganization, IPerson>? Endorsee { get; set; }
+        Values<IOrganization, IPerson> Endorsee { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "endorsee", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Endorsee { get; set; }
+        public Values<IOrganization, IPerson> Endorsee { get; set; }
     }
 }

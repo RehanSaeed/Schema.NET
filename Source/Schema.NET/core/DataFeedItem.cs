@@ -12,7 +12,7 @@
         /// <summary>
         /// The date on which the CreativeWork was created or the item was added to a DataFeed.
         /// </summary>
-        Values<int?, DateTime?, DateTimeOffset?>? DateCreated { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> DateCreated { get; set; }
 
         /// <summary>
         /// The datetime the item was removed from the DataFeed.
@@ -22,7 +22,7 @@
         /// <summary>
         /// The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed.
         /// </summary>
-        Values<int?, DateTime?, DateTimeOffset?>? DateModified { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> DateModified { get; set; }
 
         /// <summary>
         /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.
@@ -47,7 +47,7 @@
         /// </summary>
         [DataMember(Name = "dateCreated", Order = 206)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? DateCreated { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> DateCreated { get; set; }
 
         /// <summary>
         /// The datetime the item was removed from the DataFeed.
@@ -61,7 +61,7 @@
         /// </summary>
         [DataMember(Name = "dateModified", Order = 208)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? DateModified { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> DateModified { get; set; }
 
         /// <summary>
         /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.

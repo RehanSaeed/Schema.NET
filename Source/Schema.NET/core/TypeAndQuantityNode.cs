@@ -22,12 +22,12 @@
         /// <summary>
         /// The product that this structured value is referring to.
         /// </summary>
-        Values<IProduct, IService>? TypeOfGood { get; set; }
+        Values<IProduct, IService> TypeOfGood { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
         /// </summary>
-        Values<string, Uri>? UnitCode { get; set; }
+        Values<string, Uri> UnitCode { get; set; }
 
         /// <summary>
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
@@ -67,14 +67,14 @@
         /// </summary>
         [DataMember(Name = "typeOfGood", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService>? TypeOfGood { get; set; }
+        public Values<IProduct, IService> TypeOfGood { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
         /// </summary>
         [DataMember(Name = "unitCode", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? UnitCode { get; set; }
+        public Values<string, Uri> UnitCode { get; set; }
 
         /// <summary>
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for

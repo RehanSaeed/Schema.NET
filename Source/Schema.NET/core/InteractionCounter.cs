@@ -12,7 +12,7 @@
         /// <summary>
         /// The WebSite or SoftwareApplication where the interactions took place.
         /// </summary>
-        Values<ISoftwareApplication, IWebSite>? InteractionService { get; set; }
+        Values<ISoftwareApplication, IWebSite> InteractionService { get; set; }
 
         /// <summary>
         /// The Action representing the type of interaction. For up votes, +1s, etc. use &lt;a class="localLink" href="http://schema.org/LikeAction"&gt;LikeAction&lt;/a&gt;. For down votes use &lt;a class="localLink" href="http://schema.org/DislikeAction"&gt;DislikeAction&lt;/a&gt;. Otherwise, use the most specific Action.
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "interactionService", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ISoftwareApplication, IWebSite>? InteractionService { get; set; }
+        public Values<ISoftwareApplication, IWebSite> InteractionService { get; set; }
 
         /// <summary>
         /// The Action representing the type of interaction. For up votes, +1s, etc. use &lt;a class="localLink" href="http://schema.org/LikeAction"&gt;LikeAction&lt;/a&gt;. For down votes use &lt;a class="localLink" href="http://schema.org/DislikeAction"&gt;DislikeAction&lt;/a&gt;. Otherwise, use the most specific Action.

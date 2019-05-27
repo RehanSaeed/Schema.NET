@@ -12,7 +12,7 @@
         /// <summary>
         /// The payment method(s) accepted by seller for this offer.
         /// </summary>
-        Values<ILoanOrCredit, PaymentMethod?>? AcceptedPaymentMethod { get; set; }
+        Values<ILoanOrCredit, PaymentMethod?> AcceptedPaymentMethod { get; set; }
 
         /// <summary>
         /// The amount of time that is required between accepting the offer and the actual usage of the resource or service.
@@ -22,7 +22,7 @@
         /// <summary>
         /// The geographic area where a service or offered item is provided.
         /// </summary>
-        Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
+        Values<IAdministrativeArea, IGeoShape, IPlace, string> AreaServed { get; set; }
 
         /// <summary>
         /// The availability of this item&amp;#x2014;for example In stock, Out of stock, Pre-order, etc.
@@ -78,7 +78,7 @@
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;br/&gt;&lt;br/&gt;
         /// See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
-        Values<IGeoShape, IPlace, string>? EligibleRegion { get; set; }
+        Values<IGeoShape, IPlace, string> EligibleRegion { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
@@ -114,7 +114,7 @@
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;br/&gt;&lt;br/&gt;
         /// See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
         /// </summary>
-        Values<IGeoShape, IPlace, string>? IneligibleRegion { get; set; }
+        Values<IGeoShape, IPlace, string> IneligibleRegion { get; set; }
 
         /// <summary>
         /// The current approximate inventory level for the item or items.
@@ -129,7 +129,7 @@
         /// <summary>
         /// The item being offered.
         /// </summary>
-        Values<IProduct, IService>? ItemOffered { get; set; }
+        Values<IProduct, IService> ItemOffered { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
@@ -144,7 +144,7 @@
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
         /// </summary>
-        Values<IOrganization, IPerson>? Seller { get; set; }
+        Values<IOrganization, IPerson> Seller { get; set; }
 
         /// <summary>
         /// The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
@@ -189,7 +189,7 @@
         /// </summary>
         [DataMember(Name = "acceptedPaymentMethod", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILoanOrCredit, PaymentMethod?>? AcceptedPaymentMethod { get; set; }
+        public Values<ILoanOrCredit, PaymentMethod?> AcceptedPaymentMethod { get; set; }
 
         /// <summary>
         /// The amount of time that is required between accepting the offer and the actual usage of the resource or service.
@@ -203,7 +203,7 @@
         /// </summary>
         [DataMember(Name = "areaServed", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
+        public Values<IAdministrativeArea, IGeoShape, IPlace, string> AreaServed { get; set; }
 
         /// <summary>
         /// The availability of this item&amp;#x2014;for example In stock, Out of stock, Pre-order, etc.
@@ -281,7 +281,7 @@
         /// </summary>
         [DataMember(Name = "eligibleRegion", Order = 219)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IGeoShape, IPlace, string>? EligibleRegion { get; set; }
+        public Values<IGeoShape, IPlace, string> EligibleRegion { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
@@ -331,7 +331,7 @@
         /// </summary>
         [DataMember(Name = "ineligibleRegion", Order = 226)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IGeoShape, IPlace, string>? IneligibleRegion { get; set; }
+        public Values<IGeoShape, IPlace, string> IneligibleRegion { get; set; }
 
         /// <summary>
         /// The current approximate inventory level for the item or items.
@@ -352,7 +352,7 @@
         /// </summary>
         [DataMember(Name = "itemOffered", Order = 229)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService>? ItemOffered { get; set; }
+        public Values<IProduct, IService> ItemOffered { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
@@ -373,7 +373,7 @@
         /// </summary>
         [DataMember(Name = "seller", Order = 232)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Seller { get; set; }
+        public Values<IOrganization, IPerson> Seller { get; set; }
 
         /// <summary>
         /// The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.

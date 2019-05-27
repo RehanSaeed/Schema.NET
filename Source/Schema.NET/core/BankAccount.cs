@@ -22,7 +22,7 @@
         /// <summary>
         /// The type of a bank account.
         /// </summary>
-        Values<string, Uri>? BankAccountType { get; set; }
+        Values<string, Uri> BankAccountType { get; set; }
     }
 
     /// <summary>
@@ -56,6 +56,6 @@
         /// </summary>
         [DataMember(Name = "bankAccountType", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? BankAccountType { get; set; }
+        public Values<string, Uri> BankAccountType { get; set; }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         [DataMember(Name = "actionableFeedbackPolicy", Order = 106)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<ICreativeWork, Uri>? ActionableFeedbackPolicy { get; set; }
+        public virtual Values<ICreativeWork, Uri> ActionableFeedbackPolicy { get; set; }
 
         /// <summary>
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
@@ -43,7 +43,7 @@
         /// </summary>
         [DataMember(Name = "address", Order = 108)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IPostalAddress, string>? Address { get; set; }
+        public virtual Values<IPostalAddress, string> Address { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
@@ -71,7 +71,7 @@
         /// </summary>
         [DataMember(Name = "areaServed", Order = 112)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
+        public virtual Values<IAdministrativeArea, IGeoShape, IPlace, string> AreaServed { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -93,7 +93,7 @@
         /// </summary>
         [DataMember(Name = "brand", Order = 115)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IBrand, IOrganization>? Brand { get; set; }
+        public virtual Values<IBrand, IOrganization> Brand { get; set; }
 
         /// <summary>
         /// A contact point for a person or organization.
@@ -121,7 +121,7 @@
         /// </summary>
         [DataMember(Name = "correctionsPolicy", Order = 119)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<ICreativeWork, Uri>? CorrectionsPolicy { get; set; }
+        public virtual Values<ICreativeWork, Uri> CorrectionsPolicy { get; set; }
 
         /// <summary>
         /// A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
@@ -135,21 +135,21 @@
         /// </summary>
         [DataMember(Name = "dissolutionDate", Order = 121)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public virtual Values<int?, DateTime?>? DissolutionDate { get; set; }
+        public virtual Values<int?, DateTime?> DissolutionDate { get; set; }
 
         /// <summary>
         /// Statement on diversity policy by an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; e.g. a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;. For a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, a statement describing the newsroom’s diversity policy on both staffing and sources, typically providing staffing data.
         /// </summary>
         [DataMember(Name = "diversityPolicy", Order = 122)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<ICreativeWork, Uri>? DiversityPolicy { get; set; }
+        public virtual Values<ICreativeWork, Uri> DiversityPolicy { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a report on staffing diversity issues. In a news context this might be for example ASNE or RTDNA (US) reports, or self-reported.
         /// </summary>
         [DataMember(Name = "diversityStaffingReport", Order = 123)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IArticle, Uri>? DiversityStaffingReport { get; set; }
+        public virtual Values<IArticle, Uri> DiversityStaffingReport { get; set; }
 
         /// <summary>
         /// The Dun &amp;amp; Bradstreet DUNS number for identifying an organization or business person.
@@ -177,7 +177,7 @@
         /// </summary>
         [DataMember(Name = "ethicsPolicy", Order = 127)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<ICreativeWork, Uri>? EthicsPolicy { get; set; }
+        public virtual Values<ICreativeWork, Uri> EthicsPolicy { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
@@ -205,7 +205,7 @@
         /// </summary>
         [DataMember(Name = "foundingDate", Order = 131)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public virtual Values<int?, DateTime?>? FoundingDate { get; set; }
+        public virtual Values<int?, DateTime?> FoundingDate { get; set; }
 
         /// <summary>
         /// The place where the Organization was founded.
@@ -219,14 +219,14 @@
         /// </summary>
         [DataMember(Name = "funder", Order = 133)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IOrganization, IPerson>? Funder { get; set; }
+        public virtual Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
         /// The geo coordinates of the place.
         /// </summary>
         [DataMember(Name = "geo", Order = 134)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IGeoCoordinates, IGeoShape>? Geo { get; set; }
+        public virtual Values<IGeoCoordinates, IGeoShape> Geo { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a containing geometry to a contained geometry. "a contains b iff no points of b lie in the exterior of a, and at least one point of the interior of b lies in the interior of a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
@@ -310,7 +310,7 @@
         /// </summary>
         [DataMember(Name = "hasMap", Order = 146)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IMap, Uri>? HasMap { get; set; }
+        public virtual Values<IMap, Uri> HasMap { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
@@ -345,14 +345,14 @@
         /// </summary>
         [DataMember(Name = "knowsAbout", Order = 151)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<string, IThing, Uri>? KnowsAbout { get; set; }
+        public virtual Values<string, IThing, Uri> KnowsAbout { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "knowsLanguage", Order = 152)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<ILanguage, string>? KnowsLanguage { get; set; }
+        public virtual Values<ILanguage, string> KnowsLanguage { get; set; }
 
         /// <summary>
         /// The official name of the organization, e.g. the registered company name.
@@ -373,14 +373,14 @@
         /// </summary>
         [DataMember(Name = "location", Order = 155)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IPlace, IPostalAddress, string>? Location { get; set; }
+        public virtual Values<IPlace, IPostalAddress, string> Location { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
         [DataMember(Name = "logo", Order = 156)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IImageObject, Uri>? Logo { get; set; }
+        public virtual Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
@@ -401,14 +401,14 @@
         /// </summary>
         [DataMember(Name = "member", Order = 159)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IOrganization, IPerson>? Member { get; set; }
+        public virtual Values<IOrganization, IPerson> Member { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
         /// </summary>
         [DataMember(Name = "memberOf", Order = 160)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IOrganization, IProgramMembership>? MemberOf { get; set; }
+        public virtual Values<IOrganization, IProgramMembership> MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -436,14 +436,14 @@
         /// </summary>
         [DataMember(Name = "ownershipFundingInfo", Order = 164)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IAboutPage, ICreativeWork, string, Uri>? OwnershipFundingInfo { get; set; }
+        public virtual Values<IAboutPage, ICreativeWork, string, Uri> OwnershipFundingInfo { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
         /// </summary>
         [DataMember(Name = "owns", Order = 165)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IOwnershipInfo, IProduct>? Owns { get; set; }
+        public virtual Values<IOwnershipInfo, IProduct> Owns { get; set; }
 
         /// <summary>
         /// The larger organization that this organization is a &lt;a class="localLink" href="http://schema.org/subOrganization"&gt;subOrganization&lt;/a&gt; of, if any.
@@ -457,7 +457,7 @@
         /// </summary>
         [DataMember(Name = "photo", Order = 167)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IImageObject, IPhotograph>? Photo { get; set; }
+        public virtual Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
         /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
@@ -472,7 +472,7 @@
         /// </summary>
         [DataMember(Name = "publishingPrinciples", Order = 169)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<ICreativeWork, Uri>? PublishingPrinciples { get; set; }
+        public virtual Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// A review of the item.
@@ -515,7 +515,7 @@
         /// </summary>
         [DataMember(Name = "sponsor", Order = 175)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<IOrganization, IPerson>? Sponsor { get; set; }
+        public virtual Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
@@ -543,7 +543,7 @@
         /// </summary>
         [DataMember(Name = "unnamedSourcesPolicy", Order = 179)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<ICreativeWork, Uri>? UnnamedSourcesPolicy { get; set; }
+        public virtual Values<ICreativeWork, Uri> UnnamedSourcesPolicy { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.

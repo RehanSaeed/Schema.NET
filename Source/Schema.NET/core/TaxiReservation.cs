@@ -13,7 +13,7 @@
         /// <summary>
         /// Number of people the reservation should accommodate.
         /// </summary>
-        Values<int?, IQuantitativeValue>? PartySize { get; set; }
+        Values<int?, IQuantitativeValue> PartySize { get; set; }
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
@@ -44,7 +44,7 @@
         /// </summary>
         [DataMember(Name = "partySize", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? PartySize { get; set; }
+        public Values<int?, IQuantitativeValue> PartySize { get; set; }
 
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.

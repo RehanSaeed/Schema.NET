@@ -17,7 +17,7 @@
         /// <summary>
         /// The group the release is credited to if different than the byArtist. For example, Red and Blue is credited to "Stefani Germanotta Band", but by Lady Gaga.
         /// </summary>
-        Values<IOrganization, IPerson>? CreditedTo { get; set; }
+        Values<IOrganization, IPerson> CreditedTo { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
@@ -64,7 +64,7 @@
         /// </summary>
         [DataMember(Name = "creditedTo", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? CreditedTo { get; set; }
+        public Values<IOrganization, IPerson> CreditedTo { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.

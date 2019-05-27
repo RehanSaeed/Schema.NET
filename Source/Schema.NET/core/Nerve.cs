@@ -17,7 +17,7 @@
         /// <summary>
         /// The neurological pathway extension that inputs and sends information to the brain or spinal cord.
         /// </summary>
-        Values<IAnatomicalStructure, ISuperficialAnatomy>? SensoryUnit { get; set; }
+        Values<IAnatomicalStructure, ISuperficialAnatomy> SensoryUnit { get; set; }
 
         /// <summary>
         /// The neurological pathway that originates the neurons.
@@ -49,7 +49,7 @@
         /// </summary>
         [DataMember(Name = "sensoryUnit", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAnatomicalStructure, ISuperficialAnatomy>? SensoryUnit { get; set; }
+        public Values<IAnatomicalStructure, ISuperficialAnatomy> SensoryUnit { get; set; }
 
         /// <summary>
         /// The neurological pathway that originates the neurons.

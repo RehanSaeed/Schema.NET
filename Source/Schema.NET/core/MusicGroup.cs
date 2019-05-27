@@ -17,12 +17,12 @@
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
         /// </summary>
-        Values<string, Uri>? Genre { get; set; }
+        Values<string, Uri> Genre { get; set; }
 
         /// <summary>
         /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
         /// </summary>
-        Values<IItemList, IMusicRecording>? Track { get; set; }
+        Values<IItemList, IMusicRecording> Track { get; set; }
     }
 
     /// <summary>
@@ -49,13 +49,13 @@
         /// </summary>
         [DataMember(Name = "genre", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? Genre { get; set; }
+        public Values<string, Uri> Genre { get; set; }
 
         /// <summary>
         /// A music recording (track)&amp;#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
         /// </summary>
         [DataMember(Name = "track", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IItemList, IMusicRecording>? Track { get; set; }
+        public Values<IItemList, IMusicRecording> Track { get; set; }
     }
 }

@@ -19,7 +19,7 @@
         /// <summary>
         /// Number of people the reservation should accommodate.
         /// </summary>
-        Values<int?, IQuantitativeValue>? PartySize { get; set; }
+        Values<int?, IQuantitativeValue> PartySize { get; set; }
 
         /// <summary>
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
@@ -54,7 +54,7 @@
         /// </summary>
         [DataMember(Name = "partySize", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? PartySize { get; set; }
+        public Values<int?, IQuantitativeValue> PartySize { get; set; }
 
         /// <summary>
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;

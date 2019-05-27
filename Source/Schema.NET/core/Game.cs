@@ -22,7 +22,7 @@
         /// <summary>
         /// Real or fictional location of the game (or part of game).
         /// </summary>
-        Values<IPlace, IPostalAddress, Uri>? GameLocation { get; set; }
+        Values<IPlace, IPostalAddress, Uri> GameLocation { get; set; }
 
         /// <summary>
         /// Indicate how many people can play this game (minimum, maximum, or range).
@@ -66,7 +66,7 @@
         /// </summary>
         [DataMember(Name = "gameLocation", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPlace, IPostalAddress, Uri>? GameLocation { get; set; }
+        public Values<IPlace, IPostalAddress, Uri> GameLocation { get; set; }
 
         /// <summary>
         /// Indicate how many people can play this game (minimum, maximum, or range).

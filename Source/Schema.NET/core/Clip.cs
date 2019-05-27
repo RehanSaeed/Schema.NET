@@ -17,7 +17,7 @@
         /// <summary>
         /// Position of the clip within an ordered group of clips.
         /// </summary>
-        Values<int?, string>? ClipNumber { get; set; }
+        Values<int?, string> ClipNumber { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
@@ -32,7 +32,7 @@
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
-        Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// The episode to which this clip belongs.
@@ -79,7 +79,7 @@
         /// </summary>
         [DataMember(Name = "clipNumber", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? ClipNumber { get; set; }
+        public Values<int?, string> ClipNumber { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
@@ -100,7 +100,7 @@
         /// </summary>
         [DataMember(Name = "musicBy", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        public Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// The episode to which this clip belongs.

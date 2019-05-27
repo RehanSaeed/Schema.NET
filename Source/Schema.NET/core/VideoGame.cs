@@ -27,7 +27,7 @@
         /// <summary>
         /// The electronic systems used to play &lt;a href="http://en.wikipedia.org/wiki/Category:Video_game_platforms"&gt;video games&lt;/a&gt;.
         /// </summary>
-        Values<string, IThing, Uri>? GamePlatform { get; set; }
+        Values<string, IThing, Uri> GamePlatform { get; set; }
 
         /// <summary>
         /// The server on which  it is possible to play the game.
@@ -42,7 +42,7 @@
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
-        Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// Indicates whether this game is multi-player, co-op or single-player.  The game can be marked as multi-player, co-op and single-player at the same time.
@@ -93,7 +93,7 @@
         /// </summary>
         [DataMember(Name = "gamePlatform", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IThing, Uri>? GamePlatform { get; set; }
+        public Values<string, IThing, Uri> GamePlatform { get; set; }
 
         /// <summary>
         /// The server on which  it is possible to play the game.
@@ -114,7 +114,7 @@
         /// </summary>
         [DataMember(Name = "musicBy", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        public Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// Indicates whether this game is multi-player, co-op or single-player.  The game can be marked as multi-player, co-op and single-player at the same time.

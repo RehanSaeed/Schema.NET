@@ -85,6 +85,11 @@ namespace Schema.NET
         public bool HasValue2 { get; }
 
         /// <summary>
+        /// Gets whether the value of either type <typeparamref name="T1" /> or type <typeparamref name="T2" /> has a value.
+        /// </summary>
+        public bool HasValue => this.HasValue1 || this.HasValue2;
+
+        /// <summary>
         /// Gets the value of type <typeparamref name="T1" />.
         /// </summary>
         public OneOrMany<T1> Value1 { get; }

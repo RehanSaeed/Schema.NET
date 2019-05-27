@@ -18,7 +18,7 @@ namespace Schema.NET.Test
             Offers = new Offer // Recommended
             {
                 Url = (Uri)null, // Recommended
-                ItemOffered = null, // Recommended
+                ItemOffered = (Product)null, // Recommended
                 PriceCurrency = "USD", // Required
                 Price = 47200M, // Required
                 PriceValidUntil = new DateTime(2020, 11, 5), // Recommended

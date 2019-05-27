@@ -17,7 +17,7 @@
         /// <summary>
         /// Anatomical systems or structures that relate to the superficial anatomy.
         /// </summary>
-        Values<IAnatomicalStructure, IAnatomicalSystem>? RelatedAnatomy { get; set; }
+        Values<IAnatomicalStructure, IAnatomicalSystem> RelatedAnatomy { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
@@ -59,7 +59,7 @@
         /// </summary>
         [DataMember(Name = "relatedAnatomy", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAnatomicalStructure, IAnatomicalSystem>? RelatedAnatomy { get; set; }
+        public Values<IAnatomicalStructure, IAnatomicalSystem> RelatedAnatomy { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.

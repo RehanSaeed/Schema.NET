@@ -17,7 +17,7 @@
         /// <summary>
         /// The frequency used for over-the-air broadcasts. Numeric values or simple ranges e.g. 87-99. In addition a shortcut idiom is supported for frequences of AM and FM radio channels, e.g. "87 FM".
         /// </summary>
-        Values<IBroadcastFrequencySpecification, string>? BroadcastFrequency { get; set; }
+        Values<IBroadcastFrequencySpecification, string> BroadcastFrequency { get; set; }
 
         /// <summary>
         /// The type of service required to have access to the channel (e.g. Standard or Premium).
@@ -27,7 +27,7 @@
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
         /// </summary>
-        Values<string, Uri>? Genre { get; set; }
+        Values<string, Uri> Genre { get; set; }
 
         /// <summary>
         /// The CableOrSatelliteService offering the channel.
@@ -64,7 +64,7 @@
         /// </summary>
         [DataMember(Name = "broadcastFrequency", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IBroadcastFrequencySpecification, string>? BroadcastFrequency { get; set; }
+        public Values<IBroadcastFrequencySpecification, string> BroadcastFrequency { get; set; }
 
         /// <summary>
         /// The type of service required to have access to the channel (e.g. Standard or Premium).
@@ -78,7 +78,7 @@
         /// </summary>
         [DataMember(Name = "genre", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? Genre { get; set; }
+        public Values<string, Uri> Genre { get; set; }
 
         /// <summary>
         /// The CableOrSatelliteService offering the channel.

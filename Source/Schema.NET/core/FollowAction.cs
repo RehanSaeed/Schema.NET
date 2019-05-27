@@ -20,7 +20,7 @@
         /// <summary>
         /// A sub property of object. The person or organization being followed.
         /// </summary>
-        Values<IOrganization, IPerson>? Followee { get; set; }
+        Values<IOrganization, IPerson> Followee { get; set; }
     }
 
     /// <summary>
@@ -48,6 +48,6 @@
         /// </summary>
         [DataMember(Name = "followee", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Followee { get; set; }
+        public Values<IOrganization, IPerson> Followee { get; set; }
     }
 }

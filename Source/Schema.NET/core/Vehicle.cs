@@ -21,7 +21,7 @@
         /// <summary>
         /// Indicates the design and body style of the vehicle (e.g. station wagon, hatchback, etc.).
         /// </summary>
-        Values<string, Uri>? BodyType { get; set; }
+        Values<string, Uri> BodyType { get; set; }
 
         /// <summary>
         /// The available volume for cargo or luggage. For automobiles, this is usually the trunk volume.&lt;br/&gt;&lt;br/&gt;
@@ -33,12 +33,12 @@
         /// <summary>
         /// The date of the first registration of the vehicle with the respective public authorities.
         /// </summary>
-        Values<int?, DateTime?>? DateVehicleFirstRegistered { get; set; }
+        Values<int?, DateTime?> DateVehicleFirstRegistered { get; set; }
 
         /// <summary>
         /// The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's engine via the drivetrain.
         /// </summary>
-        Values<DriveWheelConfigurationValue?, string>? DriveWheelConfiguration { get; set; }
+        Values<DriveWheelConfigurationValue?, string> DriveWheelConfiguration { get; set; }
 
         /// <summary>
         /// The CO2 emissions in g/km. When used in combination with a QuantitativeValue, put "g/km" into the unitText property of that value, since there is no UN/CEFACT Common Code for "g/km".
@@ -74,7 +74,7 @@
         /// <summary>
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
         /// </summary>
-        Values<string, Uri>? FuelType { get; set; }
+        Values<string, Uri> FuelType { get; set; }
 
         /// <summary>
         /// A textual description of known damages, both repaired and unrepaired.
@@ -84,7 +84,7 @@
         /// <summary>
         /// Indicates that the vehicle meets the respective emission standard.
         /// </summary>
-        Values<string, Uri>? MeetsEmissionStandard { get; set; }
+        Values<string, Uri> MeetsEmissionStandard { get; set; }
 
         /// <summary>
         /// The total distance travelled by the particular vehicle since its initial production, as read from its odometer.&lt;br/&gt;&lt;br/&gt;
@@ -95,36 +95,36 @@
         /// <summary>
         /// The release date of a vehicle model (often used to differentiate versions of the same make and model).
         /// </summary>
-        Values<int?, DateTime?>? ModelDate { get; set; }
+        Values<int?, DateTime?> ModelDate { get; set; }
 
         /// <summary>
         /// The number or type of airbags in the vehicle.
         /// </summary>
-        Values<int?, string>? NumberOfAirbags { get; set; }
+        Values<int?, string> NumberOfAirbags { get; set; }
 
         /// <summary>
         /// The number of axles.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): C62
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumberOfAxles { get; set; }
+        Values<int?, IQuantitativeValue> NumberOfAxles { get; set; }
 
         /// <summary>
         /// The number of doors.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): C62
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumberOfDoors { get; set; }
+        Values<int?, IQuantitativeValue> NumberOfDoors { get; set; }
 
         /// <summary>
         /// The total number of forward gears available for the transmission system of the vehicle.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): C62
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumberOfForwardGears { get; set; }
+        Values<int?, IQuantitativeValue> NumberOfForwardGears { get; set; }
 
         /// <summary>
         /// The number of owners of the vehicle, including the current one.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): C62
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumberOfPreviousOwners { get; set; }
+        Values<int?, IQuantitativeValue> NumberOfPreviousOwners { get; set; }
 
         /// <summary>
         /// The permitted weight of passengers and cargo, EXCLUDING the weight of the empty vehicle.&lt;br/&gt;&lt;br/&gt;
@@ -142,7 +142,7 @@
         /// The number of persons that can be seated (e.g. in a vehicle), both in terms of the physical space available, and in terms of limitations set by law.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): C62 for persons
         /// </summary>
-        Values<double?, IQuantitativeValue>? SeatingCapacity { get; set; }
+        Values<double?, IQuantitativeValue> SeatingCapacity { get; set; }
 
         /// <summary>
         /// The speed range of the vehicle. If the vehicle is powered by an engine, the upper limit of the speed range (indicated by &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; should be the maximum speed achievable under regular conditions.&lt;br/&gt;&lt;br/&gt;
@@ -205,23 +205,23 @@
         /// <summary>
         /// The release date of a vehicle model (often used to differentiate versions of the same make and model).
         /// </summary>
-        Values<int?, DateTime?>? VehicleModelDate { get; set; }
+        Values<int?, DateTime?> VehicleModelDate { get; set; }
 
         /// <summary>
         /// The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): C62 for persons.
         /// </summary>
-        Values<double?, IQuantitativeValue>? VehicleSeatingCapacity { get; set; }
+        Values<double?, IQuantitativeValue> VehicleSeatingCapacity { get; set; }
 
         /// <summary>
         /// Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school, or as a taxi. The legislation in many countries requires this information to be revealed when offering a car for sale.
         /// </summary>
-        Values<CarUsageType?, string>? VehicleSpecialUsage { get; set; }
+        Values<CarUsageType?, string> VehicleSpecialUsage { get; set; }
 
         /// <summary>
         /// The type of component used for transmitting the power from a rotating power source to the wheels or other relevant component(s) ("gearbox" for cars).
         /// </summary>
-        Values<string, Uri>? VehicleTransmission { get; set; }
+        Values<string, Uri> VehicleTransmission { get; set; }
 
         /// <summary>
         /// The permitted total weight of the loaded vehicle, including passengers and cargo and the weight of the empty vehicle.&lt;br/&gt;&lt;br/&gt;
@@ -269,7 +269,7 @@
         /// </summary>
         [DataMember(Name = "bodyType", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? BodyType { get; set; }
+        public Values<string, Uri> BodyType { get; set; }
 
         /// <summary>
         /// The available volume for cargo or luggage. For automobiles, this is usually the trunk volume.&lt;br/&gt;&lt;br/&gt;
@@ -285,14 +285,14 @@
         /// </summary>
         [DataMember(Name = "dateVehicleFirstRegistered", Order = 209)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? DateVehicleFirstRegistered { get; set; }
+        public Values<int?, DateTime?> DateVehicleFirstRegistered { get; set; }
 
         /// <summary>
         /// The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's engine via the drivetrain.
         /// </summary>
         [DataMember(Name = "driveWheelConfiguration", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<DriveWheelConfigurationValue?, string>? DriveWheelConfiguration { get; set; }
+        public Values<DriveWheelConfigurationValue?, string> DriveWheelConfiguration { get; set; }
 
         /// <summary>
         /// The CO2 emissions in g/km. When used in combination with a QuantitativeValue, put "g/km" into the unitText property of that value, since there is no UN/CEFACT Common Code for "g/km".
@@ -338,7 +338,7 @@
         /// </summary>
         [DataMember(Name = "fuelType", Order = 215)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? FuelType { get; set; }
+        public Values<string, Uri> FuelType { get; set; }
 
         /// <summary>
         /// A textual description of known damages, both repaired and unrepaired.
@@ -352,7 +352,7 @@
         /// </summary>
         [DataMember(Name = "meetsEmissionStandard", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? MeetsEmissionStandard { get; set; }
+        public Values<string, Uri> MeetsEmissionStandard { get; set; }
 
         /// <summary>
         /// The total distance travelled by the particular vehicle since its initial production, as read from its odometer.&lt;br/&gt;&lt;br/&gt;
@@ -367,14 +367,14 @@
         /// </summary>
         [DataMember(Name = "modelDate", Order = 219)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? ModelDate { get; set; }
+        public Values<int?, DateTime?> ModelDate { get; set; }
 
         /// <summary>
         /// The number or type of airbags in the vehicle.
         /// </summary>
         [DataMember(Name = "numberOfAirbags", Order = 220)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? NumberOfAirbags { get; set; }
+        public Values<int?, string> NumberOfAirbags { get; set; }
 
         /// <summary>
         /// The number of axles.&lt;br/&gt;&lt;br/&gt;
@@ -382,7 +382,7 @@
         /// </summary>
         [DataMember(Name = "numberOfAxles", Order = 221)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumberOfAxles { get; set; }
+        public Values<int?, IQuantitativeValue> NumberOfAxles { get; set; }
 
         /// <summary>
         /// The number of doors.&lt;br/&gt;&lt;br/&gt;
@@ -390,7 +390,7 @@
         /// </summary>
         [DataMember(Name = "numberOfDoors", Order = 222)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumberOfDoors { get; set; }
+        public Values<int?, IQuantitativeValue> NumberOfDoors { get; set; }
 
         /// <summary>
         /// The total number of forward gears available for the transmission system of the vehicle.&lt;br/&gt;&lt;br/&gt;
@@ -398,7 +398,7 @@
         /// </summary>
         [DataMember(Name = "numberOfForwardGears", Order = 223)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumberOfForwardGears { get; set; }
+        public Values<int?, IQuantitativeValue> NumberOfForwardGears { get; set; }
 
         /// <summary>
         /// The number of owners of the vehicle, including the current one.&lt;br/&gt;&lt;br/&gt;
@@ -406,7 +406,7 @@
         /// </summary>
         [DataMember(Name = "numberOfPreviousOwners", Order = 224)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumberOfPreviousOwners { get; set; }
+        public Values<int?, IQuantitativeValue> NumberOfPreviousOwners { get; set; }
 
         /// <summary>
         /// The permitted weight of passengers and cargo, EXCLUDING the weight of the empty vehicle.&lt;br/&gt;&lt;br/&gt;
@@ -427,14 +427,14 @@
         /// </summary>
         [DataMember(Name = "productionDate", Order = 226)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public override Values<int?, DateTime?>? ProductionDate { get; set; }
+        public override Values<int?, DateTime?> ProductionDate { get; set; }
 
         /// <summary>
         /// The date the item e.g. vehicle was purchased by the current owner.
         /// </summary>
         [DataMember(Name = "purchaseDate", Order = 227)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public override Values<int?, DateTime?>? PurchaseDate { get; set; }
+        public override Values<int?, DateTime?> PurchaseDate { get; set; }
 
         /// <summary>
         /// The number of persons that can be seated (e.g. in a vehicle), both in terms of the physical space available, and in terms of limitations set by law.&lt;br/&gt;&lt;br/&gt;
@@ -442,7 +442,7 @@
         /// </summary>
         [DataMember(Name = "seatingCapacity", Order = 228)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<double?, IQuantitativeValue>? SeatingCapacity { get; set; }
+        public Values<double?, IQuantitativeValue> SeatingCapacity { get; set; }
 
         /// <summary>
         /// The speed range of the vehicle. If the vehicle is powered by an engine, the upper limit of the speed range (indicated by &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; should be the maximum speed achievable under regular conditions.&lt;br/&gt;&lt;br/&gt;
@@ -525,7 +525,7 @@
         /// </summary>
         [DataMember(Name = "vehicleModelDate", Order = 238)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? VehicleModelDate { get; set; }
+        public Values<int?, DateTime?> VehicleModelDate { get; set; }
 
         /// <summary>
         /// The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.&lt;br/&gt;&lt;br/&gt;
@@ -533,21 +533,21 @@
         /// </summary>
         [DataMember(Name = "vehicleSeatingCapacity", Order = 239)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<double?, IQuantitativeValue>? VehicleSeatingCapacity { get; set; }
+        public Values<double?, IQuantitativeValue> VehicleSeatingCapacity { get; set; }
 
         /// <summary>
         /// Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school, or as a taxi. The legislation in many countries requires this information to be revealed when offering a car for sale.
         /// </summary>
         [DataMember(Name = "vehicleSpecialUsage", Order = 240)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<CarUsageType?, string>? VehicleSpecialUsage { get; set; }
+        public Values<CarUsageType?, string> VehicleSpecialUsage { get; set; }
 
         /// <summary>
         /// The type of component used for transmitting the power from a rotating power source to the wheels or other relevant component(s) ("gearbox" for cars).
         /// </summary>
         [DataMember(Name = "vehicleTransmission", Order = 241)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? VehicleTransmission { get; set; }
+        public Values<string, Uri> VehicleTransmission { get; set; }
 
         /// <summary>
         /// The permitted total weight of the loaded vehicle, including passengers and cargo and the weight of the empty vehicle.&lt;br/&gt;&lt;br/&gt;

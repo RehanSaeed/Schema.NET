@@ -17,7 +17,7 @@
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
         /// </summary>
-        Values<IOrganization, IPerson>? Member { get; set; }
+        Values<IOrganization, IPerson> Member { get; set; }
 
         /// <summary>
         /// A unique identifier for the membership.
@@ -27,7 +27,7 @@
         /// <summary>
         /// The number of membership points earned by the member. If necessary, the unitText can be used to express the units the points are issued in. (e.g. stars, miles, etc.)
         /// </summary>
-        Values<double?, IQuantitativeValue>? MembershipPointsEarned { get; set; }
+        Values<double?, IQuantitativeValue> MembershipPointsEarned { get; set; }
 
         /// <summary>
         /// The program providing the membership.
@@ -59,7 +59,7 @@
         /// </summary>
         [DataMember(Name = "member", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Member { get; set; }
+        public Values<IOrganization, IPerson> Member { get; set; }
 
         /// <summary>
         /// A unique identifier for the membership.
@@ -73,7 +73,7 @@
         /// </summary>
         [DataMember(Name = "membershipPointsEarned", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<double?, IQuantitativeValue>? MembershipPointsEarned { get; set; }
+        public Values<double?, IQuantitativeValue> MembershipPointsEarned { get; set; }
 
         /// <summary>
         /// The program providing the membership.

@@ -17,7 +17,7 @@
         /// <summary>
         /// An associated logo.
         /// </summary>
-        Values<IImageObject, Uri>? Logo { get; set; }
+        Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// A review of the item.
@@ -54,7 +54,7 @@
         /// </summary>
         [DataMember(Name = "logo", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IImageObject, Uri>? Logo { get; set; }
+        public Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// A review of the item.

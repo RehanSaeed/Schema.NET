@@ -12,12 +12,12 @@
         /// <summary>
         /// A goal towards an action is taken. Can be concrete or abstract.
         /// </summary>
-        Values<MedicalDevicePurpose?, IThing>? Purpose { get; set; }
+        Values<MedicalDevicePurpose?, IThing> Purpose { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
-        Values<IAudience, IContactPoint, IOrganization, IPerson>? Recipient { get; set; }
+        Values<IAudience, IContactPoint, IOrganization, IPerson> Recipient { get; set; }
     }
 
     /// <summary>
@@ -37,13 +37,13 @@
         /// </summary>
         [DataMember(Name = "purpose", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<MedicalDevicePurpose?, IThing>? Purpose { get; set; }
+        public Values<MedicalDevicePurpose?, IThing> Purpose { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
         [DataMember(Name = "recipient", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAudience, IContactPoint, IOrganization, IPerson>? Recipient { get; set; }
+        public Values<IAudience, IContactPoint, IOrganization, IPerson> Recipient { get; set; }
     }
 }

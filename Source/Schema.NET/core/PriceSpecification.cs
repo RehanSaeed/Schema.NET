@@ -39,7 +39,7 @@
         /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        Values<decimal?, string>? Price { get; set; }
+        Values<decimal?, string> Price { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -115,7 +115,7 @@
         /// </summary>
         [DataMember(Name = "price", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<decimal?, string>? Price { get; set; }
+        public Values<decimal?, string> Price { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;

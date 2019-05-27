@@ -42,17 +42,17 @@
         /// <summary>
         /// Position of the season within an ordered group of seasons.
         /// </summary>
-        Values<int?, string>? SeasonNumber { get; set; }
+        Values<int?, string> SeasonNumber { get; set; }
 
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        Values<int?, DateTime?, DateTimeOffset?>? StartDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        Values<int?, DateTime?, DateTimeOffset?>? EndDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> EndDate { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
@@ -119,21 +119,21 @@
         /// </summary>
         [DataMember(Name = "seasonNumber", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? SeasonNumber { get; set; }
+        public Values<int?, string> SeasonNumber { get; set; }
 
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "startDate", Order = 213)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? StartDate { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "endDate", Order = 214)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? EndDate { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> EndDate { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.

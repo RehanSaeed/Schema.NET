@@ -17,7 +17,7 @@
         /// &lt;li&gt;Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        Values<decimal?, string>? HighPrice { get; set; }
+        Values<decimal?, string> HighPrice { get; set; }
 
         /// <summary>
         /// The lowest price of all offers available.&lt;br/&gt;&lt;br/&gt;
@@ -27,7 +27,7 @@
         /// &lt;li&gt;Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        Values<decimal?, string>? LowPrice { get; set; }
+        Values<decimal?, string> LowPrice { get; set; }
 
         /// <summary>
         /// The number of offers for the product.
@@ -62,7 +62,7 @@
         /// </summary>
         [DataMember(Name = "highPrice", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<decimal?, string>? HighPrice { get; set; }
+        public Values<decimal?, string> HighPrice { get; set; }
 
         /// <summary>
         /// The lowest price of all offers available.&lt;br/&gt;&lt;br/&gt;
@@ -74,7 +74,7 @@
         /// </summary>
         [DataMember(Name = "lowPrice", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<decimal?, string>? LowPrice { get; set; }
+        public Values<decimal?, string> LowPrice { get; set; }
 
         /// <summary>
         /// The number of offers for the product.

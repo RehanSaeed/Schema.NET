@@ -165,7 +165,7 @@ namespace Schema.NET.Test
             Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)book.Url);
             Assert.True(book.Author.HasValue);
 
-            List<IPerson> people = book.Author.Value;
+            List<IPerson> people = book.Author;
             var person = Assert.Single(people);
             Assert.Equal("J.D. Salinger", person.Name);
 
@@ -203,8 +203,8 @@ namespace Schema.NET.Test
                 "}";
             var book = JsonConvert.DeserializeObject<Book>(json);
 
-            Assert.Empty(book.Author.Value.Value1);
-            var person = Assert.Single(book.Author.Value.Value2);
+            Assert.Empty(book.Author.Value1);
+            var person = Assert.Single(book.Author.Value2);
             Assert.Equal("NameOfPerson1", person.Name);
         }
     }

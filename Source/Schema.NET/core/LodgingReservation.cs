@@ -33,12 +33,12 @@
         /// <summary>
         /// The number of adults staying in the unit.
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumAdults { get; set; }
+        Values<int?, IQuantitativeValue> NumAdults { get; set; }
 
         /// <summary>
         /// The number of children staying in the unit.
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumChildren { get; set; }
+        Values<int?, IQuantitativeValue> NumChildren { get; set; }
     }
 
     /// <summary>
@@ -87,13 +87,13 @@
         /// </summary>
         [DataMember(Name = "numAdults", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumAdults { get; set; }
+        public Values<int?, IQuantitativeValue> NumAdults { get; set; }
 
         /// <summary>
         /// The number of children staying in the unit.
         /// </summary>
         [DataMember(Name = "numChildren", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumChildren { get; set; }
+        public Values<int?, IQuantitativeValue> NumChildren { get; set; }
     }
 }

@@ -16,7 +16,7 @@
         /// If the &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; is "depression rating", the &lt;a class="localLink" href="http://schema.org/measurementTechnique"&gt;measurementTechnique&lt;/a&gt; could be "Zung Scale" or "HAM-D" or "Beck Depression Inventory".&lt;br/&gt;&lt;br/&gt;
         /// If there are several &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; properties recorded for some given data object, use a &lt;a class="localLink" href="http://schema.org/PropertyValue"&gt;PropertyValue&lt;/a&gt; for each &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; and attach the corresponding &lt;a class="localLink" href="http://schema.org/measurementTechnique"&gt;measurementTechnique&lt;/a&gt;.
         /// </summary>
-        Values<string, Uri>? MeasurementTechnique { get; set; }
+        Values<string, Uri> MeasurementTechnique { get; set; }
     }
 
     /// <summary>
@@ -40,6 +40,6 @@
         /// </summary>
         [DataMember(Name = "measurementTechnique", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? MeasurementTechnique { get; set; }
+        public Values<string, Uri> MeasurementTechnique { get; set; }
     }
 }

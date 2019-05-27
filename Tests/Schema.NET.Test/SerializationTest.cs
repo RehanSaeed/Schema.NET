@@ -85,7 +85,7 @@ namespace Schema.NET.Test
             var localBusiness = new LocalBusiness()
             {
                 PriceRange = "$$$",
-                Address = null
+                Address = (string)null
             };
             var actual = localBusiness.ToString();
             var expected =
