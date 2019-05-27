@@ -163,6 +163,7 @@ For more examples and actual running code samples, take a look at the unit tests
 
 ## Contributions and Thanks
 
+- [nickevansuk](https://github.com/nickevansuk) - Adding better null value handling.
 - [MEmanuelsson](https://github.com/MEmanuelsson) - Added support for the schema.org Date type without time.
 - [halovanic](https://github.com/halovanic) - For adding interfaces to Schema.NET types for greater flexibility.
 - [AndreSteenbergen](https://github.com/AndreSteenbergen) - For enabling the tool to work on linux.
