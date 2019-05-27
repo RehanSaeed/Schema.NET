@@ -273,6 +273,12 @@ namespace Schema.NET
             return 0;
         }
 
+        /// <summary>
+        /// Checks whether the generic T item is a string that is either null or contains whitespace.
+        /// </summary>
+        /// <returns>
+        /// Returns true if the supplied item is a string that is null or contains whitespace.
+        /// </returns>
         private static bool IsStringNullOrWhiteSpace(T item) => item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string);
     }
 }
