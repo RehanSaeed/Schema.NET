@@ -2,7 +2,9 @@
 
 version: '{build}'
 
-image: Visual Studio 2019
+image:
+- Ubuntu
+- Visual Studio 2019
 
 pull_requests:
   # Do not increment build number for pull requests
@@ -19,9 +21,11 @@ environment:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 build_script:
-- ps: choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300
-- ps: dotnet tool install --global Cake.Tool
-- ps: dotnet cake
+- sh: sudo apt-get update
+- sh: sudo apt-get install -y dotnet-sdk-2.2
+- cmd: choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300
+- pwsh: dotnet tool install --global Cake.Tool
+- pwsh: dotnet cake
 
 test: off
 
@@ -40,6 +44,8 @@ deploy:
   api_key:
     secure: aunGGWt32irQiOTX2wIO6e2Y5Ga0girA3xSUsmQv6E9d6ohHdbK5HJpXpmxW9QM3
   on:
+    # Only publish on Windows
+    image: Visual Studio 2019
     # Only publish from the master branch
     branch: master
 # Publish NuGet packages
@@ -48,6 +54,8 @@ deploy:
   api_key:
     secure: 73eFUWSfho6pxCy1VRP1H0AYh/SFiyEREV+/ATcoj0I+sSH9dec/WXs6H2Jy5vlS
   on:
+    # Only publish on Windows
+    image: Visual Studio 2019
     # Only publish from the master branch
     branch: master
     # Only publish if the trigger was a Git tag
