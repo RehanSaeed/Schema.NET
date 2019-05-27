@@ -27,10 +27,16 @@ namespace Schema.NET.Tool.ViewModels
         {
             get
             {
-                var adjustedTypes = string.Join(", ", this.Types.Select(x => x.CSharpTypeString));
-                var rootType = this.Types.Count == 1 ? "OneOrMany" : "Values";
-                var nullable = this.Types.Count == 1 ? string.Empty : "?";
-                return $"{rootType}<{adjustedTypes}>{nullable}";
+                var adjustedTypesList = this.Types.SelectMany(x => x.CSharpTypeStrings).ToList();
+                var adjustedTypesString = string.Join(", ", adjustedTypesList);
+                if (adjustedTypesList.Count == 1)
+                {
+                    return $"OneOrMany<{adjustedTypesString}>";
+                }
+                else
+                {
+                    return $"Values<{adjustedTypesString}>?";
+                }
             }
         }
 
@@ -54,6 +60,10 @@ namespace Schema.NET.Tool.ViewModels
             if (this.Types.Any(x => string.Equals(x.Name, "Duration", StringComparison.OrdinalIgnoreCase)))
             {
                 stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]");
+            }
+            else if (this.Types.Any(x => string.Equals(x.Name, "Date", StringComparison.OrdinalIgnoreCase)))
+            {
+                stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]");
             }
             else
             {

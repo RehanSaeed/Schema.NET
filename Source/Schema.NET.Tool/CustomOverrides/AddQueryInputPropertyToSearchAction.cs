@@ -21,16 +21,8 @@ namespace Schema.NET.Tool.CustomOverrides
             property.Types.AddRange(
                 new List<PropertyType>()
                 {
-                    new PropertyType()
-                    {
-                        CSharpTypeString = "string",
-                        Name = "Text"
-                    },
-                    new PropertyType()
-                    {
-                        CSharpTypeString = "PropertyValueSpecification",
-                        Name = "PropertyValueSpecification"
-                    }
+                    new PropertyType("Text", "string"),
+                    new PropertyType("PropertyValueSpecification", "PropertyValueSpecification")
                 });
             @class.Properties.Add(property);
         }
