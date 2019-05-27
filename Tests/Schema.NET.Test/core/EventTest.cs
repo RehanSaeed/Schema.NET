@@ -8,7 +8,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/events
     public class EventTest
     {
-        private static readonly string NullTelephone = null;
+        private static readonly string NullString = null;
         private static readonly ItemAvailability? NullItemAvailability = null;
 
         private readonly Event @event = new Event()
@@ -39,7 +39,8 @@ namespace Schema.NET.Test
                     Price = 30M, // Recommended
                     PriceCurrency = "USD", // Recommended
                     Availability = ItemAvailability.InStock, // Recommended
-                    ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)) // Recommended
+                    ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)), // Recommended
+                    Category = NullString,
                 },
                 new Offer
                 {
@@ -53,7 +54,7 @@ namespace Schema.NET.Test
             Performer = new Person() // Recommended
             {
                 Name = "Andy Lagunoff", // Recommended
-                Telephone = NullTelephone // Should be ignored
+                Telephone = NullString // Should be ignored
             }
         };
 
