@@ -68,7 +68,6 @@ Task("Build")
     });
 
 Task("Test")
-    .IsDependentOn("Build")
     .Does(() =>
     {
         foreach(var project in GetFiles("./Tests/**/*.csproj"))
@@ -87,7 +86,6 @@ Task("Test")
     });
 
 Task("Pack")
-    .IsDependentOn("Test")
     .Does(() =>
     {
         DotNetCorePack(
@@ -116,6 +114,6 @@ Task("Push")
     });
 
 Task("Default")
-    .IsDependentOn("Pack");
+    .IsDependentOn("Build");
 
 RunTarget(target);
