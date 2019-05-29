@@ -12,8 +12,8 @@ namespace Schema.NET.Test
             Name = "Title", // Required
             Description = "Video description", // Required
             ThumbnailUrl = new Uri("https://www.example.com/thumbnail.jpg"), // Required
-            Expires = new DateTimeOffset(2016, 2, 5, 8, 0, 0, TimeSpan.Zero), // Recommended
-            UploadDate = new DateTimeOffset(2015, 2, 5, 8, 0, 0, TimeSpan.Zero), // Required
+            Expires = new DateTime(2016, 2, 5), // Recommended
+            UploadDate = new DateTime(2015, 2, 5), // Required
             Duration = new TimeSpan(0, 1, 33), // Recommended
             Publisher = new Organization()
             {
@@ -39,7 +39,7 @@ namespace Schema.NET.Test
                 "\"@type\":\"VideoObject\"," +
                 "\"name\":\"Title\"," +
                 "\"description\":\"Video description\"," +
-                "\"expires\":\"2016-02-05T08:00:00+00:00\"," +
+                "\"expires\":\"2016-02-05\"," +
                 "\"interactionStatistic\":{" +
                     "\"@type\":\"InteractionCounter\"," +
                     "\"userInteractionCount\":2347" +
@@ -58,7 +58,7 @@ namespace Schema.NET.Test
                 "\"contentUrl\":\"https://www.example.com/video123.flv\"," +
                 "\"duration\":\"PT1M33S\"," +
                 "\"embedUrl\":\"https://www.example.com/videoplayer.swf?video=123\"," +
-                "\"uploadDate\":\"2015-02-05T08:00:00+00:00\"" +
+                "\"uploadDate\":\"2015-02-05\"" +
             "}";
 
         [Fact]

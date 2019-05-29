@@ -135,6 +135,14 @@ namespace Schema.NET.Test
         }
 
         [Fact]
+        public void Deconstruct_Values_ReturnsAllEnumerables()
+        {
+            var (integers, strings) = new Values<int, string>(1, "Foo");
+            Assert.Equal(new List<int>() { 1 }, integers);
+            Assert.Equal(new List<string>() { "Foo" }, strings);
+        }
+
+        [Fact]
         public void EqualsOperator_EqualValue1Passed_ReturnsTrue() =>
             Assert.True(new Values<int, string>(1) == new Values<int, string>(1));
 

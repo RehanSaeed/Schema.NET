@@ -1,0 +1,84 @@
+# Azure Pipelines documentation https://aka.ms/yaml
+
+trigger:
+  branches:
+    include:
+    - '*'
+  tags:
+    include:
+    - '*'
+
+variables:
+  # Set the DOTNET_SKIP_FIRST_TIME_EXPERIENCE environment variable to stop wasting time caching packages
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  # Disable sending usage data to Microsoft
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+- job: Ubuntu
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: Bash@3
+    displayName: 'Install .NET Core SDK'
+    inputs:
+      targetType: 'inline'
+      script: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
+  - task: Bash@3
+    displayName: 'Install Cake Tool'
+    inputs:
+      targetType: 'inline'
+      script: 'dotnet tool install --global Cake.Tool'
+      failOnStderr: true
+  - task: Bash@3
+    displayName: 'Dotnet Cake'
+    inputs:
+      targetType: 'inline'
+      script: 'dotnet cake'
+      failOnStderr: true
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results'
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/*.trx'
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Artifacts'
+    inputs:
+      artifactName: 'Ubuntu Artifacts'
+      targetPath: './Artifacts'
+
+- job: Windows
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - task: PowerShell@2
+    displayName: 'Install .NET Core SDK'
+    inputs:
+      targetType: 'inline'
+      script: 'choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300'
+      failOnStderr: true
+      pwsh: true
+  - task: PowerShell@2
+    displayName: 'Install Cake Tool'
+    inputs:
+      targetType: 'inline'
+      script: 'dotnet tool install --global Cake.Tool'
+      failOnStderr: true
+      pwsh: true
+  - task: PowerShell@2
+    displayName: 'Dotnet Cake'
+    inputs:
+      targetType: 'inline'
+      script: 'dotnet cake'
+      failOnStderr: true
+      pwsh: true
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results'
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/*.trx'
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Artifacts'
+    inputs:
+      artifactName: 'Windows Artifacts'
+      targetPath: './Artifacts'

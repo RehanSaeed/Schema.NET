@@ -16,20 +16,12 @@ namespace Schema.NET.Tool.CustomOverrides
                 .Properties
                 .First(x => string.Equals(x.Name, "Height", StringComparison.OrdinalIgnoreCase))
                 .Types
-                .Add(new PropertyType()
-                {
-                    CSharpTypeString = "int",
-                    Name = "Integer"
-                });
+                .Add(new PropertyType("Integer", "int"));
             @class
                 .Properties
                 .First(x => string.Equals(x.Name, "Width", StringComparison.OrdinalIgnoreCase))
                 .Types
-                .Add(new PropertyType()
-                {
-                    CSharpTypeString = "int",
-                    Name = "Integer"
-                });
+                .Add(new PropertyType("Integer", "int"));
         }
     }
 }

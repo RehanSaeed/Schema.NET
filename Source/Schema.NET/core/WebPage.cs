@@ -17,7 +17,7 @@
         /// <summary>
         /// Date on which the content on this web page was last reviewed for accuracy and/or completeness.
         /// </summary>
-        OneOrMany<DateTimeOffset?> LastReviewed { get; set; }
+        Values<int?, DateTime?>? LastReviewed { get; set; }
 
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.
@@ -84,8 +84,8 @@
         /// Date on which the content on this web page was last reviewed for accuracy and/or completeness.
         /// </summary>
         [DataMember(Name = "lastReviewed", Order = 207)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> LastReviewed { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? LastReviewed { get; set; }
 
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.

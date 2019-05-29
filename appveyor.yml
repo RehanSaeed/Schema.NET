@@ -2,9 +2,9 @@
 
 version: '{build}'
 
-image: Visual Studio 2019
-install:
-- appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/v4.0.0/nuget.exe
+image:
+- Ubuntu
+- Visual Studio 2019
 
 pull_requests:
   # Do not increment build number for pull requests
@@ -21,30 +21,31 @@ environment:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 build_script:
-- ps: choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300
-- ps: dotnet tool install --global Cake.Tool
-- ps: dotnet cake
+- sh: sudo apt-get update
+- sh: sudo apt-get install -y dotnet-sdk-2.2
+- cmd: choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300
+- pwsh: dotnet tool install --global Cake.Tool
+- pwsh: dotnet cake
 
 test: off
 
 artifacts:
-# Store NuGet packages
-- path: .\Artifacts\**\*.nupkg
-  name: NuGet
-# Store xUnit Test Results
-- path: .\Artifacts\**\*.xml
-  name: xUnit Test Results
+- name: NuGet Packages
+  path: ./Artifacts/**/*.nupkg
+- name: NuGet Symbol Packages
+  path: ./Artifacts/**/*.snupkg
+- name: xUnit Test Results
+  path: ./Artifacts/**/*.xml
 
 deploy:
 # Publish MyGet packages
 - provider: NuGet
-  server: https://www.myget.org/F/schema-net/api/v2
+  server: https://www.myget.org/F/schema-net/api/v2/package
   api_key:
     secure: aunGGWt32irQiOTX2wIO6e2Y5Ga0girA3xSUsmQv6E9d6ohHdbK5HJpXpmxW9QM3
-  # Deploy symbol packages to the MyGet symbol server
-  skip_symbols: false
-  symbol_server: https://www.myget.org/F/schema-net/symbols/api/v2/package
   on:
+    # Only publish on Windows
+    CI_WINDOWS: true
     # Only publish from the master branch
     branch: master
 # Publish NuGet packages
@@ -53,6 +54,8 @@ deploy:
   api_key:
     secure: 73eFUWSfho6pxCy1VRP1H0AYh/SFiyEREV+/ATcoj0I+sSH9dec/WXs6H2Jy5vlS
   on:
+    # Only publish on Windows
+    CI_WINDOWS: true
     # Only publish from the master branch
     branch: master
     # Only publish if the trigger was a Git tag

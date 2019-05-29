@@ -403,6 +403,19 @@ namespace Schema.NET
         /// </returns>
         public static bool operator !=(Values<T1, T2, T3, T4> left, Values<T1, T2, T3, T4> right) => !(left == right);
 
+        /// <summary>Deconstructs the specified items.</summary>
+        /// <param name="items1">The items from value 1.</param>
+        /// <param name="items2">The items from value 2.</param>
+        /// <param name="items3">The items from value 3.</param>
+        /// <param name="items4">The items from value 4.</param>
+        public void Deconstruct(out IEnumerable<T1> items1, out IEnumerable<T2> items2, out IEnumerable<T3> items3, out IEnumerable<T4> items4)
+        {
+            items1 = this.Value1;
+            items2 = this.Value2;
+            items3 = this.Value3;
+            items4 = this.Value4;
+        }
+
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
         /// </summary>

@@ -1,19 +1,27 @@
 namespace Schema.NET.Tool.ViewModels
 {
+    using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
 
-    [DebuggerDisplay("{Name} ({CSharpTypeString})")]
+    [DebuggerDisplay("{Name} ({CSharpTypeStrings})")]
     public class PropertyType : ICloneable<PropertyType>
     {
-        public string CSharpTypeString { get; set; }
+        public PropertyType(string name, params string[] csharpTypeStrings)
+            : this(name, csharpTypeStrings.AsEnumerable())
+        {
+        }
 
-        public string Name { get; set; }
+        public PropertyType(string name, IEnumerable<string> csharpTypeStrings)
+        {
+            this.Name = name;
+            this.CSharpTypeStrings = new List<string>(csharpTypeStrings);
+        }
 
-        public PropertyType Clone() =>
-            new PropertyType()
-            {
-                CSharpTypeString = this.CSharpTypeString,
-                Name = this.Name
-            };
+        public List<string> CSharpTypeStrings { get; }
+
+        public string Name { get; }
+
+        public PropertyType Clone() => new PropertyType(this.Name, this.CSharpTypeStrings);
     }
 }

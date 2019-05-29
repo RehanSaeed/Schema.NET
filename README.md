@@ -125,7 +125,7 @@ var organization = new Organization()
 };
 
 // Mixed Author types
-new Book()
+var book = new Book()
 {
     Author = new List<object>()
     {
@@ -133,6 +133,12 @@ new Book()
         new Person() { Name = "J.D. Salinger" }
     }
 };
+
+// Deconstruct a property containing mixed types
+if (book.Author.HasValue)
+{
+    var (organisations, people) = book.Author.Value;
+}
 ```
 
 This magic is all carried out using [implicit conversion operators](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/implicit) in the `OneOrMany<T>`, `Values<T1, T2>`, `Values<T1, T2, T3>` and `Values<T1, T2, T3, T4>` types. These types are all `structs` for best performance too.
@@ -143,10 +149,11 @@ For more examples and actual running code samples, take a look at the unit tests
 
 ## Continuous Integration
 
-| Name      | Operating System | Status |
-| :---      | :---             | :---   |
-| AppVeyor  | Windows          | [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/djxrpkw8ckyf24c1?svg=true)](https://ci.appveyor.com/project/RehanSaeed/schema-net) |
-| Travis CI | Linux & Mac      | [![Travis CI Build Status](https://img.shields.io/travis/RehanSaeed/Schema.NET.svg?maxAge=3600&label=travis)](https://travis-ci.org/RehanSaeed/Schema.NET) |
+| Name            | Operating System | Status |
+| :---            | :---             | :---   |
+| Azure Pipelines | Windows          | [![Azure Pipelines Windows Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&jobName=Windows)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
+| Azure Pipelines | Ubuntu           | [![Azure Pipelines Ubuntu Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&jobName=Ubuntu)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
+| AppVeyor        | Ubuntu & Windows | [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/djxrpkw8ckyf24c1?svg=true)](https://ci.appveyor.com/project/RehanSaeed/schema-net) |
 
 ## NuGet Packages
 
@@ -156,6 +163,8 @@ For more examples and actual running code samples, take a look at the unit tests
 
 ## Contributions and Thanks
 
+- [nickevansuk](https://github.com/nickevansuk) - Adding better null value handling.
+- [MEmanuelsson](https://github.com/MEmanuelsson) - Added support for the schema.org Date type without time.
 - [halovanic](https://github.com/halovanic) - For adding interfaces to Schema.NET types for greater flexibility.
 - [AndreSteenbergen](https://github.com/AndreSteenbergen) - For enabling the tool to work on linux.
 - [benmccallum](https://github.com/benmccallum) - For adding XSS vlnerability protection.

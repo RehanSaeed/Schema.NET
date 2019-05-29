@@ -16,7 +16,7 @@ namespace Schema.NET.Test
                 Name = "MagsRUs Wheel Company",
                 Value = "1234567"
             },
-            DatePosted = new DateTimeOffset(2017, 1, 18, 0, 0, 0, TimeSpan.Zero), // Required
+            DatePosted = new DateTime(2017, 1, 18), // Required
             ValidThrough = new DateTimeOffset(2017, 3, 18, 0, 0, 0, TimeSpan.Zero), // Required
             EmploymentType = "CONTRACTOR", // Recommended FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY,INTERN, VOLUNTEER, PER_DIEM, OTHER
             HiringOrganization = new Organization() // Required
@@ -66,7 +66,7 @@ namespace Schema.NET.Test
                     "\"value\":40.0" +
                 "}" +
             "}," +
-            "\"datePosted\":\"2017-01-18T00:00:00+00:00\"," +
+            "\"datePosted\":\"2017-01-18\"," +
             "\"employmentType\":\"CONTRACTOR\"," +
             "\"hiringOrganization\":{" +
                 "\"@type\":\"Organization\"," +

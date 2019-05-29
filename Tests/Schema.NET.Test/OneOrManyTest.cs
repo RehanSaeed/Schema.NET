@@ -237,5 +237,60 @@ namespace Schema.NET.Test
         [Fact]
         public void GetHashCode_TwoItems_HashCodeEqualToTwoItems() =>
             Assert.Equal(NET.HashCode.OfEach(new List<int>() { 1, 2 }), new OneOrMany<int>(1, 2).GetHashCode());
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
+        public void ToString_NullEmptyOrWhiteSpace_BookOmitsNameProperty(string name)
+        {
+            var book = new Book() { Name = name };
+            Assert.Equal("{\"@context\":\"http://schema.org\",\"@type\":\"Book\"}", book.ToString());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
+        public void ToString_NullEmptyOrWhiteSpace_BookOmitsNamePropertyFromList(string name)
+        {
+            var book = new Book() { Name = new List<string> { "Hamlet", name } };
+            Assert.Equal("{\"@context\":\"http://schema.org\",\"@type\":\"Book\",\"name\":\"Hamlet\"}", book.ToString());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
+        public void ToString_NullEmptyOrWhiteSpace_BookOmitsNamePropertyFromArray(string name)
+        {
+            var book = new Book() { Name = new string[] { "Hamlet", name } };
+            Assert.Equal("{\"@context\":\"http://schema.org\",\"@type\":\"Book\",\"name\":\"Hamlet\"}", book.ToString());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
+        public void ToString_NullEmptyOrWhiteSpace_OrganizationOmitsNamePropertyFromList(string address)
+        {
+            var organization = new Organization() { Name = new List<string> { "Cardiff, UK", address } };
+            Assert.Equal("{\"@context\":\"http://schema.org\",\"@type\":\"Organization\",\"name\":\"Cardiff, UK\"}", organization.ToString());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
+        public void ToString_NullEmptyOrWhiteSpace_OrganizationOmitsNamePropertyFromArray(string address)
+        {
+            var organization = new Organization() { Name = new string[] { "Cardiff, UK", address } };
+            Assert.Equal("{\"@context\":\"http://schema.org\",\"@type\":\"Organization\",\"name\":\"Cardiff, UK\"}", organization.ToString());
+        }
     }
 }

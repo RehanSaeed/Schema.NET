@@ -13,12 +13,7 @@ namespace Schema.NET.Tool.CustomOverrides
         public void Override(Class @class)
         {
             var property = @class.Properties.First(x => string.Equals(x.Name, "target", StringComparison.OrdinalIgnoreCase));
-            property.Types.Add(
-                new PropertyType()
-                {
-                    CSharpTypeString = "Uri",
-                    Name = "URL"
-                });
+            property.Types.Add(new PropertyType("URL", "Uri"));
         }
     }
 }

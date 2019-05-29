@@ -77,7 +77,7 @@
         /// <summary>
         /// The date the invoice is scheduled to be paid.
         /// </summary>
-        OneOrMany<DateTimeOffset?> ScheduledPaymentDate { get; set; }
+        Values<int?, DateTime?>? ScheduledPaymentDate { get; set; }
 
         /// <summary>
         /// The total amount due.
@@ -192,8 +192,8 @@
         /// The date the invoice is scheduled to be paid.
         /// </summary>
         [DataMember(Name = "scheduledPaymentDate", Order = 219)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> ScheduledPaymentDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?>? ScheduledPaymentDate { get; set; }
 
         /// <summary>
         /// The total amount due.

@@ -5,15 +5,21 @@ var configuration =
     "Release";
 var preReleaseSuffix =
     HasArgument("PreReleaseSuffix") ? Argument<string>("PreReleaseSuffix") :
+    // See https://github.com/MicrosoftDocs/vsts-docs/issues/4343
+    // (TFBuild.IsRunningOnAzurePipelinesHosted && TFBuild.Environment.Build.SourceBranchName)
     (AppVeyor.IsRunningOnAppVeyor && AppVeyor.Environment.Repository.Tag.IsTag) ? null :
     EnvironmentVariable("PreReleaseSuffix") != null ? EnvironmentVariable("PreReleaseSuffix") :
     "beta";
 var buildNumber =
     HasArgument("BuildNumber") ? Argument<int>("BuildNumber") :
+    TFBuild.IsRunningOnAzurePipelinesHosted ? TFBuild.Environment.Build.Id :
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
-    TravisCI.IsRunningOnTravisCI ? TravisCI.Environment.Build.BuildNumber :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
+var nuGetApiKey =
+    HasArgument("NuGetApiKey") ? Argument<string>("NuGetApiKey") :
+    EnvironmentVariable("NuGetApiKey") != null ? EnvironmentVariable("NuGetApiKey") :
+    null;
 
 var artifactsDirectory = Directory("./Artifacts");
 var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
@@ -90,10 +96,23 @@ Task("Pack")
             new DotNetCorePackSettings()
             {
                 Configuration = configuration,
+                IncludeSymbols = true,
+                MSBuildSettings = new DotNetCoreMSBuildSettings().WithProperty("SymbolPackageFormat", "snupkg"),
                 NoBuild = true,
                 NoRestore = true,
                 OutputDirectory = artifactsDirectory,
-                VersionSuffix = versionSuffix
+                VersionSuffix = versionSuffix,
+            });
+    });
+
+Task("Push")
+    .Does(() =>
+    {
+        DotNetCoreNuGetPush(
+            "**/*.nupkg",
+            new DotNetCoreNuGetPushSettings()
+            {
+                ApiKey = nuGetApiKey,
             });
     });
 
