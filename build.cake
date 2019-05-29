@@ -5,8 +5,7 @@ var configuration =
     "Release";
 var preReleaseSuffix =
     HasArgument("PreReleaseSuffix") ? Argument<string>("PreReleaseSuffix") :
-    // See https://github.com/MicrosoftDocs/vsts-docs/issues/4343
-    // (TFBuild.IsRunningOnAzurePipelinesHosted && TFBuild.Environment.Build.SourceBranchName)
+    (TFBuild.IsRunningOnAzurePipelinesHosted && TFBuild.Environment.Build.SourceBranchName.StartsWith("refs_tags_")) ? null :
     (AppVeyor.IsRunningOnAppVeyor && AppVeyor.Environment.Repository.Tag.IsTag) ? null :
     EnvironmentVariable("PreReleaseSuffix") != null ? EnvironmentVariable("PreReleaseSuffix") :
     "beta";
