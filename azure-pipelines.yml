@@ -120,7 +120,14 @@ stages:
         deploy:
           steps:
           - task: Bash@3
+            displayName: 'Install Cake Tool'
+            inputs:
+              targetType: 'inline'
+              script: 'dotnet tool install --global Cake.Tool'
+              failOnStderr: true
+          - task: Bash@3
             displayName: 'Dotnet Cake Push'
             inputs:
               targetType: 'inline'
               script: 'dotnet cake --target=Push --NuGetSource=Main --NuGetApiKey=AzureDevOps'
+              failOnStderr: true
