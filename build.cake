@@ -114,7 +114,7 @@ Task("Push")
             new DotNetCoreNuGetPushSettings()
             {
                 ApiKey = nuGetApiKey,
-                NuGetSource = nuGetSource,
+                Source = nuGetSource,
             });
     });
 
