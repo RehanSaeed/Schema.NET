@@ -119,15 +119,10 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: Bash@3
-            displayName: 'Install Cake Tool'
+          - task: DotNetCoreCLI@2
+            displayName: 'Dotnet NuGet Push'
             inputs:
-              targetType: 'inline'
-              script: 'dotnet tool install --global Cake.Tool'
-              failOnStderr: true
-          - task: Bash@3
-            displayName: 'Dotnet Cake Push'
-            inputs:
-              targetType: 'inline'
-              script: 'dotnet cake --target=Push --NuGetSource=Main --NuGetApiKey=AzureDevOps'
-              failOnStderr: true
+              command: 'push'
+              packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+              nuGetFeedType: 'internal'
+              publishVstsFeed: '/64e69c35-cb00-46e4-9cba-6d8faf1f41d6'
