@@ -15,6 +15,10 @@ var buildNumber =
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
+var nuGetSource =
+    HasArgument("NuGetSource") ? Argument<string>("NuGetSource") :
+    EnvironmentVariable("NuGetSource") != null ? EnvironmentVariable("NuGetSource") :
+    null;
 var nuGetApiKey =
     HasArgument("NuGetApiKey") ? Argument<string>("NuGetApiKey") :
     EnvironmentVariable("NuGetApiKey") != null ? EnvironmentVariable("NuGetApiKey") :
@@ -110,6 +114,7 @@ Task("Push")
             new DotNetCoreNuGetPushSettings()
             {
                 ApiKey = nuGetApiKey,
+                NuGetSource = nuGetSource,
             });
     });
 

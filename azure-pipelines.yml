@@ -109,3 +109,18 @@ stages:
       inputs:
         artifactName: 'Windows Artifacts'
         targetPath: './Artifacts'
+- stage: Deploy
+  jobs:
+  - deployment: AzureArtifacts
+    pool:
+      vmImage: 'ubuntu-latest'
+      environment: 'Azure Artifacts'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - task: Bash@3
+              displayName: 'Dotnet NuGet Push'
+              inputs:
+                targetType: 'inline'
+                script: 'dotnet cake --target=Push --NuGetSource=Main --NuGetApiKey=AzureDevOps'
