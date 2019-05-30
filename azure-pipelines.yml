@@ -123,6 +123,6 @@ stages:
             displayName: 'Dotnet NuGet Push'
             inputs:
               command: 'push'
-              packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+              packagesToPush: '**/*.nupkg'
               nuGetFeedType: 'internal'
               publishVstsFeed: '/64e69c35-cb00-46e4-9cba-6d8faf1f41d6'
