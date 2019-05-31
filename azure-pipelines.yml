@@ -58,7 +58,7 @@ stages:
     - task: PublishPipelineArtifact@0
       displayName: 'Publish Artifacts'
       inputs:
-        artifactName: '$(matrixName) Artifacts'
+        artifactName: $(matrixName)
         targetPath: './Artifacts'
 - stage: Deploy
   jobs:
@@ -75,6 +75,6 @@ stages:
             displayName: 'Dotnet NuGet Push'
             inputs:
               command: 'push'
-              packagesToPush: '**/*.nupkg'
+              packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
               nuGetFeedType: 'internal'
               publishVstsFeed: '/64e69c35-cb00-46e4-9cba-6d8faf1f41d6'
