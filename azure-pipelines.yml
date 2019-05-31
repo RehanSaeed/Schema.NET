@@ -71,6 +71,9 @@ stages:
       runOnce:
         deploy:
           steps:
+          - bash: tree
+          - bash: tree $(Build.ArtifactStagingDirectory)
+          - bash: tree /home/vsts/work/1/
           - task: DotNetCoreCLI@2
             displayName: 'Dotnet NuGet Push'
             inputs:
