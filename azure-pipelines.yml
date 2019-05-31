@@ -17,28 +17,27 @@ variables:
 stages:
 - stage: Build
   jobs:
-  - job: Build
-    displayName: $(platform)
+  - job: $(os)
     strategy:
       matrix:
         linux:
-          platform: Linux
+          os: Linux
           imageName: 'ubuntu-latest'
         # mac:
-        #   platform: Mac
+        #   os: Mac
         #   imageName: 'macos-10.13'
         windows:
-          platform: Windows
+          os: Windows
           imageName: 'windows-latest'
     pool:
       vmImage: $(imageName)
     timeoutInMinutes: 10
     steps:
     - bash: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
-      displayName: 'Install .NET Core SDK'
+      displayName: 'Install .NET Core SDK (Linux)'
       condition: eq(variables['agent.os'], 'Linux')
     - pwsh: 'choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300'
-      displayName: 'Install .NET Core SDK'
+      displayName: 'Install .NET Core SDK (Windows)'
       condition: eq(variables['agent.os'], 'Windows_NT')
       failOnStderr: true
     - script: 'dotnet tool install --global Cake.Tool'
