@@ -5,7 +5,7 @@ var configuration =
     "Release";
 var preReleaseSuffix =
     HasArgument("PreReleaseSuffix") ? Argument<string>("PreReleaseSuffix") :
-    (TFBuild.IsRunningOnAzurePipelinesHosted && TFBuild.Environment.Repository.Branch.StartsWith("refs/tags/")) ? null :
+    (TFBuild.IsRunningOnAzurePipelinesHosted && Environment.GetEnvironmentVariable("BUILD_SOURCEBRANCH").StartsWith("refs/tags/")) ? null :
     (AppVeyor.IsRunningOnAppVeyor && AppVeyor.Environment.Repository.Tag.IsTag) ? null :
     EnvironmentVariable("PreReleaseSuffix") != null ? EnvironmentVariable("PreReleaseSuffix") :
     "beta";
@@ -26,7 +26,7 @@ var nuGetApiKey =
 
 if (TFBuild.IsRunningOnAzurePipelinesHosted)
 {
-    Information("BRANCH: " + TFBuild.Environment.Repository.Branch);
+    Information("BRANCH: " + Environment.GetEnvironmentVariable("BUILD_SOURCEBRANCH"));
 }
 
 var artifactsDirectory = Directory("./Artifacts");
