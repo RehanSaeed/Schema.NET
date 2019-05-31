@@ -24,11 +24,6 @@ var nuGetApiKey =
     EnvironmentVariable("NuGetApiKey") != null ? EnvironmentVariable("NuGetApiKey") :
     null;
 
-if (TFBuild.IsRunningOnAzurePipelinesHosted)
-{
-    Information("BRANCH: " + Environment.GetEnvironmentVariable("BUILD_SOURCEBRANCH"));
-}
-
 var artifactsDirectory = Directory("./Artifacts");
 var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
 
