@@ -18,17 +18,13 @@ stages:
 - stage: Build
   jobs:
   - job: Build
-    displayName: $(os)
     strategy:
       matrix:
-        linux:
-          os: Linux
+        Linux:
           imageName: 'ubuntu-latest'
-        # mac:
-        #   os: Mac
+        # Mac:
         #   imageName: 'macos-10.13'
-        windows:
-          os: Windows
+        Windows:
           imageName: 'windows-latest'
     pool:
       vmImage: $(imageName)
