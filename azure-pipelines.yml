@@ -72,18 +72,18 @@ stages:
       runOnce:
         deploy:
           steps:
-          # - task: DotNetCoreCLI@2
-          #   displayName: 'Dotnet NuGet Push'
-          #   inputs:
-          #     command: 'push'
-          #     packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
-          #     nuGetFeedType: 'internal'
-          #     publishVstsFeed: 'schema-net'
-          - task: NuGetCommand@2
-            displayName: 'NuGet push'
+          - task: DotNetCoreCLI@2
+            displayName: 'Dotnet NuGet Push'
             inputs:
               command: push
               packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
               nuGetFeedType: internal
               publishVstsFeed: schema-net
-              allowPackageConflicts: true
+#          - task: NuGetCommand@2
+#            displayName: 'NuGet push'
+#            inputs:
+#              command: push
+#              packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
+#              nuGetFeedType: internal
+#              publishVstsFeed: schema-net
+#              allowPackageConflicts: true
