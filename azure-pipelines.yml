@@ -21,11 +21,14 @@ stages:
     strategy:
       matrix:
         Linux:
-          vmImageName: 'ubuntu-latest'
+          matrixName: Ubuntu
+          vmImageName: ubuntu-latest
         Mac:
-          vmImageName: 'macos-10.13'
+          matrixName: Mac
+          vmImageName: macos-latest
         Windows:
-          vmImageName: 'windows-latest'
+          matrixName: Windows
+          vmImageName: windows-latest
     pool:
       vmImage: $(vmImageName)
     timeoutInMinutes: 10
@@ -55,13 +58,13 @@ stages:
     - task: PublishPipelineArtifact@0
       displayName: 'Publish Artifacts'
       inputs:
-        artifactName: 'Ubuntu Artifacts'
+        artifactName: '$(matrixName) Artifacts'
         targetPath: './Artifacts'
 - stage: Deploy
   jobs:
   - deployment: AzureArtifacts
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage: ubuntu-latest
     environment: 'Azure Artifacts'
     # condition: eq(variables['build.sourceBranch'], 'refs/heads/master')
     strategy:
