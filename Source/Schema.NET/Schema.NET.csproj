@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package">
-    <VersionPrefix>4.0.0</VersionPrefix>
+    <VersionPrefix>4.1.0</VersionPrefix>
     <Authors>Muhammad Rehan Saeed (RehanSaeed.com)</Authors>
     <Product>Schema.NET</Product>
     <Description>Schema.org objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD and XML, typically used to represent structured data in the head section of html page.</Description>
