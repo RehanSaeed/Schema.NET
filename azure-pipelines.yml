@@ -67,7 +67,6 @@ stages:
     pool:
       vmImage: ubuntu-latest
     environment: 'Azure Artifacts'
-    # condition: startsWith(variables['build.sourceBranch'], 'refs/tags/')
     strategy:
       runOnce:
         deploy:
