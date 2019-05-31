@@ -67,16 +67,23 @@ stages:
     pool:
       vmImage: ubuntu-latest
     environment: 'Azure Artifacts'
-    condition: not(startsWith(variables['build.sourceBranch'], 'refs_tags_'))
+    # condition: startsWith(variables['build.sourceBranch'], 'refs/tags/')
     strategy:
       runOnce:
         deploy:
           steps:
-          - bash: echo $(Build.SourceBranch)
-          - task: DotNetCoreCLI@2
-            displayName: 'Dotnet NuGet Push'
+          # - task: DotNetCoreCLI@2
+          #   displayName: 'Dotnet NuGet Push'
+          #   inputs:
+          #     command: 'push'
+          #     packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
+          #     nuGetFeedType: 'internal'
+          #     publishVstsFeed: 'schema-net'
+          - task: NuGetCommand@2
+            displayName: 'NuGet push'
             inputs:
-              command: 'push'
+              command: push
               packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
-              nuGetFeedType: 'internal'
-              publishVstsFeed: 'schema-net'
+              nuGetFeedType: internal
+              publishVstsFeed: schema-net
+              allowPackageConflicts: true
