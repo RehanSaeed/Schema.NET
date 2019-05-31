@@ -67,11 +67,15 @@ stages:
     pool:
       vmImage: ubuntu-latest
     environment: 'Azure Artifacts'
-    # condition: eq(variables['build.sourceBranch'], 'refs/heads/master')
     strategy:
       runOnce:
         deploy:
           steps:
+          - bash: echo variables['build.sourceBranch']
+          - bash: echo 'not startsWith'
+            condition: not(startsWith(variables['build.sourceBranch'], 'refs_tags_'))
+          - bash: echo 'startsWith'
+            condition: startsWith(variables['build.sourceBranch'], 'refs_tags_')
           - bash: 'sudo apt-get update && sudo apt-get install tree'
           - bash: pwd
           - bash: tree
