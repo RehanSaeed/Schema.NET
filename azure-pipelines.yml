@@ -67,24 +67,16 @@ stages:
     pool:
       vmImage: ubuntu-latest
     environment: 'Azure Artifacts'
+    condition: not(startsWith(variables['build.sourceBranch'], 'refs_tags_'))
     strategy:
       runOnce:
         deploy:
           steps:
-          - bash: echo variables['build.sourceBranch']
-          - bash: echo 'not startsWith'
-            condition: not(startsWith(variables['build.sourceBranch'], 'refs_tags_'))
-          - bash: echo 'startsWith'
-            condition: startsWith(variables['build.sourceBranch'], 'refs_tags_')
-          - bash: 'sudo apt-get update && sudo apt-get install tree'
-          - bash: pwd
-          - bash: tree
-          - bash: tree $(Build.ArtifactStagingDirectory)
-          - bash: tree /home/vsts/work/1/
+          - bash: echo $(Build.SourceBranch)
           - task: DotNetCoreCLI@2
             displayName: 'Dotnet NuGet Push'
             inputs:
               command: 'push'
               packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
               nuGetFeedType: 'internal'
-              publishVstsFeed: '/64e69c35-cb00-46e4-9cba-6d8faf1f41d6'
+              publishVstsFeed: 'schema-net'
