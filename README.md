@@ -158,9 +158,9 @@ For more examples and actual running code samples, take a look at the unit tests
 
 ## NuGet Packages
 
-| Name | NuGet | MyGet |
-| :--- | :---  | :---  |
-| Schema.NET | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET MyGet Package](https://img.shields.io/myget/schema-net/v/Schema.Net.svg)](http://myget.org/gallery/schema-net) |
+| Name | NuGet | Azure Artifacts |
+| :--- | :---  | :---            |
+| Schema.NET | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET Azure Artifacts Package](https://feeds.dev.azure.com/schema-net/_apis/public/Packaging/Feeds/64e69c35-cb00-46e4-9cba-6d8faf1f41d6/Packages/fa72270b-6c54-4403-9307-aa826e43530e/Badge)](https://dev.azure.com/schema-net/Schema.NET/_packaging?_a=package&feed=64e69c35-cb00-46e4-9cba-6d8faf1f41d6&package=fa72270b-6c54-4403-9307-aa826e43530e&preferRelease=true) |
 
 ## Contributions and Thanks
 
