@@ -17,40 +17,38 @@ variables:
 stages:
 - stage: Build
   jobs:
-  - job: Ubuntu
+  - job: Build
+    strategy:
+      matrix:
+        linux:
+          imageName: 'ubuntu-latest'
+        # mac:
+        #   imageName: 'macos-10.13'
+        windows:
+          imageName: 'windows-latest'
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage: $(imageName)
     timeoutInMinutes: 10
     steps:
-    - task: Bash@3
-      displayName: 'Install .NET Core SDK'
-      inputs:
-        targetType: 'inline'
-        script: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
-    - task: Bash@3
-      displayName: 'Install Cake Tool'
-      inputs:
-        targetType: 'inline'
-        script: 'dotnet tool install --global Cake.Tool'
-        failOnStderr: true
-    - task: Bash@3
-      displayName: 'Dotnet Cake Build'
-      inputs:
-        targetType: 'inline'
-        script: 'dotnet cake --target=Build'
-        failOnStderr: true
-    - task: Bash@3
-      displayName: 'Dotnet Cake Test'
-      inputs:
-        targetType: 'inline'
-        script: 'dotnet cake --target=Test'
-        failOnStderr: true
-    - task: Bash@3
-      displayName: 'Dotnet Cake Pack'
-      inputs:
-        targetType: 'inline'
-        script: 'dotnet cake --target=Pack'
-        failOnStderr: true
+    - displayName: 'Install .NET Core SDK'
+      bash: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
+      condition: eq(variables['agent.os'], 'Linux')
+    - displayName: 'Install .NET Core SDK'
+      pwsh: 'choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300'
+      condition: eq(variables['agent.os'], 'Windows_NT')
+      failOnStderr: true
+    - displayName: 'Install Cake Tool'
+      script: 'dotnet tool install --global Cake.Tool'
+      failOnStderr: true
+    - displayName: 'Dotnet Cake Build'
+      script: 'dotnet cake --target=Build'
+      failOnStderr: true
+    - displayName: 'Dotnet Cake Test'
+      script: 'dotnet cake --target=Test'
+      failOnStderr: true
+    - displayName: 'Dotnet Cake Pack'
+      script: 'dotnet cake --target=Pack'
+      failOnStderr: true
     - task: PublishTestResults@2
       displayName: 'Publish Test Results'
       inputs:
@@ -61,62 +59,13 @@ stages:
       inputs:
         artifactName: 'Ubuntu Artifacts'
         targetPath: './Artifacts'
-  - job: Windows
-    pool:
-      vmImage: 'windows-latest'
-    timeoutInMinutes: 10
-    steps:
-    - task: PowerShell@2
-      displayName: 'Install .NET Core SDK'
-      inputs:
-        targetType: 'inline'
-        script: 'choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300'
-        failOnStderr: true
-        pwsh: true
-    - task: PowerShell@2
-      displayName: 'Install Cake Tool'
-      inputs:
-        targetType: 'inline'
-        script: 'dotnet tool install --global Cake.Tool'
-        failOnStderr: true
-        pwsh: true
-    - task: PowerShell@2
-      displayName: 'Dotnet Cake Build'
-      inputs:
-        targetType: 'inline'
-        script: 'dotnet cake --target=Build'
-        failOnStderr: true
-        pwsh: true
-    - task: PowerShell@2
-      displayName: 'Dotnet Cake Test'
-      inputs:
-        targetType: 'inline'
-        script: 'dotnet cake --target=Test'
-        failOnStderr: true
-        pwsh: true
-    - task: PowerShell@2
-      displayName: 'Dotnet Cake Pack'
-      inputs:
-        targetType: 'inline'
-        script: 'dotnet cake --target=Pack'
-        failOnStderr: true
-        pwsh: true
-    - task: PublishTestResults@2
-      displayName: 'Publish Test Results'
-      inputs:
-        testResultsFormat: 'VSTest'
-        testResultsFiles: '**/*.trx'
-    - task: PublishPipelineArtifact@0
-      displayName: 'Publish Artifacts'
-      inputs:
-        artifactName: 'Windows Artifacts'
-        targetPath: './Artifacts'
 - stage: Deploy
   jobs:
   - deployment: AzureArtifacts
     pool:
       vmImage: 'ubuntu-latest'
     environment: 'Azure Artifacts'
+    # condition: eq(variables['build.sourceBranch'], 'refs/heads/master')
     strategy:
       runOnce:
         deploy:
