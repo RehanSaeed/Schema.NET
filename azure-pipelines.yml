@@ -18,7 +18,6 @@ stages:
 - stage: Build
   jobs:
   - job: Build
-    displayName: $(matrixName)
     strategy:
       matrix:
         Linux:
