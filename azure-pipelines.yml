@@ -18,36 +18,40 @@ stages:
 - stage: Build
   jobs:
   - job: Build
+    displayName: $(platform)
     strategy:
       matrix:
         linux:
+          platform: Linux
           imageName: 'ubuntu-latest'
         # mac:
+        #   platform: Mac
         #   imageName: 'macos-10.13'
         windows:
+          platform: Windows
           imageName: 'windows-latest'
     pool:
       vmImage: $(imageName)
     timeoutInMinutes: 10
     steps:
-    - displayName: 'Install .NET Core SDK'
-      bash: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
+    - bash: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
+      displayName: 'Install .NET Core SDK'
       condition: eq(variables['agent.os'], 'Linux')
-    - displayName: 'Install .NET Core SDK'
-      pwsh: 'choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300'
+    - pwsh: 'choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300'
+      displayName: 'Install .NET Core SDK'
       condition: eq(variables['agent.os'], 'Windows_NT')
       failOnStderr: true
-    - displayName: 'Install Cake Tool'
-      script: 'dotnet tool install --global Cake.Tool'
+    - script: 'dotnet tool install --global Cake.Tool'
+      displayName: 'Install Cake Tool'
       failOnStderr: true
-    - displayName: 'Dotnet Cake Build'
-      script: 'dotnet cake --target=Build'
+    - script: 'dotnet cake --target=Build'
+      displayName: 'Dotnet Cake Build'
       failOnStderr: true
-    - displayName: 'Dotnet Cake Test'
-      script: 'dotnet cake --target=Test'
+    - script: 'dotnet cake --target=Test'
+      displayName: 'Dotnet Cake Test'
       failOnStderr: true
-    - displayName: 'Dotnet Cake Pack'
-      script: 'dotnet cake --target=Pack'
+    - script: 'dotnet cake --target=Pack'
+      displayName: 'Dotnet Cake Pack'
       failOnStderr: true
     - task: PublishTestResults@2
       displayName: 'Publish Test Results'
