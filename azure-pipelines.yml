@@ -20,6 +20,7 @@ stages:
   - job: Ubuntu
     pool:
       vmImage: 'ubuntu-latest'
+    timeoutInMinutes: 10
     steps:
     - task: Bash@3
       displayName: 'Install .NET Core SDK'
@@ -63,6 +64,7 @@ stages:
   - job: Windows
     pool:
       vmImage: 'windows-latest'
+    timeoutInMinutes: 10
     steps:
     - task: PowerShell@2
       displayName: 'Install .NET Core SDK'
