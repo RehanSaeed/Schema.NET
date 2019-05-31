@@ -17,7 +17,8 @@ variables:
 stages:
 - stage: Build
   jobs:
-  - job: $(os)
+  - job: Build
+    displayName: $(os)
     strategy:
       matrix:
         linux:
