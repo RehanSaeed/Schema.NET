@@ -66,6 +66,7 @@ stages:
     displayName: 'Azure Artifacts'
     pool:
       vmImage: ubuntu-latest
+    environment: 'Azure Artifacts'
     # condition: eq(variables['build.sourceBranch'], 'refs/heads/master')
     strategy:
       runOnce:
