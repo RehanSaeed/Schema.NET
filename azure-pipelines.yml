@@ -21,11 +21,11 @@ stages:
     strategy:
       matrix:
         Linux:
-          imageName: 'ubuntu-latest'
+          vmImageName: 'ubuntu-latest'
         # Mac:
-        #   imageName: 'macos-10.13'
+        #   vmImageName: 'macos-10.13'
         Windows:
-          imageName: 'windows-latest'
+          vmImageName: 'windows-latest'
     pool:
       vmImage: $(imageName)
     timeoutInMinutes: 10
