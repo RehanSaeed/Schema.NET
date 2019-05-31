@@ -72,6 +72,7 @@ stages:
       runOnce:
         deploy:
           steps:
+          - bash: 'sudo apt-get update && sudo apt-get install tree'
           - bash: tree
           - bash: tree $(Build.ArtifactStagingDirectory)
           - bash: tree /home/vsts/work/1/
