@@ -27,7 +27,7 @@ stages:
         Windows:
           vmImageName: 'windows-latest'
     pool:
-      vmImage: $(imageName)
+      vmImage: $(vmImageName)
     timeoutInMinutes: 10
     steps:
     - task: UseDotNet@2
