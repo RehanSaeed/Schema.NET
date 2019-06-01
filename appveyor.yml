@@ -25,7 +25,9 @@ build_script:
 - sh: sudo apt-get install -y dotnet-sdk-2.2
 - cmd: choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300
 - pwsh: dotnet tool install --global Cake.Tool
-- pwsh: dotnet cake
+- pwsh: dotnet cake --target=Build
+- pwsh: dotnet cake --target=Test
+- pwsh: dotnet cake --target=Pack
 
 test: off
 
@@ -36,29 +38,3 @@ artifacts:
   path: ./Artifacts/**/*.snupkg
 - name: xUnit Test Results
   path: ./Artifacts/**/*.xml
-
-deploy:
-# Publish MyGet packages
-- provider: NuGet
-  server: https://www.myget.org/F/schema-net/api/v2/package
-  api_key:
-    secure: aunGGWt32irQiOTX2wIO6e2Y5Ga0girA3xSUsmQv6E9d6ohHdbK5HJpXpmxW9QM3
-  on:
-    # Only publish on Windows
-    CI_WINDOWS: true
-    # Only publish from the master branch
-    branch: master
-# Publish NuGet packages
-- provider: NuGet
-  name: production
-  api_key:
-    secure: 73eFUWSfho6pxCy1VRP1H0AYh/SFiyEREV+/ATcoj0I+sSH9dec/WXs6H2Jy5vlS
-  on:
-    # Only publish on Windows
-    CI_WINDOWS: true
-    # Only publish from the master branch
-    branch: master
-    # Only publish if the trigger was a Git tag
-    # git tag v0.1.0-beta
-    # git push origin --tags
-    appveyor_repo_tag: true

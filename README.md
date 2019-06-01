@@ -151,15 +151,16 @@ For more examples and actual running code samples, take a look at the unit tests
 
 | Name            | Operating System | Status |
 | :---            | :---             | :---   |
-| Azure Pipelines | Windows          | [![Azure Pipelines Windows Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&jobName=Windows)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
-| Azure Pipelines | Ubuntu           | [![Azure Pipelines Ubuntu Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&jobName=Ubuntu)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
+| Azure Pipelines | Ubuntu           | [![Azure Pipelines Ubuntu Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&stageName=Build&jobName=Build&configuration=Build%20Linux)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
+| Azure Pipelines | Mac              | [![Azure Pipelines Mac Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&stageName=Build&jobName=Build&configuration=Build%20Mac)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
+| Azure Pipelines | Windows          | [![Azure Pipelines Windows Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&stageName=Build&jobName=Build&configuration=Build%20Windows)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
 | AppVeyor        | Ubuntu & Windows | [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/djxrpkw8ckyf24c1?svg=true)](https://ci.appveyor.com/project/RehanSaeed/schema-net) |
 
 ## NuGet Packages
 
-| Name | NuGet | MyGet |
-| :--- | :---  | :---  |
-| Schema.NET | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET MyGet Package](https://img.shields.io/myget/schema-net/v/Schema.Net.svg)](http://myget.org/gallery/schema-net) |
+| Name | NuGet | Azure Artifacts |
+| :--- | :---  | :---            |
+| Schema.NET | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET Azure Artifacts Package](https://feeds.dev.azure.com/schema-net/_apis/public/Packaging/Feeds/64e69c35-cb00-46e4-9cba-6d8faf1f41d6/Packages/fa72270b-6c54-4403-9307-aa826e43530e/Badge)](https://dev.azure.com/schema-net/Schema.NET/_packaging?_a=package&feed=64e69c35-cb00-46e4-9cba-6d8faf1f41d6&package=fa72270b-6c54-4403-9307-aa826e43530e&preferRelease=true) |
 
 ## Contributions and Thanks
 

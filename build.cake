@@ -5,8 +5,7 @@ var configuration =
     "Release";
 var preReleaseSuffix =
     HasArgument("PreReleaseSuffix") ? Argument<string>("PreReleaseSuffix") :
-    // See https://github.com/MicrosoftDocs/vsts-docs/issues/4343
-    // (TFBuild.IsRunningOnAzurePipelinesHosted && TFBuild.Environment.Build.SourceBranchName)
+    (TFBuild.IsRunningOnAzurePipelinesHosted && Environment.GetEnvironmentVariable("BUILD_SOURCEBRANCH").StartsWith("refs/tags/")) ? null :
     (AppVeyor.IsRunningOnAppVeyor && AppVeyor.Environment.Repository.Tag.IsTag) ? null :
     EnvironmentVariable("PreReleaseSuffix") != null ? EnvironmentVariable("PreReleaseSuffix") :
     "beta";
@@ -16,6 +15,10 @@ var buildNumber =
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
+var nuGetSource =
+    HasArgument("NuGetSource") ? Argument<string>("NuGetSource") :
+    EnvironmentVariable("NuGetSource") != null ? EnvironmentVariable("NuGetSource") :
+    null;
 var nuGetApiKey =
     HasArgument("NuGetApiKey") ? Argument<string>("NuGetApiKey") :
     EnvironmentVariable("NuGetApiKey") != null ? EnvironmentVariable("NuGetApiKey") :
@@ -69,7 +72,6 @@ Task("Build")
     });
 
 Task("Test")
-    .IsDependentOn("Build")
     .Does(() =>
     {
         foreach(var project in GetFiles("./Tests/**/*.csproj"))
@@ -88,7 +90,6 @@ Task("Test")
     });
 
 Task("Pack")
-    .IsDependentOn("Test")
     .Does(() =>
     {
         DotNetCorePack(
@@ -113,10 +114,11 @@ Task("Push")
             new DotNetCoreNuGetPushSettings()
             {
                 ApiKey = nuGetApiKey,
+                Source = nuGetSource,
             });
     });
 
 Task("Default")
-    .IsDependentOn("Pack");
+    .IsDependentOn("Build");
 
 RunTarget(target);

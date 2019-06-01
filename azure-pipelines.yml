@@ -14,71 +14,84 @@ variables:
   # Disable sending usage data to Microsoft
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
-jobs:
-- job: Ubuntu
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-  - task: Bash@3
-    displayName: 'Install .NET Core SDK'
-    inputs:
-      targetType: 'inline'
-      script: 'sudo apt-get update && sudo apt-get install -y dotnet-sdk-2.2'
-  - task: Bash@3
-    displayName: 'Install Cake Tool'
-    inputs:
-      targetType: 'inline'
-      script: 'dotnet tool install --global Cake.Tool'
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    strategy:
+      matrix:
+        Linux:
+          matrixName: Ubuntu
+          vmImageName: ubuntu-latest
+        Mac:
+          matrixName: Mac
+          vmImageName: macos-latest
+        Windows:
+          matrixName: Windows
+          vmImageName: windows-latest
+    pool:
+      vmImage: $(vmImageName)
+    timeoutInMinutes: 10
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Install .NET Core SDK'
+      inputs:
+        packageType: 'sdk'
+        version: '2.2.300'
+    - script: 'dotnet tool install --global Cake.Tool'
+      displayName: 'Install Cake Tool'
       failOnStderr: true
-  - task: Bash@3
-    displayName: 'Dotnet Cake'
-    inputs:
-      targetType: 'inline'
-      script: 'dotnet cake'
+    - script: 'dotnet cake --target=Build'
+      displayName: 'Dotnet Cake Build'
       failOnStderr: true
-  - task: PublishTestResults@2
-    displayName: 'Publish Test Results'
-    inputs:
-      testResultsFormat: 'VSTest'
-      testResultsFiles: '**/*.trx'
-  - task: PublishPipelineArtifact@0
-    displayName: 'Publish Artifacts'
-    inputs:
-      artifactName: 'Ubuntu Artifacts'
-      targetPath: './Artifacts'
-
-- job: Windows
-  pool:
-    vmImage: 'windows-latest'
-  steps:
-  - task: PowerShell@2
-    displayName: 'Install .NET Core SDK'
-    inputs:
-      targetType: 'inline'
-      script: 'choco install dotnetcore-sdk --no-progress --confirm --version 2.2.300'
+    - script: 'dotnet cake --target=Test'
+      displayName: 'Dotnet Cake Test'
       failOnStderr: true
-      pwsh: true
-  - task: PowerShell@2
-    displayName: 'Install Cake Tool'
-    inputs:
-      targetType: 'inline'
-      script: 'dotnet tool install --global Cake.Tool'
+    - script: 'dotnet cake --target=Pack'
+      displayName: 'Dotnet Cake Pack'
       failOnStderr: true
-      pwsh: true
-  - task: PowerShell@2
-    displayName: 'Dotnet Cake'
-    inputs:
-      targetType: 'inline'
-      script: 'dotnet cake'
-      failOnStderr: true
-      pwsh: true
-  - task: PublishTestResults@2
-    displayName: 'Publish Test Results'
-    inputs:
-      testResultsFormat: 'VSTest'
-      testResultsFiles: '**/*.trx'
-  - task: PublishPipelineArtifact@0
-    displayName: 'Publish Artifacts'
-    inputs:
-      artifactName: 'Windows Artifacts'
-      targetPath: './Artifacts'
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results'
+      inputs:
+        testResultsFormat: 'VSTest'
+        testResultsFiles: '**/*.trx'
+    - task: PublishPipelineArtifact@0
+      displayName: 'Publish Artifacts'
+      inputs:
+        artifactName: $(matrixName)
+        targetPath: './Artifacts'
+- stage: Deploy
+  jobs:
+  - deployment: AzureArtifacts
+    displayName: 'Azure Artifacts'
+    pool:
+      vmImage: ubuntu-latest
+    environment: 'Azure Artifacts'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DotNetCoreCLI@2
+            displayName: 'Dotnet NuGet Push'
+            inputs:
+              command: push
+              nuGetFeedType: internal
+              packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
+              publishVstsFeed: schema-net
+  - deployment: NuGet
+    pool:
+      vmImage: ubuntu-latest
+    environment: 'NuGet'
+    condition: startsWith(variables['build.sourceBranch'], 'refs/tags/')
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          # Dotnet NuGet does not work yet https://github.com/Microsoft/azure-pipelines-tasks/issues/7160
+          - task: NuGetCommand@2
+            displayName: 'Dotnet NuGet Push'
+            inputs:
+              command: push
+              nuGetFeedType: external
+              packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
+              publishFeedCredentials: NuGet
