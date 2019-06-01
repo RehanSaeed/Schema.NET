@@ -1,4 +1,5 @@
 ![Schema.NET Banner](https://raw.githubusercontent.com/RehanSaeed/Schema.NET/master/Images/Banner.png)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 Schema.org objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD and XML, typically used to represent structured data in the `head` section of `html` page.
 
@@ -171,3 +172,15 @@ For more examples and actual running code samples, take a look at the unit tests
 - [benmccallum](https://github.com/benmccallum) - For adding XSS vlnerability protection.
 - [psampaio](https://github.com/psampaio) - Added deserialization support and unit tests.
 - [icunningham88](https://github.com/icunningham88) - Improved a test.
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="http://RehanSaeed.com"><img src="https://avatars2.githubusercontent.com/u/2270364?v=4" width="100px;" alt="Muhammad Rehan Saeed"/><br /><sub><b>Muhammad Rehan Saeed</b></sub></a><br /><a href="#projectManagement-RehanSaeed" title="Project Management">📆</a> <a href="https://github.com/RehanSaeed/Schema.NET/commits?author=RehanSaeed" title="Code">💻</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
