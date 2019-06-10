@@ -97,6 +97,17 @@ namespace Schema.NET.Test
             Assert.Equal(expectedCount, new Values<int, string, DayOfWeek, Person>(items).Count);
 
         [Fact]
+        public void HasValue_DoesntHaveValue_ReturnsFalse() =>
+            Assert.False(default(Values<int, string, DayOfWeek, Person>).HasValue);
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData("Foo")]
+        [InlineData(DayOfWeek.Friday)]
+        public void HasValue_HasValue_ReturnsTrue(params object[] parameters) =>
+            Assert.True(new Values<int, string, DayOfWeek, Person>(parameters).HasValue);
+
+        [Fact]
         public void HasValue1_HasValue_ReturnsTrue() =>
             Assert.True(new Values<int, string, DayOfWeek, Person>(1).HasValue1);
 

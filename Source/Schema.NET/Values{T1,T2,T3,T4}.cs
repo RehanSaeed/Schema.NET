@@ -123,6 +123,11 @@ namespace Schema.NET
         public int Count => this.Value1.Count + this.Value2.Count + this.Value3.Count + this.Value4.Count;
 
         /// <summary>
+        /// Gets a value indicating whether this instance has a value.
+        /// </summary>
+        public bool HasValue => this.HasValue1 || this.HasValue2 || this.HasValue3 || this.HasValue4;
+
+        /// <summary>
         /// Gets whether the value of type <typeparamref name="T1" /> has a value.
         /// </summary>
         public bool HasValue1 { get; }
