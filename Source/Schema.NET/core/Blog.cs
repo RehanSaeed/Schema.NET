@@ -12,7 +12,7 @@
         /// <summary>
         /// A posting that is part of this blog.
         /// </summary>
-        OneOrMany<IBlogPosting> BlogPost { get; set; }
+        OneOrMany<IBlogPosting, BlogPosting> BlogPost { get; set; }
 
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.
@@ -37,7 +37,7 @@
         /// </summary>
         [DataMember(Name = "blogPost", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IBlogPosting> BlogPost { get; set; }
+        public OneOrMany<IBlogPosting, BlogPosting> BlogPost { get; set; }
 
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.

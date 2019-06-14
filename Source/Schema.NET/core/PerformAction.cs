@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of location. The entertainment business where the action occurred.
         /// </summary>
-        OneOrMany<IEntertainmentBusiness> EntertainmentBusiness { get; set; }
+        OneOrMany<IEntertainmentBusiness, EntertainmentBusiness> EntertainmentBusiness { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "entertainmentBusiness", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEntertainmentBusiness> EntertainmentBusiness { get; set; }
+        public OneOrMany<IEntertainmentBusiness, EntertainmentBusiness> EntertainmentBusiness { get; set; }
     }
 }

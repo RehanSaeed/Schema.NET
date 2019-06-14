@@ -13,7 +13,7 @@
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
         /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
-        OneOrMany<IPropertyValue> AdditionalProperty { get; set; }
+        OneOrMany<IPropertyValue, PropertyValue> AdditionalProperty { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
@@ -71,7 +71,7 @@
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPropertyValue> AdditionalProperty { get; set; }
+        public OneOrMany<IPropertyValue, PropertyValue> AdditionalProperty { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.

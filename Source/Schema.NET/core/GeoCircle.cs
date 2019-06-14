@@ -14,7 +14,7 @@
         /// <summary>
         /// Indicates the GeoCoordinates at the centre of a GeoShape e.g. GeoCircle.
         /// </summary>
-        OneOrMany<IGeoCoordinates> GeoMidpoint { get; set; }
+        OneOrMany<IGeoCoordinates, GeoCoordinates> GeoMidpoint { get; set; }
 
         /// <summary>
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).
@@ -41,7 +41,7 @@
         /// </summary>
         [DataMember(Name = "geoMidpoint", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IGeoCoordinates> GeoMidpoint { get; set; }
+        public OneOrMany<IGeoCoordinates, GeoCoordinates> GeoMidpoint { get; set; }
 
         /// <summary>
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).

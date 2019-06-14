@@ -52,7 +52,7 @@
         /// <summary>
         /// Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
         /// </summary>
-        OneOrMany<IAction> PotentialAction { get; set; }
+        OneOrMany<IAction, Action> PotentialAction { get; set; }
 
         /// <summary>
         /// URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
@@ -149,7 +149,7 @@
         /// </summary>
         [DataMember(Name = "potentialAction", Order = 14)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAction> PotentialAction { get; set; }
+        public OneOrMany<IAction, Action> PotentialAction { get; set; }
 
         /// <summary>
         /// URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.

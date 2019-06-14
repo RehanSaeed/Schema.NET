@@ -12,7 +12,7 @@
         /// <summary>
         /// The event being broadcast such as a sporting event or awards ceremony.
         /// </summary>
-        OneOrMany<IEvent> BroadcastOfEvent { get; set; }
+        OneOrMany<IEvent, Event> BroadcastOfEvent { get; set; }
 
         /// <summary>
         /// True is the broadcast is of a live event.
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "broadcastOfEvent", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> BroadcastOfEvent { get; set; }
+        public OneOrMany<IEvent, Event> BroadcastOfEvent { get; set; }
 
         /// <summary>
         /// True is the broadcast is of a live event.

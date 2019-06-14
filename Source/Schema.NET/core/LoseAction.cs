@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of participant. The winner of the action.
         /// </summary>
-        OneOrMany<IPerson> Winner { get; set; }
+        OneOrMany<IPerson, Person> Winner { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "winner", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Winner { get; set; }
+        public OneOrMany<IPerson, Person> Winner { get; set; }
     }
 }

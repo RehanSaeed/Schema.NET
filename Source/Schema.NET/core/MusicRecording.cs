@@ -22,12 +22,12 @@
         /// <summary>
         /// The album to which this recording belongs.
         /// </summary>
-        OneOrMany<IMusicAlbum> InAlbum { get; set; }
+        OneOrMany<IMusicAlbum, MusicAlbum> InAlbum { get; set; }
 
         /// <summary>
         /// The playlist to which this recording belongs.
         /// </summary>
-        OneOrMany<IMusicPlaylist> InPlaylist { get; set; }
+        OneOrMany<IMusicPlaylist, MusicPlaylist> InPlaylist { get; set; }
 
         /// <summary>
         /// The International Standard Recording Code for the recording.
@@ -37,7 +37,7 @@
         /// <summary>
         /// The composition this track is a recording of.
         /// </summary>
-        OneOrMany<IMusicComposition> RecordingOf { get; set; }
+        OneOrMany<IMusicComposition, MusicComposition> RecordingOf { get; set; }
     }
 
     /// <summary>
@@ -71,14 +71,14 @@
         /// </summary>
         [DataMember(Name = "inAlbum", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMusicAlbum> InAlbum { get; set; }
+        public OneOrMany<IMusicAlbum, MusicAlbum> InAlbum { get; set; }
 
         /// <summary>
         /// The playlist to which this recording belongs.
         /// </summary>
         [DataMember(Name = "inPlaylist", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMusicPlaylist> InPlaylist { get; set; }
+        public OneOrMany<IMusicPlaylist, MusicPlaylist> InPlaylist { get; set; }
 
         /// <summary>
         /// The International Standard Recording Code for the recording.
@@ -92,6 +92,6 @@
         /// </summary>
         [DataMember(Name = "recordingOf", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMusicComposition> RecordingOf { get; set; }
+        public OneOrMany<IMusicComposition, MusicComposition> RecordingOf { get; set; }
     }
 }

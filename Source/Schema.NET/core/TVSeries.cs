@@ -12,27 +12,27 @@
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Actor { get; set; }
+        OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// A season that is part of the media series.
         /// </summary>
-        OneOrMany<ICreativeWorkSeason> ContainsSeason { get; set; }
+        OneOrMany<ICreativeWorkSeason, CreativeWorkSeason> ContainsSeason { get; set; }
 
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
-        OneOrMany<ICountry> CountryOfOrigin { get; set; }
+        OneOrMany<ICountry, Country> CountryOfOrigin { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Director { get; set; }
+        OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// An episode of a tv, radio or game media within a series or season.
         /// </summary>
-        OneOrMany<IEpisode> Episode { get; set; }
+        OneOrMany<IEpisode, Episode> Episode { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -52,12 +52,12 @@
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
-        OneOrMany<IOrganization> ProductionCompany { get; set; }
+        OneOrMany<IOrganization, Organization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
-        OneOrMany<IVideoObject> Trailer { get; set; }
+        OneOrMany<IVideoObject, VideoObject> Trailer { get; set; }
     }
 
     /// <summary>
@@ -77,35 +77,35 @@
         /// </summary>
         [DataMember(Name = "actor", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Actor { get; set; }
+        public OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// A season that is part of the media series.
         /// </summary>
         [DataMember(Name = "containsSeason", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWorkSeason> ContainsSeason { get; set; }
+        public OneOrMany<ICreativeWorkSeason, CreativeWorkSeason> ContainsSeason { get; set; }
 
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
         [DataMember(Name = "countryOfOrigin", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICountry> CountryOfOrigin { get; set; }
+        public OneOrMany<ICountry, Country> CountryOfOrigin { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "director", Order = 409)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Director { get; set; }
+        public OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// An episode of a tv, radio or game media within a series or season.
         /// </summary>
         [DataMember(Name = "episode", Order = 410)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEpisode> Episode { get; set; }
+        public OneOrMany<IEpisode, Episode> Episode { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -133,13 +133,13 @@
         /// </summary>
         [DataMember(Name = "productionCompany", Order = 414)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> ProductionCompany { get; set; }
+        public OneOrMany<IOrganization, Organization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
         [DataMember(Name = "trailer", Order = 415)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IVideoObject> Trailer { get; set; }
+        public OneOrMany<IVideoObject, VideoObject> Trailer { get; set; }
     }
 }

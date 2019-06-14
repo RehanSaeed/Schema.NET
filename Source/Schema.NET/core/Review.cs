@@ -12,7 +12,7 @@
         /// <summary>
         /// The item that is being reviewed/rated.
         /// </summary>
-        OneOrMany<IThing> ItemReviewed { get; set; }
+        OneOrMany<IThing, Thing> ItemReviewed { get; set; }
 
         /// <summary>
         /// This Review or Rating is relevant to this part or facet of the itemReviewed.
@@ -27,7 +27,7 @@
         /// <summary>
         /// The rating given in this review. Note that reviews can themselves be rated. The &lt;code&gt;reviewRating&lt;/code&gt; applies to rating given by the review. The &lt;a class="localLink" href="http://schema.org/aggregateRating"&gt;aggregateRating&lt;/a&gt; property applies to the review itself, as a creative work.
         /// </summary>
-        OneOrMany<IRating> ReviewRating { get; set; }
+        OneOrMany<IRating, Rating> ReviewRating { get; set; }
     }
 
     /// <summary>
@@ -47,7 +47,7 @@
         /// </summary>
         [DataMember(Name = "itemReviewed", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> ItemReviewed { get; set; }
+        public OneOrMany<IThing, Thing> ItemReviewed { get; set; }
 
         /// <summary>
         /// This Review or Rating is relevant to this part or facet of the itemReviewed.
@@ -68,6 +68,6 @@
         /// </summary>
         [DataMember(Name = "reviewRating", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IRating> ReviewRating { get; set; }
+        public OneOrMany<IRating, Rating> ReviewRating { get; set; }
     }
 }

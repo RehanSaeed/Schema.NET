@@ -22,7 +22,7 @@
         /// <summary>
         /// An available dosage strength for the drug.
         /// </summary>
-        OneOrMany<IDrugStrength> AvailableStrength { get; set; }
+        OneOrMany<IDrugStrength, DrugStrength> AvailableStrength { get; set; }
 
         /// <summary>
         /// Any precaution, guidance, contraindication, etc. related to this drug's use by breastfeeding mothers.
@@ -47,7 +47,7 @@
         /// <summary>
         /// A dosing schedule for the drug for a given population, either observed, recommended, or maximum dose based on the type used.
         /// </summary>
-        OneOrMany<IDoseSchedule> DoseSchedule { get; set; }
+        OneOrMany<IDoseSchedule, DoseSchedule> DoseSchedule { get; set; }
 
         /// <summary>
         /// The class of drug this belongs to (e.g., statins).
@@ -67,7 +67,7 @@
         /// <summary>
         /// Another drug that is known to interact with this drug in a way that impacts the effect of this drug or causes a risk to the patient. Note: disease interactions are typically captured as contraindications.
         /// </summary>
-        OneOrMany<IDrug> InteractingDrug { get; set; }
+        OneOrMany<IDrug, Drug> InteractingDrug { get; set; }
 
         /// <summary>
         /// True if the drug is available in a generic form (regardless of name).
@@ -87,7 +87,7 @@
         /// <summary>
         /// The manufacturer of the product.
         /// </summary>
-        OneOrMany<IOrganization> Manufacturer { get; set; }
+        OneOrMany<IOrganization, Organization> Manufacturer { get; set; }
 
         /// <summary>
         /// The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
@@ -132,7 +132,7 @@
         /// <summary>
         /// Any other drug related to this one, for example commonly-prescribed alternatives.
         /// </summary>
-        OneOrMany<IDrug> RelatedDrug { get; set; }
+        OneOrMany<IDrug, Drug> RelatedDrug { get; set; }
 
         /// <summary>
         /// The RxCUI drug identifier from RXNORM.
@@ -183,7 +183,7 @@
         /// </summary>
         [DataMember(Name = "availableStrength", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDrugStrength> AvailableStrength { get; set; }
+        public OneOrMany<IDrugStrength, DrugStrength> AvailableStrength { get; set; }
 
         /// <summary>
         /// Any precaution, guidance, contraindication, etc. related to this drug's use by breastfeeding mothers.
@@ -218,7 +218,7 @@
         /// </summary>
         [DataMember(Name = "doseSchedule", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDoseSchedule> DoseSchedule { get; set; }
+        public OneOrMany<IDoseSchedule, DoseSchedule> DoseSchedule { get; set; }
 
         /// <summary>
         /// The class of drug this belongs to (e.g., statins).
@@ -246,7 +246,7 @@
         /// </summary>
         [DataMember(Name = "interactingDrug", Order = 318)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDrug> InteractingDrug { get; set; }
+        public OneOrMany<IDrug, Drug> InteractingDrug { get; set; }
 
         /// <summary>
         /// True if the drug is available in a generic form (regardless of name).
@@ -281,14 +281,14 @@
         /// </summary>
         [DataMember(Name = "manufacturer", Order = 323)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> Manufacturer { get; set; }
+        public OneOrMany<IOrganization, Organization> Manufacturer { get; set; }
 
         /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
         [DataMember(Name = "maximumIntake", Order = 324)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IMaximumDoseSchedule> MaximumIntake { get; set; }
+        public override OneOrMany<IMaximumDoseSchedule, MaximumDoseSchedule> MaximumIntake { get; set; }
 
         /// <summary>
         /// The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
@@ -351,7 +351,7 @@
         /// </summary>
         [DataMember(Name = "relatedDrug", Order = 333)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDrug> RelatedDrug { get; set; }
+        public OneOrMany<IDrug, Drug> RelatedDrug { get; set; }
 
         /// <summary>
         /// The RxCUI drug identifier from RXNORM.

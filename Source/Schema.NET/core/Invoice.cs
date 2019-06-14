@@ -72,7 +72,7 @@
         /// <summary>
         /// The Order(s) related to this Invoice. One or more Orders may be combined into a single Invoice.
         /// </summary>
-        OneOrMany<IOrder> ReferencesOrder { get; set; }
+        OneOrMany<IOrder, Order> ReferencesOrder { get; set; }
 
         /// <summary>
         /// The date the invoice is scheduled to be paid.
@@ -186,7 +186,7 @@
         /// </summary>
         [DataMember(Name = "referencesOrder", Order = 218)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrder> ReferencesOrder { get; set; }
+        public OneOrMany<IOrder, Order> ReferencesOrder { get; set; }
 
         /// <summary>
         /// The date the invoice is scheduled to be paid.

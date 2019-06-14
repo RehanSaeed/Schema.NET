@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, LodgingBusiness for more information.
     /// </summary>
-    public partial interface ICivicStructureAndLodgingBusiness : ILodgingBusiness, ICivicStructure
+    public partial interface ICivicStructureAndLodgingBusiness : ICivicStructure, ILodgingBusiness
     {
     }
 
@@ -28,14 +28,14 @@
         /// </summary>
         [DataMember(Name = "amenityFeature", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<ILocationFeatureSpecification> AmenityFeature { get; set; }
+        public override OneOrMany<ILocationFeatureSpecification, LocationFeatureSpecification> AmenityFeature { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
         [DataMember(Name = "audience", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAudience> Audience { get; set; }
+        public OneOrMany<IAudience, Audience> Audience { get; set; }
 
         /// <summary>
         /// A language someone may use with or at the item, service or place. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/inLanguage"&gt;inLanguage&lt;/a&gt;
@@ -91,6 +91,6 @@
         /// </summary>
         [DataMember(Name = "starRating", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IRating> StarRating { get; set; }
+        public OneOrMany<IRating, Rating> StarRating { get; set; }
     }
 }

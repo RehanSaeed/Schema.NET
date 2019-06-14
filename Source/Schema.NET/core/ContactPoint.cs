@@ -42,7 +42,7 @@
         /// <summary>
         /// The hours during which this service or contact is available.
         /// </summary>
-        OneOrMany<IOpeningHoursSpecification> HoursAvailable { get; set; }
+        OneOrMany<IOpeningHoursSpecification, OpeningHoursSpecification> HoursAvailable { get; set; }
 
         /// <summary>
         /// The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").
@@ -114,7 +114,7 @@
         /// </summary>
         [DataMember(Name = "hoursAvailable", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOpeningHoursSpecification> HoursAvailable { get; set; }
+        public OneOrMany<IOpeningHoursSpecification, OpeningHoursSpecification> HoursAvailable { get; set; }
 
         /// <summary>
         /// The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").

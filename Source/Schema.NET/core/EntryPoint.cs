@@ -12,7 +12,7 @@
         /// <summary>
         /// An application that can complete the request.
         /// </summary>
-        OneOrMany<ISoftwareApplication> ActionApplication { get; set; }
+        OneOrMany<ISoftwareApplication, SoftwareApplication> ActionApplication { get; set; }
 
         /// <summary>
         /// The high level platform(s) where the Action can be performed for the given URL. To specify a specific application or operating system instance, use actionApplication.
@@ -57,7 +57,7 @@
         /// </summary>
         [DataMember(Name = "actionApplication", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ISoftwareApplication> ActionApplication { get; set; }
+        public OneOrMany<ISoftwareApplication, SoftwareApplication> ActionApplication { get; set; }
 
         /// <summary>
         /// The high level platform(s) where the Action can be performed for the given URL. To specify a specific application or operating system instance, use actionApplication.

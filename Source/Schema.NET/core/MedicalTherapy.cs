@@ -17,12 +17,12 @@
         /// <summary>
         /// A therapy that duplicates or overlaps this one.
         /// </summary>
-        OneOrMany<IMedicalTherapy> DuplicateTherapy { get; set; }
+        OneOrMany<IMedicalTherapy, MedicalTherapy> DuplicateTherapy { get; set; }
 
         /// <summary>
         /// A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
         /// </summary>
-        OneOrMany<IMedicalEntity> SeriousAdverseOutcome { get; set; }
+        OneOrMany<IMedicalEntity, MedicalEntity> SeriousAdverseOutcome { get; set; }
     }
 
     /// <summary>
@@ -49,13 +49,13 @@
         /// </summary>
         [DataMember(Name = "duplicateTherapy", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalTherapy> DuplicateTherapy { get; set; }
+        public OneOrMany<IMedicalTherapy, MedicalTherapy> DuplicateTherapy { get; set; }
 
         /// <summary>
         /// A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
         /// </summary>
         [DataMember(Name = "seriousAdverseOutcome", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalEntity> SeriousAdverseOutcome { get; set; }
+        public OneOrMany<IMedicalEntity, MedicalEntity> SeriousAdverseOutcome { get; set; }
     }
 }

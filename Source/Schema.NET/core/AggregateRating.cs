@@ -12,7 +12,7 @@
         /// <summary>
         /// The item that is being reviewed/rated.
         /// </summary>
-        OneOrMany<IThing> ItemReviewed { get; set; }
+        OneOrMany<IThing, Thing> ItemReviewed { get; set; }
 
         /// <summary>
         /// The count of total number of ratings.
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "itemReviewed", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> ItemReviewed { get; set; }
+        public OneOrMany<IThing, Thing> ItemReviewed { get; set; }
 
         /// <summary>
         /// The count of total number of ratings.

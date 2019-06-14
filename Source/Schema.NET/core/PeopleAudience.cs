@@ -12,7 +12,7 @@
         /// <summary>
         /// Specifying the health condition(s) of a patient, medical study, or other target audience.
         /// </summary>
-        OneOrMany<IMedicalCondition> HealthCondition { get; set; }
+        OneOrMany<IMedicalCondition, MedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's gender.
@@ -62,7 +62,7 @@
         /// </summary>
         [DataMember(Name = "healthCondition", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalCondition> HealthCondition { get; set; }
+        public OneOrMany<IMedicalCondition, MedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's gender.

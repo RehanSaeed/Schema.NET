@@ -12,7 +12,7 @@
         /// <summary>
         /// The delivery of the parcel related to this order or order item.
         /// </summary>
-        OneOrMany<IParcelDelivery> OrderDelivery { get; set; }
+        OneOrMany<IParcelDelivery, ParcelDelivery> OrderDelivery { get; set; }
 
         /// <summary>
         /// The item ordered.
@@ -52,7 +52,7 @@
         /// </summary>
         [DataMember(Name = "orderDelivery", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IParcelDelivery> OrderDelivery { get; set; }
+        public OneOrMany<IParcelDelivery, ParcelDelivery> OrderDelivery { get; set; }
 
         /// <summary>
         /// The item ordered.

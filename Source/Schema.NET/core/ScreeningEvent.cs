@@ -22,7 +22,7 @@
         /// <summary>
         /// The movie presented during this event.
         /// </summary>
-        OneOrMany<IMovie> WorkPresented { get; set; }
+        OneOrMany<IMovie, Movie> WorkPresented { get; set; }
     }
 
     /// <summary>
@@ -56,6 +56,6 @@
         /// </summary>
         [DataMember(Name = "workPresented", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMovie> WorkPresented { get; set; }
+        public OneOrMany<IMovie, Movie> WorkPresented { get; set; }
     }
 }

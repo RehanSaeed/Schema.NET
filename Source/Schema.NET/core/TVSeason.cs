@@ -12,7 +12,7 @@
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
-        OneOrMany<ICountry> CountryOfOrigin { get; set; }
+        OneOrMany<ICountry, Country> CountryOfOrigin { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "countryOfOrigin", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICountry> CountryOfOrigin { get; set; }
+        public OneOrMany<ICountry, Country> CountryOfOrigin { get; set; }
     }
 }

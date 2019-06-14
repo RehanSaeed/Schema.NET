@@ -28,13 +28,13 @@
         /// </summary>
         [DataMember(Name = "cause", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IMedicalCause> Cause { get; set; }
+        public override OneOrMany<IMedicalCause, MedicalCause> Cause { get; set; }
 
         /// <summary>
         /// A possible treatment to address this condition, sign or symptom.
         /// </summary>
         [DataMember(Name = "possibleTreatment", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IMedicalTherapy> PossibleTreatment { get; set; }
+        public override OneOrMany<IMedicalTherapy, MedicalTherapy> PossibleTreatment { get; set; }
     }
 }

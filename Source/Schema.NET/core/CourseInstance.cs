@@ -22,7 +22,7 @@
         /// <summary>
         /// A person assigned to instruct or provide instructional assistance for the &lt;a class="localLink" href="http://schema.org/CourseInstance"&gt;CourseInstance&lt;/a&gt;.
         /// </summary>
-        OneOrMany<IPerson> Instructor { get; set; }
+        OneOrMany<IPerson, Person> Instructor { get; set; }
     }
 
     /// <summary>
@@ -56,6 +56,6 @@
         /// </summary>
         [DataMember(Name = "instructor", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Instructor { get; set; }
+        public OneOrMany<IPerson, Person> Instructor { get; set; }
     }
 }

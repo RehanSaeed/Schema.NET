@@ -18,17 +18,17 @@
         /// <summary>
         /// An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
         /// </summary>
-        OneOrMany<IOffer> AddOn { get; set; }
+        OneOrMany<IOffer, Offer> AddOn { get; set; }
 
         /// <summary>
         /// The amount of time that is required between accepting the offer and the actual usage of the resource or service.
         /// </summary>
-        OneOrMany<IQuantitativeValue> AdvanceBookingRequirement { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> AdvanceBookingRequirement { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
-        OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
@@ -53,7 +53,7 @@
         /// <summary>
         /// The place(s) from which the offer can be obtained (e.g. store locations).
         /// </summary>
-        OneOrMany<IPlace> AvailableAtOrFrom { get; set; }
+        OneOrMany<IPlace, Place> AvailableAtOrFrom { get; set; }
 
         /// <summary>
         /// The delivery method(s) available for this offer.
@@ -73,7 +73,7 @@
         /// <summary>
         /// The typical delay between the receipt of the order and the goods either leaving the warehouse or being prepared for pickup, in case the delivery method is on site pickup.
         /// </summary>
-        OneOrMany<IQuantitativeValue> DeliveryLeadTime { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> DeliveryLeadTime { get; set; }
 
         /// <summary>
         /// The type(s) of customers for which the given offer is valid.
@@ -83,12 +83,12 @@
         /// <summary>
         /// The duration for which the given offer is valid.
         /// </summary>
-        OneOrMany<IQuantitativeValue> EligibleDuration { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> EligibleDuration { get; set; }
 
         /// <summary>
         /// The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
         /// </summary>
-        OneOrMany<IQuantitativeValue> EligibleQuantity { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> EligibleQuantity { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;br/&gt;&lt;br/&gt;
@@ -99,7 +99,7 @@
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
         /// </summary>
-        OneOrMany<IPriceSpecification> EligibleTransactionVolume { get; set; }
+        OneOrMany<IPriceSpecification, PriceSpecification> EligibleTransactionVolume { get; set; }
 
         /// <summary>
         /// The GTIN-12 code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GS1 GTIN Summary&lt;/a&gt; for more details.
@@ -124,7 +124,7 @@
         /// <summary>
         /// This links to a node or nodes indicating the exact quantity of the products included in the offer.
         /// </summary>
-        OneOrMany<ITypeAndQuantityNode> IncludesObject { get; set; }
+        OneOrMany<ITypeAndQuantityNode, TypeAndQuantityNode> IncludesObject { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;br/&gt;&lt;br/&gt;
@@ -135,7 +135,7 @@
         /// <summary>
         /// The current approximate inventory level for the item or items.
         /// </summary>
-        OneOrMany<IQuantitativeValue> InventoryLevel { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> InventoryLevel { get; set; }
 
         /// <summary>
         /// A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
@@ -178,7 +178,7 @@
         /// <summary>
         /// One or more detailed price specifications, indicating the unit price and delivery or payment charges.
         /// </summary>
-        OneOrMany<IPriceSpecification> PriceSpecification { get; set; }
+        OneOrMany<IPriceSpecification, PriceSpecification> PriceSpecification { get; set; }
 
         /// <summary>
         /// The date after which the price is no longer available.
@@ -188,7 +188,7 @@
         /// <summary>
         /// A review of the item.
         /// </summary>
-        OneOrMany<IReview> Review { get; set; }
+        OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
@@ -218,7 +218,7 @@
         /// <summary>
         /// The warranty promise(s) included in the offer.
         /// </summary>
-        OneOrMany<IWarrantyPromise> Warranty { get; set; }
+        OneOrMany<IWarrantyPromise, WarrantyPromise> Warranty { get; set; }
     }
 
     /// <summary>
@@ -246,21 +246,21 @@
         /// </summary>
         [DataMember(Name = "addOn", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> AddOn { get; set; }
+        public OneOrMany<IOffer, Offer> AddOn { get; set; }
 
         /// <summary>
         /// The amount of time that is required between accepting the offer and the actual usage of the resource or service.
         /// </summary>
         [DataMember(Name = "advanceBookingRequirement", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> AdvanceBookingRequirement { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> AdvanceBookingRequirement { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
@@ -295,7 +295,7 @@
         /// </summary>
         [DataMember(Name = "availableAtOrFrom", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> AvailableAtOrFrom { get; set; }
+        public OneOrMany<IPlace, Place> AvailableAtOrFrom { get; set; }
 
         /// <summary>
         /// The delivery method(s) available for this offer.
@@ -323,7 +323,7 @@
         /// </summary>
         [DataMember(Name = "deliveryLeadTime", Order = 218)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> DeliveryLeadTime { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> DeliveryLeadTime { get; set; }
 
         /// <summary>
         /// The type(s) of customers for which the given offer is valid.
@@ -337,14 +337,14 @@
         /// </summary>
         [DataMember(Name = "eligibleDuration", Order = 220)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> EligibleDuration { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> EligibleDuration { get; set; }
 
         /// <summary>
         /// The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
         /// </summary>
         [DataMember(Name = "eligibleQuantity", Order = 221)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> EligibleQuantity { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> EligibleQuantity { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;br/&gt;&lt;br/&gt;
@@ -359,7 +359,7 @@
         /// </summary>
         [DataMember(Name = "eligibleTransactionVolume", Order = 223)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPriceSpecification> EligibleTransactionVolume { get; set; }
+        public OneOrMany<IPriceSpecification, PriceSpecification> EligibleTransactionVolume { get; set; }
 
         /// <summary>
         /// The GTIN-12 code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GS1 GTIN Summary&lt;/a&gt; for more details.
@@ -394,7 +394,7 @@
         /// </summary>
         [DataMember(Name = "includesObject", Order = 228)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ITypeAndQuantityNode> IncludesObject { get; set; }
+        public OneOrMany<ITypeAndQuantityNode, TypeAndQuantityNode> IncludesObject { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;br/&gt;&lt;br/&gt;
@@ -409,7 +409,7 @@
         /// </summary>
         [DataMember(Name = "inventoryLevel", Order = 230)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> InventoryLevel { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> InventoryLevel { get; set; }
 
         /// <summary>
         /// A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
@@ -466,7 +466,7 @@
         /// </summary>
         [DataMember(Name = "priceSpecification", Order = 237)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPriceSpecification> PriceSpecification { get; set; }
+        public OneOrMany<IPriceSpecification, PriceSpecification> PriceSpecification { get; set; }
 
         /// <summary>
         /// The date after which the price is no longer available.
@@ -480,7 +480,7 @@
         /// </summary>
         [DataMember(Name = "review", Order = 239)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IReview> Review { get; set; }
+        public OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
@@ -522,6 +522,6 @@
         /// </summary>
         [DataMember(Name = "warranty", Order = 245)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IWarrantyPromise> Warranty { get; set; }
+        public OneOrMany<IWarrantyPromise, WarrantyPromise> Warranty { get; set; }
     }
 }

@@ -12,12 +12,12 @@
         /// <summary>
         /// The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
         /// </summary>
-        OneOrMany<IOffer> AcceptedOffer { get; set; }
+        OneOrMany<IOffer, Offer> AcceptedOffer { get; set; }
 
         /// <summary>
         /// The billing address for the order.
         /// </summary>
-        OneOrMany<IPostalAddress> BillingAddress { get; set; }
+        OneOrMany<IPostalAddress, PostalAddress> BillingAddress { get; set; }
 
         /// <summary>
         /// An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
@@ -63,7 +63,7 @@
         /// <summary>
         /// The delivery of the parcel related to this order or order item.
         /// </summary>
-        OneOrMany<IParcelDelivery> OrderDelivery { get; set; }
+        OneOrMany<IParcelDelivery, ParcelDelivery> OrderDelivery { get; set; }
 
         /// <summary>
         /// The item ordered.
@@ -83,7 +83,7 @@
         /// <summary>
         /// The order is being paid as part of the referenced Invoice.
         /// </summary>
-        OneOrMany<IInvoice> PartOfInvoice { get; set; }
+        OneOrMany<IInvoice, Invoice> PartOfInvoice { get; set; }
 
         /// <summary>
         /// The date that payment is due.
@@ -128,14 +128,14 @@
         /// </summary>
         [DataMember(Name = "acceptedOffer", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> AcceptedOffer { get; set; }
+        public OneOrMany<IOffer, Offer> AcceptedOffer { get; set; }
 
         /// <summary>
         /// The billing address for the order.
         /// </summary>
         [DataMember(Name = "billingAddress", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPostalAddress> BillingAddress { get; set; }
+        public OneOrMany<IPostalAddress, PostalAddress> BillingAddress { get; set; }
 
         /// <summary>
         /// An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
@@ -199,7 +199,7 @@
         /// </summary>
         [DataMember(Name = "orderDelivery", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IParcelDelivery> OrderDelivery { get; set; }
+        public OneOrMany<IParcelDelivery, ParcelDelivery> OrderDelivery { get; set; }
 
         /// <summary>
         /// The item ordered.
@@ -227,7 +227,7 @@
         /// </summary>
         [DataMember(Name = "partOfInvoice", Order = 220)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IInvoice> PartOfInvoice { get; set; }
+        public OneOrMany<IInvoice, Invoice> PartOfInvoice { get; set; }
 
         /// <summary>
         /// The date that payment is due.

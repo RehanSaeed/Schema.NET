@@ -12,7 +12,7 @@
         /// <summary>
         /// A diagnostic test or procedure offered by this lab.
         /// </summary>
-        OneOrMany<IMedicalTest> AvailableTest { get; set; }
+        OneOrMany<IMedicalTest, MedicalTest> AvailableTest { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "availableTest", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalTest> AvailableTest { get; set; }
+        public OneOrMany<IMedicalTest, MedicalTest> AvailableTest { get; set; }
     }
 }

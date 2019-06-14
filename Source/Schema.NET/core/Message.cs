@@ -37,7 +37,7 @@
         /// <summary>
         /// A CreativeWork attached to the message.
         /// </summary>
-        OneOrMany<ICreativeWork> MessageAttachment { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> MessageAttachment { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
@@ -107,7 +107,7 @@
         /// </summary>
         [DataMember(Name = "messageAttachment", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> MessageAttachment { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> MessageAttachment { get; set; }
 
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.

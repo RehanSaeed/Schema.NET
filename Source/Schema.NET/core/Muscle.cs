@@ -17,17 +17,17 @@
         /// <summary>
         /// The muscle whose action counteracts the specified muscle.
         /// </summary>
-        OneOrMany<IMuscle> Antagonist { get; set; }
+        OneOrMany<IMuscle, Muscle> Antagonist { get; set; }
 
         /// <summary>
         /// The blood vessel that carries blood from the heart to the muscle.
         /// </summary>
-        OneOrMany<IVessel> BloodSupply { get; set; }
+        OneOrMany<IVessel, Vessel> BloodSupply { get; set; }
 
         /// <summary>
         /// The place of attachment of a muscle, or what the muscle moves.
         /// </summary>
-        OneOrMany<IAnatomicalStructure> Insertion { get; set; }
+        OneOrMany<IAnatomicalStructure, AnatomicalStructure> Insertion { get; set; }
 
         /// <summary>
         /// The movement the muscle generates.
@@ -37,12 +37,12 @@
         /// <summary>
         /// The underlying innervation associated with the muscle.
         /// </summary>
-        OneOrMany<INerve> Nerve { get; set; }
+        OneOrMany<INerve, Nerve> Nerve { get; set; }
 
         /// <summary>
         /// The place or point where a muscle arises.
         /// </summary>
-        OneOrMany<IAnatomicalStructure> Origin { get; set; }
+        OneOrMany<IAnatomicalStructure, AnatomicalStructure> Origin { get; set; }
     }
 
     /// <summary>
@@ -69,21 +69,21 @@
         /// </summary>
         [DataMember(Name = "antagonist", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMuscle> Antagonist { get; set; }
+        public OneOrMany<IMuscle, Muscle> Antagonist { get; set; }
 
         /// <summary>
         /// The blood vessel that carries blood from the heart to the muscle.
         /// </summary>
         [DataMember(Name = "bloodSupply", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IVessel> BloodSupply { get; set; }
+        public OneOrMany<IVessel, Vessel> BloodSupply { get; set; }
 
         /// <summary>
         /// The place of attachment of a muscle, or what the muscle moves.
         /// </summary>
         [DataMember(Name = "insertion", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> Insertion { get; set; }
+        public OneOrMany<IAnatomicalStructure, AnatomicalStructure> Insertion { get; set; }
 
         /// <summary>
         /// The movement the muscle generates.
@@ -97,13 +97,13 @@
         /// </summary>
         [DataMember(Name = "nerve", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<INerve> Nerve { get; set; }
+        public OneOrMany<INerve, Nerve> Nerve { get; set; }
 
         /// <summary>
         /// The place or point where a muscle arises.
         /// </summary>
         [DataMember(Name = "origin", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> Origin { get; set; }
+        public OneOrMany<IAnatomicalStructure, AnatomicalStructure> Origin { get; set; }
     }
 }

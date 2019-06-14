@@ -27,7 +27,7 @@
         /// <summary>
         /// The medical conditions, treatments, etc. that are the subject of the guideline.
         /// </summary>
-        OneOrMany<IMedicalEntity> GuidelineSubject { get; set; }
+        OneOrMany<IMedicalEntity, MedicalEntity> GuidelineSubject { get; set; }
     }
 
     /// <summary>
@@ -68,6 +68,6 @@
         /// </summary>
         [DataMember(Name = "guidelineSubject", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalEntity> GuidelineSubject { get; set; }
+        public OneOrMany<IMedicalEntity, MedicalEntity> GuidelineSubject { get; set; }
     }
 }

@@ -12,7 +12,7 @@
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Actor { get; set; }
+        OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// Position of the clip within an ordered group of clips.
@@ -22,7 +22,7 @@
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Director { get; set; }
+        OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The end time of the clip expressed as the number of seconds from the beginning of the work.
@@ -37,17 +37,17 @@
         /// <summary>
         /// The episode to which this clip belongs.
         /// </summary>
-        OneOrMany<IEpisode> PartOfEpisode { get; set; }
+        OneOrMany<IEpisode, Episode> PartOfEpisode { get; set; }
 
         /// <summary>
         /// The season to which this episode belongs.
         /// </summary>
-        OneOrMany<ICreativeWorkSeason> PartOfSeason { get; set; }
+        OneOrMany<ICreativeWorkSeason, CreativeWorkSeason> PartOfSeason { get; set; }
 
         /// <summary>
         /// The series to which this episode or season belongs.
         /// </summary>
-        OneOrMany<ICreativeWorkSeries> PartOfSeries { get; set; }
+        OneOrMany<ICreativeWorkSeries, CreativeWorkSeries> PartOfSeries { get; set; }
 
         /// <summary>
         /// The start time of the clip expressed as the number of seconds from the beginning of the work.
@@ -72,7 +72,7 @@
         /// </summary>
         [DataMember(Name = "actor", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Actor { get; set; }
+        public OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// Position of the clip within an ordered group of clips.
@@ -86,7 +86,7 @@
         /// </summary>
         [DataMember(Name = "director", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Director { get; set; }
+        public OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The end time of the clip expressed as the number of seconds from the beginning of the work.
@@ -107,21 +107,21 @@
         /// </summary>
         [DataMember(Name = "partOfEpisode", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEpisode> PartOfEpisode { get; set; }
+        public OneOrMany<IEpisode, Episode> PartOfEpisode { get; set; }
 
         /// <summary>
         /// The season to which this episode belongs.
         /// </summary>
         [DataMember(Name = "partOfSeason", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWorkSeason> PartOfSeason { get; set; }
+        public OneOrMany<ICreativeWorkSeason, CreativeWorkSeason> PartOfSeason { get; set; }
 
         /// <summary>
         /// The series to which this episode or season belongs.
         /// </summary>
         [DataMember(Name = "partOfSeries", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWorkSeries> PartOfSeries { get; set; }
+        public OneOrMany<ICreativeWorkSeries, CreativeWorkSeries> PartOfSeries { get; set; }
 
         /// <summary>
         /// The start time of the clip expressed as the number of seconds from the beginning of the work.

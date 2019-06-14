@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
-        OneOrMany<IPlace> ToLocation { get; set; }
+        OneOrMany<IPlace, Place> ToLocation { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "toLocation", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> ToLocation { get; set; }
+        public OneOrMany<IPlace, Place> ToLocation { get; set; }
     }
 }

@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of result. The Comment created or sent as a result of this action.
         /// </summary>
-        OneOrMany<IComment> ResultComment { get; set; }
+        OneOrMany<IComment, Comment> ResultComment { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "resultComment", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IComment> ResultComment { get; set; }
+        public OneOrMany<IComment, Comment> ResultComment { get; set; }
     }
 }

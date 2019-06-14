@@ -15,7 +15,7 @@
         /// * Note 1: You can link to information about how the given value has been determined using the &lt;a class="localLink" href="http://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.
         /// * Note 2: You can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.
         /// </summary>
-        OneOrMany<IQuantitativeValue> EngineDisplacement { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> EngineDisplacement { get; set; }
 
         /// <summary>
         /// The power of the vehicle's engine.
@@ -26,7 +26,7 @@
         /// &lt;li&gt;Note 3: You can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        OneOrMany<IQuantitativeValue> EnginePower { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> EnginePower { get; set; }
 
         /// <summary>
         /// The type of engine or engines powering the vehicle.
@@ -46,7 +46,7 @@
         /// &lt;li&gt;Note 2: You can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        OneOrMany<IQuantitativeValue> Torque { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> Torque { get; set; }
     }
 
     /// <summary>
@@ -69,7 +69,7 @@
         /// </summary>
         [DataMember(Name = "engineDisplacement", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> EngineDisplacement { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> EngineDisplacement { get; set; }
 
         /// <summary>
         /// The power of the vehicle's engine.
@@ -82,7 +82,7 @@
         /// </summary>
         [DataMember(Name = "enginePower", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> EnginePower { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> EnginePower { get; set; }
 
         /// <summary>
         /// The type of engine or engines powering the vehicle.
@@ -108,6 +108,6 @@
         /// </summary>
         [DataMember(Name = "torque", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> Torque { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> Torque { get; set; }
     }
 }

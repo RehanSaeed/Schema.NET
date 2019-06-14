@@ -16,7 +16,7 @@
         /// The size of the accommodation, e.g. in square meter or squarefoot.
         /// Typical unit code(s): MTK for square meter, FTK for square foot, or YDK for square yard
         /// </summary>
-        OneOrMany<IQuantitativeValue> FloorSize { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> FloorSize { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
@@ -55,7 +55,7 @@
         /// </summary>
         [DataMember(Name = "amenityFeature", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<ILocationFeatureSpecification> AmenityFeature { get; set; }
+        public override OneOrMany<ILocationFeatureSpecification, LocationFeatureSpecification> AmenityFeature { get; set; }
 
         /// <summary>
         /// The size of the accommodation, e.g. in square meter or squarefoot.
@@ -63,7 +63,7 @@
         /// </summary>
         [DataMember(Name = "floorSize", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> FloorSize { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> FloorSize { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.

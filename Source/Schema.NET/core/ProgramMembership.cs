@@ -12,7 +12,7 @@
         /// <summary>
         /// The organization (airline, travelers' club, etc.) the membership is made with.
         /// </summary>
-        OneOrMany<IOrganization> HostingOrganization { get; set; }
+        OneOrMany<IOrganization, Organization> HostingOrganization { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
@@ -52,7 +52,7 @@
         /// </summary>
         [DataMember(Name = "hostingOrganization", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> HostingOrganization { get; set; }
+        public OneOrMany<IOrganization, Organization> HostingOrganization { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.

@@ -28,6 +28,6 @@
         /// </summary>
         [DataMember(Name = "alumni", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Alumni { get; set; }
+        public override OneOrMany<IPerson, Person> Alumni { get; set; }
     }
 }

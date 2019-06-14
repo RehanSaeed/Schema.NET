@@ -13,17 +13,17 @@
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
         /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
-        OneOrMany<IPropertyValue> AdditionalProperty { get; set; }
+        OneOrMany<IPropertyValue, PropertyValue> AdditionalProperty { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
-        OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
-        OneOrMany<IAudience> Audience { get; set; }
+        OneOrMany<IAudience, Audience> Audience { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -78,12 +78,12 @@
         /// <summary>
         /// A pointer to another product (or multiple products) for which this product is an accessory or spare part.
         /// </summary>
-        OneOrMany<IProduct> IsAccessoryOrSparePartFor { get; set; }
+        OneOrMany<IProduct, Product> IsAccessoryOrSparePartFor { get; set; }
 
         /// <summary>
         /// A pointer to another product (or multiple products) for which this product is a consumable.
         /// </summary>
-        OneOrMany<IProduct> IsConsumableFor { get; set; }
+        OneOrMany<IProduct, Product> IsConsumableFor { get; set; }
 
         /// <summary>
         /// A pointer to another, somehow related product (or multiple products).
@@ -108,7 +108,7 @@
         /// <summary>
         /// The manufacturer of the product.
         /// </summary>
-        OneOrMany<IOrganization> Manufacturer { get; set; }
+        OneOrMany<IOrganization, Organization> Manufacturer { get; set; }
 
         /// <summary>
         /// A material that something is made from, e.g. leather, wool, cotton, paper.
@@ -133,7 +133,7 @@
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        OneOrMany<IOffer> Offers { get; set; }
+        OneOrMany<IOffer, Offer> Offers { get; set; }
 
         /// <summary>
         /// The product identifier, such as ISBN. For example: &lt;code&gt;meta itemprop="productID" content="isbn:123-456-789"&lt;/code&gt;.
@@ -158,7 +158,7 @@
         /// <summary>
         /// A review of the item.
         /// </summary>
-        OneOrMany<IReview> Review { get; set; }
+        OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
@@ -173,7 +173,7 @@
         /// <summary>
         /// The weight of the product or person.
         /// </summary>
-        OneOrMany<IQuantitativeValue> Weight { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> Weight { get; set; }
 
         /// <summary>
         /// The width of the item.
@@ -199,21 +199,21 @@
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 106)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPropertyValue> AdditionalProperty { get; set; }
+        public OneOrMany<IPropertyValue, PropertyValue> AdditionalProperty { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
         [DataMember(Name = "audience", Order = 108)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAudience> Audience { get; set; }
+        public OneOrMany<IAudience, Audience> Audience { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -290,14 +290,14 @@
         /// </summary>
         [DataMember(Name = "isAccessoryOrSparePartFor", Order = 119)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IProduct> IsAccessoryOrSparePartFor { get; set; }
+        public OneOrMany<IProduct, Product> IsAccessoryOrSparePartFor { get; set; }
 
         /// <summary>
         /// A pointer to another product (or multiple products) for which this product is a consumable.
         /// </summary>
         [DataMember(Name = "isConsumableFor", Order = 120)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IProduct> IsConsumableFor { get; set; }
+        public OneOrMany<IProduct, Product> IsConsumableFor { get; set; }
 
         /// <summary>
         /// A pointer to another, somehow related product (or multiple products).
@@ -332,7 +332,7 @@
         /// </summary>
         [DataMember(Name = "manufacturer", Order = 125)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> Manufacturer { get; set; }
+        public OneOrMany<IOrganization, Organization> Manufacturer { get; set; }
 
         /// <summary>
         /// A material that something is made from, e.g. leather, wool, cotton, paper.
@@ -367,7 +367,7 @@
         /// </summary>
         [DataMember(Name = "offers", Order = 130)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> Offers { get; set; }
+        public OneOrMany<IOffer, Offer> Offers { get; set; }
 
         /// <summary>
         /// The product identifier, such as ISBN. For example: &lt;code&gt;meta itemprop="productID" content="isbn:123-456-789"&lt;/code&gt;.
@@ -402,7 +402,7 @@
         /// </summary>
         [DataMember(Name = "review", Order = 135)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IReview> Review { get; set; }
+        public OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
@@ -423,7 +423,7 @@
         /// </summary>
         [DataMember(Name = "weight", Order = 138)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> Weight { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> Weight { get; set; }
 
         /// <summary>
         /// The width of the item.

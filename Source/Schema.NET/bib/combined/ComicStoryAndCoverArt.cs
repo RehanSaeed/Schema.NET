@@ -30,34 +30,34 @@
         /// </summary>
         [DataMember(Name = "artist", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Artist { get; set; }
+        public override OneOrMany<IPerson, Person> Artist { get; set; }
 
         /// <summary>
         /// The individual who adds color to inked drawings.
         /// </summary>
         [DataMember(Name = "colorist", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Colorist { get; set; }
+        public override OneOrMany<IPerson, Person> Colorist { get; set; }
 
         /// <summary>
         /// The individual who traces over the pencil drawings in ink after pencils are complete.
         /// </summary>
         [DataMember(Name = "inker", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Inker { get; set; }
+        public override OneOrMany<IPerson, Person> Inker { get; set; }
 
         /// <summary>
         /// The individual who adds lettering, including speech balloons and sound effects, to artwork.
         /// </summary>
         [DataMember(Name = "letterer", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Letterer { get; set; }
+        public override OneOrMany<IPerson, Person> Letterer { get; set; }
 
         /// <summary>
         /// The individual who draws the primary narrative artwork.
         /// </summary>
         [DataMember(Name = "penciler", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Penciler { get; set; }
+        public override OneOrMany<IPerson, Person> Penciler { get; set; }
     }
 }

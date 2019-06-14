@@ -17,7 +17,7 @@
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        OneOrMany<IEvent> Event { get; set; }
+        OneOrMany<IEvent, Event> Event { get; set; }
     }
 
     /// <summary>
@@ -42,6 +42,6 @@
         /// </summary>
         [DataMember(Name = "event", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> Event { get; set; }
+        public OneOrMany<IEvent, Event> Event { get; set; }
     }
 }

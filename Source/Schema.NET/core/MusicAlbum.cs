@@ -17,7 +17,7 @@
         /// <summary>
         /// A release of this album.
         /// </summary>
-        OneOrMany<IMusicRelease> AlbumRelease { get; set; }
+        OneOrMany<IMusicRelease, MusicRelease> AlbumRelease { get; set; }
 
         /// <summary>
         /// The kind of release which this album is: single, EP or album.
@@ -54,7 +54,7 @@
         /// </summary>
         [DataMember(Name = "albumRelease", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMusicRelease> AlbumRelease { get; set; }
+        public OneOrMany<IMusicRelease, MusicRelease> AlbumRelease { get; set; }
 
         /// <summary>
         /// The kind of release which this album is: single, EP or album.

@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of instrument. The diet used in this action.
         /// </summary>
-        OneOrMany<IDiet> Diet { get; set; }
+        OneOrMany<IDiet, Diet> Diet { get; set; }
 
         /// <summary>
         /// The distance travelled, e.g. exercising or travelling.
@@ -22,17 +22,17 @@
         /// <summary>
         /// A sub property of location. The course where this action was taken.
         /// </summary>
-        OneOrMany<IPlace> ExerciseCourse { get; set; }
+        OneOrMany<IPlace, Place> ExerciseCourse { get; set; }
 
         /// <summary>
         /// A sub property of instrument. The exercise plan used on this action.
         /// </summary>
-        OneOrMany<IExercisePlan> ExercisePlan { get; set; }
+        OneOrMany<IExercisePlan, ExercisePlan> ExercisePlan { get; set; }
 
         /// <summary>
         /// A sub property of instrument. The diet used in this action.
         /// </summary>
-        OneOrMany<IDiet> ExerciseRelatedDiet { get; set; }
+        OneOrMany<IDiet, Diet> ExerciseRelatedDiet { get; set; }
 
         /// <summary>
         /// Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
@@ -42,32 +42,32 @@
         /// <summary>
         /// A sub property of location. The original location of the object or the agent before the action.
         /// </summary>
-        OneOrMany<IPlace> FromLocation { get; set; }
+        OneOrMany<IPlace, Place> FromLocation { get; set; }
 
         /// <summary>
         /// A sub property of participant. The opponent on this action.
         /// </summary>
-        OneOrMany<IPerson> Opponent { get; set; }
+        OneOrMany<IPerson, Person> Opponent { get; set; }
 
         /// <summary>
         /// A sub property of location. The sports activity location where this action occurred.
         /// </summary>
-        OneOrMany<ISportsActivityLocation> SportsActivityLocation { get; set; }
+        OneOrMany<ISportsActivityLocation, SportsActivityLocation> SportsActivityLocation { get; set; }
 
         /// <summary>
         /// A sub property of location. The sports event where this action occurred.
         /// </summary>
-        OneOrMany<ISportsEvent> SportsEvent { get; set; }
+        OneOrMany<ISportsEvent, SportsEvent> SportsEvent { get; set; }
 
         /// <summary>
         /// A sub property of participant. The sports team that participated on this action.
         /// </summary>
-        OneOrMany<ISportsTeam> SportsTeam { get; set; }
+        OneOrMany<ISportsTeam, SportsTeam> SportsTeam { get; set; }
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
-        OneOrMany<IPlace> ToLocation { get; set; }
+        OneOrMany<IPlace, Place> ToLocation { get; set; }
     }
 
     /// <summary>
@@ -87,7 +87,7 @@
         /// </summary>
         [DataMember(Name = "diet", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDiet> Diet { get; set; }
+        public OneOrMany<IDiet, Diet> Diet { get; set; }
 
         /// <summary>
         /// The distance travelled, e.g. exercising or travelling.
@@ -101,21 +101,21 @@
         /// </summary>
         [DataMember(Name = "exerciseCourse", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> ExerciseCourse { get; set; }
+        public OneOrMany<IPlace, Place> ExerciseCourse { get; set; }
 
         /// <summary>
         /// A sub property of instrument. The exercise plan used on this action.
         /// </summary>
         [DataMember(Name = "exercisePlan", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IExercisePlan> ExercisePlan { get; set; }
+        public OneOrMany<IExercisePlan, ExercisePlan> ExercisePlan { get; set; }
 
         /// <summary>
         /// A sub property of instrument. The diet used in this action.
         /// </summary>
         [DataMember(Name = "exerciseRelatedDiet", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDiet> ExerciseRelatedDiet { get; set; }
+        public OneOrMany<IDiet, Diet> ExerciseRelatedDiet { get; set; }
 
         /// <summary>
         /// Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
@@ -129,41 +129,41 @@
         /// </summary>
         [DataMember(Name = "fromLocation", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> FromLocation { get; set; }
+        public OneOrMany<IPlace, Place> FromLocation { get; set; }
 
         /// <summary>
         /// A sub property of participant. The opponent on this action.
         /// </summary>
         [DataMember(Name = "opponent", Order = 313)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Opponent { get; set; }
+        public OneOrMany<IPerson, Person> Opponent { get; set; }
 
         /// <summary>
         /// A sub property of location. The sports activity location where this action occurred.
         /// </summary>
         [DataMember(Name = "sportsActivityLocation", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ISportsActivityLocation> SportsActivityLocation { get; set; }
+        public OneOrMany<ISportsActivityLocation, SportsActivityLocation> SportsActivityLocation { get; set; }
 
         /// <summary>
         /// A sub property of location. The sports event where this action occurred.
         /// </summary>
         [DataMember(Name = "sportsEvent", Order = 315)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ISportsEvent> SportsEvent { get; set; }
+        public OneOrMany<ISportsEvent, SportsEvent> SportsEvent { get; set; }
 
         /// <summary>
         /// A sub property of participant. The sports team that participated on this action.
         /// </summary>
         [DataMember(Name = "sportsTeam", Order = 316)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ISportsTeam> SportsTeam { get; set; }
+        public OneOrMany<ISportsTeam, SportsTeam> SportsTeam { get; set; }
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
         [DataMember(Name = "toLocation", Order = 317)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> ToLocation { get; set; }
+        public OneOrMany<IPlace, Place> ToLocation { get; set; }
     }
 }

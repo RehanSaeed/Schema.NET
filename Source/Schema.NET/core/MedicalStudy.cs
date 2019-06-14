@@ -12,7 +12,7 @@
         /// <summary>
         /// Specifying the health condition(s) of a patient, medical study, or other target audience.
         /// </summary>
-        OneOrMany<IMedicalCondition> HealthCondition { get; set; }
+        OneOrMany<IMedicalCondition, MedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
         /// Expected or actual outcomes of the study.
@@ -37,12 +37,12 @@
         /// <summary>
         /// The location in which the study is taking/took place.
         /// </summary>
-        OneOrMany<IAdministrativeArea> StudyLocation { get; set; }
+        OneOrMany<IAdministrativeArea, AdministrativeArea> StudyLocation { get; set; }
 
         /// <summary>
         /// A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
         /// </summary>
-        OneOrMany<IMedicalEntity> StudySubject { get; set; }
+        OneOrMany<IMedicalEntity, MedicalEntity> StudySubject { get; set; }
     }
 
     /// <summary>
@@ -62,7 +62,7 @@
         /// </summary>
         [DataMember(Name = "healthCondition", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalCondition> HealthCondition { get; set; }
+        public OneOrMany<IMedicalCondition, MedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
         /// Expected or actual outcomes of the study.
@@ -97,13 +97,13 @@
         /// </summary>
         [DataMember(Name = "studyLocation", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAdministrativeArea> StudyLocation { get; set; }
+        public OneOrMany<IAdministrativeArea, AdministrativeArea> StudyLocation { get; set; }
 
         /// <summary>
         /// A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
         /// </summary>
         [DataMember(Name = "studySubject", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalEntity> StudySubject { get; set; }
+        public OneOrMany<IMedicalEntity, MedicalEntity> StudySubject { get; set; }
     }
 }

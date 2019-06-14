@@ -17,7 +17,7 @@
         /// <summary>
         /// The airport where the flight terminates.
         /// </summary>
-        OneOrMany<IAirport> ArrivalAirport { get; set; }
+        OneOrMany<IAirport, Airport> ArrivalAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's arrival gate.
@@ -37,7 +37,7 @@
         /// <summary>
         /// The airport where the flight originates.
         /// </summary>
-        OneOrMany<IAirport> DepartureAirport { get; set; }
+        OneOrMany<IAirport, Airport> DepartureAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's departure gate.
@@ -104,7 +104,7 @@
         /// </summary>
         [DataMember(Name = "arrivalAirport", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAirport> ArrivalAirport { get; set; }
+        public OneOrMany<IAirport, Airport> ArrivalAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's arrival gate.
@@ -132,7 +132,7 @@
         /// </summary>
         [DataMember(Name = "departureAirport", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAirport> DepartureAirport { get; set; }
+        public OneOrMany<IAirport, Airport> DepartureAirport { get; set; }
 
         /// <summary>
         /// Identifier of the flight's departure gate.

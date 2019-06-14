@@ -12,7 +12,7 @@
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
-        OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// An associated logo.
@@ -22,7 +22,7 @@
         /// <summary>
         /// A review of the item.
         /// </summary>
-        OneOrMany<IReview> Review { get; set; }
+        OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
@@ -47,7 +47,7 @@
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// An associated logo.
@@ -61,7 +61,7 @@
         /// </summary>
         [DataMember(Name = "review", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IReview> Review { get; set; }
+        public OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.

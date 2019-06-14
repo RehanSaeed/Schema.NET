@@ -12,12 +12,12 @@
         /// <summary>
         /// The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
         /// </summary>
-        OneOrMany<IQuantitativeValue> EligibleQuantity { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> EligibleQuantity { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
         /// </summary>
-        OneOrMany<IPriceSpecification> EligibleTransactionVolume { get; set; }
+        OneOrMany<IPriceSpecification, PriceSpecification> EligibleTransactionVolume { get; set; }
 
         /// <summary>
         /// The highest price if the price is a range.
@@ -80,14 +80,14 @@
         /// </summary>
         [DataMember(Name = "eligibleQuantity", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> EligibleQuantity { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> EligibleQuantity { get; set; }
 
         /// <summary>
         /// The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
         /// </summary>
         [DataMember(Name = "eligibleTransactionVolume", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPriceSpecification> EligibleTransactionVolume { get; set; }
+        public OneOrMany<IPriceSpecification, PriceSpecification> EligibleTransactionVolume { get; set; }
 
         /// <summary>
         /// The highest price if the price is a range.

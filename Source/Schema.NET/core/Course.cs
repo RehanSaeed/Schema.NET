@@ -27,7 +27,7 @@
         /// <summary>
         /// An offering of the course at a specific time and place or through specific media or mode of study or to a specific section of students.
         /// </summary>
-        OneOrMany<ICourseInstance> HasCourseInstance { get; set; }
+        OneOrMany<ICourseInstance, CourseInstance> HasCourseInstance { get; set; }
     }
 
     /// <summary>
@@ -68,6 +68,6 @@
         /// </summary>
         [DataMember(Name = "hasCourseInstance", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICourseInstance> HasCourseInstance { get; set; }
+        public OneOrMany<ICourseInstance, CourseInstance> HasCourseInstance { get; set; }
     }
 }

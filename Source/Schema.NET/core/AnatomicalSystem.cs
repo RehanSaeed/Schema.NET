@@ -22,17 +22,17 @@
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
-        OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
+        OneOrMany<IMedicalCondition, MedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// Related anatomical structure(s) that are not part of the system but relate or connect to it, such as vascular bundles associated with an organ system.
         /// </summary>
-        OneOrMany<IAnatomicalStructure> RelatedStructure { get; set; }
+        OneOrMany<IAnatomicalStructure, AnatomicalStructure> RelatedStructure { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
-        OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
+        OneOrMany<IMedicalTherapy, MedicalTherapy> RelatedTherapy { get; set; }
     }
 
     /// <summary>
@@ -66,20 +66,20 @@
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
+        public OneOrMany<IMedicalCondition, MedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// Related anatomical structure(s) that are not part of the system but relate or connect to it, such as vascular bundles associated with an organ system.
         /// </summary>
         [DataMember(Name = "relatedStructure", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> RelatedStructure { get; set; }
+        public OneOrMany<IAnatomicalStructure, AnatomicalStructure> RelatedStructure { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
+        public OneOrMany<IMedicalTherapy, MedicalTherapy> RelatedTherapy { get; set; }
     }
 }

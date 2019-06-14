@@ -17,7 +17,7 @@
         /// <summary>
         /// The parent of a question, answer or item in general.
         /// </summary>
-        OneOrMany<IQuestion> ParentItem { get; set; }
+        OneOrMany<IQuestion, Question> ParentItem { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.
@@ -49,7 +49,7 @@
         /// </summary>
         [DataMember(Name = "parentItem", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuestion> ParentItem { get; set; }
+        public OneOrMany<IQuestion, Question> ParentItem { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.

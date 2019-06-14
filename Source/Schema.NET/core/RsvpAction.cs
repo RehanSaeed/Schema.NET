@@ -17,7 +17,7 @@
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
-        OneOrMany<IComment> Comment { get; set; }
+        OneOrMany<IComment, Comment> Comment { get; set; }
 
         /// <summary>
         /// The response (yes, no, maybe) to the RSVP.
@@ -49,7 +49,7 @@
         /// </summary>
         [DataMember(Name = "comment", Order = 507)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IComment> Comment { get; set; }
+        public OneOrMany<IComment, Comment> Comment { get; set; }
 
         /// <summary>
         /// The response (yes, no, maybe) to the RSVP.

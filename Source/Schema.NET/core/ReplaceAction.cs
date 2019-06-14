@@ -12,12 +12,12 @@
         /// <summary>
         /// A sub property of object. The object that is being replaced.
         /// </summary>
-        OneOrMany<IThing> Replacee { get; set; }
+        OneOrMany<IThing, Thing> Replacee { get; set; }
 
         /// <summary>
         /// A sub property of object. The object that replaces.
         /// </summary>
-        OneOrMany<IThing> Replacer { get; set; }
+        OneOrMany<IThing, Thing> Replacer { get; set; }
     }
 
     /// <summary>
@@ -37,13 +37,13 @@
         /// </summary>
         [DataMember(Name = "replacee", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Replacee { get; set; }
+        public OneOrMany<IThing, Thing> Replacee { get; set; }
 
         /// <summary>
         /// A sub property of object. The object that replaces.
         /// </summary>
         [DataMember(Name = "replacer", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Replacer { get; set; }
+        public OneOrMany<IThing, Thing> Replacer { get; set; }
     }
 }

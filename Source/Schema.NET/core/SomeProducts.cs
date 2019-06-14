@@ -12,7 +12,7 @@
         /// <summary>
         /// The current approximate inventory level for the item or items.
         /// </summary>
-        OneOrMany<IQuantitativeValue> InventoryLevel { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> InventoryLevel { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "inventoryLevel", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> InventoryLevel { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> InventoryLevel { get; set; }
     }
 }

@@ -12,7 +12,7 @@
         /// <summary>
         /// The condition, complication, symptom, sign, etc. caused.
         /// </summary>
-        OneOrMany<IMedicalEntity> CauseOf { get; set; }
+        OneOrMany<IMedicalEntity, MedicalEntity> CauseOf { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "causeOf", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalEntity> CauseOf { get; set; }
+        public OneOrMany<IMedicalEntity, MedicalEntity> CauseOf { get; set; }
     }
 }

@@ -12,17 +12,17 @@
         /// <summary>
         /// The subject matter of the content.
         /// </summary>
-        OneOrMany<IThing> About { get; set; }
+        OneOrMany<IThing, Thing> About { get; set; }
 
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Actor { get; set; }
+        OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
-        OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// A person or organization attending the event.
@@ -32,7 +32,7 @@
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
-        OneOrMany<IAudience> Audience { get; set; }
+        OneOrMany<IAudience, Audience> Audience { get; set; }
 
         /// <summary>
         /// The person or organization who wrote a composition, or who is the composer of a work performed at some event.
@@ -47,7 +47,7 @@
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Director { get; set; }
+        OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The time admission will commence.
@@ -92,7 +92,7 @@
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        OneOrMany<IOffer> Offers { get; set; }
+        OneOrMany<IOffer, Offer> Offers { get; set; }
 
         /// <summary>
         /// An organizer of an Event.
@@ -112,7 +112,7 @@
         /// <summary>
         /// The CreativeWork that captured all or part of this Event.
         /// </summary>
-        OneOrMany<ICreativeWork> RecordedIn { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> RecordedIn { get; set; }
 
         /// <summary>
         /// The number of attendee places for an event that remain unallocated.
@@ -122,7 +122,7 @@
         /// <summary>
         /// A review of the item.
         /// </summary>
-        OneOrMany<IReview> Review { get; set; }
+        OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -142,12 +142,12 @@
         /// <summary>
         /// An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
         /// </summary>
-        OneOrMany<IEvent> SubEvent { get; set; }
+        OneOrMany<IEvent, Event> SubEvent { get; set; }
 
         /// <summary>
         /// An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
         /// </summary>
-        OneOrMany<IEvent> SuperEvent { get; set; }
+        OneOrMany<IEvent, Event> SuperEvent { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
@@ -163,12 +163,12 @@
         /// A work featured in some event, e.g. exhibited in an ExhibitionEvent.
         ///        Specific subproperties are available for workPerformed (e.g. a play), or a workPresented (a Movie at a ScreeningEvent).
         /// </summary>
-        OneOrMany<ICreativeWork> WorkFeatured { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> WorkFeatured { get; set; }
 
         /// <summary>
         /// A work performed in some event, for example a play performed in a TheaterEvent.
         /// </summary>
-        OneOrMany<ICreativeWork> WorkPerformed { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> WorkPerformed { get; set; }
     }
 
     /// <summary>
@@ -188,21 +188,21 @@
         /// </summary>
         [DataMember(Name = "about", Order = 106)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> About { get; set; }
+        public OneOrMany<IThing, Thing> About { get; set; }
 
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "actor", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Actor { get; set; }
+        public OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 108)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// A person or organization attending the event.
@@ -216,7 +216,7 @@
         /// </summary>
         [DataMember(Name = "audience", Order = 110)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAudience> Audience { get; set; }
+        public OneOrMany<IAudience, Audience> Audience { get; set; }
 
         /// <summary>
         /// The person or organization who wrote a composition, or who is the composer of a work performed at some event.
@@ -237,7 +237,7 @@
         /// </summary>
         [DataMember(Name = "director", Order = 113)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Director { get; set; }
+        public OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The time admission will commence.
@@ -300,7 +300,7 @@
         /// </summary>
         [DataMember(Name = "offers", Order = 122)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> Offers { get; set; }
+        public OneOrMany<IOffer, Offer> Offers { get; set; }
 
         /// <summary>
         /// An organizer of an Event.
@@ -328,7 +328,7 @@
         /// </summary>
         [DataMember(Name = "recordedIn", Order = 126)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> RecordedIn { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> RecordedIn { get; set; }
 
         /// <summary>
         /// The number of attendee places for an event that remain unallocated.
@@ -342,7 +342,7 @@
         /// </summary>
         [DataMember(Name = "review", Order = 128)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IReview> Review { get; set; }
+        public OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -370,14 +370,14 @@
         /// </summary>
         [DataMember(Name = "subEvent", Order = 132)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> SubEvent { get; set; }
+        public OneOrMany<IEvent, Event> SubEvent { get; set; }
 
         /// <summary>
         /// An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
         /// </summary>
         [DataMember(Name = "superEvent", Order = 133)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> SuperEvent { get; set; }
+        public OneOrMany<IEvent, Event> SuperEvent { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
@@ -399,13 +399,13 @@
         /// </summary>
         [DataMember(Name = "workFeatured", Order = 136)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> WorkFeatured { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> WorkFeatured { get; set; }
 
         /// <summary>
         /// A work performed in some event, for example a play performed in a TheaterEvent.
         /// </summary>
         [DataMember(Name = "workPerformed", Order = 137)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> WorkPerformed { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> WorkPerformed { get; set; }
     }
 }

@@ -17,7 +17,7 @@
         /// <summary>
         /// The Action representing the type of interaction. For up votes, +1s, etc. use &lt;a class="localLink" href="http://schema.org/LikeAction"&gt;LikeAction&lt;/a&gt;. For down votes use &lt;a class="localLink" href="http://schema.org/DislikeAction"&gt;DislikeAction&lt;/a&gt;. Otherwise, use the most specific Action.
         /// </summary>
-        OneOrMany<IAction> InteractionType { get; set; }
+        OneOrMany<IAction, Action> InteractionType { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication.
@@ -49,7 +49,7 @@
         /// </summary>
         [DataMember(Name = "interactionType", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAction> InteractionType { get; set; }
+        public OneOrMany<IAction, Action> InteractionType { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication.

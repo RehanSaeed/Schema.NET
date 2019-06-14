@@ -12,7 +12,7 @@
         /// <summary>
         /// The vasculature that the vein drains into.
         /// </summary>
-        OneOrMany<IVessel> DrainsTo { get; set; }
+        OneOrMany<IVessel, Vessel> DrainsTo { get; set; }
 
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
@@ -22,7 +22,7 @@
         /// <summary>
         /// The anatomical or organ system that the vein flows into; a larger structure that the vein connects to.
         /// </summary>
-        OneOrMany<IAnatomicalStructure> Tributary { get; set; }
+        OneOrMany<IAnatomicalStructure, AnatomicalStructure> Tributary { get; set; }
     }
 
     /// <summary>
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "drainsTo", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IVessel> DrainsTo { get; set; }
+        public OneOrMany<IVessel, Vessel> DrainsTo { get; set; }
 
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
@@ -56,6 +56,6 @@
         /// </summary>
         [DataMember(Name = "tributary", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> Tributary { get; set; }
+        public OneOrMany<IAnatomicalStructure, AnatomicalStructure> Tributary { get; set; }
     }
 }

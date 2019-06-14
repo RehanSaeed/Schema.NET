@@ -92,12 +92,12 @@
         /// <summary>
         /// Additional content for a software application.
         /// </summary>
-        OneOrMany<ISoftwareApplication> SoftwareAddOn { get; set; }
+        OneOrMany<ISoftwareApplication, SoftwareApplication> SoftwareAddOn { get; set; }
 
         /// <summary>
         /// Software application help.
         /// </summary>
-        OneOrMany<ICreativeWork> SoftwareHelp { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> SoftwareHelp { get; set; }
 
         /// <summary>
         /// Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).
@@ -117,7 +117,7 @@
         /// <summary>
         /// Supporting data for a SoftwareApplication.
         /// </summary>
-        OneOrMany<IDataFeed> SupportingData { get; set; }
+        OneOrMany<IDataFeed, DataFeed> SupportingData { get; set; }
     }
 
     /// <summary>
@@ -249,14 +249,14 @@
         /// </summary>
         [DataMember(Name = "softwareAddOn", Order = 222)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ISoftwareApplication> SoftwareAddOn { get; set; }
+        public OneOrMany<ISoftwareApplication, SoftwareApplication> SoftwareAddOn { get; set; }
 
         /// <summary>
         /// Software application help.
         /// </summary>
         [DataMember(Name = "softwareHelp", Order = 223)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> SoftwareHelp { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> SoftwareHelp { get; set; }
 
         /// <summary>
         /// Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).
@@ -284,6 +284,6 @@
         /// </summary>
         [DataMember(Name = "supportingData", Order = 227)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDataFeed> SupportingData { get; set; }
+        public OneOrMany<IDataFeed, DataFeed> SupportingData { get; set; }
     }
 }

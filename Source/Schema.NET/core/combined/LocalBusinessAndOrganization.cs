@@ -42,14 +42,14 @@
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public override OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// Alumni of an organization.
         /// </summary>
         [DataMember(Name = "alumni", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Alumni { get; set; }
+        public override OneOrMany<IPerson, Person> Alumni { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
@@ -77,7 +77,7 @@
         /// </summary>
         [DataMember(Name = "contactPoint", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IContactPoint> ContactPoint { get; set; }
+        public override OneOrMany<IContactPoint, ContactPoint> ContactPoint { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.
@@ -99,7 +99,7 @@
         /// </summary>
         [DataMember(Name = "department", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOrganization> Department { get; set; }
+        public override OneOrMany<IOrganization, Organization> Department { get; set; }
 
         /// <summary>
         /// The date that this organization was dissolved.
@@ -141,7 +141,7 @@
         /// </summary>
         [DataMember(Name = "employee", Order = 222)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Employee { get; set; }
+        public override OneOrMany<IPerson, Person> Employee { get; set; }
 
         /// <summary>
         /// Statement about ethics policy, e.g. of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; regarding journalistic and publishing practices, or of a &lt;a class="localLink" href="http://schema.org/Restaurant"&gt;Restaurant&lt;/a&gt;, a page describing food source policies. In the case of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.
@@ -155,7 +155,7 @@
         /// </summary>
         [DataMember(Name = "event", Order = 224)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IEvent> Event { get; set; }
+        public override OneOrMany<IEvent, Event> Event { get; set; }
 
         /// <summary>
         /// The fax number.
@@ -169,7 +169,7 @@
         /// </summary>
         [DataMember(Name = "founder", Order = 226)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Founder { get; set; }
+        public override OneOrMany<IPerson, Person> Founder { get; set; }
 
         /// <summary>
         /// The date that this organization was founded.
@@ -183,7 +183,7 @@
         /// </summary>
         [DataMember(Name = "foundingLocation", Order = 228)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> FoundingLocation { get; set; }
+        public override OneOrMany<IPlace, Place> FoundingLocation { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -204,14 +204,14 @@
         /// </summary>
         [DataMember(Name = "hasOfferCatalog", Order = 231)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOfferCatalog> HasOfferCatalog { get; set; }
+        public override OneOrMany<IOfferCatalog, OfferCatalog> HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
         [DataMember(Name = "hasPOS", Order = 232)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> HasPOS { get; set; }
+        public override OneOrMany<IPlace, Place> HasPOS { get; set; }
 
         /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
@@ -267,7 +267,7 @@
         /// </summary>
         [DataMember(Name = "makesOffer", Order = 240)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOffer> MakesOffer { get; set; }
+        public override OneOrMany<IOffer, Offer> MakesOffer { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
@@ -295,7 +295,7 @@
         /// </summary>
         [DataMember(Name = "numberOfEmployees", Order = 244)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
+        public override OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfEmployees { get; set; }
 
         /// <summary>
         /// The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;br/&gt;&lt;br/&gt;
@@ -329,7 +329,7 @@
         /// </summary>
         [DataMember(Name = "parentOrganization", Order = 248)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOrganization> ParentOrganization { get; set; }
+        public override OneOrMany<IOrganization, Organization> ParentOrganization { get; set; }
 
         /// <summary>
         /// Cash, Credit Card, Cryptocurrency, Local Exchange Tradings System, etc.
@@ -358,14 +358,14 @@
         /// </summary>
         [DataMember(Name = "review", Order = 252)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IReview> Review { get; set; }
+        public override OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
         [DataMember(Name = "seeks", Order = 253)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IDemand> Seeks { get; set; }
+        public override OneOrMany<IDemand, Demand> Seeks { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
@@ -386,7 +386,7 @@
         /// </summary>
         [DataMember(Name = "subOrganization", Order = 256)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOrganization> SubOrganization { get; set; }
+        public override OneOrMany<IOrganization, Organization> SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.

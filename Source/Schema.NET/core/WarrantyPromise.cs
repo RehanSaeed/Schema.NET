@@ -12,7 +12,7 @@
         /// <summary>
         /// The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
         /// </summary>
-        OneOrMany<IQuantitativeValue> DurationOfWarranty { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> DurationOfWarranty { get; set; }
 
         /// <summary>
         /// The scope of the warranty promise.
@@ -37,7 +37,7 @@
         /// </summary>
         [DataMember(Name = "durationOfWarranty", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> DurationOfWarranty { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> DurationOfWarranty { get; set; }
 
         /// <summary>
         /// The scope of the warranty promise.

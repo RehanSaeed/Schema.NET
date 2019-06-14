@@ -22,12 +22,12 @@
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
-        OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// Alumni of an organization.
         /// </summary>
-        OneOrMany<IPerson> Alumni { get; set; }
+        OneOrMany<IPerson, Person> Alumni { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
@@ -47,7 +47,7 @@
         /// <summary>
         /// A contact point for a person or organization.
         /// </summary>
-        OneOrMany<IContactPoint> ContactPoint { get; set; }
+        OneOrMany<IContactPoint, ContactPoint> ContactPoint { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.
@@ -57,7 +57,7 @@
         /// <summary>
         /// A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
         /// </summary>
-        OneOrMany<IOrganization> Department { get; set; }
+        OneOrMany<IOrganization, Organization> Department { get; set; }
 
         /// <summary>
         /// The date that this organization was dissolved.
@@ -87,7 +87,7 @@
         /// <summary>
         /// Someone working for this organization.
         /// </summary>
-        OneOrMany<IPerson> Employee { get; set; }
+        OneOrMany<IPerson, Person> Employee { get; set; }
 
         /// <summary>
         /// Statement about ethics policy, e.g. of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; regarding journalistic and publishing practices, or of a &lt;a class="localLink" href="http://schema.org/Restaurant"&gt;Restaurant&lt;/a&gt;, a page describing food source policies. In the case of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.
@@ -97,7 +97,7 @@
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        OneOrMany<IEvent> Event { get; set; }
+        OneOrMany<IEvent, Event> Event { get; set; }
 
         /// <summary>
         /// The fax number.
@@ -107,7 +107,7 @@
         /// <summary>
         /// A person who founded this organization.
         /// </summary>
-        OneOrMany<IPerson> Founder { get; set; }
+        OneOrMany<IPerson, Person> Founder { get; set; }
 
         /// <summary>
         /// The date that this organization was founded.
@@ -117,7 +117,7 @@
         /// <summary>
         /// The place where the Organization was founded.
         /// </summary>
-        OneOrMany<IPlace> FoundingLocation { get; set; }
+        OneOrMany<IPlace, Place> FoundingLocation { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -132,12 +132,12 @@
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
         /// </summary>
-        OneOrMany<IOfferCatalog> HasOfferCatalog { get; set; }
+        OneOrMany<IOfferCatalog, OfferCatalog> HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
-        OneOrMany<IPlace> HasPOS { get; set; }
+        OneOrMany<IPlace, Place> HasPOS { get; set; }
 
         /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
@@ -177,7 +177,7 @@
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
         /// </summary>
-        OneOrMany<IOffer> MakesOffer { get; set; }
+        OneOrMany<IOffer, Offer> MakesOffer { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
@@ -197,7 +197,7 @@
         /// <summary>
         /// The number of employees in an organization e.g. business.
         /// </summary>
-        OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfEmployees { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence.   Note that the &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt; is also available and can be used to make basic funder information machine-readable.
@@ -212,7 +212,7 @@
         /// <summary>
         /// The larger organization that this organization is a &lt;a class="localLink" href="http://schema.org/subOrganization"&gt;subOrganization&lt;/a&gt; of, if any.
         /// </summary>
-        OneOrMany<IOrganization> ParentOrganization { get; set; }
+        OneOrMany<IOrganization, Organization> ParentOrganization { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
@@ -223,12 +223,12 @@
         /// <summary>
         /// A review of the item.
         /// </summary>
-        OneOrMany<IReview> Review { get; set; }
+        OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
-        OneOrMany<IDemand> Seeks { get; set; }
+        OneOrMany<IDemand, Demand> Seeks { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
@@ -243,7 +243,7 @@
         /// <summary>
         /// A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
         /// </summary>
-        OneOrMany<IOrganization> SubOrganization { get; set; }
+        OneOrMany<IOrganization, Organization> SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
@@ -297,14 +297,14 @@
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 108)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// Alumni of an organization.
         /// </summary>
         [DataMember(Name = "alumni", Order = 109)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPerson> Alumni { get; set; }
+        public virtual OneOrMany<IPerson, Person> Alumni { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
@@ -332,7 +332,7 @@
         /// </summary>
         [DataMember(Name = "contactPoint", Order = 113)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IContactPoint> ContactPoint { get; set; }
+        public OneOrMany<IContactPoint, ContactPoint> ContactPoint { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.
@@ -346,7 +346,7 @@
         /// </summary>
         [DataMember(Name = "department", Order = 115)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> Department { get; set; }
+        public OneOrMany<IOrganization, Organization> Department { get; set; }
 
         /// <summary>
         /// The date that this organization was dissolved.
@@ -388,7 +388,7 @@
         /// </summary>
         [DataMember(Name = "employee", Order = 121)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Employee { get; set; }
+        public OneOrMany<IPerson, Person> Employee { get; set; }
 
         /// <summary>
         /// Statement about ethics policy, e.g. of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; regarding journalistic and publishing practices, or of a &lt;a class="localLink" href="http://schema.org/Restaurant"&gt;Restaurant&lt;/a&gt;, a page describing food source policies. In the case of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.
@@ -402,7 +402,7 @@
         /// </summary>
         [DataMember(Name = "event", Order = 123)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> Event { get; set; }
+        public OneOrMany<IEvent, Event> Event { get; set; }
 
         /// <summary>
         /// The fax number.
@@ -416,7 +416,7 @@
         /// </summary>
         [DataMember(Name = "founder", Order = 125)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Founder { get; set; }
+        public OneOrMany<IPerson, Person> Founder { get; set; }
 
         /// <summary>
         /// The date that this organization was founded.
@@ -430,7 +430,7 @@
         /// </summary>
         [DataMember(Name = "foundingLocation", Order = 127)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> FoundingLocation { get; set; }
+        public OneOrMany<IPlace, Place> FoundingLocation { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -451,14 +451,14 @@
         /// </summary>
         [DataMember(Name = "hasOfferCatalog", Order = 130)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOfferCatalog> HasOfferCatalog { get; set; }
+        public OneOrMany<IOfferCatalog, OfferCatalog> HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
         [DataMember(Name = "hasPOS", Order = 131)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> HasPOS { get; set; }
+        public OneOrMany<IPlace, Place> HasPOS { get; set; }
 
         /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
@@ -514,7 +514,7 @@
         /// </summary>
         [DataMember(Name = "makesOffer", Order = 139)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> MakesOffer { get; set; }
+        public OneOrMany<IOffer, Offer> MakesOffer { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
@@ -542,7 +542,7 @@
         /// </summary>
         [DataMember(Name = "numberOfEmployees", Order = 143)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfEmployees { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence.   Note that the &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt; is also available and can be used to make basic funder information machine-readable.
@@ -563,7 +563,7 @@
         /// </summary>
         [DataMember(Name = "parentOrganization", Order = 146)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> ParentOrganization { get; set; }
+        public OneOrMany<IOrganization, Organization> ParentOrganization { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
@@ -578,14 +578,14 @@
         /// </summary>
         [DataMember(Name = "review", Order = 148)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IReview> Review { get; set; }
+        public OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
         [DataMember(Name = "seeks", Order = 149)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDemand> Seeks { get; set; }
+        public OneOrMany<IDemand, Demand> Seeks { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
@@ -606,7 +606,7 @@
         /// </summary>
         [DataMember(Name = "subOrganization", Order = 152)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> SubOrganization { get; set; }
+        public OneOrMany<IOrganization, Organization> SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.

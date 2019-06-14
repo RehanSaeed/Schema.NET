@@ -17,7 +17,7 @@
         /// <summary>
         /// A broadcast service associated with the publication event.
         /// </summary>
-        OneOrMany<IBroadcastService> PublishedOn { get; set; }
+        OneOrMany<IBroadcastService, BroadcastService> PublishedOn { get; set; }
     }
 
     /// <summary>
@@ -51,6 +51,6 @@
         /// </summary>
         [DataMember(Name = "publishedOn", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IBroadcastService> PublishedOn { get; set; }
+        public OneOrMany<IBroadcastService, BroadcastService> PublishedOn { get; set; }
     }
 }

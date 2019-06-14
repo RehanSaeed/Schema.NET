@@ -27,12 +27,12 @@
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        OneOrMany<IOffer> Offers { get; set; }
+        OneOrMany<IOffer, Offer> Offers { get; set; }
 
         /// <summary>
         /// Identifies that this &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; is a subTrip of another Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
         /// </summary>
-        OneOrMany<ITrip> PartOfTrip { get; set; }
+        OneOrMany<ITrip, Trip> PartOfTrip { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
@@ -42,7 +42,7 @@
         /// <summary>
         /// Identifies a &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; that is a subTrip of this Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
         /// </summary>
-        OneOrMany<ITrip> SubTrip { get; set; }
+        OneOrMany<ITrip, Trip> SubTrip { get; set; }
     }
 
     /// <summary>
@@ -83,14 +83,14 @@
         /// </summary>
         [DataMember(Name = "offers", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> Offers { get; set; }
+        public OneOrMany<IOffer, Offer> Offers { get; set; }
 
         /// <summary>
         /// Identifies that this &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; is a subTrip of another Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
         /// </summary>
         [DataMember(Name = "partOfTrip", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ITrip> PartOfTrip { get; set; }
+        public OneOrMany<ITrip, Trip> PartOfTrip { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
@@ -104,6 +104,6 @@
         /// </summary>
         [DataMember(Name = "subTrip", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ITrip> SubTrip { get; set; }
+        public OneOrMany<ITrip, Trip> SubTrip { get; set; }
     }
 }

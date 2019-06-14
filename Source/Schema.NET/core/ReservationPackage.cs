@@ -12,7 +12,7 @@
         /// <summary>
         /// The individual reservations included in the package. Typically a repeated property.
         /// </summary>
-        OneOrMany<IReservation> SubReservation { get; set; }
+        OneOrMany<IReservation, Reservation> SubReservation { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "subReservation", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IReservation> SubReservation { get; set; }
+        public OneOrMany<IReservation, Reservation> SubReservation { get; set; }
     }
 }

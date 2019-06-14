@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of participant. The participant/person/organization that bought the object.
         /// </summary>
-        OneOrMany<IPerson> Buyer { get; set; }
+        OneOrMany<IPerson, Person> Buyer { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "buyer", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Buyer { get; set; }
+        public OneOrMany<IPerson, Person> Buyer { get; set; }
     }
 }

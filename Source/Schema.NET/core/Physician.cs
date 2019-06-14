@@ -17,7 +17,7 @@
         /// <summary>
         /// A hospital with which the physician or office is affiliated.
         /// </summary>
-        OneOrMany<IHospital> HospitalAffiliation { get; set; }
+        OneOrMany<IHospital, Hospital> HospitalAffiliation { get; set; }
     }
 
     /// <summary>
@@ -44,7 +44,7 @@
         /// </summary>
         [DataMember(Name = "hospitalAffiliation", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IHospital> HospitalAffiliation { get; set; }
+        public OneOrMany<IHospital, Hospital> HospitalAffiliation { get; set; }
 
         /// <summary>
         /// A medical specialty of the provider.

@@ -12,17 +12,17 @@
         /// <summary>
         /// The branches that comprise the arterial structure.
         /// </summary>
-        OneOrMany<IAnatomicalStructure> ArterialBranch { get; set; }
+        OneOrMany<IAnatomicalStructure, AnatomicalStructure> ArterialBranch { get; set; }
 
         /// <summary>
         /// The anatomical or organ system that the artery originates from.
         /// </summary>
-        OneOrMany<IAnatomicalStructure> Source { get; set; }
+        OneOrMany<IAnatomicalStructure, AnatomicalStructure> Source { get; set; }
 
         /// <summary>
         /// The area to which the artery supplies blood.
         /// </summary>
-        OneOrMany<IAnatomicalStructure> SupplyTo { get; set; }
+        OneOrMany<IAnatomicalStructure, AnatomicalStructure> SupplyTo { get; set; }
     }
 
     /// <summary>
@@ -42,20 +42,20 @@
         /// </summary>
         [DataMember(Name = "arterialBranch", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> ArterialBranch { get; set; }
+        public OneOrMany<IAnatomicalStructure, AnatomicalStructure> ArterialBranch { get; set; }
 
         /// <summary>
         /// The anatomical or organ system that the artery originates from.
         /// </summary>
         [DataMember(Name = "source", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> Source { get; set; }
+        public OneOrMany<IAnatomicalStructure, AnatomicalStructure> Source { get; set; }
 
         /// <summary>
         /// The area to which the artery supplies blood.
         /// </summary>
         [DataMember(Name = "supplyTo", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> SupplyTo { get; set; }
+        public OneOrMany<IAnatomicalStructure, AnatomicalStructure> SupplyTo { get; set; }
     }
 }

@@ -12,7 +12,7 @@
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
-        OneOrMany<IAudience> Audience { get; set; }
+        OneOrMany<IAudience, Audience> Audience { get; set; }
 
         /// <summary>
         /// A language someone may use with or at the item, service or place. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/inLanguage"&gt;inLanguage&lt;/a&gt;
@@ -43,7 +43,7 @@
         /// <summary>
         /// An official rating for a lodging business or food establishment, e.g. from national associations or standards bodies. Use the author property to indicate the rating organization, e.g. as an Organization with name such as (e.g. HOTREC, DEHOGA, WHR, or Hotelstars).
         /// </summary>
-        OneOrMany<IRating> StarRating { get; set; }
+        OneOrMany<IRating, Rating> StarRating { get; set; }
     }
 
     /// <summary>
@@ -63,14 +63,14 @@
         /// </summary>
         [DataMember(Name = "amenityFeature", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<ILocationFeatureSpecification> AmenityFeature { get; set; }
+        public override OneOrMany<ILocationFeatureSpecification, LocationFeatureSpecification> AmenityFeature { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
         [DataMember(Name = "audience", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAudience> Audience { get; set; }
+        public OneOrMany<IAudience, Audience> Audience { get; set; }
 
         /// <summary>
         /// A language someone may use with or at the item, service or place. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/inLanguage"&gt;inLanguage&lt;/a&gt;
@@ -113,6 +113,6 @@
         /// </summary>
         [DataMember(Name = "starRating", Order = 313)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IRating> StarRating { get; set; }
+        public OneOrMany<IRating, Rating> StarRating { get; set; }
     }
 }

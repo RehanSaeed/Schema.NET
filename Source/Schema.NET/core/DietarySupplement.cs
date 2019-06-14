@@ -22,7 +22,7 @@
         /// <summary>
         /// The manufacturer of the product.
         /// </summary>
-        OneOrMany<IOrganization> Manufacturer { get; set; }
+        OneOrMany<IOrganization, Organization> Manufacturer { get; set; }
 
         /// <summary>
         /// The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
@@ -42,7 +42,7 @@
         /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
-        OneOrMany<IRecommendedDoseSchedule> RecommendedIntake { get; set; }
+        OneOrMany<IRecommendedDoseSchedule, RecommendedDoseSchedule> RecommendedIntake { get; set; }
 
         /// <summary>
         /// Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.
@@ -100,14 +100,14 @@
         /// </summary>
         [DataMember(Name = "manufacturer", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> Manufacturer { get; set; }
+        public OneOrMany<IOrganization, Organization> Manufacturer { get; set; }
 
         /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
         [DataMember(Name = "maximumIntake", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IMaximumDoseSchedule> MaximumIntake { get; set; }
+        public override OneOrMany<IMaximumDoseSchedule, MaximumDoseSchedule> MaximumIntake { get; set; }
 
         /// <summary>
         /// The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
@@ -135,7 +135,7 @@
         /// </summary>
         [DataMember(Name = "recommendedIntake", Order = 315)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IRecommendedDoseSchedule> RecommendedIntake { get; set; }
+        public OneOrMany<IRecommendedDoseSchedule, RecommendedDoseSchedule> RecommendedIntake { get; set; }
 
         /// <summary>
         /// Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.

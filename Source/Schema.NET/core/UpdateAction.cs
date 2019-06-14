@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of object. The collection target of the action.
         /// </summary>
-        OneOrMany<IThing> TargetCollection { get; set; }
+        OneOrMany<IThing, Thing> TargetCollection { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "targetCollection", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> TargetCollection { get; set; }
+        public OneOrMany<IThing, Thing> TargetCollection { get; set; }
     }
 }

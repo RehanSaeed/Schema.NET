@@ -22,27 +22,27 @@
         /// <summary>
         /// The service provided by this channel.
         /// </summary>
-        OneOrMany<IService> ProvidesService { get; set; }
+        OneOrMany<IService, Service> ProvidesService { get; set; }
 
         /// <summary>
         /// The location (e.g. civic structure, local business, etc.) where a person can go to access the service.
         /// </summary>
-        OneOrMany<IPlace> ServiceLocation { get; set; }
+        OneOrMany<IPlace, Place> ServiceLocation { get; set; }
 
         /// <summary>
         /// The phone number to use to access the service.
         /// </summary>
-        OneOrMany<IContactPoint> ServicePhone { get; set; }
+        OneOrMany<IContactPoint, ContactPoint> ServicePhone { get; set; }
 
         /// <summary>
         /// The address for accessing the service by mail.
         /// </summary>
-        OneOrMany<IPostalAddress> ServicePostalAddress { get; set; }
+        OneOrMany<IPostalAddress, PostalAddress> ServicePostalAddress { get; set; }
 
         /// <summary>
         /// The number to access the service by text message.
         /// </summary>
-        OneOrMany<IContactPoint> ServiceSmsNumber { get; set; }
+        OneOrMany<IContactPoint, ContactPoint> ServiceSmsNumber { get; set; }
 
         /// <summary>
         /// The website to access the service.
@@ -81,35 +81,35 @@
         /// </summary>
         [DataMember(Name = "providesService", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IService> ProvidesService { get; set; }
+        public OneOrMany<IService, Service> ProvidesService { get; set; }
 
         /// <summary>
         /// The location (e.g. civic structure, local business, etc.) where a person can go to access the service.
         /// </summary>
         [DataMember(Name = "serviceLocation", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> ServiceLocation { get; set; }
+        public OneOrMany<IPlace, Place> ServiceLocation { get; set; }
 
         /// <summary>
         /// The phone number to use to access the service.
         /// </summary>
         [DataMember(Name = "servicePhone", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IContactPoint> ServicePhone { get; set; }
+        public OneOrMany<IContactPoint, ContactPoint> ServicePhone { get; set; }
 
         /// <summary>
         /// The address for accessing the service by mail.
         /// </summary>
         [DataMember(Name = "servicePostalAddress", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPostalAddress> ServicePostalAddress { get; set; }
+        public OneOrMany<IPostalAddress, PostalAddress> ServicePostalAddress { get; set; }
 
         /// <summary>
         /// The number to access the service by text message.
         /// </summary>
         [DataMember(Name = "serviceSmsNumber", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IContactPoint> ServiceSmsNumber { get; set; }
+        public OneOrMany<IContactPoint, ContactPoint> ServiceSmsNumber { get; set; }
 
         /// <summary>
         /// The website to access the service.

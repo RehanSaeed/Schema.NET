@@ -17,7 +17,7 @@
         /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
-        OneOrMany<IMaximumDoseSchedule> MaximumIntake { get; set; }
+        OneOrMany<IMaximumDoseSchedule, MaximumDoseSchedule> MaximumIntake { get; set; }
     }
 
     /// <summary>
@@ -44,6 +44,6 @@
         /// </summary>
         [DataMember(Name = "maximumIntake", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IMaximumDoseSchedule> MaximumIntake { get; set; }
+        public virtual OneOrMany<IMaximumDoseSchedule, MaximumDoseSchedule> MaximumIntake { get; set; }
     }
 }

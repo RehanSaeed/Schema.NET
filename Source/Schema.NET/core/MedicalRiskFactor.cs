@@ -12,7 +12,7 @@
         /// <summary>
         /// The condition, complication, etc. influenced by this factor.
         /// </summary>
-        OneOrMany<IMedicalEntity> IncreasesRiskOf { get; set; }
+        OneOrMany<IMedicalEntity, MedicalEntity> IncreasesRiskOf { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "increasesRiskOf", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalEntity> IncreasesRiskOf { get; set; }
+        public OneOrMany<IMedicalEntity, MedicalEntity> IncreasesRiskOf { get; set; }
     }
 }

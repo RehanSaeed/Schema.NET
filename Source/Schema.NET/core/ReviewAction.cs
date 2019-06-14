@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of result. The review that resulted in the performing of the action.
         /// </summary>
-        OneOrMany<IReview> ResultReview { get; set; }
+        OneOrMany<IReview, Review> ResultReview { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "resultReview", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IReview> ResultReview { get; set; }
+        public OneOrMany<IReview, Review> ResultReview { get; set; }
     }
 }

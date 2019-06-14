@@ -12,12 +12,12 @@
         /// <summary>
         /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.
         /// </summary>
-        OneOrMany<IThing> Item { get; set; }
+        OneOrMany<IThing, Thing> Item { get; set; }
 
         /// <summary>
         /// A link to the ListItem that follows the current one.
         /// </summary>
-        OneOrMany<IListItem> NextItem { get; set; }
+        OneOrMany<IListItem, ListItem> NextItem { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
@@ -27,7 +27,7 @@
         /// <summary>
         /// A link to the ListItem that preceeds the current one.
         /// </summary>
-        OneOrMany<IListItem> PreviousItem { get; set; }
+        OneOrMany<IListItem, ListItem> PreviousItem { get; set; }
     }
 
     /// <summary>
@@ -47,14 +47,14 @@
         /// </summary>
         [DataMember(Name = "item", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Item { get; set; }
+        public OneOrMany<IThing, Thing> Item { get; set; }
 
         /// <summary>
         /// A link to the ListItem that follows the current one.
         /// </summary>
         [DataMember(Name = "nextItem", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IListItem> NextItem { get; set; }
+        public OneOrMany<IListItem, ListItem> NextItem { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
@@ -68,6 +68,6 @@
         /// </summary>
         [DataMember(Name = "previousItem", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IListItem> PreviousItem { get; set; }
+        public OneOrMany<IListItem, ListItem> PreviousItem { get; set; }
     }
 }

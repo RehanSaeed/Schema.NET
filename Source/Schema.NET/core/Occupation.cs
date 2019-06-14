@@ -17,7 +17,7 @@
         /// <summary>
         /// An estimated salary for a job posting or occupation, based on a variety of variables including, but not limited to industry, job title, and location. Estimated salaries  are often computed by outside organizations rather than the hiring organization, who may not have committed to the estimated value.
         /// </summary>
-        OneOrMany<IMonetaryAmountDistribution> EstimatedSalary { get; set; }
+        Values<IMonetaryAmount, IMonetaryAmountDistribution, decimal?>? EstimatedSalary { get; set; }
 
         /// <summary>
         /// Description of skills and experience needed for the position or Occupation.
@@ -25,14 +25,15 @@
         OneOrMany<string> ExperienceRequirements { get; set; }
 
         /// <summary>
-        /// Category or categories describing the job. Use BLS O*NET-SOC taxonomy: http://www.onetcenter.org/taxonomy.html. Ideally includes textual label and formal code, with the property repeated for each applicable value.
+        /// A category describing the job, preferably using a term from a taxonomy such as &lt;a href="http://www.onetcenter.org/taxonomy.html"&gt;BLS O*NET-SOC&lt;/a&gt;, &lt;a href="https://www.ilo.org/public/english/bureau/stat/isco/isco08/"&gt;ISCO-08&lt;/a&gt; or similar, with the property repeated for each applicable value. Ideally the taxonomy should be identified, and both the textual label and formal code for the category should be provided.&lt;br/&gt;&lt;br/&gt;
+        /// Note: for historical reasons, any textual label and formal code provided as a literal may be assumed to be from O*NET-SOC.
         /// </summary>
         OneOrMany<string> OccupationalCategory { get; set; }
 
         /// <summary>
         /// The region/country for which this occupational description is appropriate. Note that educational requirements and qualifications can vary between jurisdictions.
         /// </summary>
-        OneOrMany<IAdministrativeArea> OccupationLocation { get; set; }
+        OneOrMany<IAdministrativeArea, AdministrativeArea> OccupationLocation { get; set; }
 
         /// <summary>
         /// Specific qualifications required for this role or Occupation.
@@ -74,7 +75,7 @@
         /// </summary>
         [DataMember(Name = "estimatedSalary", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMonetaryAmountDistribution> EstimatedSalary { get; set; }
+        public Values<IMonetaryAmount, IMonetaryAmountDistribution, decimal?>? EstimatedSalary { get; set; }
 
         /// <summary>
         /// Description of skills and experience needed for the position or Occupation.
@@ -84,7 +85,8 @@
         public OneOrMany<string> ExperienceRequirements { get; set; }
 
         /// <summary>
-        /// Category or categories describing the job. Use BLS O*NET-SOC taxonomy: http://www.onetcenter.org/taxonomy.html. Ideally includes textual label and formal code, with the property repeated for each applicable value.
+        /// A category describing the job, preferably using a term from a taxonomy such as &lt;a href="http://www.onetcenter.org/taxonomy.html"&gt;BLS O*NET-SOC&lt;/a&gt;, &lt;a href="https://www.ilo.org/public/english/bureau/stat/isco/isco08/"&gt;ISCO-08&lt;/a&gt; or similar, with the property repeated for each applicable value. Ideally the taxonomy should be identified, and both the textual label and formal code for the category should be provided.&lt;br/&gt;&lt;br/&gt;
+        /// Note: for historical reasons, any textual label and formal code provided as a literal may be assumed to be from O*NET-SOC.
         /// </summary>
         [DataMember(Name = "occupationalCategory", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -95,7 +97,7 @@
         /// </summary>
         [DataMember(Name = "occupationLocation", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAdministrativeArea> OccupationLocation { get; set; }
+        public OneOrMany<IAdministrativeArea, AdministrativeArea> OccupationLocation { get; set; }
 
         /// <summary>
         /// Specific qualifications required for this role or Occupation.

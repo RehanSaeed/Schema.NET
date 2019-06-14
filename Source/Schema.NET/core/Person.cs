@@ -22,7 +22,7 @@
         /// <summary>
         /// An organization that this person is affiliated with. For example, a school/university, a club, or a team.
         /// </summary>
-        OneOrMany<IOrganization> Affiliation { get; set; }
+        OneOrMany<IOrganization, Organization> Affiliation { get; set; }
 
         /// <summary>
         /// An organization that the person is an alumni of.
@@ -42,7 +42,7 @@
         /// <summary>
         /// The place where the person was born.
         /// </summary>
-        OneOrMany<IPlace> BirthPlace { get; set; }
+        OneOrMany<IPlace, Place> BirthPlace { get; set; }
 
         /// <summary>
         /// The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
@@ -52,7 +52,7 @@
         /// <summary>
         /// A child of the person.
         /// </summary>
-        OneOrMany<IPerson> Children { get; set; }
+        OneOrMany<IPerson, Person> Children { get; set; }
 
         /// <summary>
         /// A colleague of the person.
@@ -62,7 +62,7 @@
         /// <summary>
         /// A contact point for a person or organization.
         /// </summary>
-        OneOrMany<IContactPoint> ContactPoint { get; set; }
+        OneOrMany<IContactPoint, ContactPoint> ContactPoint { get; set; }
 
         /// <summary>
         /// Date of death.
@@ -72,7 +72,7 @@
         /// <summary>
         /// The place where the person died.
         /// </summary>
-        OneOrMany<IPlace> DeathPlace { get; set; }
+        OneOrMany<IPlace, Place> DeathPlace { get; set; }
 
         /// <summary>
         /// The Dun &amp;amp; Bradstreet DUNS number for identifying an organization or business person.
@@ -97,7 +97,7 @@
         /// <summary>
         /// The most generic uni-directional social relation.
         /// </summary>
-        OneOrMany<IPerson> Follows { get; set; }
+        OneOrMany<IPerson, Person> Follows { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -122,17 +122,17 @@
         /// <summary>
         /// The Person's occupation. For past professions, use Role for expressing dates.
         /// </summary>
-        OneOrMany<IOccupation> HasOccupation { get; set; }
+        OneOrMany<IOccupation, Occupation> HasOccupation { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
         /// </summary>
-        OneOrMany<IOfferCatalog> HasOfferCatalog { get; set; }
+        OneOrMany<IOfferCatalog, OfferCatalog> HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
-        OneOrMany<IPlace> HasPOS { get; set; }
+        OneOrMany<IPlace, Place> HasPOS { get; set; }
 
         /// <summary>
         /// The height of the item.
@@ -167,7 +167,7 @@
         /// <summary>
         /// The most generic bi-directional social/work relation.
         /// </summary>
-        OneOrMany<IPerson> Knows { get; set; }
+        OneOrMany<IPerson, Person> Knows { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or yet relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
@@ -182,7 +182,7 @@
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
         /// </summary>
-        OneOrMany<IOffer> MakesOffer { get; set; }
+        OneOrMany<IOffer, Offer> MakesOffer { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
@@ -197,7 +197,7 @@
         /// <summary>
         /// Nationality of the person.
         /// </summary>
-        OneOrMany<ICountry> Nationality { get; set; }
+        OneOrMany<ICountry, Country> Nationality { get; set; }
 
         /// <summary>
         /// The total financial value of the person as calculated by subtracting assets from liabilities.
@@ -212,12 +212,12 @@
         /// <summary>
         /// A parent of this person.
         /// </summary>
-        OneOrMany<IPerson> Parent { get; set; }
+        OneOrMany<IPerson, Person> Parent { get; set; }
 
         /// <summary>
         /// Event that this person is a performer or participant in.
         /// </summary>
-        OneOrMany<IEvent> PerformerIn { get; set; }
+        OneOrMany<IEvent, Event> PerformerIn { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
@@ -228,17 +228,17 @@
         /// <summary>
         /// The most generic familial relation.
         /// </summary>
-        OneOrMany<IPerson> RelatedTo { get; set; }
+        OneOrMany<IPerson, Person> RelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
-        OneOrMany<IDemand> Seeks { get; set; }
+        OneOrMany<IDemand, Demand> Seeks { get; set; }
 
         /// <summary>
         /// A sibling of the person.
         /// </summary>
-        OneOrMany<IPerson> Sibling { get; set; }
+        OneOrMany<IPerson, Person> Sibling { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -248,7 +248,7 @@
         /// <summary>
         /// The person's spouse.
         /// </summary>
-        OneOrMany<IPerson> Spouse { get; set; }
+        OneOrMany<IPerson, Person> Spouse { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
@@ -268,7 +268,7 @@
         /// <summary>
         /// The weight of the product or person.
         /// </summary>
-        OneOrMany<IQuantitativeValue> Weight { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> Weight { get; set; }
 
         /// <summary>
         /// A contact location for a person's place of work.
@@ -278,7 +278,7 @@
         /// <summary>
         /// Organizations that the person works for.
         /// </summary>
-        OneOrMany<IOrganization> WorksFor { get; set; }
+        OneOrMany<IOrganization, Organization> WorksFor { get; set; }
     }
 
     /// <summary>
@@ -312,7 +312,7 @@
         /// </summary>
         [DataMember(Name = "affiliation", Order = 108)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> Affiliation { get; set; }
+        public OneOrMany<IOrganization, Organization> Affiliation { get; set; }
 
         /// <summary>
         /// An organization that the person is an alumni of.
@@ -340,7 +340,7 @@
         /// </summary>
         [DataMember(Name = "birthPlace", Order = 112)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> BirthPlace { get; set; }
+        public OneOrMany<IPlace, Place> BirthPlace { get; set; }
 
         /// <summary>
         /// The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
@@ -354,7 +354,7 @@
         /// </summary>
         [DataMember(Name = "children", Order = 114)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Children { get; set; }
+        public OneOrMany<IPerson, Person> Children { get; set; }
 
         /// <summary>
         /// A colleague of the person.
@@ -368,7 +368,7 @@
         /// </summary>
         [DataMember(Name = "contactPoint", Order = 116)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IContactPoint> ContactPoint { get; set; }
+        public OneOrMany<IContactPoint, ContactPoint> ContactPoint { get; set; }
 
         /// <summary>
         /// Date of death.
@@ -382,7 +382,7 @@
         /// </summary>
         [DataMember(Name = "deathPlace", Order = 118)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> DeathPlace { get; set; }
+        public OneOrMany<IPlace, Place> DeathPlace { get; set; }
 
         /// <summary>
         /// The Dun &amp;amp; Bradstreet DUNS number for identifying an organization or business person.
@@ -417,7 +417,7 @@
         /// </summary>
         [DataMember(Name = "follows", Order = 123)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Follows { get; set; }
+        public OneOrMany<IPerson, Person> Follows { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -452,21 +452,21 @@
         /// </summary>
         [DataMember(Name = "hasOccupation", Order = 128)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOccupation> HasOccupation { get; set; }
+        public OneOrMany<IOccupation, Occupation> HasOccupation { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
         /// </summary>
         [DataMember(Name = "hasOfferCatalog", Order = 129)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOfferCatalog> HasOfferCatalog { get; set; }
+        public OneOrMany<IOfferCatalog, OfferCatalog> HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
         [DataMember(Name = "hasPOS", Order = 130)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> HasPOS { get; set; }
+        public OneOrMany<IPlace, Place> HasPOS { get; set; }
 
         /// <summary>
         /// The height of the item.
@@ -515,7 +515,7 @@
         /// </summary>
         [DataMember(Name = "knows", Order = 137)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Knows { get; set; }
+        public OneOrMany<IPerson, Person> Knows { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or yet relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
@@ -536,7 +536,7 @@
         /// </summary>
         [DataMember(Name = "makesOffer", Order = 140)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> MakesOffer { get; set; }
+        public OneOrMany<IOffer, Offer> MakesOffer { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
@@ -557,7 +557,7 @@
         /// </summary>
         [DataMember(Name = "nationality", Order = 143)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICountry> Nationality { get; set; }
+        public OneOrMany<ICountry, Country> Nationality { get; set; }
 
         /// <summary>
         /// The total financial value of the person as calculated by subtracting assets from liabilities.
@@ -578,14 +578,14 @@
         /// </summary>
         [DataMember(Name = "parent", Order = 146)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Parent { get; set; }
+        public OneOrMany<IPerson, Person> Parent { get; set; }
 
         /// <summary>
         /// Event that this person is a performer or participant in.
         /// </summary>
         [DataMember(Name = "performerIn", Order = 147)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> PerformerIn { get; set; }
+        public OneOrMany<IEvent, Event> PerformerIn { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
@@ -600,21 +600,21 @@
         /// </summary>
         [DataMember(Name = "relatedTo", Order = 149)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> RelatedTo { get; set; }
+        public OneOrMany<IPerson, Person> RelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
         [DataMember(Name = "seeks", Order = 150)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDemand> Seeks { get; set; }
+        public OneOrMany<IDemand, Demand> Seeks { get; set; }
 
         /// <summary>
         /// A sibling of the person.
         /// </summary>
         [DataMember(Name = "sibling", Order = 151)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Sibling { get; set; }
+        public OneOrMany<IPerson, Person> Sibling { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -628,7 +628,7 @@
         /// </summary>
         [DataMember(Name = "spouse", Order = 153)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Spouse { get; set; }
+        public OneOrMany<IPerson, Person> Spouse { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
@@ -656,7 +656,7 @@
         /// </summary>
         [DataMember(Name = "weight", Order = 157)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> Weight { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> Weight { get; set; }
 
         /// <summary>
         /// A contact location for a person's place of work.
@@ -670,6 +670,6 @@
         /// </summary>
         [DataMember(Name = "worksFor", Order = 159)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> WorksFor { get; set; }
+        public OneOrMany<IOrganization, Organization> WorksFor { get; set; }
     }
 }

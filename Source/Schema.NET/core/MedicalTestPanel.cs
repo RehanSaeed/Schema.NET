@@ -12,7 +12,7 @@
         /// <summary>
         /// A component test of the panel.
         /// </summary>
-        OneOrMany<IMedicalTest> SubTest { get; set; }
+        OneOrMany<IMedicalTest, MedicalTest> SubTest { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "subTest", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalTest> SubTest { get; set; }
+        public OneOrMany<IMedicalTest, MedicalTest> SubTest { get; set; }
     }
 }

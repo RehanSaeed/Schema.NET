@@ -12,7 +12,7 @@
         /// <summary>
         /// A dataset contained in this catalog.
         /// </summary>
-        OneOrMany<IDataset> Dataset { get; set; }
+        OneOrMany<IDataset, Dataset> Dataset { get; set; }
 
         /// <summary>
         /// A technique or technology used in a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt; (or &lt;a class="localLink" href="http://schema.org/DataDownload"&gt;DataDownload&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/DataCatalog"&gt;DataCatalog&lt;/a&gt;),
@@ -41,7 +41,7 @@
         /// </summary>
         [DataMember(Name = "dataset", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDataset> Dataset { get; set; }
+        public OneOrMany<IDataset, Dataset> Dataset { get; set; }
 
         /// <summary>
         /// A technique or technology used in a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt; (or &lt;a class="localLink" href="http://schema.org/DataDownload"&gt;DataDownload&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/DataCatalog"&gt;DataCatalog&lt;/a&gt;),

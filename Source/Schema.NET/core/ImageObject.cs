@@ -27,7 +27,7 @@
         /// <summary>
         /// Thumbnail image for an image or video.
         /// </summary>
-        OneOrMany<IImageObject> Thumbnail { get; set; }
+        OneOrMany<IImageObject, ImageObject> Thumbnail { get; set; }
     }
 
     /// <summary>
@@ -68,6 +68,6 @@
         /// </summary>
         [DataMember(Name = "thumbnail", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IImageObject> Thumbnail { get; set; }
+        public OneOrMany<IImageObject, ImageObject> Thumbnail { get; set; }
     }
 }

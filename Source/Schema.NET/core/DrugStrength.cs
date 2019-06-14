@@ -17,12 +17,12 @@
         /// <summary>
         /// The location in which the strength is available.
         /// </summary>
-        OneOrMany<IAdministrativeArea> AvailableIn { get; set; }
+        OneOrMany<IAdministrativeArea, AdministrativeArea> AvailableIn { get; set; }
 
         /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
-        OneOrMany<IMaximumDoseSchedule> MaximumIntake { get; set; }
+        OneOrMany<IMaximumDoseSchedule, MaximumDoseSchedule> MaximumIntake { get; set; }
 
         /// <summary>
         /// The units of an active ingredient's strength, e.g. mg.
@@ -59,14 +59,14 @@
         /// </summary>
         [DataMember(Name = "availableIn", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAdministrativeArea> AvailableIn { get; set; }
+        public OneOrMany<IAdministrativeArea, AdministrativeArea> AvailableIn { get; set; }
 
         /// <summary>
         /// Recommended intake of this supplement for a given population as defined by a specific recommending authority.
         /// </summary>
         [DataMember(Name = "maximumIntake", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMaximumDoseSchedule> MaximumIntake { get; set; }
+        public OneOrMany<IMaximumDoseSchedule, MaximumDoseSchedule> MaximumIntake { get; set; }
 
         /// <summary>
         /// The units of an active ingredient's strength, e.g. mg.

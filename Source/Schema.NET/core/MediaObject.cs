@@ -12,7 +12,7 @@
         /// <summary>
         /// A NewsArticle associated with the Media Object.
         /// </summary>
-        OneOrMany<INewsArticle> AssociatedArticle { get; set; }
+        OneOrMany<INewsArticle, NewsArticle> AssociatedArticle { get; set; }
 
         /// <summary>
         /// The bitrate of the media object.
@@ -42,7 +42,7 @@
         /// <summary>
         /// The CreativeWork encoded by this media object.
         /// </summary>
-        OneOrMany<ICreativeWork> EncodesCreativeWork { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> EncodesCreativeWork { get; set; }
 
         /// <summary>
         /// The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to &lt;em&gt;December&lt;/em&gt;. For media, including audio and video, it's the time offset of the end of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
@@ -63,12 +63,12 @@
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
-        OneOrMany<IOrganization> ProductionCompany { get; set; }
+        OneOrMany<IOrganization, Organization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The regions where the media is allowed. If not specified, then it's assumed to be allowed everywhere. Specify the countries in &lt;a href="http://en.wikipedia.org/wiki/ISO_3166"&gt;ISO 3166 format&lt;/a&gt;.
         /// </summary>
-        OneOrMany<IPlace> RegionsAllowed { get; set; }
+        OneOrMany<IPlace, Place> RegionsAllowed { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').
@@ -109,7 +109,7 @@
         /// </summary>
         [DataMember(Name = "associatedArticle", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<INewsArticle> AssociatedArticle { get; set; }
+        public OneOrMany<INewsArticle, NewsArticle> AssociatedArticle { get; set; }
 
         /// <summary>
         /// The bitrate of the media object.
@@ -151,7 +151,7 @@
         /// </summary>
         [DataMember(Name = "encodesCreativeWork", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> EncodesCreativeWork { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> EncodesCreativeWork { get; set; }
 
         /// <summary>
         /// Media type typically expressed using a MIME format (see &lt;a href="http://www.iana.org/assignments/media-types/media-types.xhtml"&gt;IANA site&lt;/a&gt; and &lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types"&gt;MDN reference&lt;/a&gt;) e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.).&lt;br/&gt;&lt;br/&gt;
@@ -189,14 +189,14 @@
         /// </summary>
         [DataMember(Name = "productionCompany", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> ProductionCompany { get; set; }
+        public OneOrMany<IOrganization, Organization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The regions where the media is allowed. If not specified, then it's assumed to be allowed everywhere. Specify the countries in &lt;a href="http://en.wikipedia.org/wiki/ISO_3166"&gt;ISO 3166 format&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "regionsAllowed", Order = 218)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> RegionsAllowed { get; set; }
+        public OneOrMany<IPlace, Place> RegionsAllowed { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').

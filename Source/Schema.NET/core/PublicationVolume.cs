@@ -6,8 +6,7 @@
 
     /// <summary>
     /// A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.&lt;br/&gt;&lt;br/&gt;
-    /// &lt;pre&gt;&lt;code&gt;  &amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;See also &amp;lt;a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"&amp;gt;blog post&amp;lt;/a&amp;gt;.
-    /// &lt;/code&gt;&lt;/pre&gt;
+    /// See also &lt;a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"&gt;blog post&lt;/a&gt;.
     /// </summary>
     public partial interface IPublicationVolume : ICreativeWork
     {
@@ -34,8 +33,7 @@
 
     /// <summary>
     /// A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.&lt;br/&gt;&lt;br/&gt;
-    /// &lt;pre&gt;&lt;code&gt;  &amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;See also &amp;lt;a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"&amp;gt;blog post&amp;lt;/a&amp;gt;.
-    /// &lt;/code&gt;&lt;/pre&gt;
+    /// See also &lt;a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"&gt;blog post&lt;/a&gt;.
     /// </summary>
     [DataContract]
     public partial class PublicationVolume : CreativeWork, IPublicationVolume

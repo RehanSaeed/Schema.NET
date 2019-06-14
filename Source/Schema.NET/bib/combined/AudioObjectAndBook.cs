@@ -56,7 +56,7 @@
         /// </summary>
         [DataMember(Name = "illustrator", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Illustrator { get; set; }
+        public OneOrMany<IPerson, Person> Illustrator { get; set; }
 
         /// <summary>
         /// The ISBN of the book.

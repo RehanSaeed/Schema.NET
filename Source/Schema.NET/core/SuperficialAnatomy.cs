@@ -22,12 +22,12 @@
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
-        OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
+        OneOrMany<IMedicalCondition, MedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
-        OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
+        OneOrMany<IMedicalTherapy, MedicalTherapy> RelatedTherapy { get; set; }
 
         /// <summary>
         /// The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.
@@ -66,14 +66,14 @@
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
+        public OneOrMany<IMedicalCondition, MedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
+        public OneOrMany<IMedicalTherapy, MedicalTherapy> RelatedTherapy { get; set; }
 
         /// <summary>
         /// The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.

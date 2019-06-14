@@ -17,7 +17,7 @@
         /// <summary>
         /// The location(s) applicants can apply from. This is usually used for telecommuting jobs where the applicant does not need to be in a physical office. Note: This should not be used for citizenship or work visa requirements.
         /// </summary>
-        OneOrMany<IAdministrativeArea> ApplicantLocationRequirements { get; set; }
+        OneOrMany<IAdministrativeArea, AdministrativeArea> ApplicantLocationRequirements { get; set; }
 
         /// <summary>
         /// The base salary of the job or of an employee in an EmployeeRole.
@@ -42,7 +42,7 @@
         /// <summary>
         /// An estimated salary for a job posting or occupation, based on a variety of variables including, but not limited to industry, job title, and location. Estimated salaries  are often computed by outside organizations rather than the hiring organization, who may not have committed to the estimated value.
         /// </summary>
-        OneOrMany<IMonetaryAmountDistribution> EstimatedSalary { get; set; }
+        Values<IMonetaryAmount, IMonetaryAmountDistribution, decimal?>? EstimatedSalary { get; set; }
 
         /// <summary>
         /// Description of skills and experience needed for the position or Occupation.
@@ -52,7 +52,7 @@
         /// <summary>
         /// Organization offering the job position.
         /// </summary>
-        OneOrMany<IOrganization> HiringOrganization { get; set; }
+        OneOrMany<IOrganization, Organization> HiringOrganization { get; set; }
 
         /// <summary>
         /// Description of bonus and commission compensation aspects of the job.
@@ -72,7 +72,7 @@
         /// <summary>
         /// A (typically single) geographic location associated with the job position.
         /// </summary>
-        OneOrMany<IPlace> JobLocation { get; set; }
+        OneOrMany<IPlace, Place> JobLocation { get; set; }
 
         /// <summary>
         /// A description of the job location (e.g TELECOMMUTE for telecommute jobs).
@@ -80,7 +80,8 @@
         OneOrMany<string> JobLocationType { get; set; }
 
         /// <summary>
-        /// Category or categories describing the job. Use BLS O*NET-SOC taxonomy: http://www.onetcenter.org/taxonomy.html. Ideally includes textual label and formal code, with the property repeated for each applicable value.
+        /// A category describing the job, preferably using a term from a taxonomy such as &lt;a href="http://www.onetcenter.org/taxonomy.html"&gt;BLS O*NET-SOC&lt;/a&gt;, &lt;a href="https://www.ilo.org/public/english/bureau/stat/isco/isco08/"&gt;ISCO-08&lt;/a&gt; or similar, with the property repeated for each applicable value. Ideally the taxonomy should be identified, and both the textual label and formal code for the category should be provided.&lt;br/&gt;&lt;br/&gt;
+        /// Note: for historical reasons, any textual label and formal code provided as a literal may be assumed to be from O*NET-SOC.
         /// </summary>
         OneOrMany<string> OccupationalCategory { get; set; }
 
@@ -92,7 +93,7 @@
         /// <summary>
         /// The Occupation for the JobPosting.
         /// </summary>
-        OneOrMany<IOccupation> RelevantOccupation { get; set; }
+        OneOrMany<IOccupation, Occupation> RelevantOccupation { get; set; }
 
         /// <summary>
         /// Responsibilities associated with this role or Occupation.
@@ -149,7 +150,7 @@
         /// </summary>
         [DataMember(Name = "applicantLocationRequirements", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAdministrativeArea> ApplicantLocationRequirements { get; set; }
+        public OneOrMany<IAdministrativeArea, AdministrativeArea> ApplicantLocationRequirements { get; set; }
 
         /// <summary>
         /// The base salary of the job or of an employee in an EmployeeRole.
@@ -184,7 +185,7 @@
         /// </summary>
         [DataMember(Name = "estimatedSalary", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMonetaryAmountDistribution> EstimatedSalary { get; set; }
+        public Values<IMonetaryAmount, IMonetaryAmountDistribution, decimal?>? EstimatedSalary { get; set; }
 
         /// <summary>
         /// Description of skills and experience needed for the position or Occupation.
@@ -198,7 +199,7 @@
         /// </summary>
         [DataMember(Name = "hiringOrganization", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> HiringOrganization { get; set; }
+        public OneOrMany<IOrganization, Organization> HiringOrganization { get; set; }
 
         /// <summary>
         /// Description of bonus and commission compensation aspects of the job.
@@ -226,7 +227,7 @@
         /// </summary>
         [DataMember(Name = "jobLocation", Order = 218)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> JobLocation { get; set; }
+        public OneOrMany<IPlace, Place> JobLocation { get; set; }
 
         /// <summary>
         /// A description of the job location (e.g TELECOMMUTE for telecommute jobs).
@@ -236,7 +237,8 @@
         public OneOrMany<string> JobLocationType { get; set; }
 
         /// <summary>
-        /// Category or categories describing the job. Use BLS O*NET-SOC taxonomy: http://www.onetcenter.org/taxonomy.html. Ideally includes textual label and formal code, with the property repeated for each applicable value.
+        /// A category describing the job, preferably using a term from a taxonomy such as &lt;a href="http://www.onetcenter.org/taxonomy.html"&gt;BLS O*NET-SOC&lt;/a&gt;, &lt;a href="https://www.ilo.org/public/english/bureau/stat/isco/isco08/"&gt;ISCO-08&lt;/a&gt; or similar, with the property repeated for each applicable value. Ideally the taxonomy should be identified, and both the textual label and formal code for the category should be provided.&lt;br/&gt;&lt;br/&gt;
+        /// Note: for historical reasons, any textual label and formal code provided as a literal may be assumed to be from O*NET-SOC.
         /// </summary>
         [DataMember(Name = "occupationalCategory", Order = 220)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -254,7 +256,7 @@
         /// </summary>
         [DataMember(Name = "relevantOccupation", Order = 222)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOccupation> RelevantOccupation { get; set; }
+        public OneOrMany<IOccupation, Occupation> RelevantOccupation { get; set; }
 
         /// <summary>
         /// Responsibilities associated with this role or Occupation.

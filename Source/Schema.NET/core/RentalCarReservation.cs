@@ -13,7 +13,7 @@
         /// <summary>
         /// Where a rental car can be dropped off.
         /// </summary>
-        OneOrMany<IPlace> DropoffLocation { get; set; }
+        OneOrMany<IPlace, Place> DropoffLocation { get; set; }
 
         /// <summary>
         /// When a rental car can be dropped off.
@@ -23,7 +23,7 @@
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
-        OneOrMany<IPlace> PickupLocation { get; set; }
+        OneOrMany<IPlace, Place> PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
@@ -49,7 +49,7 @@
         /// </summary>
         [DataMember(Name = "dropoffLocation", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> DropoffLocation { get; set; }
+        public OneOrMany<IPlace, Place> DropoffLocation { get; set; }
 
         /// <summary>
         /// When a rental car can be dropped off.
@@ -63,7 +63,7 @@
         /// </summary>
         [DataMember(Name = "pickupLocation", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> PickupLocation { get; set; }
+        public OneOrMany<IPlace, Place> PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.

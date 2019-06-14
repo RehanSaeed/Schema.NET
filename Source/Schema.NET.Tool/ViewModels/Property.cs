@@ -31,7 +31,14 @@ namespace Schema.NET.Tool.ViewModels
                 var adjustedTypesString = string.Join(", ", adjustedTypesList);
                 if (adjustedTypesList.Count == 1)
                 {
-                    return $"OneOrMany<{adjustedTypesString}>";
+                    if (adjustedTypesString.StartsWith("I", StringComparison.Ordinal) && char.IsUpper(adjustedTypesString[1]))
+                    {
+                        return $"OneOrMany<{adjustedTypesString}, {adjustedTypesString.Substring(1)}>";
+                    }
+                    else
+                    {
+                        return $"OneOrMany<{adjustedTypesString}>";
+                    }
                 }
                 else
                 {

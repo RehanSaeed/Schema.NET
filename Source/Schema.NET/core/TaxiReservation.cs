@@ -18,7 +18,7 @@
         /// <summary>
         /// Where a taxi will pick up a passenger or a rental car can be picked up.
         /// </summary>
-        OneOrMany<IPlace> PickupLocation { get; set; }
+        OneOrMany<IPlace, Place> PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.
@@ -51,7 +51,7 @@
         /// </summary>
         [DataMember(Name = "pickupLocation", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> PickupLocation { get; set; }
+        public OneOrMany<IPlace, Place> PickupLocation { get; set; }
 
         /// <summary>
         /// When a taxi will pickup a passenger or a rental car can be picked up.

@@ -34,7 +34,7 @@
         /// <summary>
         /// Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
         /// </summary>
-        OneOrMany<IProgramMembership> ProgramMembershipUsed { get; set; }
+        OneOrMany<IProgramMembership, ProgramMembership> ProgramMembershipUsed { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
@@ -44,7 +44,7 @@
         /// <summary>
         /// The thing -- flight, event, restaurant,etc. being reserved.
         /// </summary>
-        OneOrMany<IThing> ReservationFor { get; set; }
+        OneOrMany<IThing, Thing> ReservationFor { get; set; }
 
         /// <summary>
         /// A unique identifier for the reservation.
@@ -59,7 +59,7 @@
         /// <summary>
         /// A ticket associated with the reservation.
         /// </summary>
-        OneOrMany<ITicket> ReservedTicket { get; set; }
+        OneOrMany<ITicket, Ticket> ReservedTicket { get; set; }
 
         /// <summary>
         /// The total price for the reservation or ticket, including applicable taxes, shipping, etc.&lt;br/&gt;&lt;br/&gt;
@@ -124,7 +124,7 @@
         /// </summary>
         [DataMember(Name = "programMembershipUsed", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IProgramMembership> ProgramMembershipUsed { get; set; }
+        public OneOrMany<IProgramMembership, ProgramMembership> ProgramMembershipUsed { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
@@ -138,7 +138,7 @@
         /// </summary>
         [DataMember(Name = "reservationFor", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> ReservationFor { get; set; }
+        public OneOrMany<IThing, Thing> ReservationFor { get; set; }
 
         /// <summary>
         /// A unique identifier for the reservation.
@@ -159,7 +159,7 @@
         /// </summary>
         [DataMember(Name = "reservedTicket", Order = 215)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ITicket> ReservedTicket { get; set; }
+        public OneOrMany<ITicket, Ticket> ReservedTicket { get; set; }
 
         /// <summary>
         /// The total price for the reservation or ticket, including applicable taxes, shipping, etc.&lt;br/&gt;&lt;br/&gt;

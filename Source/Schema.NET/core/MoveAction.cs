@@ -16,12 +16,12 @@
         /// <summary>
         /// A sub property of location. The original location of the object or the agent before the action.
         /// </summary>
-        OneOrMany<IPlace> FromLocation { get; set; }
+        OneOrMany<IPlace, Place> FromLocation { get; set; }
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
-        OneOrMany<IPlace> ToLocation { get; set; }
+        OneOrMany<IPlace, Place> ToLocation { get; set; }
     }
 
     /// <summary>
@@ -45,13 +45,13 @@
         /// </summary>
         [DataMember(Name = "fromLocation", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> FromLocation { get; set; }
+        public OneOrMany<IPlace, Place> FromLocation { get; set; }
 
         /// <summary>
         /// A sub property of location. The final location of the object or the agent after the action.
         /// </summary>
         [DataMember(Name = "toLocation", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> ToLocation { get; set; }
+        public OneOrMany<IPlace, Place> ToLocation { get; set; }
     }
 }

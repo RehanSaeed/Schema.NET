@@ -12,7 +12,7 @@
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Actor { get; set; }
+        OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
@@ -22,7 +22,7 @@
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Director { get; set; }
+        OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -32,7 +32,7 @@
         /// <summary>
         /// Thumbnail image for an image or video.
         /// </summary>
-        OneOrMany<IImageObject> Thumbnail { get; set; }
+        OneOrMany<IImageObject, ImageObject> Thumbnail { get; set; }
 
         /// <summary>
         /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
@@ -67,7 +67,7 @@
         /// </summary>
         [DataMember(Name = "actor", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Actor { get; set; }
+        public OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
@@ -81,7 +81,7 @@
         /// </summary>
         [DataMember(Name = "director", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Director { get; set; }
+        public OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -95,7 +95,7 @@
         /// </summary>
         [DataMember(Name = "thumbnail", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IImageObject> Thumbnail { get; set; }
+        public OneOrMany<IImageObject, ImageObject> Thumbnail { get; set; }
 
         /// <summary>
         /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.

@@ -16,7 +16,7 @@
         /// <summary>
         /// A sub property of participant. The person that borrows the object being lent.
         /// </summary>
-        OneOrMany<IPerson> Borrower { get; set; }
+        OneOrMany<IPerson, Person> Borrower { get; set; }
     }
 
     /// <summary>
@@ -40,6 +40,6 @@
         /// </summary>
         [DataMember(Name = "borrower", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Borrower { get; set; }
+        public OneOrMany<IPerson, Person> Borrower { get; set; }
     }
 }

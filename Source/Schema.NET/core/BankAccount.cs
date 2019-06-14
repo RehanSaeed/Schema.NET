@@ -12,12 +12,12 @@
         /// <summary>
         /// A minimum amount that has to be paid in every month.
         /// </summary>
-        OneOrMany<IMonetaryAmount> AccountMinimumInflow { get; set; }
+        OneOrMany<IMonetaryAmount, MonetaryAmount> AccountMinimumInflow { get; set; }
 
         /// <summary>
         /// An overdraft is an extension of credit from a lending institution when an account reaches zero. An overdraft allows the individual to continue withdrawing money even if the account has no funds in it. Basically the bank allows people to borrow a set amount of money.
         /// </summary>
-        OneOrMany<IMonetaryAmount> AccountOverdraftLimit { get; set; }
+        OneOrMany<IMonetaryAmount, MonetaryAmount> AccountOverdraftLimit { get; set; }
 
         /// <summary>
         /// The type of a bank account.
@@ -42,14 +42,14 @@
         /// </summary>
         [DataMember(Name = "accountMinimumInflow", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMonetaryAmount> AccountMinimumInflow { get; set; }
+        public OneOrMany<IMonetaryAmount, MonetaryAmount> AccountMinimumInflow { get; set; }
 
         /// <summary>
         /// An overdraft is an extension of credit from a lending institution when an account reaches zero. An overdraft allows the individual to continue withdrawing money even if the account has no funds in it. Basically the bank allows people to borrow a set amount of money.
         /// </summary>
         [DataMember(Name = "accountOverdraftLimit", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMonetaryAmount> AccountOverdraftLimit { get; set; }
+        public OneOrMany<IMonetaryAmount, MonetaryAmount> AccountOverdraftLimit { get; set; }
 
         /// <summary>
         /// The type of a bank account.

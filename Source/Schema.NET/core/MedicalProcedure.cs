@@ -27,7 +27,7 @@
         /// <summary>
         /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
         /// </summary>
-        OneOrMany<IMedicalIndication> Indication { get; set; }
+        OneOrMany<IMedicalIndication, MedicalIndication> Indication { get; set; }
 
         /// <summary>
         /// Expected or actual outcomes of the study.
@@ -88,7 +88,7 @@
         /// </summary>
         [DataMember(Name = "indication", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IMedicalIndication> Indication { get; set; }
+        public virtual OneOrMany<IMedicalIndication, MedicalIndication> Indication { get; set; }
 
         /// <summary>
         /// Expected or actual outcomes of the study.

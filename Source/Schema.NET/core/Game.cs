@@ -12,12 +12,12 @@
         /// <summary>
         /// A piece of data that represents a particular aspect of a fictional character (skill, power, character points, advantage, disadvantage).
         /// </summary>
-        OneOrMany<IThing> CharacterAttribute { get; set; }
+        OneOrMany<IThing, Thing> CharacterAttribute { get; set; }
 
         /// <summary>
         /// An item is an object within the game world that can be collected by a player or, occasionally, a non-player character.
         /// </summary>
-        OneOrMany<IThing> GameItem { get; set; }
+        OneOrMany<IThing, Thing> GameItem { get; set; }
 
         /// <summary>
         /// Real or fictional location of the game (or part of game).
@@ -27,12 +27,12 @@
         /// <summary>
         /// Indicate how many people can play this game (minimum, maximum, or range).
         /// </summary>
-        OneOrMany<IQuantitativeValue> NumberOfPlayers { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfPlayers { get; set; }
 
         /// <summary>
         /// The task that a player-controlled character, or group of characters may complete in order to gain a reward.
         /// </summary>
-        OneOrMany<IThing> Quest { get; set; }
+        OneOrMany<IThing, Thing> Quest { get; set; }
     }
 
     /// <summary>
@@ -52,14 +52,14 @@
         /// </summary>
         [DataMember(Name = "characterAttribute", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> CharacterAttribute { get; set; }
+        public OneOrMany<IThing, Thing> CharacterAttribute { get; set; }
 
         /// <summary>
         /// An item is an object within the game world that can be collected by a player or, occasionally, a non-player character.
         /// </summary>
         [DataMember(Name = "gameItem", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> GameItem { get; set; }
+        public OneOrMany<IThing, Thing> GameItem { get; set; }
 
         /// <summary>
         /// Real or fictional location of the game (or part of game).
@@ -73,13 +73,13 @@
         /// </summary>
         [DataMember(Name = "numberOfPlayers", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> NumberOfPlayers { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfPlayers { get; set; }
 
         /// <summary>
         /// The task that a player-controlled character, or group of characters may complete in order to gain a reward.
         /// </summary>
         [DataMember(Name = "quest", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Quest { get; set; }
+        public OneOrMany<IThing, Thing> Quest { get; set; }
     }
 }

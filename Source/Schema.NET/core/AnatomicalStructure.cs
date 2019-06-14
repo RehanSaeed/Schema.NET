@@ -22,12 +22,12 @@
         /// <summary>
         /// Other anatomical structures to which this structure is connected.
         /// </summary>
-        OneOrMany<IAnatomicalStructure> ConnectedTo { get; set; }
+        OneOrMany<IAnatomicalStructure, AnatomicalStructure> ConnectedTo { get; set; }
 
         /// <summary>
         /// An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
         /// </summary>
-        OneOrMany<IImageObject> Diagram { get; set; }
+        OneOrMany<IImageObject, ImageObject> Diagram { get; set; }
 
         /// <summary>
         /// Function of the anatomical structure.
@@ -37,22 +37,22 @@
         /// <summary>
         /// The anatomical or organ system that this structure is part of.
         /// </summary>
-        OneOrMany<IAnatomicalSystem> PartOfSystem { get; set; }
+        OneOrMany<IAnatomicalSystem, AnatomicalSystem> PartOfSystem { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
-        OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
+        OneOrMany<IMedicalCondition, MedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
-        OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
+        OneOrMany<IMedicalTherapy, MedicalTherapy> RelatedTherapy { get; set; }
 
         /// <summary>
         /// Component (sub-)structure(s) that comprise this anatomical structure.
         /// </summary>
-        OneOrMany<IAnatomicalStructure> SubStructure { get; set; }
+        OneOrMany<IAnatomicalStructure, AnatomicalStructure> SubStructure { get; set; }
     }
 
     /// <summary>
@@ -86,14 +86,14 @@
         /// </summary>
         [DataMember(Name = "connectedTo", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> ConnectedTo { get; set; }
+        public OneOrMany<IAnatomicalStructure, AnatomicalStructure> ConnectedTo { get; set; }
 
         /// <summary>
         /// An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
         /// </summary>
         [DataMember(Name = "diagram", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IImageObject> Diagram { get; set; }
+        public OneOrMany<IImageObject, ImageObject> Diagram { get; set; }
 
         /// <summary>
         /// Function of the anatomical structure.
@@ -107,27 +107,27 @@
         /// </summary>
         [DataMember(Name = "partOfSystem", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalSystem> PartOfSystem { get; set; }
+        public OneOrMany<IAnatomicalSystem, AnatomicalSystem> PartOfSystem { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
         [DataMember(Name = "relatedCondition", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
+        public OneOrMany<IMedicalCondition, MedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
         [DataMember(Name = "relatedTherapy", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
+        public OneOrMany<IMedicalTherapy, MedicalTherapy> RelatedTherapy { get; set; }
 
         /// <summary>
         /// Component (sub-)structure(s) that comprise this anatomical structure.
         /// </summary>
         [DataMember(Name = "subStructure", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> SubStructure { get; set; }
+        public OneOrMany<IAnatomicalStructure, AnatomicalStructure> SubStructure { get; set; }
     }
 }

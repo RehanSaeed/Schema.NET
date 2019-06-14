@@ -37,7 +37,7 @@
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        OneOrMany<IOffer> Offers { get; set; }
+        OneOrMany<IOffer, Offer> Offers { get; set; }
     }
 
     /// <summary>
@@ -88,6 +88,6 @@
         /// </summary>
         [DataMember(Name = "offers", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> Offers { get; set; }
+        public OneOrMany<IOffer, Offer> Offers { get; set; }
     }
 }

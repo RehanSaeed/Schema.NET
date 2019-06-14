@@ -12,7 +12,7 @@
         /// <summary>
         /// A person who reads (performs) the audiobook.
         /// </summary>
-        OneOrMany<IPerson> ReadBy { get; set; }
+        OneOrMany<IPerson, Person> ReadBy { get; set; }
     }
 
     /// <summary>
@@ -39,6 +39,6 @@
         /// </summary>
         [DataMember(Name = "readBy", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> ReadBy { get; set; }
+        public OneOrMany<IPerson, Person> ReadBy { get; set; }
     }
 }

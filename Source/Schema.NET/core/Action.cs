@@ -29,12 +29,12 @@
         /// <summary>
         /// For failed actions, more information on the cause of the failure.
         /// </summary>
-        OneOrMany<IThing> Error { get; set; }
+        OneOrMany<IThing, Thing> Error { get; set; }
 
         /// <summary>
         /// The object that helped the agent perform the action. e.g. John wrote a book with &lt;em&gt;a pen&lt;/em&gt;.
         /// </summary>
-        OneOrMany<IThing> Instrument { get; set; }
+        OneOrMany<IThing, Thing> Instrument { get; set; }
 
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
@@ -44,7 +44,7 @@
         /// <summary>
         /// The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read &lt;em&gt;a book&lt;/em&gt;.
         /// </summary>
-        OneOrMany<IThing> Object { get; set; }
+        OneOrMany<IThing, Thing> Object { get; set; }
 
         /// <summary>
         /// Other co-agents that participated in the action indirectly. e.g. John wrote a book with &lt;em&gt;Steve&lt;/em&gt;.
@@ -54,7 +54,7 @@
         /// <summary>
         /// The result produced in the action. e.g. John wrote &lt;em&gt;a book&lt;/em&gt;.
         /// </summary>
-        OneOrMany<IThing> Result { get; set; }
+        OneOrMany<IThing, Thing> Result { get; set; }
 
         /// <summary>
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
@@ -108,14 +108,14 @@
         /// </summary>
         [DataMember(Name = "error", Order = 109)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Error { get; set; }
+        public OneOrMany<IThing, Thing> Error { get; set; }
 
         /// <summary>
         /// The object that helped the agent perform the action. e.g. John wrote a book with &lt;em&gt;a pen&lt;/em&gt;.
         /// </summary>
         [DataMember(Name = "instrument", Order = 110)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Instrument { get; set; }
+        public OneOrMany<IThing, Thing> Instrument { get; set; }
 
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
@@ -129,7 +129,7 @@
         /// </summary>
         [DataMember(Name = "object", Order = 112)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Object { get; set; }
+        public OneOrMany<IThing, Thing> Object { get; set; }
 
         /// <summary>
         /// Other co-agents that participated in the action indirectly. e.g. John wrote a book with &lt;em&gt;Steve&lt;/em&gt;.
@@ -143,7 +143,7 @@
         /// </summary>
         [DataMember(Name = "result", Order = 114)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Result { get; set; }
+        public OneOrMany<IThing, Thing> Result { get; set; }
 
         /// <summary>
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;

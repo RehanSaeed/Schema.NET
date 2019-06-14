@@ -32,7 +32,7 @@
         /// <summary>
         /// Target Operating System / Product to which the code applies.  If applies to several versions, just the product name can be used.
         /// </summary>
-        OneOrMany<ISoftwareApplication> TargetProduct { get; set; }
+        OneOrMany<ISoftwareApplication, SoftwareApplication> TargetProduct { get; set; }
     }
 
     /// <summary>
@@ -80,6 +80,6 @@
         /// </summary>
         [DataMember(Name = "targetProduct", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ISoftwareApplication> TargetProduct { get; set; }
+        public OneOrMany<ISoftwareApplication, SoftwareApplication> TargetProduct { get; set; }
     }
 }

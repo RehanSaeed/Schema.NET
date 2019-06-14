@@ -32,12 +32,12 @@
         /// <summary>
         /// The CableOrSatelliteService offering the channel.
         /// </summary>
-        OneOrMany<ICableOrSatelliteService> InBroadcastLineup { get; set; }
+        OneOrMany<ICableOrSatelliteService, CableOrSatelliteService> InBroadcastLineup { get; set; }
 
         /// <summary>
         /// The BroadcastService offered on this channel.
         /// </summary>
-        OneOrMany<IBroadcastService> ProvidesBroadcastService { get; set; }
+        OneOrMany<IBroadcastService, BroadcastService> ProvidesBroadcastService { get; set; }
     }
 
     /// <summary>
@@ -85,13 +85,13 @@
         /// </summary>
         [DataMember(Name = "inBroadcastLineup", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICableOrSatelliteService> InBroadcastLineup { get; set; }
+        public OneOrMany<ICableOrSatelliteService, CableOrSatelliteService> InBroadcastLineup { get; set; }
 
         /// <summary>
         /// The BroadcastService offered on this channel.
         /// </summary>
         [DataMember(Name = "providesBroadcastService", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IBroadcastService> ProvidesBroadcastService { get; set; }
+        public OneOrMany<IBroadcastService, BroadcastService> ProvidesBroadcastService { get; set; }
     }
 }

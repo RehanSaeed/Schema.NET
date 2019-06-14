@@ -32,12 +32,12 @@
         /// <summary>
         /// The label that issued the release.
         /// </summary>
-        OneOrMany<IOrganization> RecordLabel { get; set; }
+        OneOrMany<IOrganization, Organization> RecordLabel { get; set; }
 
         /// <summary>
         /// The album this is a release of.
         /// </summary>
-        OneOrMany<IMusicAlbum> ReleaseOf { get; set; }
+        OneOrMany<IMusicAlbum, MusicAlbum> ReleaseOf { get; set; }
     }
 
     /// <summary>
@@ -85,13 +85,13 @@
         /// </summary>
         [DataMember(Name = "recordLabel", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> RecordLabel { get; set; }
+        public OneOrMany<IOrganization, Organization> RecordLabel { get; set; }
 
         /// <summary>
         /// The album this is a release of.
         /// </summary>
         [DataMember(Name = "releaseOf", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMusicAlbum> ReleaseOf { get; set; }
+        public OneOrMany<IMusicAlbum, MusicAlbum> ReleaseOf { get; set; }
     }
 }

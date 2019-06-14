@@ -12,7 +12,7 @@
         /// <summary>
         /// A music album.
         /// </summary>
-        OneOrMany<IMusicAlbum> Album { get; set; }
+        OneOrMany<IMusicAlbum, MusicAlbum> Album { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "album", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMusicAlbum> Album { get; set; }
+        public OneOrMany<IMusicAlbum, MusicAlbum> Album { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.

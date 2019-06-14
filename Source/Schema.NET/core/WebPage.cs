@@ -22,12 +22,12 @@
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.
         /// </summary>
-        OneOrMany<IWebPageElement> MainContentOfPage { get; set; }
+        OneOrMany<IWebPageElement, WebPageElement> MainContentOfPage { get; set; }
 
         /// <summary>
         /// Indicates the main image on the page.
         /// </summary>
-        OneOrMany<IImageObject> PrimaryImageOfPage { get; set; }
+        OneOrMany<IImageObject, ImageObject> PrimaryImageOfPage { get; set; }
 
         /// <summary>
         /// A link related to this web page, for example to other related web pages.
@@ -92,14 +92,14 @@
         /// </summary>
         [DataMember(Name = "mainContentOfPage", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IWebPageElement> MainContentOfPage { get; set; }
+        public OneOrMany<IWebPageElement, WebPageElement> MainContentOfPage { get; set; }
 
         /// <summary>
         /// Indicates the main image on the page.
         /// </summary>
         [DataMember(Name = "primaryImageOfPage", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IImageObject> PrimaryImageOfPage { get; set; }
+        public OneOrMany<IImageObject, ImageObject> PrimaryImageOfPage { get; set; }
 
         /// <summary>
         /// A link related to this web page, for example to other related web pages.

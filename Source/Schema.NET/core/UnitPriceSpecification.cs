@@ -22,7 +22,7 @@
         /// <summary>
         /// The reference quantity for which a certain price applies, e.g. 1 EUR per 4 kWh of electricity. This property is a replacement for unitOfMeasurement for the advanced cases where the price does not relate to a standard unit.
         /// </summary>
-        OneOrMany<IQuantitativeValue> ReferenceQuantity { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> ReferenceQuantity { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
@@ -67,7 +67,7 @@
         /// </summary>
         [DataMember(Name = "referenceQuantity", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> ReferenceQuantity { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> ReferenceQuantity { get; set; }
 
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.

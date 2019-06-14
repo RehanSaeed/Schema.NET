@@ -12,7 +12,7 @@
         /// <summary>
         /// The location in which the status applies.
         /// </summary>
-        OneOrMany<IAdministrativeArea> ApplicableLocation { get; set; }
+        OneOrMany<IAdministrativeArea, AdministrativeArea> ApplicableLocation { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "applicableLocation", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAdministrativeArea> ApplicableLocation { get; set; }
+        public OneOrMany<IAdministrativeArea, AdministrativeArea> ApplicableLocation { get; set; }
     }
 }

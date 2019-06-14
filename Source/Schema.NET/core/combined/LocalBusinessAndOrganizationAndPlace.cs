@@ -7,7 +7,7 @@
     /// <summary>
     /// See LocalBusiness, Organization, Place for more information.
     /// </summary>
-    public partial interface ILocalBusinessAndOrganizationAndPlace : ILocalBusiness, IOrganization, IPlace
+    public partial interface ILocalBusinessAndOrganizationAndPlace : IPlace, ILocalBusiness, IOrganization
     {
     }
 
@@ -36,7 +36,7 @@
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPropertyValue> AdditionalProperty { get; set; }
+        public override OneOrMany<IPropertyValue, PropertyValue> AdditionalProperty { get; set; }
 
         /// <summary>
         /// Physical address of the item.
@@ -50,21 +50,21 @@
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public override OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// Alumni of an organization.
         /// </summary>
         [DataMember(Name = "alumni", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Alumni { get; set; }
+        public override OneOrMany<IPerson, Person> Alumni { get; set; }
 
         /// <summary>
         /// An amenity feature (e.g. a characteristic or service) of the Accommodation. This generic property does not make a statement about whether the feature is included in an offer for the main accommodation or available at extra costs.
         /// </summary>
         [DataMember(Name = "amenityFeature", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<ILocationFeatureSpecification> AmenityFeature { get; set; }
+        public override OneOrMany<ILocationFeatureSpecification, LocationFeatureSpecification> AmenityFeature { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
@@ -100,21 +100,21 @@
         /// </summary>
         [DataMember(Name = "contactPoint", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IContactPoint> ContactPoint { get; set; }
+        public override OneOrMany<IContactPoint, ContactPoint> ContactPoint { get; set; }
 
         /// <summary>
         /// The basic containment relation between a place and one that contains it.
         /// </summary>
         [DataMember(Name = "containedInPlace", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> ContainedInPlace { get; set; }
+        public override OneOrMany<IPlace, Place> ContainedInPlace { get; set; }
 
         /// <summary>
         /// The basic containment relation between a place and another that it contains.
         /// </summary>
         [DataMember(Name = "containsPlace", Order = 218)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> ContainsPlace { get; set; }
+        public override OneOrMany<IPlace, Place> ContainsPlace { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.
@@ -136,7 +136,7 @@
         /// </summary>
         [DataMember(Name = "department", Order = 221)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOrganization> Department { get; set; }
+        public override OneOrMany<IOrganization, Organization> Department { get; set; }
 
         /// <summary>
         /// The date that this organization was dissolved.
@@ -178,7 +178,7 @@
         /// </summary>
         [DataMember(Name = "employee", Order = 227)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Employee { get; set; }
+        public override OneOrMany<IPerson, Person> Employee { get; set; }
 
         /// <summary>
         /// Statement about ethics policy, e.g. of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; regarding journalistic and publishing practices, or of a &lt;a class="localLink" href="http://schema.org/Restaurant"&gt;Restaurant&lt;/a&gt;, a page describing food source policies. In the case of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.
@@ -192,7 +192,7 @@
         /// </summary>
         [DataMember(Name = "event", Order = 229)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IEvent> Event { get; set; }
+        public override OneOrMany<IEvent, Event> Event { get; set; }
 
         /// <summary>
         /// The fax number.
@@ -206,7 +206,7 @@
         /// </summary>
         [DataMember(Name = "founder", Order = 231)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPerson> Founder { get; set; }
+        public override OneOrMany<IPerson, Person> Founder { get; set; }
 
         /// <summary>
         /// The date that this organization was founded.
@@ -220,7 +220,7 @@
         /// </summary>
         [DataMember(Name = "foundingLocation", Order = 233)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> FoundingLocation { get; set; }
+        public override OneOrMany<IPlace, Place> FoundingLocation { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -241,70 +241,70 @@
         /// </summary>
         [DataMember(Name = "geoContains", Order = 236)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoContains { get; set; }
+        public override OneOrMany<IPlace, Place> GeoContains { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that covers it. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoCoveredBy", Order = 237)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoCoveredBy { get; set; }
+        public override OneOrMany<IPlace, Place> GeoCoveredBy { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a covering geometry to a covered geometry. "Every point of b is a point of (the interior or boundary of) a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoCovers", Order = 238)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoCovers { get; set; }
+        public override OneOrMany<IPlace, Place> GeoCovers { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that crosses it: "a crosses b: they have some but not all interior points in common, and the dimension of the intersection is less than that of at least one of them". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoCrosses", Order = 239)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoCrosses { get; set; }
+        public override OneOrMany<IPlace, Place> GeoCrosses { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically disjoint: they have no point in common. They form a set of disconnected geometries." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;)
         /// </summary>
         [DataMember(Name = "geoDisjoint", Order = 240)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoDisjoint { get; set; }
+        public override OneOrMany<IPlace, Place> GeoDisjoint { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically equal, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;. "Two geometries are topologically equal if their interiors intersect and no part of the interior or boundary of one geometry intersects the exterior of the other" (a symmetric relationship)
         /// </summary>
         [DataMember(Name = "geoEquals", Order = 241)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoEquals { get; set; }
+        public override OneOrMany<IPlace, Place> GeoEquals { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) have at least one point in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoIntersects", Order = 242)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoIntersects { get; set; }
+        public override OneOrMany<IPlace, Place> GeoIntersects { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that geospatially overlaps it, i.e. they have some but not all points in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoOverlaps", Order = 243)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoOverlaps { get; set; }
+        public override OneOrMany<IPlace, Place> GeoOverlaps { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) touch: they have at least one boundary point in common, but no interior points." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt; )
         /// </summary>
         [DataMember(Name = "geoTouches", Order = 244)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoTouches { get; set; }
+        public override OneOrMany<IPlace, Place> GeoTouches { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to one that contains it, i.e. it is inside (i.e. within) its interior. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoWithin", Order = 245)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> GeoWithin { get; set; }
+        public override OneOrMany<IPlace, Place> GeoWithin { get; set; }
 
         /// <summary>
         /// The &lt;a href="http://www.gs1.org/gln"&gt;Global Location Number&lt;/a&gt; (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
@@ -325,14 +325,14 @@
         /// </summary>
         [DataMember(Name = "hasOfferCatalog", Order = 248)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOfferCatalog> HasOfferCatalog { get; set; }
+        public override OneOrMany<IOfferCatalog, OfferCatalog> HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
         [DataMember(Name = "hasPOS", Order = 249)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IPlace> HasPOS { get; set; }
+        public override OneOrMany<IPlace, Place> HasPOS { get; set; }
 
         /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
@@ -395,7 +395,7 @@
         /// </summary>
         [DataMember(Name = "makesOffer", Order = 258)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOffer> MakesOffer { get; set; }
+        public override OneOrMany<IOffer, Offer> MakesOffer { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
@@ -430,7 +430,7 @@
         /// </summary>
         [DataMember(Name = "numberOfEmployees", Order = 263)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
+        public override OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfEmployees { get; set; }
 
         /// <summary>
         /// The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;br/&gt;&lt;br/&gt;
@@ -450,7 +450,7 @@
         /// </summary>
         [DataMember(Name = "openingHoursSpecification", Order = 265)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOpeningHoursSpecification> OpeningHoursSpecification { get; set; }
+        public override OneOrMany<IOpeningHoursSpecification, OpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence.   Note that the &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt; is also available and can be used to make basic funder information machine-readable.
@@ -471,7 +471,7 @@
         /// </summary>
         [DataMember(Name = "parentOrganization", Order = 268)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOrganization> ParentOrganization { get; set; }
+        public override OneOrMany<IOrganization, Organization> ParentOrganization { get; set; }
 
         /// <summary>
         /// Cash, Credit Card, Cryptocurrency, Local Exchange Tradings System, etc.
@@ -514,14 +514,14 @@
         /// </summary>
         [DataMember(Name = "review", Order = 274)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IReview> Review { get; set; }
+        public override OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
         [DataMember(Name = "seeks", Order = 275)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IDemand> Seeks { get; set; }
+        public override OneOrMany<IDemand, Demand> Seeks { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
@@ -543,7 +543,7 @@
         /// </summary>
         [DataMember(Name = "specialOpeningHoursSpecification", Order = 278)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
+        public override OneOrMany<IOpeningHoursSpecification, OpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -557,7 +557,7 @@
         /// </summary>
         [DataMember(Name = "subOrganization", Order = 280)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IOrganization> SubOrganization { get; set; }
+        public override OneOrMany<IOrganization, Organization> SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.

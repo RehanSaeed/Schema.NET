@@ -27,7 +27,7 @@
         /// <summary>
         /// An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')’.
         /// </summary>
-        OneOrMany<IThing> Item { get; set; }
+        OneOrMany<IThing, Thing> Item { get; set; }
     }
 
     /// <summary>
@@ -68,6 +68,6 @@
         /// </summary>
         [DataMember(Name = "item", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Item { get; set; }
+        public OneOrMany<IThing, Thing> Item { get; set; }
     }
 }

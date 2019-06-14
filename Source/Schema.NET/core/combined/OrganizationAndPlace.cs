@@ -36,7 +36,7 @@
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPropertyValue> AdditionalProperty { get; set; }
+        public virtual OneOrMany<IPropertyValue, PropertyValue> AdditionalProperty { get; set; }
 
         /// <summary>
         /// Physical address of the item.
@@ -50,21 +50,21 @@
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 109)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public virtual OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// Alumni of an organization.
         /// </summary>
         [DataMember(Name = "alumni", Order = 110)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPerson> Alumni { get; set; }
+        public virtual OneOrMany<IPerson, Person> Alumni { get; set; }
 
         /// <summary>
         /// An amenity feature (e.g. a characteristic or service) of the Accommodation. This generic property does not make a statement about whether the feature is included in an offer for the main accommodation or available at extra costs.
         /// </summary>
         [DataMember(Name = "amenityFeature", Order = 111)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<ILocationFeatureSpecification> AmenityFeature { get; set; }
+        public virtual OneOrMany<ILocationFeatureSpecification, LocationFeatureSpecification> AmenityFeature { get; set; }
 
         /// <summary>
         /// The geographic area where a service or offered item is provided.
@@ -100,21 +100,21 @@
         /// </summary>
         [DataMember(Name = "contactPoint", Order = 116)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IContactPoint> ContactPoint { get; set; }
+        public virtual OneOrMany<IContactPoint, ContactPoint> ContactPoint { get; set; }
 
         /// <summary>
         /// The basic containment relation between a place and one that contains it.
         /// </summary>
         [DataMember(Name = "containedInPlace", Order = 117)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> ContainedInPlace { get; set; }
+        public virtual OneOrMany<IPlace, Place> ContainedInPlace { get; set; }
 
         /// <summary>
         /// The basic containment relation between a place and another that it contains.
         /// </summary>
         [DataMember(Name = "containsPlace", Order = 118)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> ContainsPlace { get; set; }
+        public virtual OneOrMany<IPlace, Place> ContainsPlace { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.
@@ -128,7 +128,7 @@
         /// </summary>
         [DataMember(Name = "department", Order = 120)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IOrganization> Department { get; set; }
+        public virtual OneOrMany<IOrganization, Organization> Department { get; set; }
 
         /// <summary>
         /// The date that this organization was dissolved.
@@ -170,7 +170,7 @@
         /// </summary>
         [DataMember(Name = "employee", Order = 126)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPerson> Employee { get; set; }
+        public virtual OneOrMany<IPerson, Person> Employee { get; set; }
 
         /// <summary>
         /// Statement about ethics policy, e.g. of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; regarding journalistic and publishing practices, or of a &lt;a class="localLink" href="http://schema.org/Restaurant"&gt;Restaurant&lt;/a&gt;, a page describing food source policies. In the case of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.
@@ -184,7 +184,7 @@
         /// </summary>
         [DataMember(Name = "event", Order = 128)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IEvent> Event { get; set; }
+        public virtual OneOrMany<IEvent, Event> Event { get; set; }
 
         /// <summary>
         /// The fax number.
@@ -198,7 +198,7 @@
         /// </summary>
         [DataMember(Name = "founder", Order = 130)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPerson> Founder { get; set; }
+        public virtual OneOrMany<IPerson, Person> Founder { get; set; }
 
         /// <summary>
         /// The date that this organization was founded.
@@ -212,7 +212,7 @@
         /// </summary>
         [DataMember(Name = "foundingLocation", Order = 132)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> FoundingLocation { get; set; }
+        public virtual OneOrMany<IPlace, Place> FoundingLocation { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
@@ -233,70 +233,70 @@
         /// </summary>
         [DataMember(Name = "geoContains", Order = 135)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoContains { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoContains { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that covers it. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoCoveredBy", Order = 136)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoCoveredBy { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoCoveredBy { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a covering geometry to a covered geometry. "Every point of b is a point of (the interior or boundary of) a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoCovers", Order = 137)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoCovers { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoCovers { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that crosses it: "a crosses b: they have some but not all interior points in common, and the dimension of the intersection is less than that of at least one of them". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoCrosses", Order = 138)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoCrosses { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoCrosses { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically disjoint: they have no point in common. They form a set of disconnected geometries." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;)
         /// </summary>
         [DataMember(Name = "geoDisjoint", Order = 139)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoDisjoint { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoDisjoint { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) are topologically equal, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;. "Two geometries are topologically equal if their interiors intersect and no part of the interior or boundary of one geometry intersects the exterior of the other" (a symmetric relationship)
         /// </summary>
         [DataMember(Name = "geoEquals", Order = 140)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoEquals { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoEquals { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) have at least one point in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoIntersects", Order = 141)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoIntersects { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoIntersects { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to another that geospatially overlaps it, i.e. they have some but not all points in common. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoOverlaps", Order = 142)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoOverlaps { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoOverlaps { get; set; }
 
         /// <summary>
         /// Represents spatial relations in which two geometries (or the places they represent) touch: they have at least one boundary point in common, but no interior points." (a symmetric relationship, as defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt; )
         /// </summary>
         [DataMember(Name = "geoTouches", Order = 143)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoTouches { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoTouches { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a geometry to one that contains it, i.e. it is inside (i.e. within) its interior. As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "geoWithin", Order = 144)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> GeoWithin { get; set; }
+        public virtual OneOrMany<IPlace, Place> GeoWithin { get; set; }
 
         /// <summary>
         /// The &lt;a href="http://www.gs1.org/gln"&gt;Global Location Number&lt;/a&gt; (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
@@ -317,14 +317,14 @@
         /// </summary>
         [DataMember(Name = "hasOfferCatalog", Order = 147)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IOfferCatalog> HasOfferCatalog { get; set; }
+        public virtual OneOrMany<IOfferCatalog, OfferCatalog> HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
         [DataMember(Name = "hasPOS", Order = 148)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IPlace> HasPOS { get; set; }
+        public virtual OneOrMany<IPlace, Place> HasPOS { get; set; }
 
         /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
@@ -387,7 +387,7 @@
         /// </summary>
         [DataMember(Name = "makesOffer", Order = 157)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IOffer> MakesOffer { get; set; }
+        public virtual OneOrMany<IOffer, Offer> MakesOffer { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
@@ -422,14 +422,14 @@
         /// </summary>
         [DataMember(Name = "numberOfEmployees", Order = 162)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
+        public virtual OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfEmployees { get; set; }
 
         /// <summary>
         /// The opening hours of a certain place.
         /// </summary>
         [DataMember(Name = "openingHoursSpecification", Order = 163)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IOpeningHoursSpecification> OpeningHoursSpecification { get; set; }
+        public virtual OneOrMany<IOpeningHoursSpecification, OpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence.   Note that the &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt; is also available and can be used to make basic funder information machine-readable.
@@ -450,7 +450,7 @@
         /// </summary>
         [DataMember(Name = "parentOrganization", Order = 166)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IOrganization> ParentOrganization { get; set; }
+        public virtual OneOrMany<IOrganization, Organization> ParentOrganization { get; set; }
 
         /// <summary>
         /// A photograph of this place.
@@ -479,14 +479,14 @@
         /// </summary>
         [DataMember(Name = "review", Order = 170)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IReview> Review { get; set; }
+        public virtual OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
         [DataMember(Name = "seeks", Order = 171)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IDemand> Seeks { get; set; }
+        public virtual OneOrMany<IDemand, Demand> Seeks { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
@@ -508,7 +508,7 @@
         /// </summary>
         [DataMember(Name = "specialOpeningHoursSpecification", Order = 174)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IOpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
+        public virtual OneOrMany<IOpeningHoursSpecification, OpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -522,7 +522,7 @@
         /// </summary>
         [DataMember(Name = "subOrganization", Order = 176)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IOrganization> SubOrganization { get; set; }
+        public virtual OneOrMany<IOrganization, Organization> SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.

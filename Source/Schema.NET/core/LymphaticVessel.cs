@@ -12,7 +12,7 @@
         /// <summary>
         /// The vasculature the lymphatic structure originates, or afferents, from.
         /// </summary>
-        OneOrMany<IVessel> OriginatesFrom { get; set; }
+        OneOrMany<IVessel, Vessel> OriginatesFrom { get; set; }
 
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
@@ -22,7 +22,7 @@
         /// <summary>
         /// The vasculature the lymphatic structure runs, or efferents, to.
         /// </summary>
-        OneOrMany<IVessel> RunsTo { get; set; }
+        OneOrMany<IVessel, Vessel> RunsTo { get; set; }
     }
 
     /// <summary>
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "originatesFrom", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IVessel> OriginatesFrom { get; set; }
+        public OneOrMany<IVessel, Vessel> OriginatesFrom { get; set; }
 
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
@@ -56,6 +56,6 @@
         /// </summary>
         [DataMember(Name = "runsTo", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IVessel> RunsTo { get; set; }
+        public OneOrMany<IVessel, Vessel> RunsTo { get; set; }
     }
 }

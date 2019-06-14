@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of object. The candidate subject of this action.
         /// </summary>
-        OneOrMany<IPerson> Candidate { get; set; }
+        OneOrMany<IPerson, Person> Candidate { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "candidate", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Candidate { get; set; }
+        public OneOrMany<IPerson, Person> Candidate { get; set; }
     }
 }

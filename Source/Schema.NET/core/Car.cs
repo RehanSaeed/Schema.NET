@@ -23,7 +23,7 @@
         /// &lt;li&gt;Note 3: Note that you can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        OneOrMany<IQuantitativeValue> RoofLoad { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> RoofLoad { get; set; }
     }
 
     /// <summary>
@@ -56,6 +56,6 @@
         /// </summary>
         [DataMember(Name = "roofLoad", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> RoofLoad { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> RoofLoad { get; set; }
     }
 }

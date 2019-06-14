@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of participant. The loser of the action.
         /// </summary>
-        OneOrMany<IPerson> Loser { get; set; }
+        OneOrMany<IPerson, Person> Loser { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "loser", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Loser { get; set; }
+        public OneOrMany<IPerson, Person> Loser { get; set; }
     }
 }

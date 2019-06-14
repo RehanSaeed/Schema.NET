@@ -17,7 +17,7 @@
         /// <summary>
         /// The organization issuing the ticket or permit.
         /// </summary>
-        OneOrMany<IOrganization> IssuedBy { get; set; }
+        OneOrMany<IOrganization, Organization> IssuedBy { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -28,7 +28,7 @@
         /// <summary>
         /// The seat associated with the ticket.
         /// </summary>
-        OneOrMany<ISeat> TicketedSeat { get; set; }
+        OneOrMany<ISeat, Seat> TicketedSeat { get; set; }
 
         /// <summary>
         /// The unique identifier for the ticket.
@@ -80,7 +80,7 @@
         /// </summary>
         [DataMember(Name = "issuedBy", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> IssuedBy { get; set; }
+        public OneOrMany<IOrganization, Organization> IssuedBy { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -95,7 +95,7 @@
         /// </summary>
         [DataMember(Name = "ticketedSeat", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ISeat> TicketedSeat { get; set; }
+        public OneOrMany<ISeat, Seat> TicketedSeat { get; set; }
 
         /// <summary>
         /// The unique identifier for the ticket.

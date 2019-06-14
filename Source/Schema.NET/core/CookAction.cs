@@ -17,12 +17,12 @@
         /// <summary>
         /// A sub property of location. The specific food event where the action occurred.
         /// </summary>
-        OneOrMany<IFoodEvent> FoodEvent { get; set; }
+        OneOrMany<IFoodEvent, FoodEvent> FoodEvent { get; set; }
 
         /// <summary>
         /// A sub property of instrument. The recipe/instructions used to perform the action.
         /// </summary>
-        OneOrMany<IRecipe> Recipe { get; set; }
+        OneOrMany<IRecipe, Recipe> Recipe { get; set; }
     }
 
     /// <summary>
@@ -49,13 +49,13 @@
         /// </summary>
         [DataMember(Name = "foodEvent", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IFoodEvent> FoodEvent { get; set; }
+        public OneOrMany<IFoodEvent, FoodEvent> FoodEvent { get; set; }
 
         /// <summary>
         /// A sub property of instrument. The recipe/instructions used to perform the action.
         /// </summary>
         [DataMember(Name = "recipe", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IRecipe> Recipe { get; set; }
+        public OneOrMany<IRecipe, Recipe> Recipe { get; set; }
     }
 }

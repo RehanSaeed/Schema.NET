@@ -28,7 +28,7 @@
         /// <summary>
         /// The duration of the loan or credit agreement.
         /// </summary>
-        OneOrMany<IQuantitativeValue> LoanTerm { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> LoanTerm { get; set; }
 
         /// <summary>
         /// The type of a loan or credit.
@@ -90,7 +90,7 @@
         /// </summary>
         [DataMember(Name = "loanTerm", Order = 409)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> LoanTerm { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> LoanTerm { get; set; }
 
         /// <summary>
         /// The type of a loan or credit.

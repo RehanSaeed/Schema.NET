@@ -56,7 +56,7 @@
         /// </summary>
         [DataMember(Name = "characterAttribute", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> CharacterAttribute { get; set; }
+        public OneOrMany<IThing, Thing> CharacterAttribute { get; set; }
 
         /// <summary>
         /// Countries for which the application is not supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
@@ -98,7 +98,7 @@
         /// </summary>
         [DataMember(Name = "gameItem", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> GameItem { get; set; }
+        public OneOrMany<IThing, Thing> GameItem { get; set; }
 
         /// <summary>
         /// Real or fictional location of the game (or part of game).
@@ -126,7 +126,7 @@
         /// </summary>
         [DataMember(Name = "numberOfPlayers", Order = 220)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> NumberOfPlayers { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfPlayers { get; set; }
 
         /// <summary>
         /// Operating systems supported (Windows 7, OSX 10.6, Android 1.6).
@@ -154,7 +154,7 @@
         /// </summary>
         [DataMember(Name = "quest", Order = 224)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Quest { get; set; }
+        public OneOrMany<IThing, Thing> Quest { get; set; }
 
         /// <summary>
         /// Description of what changed in this version.
@@ -175,14 +175,14 @@
         /// </summary>
         [DataMember(Name = "softwareAddOn", Order = 227)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ISoftwareApplication> SoftwareAddOn { get; set; }
+        public OneOrMany<ISoftwareApplication, SoftwareApplication> SoftwareAddOn { get; set; }
 
         /// <summary>
         /// Software application help.
         /// </summary>
         [DataMember(Name = "softwareHelp", Order = 228)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> SoftwareHelp { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> SoftwareHelp { get; set; }
 
         /// <summary>
         /// Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).
@@ -210,6 +210,6 @@
         /// </summary>
         [DataMember(Name = "supportingData", Order = 232)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDataFeed> SupportingData { get; set; }
+        public OneOrMany<IDataFeed, DataFeed> SupportingData { get; set; }
     }
 }

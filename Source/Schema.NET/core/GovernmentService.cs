@@ -12,7 +12,7 @@
         /// <summary>
         /// The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
         /// </summary>
-        OneOrMany<IOrganization> ServiceOperator { get; set; }
+        OneOrMany<IOrganization, Organization> ServiceOperator { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "serviceOperator", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> ServiceOperator { get; set; }
+        public OneOrMany<IOrganization, Organization> ServiceOperator { get; set; }
     }
 }

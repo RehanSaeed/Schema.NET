@@ -30,7 +30,7 @@
         /// <summary>
         /// One or more detailed price specifications, indicating the unit price and delivery or payment charges.
         /// </summary>
-        OneOrMany<IPriceSpecification> PriceSpecification { get; set; }
+        OneOrMany<IPriceSpecification, PriceSpecification> PriceSpecification { get; set; }
     }
 
     /// <summary>
@@ -72,6 +72,6 @@
         /// </summary>
         [DataMember(Name = "priceSpecification", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPriceSpecification> PriceSpecification { get; set; }
+        public OneOrMany<IPriceSpecification, PriceSpecification> PriceSpecification { get; set; }
     }
 }

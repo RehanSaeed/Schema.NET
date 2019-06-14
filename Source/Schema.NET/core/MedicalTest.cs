@@ -12,7 +12,7 @@
         /// <summary>
         /// Drugs that affect the test's results.
         /// </summary>
-        OneOrMany<IDrug> AffectedBy { get; set; }
+        OneOrMany<IDrug, Drug> AffectedBy { get; set; }
 
         /// <summary>
         /// Range of acceptable values for a typical patient, when applicable.
@@ -22,17 +22,17 @@
         /// <summary>
         /// A sign detected by the test.
         /// </summary>
-        OneOrMany<IMedicalSign> SignDetected { get; set; }
+        OneOrMany<IMedicalSign, MedicalSign> SignDetected { get; set; }
 
         /// <summary>
         /// A condition the test is used to diagnose.
         /// </summary>
-        OneOrMany<IMedicalCondition> UsedToDiagnose { get; set; }
+        OneOrMany<IMedicalCondition, MedicalCondition> UsedToDiagnose { get; set; }
 
         /// <summary>
         /// Device used to perform the test.
         /// </summary>
-        OneOrMany<IMedicalDevice> UsesDevice { get; set; }
+        OneOrMany<IMedicalDevice, MedicalDevice> UsesDevice { get; set; }
     }
 
     /// <summary>
@@ -52,7 +52,7 @@
         /// </summary>
         [DataMember(Name = "affectedBy", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDrug> AffectedBy { get; set; }
+        public OneOrMany<IDrug, Drug> AffectedBy { get; set; }
 
         /// <summary>
         /// Range of acceptable values for a typical patient, when applicable.
@@ -66,20 +66,20 @@
         /// </summary>
         [DataMember(Name = "signDetected", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalSign> SignDetected { get; set; }
+        public OneOrMany<IMedicalSign, MedicalSign> SignDetected { get; set; }
 
         /// <summary>
         /// A condition the test is used to diagnose.
         /// </summary>
         [DataMember(Name = "usedToDiagnose", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalCondition> UsedToDiagnose { get; set; }
+        public OneOrMany<IMedicalCondition, MedicalCondition> UsedToDiagnose { get; set; }
 
         /// <summary>
         /// Device used to perform the test.
         /// </summary>
         [DataMember(Name = "usesDevice", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalDevice> UsesDevice { get; set; }
+        public OneOrMany<IMedicalDevice, MedicalDevice> UsesDevice { get; set; }
     }
 }

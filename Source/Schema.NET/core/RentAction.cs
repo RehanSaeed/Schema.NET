@@ -17,7 +17,7 @@
         /// <summary>
         /// A sub property of participant. The real estate agent involved in the action.
         /// </summary>
-        OneOrMany<IRealEstateAgent> RealEstateAgent { get; set; }
+        OneOrMany<IRealEstateAgent, RealEstateAgent> RealEstateAgent { get; set; }
     }
 
     /// <summary>
@@ -44,6 +44,6 @@
         /// </summary>
         [DataMember(Name = "realEstateAgent", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IRealEstateAgent> RealEstateAgent { get; set; }
+        public OneOrMany<IRealEstateAgent, RealEstateAgent> RealEstateAgent { get; set; }
     }
 }

@@ -12,17 +12,17 @@
         /// <summary>
         /// The organization issuing the ticket or permit.
         /// </summary>
-        OneOrMany<IOrganization> IssuedBy { get; set; }
+        OneOrMany<IOrganization, Organization> IssuedBy { get; set; }
 
         /// <summary>
         /// The service through with the permit was granted.
         /// </summary>
-        OneOrMany<IService> IssuedThrough { get; set; }
+        OneOrMany<IService, Service> IssuedThrough { get; set; }
 
         /// <summary>
         /// The target audience for this permit.
         /// </summary>
-        OneOrMany<IAudience> PermitAudience { get; set; }
+        OneOrMany<IAudience, Audience> PermitAudience { get; set; }
 
         /// <summary>
         /// The duration of validity of a permit or similar thing.
@@ -37,7 +37,7 @@
         /// <summary>
         /// The geographic area where a permit or similar thing is valid.
         /// </summary>
-        OneOrMany<IAdministrativeArea> ValidIn { get; set; }
+        OneOrMany<IAdministrativeArea, AdministrativeArea> ValidIn { get; set; }
 
         /// <summary>
         /// The date when the item is no longer valid.
@@ -62,21 +62,21 @@
         /// </summary>
         [DataMember(Name = "issuedBy", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> IssuedBy { get; set; }
+        public OneOrMany<IOrganization, Organization> IssuedBy { get; set; }
 
         /// <summary>
         /// The service through with the permit was granted.
         /// </summary>
         [DataMember(Name = "issuedThrough", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IService> IssuedThrough { get; set; }
+        public OneOrMany<IService, Service> IssuedThrough { get; set; }
 
         /// <summary>
         /// The target audience for this permit.
         /// </summary>
         [DataMember(Name = "permitAudience", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAudience> PermitAudience { get; set; }
+        public OneOrMany<IAudience, Audience> PermitAudience { get; set; }
 
         /// <summary>
         /// The duration of validity of a permit or similar thing.
@@ -97,7 +97,7 @@
         /// </summary>
         [DataMember(Name = "validIn", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAdministrativeArea> ValidIn { get; set; }
+        public OneOrMany<IAdministrativeArea, AdministrativeArea> ValidIn { get; set; }
 
         /// <summary>
         /// The date when the item is no longer valid.

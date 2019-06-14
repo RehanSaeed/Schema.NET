@@ -12,7 +12,7 @@
         /// <summary>
         /// The neurological pathway extension that involves muscle control.
         /// </summary>
-        OneOrMany<IMuscle> NerveMotor { get; set; }
+        OneOrMany<IMuscle, Muscle> NerveMotor { get; set; }
 
         /// <summary>
         /// The neurological pathway extension that inputs and sends information to the brain or spinal cord.
@@ -22,7 +22,7 @@
         /// <summary>
         /// The neurological pathway that originates the neurons.
         /// </summary>
-        OneOrMany<IBrainStructure> SourcedFrom { get; set; }
+        OneOrMany<IBrainStructure, BrainStructure> SourcedFrom { get; set; }
     }
 
     /// <summary>
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "nerveMotor", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMuscle> NerveMotor { get; set; }
+        public OneOrMany<IMuscle, Muscle> NerveMotor { get; set; }
 
         /// <summary>
         /// The neurological pathway extension that inputs and sends information to the brain or spinal cord.
@@ -56,6 +56,6 @@
         /// </summary>
         [DataMember(Name = "sourcedFrom", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IBrainStructure> SourcedFrom { get; set; }
+        public OneOrMany<IBrainStructure, BrainStructure> SourcedFrom { get; set; }
     }
 }

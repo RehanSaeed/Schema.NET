@@ -12,17 +12,17 @@
         /// <summary>
         /// The number of employees in an organization e.g. business.
         /// </summary>
-        OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfEmployees { get; set; }
 
         /// <summary>
         /// The size of the business in annual revenue.
         /// </summary>
-        OneOrMany<IQuantitativeValue> YearlyRevenue { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> YearlyRevenue { get; set; }
 
         /// <summary>
         /// The age of the business.
         /// </summary>
-        OneOrMany<IQuantitativeValue> YearsInOperation { get; set; }
+        OneOrMany<IQuantitativeValue, QuantitativeValue> YearsInOperation { get; set; }
     }
 
     /// <summary>
@@ -42,20 +42,20 @@
         /// </summary>
         [DataMember(Name = "numberOfEmployees", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> NumberOfEmployees { get; set; }
 
         /// <summary>
         /// The size of the business in annual revenue.
         /// </summary>
         [DataMember(Name = "yearlyRevenue", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> YearlyRevenue { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> YearlyRevenue { get; set; }
 
         /// <summary>
         /// The age of the business.
         /// </summary>
         [DataMember(Name = "yearsInOperation", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuantitativeValue> YearsInOperation { get; set; }
+        public OneOrMany<IQuantitativeValue, QuantitativeValue> YearsInOperation { get; set; }
     }
 }

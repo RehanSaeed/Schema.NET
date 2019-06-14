@@ -16,7 +16,7 @@
         /// <summary>
         /// A sub property of object. A question.
         /// </summary>
-        OneOrMany<IQuestion> Question { get; set; }
+        OneOrMany<IQuestion, Question> Question { get; set; }
     }
 
     /// <summary>
@@ -40,6 +40,6 @@
         /// </summary>
         [DataMember(Name = "question", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IQuestion> Question { get; set; }
+        public OneOrMany<IQuestion, Question> Question { get; set; }
     }
 }

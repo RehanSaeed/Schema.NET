@@ -12,7 +12,7 @@
         /// <summary>
         /// A medical guideline related to this entity.
         /// </summary>
-        OneOrMany<IMedicalGuideline> Guideline { get; set; }
+        OneOrMany<IMedicalGuideline, MedicalGuideline> Guideline { get; set; }
 
         /// <summary>
         /// The drug or supplement's legal status, including any controlled substance schedules that apply.
@@ -27,7 +27,7 @@
         /// <summary>
         /// If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
         /// </summary>
-        OneOrMany<IOrganization> RecognizingAuthority { get; set; }
+        OneOrMany<IOrganization, Organization> RecognizingAuthority { get; set; }
 
         /// <summary>
         /// If applicable, a medical specialty in which this entity is relevant.
@@ -37,7 +37,7 @@
         /// <summary>
         /// A medical study or trial related to this entity.
         /// </summary>
-        OneOrMany<IMedicalStudy> Study { get; set; }
+        OneOrMany<IMedicalStudy, MedicalStudy> Study { get; set; }
     }
 
     /// <summary>
@@ -57,7 +57,7 @@
         /// </summary>
         [DataMember(Name = "guideline", Order = 106)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalGuideline> Guideline { get; set; }
+        public OneOrMany<IMedicalGuideline, MedicalGuideline> Guideline { get; set; }
 
         /// <summary>
         /// The drug or supplement's legal status, including any controlled substance schedules that apply.
@@ -78,7 +78,7 @@
         /// </summary>
         [DataMember(Name = "recognizingAuthority", Order = 109)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> RecognizingAuthority { get; set; }
+        public OneOrMany<IOrganization, Organization> RecognizingAuthority { get; set; }
 
         /// <summary>
         /// If applicable, a medical specialty in which this entity is relevant.
@@ -92,6 +92,6 @@
         /// </summary>
         [DataMember(Name = "study", Order = 111)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalStudy> Study { get; set; }
+        public OneOrMany<IMedicalStudy, MedicalStudy> Study { get; set; }
     }
 }

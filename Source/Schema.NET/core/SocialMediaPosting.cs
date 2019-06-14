@@ -12,7 +12,7 @@
         /// <summary>
         /// A CreativeWork such as an image, video, or audio clip shared as part of this posting.
         /// </summary>
-        OneOrMany<ICreativeWork> SharedContent { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> SharedContent { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "sharedContent", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> SharedContent { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> SharedContent { get; set; }
     }
 }

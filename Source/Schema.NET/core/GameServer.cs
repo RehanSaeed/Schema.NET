@@ -12,7 +12,7 @@
         /// <summary>
         /// Video game which is played on this server.
         /// </summary>
-        OneOrMany<IVideoGame> Game { get; set; }
+        OneOrMany<IVideoGame, VideoGame> Game { get; set; }
 
         /// <summary>
         /// Number of players on the server.
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "game", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IVideoGame> Game { get; set; }
+        public OneOrMany<IVideoGame, VideoGame> Game { get; set; }
 
         /// <summary>
         /// Number of players on the server.

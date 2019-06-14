@@ -17,7 +17,7 @@
         /// <summary>
         /// The station where the train trip ends.
         /// </summary>
-        OneOrMany<ITrainStation> ArrivalStation { get; set; }
+        OneOrMany<ITrainStation, TrainStation> ArrivalStation { get; set; }
 
         /// <summary>
         /// The platform from which the train departs.
@@ -27,7 +27,7 @@
         /// <summary>
         /// The station from which the train departs.
         /// </summary>
-        OneOrMany<ITrainStation> DepartureStation { get; set; }
+        OneOrMany<ITrainStation, TrainStation> DepartureStation { get; set; }
 
         /// <summary>
         /// The name of the train (e.g. The Orient Express).
@@ -64,7 +64,7 @@
         /// </summary>
         [DataMember(Name = "arrivalStation", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ITrainStation> ArrivalStation { get; set; }
+        public OneOrMany<ITrainStation, TrainStation> ArrivalStation { get; set; }
 
         /// <summary>
         /// The platform from which the train departs.
@@ -78,7 +78,7 @@
         /// </summary>
         [DataMember(Name = "departureStation", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ITrainStation> DepartureStation { get; set; }
+        public OneOrMany<ITrainStation, TrainStation> DepartureStation { get; set; }
 
         /// <summary>
         /// The name of the train (e.g. The Orient Express).

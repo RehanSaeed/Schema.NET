@@ -17,7 +17,7 @@
         /// <summary>
         /// The geographic area associated with the audience.
         /// </summary>
-        OneOrMany<IAdministrativeArea> GeographicArea { get; set; }
+        OneOrMany<IAdministrativeArea, AdministrativeArea> GeographicArea { get; set; }
     }
 
     /// <summary>
@@ -44,6 +44,6 @@
         /// </summary>
         [DataMember(Name = "geographicArea", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAdministrativeArea> GeographicArea { get; set; }
+        public OneOrMany<IAdministrativeArea, AdministrativeArea> GeographicArea { get; set; }
     }
 }

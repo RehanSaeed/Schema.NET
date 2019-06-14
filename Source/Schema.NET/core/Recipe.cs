@@ -22,7 +22,7 @@
         /// <summary>
         /// Nutrition information about the recipe or menu item.
         /// </summary>
-        OneOrMany<INutritionInformation> Nutrition { get; set; }
+        OneOrMany<INutritionInformation, NutritionInformation> Nutrition { get; set; }
 
         /// <summary>
         /// The category of the recipe—for example, appetizer, entree, etc.
@@ -86,7 +86,7 @@
         /// </summary>
         [DataMember(Name = "nutrition", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<INutritionInformation> Nutrition { get; set; }
+        public OneOrMany<INutritionInformation, NutritionInformation> Nutrition { get; set; }
 
         /// <summary>
         /// The category of the recipe—for example, appetizer, entree, etc.

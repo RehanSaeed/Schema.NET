@@ -12,7 +12,7 @@
         /// <summary>
         /// The hours during which this service or contact is available.
         /// </summary>
-        OneOrMany<IOpeningHoursSpecification> HoursAvailable { get; set; }
+        OneOrMany<IOpeningHoursSpecification, OpeningHoursSpecification> HoursAvailable { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "hoursAvailable", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOpeningHoursSpecification> HoursAvailable { get; set; }
+        public OneOrMany<IOpeningHoursSpecification, OpeningHoursSpecification> HoursAvailable { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.

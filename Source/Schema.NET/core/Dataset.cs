@@ -12,12 +12,12 @@
         /// <summary>
         /// A downloadable form of this dataset, at a specific location, in a specific format.
         /// </summary>
-        OneOrMany<IDataDownload> Distribution { get; set; }
+        OneOrMany<IDataDownload, DataDownload> Distribution { get; set; }
 
         /// <summary>
         /// A data catalog which contains this dataset.
         /// </summary>
-        OneOrMany<IDataCatalog> IncludedInDataCatalog { get; set; }
+        OneOrMany<IDataCatalog, DataCatalog> IncludedInDataCatalog { get; set; }
 
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.
@@ -37,6 +37,11 @@
         /// The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
         /// </summary>
         Values<IPropertyValue, string>? VariableMeasured { get; set; }
+
+        /// <summary>
+        /// Originally named &lt;a class="localLink" href="http://schema.org/variablesMeasured"&gt;variablesMeasured&lt;/a&gt;, The &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
+        /// </summary>
+        Values<IPropertyValue, string>? VariablesMeasured { get; set; }
     }
 
     /// <summary>
@@ -56,14 +61,14 @@
         /// </summary>
         [DataMember(Name = "distribution", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDataDownload> Distribution { get; set; }
+        public OneOrMany<IDataDownload, DataDownload> Distribution { get; set; }
 
         /// <summary>
         /// A data catalog which contains this dataset.
         /// </summary>
         [DataMember(Name = "includedInDataCatalog", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IDataCatalog> IncludedInDataCatalog { get; set; }
+        public OneOrMany<IDataCatalog, DataCatalog> IncludedInDataCatalog { get; set; }
 
         /// <summary>
         /// The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.
@@ -89,5 +94,12 @@
         [DataMember(Name = "variableMeasured", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPropertyValue, string>? VariableMeasured { get; set; }
+
+        /// <summary>
+        /// Originally named &lt;a class="localLink" href="http://schema.org/variablesMeasured"&gt;variablesMeasured&lt;/a&gt;, The &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
+        /// </summary>
+        [DataMember(Name = "variablesMeasured", Order = 211)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<IPropertyValue, string>? VariablesMeasured { get; set; }
     }
 }

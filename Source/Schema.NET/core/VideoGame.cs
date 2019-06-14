@@ -12,17 +12,17 @@
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Actor { get; set; }
+        OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// Cheat codes to the game.
         /// </summary>
-        OneOrMany<ICreativeWork> CheatCode { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> CheatCode { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Director { get; set; }
+        OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The electronic systems used to play &lt;a href="http://en.wikipedia.org/wiki/Category:Video_game_platforms"&gt;video games&lt;/a&gt;.
@@ -32,12 +32,12 @@
         /// <summary>
         /// The server on which  it is possible to play the game.
         /// </summary>
-        OneOrMany<IGameServer> GameServer { get; set; }
+        OneOrMany<IGameServer, GameServer> GameServer { get; set; }
 
         /// <summary>
         /// Links to tips, tactics, etc.
         /// </summary>
-        OneOrMany<ICreativeWork> GameTip { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> GameTip { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -52,7 +52,7 @@
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
-        OneOrMany<IVideoObject> Trailer { get; set; }
+        OneOrMany<IVideoObject, VideoObject> Trailer { get; set; }
     }
 
     /// <summary>
@@ -72,21 +72,21 @@
         /// </summary>
         [DataMember(Name = "actor", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Actor { get; set; }
+        public OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// Cheat codes to the game.
         /// </summary>
         [DataMember(Name = "cheatCode", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> CheatCode { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> CheatCode { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "director", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Director { get; set; }
+        public OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The electronic systems used to play &lt;a href="http://en.wikipedia.org/wiki/Category:Video_game_platforms"&gt;video games&lt;/a&gt;.
@@ -100,14 +100,14 @@
         /// </summary>
         [DataMember(Name = "gameServer", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IGameServer> GameServer { get; set; }
+        public OneOrMany<IGameServer, GameServer> GameServer { get; set; }
 
         /// <summary>
         /// Links to tips, tactics, etc.
         /// </summary>
         [DataMember(Name = "gameTip", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> GameTip { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> GameTip { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -128,6 +128,6 @@
         /// </summary>
         [DataMember(Name = "trailer", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IVideoObject> Trailer { get; set; }
+        public OneOrMany<IVideoObject, VideoObject> Trailer { get; set; }
     }
 }

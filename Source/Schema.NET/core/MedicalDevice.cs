@@ -12,7 +12,7 @@
         /// <summary>
         /// A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
         /// </summary>
-        OneOrMany<IMedicalEntity> AdverseOutcome { get; set; }
+        OneOrMany<IMedicalEntity, MedicalEntity> AdverseOutcome { get; set; }
 
         /// <summary>
         /// A contraindication for this therapy.
@@ -22,7 +22,7 @@
         /// <summary>
         /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
         /// </summary>
-        OneOrMany<IMedicalIndication> Indication { get; set; }
+        OneOrMany<IMedicalIndication, MedicalIndication> Indication { get; set; }
 
         /// <summary>
         /// A description of the postoperative procedures, care, and/or followups for this device.
@@ -47,7 +47,7 @@
         /// <summary>
         /// A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
         /// </summary>
-        OneOrMany<IMedicalEntity> SeriousAdverseOutcome { get; set; }
+        OneOrMany<IMedicalEntity, MedicalEntity> SeriousAdverseOutcome { get; set; }
     }
 
     /// <summary>
@@ -67,7 +67,7 @@
         /// </summary>
         [DataMember(Name = "adverseOutcome", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalEntity> AdverseOutcome { get; set; }
+        public OneOrMany<IMedicalEntity, MedicalEntity> AdverseOutcome { get; set; }
 
         /// <summary>
         /// A contraindication for this therapy.
@@ -81,7 +81,7 @@
         /// </summary>
         [DataMember(Name = "indication", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalIndication> Indication { get; set; }
+        public OneOrMany<IMedicalIndication, MedicalIndication> Indication { get; set; }
 
         /// <summary>
         /// A description of the postoperative procedures, care, and/or followups for this device.
@@ -116,6 +116,6 @@
         /// </summary>
         [DataMember(Name = "seriousAdverseOutcome", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalEntity> SeriousAdverseOutcome { get; set; }
+        public OneOrMany<IMedicalEntity, MedicalEntity> SeriousAdverseOutcome { get; set; }
     }
 }

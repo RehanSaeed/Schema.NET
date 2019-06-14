@@ -17,7 +17,7 @@
         /// <summary>
         /// A diagnostic test that can identify this sign.
         /// </summary>
-        OneOrMany<IMedicalTest> IdentifyingTest { get; set; }
+        OneOrMany<IMedicalTest, MedicalTest> IdentifyingTest { get; set; }
     }
 
     /// <summary>
@@ -44,6 +44,6 @@
         /// </summary>
         [DataMember(Name = "identifyingTest", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalTest> IdentifyingTest { get; set; }
+        public OneOrMany<IMedicalTest, MedicalTest> IdentifyingTest { get; set; }
     }
 }

@@ -12,12 +12,12 @@
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Actor { get; set; }
+        OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Director { get; set; }
+        OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -27,12 +27,12 @@
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
-        OneOrMany<IOrganization> ProductionCompany { get; set; }
+        OneOrMany<IOrganization, Organization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
-        OneOrMany<IVideoObject> Trailer { get; set; }
+        OneOrMany<IVideoObject, VideoObject> Trailer { get; set; }
     }
 
     /// <summary>
@@ -52,14 +52,14 @@
         /// </summary>
         [DataMember(Name = "actor", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Actor { get; set; }
+        public OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "director", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Director { get; set; }
+        public OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
@@ -73,13 +73,13 @@
         /// </summary>
         [DataMember(Name = "productionCompany", Order = 409)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> ProductionCompany { get; set; }
+        public OneOrMany<IOrganization, Organization> ProductionCompany { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
         [DataMember(Name = "trailer", Order = 410)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IVideoObject> Trailer { get; set; }
+        public OneOrMany<IVideoObject, VideoObject> Trailer { get; set; }
     }
 }

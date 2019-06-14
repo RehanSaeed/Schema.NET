@@ -12,7 +12,7 @@
         /// <summary>
         /// The subject matter of the content.
         /// </summary>
-        OneOrMany<IThing> About { get; set; }
+        OneOrMany<IThing, Thing> About { get; set; }
 
         /// <summary>
         /// Indicates that the resource is compatible with the referenced accessibility API (&lt;a href="http://www.w3.org/wiki/WebSchemas/Accessibility"&gt;WebSchemas wiki lists possible values&lt;/a&gt;).
@@ -52,12 +52,12 @@
         /// <summary>
         /// Specifies the Person that is legally accountable for the CreativeWork.
         /// </summary>
-        OneOrMany<IPerson> AccountablePerson { get; set; }
+        OneOrMany<IPerson, Person> AccountablePerson { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
-        OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// A secondary title of the CreativeWork.
@@ -67,12 +67,12 @@
         /// <summary>
         /// A media object that encodes this CreativeWork. This property is a synonym for encoding.
         /// </summary>
-        OneOrMany<IMediaObject> AssociatedMedia { get; set; }
+        OneOrMany<IMediaObject, MediaObject> AssociatedMedia { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
-        OneOrMany<IAudience> Audience { get; set; }
+        OneOrMany<IAudience, Audience> Audience { get; set; }
 
         /// <summary>
         /// An embedded audio object.
@@ -92,7 +92,7 @@
         /// <summary>
         /// Fictional person connected with a creative work.
         /// </summary>
-        OneOrMany<IPerson> Character { get; set; }
+        OneOrMany<IPerson, Person> Character { get; set; }
 
         /// <summary>
         /// A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
@@ -102,7 +102,7 @@
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
-        OneOrMany<IComment> Comment { get; set; }
+        OneOrMany<IComment, Comment> Comment { get; set; }
 
         /// <summary>
         /// The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.
@@ -112,7 +112,7 @@
         /// <summary>
         /// The location depicted or described in the content. For example, the location in a photograph or painting.
         /// </summary>
-        OneOrMany<IPlace> ContentLocation { get; set; }
+        OneOrMany<IPlace, Place> ContentLocation { get; set; }
 
         /// <summary>
         /// Official rating of a piece of content&amp;#x2014;for example,'MPAA PG-13'.
@@ -172,12 +172,12 @@
         /// <summary>
         /// Specifies the Person who edited the CreativeWork.
         /// </summary>
-        OneOrMany<IPerson> Editor { get; set; }
+        OneOrMany<IPerson, Person> Editor { get; set; }
 
         /// <summary>
         /// An alignment to an established educational framework.
         /// </summary>
-        OneOrMany<IAlignmentObject> EducationalAlignment { get; set; }
+        OneOrMany<IAlignmentObject, AlignmentObject> EducationalAlignment { get; set; }
 
         /// <summary>
         /// The purpose of a work in the context of education; for example, 'assignment', 'group work'.
@@ -187,7 +187,7 @@
         /// <summary>
         /// A media object that encodes this CreativeWork. This property is a synonym for associatedMedia.
         /// </summary>
-        OneOrMany<IMediaObject> Encoding { get; set; }
+        OneOrMany<IMediaObject, MediaObject> Encoding { get; set; }
 
         /// <summary>
         /// Media type typically expressed using a MIME format (see &lt;a href="http://www.iana.org/assignments/media-types/media-types.xhtml"&gt;IANA site&lt;/a&gt; and &lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types"&gt;MDN reference&lt;/a&gt;) e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.).&lt;br/&gt;&lt;br/&gt;
@@ -199,7 +199,7 @@
         /// <summary>
         /// A creative work that this work is an example/instance/realization/derivation of.
         /// </summary>
-        OneOrMany<ICreativeWork> ExampleOfWork { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> ExampleOfWork { get; set; }
 
         /// <summary>
         /// Date the content expires and is no longer useful or available. For example a &lt;a class="localLink" href="http://schema.org/VideoObject"&gt;VideoObject&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt; whose availability or relevance is time-limited, or a &lt;a class="localLink" href="http://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt; fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date.
@@ -219,7 +219,7 @@
         /// <summary>
         /// Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense).
         /// </summary>
-        OneOrMany<ICreativeWork> HasPart { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> HasPart { get; set; }
 
         /// <summary>
         /// Headline of the article.
@@ -234,7 +234,7 @@
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
         /// </summary>
-        OneOrMany<IInteractionCounter> InteractionStatistic { get; set; }
+        OneOrMany<IInteractionCounter, InteractionCounter> InteractionStatistic { get; set; }
 
         /// <summary>
         /// The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
@@ -247,7 +247,7 @@
         OneOrMany<bool?> IsAccessibleForFree { get; set; }
 
         /// <summary>
-        /// A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
+        /// A resource from which this work is derived or from which it is a modification or adaption.
         /// </summary>
         Values<ICreativeWork, IProduct, Uri>? IsBasedOn { get; set; }
 
@@ -259,7 +259,7 @@
         /// <summary>
         /// Indicates an item or CreativeWork that this item, or CreativeWork (in some sense), is part of.
         /// </summary>
-        OneOrMany<ICreativeWork> IsPartOf { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> IsPartOf { get; set; }
 
         /// <summary>
         /// Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
@@ -279,12 +279,12 @@
         /// <summary>
         /// The location where the CreativeWork was created, which may not be the same as the location depicted in the CreativeWork.
         /// </summary>
-        OneOrMany<IPlace> LocationCreated { get; set; }
+        OneOrMany<IPlace, Place> LocationCreated { get; set; }
 
         /// <summary>
         /// Indicates the primary entity described in some page or other CreativeWork.
         /// </summary>
-        OneOrMany<IThing> MainEntity { get; set; }
+        OneOrMany<IThing, Thing> MainEntity { get; set; }
 
         /// <summary>
         /// A material that something is made from, e.g. leather, wool, cotton, paper.
@@ -299,12 +299,12 @@
         /// <summary>
         /// Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
         /// </summary>
-        OneOrMany<IThing> Mentions { get; set; }
+        OneOrMany<IThing, Thing> Mentions { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
-        OneOrMany<IOffer> Offers { get; set; }
+        OneOrMany<IOffer, Offer> Offers { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
@@ -324,7 +324,7 @@
         /// <summary>
         /// A publication event associated with the item.
         /// </summary>
-        OneOrMany<IPublicationEvent> Publication { get; set; }
+        OneOrMany<IPublicationEvent, PublicationEvent> Publication { get; set; }
 
         /// <summary>
         /// The publisher of the creative work.
@@ -334,7 +334,7 @@
         /// <summary>
         /// The publishing division which published the comic.
         /// </summary>
-        OneOrMany<IOrganization> PublisherImprint { get; set; }
+        OneOrMany<IOrganization, Organization> PublisherImprint { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
@@ -345,17 +345,17 @@
         /// <summary>
         /// The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
         /// </summary>
-        OneOrMany<IEvent> RecordedAt { get; set; }
+        OneOrMany<IEvent, Event> RecordedAt { get; set; }
 
         /// <summary>
         /// The place and time the release was issued, expressed as a PublicationEvent.
         /// </summary>
-        OneOrMany<IPublicationEvent> ReleasedEvent { get; set; }
+        OneOrMany<IPublicationEvent, PublicationEvent> ReleasedEvent { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        OneOrMany<IReview> Review { get; set; }
+        OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application.
@@ -381,20 +381,20 @@
         /// <summary>
         /// The Organization on whose behalf the creator was working.
         /// </summary>
-        OneOrMany<IOrganization> SourceOrganization { get; set; }
+        OneOrMany<IOrganization, Organization> SourceOrganization { get; set; }
 
         /// <summary>
         /// The "spatial" property can be used in cases when more specific properties
         /// (e.g. &lt;a class="localLink" href="http://schema.org/locationCreated"&gt;locationCreated&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/spatialCoverage"&gt;spatialCoverage&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/contentLocation"&gt;contentLocation&lt;/a&gt;) are not known to be appropriate.
         /// </summary>
-        OneOrMany<IPlace> Spatial { get; set; }
+        OneOrMany<IPlace, Place> Spatial { get; set; }
 
         /// <summary>
         /// The spatialCoverage of a CreativeWork indicates the place(s) which are the focus of the content. It is a subproperty of
         ///       contentLocation intended primarily for more technical and detailed materials. For example with a Dataset, it indicates
         ///       areas that the dataset describes: a dataset of New York weather would have spatialCoverage which was the place: the state of New York.
         /// </summary>
-        OneOrMany<IPlace> SpatialCoverage { get; set; }
+        OneOrMany<IPlace, Place> SpatialCoverage { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -433,7 +433,7 @@
         /// <summary>
         /// The work that this work has been translated from. e.g. 物种起源 is a translationOf “On the Origin of Species”
         /// </summary>
-        OneOrMany<ICreativeWork> TranslationOfWork { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> TranslationOfWork { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
@@ -458,12 +458,12 @@
         /// <summary>
         /// Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
         /// </summary>
-        OneOrMany<ICreativeWork> WorkExample { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> WorkExample { get; set; }
 
         /// <summary>
         /// A work that is a translation of the content of this work. e.g. 西遊記 has an English workTranslation “Journey to the West”,a German workTranslation “Monkeys Pilgerfahrt” and a Vietnamese  translation Tây du ký bình khảo.
         /// </summary>
-        OneOrMany<ICreativeWork> WorkTranslation { get; set; }
+        OneOrMany<ICreativeWork, CreativeWork> WorkTranslation { get; set; }
     }
 
     /// <summary>
@@ -483,7 +483,7 @@
         /// </summary>
         [DataMember(Name = "about", Order = 106)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> About { get; set; }
+        public OneOrMany<IThing, Thing> About { get; set; }
 
         /// <summary>
         /// Indicates that the resource is compatible with the referenced accessibility API (&lt;a href="http://www.w3.org/wiki/WebSchemas/Accessibility"&gt;WebSchemas wiki lists possible values&lt;/a&gt;).
@@ -539,14 +539,14 @@
         /// </summary>
         [DataMember(Name = "accountablePerson", Order = 114)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> AccountablePerson { get; set; }
+        public OneOrMany<IPerson, Person> AccountablePerson { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 115)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public OneOrMany<IAggregateRating, AggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// A secondary title of the CreativeWork.
@@ -560,14 +560,14 @@
         /// </summary>
         [DataMember(Name = "associatedMedia", Order = 117)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMediaObject> AssociatedMedia { get; set; }
+        public OneOrMany<IMediaObject, MediaObject> AssociatedMedia { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
         [DataMember(Name = "audience", Order = 118)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAudience> Audience { get; set; }
+        public OneOrMany<IAudience, Audience> Audience { get; set; }
 
         /// <summary>
         /// An embedded audio object.
@@ -595,7 +595,7 @@
         /// </summary>
         [DataMember(Name = "character", Order = 122)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Character { get; set; }
+        public OneOrMany<IPerson, Person> Character { get; set; }
 
         /// <summary>
         /// A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
@@ -609,7 +609,7 @@
         /// </summary>
         [DataMember(Name = "comment", Order = 124)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IComment> Comment { get; set; }
+        public OneOrMany<IComment, Comment> Comment { get; set; }
 
         /// <summary>
         /// The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.
@@ -623,7 +623,7 @@
         /// </summary>
         [DataMember(Name = "contentLocation", Order = 126)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> ContentLocation { get; set; }
+        public OneOrMany<IPlace, Place> ContentLocation { get; set; }
 
         /// <summary>
         /// Official rating of a piece of content&amp;#x2014;for example,'MPAA PG-13'.
@@ -707,14 +707,14 @@
         /// </summary>
         [DataMember(Name = "editor", Order = 138)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Editor { get; set; }
+        public OneOrMany<IPerson, Person> Editor { get; set; }
 
         /// <summary>
         /// An alignment to an established educational framework.
         /// </summary>
         [DataMember(Name = "educationalAlignment", Order = 139)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAlignmentObject> EducationalAlignment { get; set; }
+        public OneOrMany<IAlignmentObject, AlignmentObject> EducationalAlignment { get; set; }
 
         /// <summary>
         /// The purpose of a work in the context of education; for example, 'assignment', 'group work'.
@@ -728,7 +728,7 @@
         /// </summary>
         [DataMember(Name = "encoding", Order = 141)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMediaObject> Encoding { get; set; }
+        public OneOrMany<IMediaObject, MediaObject> Encoding { get; set; }
 
         /// <summary>
         /// Media type typically expressed using a MIME format (see &lt;a href="http://www.iana.org/assignments/media-types/media-types.xhtml"&gt;IANA site&lt;/a&gt; and &lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types"&gt;MDN reference&lt;/a&gt;) e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.).&lt;br/&gt;&lt;br/&gt;
@@ -744,7 +744,7 @@
         /// </summary>
         [DataMember(Name = "exampleOfWork", Order = 143)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> ExampleOfWork { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> ExampleOfWork { get; set; }
 
         /// <summary>
         /// Date the content expires and is no longer useful or available. For example a &lt;a class="localLink" href="http://schema.org/VideoObject"&gt;VideoObject&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt; whose availability or relevance is time-limited, or a &lt;a class="localLink" href="http://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt; fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date.
@@ -772,7 +772,7 @@
         /// </summary>
         [DataMember(Name = "hasPart", Order = 147)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> HasPart { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> HasPart { get; set; }
 
         /// <summary>
         /// Headline of the article.
@@ -793,7 +793,7 @@
         /// </summary>
         [DataMember(Name = "interactionStatistic", Order = 150)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IInteractionCounter> InteractionStatistic { get; set; }
+        public OneOrMany<IInteractionCounter, InteractionCounter> InteractionStatistic { get; set; }
 
         /// <summary>
         /// The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
@@ -810,7 +810,7 @@
         public OneOrMany<bool?> IsAccessibleForFree { get; set; }
 
         /// <summary>
-        /// A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
+        /// A resource from which this work is derived or from which it is a modification or adaption.
         /// </summary>
         [DataMember(Name = "isBasedOn", Order = 153)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -828,7 +828,7 @@
         /// </summary>
         [DataMember(Name = "isPartOf", Order = 155)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> IsPartOf { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> IsPartOf { get; set; }
 
         /// <summary>
         /// Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
@@ -856,14 +856,14 @@
         /// </summary>
         [DataMember(Name = "locationCreated", Order = 159)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> LocationCreated { get; set; }
+        public OneOrMany<IPlace, Place> LocationCreated { get; set; }
 
         /// <summary>
         /// Indicates the primary entity described in some page or other CreativeWork.
         /// </summary>
         [DataMember(Name = "mainEntity", Order = 160)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> MainEntity { get; set; }
+        public OneOrMany<IThing, Thing> MainEntity { get; set; }
 
         /// <summary>
         /// A material that something is made from, e.g. leather, wool, cotton, paper.
@@ -884,14 +884,14 @@
         /// </summary>
         [DataMember(Name = "mentions", Order = 163)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IThing> Mentions { get; set; }
+        public OneOrMany<IThing, Thing> Mentions { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
         /// </summary>
         [DataMember(Name = "offers", Order = 164)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> Offers { get; set; }
+        public OneOrMany<IOffer, Offer> Offers { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
@@ -919,7 +919,7 @@
         /// </summary>
         [DataMember(Name = "publication", Order = 168)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPublicationEvent> Publication { get; set; }
+        public OneOrMany<IPublicationEvent, PublicationEvent> Publication { get; set; }
 
         /// <summary>
         /// The publisher of the creative work.
@@ -933,7 +933,7 @@
         /// </summary>
         [DataMember(Name = "publisherImprint", Order = 170)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> PublisherImprint { get; set; }
+        public OneOrMany<IOrganization, Organization> PublisherImprint { get; set; }
 
         /// <summary>
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
@@ -948,21 +948,21 @@
         /// </summary>
         [DataMember(Name = "recordedAt", Order = 172)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> RecordedAt { get; set; }
+        public OneOrMany<IEvent, Event> RecordedAt { get; set; }
 
         /// <summary>
         /// The place and time the release was issued, expressed as a PublicationEvent.
         /// </summary>
         [DataMember(Name = "releasedEvent", Order = 173)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPublicationEvent> ReleasedEvent { get; set; }
+        public OneOrMany<IPublicationEvent, PublicationEvent> ReleasedEvent { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
         [DataMember(Name = "review", Order = 174)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IReview> Review { get; set; }
+        public OneOrMany<IReview, Review> Review { get; set; }
 
         /// <summary>
         /// Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application.
@@ -998,7 +998,7 @@
         /// </summary>
         [DataMember(Name = "sourceOrganization", Order = 179)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> SourceOrganization { get; set; }
+        public OneOrMany<IOrganization, Organization> SourceOrganization { get; set; }
 
         /// <summary>
         /// The "spatial" property can be used in cases when more specific properties
@@ -1006,7 +1006,7 @@
         /// </summary>
         [DataMember(Name = "spatial", Order = 180)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> Spatial { get; set; }
+        public OneOrMany<IPlace, Place> Spatial { get; set; }
 
         /// <summary>
         /// The spatialCoverage of a CreativeWork indicates the place(s) which are the focus of the content. It is a subproperty of
@@ -1015,7 +1015,7 @@
         /// </summary>
         [DataMember(Name = "spatialCoverage", Order = 181)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPlace> SpatialCoverage { get; set; }
+        public OneOrMany<IPlace, Place> SpatialCoverage { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
@@ -1068,7 +1068,7 @@
         /// </summary>
         [DataMember(Name = "translationOfWork", Order = 188)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> TranslationOfWork { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> TranslationOfWork { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
@@ -1103,13 +1103,13 @@
         /// </summary>
         [DataMember(Name = "workExample", Order = 193)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> WorkExample { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> WorkExample { get; set; }
 
         /// <summary>
         /// A work that is a translation of the content of this work. e.g. 西遊記 has an English workTranslation “Journey to the West”,a German workTranslation “Monkeys Pilgerfahrt” and a Vietnamese  translation Tây du ký bình khảo.
         /// </summary>
         [DataMember(Name = "workTranslation", Order = 194)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICreativeWork> WorkTranslation { get; set; }
+        public OneOrMany<ICreativeWork, CreativeWork> WorkTranslation { get; set; }
     }
 }

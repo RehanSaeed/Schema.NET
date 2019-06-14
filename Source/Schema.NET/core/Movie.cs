@@ -12,17 +12,17 @@
         /// <summary>
         /// An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Actor { get; set; }
+        OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
-        OneOrMany<ICountry> CountryOfOrigin { get; set; }
+        OneOrMany<ICountry, Country> CountryOfOrigin { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
-        OneOrMany<IPerson> Director { get; set; }
+        OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
@@ -37,7 +37,7 @@
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
         /// </summary>
-        OneOrMany<IOrganization> ProductionCompany { get; set; }
+        OneOrMany<IOrganization, Organization> ProductionCompany { get; set; }
 
         /// <summary>
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
@@ -47,7 +47,7 @@
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
         /// </summary>
-        OneOrMany<IVideoObject> Trailer { get; set; }
+        OneOrMany<IVideoObject, VideoObject> Trailer { get; set; }
     }
 
     /// <summary>
@@ -67,21 +67,21 @@
         /// </summary>
         [DataMember(Name = "actor", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Actor { get; set; }
+        public OneOrMany<IPerson, Person> Actor { get; set; }
 
         /// <summary>
         /// The country of the principal offices of the production company or individual responsible for the movie or program.
         /// </summary>
         [DataMember(Name = "countryOfOrigin", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<ICountry> CountryOfOrigin { get; set; }
+        public OneOrMany<ICountry, Country> CountryOfOrigin { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
         /// </summary>
         [DataMember(Name = "director", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IPerson> Director { get; set; }
+        public OneOrMany<IPerson, Person> Director { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
@@ -102,7 +102,7 @@
         /// </summary>
         [DataMember(Name = "productionCompany", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOrganization> ProductionCompany { get; set; }
+        public OneOrMany<IOrganization, Organization> ProductionCompany { get; set; }
 
         /// <summary>
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
@@ -116,6 +116,6 @@
         /// </summary>
         [DataMember(Name = "trailer", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IVideoObject> Trailer { get; set; }
+        public OneOrMany<IVideoObject, VideoObject> Trailer { get; set; }
     }
 }

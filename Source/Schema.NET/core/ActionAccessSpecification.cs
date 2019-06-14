@@ -33,7 +33,7 @@
         /// <summary>
         /// An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
         /// </summary>
-        OneOrMany<IOffer> ExpectsAcceptanceOf { get; set; }
+        OneOrMany<IOffer, Offer> ExpectsAcceptanceOf { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').
@@ -87,7 +87,7 @@
         /// </summary>
         [DataMember(Name = "expectsAcceptanceOf", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IOffer> ExpectsAcceptanceOf { get; set; }
+        public OneOrMany<IOffer, Offer> ExpectsAcceptanceOf { get; set; }
 
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').

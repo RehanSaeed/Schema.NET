@@ -22,7 +22,7 @@
         /// <summary>
         /// An update to the LiveBlog.
         /// </summary>
-        OneOrMany<IBlogPosting> LiveBlogUpdate { get; set; }
+        OneOrMany<IBlogPosting, BlogPosting> LiveBlogUpdate { get; set; }
     }
 
     /// <summary>
@@ -56,6 +56,6 @@
         /// </summary>
         [DataMember(Name = "liveBlogUpdate", Order = 508)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IBlogPosting> LiveBlogUpdate { get; set; }
+        public OneOrMany<IBlogPosting, BlogPosting> LiveBlogUpdate { get; set; }
     }
 }
