@@ -11,7 +11,8 @@ namespace Schema.NET.Test
         {
             Name = "Hail to the Thief", // Required
             Identifier = "1oW3v5Har9mvXnGk0x4fHm", // Recommended
-            Image = new List<IImageObject> {
+            Image = new List<IImageObject> // Recommended
+            {
                 new ImageObject() // Recommended
                 {
                     ContentUrl = new Uri("https://i.scdn.co/image/5ded47fd3d05325dd0faaf4619481e1f25a21ec7") // Required
