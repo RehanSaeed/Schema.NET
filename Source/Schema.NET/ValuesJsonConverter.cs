@@ -163,7 +163,7 @@ namespace Schema.NET
 
         private static object ParseTokenArguments(JToken token, JsonToken tokenType, Type type, object value)
         {
-            const int SCHEMA_ORG_LENGTH = 18;
+            const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
             object args = null;
             var unwrappedType = type.GetUnderlyingTypeFromNullable();
             if (unwrappedType.GetTypeInfo().IsEnum)
