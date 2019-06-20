@@ -163,12 +163,14 @@ namespace Schema.NET
 
         private static object ParseTokenArguments(JToken token, JsonToken tokenType, Type type, object value)
         {
+            const string SCHEMA_ORG = "http://schema.org/";
             const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
             object args = null;
             var unwrappedType = type.GetUnderlyingTypeFromNullable();
             if (unwrappedType.GetTypeInfo().IsEnum)
             {
-                var enumString = token.ToString().Substring(SCHEMA_ORG_LENGTH);
+                var en = token.ToString();
+                var enumString = en.Contains(SCHEMA_ORG) ? en.Substring(SCHEMA_ORG_LENGTH) : en;
                 args = Enum.Parse(unwrappedType, enumString);
             }
             else

@@ -24,6 +24,12 @@ namespace Schema.NET.Test
             },
             SameAs = new Uri("https://music.apple.com/us/album/hail-to-the-thief/1097863576"), // Recommended
             Url = new Uri("https://open.spotify.com/album/1oW3v5Har9mvXnGk0x4fHm"), // Recommended
+            AggregateRating = new AggregateRating() // Recommended
+            {
+                BestRating = 100, // Required
+                RatingValue = 60, // Required
+                WorstRating = 0 // Required
+            },
             DatePublished = new DateTime(2003, 5, 26), // Recommended
             Offers = new Offer() // Recommended
             {
@@ -64,6 +70,13 @@ namespace Schema.NET.Test
             "]," +
             "\"sameAs\": \"https://music.apple.com/us/album/hail-to-the-thief/1097863576\"," +
             "\"url\": \"https://open.spotify.com/album/1oW3v5Har9mvXnGk0x4fHm\"," +
+            "\"aggregateRating\": {" +
+                "\"@context\": \"http://schema.org\"," +
+                "\"@type\": \"AggregateRating\"," +
+                "\"bestRating\": 100," +
+                "\"ratingValue\": 60," +
+                "\"worstRating\": 0" +
+            "}," +
             "\"datePublished\": \"2003-05-26\"," +
             "\"offers\": {" +
                 "\"@context\": \"http://schema.org\"," +
