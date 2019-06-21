@@ -1,17 +1,18 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// The base object
+    /// The base JSON-LD object.
     /// See https://json-ld.org/spec/latest/json-ld
     /// </summary>
     [DataContract]
     public class JsonLdObject
     {
         /// <summary>
-        /// Gets or sets the context used to define the short-hand names that are used throughout a JSON-LD document.
+        /// Gets the context used to define the short-hand names that are used throughout a JSON-LD document.
         /// These short-hand names are called terms and help developers to express specific identifiers in a compact
         /// manner.
         /// When two people communicate with one another, the conversation takes place in a shared environment,
@@ -23,7 +24,15 @@
         /// is not a reserved JSON-LD keyword can be used as a term.
         /// </summary>
         [DataMember(Name = "@context", Order = 0)]
-        public virtual string Context { get; }
+        [JsonConverter(typeof(ContextJsonConverter))]
+        public virtual JsonLdContext Context { get; internal set; } = new JsonLdContext();
+
+        /// <summary>
+        /// Gets or sets the type, used to uniquely identify things that are being described in the document with IRIs
+        /// or blank node identifiers.
+        /// </summary>
+        [DataMember(Name = "@type", Order = 1)]
+        public virtual string Type { get; }
 
         /// <summary>
         /// Gets or sets the identifier used to uniquely identify things that are being described in the document with
@@ -35,12 +44,5 @@
         /// </summary>
         [DataMember(Name = "@id", Order = 2)]
         public virtual Uri Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type, used to uniquely identify things that are being described in the document with IRIs
-        /// or blank node identifiers.
-        /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
-        public virtual string Type { get; }
     }
 }

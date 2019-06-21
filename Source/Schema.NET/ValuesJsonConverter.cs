@@ -10,7 +10,7 @@ namespace Schema.NET
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Converts a <see cref="IValues"/> object to JSON.
+    /// Converts a <see cref="IValues"/> object to and from JSON.
     /// </summary>
     /// <seealso cref="JsonConverter" />
     public class ValuesJsonConverter : JsonConverter

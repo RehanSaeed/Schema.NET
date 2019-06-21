@@ -1,4 +1,4 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
@@ -76,12 +76,6 @@
     [DataContract]
     public partial class Thing : IThing
     {
-        /// <summary>
-        /// Gets the context for the object, specifying that it comes from schema.org.
-        /// </summary>
-        [DataMember(Name = "@context", Order = 0)]
-        public override string Context => "http://schema.org";
-
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
