@@ -1,10 +1,13 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Categories of physical activity, organized by physiologic classification.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PhysicalActivityCategory
     {
         /// <summary>

@@ -1,6 +1,7 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Globalization;
@@ -66,13 +67,18 @@ namespace Schema.NET
                 if (tokenType == JsonToken.StartArray)
                 {
                     var items = new List<object>();
-                    foreach (var type in mainType.GenericTypeArguments)
+                    for (var i = mainType.GenericTypeArguments.Length - 1; i >= 0; i--)
                     {
+                        var type = mainType.GenericTypeArguments[i];
                         var unwrappedType = type.GetUnderlyingTypeFromNullable();
                         var args = ReadJsonArray(token, unwrappedType);
-                        var genericType = typeof(OneOrMany<>).MakeGenericType(type);
-                        var item = (IValues)Activator.CreateInstance(genericType, args);
-                        items.Add(item);
+
+                        if (args != null && args.Count > 0)
+                        {
+                            var genericType = typeof(OneOrMany<>).MakeGenericType(type);
+                            var item = (IValues)Activator.CreateInstance(genericType, args);
+                            items.Add(item);
+                        }
                     }
 
                     argument = items;
@@ -390,7 +396,7 @@ namespace Schema.NET
             return type;
         }
 
-        private static object ReadJsonArray(JToken token, Type type)
+        private static IList ReadJsonArray(JToken token, Type type)
         {
             var classType = ToClass(type);
             var listType = typeof(List<>).MakeGenericType(classType);
@@ -419,7 +425,7 @@ namespace Schema.NET
                 }
             }
 
-            return list;
+            return (IList)list;
         }
 
         private static IEnumerable<Type> GetTypeHierarchy(Type type)

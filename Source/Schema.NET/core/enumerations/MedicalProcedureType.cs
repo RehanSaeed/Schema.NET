@@ -1,10 +1,13 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// An enumeration that describes different types of medical procedures.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MedicalProcedureType
     {
         /// <summary>

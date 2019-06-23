@@ -1,4 +1,4 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
@@ -389,7 +389,7 @@
         /// </summary>
         [DataMember(Name = "itemListElement", Order = 257)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IListItem, string, IThing>? ItemListElement { get; set; }
+        public Values<IThing, string, IListItem>? ItemListElement { get; set; }
 
         /// <summary>
         /// Type of ordering (e.g. Ascending, Descending, Unordered).

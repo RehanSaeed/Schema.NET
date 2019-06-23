@@ -68,9 +68,16 @@ namespace Schema.NET.Test
             Assert.Equal(this.json, this.breadcrumbList.ToString());
 
         [Fact]
+        public void Deserializing_BreadcrumbListJsonLd_ReturnsMatchingBreadcrumbList()
+        {
+            Assert.Equal(this.breadcrumbList.ToString(), JsonConvert.DeserializeObject<BreadcrumbList>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.breadcrumbList, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<BreadcrumbList>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+        }
+
+        [Fact]
         public void Deserializing_BreadcrumbListJsonLd_ReturnsBreadcrumbList()
         {
-            var breadcrumbList = JsonConvert.DeserializeObject<BreadcrumbList>(this.json);
+            var breadcrumbList = JsonConvert.DeserializeObject<BreadcrumbList>(this.json, TestDefaults.DefaultJsonSerializerSettings);
 
             List<IListItem> listItems = breadcrumbList.ItemListElement;
             Assert.Equal(2, listItems.Count);

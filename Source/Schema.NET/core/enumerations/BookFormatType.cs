@@ -1,10 +1,13 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// The publication format of the book.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum BookFormatType
     {
         /// <summary>

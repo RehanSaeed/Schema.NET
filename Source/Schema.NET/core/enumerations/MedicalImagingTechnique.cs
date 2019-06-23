@@ -1,10 +1,13 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Any medical imaging modality typically used for diagnostic purposes. Enumerated type.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MedicalImagingTechnique
     {
         /// <summary>

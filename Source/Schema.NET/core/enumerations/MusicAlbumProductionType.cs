@@ -1,10 +1,13 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MusicAlbumProductionType
     {
         /// <summary>

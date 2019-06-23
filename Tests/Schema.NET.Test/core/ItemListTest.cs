@@ -8,6 +8,60 @@ namespace Schema.NET.Test
 
     public class ItemListTest
     {
+        private readonly ItemList itemlist = new ItemList()
+        {
+            ItemListElement = new List<IListItem>() // Required
+                {
+                    new ListItem() // Required
+                    {
+                        Position = 1, // Required
+                        Item = new Recipe() // Required
+                        {
+                            Name = "Recipe 1"
+                        }
+                    },
+                    new ListItem()
+                    {
+                        Position = 2,
+                        Item = new Recipe()
+                        {
+                            Name = "Recipe 2"
+                        }
+                    }
+                }
+        };
+
+        private readonly string json =
+        "{" +
+            "\"@context\":\"http://schema.org\"," +
+            "\"@type\":\"ItemList\"," +
+            "\"itemListElement\":[" +
+                "{" +
+                    "\"@type\":\"ListItem\"," +
+                    "\"item\":{" +
+                        "\"@type\":\"Recipe\"," +
+                        "\"name\":\"Recipe 1\"" +
+                    "}," +
+                    "\"position\":1" +
+                "}," +
+                "{" +
+                    "\"@type\":\"ListItem\"," +
+                    "\"item\":{" +
+                        "\"@type\":\"Recipe\"," +
+                        "\"name\":\"Recipe 2\"" +
+                        "}," +
+                    "\"position\":2" +
+                "}" +
+            "]" +
+        "}";
+
+        [Fact]
+        public void Deserializing_ItemListJsonLd_ReturnsMatchingItemList()
+        {
+            Assert.Equal(this.itemlist.ToString(), JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.itemlist, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+        }
+
         // https://developers.google.com/search/docs/guides/mark-up-listings
         [Fact]
         public void ToString_CarouselSummaryPageSearchBoxGoogleStructuredData_ReturnsExpectedJsonLd()
@@ -134,7 +188,7 @@ namespace Schema.NET.Test
                     "}" +
                 "]" +
             "}";
-            var itemList = JsonConvert.DeserializeObject<ItemList>(json);
+            var itemList = JsonConvert.DeserializeObject<ItemList>(json, TestDefaults.DefaultJsonSerializerSettings);
 
             Assert.Equal("ItemList", itemList.Type);
             Assert.True(itemList.ItemListElement.HasValue);

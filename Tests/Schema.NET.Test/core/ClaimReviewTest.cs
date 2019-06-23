@@ -70,12 +70,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_ClaimReviewJsonLd_ReturnsClaimReview()
         {
-            var serializerSettings = new JsonSerializerSettings()
-            {
-                DateParseHandling = DateParseHandling.DateTimeOffset
-            };
-
-            Assert.Equal(this.claimReview.ToString(), JsonConvert.DeserializeObject<ClaimReview>(this.json, serializerSettings).ToString());
+            Assert.Equal(this.claimReview.ToString(), JsonConvert.DeserializeObject<ClaimReview>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.claimReview, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<ClaimReview>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }
 }

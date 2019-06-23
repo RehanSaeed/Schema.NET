@@ -1,6 +1,8 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A delivery method is a standardized procedure for transferring the product or service to the destination of fulfillment chosen by the customer. Delivery methods are characterized by the means of transportation used, and by the organization or group that is the contracting party for the sending organization or person.&lt;br/&gt;&lt;br/&gt;
@@ -16,6 +18,7 @@
     /// &lt;li&gt;http://purl.org/goodrelations/v1#UPS&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DeliveryMethod
     {
         /// <summary>
