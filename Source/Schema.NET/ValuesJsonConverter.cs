@@ -49,6 +49,7 @@ namespace Schema.NET
             var value = reader.Value;
 
             var token = JToken.Load(reader);
+            var count = token.Children().Count();
             if (mainType.GenericTypeArguments.Length == 1)
             {
                 var type = mainType.GenericTypeArguments[0];
@@ -66,18 +67,28 @@ namespace Schema.NET
             {
                 if (tokenType == JsonToken.StartArray)
                 {
+                    var total = 0;
                     var items = new List<object>();
                     for (var i = mainType.GenericTypeArguments.Length - 1; i >= 0; i--)
                     {
                         var type = mainType.GenericTypeArguments[i];
                         var unwrappedType = type.GetUnderlyingTypeFromNullable();
-                        var args = ReadJsonArray(token, unwrappedType);
+                        // only read as many items as there are tokens left
+                        var args = ReadJsonArray(token, unwrappedType, count - total);
 
                         if (args != null && args.Count > 0)
                         {
                             var genericType = typeof(OneOrMany<>).MakeGenericType(type);
                             var item = (IValues)Activator.CreateInstance(genericType, args);
                             items.Add(item);
+
+                            total += args.Count;
+
+                            if (total >= count)
+                            {
+                                // if we have deserialized enough items as there are tokens, break
+                                break;
+                            }
                         }
                     }
 
@@ -396,11 +407,18 @@ namespace Schema.NET
             return type;
         }
 
-        private static IList ReadJsonArray(JToken token, Type type)
+        private static IList ReadJsonArray(JToken token, Type type, int? count = null)
         {
             var classType = ToClass(type);
             var listType = typeof(List<>).MakeGenericType(classType);
             var list = Activator.CreateInstance(listType);
+            var i = 0;
+
+            if (count == null)
+            {
+                // if maximum item count not assigned, set to count of child tokens
+                count = token.Children().Count();
+            }
 
             foreach (var childToken in token.Children())
             {
@@ -422,6 +440,13 @@ namespace Schema.NET
                             .GetRuntimeMethod(nameof(List<object>.Add), new[] { classType })
                             .Invoke(list, new object[] { child });
                     }
+                }
+
+                i++;
+
+                if (i == count)
+                {
+                    break;
                 }
             }
 

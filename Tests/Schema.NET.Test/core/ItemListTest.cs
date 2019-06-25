@@ -58,8 +58,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_ItemListJsonLd_ReturnsMatchingItemList()
         {
-            Assert.Equal(this.itemlist.ToString(), JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.itemlist, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.itemlist.ToString(), JsonConvert.DeserializeObject<ItemList>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.itemlist, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<ItemList>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
 
         // https://developers.google.com/search/docs/guides/mark-up-listings
@@ -192,29 +192,19 @@ namespace Schema.NET.Test
 
             Assert.Equal("ItemList", itemList.Type);
             Assert.True(itemList.ItemListElement.HasValue);
-            Assert.Equal(4, itemList.ItemListElement.Value.Count);
+            Assert.Equal(2, itemList.ItemListElement.Value.Count);
             var listItems = (List<IListItem>)itemList.ItemListElement.Value;
             var things = (List<IThing>)itemList.ItemListElement.Value;
             Assert.Equal(2, listItems.Count);
-            Assert.Equal(2, things.Count);
+            Assert.Empty(things);
             var listItem1 = listItems.First();
             var listItem2 = listItems.Last();
-            var thing1 = things.First();
-            var thing2 = things.Last();
-            var thingListItem1 = Assert.IsType<ListItem>(thing1);
-            var thingListItem2 = Assert.IsType<ListItem>(thing2);
             Assert.Equal(1, listItem1.Position);
             Assert.Equal(2, listItem2.Position);
-            Assert.Equal(1, thingListItem1.Position);
-            Assert.Equal(2, thingListItem2.Position);
             var recipe1 = Assert.IsType<Recipe>(listItem1.Item.Single());
             var recipe2 = Assert.IsType<Recipe>(listItem2.Item.Single());
-            var recipe3 = Assert.IsType<Recipe>(thingListItem1.Item.Single());
-            var recipe4 = Assert.IsType<Recipe>(thingListItem2.Item.Single());
             Assert.Equal("Recipe 1", recipe1.Name);
             Assert.Equal("Recipe 2", recipe2.Name);
-            Assert.Equal("Recipe 1", recipe3.Name);
-            Assert.Equal("Recipe 2", recipe4.Name);
         }
     }
 }
