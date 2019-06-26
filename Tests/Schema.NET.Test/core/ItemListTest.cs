@@ -195,10 +195,12 @@ namespace Schema.NET.Test
             Assert.Equal(2, itemList.ItemListElement.Value.Count);
             var listItems = (List<IListItem>)itemList.ItemListElement.Value;
             var things = (List<IThing>)itemList.ItemListElement.Value;
-            Assert.Equal(2, listItems.Count);
-            Assert.Empty(things);
-            var listItem1 = listItems.First();
-            var listItem2 = listItems.Last();
+            Assert.Empty(listItems);
+            Assert.Equal(2, things.Count);
+            var thing1 = things.First();
+            var thing2 = things.Last();
+            var listItem1 = (IListItem)thing1;
+            var listItem2 = (IListItem)thing2;
             Assert.Equal(1, listItem1.Position);
             Assert.Equal(2, listItem2.Position);
             var recipe1 = Assert.IsType<Recipe>(listItem1.Item.Single());

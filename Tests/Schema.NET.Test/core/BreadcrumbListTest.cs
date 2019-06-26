@@ -79,10 +79,14 @@ namespace Schema.NET.Test
         {
             var breadcrumbList = JsonConvert.DeserializeObject<BreadcrumbList>(this.json, TestDefaults.DefaultJsonSerializerSettings);
 
+            List<IThing> things = breadcrumbList.ItemListElement;
             List<IListItem> listItems = breadcrumbList.ItemListElement;
-            Assert.Equal(2, listItems.Count);
-            var listItem1 = listItems.First();
-            var listItem2 = listItems.Last();
+            Assert.Equal(2, things.Count);
+            Assert.Empty(listItems);
+            var thing1 = things.First();
+            var thing2 = things.Last();
+            var listItem1 = (IListItem)thing1;
+            var listItem2 = (IListItem)thing2;
             Assert.Equal(1, listItem1.Position);
             Assert.Equal(2, listItem2.Position);
             var book = listItem1.Item.OfType<IBook>().FirstOrDefault();

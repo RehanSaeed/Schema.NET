@@ -389,7 +389,7 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "itemListElement", Order = 257)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IThing, string, IListItem>? ItemListElement { get; set; }
+        public Values<IListItem, string, IThing>? ItemListElement { get; set; }
 
         /// <summary>
         /// Type of ordering (e.g. Ascending, Descending, Unordered).
