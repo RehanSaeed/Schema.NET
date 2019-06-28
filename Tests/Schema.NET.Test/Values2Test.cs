@@ -202,7 +202,7 @@ namespace Schema.NET.Test
 
         [Fact]
         public void GetHashCode_Value1Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal(1.GetHashCode(), new Values<int, string>(1).GetHashCode());
+            Assert.Equal(CombineHashCodes(1.GetHashCode(), 0), new Values<int, string>(1).GetHashCode());
 
         [Fact]
         public void GetHashCode_Value2Passed_ReturnsMatchingHashCode() =>
@@ -213,5 +213,7 @@ namespace Schema.NET.Test
             Assert.Equal(
                 NET.HashCode.Of(1).And("Foo"),
                 new Values<int, string>(new List<object>() { 1, "Foo" }).GetHashCode());
+
+        private static int CombineHashCodes(int h1, int h2) => ((h1 << 5) + h1) ^ h2;
     }
 }

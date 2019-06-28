@@ -1,14 +1,15 @@
 namespace Schema.NET
 {
+    using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
 
     /// <summary>
     /// A hash code used to help with implementing <see cref="object.GetHashCode()"/>.
     /// </summary>
-#pragma warning disable CA1815 // Override equals and operator equals on value types
-    public struct HashCode
-#pragma warning restore CA1815 // Override equals and operator equals on value types
+    public struct HashCode : IEquatable<HashCode>
     {
+        private const int EmptyCollectionPrimeNumber = 19;
         private readonly int value;
 
         /// <summary>
@@ -29,6 +30,26 @@ namespace Schema.NET
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
+        public static bool operator ==(HashCode left, HashCode right) => left.Equals(right);
+
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
+        public static bool operator !=(HashCode left, HashCode right) => !(left == right);
+
+        /// <summary>
         /// Takes the hash code of the specified item.
         /// </summary>
         /// <typeparam name="T">The type of the item.</typeparam>
@@ -42,7 +63,8 @@ namespace Schema.NET
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="items">The collection.</param>
         /// <returns>The new hash code.</returns>
-        public static HashCode OfEach<T>(IEnumerable<T> items) => new HashCode(GetHashCode(items, 0));
+        public static HashCode OfEach<T>(IEnumerable<T> items) =>
+            items == null ? new HashCode(0) : new HashCode(GetHashCode(items, 0));
 
         /// <summary>
         /// Adds the hash code of the specified item.
@@ -68,18 +90,35 @@ namespace Schema.NET
             return new HashCode(GetHashCode(items, this.value));
         }
 
+        /// <inheritdoc />
+        public bool Equals(HashCode other) => this.value.Equals(other.value);
+
+        /// <inheritdoc />
+        public override bool Equals(object obj)
+        {
+            if (obj is HashCode)
+            {
+                return this.Equals((HashCode)obj);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Throws <see cref="NotSupportedException" />.
+        /// </summary>
+        /// <returns>
+        /// Does not return.
+        /// </returns>
+        /// <exception cref="NotSupportedException">Implicitly convert this struct to an <see cref="int" /> to get the hash code.</exception>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() =>
+#pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
+            throw new NotSupportedException("Implicitly convert this struct to an int to get the hash code.");
+#pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
+
         private static int CombineHashCodes(int h1, int h2)
         {
-            if (h1 == 0)
-            {
-                return h2;
-            }
-
-            if (h2 == 0)
-            {
-                return h1;
-            }
-
             unchecked
             {
                 // Code copied from System.Tuple so it must be the best way to combine hash codes or at least a good one.
@@ -87,14 +126,25 @@ namespace Schema.NET
             }
         }
 
-        private static int GetHashCode<T>(T item) => item == null ? 0 : item.GetHashCode();
+        private static int GetHashCode<T>(T item) => item?.GetHashCode() ?? 0;
 
         private static int GetHashCode<T>(IEnumerable<T> items, int startHashCode)
         {
             var temp = startHashCode;
-            foreach (var item in items)
+
+            var enumerator = items.GetEnumerator();
+            if (enumerator.MoveNext())
             {
-                temp = CombineHashCodes(temp, GetHashCode(item));
+                temp = CombineHashCodes(temp, GetHashCode(enumerator.Current));
+
+                while (enumerator.MoveNext())
+                {
+                    temp = CombineHashCodes(temp, GetHashCode(enumerator.Current));
+                }
+            }
+            else
+            {
+                temp = CombineHashCodes(temp, EmptyCollectionPrimeNumber);
             }
 
             return temp;

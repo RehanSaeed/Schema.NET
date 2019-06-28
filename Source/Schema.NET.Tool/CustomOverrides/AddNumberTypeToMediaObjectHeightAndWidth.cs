@@ -7,11 +7,23 @@ namespace Schema.NET.Tool.CustomOverrides
     // https://github.com/schemaorg/schemaorg/issues/1668
     public class AddNumberTypeToMediaObjectHeightAndWidth : IClassOverride
     {
-        public bool CanOverride(Class @class) =>
-            string.Equals(@class.Name, "MediaObject", StringComparison.OrdinalIgnoreCase);
+        public bool CanOverride(Class @class)
+        {
+            if (@class == null)
+            {
+                throw new ArgumentNullException(nameof(@class));
+            }
+
+            return string.Equals(@class.Name, "MediaObject", StringComparison.OrdinalIgnoreCase);
+        }
 
         public void Override(Class @class)
         {
+            if (@class == null)
+            {
+                throw new ArgumentNullException(nameof(@class));
+            }
+
             @class
                 .Properties
                 .First(x => string.Equals(x.Name, "Height", StringComparison.OrdinalIgnoreCase))

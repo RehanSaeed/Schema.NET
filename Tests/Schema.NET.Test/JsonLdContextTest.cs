@@ -61,7 +61,7 @@ namespace Schema.NET.Test
 
         [Theory]
         [MemberData(nameof(ToStringContexts))]
-        public void ToString_(JsonLdContext context, string expectedValue) =>
+        public void ToString_MatchesExpected_ReturnsName(JsonLdContext context, string expectedValue) =>
             Assert.Equal(expectedValue, context.ToString());
     }
 }

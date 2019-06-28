@@ -40,6 +40,21 @@ namespace Schema.NET
             object existingValue,
             JsonSerializer serializer)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
+
+            if (objectType == null)
+            {
+                throw new ArgumentNullException(nameof(objectType));
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException(nameof(serializer));
+            }
+
             var mainType = objectType.GetUnderlyingTypeFromNullable();
 
             object argument = null;
@@ -48,7 +63,9 @@ namespace Schema.NET
             var value = reader.Value;
 
             var token = JToken.Load(reader);
+#pragma warning disable CA1062 // Validate arguments of public methods
             if (mainType.GenericTypeArguments.Length == 1)
+#pragma warning restore CA1062 // Validate arguments of public methods
             {
                 var type = mainType.GenericTypeArguments[0];
                 if (tokenType == JsonToken.StartArray)
@@ -135,6 +152,21 @@ namespace Schema.NET
         /// <param name="serializer">The JSON serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException(nameof(serializer));
+            }
+
             var values = (IValues)value;
             if (values.Count == 0)
             {
@@ -158,8 +190,20 @@ namespace Schema.NET
         /// <param name="writer">The JSON writer.</param>
         /// <param name="value">The value to write.</param>
         /// <param name="serializer">The JSON serializer.</param>
-        public virtual void WriteObject(JsonWriter writer, object value, JsonSerializer serializer) =>
+        public virtual void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException(nameof(serializer));
+            }
+
             serializer.Serialize(writer, value);
+        }
 
         private static object ParseTokenArguments(JToken token, JsonToken tokenType, Type type, object value)
         {

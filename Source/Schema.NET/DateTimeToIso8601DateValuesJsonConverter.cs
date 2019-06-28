@@ -20,6 +20,16 @@ namespace Schema.NET
         /// <param name="serializer">The JSON serializer.</param>
         public override void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException(nameof(serializer));
+            }
+
             if (value is DateTime dateTimeType)
             {
                 writer.WriteValue(dateTimeType.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));

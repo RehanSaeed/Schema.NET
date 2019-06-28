@@ -13,6 +13,21 @@ namespace Schema.NET
         /// <inheritdoc />
         public override JsonLdContext ReadJson(JsonReader reader, Type objectType, JsonLdContext existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
+
+            if (objectType == null)
+            {
+                throw new ArgumentNullException(nameof(objectType));
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException(nameof(serializer));
+            }
+
             var context = hasExistingValue ? existingValue : new JsonLdContext();
 
             string name;
@@ -33,7 +48,9 @@ namespace Schema.NET
                 language = languageProperty?.Value?.ToString();
             }
 
+#pragma warning disable CA1062 // Validate arguments of public methods
             context.Name = name;
+#pragma warning restore CA1062 // Validate arguments of public methods
             context.Language = language;
             return context;
         }
@@ -41,6 +58,21 @@ namespace Schema.NET
         /// <inheritdoc />
         public override void WriteJson(JsonWriter writer, JsonLdContext value, JsonSerializer serializer)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException(nameof(serializer));
+            }
+
             if (string.IsNullOrWhiteSpace(value.Language))
             {
                 writer.WriteValue(value.Name);
