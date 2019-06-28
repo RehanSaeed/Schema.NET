@@ -410,7 +410,7 @@ namespace Schema.NET
         private static IList ReadJsonArray(JToken token, Type type, int? count = null)
         {
             var classType = ToClass(type);
-            var listType = typeof(List<>).MakeGenericType(classType);
+            var listType = typeof(List<>).MakeGenericType(type); // always read into list of interfaces
             var list = Activator.CreateInstance(listType);
             var i = 0;
 
@@ -425,24 +425,32 @@ namespace Schema.NET
                 var typeName = GetTypeNameFromToken(childToken);
                 if (string.IsNullOrEmpty(typeName))
                 {
-                    var item = childToken.ToObject(classType);
-                    listType
-                        .GetRuntimeMethod(nameof(List<object>.Add), new[] { classType })
-                        .Invoke(list, new object[] { item });
+                    var child = childToken.ToObject(classType);
+                    var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
+
+                    if (method != null)
+                    {
+                        method.Invoke(list, new object[] { child });
+
+                        i++;
+                    }
                 }
                 else
                 {
                     var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                    if (builtType != null && GetTypeHierarchy(builtType).Any(x => x == classType))
+                    if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
                     {
                         var child = (Thing)childToken.ToObject(builtType);
-                        listType
-                            .GetRuntimeMethod(nameof(List<object>.Add), new[] { classType })
-                            .Invoke(list, new object[] { child });
+                        var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
+
+                        if (method != null)
+                        {
+                            method.Invoke(list, new object[] { child });
+
+                            i++;
+                        }
                     }
                 }
-
-                i++;
 
                 if (i == count)
                 {
@@ -460,13 +468,18 @@ namespace Schema.NET
                 yield break;
             }
 
-            yield return type;
+            var tt = type.GetTypeInfo().GetNestedTypes(BindingFlags.Public);
 
-            var baseType = type.GetTypeInfo().BaseType;
-            while (baseType != null)
+            foreach (var t in tt)
             {
-                yield return baseType;
-                baseType = baseType.GetTypeInfo().BaseType;
+                yield return t;
+            }
+
+            var ii = type.GetInterfaces();
+
+            foreach (var i in ii)
+            {
+                yield return i;
             }
         }
 

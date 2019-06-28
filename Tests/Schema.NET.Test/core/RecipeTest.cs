@@ -38,7 +38,11 @@ namespace Schema.NET.Test
                 "Thinly-sliced apples:6 cups",
                 "White sugar:3/4 cup"
             },
-            RecipeInstructions = "1. Cut and peel apples..."
+            RecipeInstructions = new List<ICreativeWork>()
+            {
+                new HowToStep { Text = "1. Cut and peel apples..." },
+                new HowToStep { Text = "2. Put in pie shell..." }
+            }
         };
 
         private readonly string json =
@@ -71,7 +75,14 @@ namespace Schema.NET.Test
                 "\"Thinly-sliced apples:6 cups\"," +
                 "\"White sugar:3/4 cup\"" +
             "]," +
-            "\"recipeInstructions\":\"1. Cut and peel apples...\"," +
+            "\"recipeInstructions\":[{" +
+                    "\"@type\":\"HowToStep\"," +
+                    "\"text\":\"1. Cut and peel apples...\"" +
+                "},{" +
+                    "\"@type\":\"HowToStep\"," +
+                    "\"text\":\"2. Put in pie shell...\"" +
+                "}" +
+            "]," +
             "\"recipeYield\":\"1 9 inch pie (8 servings)\"" +
             "}";
 
