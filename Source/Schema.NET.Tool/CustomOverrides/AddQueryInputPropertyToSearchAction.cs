@@ -6,11 +6,23 @@ namespace Schema.NET.Tool.CustomOverrides
 
     public class AddQueryInputPropertyToSearchAction : IClassOverride
     {
-        public bool CanOverride(Class @class) =>
-            string.Equals(@class.Name, "SearchAction", StringComparison.Ordinal);
+        public bool CanOverride(Class @class)
+        {
+            if (@class == null)
+            {
+                throw new ArgumentNullException(nameof(@class));
+            }
+
+            return string.Equals(@class.Name, "SearchAction", StringComparison.Ordinal);
+        }
 
         public void Override(Class @class)
         {
+            if (@class == null)
+            {
+                throw new ArgumentNullException(nameof(@class));
+            }
+
             var property = new Property()
             {
                 Class = @class,

@@ -399,15 +399,21 @@ namespace Schema.NET.Test
 
         [Fact]
         public void GetHashCode_Value1Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal(1.GetHashCode(), new Values<int, string, DayOfWeek?, Person>(1).GetHashCode());
+            Assert.Equal(
+                CombineHashCodes(CombineHashCodes(CombineHashCodes(1.GetHashCode(), 0), 0), 0),
+                new Values<int, string, DayOfWeek?, Person>(1).GetHashCode());
 
         [Fact]
         public void GetHashCode_Value2Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal("Foo".GetHashCode(), new Values<int, string, DayOfWeek?, Person>("Foo").GetHashCode());
+            Assert.Equal(
+                CombineHashCodes(CombineHashCodes("Foo".GetHashCode(), 0), 0),
+                new Values<int, string, DayOfWeek?, Person>("Foo").GetHashCode());
 
         [Fact]
         public void GetHashCode_Value3Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal(DayOfWeek.Friday.GetHashCode(), new Values<int, string, DayOfWeek?, Person>(DayOfWeek.Friday).GetHashCode());
+            Assert.Equal(
+                CombineHashCodes(DayOfWeek.Friday.GetHashCode(), 0),
+                new Values<int, string, DayOfWeek?, Person>(DayOfWeek.Friday).GetHashCode());
 
         [Fact]
         public void GetHashCode_Value4Passed_ReturnsMatchingHashCode()
@@ -415,5 +421,7 @@ namespace Schema.NET.Test
             var person = new Person();
             Assert.Equal(person.GetHashCode(), new Values<int, string, DayOfWeek?, Person>(person).GetHashCode());
         }
+
+        private static int CombineHashCodes(int h1, int h2) => ((h1 << 5) + h1) ^ h2;
     }
 }
