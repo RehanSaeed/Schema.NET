@@ -65,7 +65,7 @@ namespace Schema.NET
 
             var token = JToken.Load(reader);
             var count = token.Children().Count();
-            
+
 #pragma warning disable CA1062 // Validate arguments of public methods
             if (mainType.GenericTypeArguments.Length == 1)
 #pragma warning restore CA1062 // Validate arguments of public methods
@@ -117,11 +117,10 @@ namespace Schema.NET
                     for (var i = mainType.GenericTypeArguments.Length - 1; i >= 0; i--)
                     {
                         var type = mainType.GenericTypeArguments[i];
-                        object args = null;
 
                         try
                         {
-                            args = ParseTokenArguments(token, tokenType, type, value);
+                            var args = ParseTokenArguments(token, tokenType, type, value);
 
                             if (args != null)
                             {
@@ -227,7 +226,7 @@ namespace Schema.NET
         {
             const string SCHEMA_ORG = "http://schema.org/";
             const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
-            object args = null;
+            object args;
             var unwrappedType = type.GetUnderlyingTypeFromNullable();
             if (unwrappedType.GetTypeInfo().IsEnum)
             {
@@ -504,28 +503,6 @@ namespace Schema.NET
             }
 
             return (IList)list;
-        }
-
-        private static IEnumerable<Type> GetTypeHierarchy(Type type)
-        {
-            if (type == null)
-            {
-                yield break;
-            }
-
-            var tt = type.GetTypeInfo().GetNestedTypes(BindingFlags.Public);
-
-            foreach (var t in tt)
-            {
-                yield return t;
-            }
-
-            var ii = type.GetInterfaces();
-
-            foreach (var i in ii)
-            {
-                yield return i;
-            }
         }
 
         private static string GetTypeNameFromToken(JToken token)
