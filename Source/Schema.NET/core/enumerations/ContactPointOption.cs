@@ -1,10 +1,13 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Enumerated options related to a ContactPoint.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ContactPointOption
     {
         /// <summary>

@@ -1,10 +1,13 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Design models for medical trials. Enumerated type.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MedicalTrialDesign
     {
         /// <summary>

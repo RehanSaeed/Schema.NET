@@ -67,12 +67,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_CarJsonLd_ReturnsCar()
         {
-            var serializerSettings = new JsonSerializerSettings
-            {
-                DateParseHandling = DateParseHandling.DateTimeOffset
-            };
-
-            Assert.Equal(this.car.ToString(), JsonConvert.DeserializeObject<Car>(this.json, serializerSettings).ToString());
+            Assert.Equal(this.car.ToString(), JsonConvert.DeserializeObject<Car>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.car, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Car>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }
 }

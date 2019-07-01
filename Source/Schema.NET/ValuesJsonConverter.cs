@@ -1,6 +1,7 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Globalization;
@@ -63,6 +64,8 @@ namespace Schema.NET
             var value = reader.Value;
 
             var token = JToken.Load(reader);
+            var count = token.Children().Count();
+
 #pragma warning disable CA1062 // Validate arguments of public methods
             if (mainType.GenericTypeArguments.Length == 1)
 #pragma warning restore CA1062 // Validate arguments of public methods
@@ -82,14 +85,29 @@ namespace Schema.NET
             {
                 if (tokenType == JsonToken.StartArray)
                 {
+                    var total = 0;
                     var items = new List<object>();
-                    foreach (var type in mainType.GenericTypeArguments)
+                    for (var i = mainType.GenericTypeArguments.Length - 1; i >= 0; i--)
                     {
+                        var type = mainType.GenericTypeArguments[i];
                         var unwrappedType = type.GetUnderlyingTypeFromNullable();
-                        var args = ReadJsonArray(token, unwrappedType);
-                        var genericType = typeof(OneOrMany<>).MakeGenericType(type);
-                        var item = (IValues)Activator.CreateInstance(genericType, args);
-                        items.Add(item);
+                        // only read as many items as there are tokens left
+                        var args = ReadJsonArray(token, unwrappedType, count - total);
+
+                        if (args != null && args.Count > 0)
+                        {
+                            var genericType = typeof(OneOrMany<>).MakeGenericType(type);
+                            var item = (IValues)Activator.CreateInstance(genericType, args);
+                            items.Add(item);
+
+                            total += args.Count;
+
+                            if (total >= count)
+                            {
+                                // if we have deserialized enough items as there are tokens, break
+                                break;
+                            }
+                        }
                     }
 
                     argument = items;
@@ -99,11 +117,10 @@ namespace Schema.NET
                     for (var i = mainType.GenericTypeArguments.Length - 1; i >= 0; i--)
                     {
                         var type = mainType.GenericTypeArguments[i];
-                        object args = null;
 
                         try
                         {
-                            args = ParseTokenArguments(token, tokenType, type, value);
+                            var args = ParseTokenArguments(token, tokenType, type, value);
 
                             if (args != null)
                             {
@@ -209,7 +226,7 @@ namespace Schema.NET
         {
             const string SCHEMA_ORG = "http://schema.org/";
             const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
-            object args = null;
+            object args;
             var unwrappedType = type.GetUnderlyingTypeFromNullable();
             if (unwrappedType.GetTypeInfo().IsEnum)
             {
@@ -434,53 +451,58 @@ namespace Schema.NET
             return type;
         }
 
-        private static object ReadJsonArray(JToken token, Type type)
+        private static IList ReadJsonArray(JToken token, Type type, int? count = null)
         {
             var classType = ToClass(type);
-            var listType = typeof(List<>).MakeGenericType(classType);
+            var listType = typeof(List<>).MakeGenericType(type); // always read into list of interfaces
             var list = Activator.CreateInstance(listType);
+            var i = 0;
+
+            if (count == null)
+            {
+                // if maximum item count not assigned, set to count of child tokens
+                count = token.Children().Count();
+            }
 
             foreach (var childToken in token.Children())
             {
                 var typeName = GetTypeNameFromToken(childToken);
                 if (string.IsNullOrEmpty(typeName))
                 {
-                    var item = childToken.ToObject(classType);
-                    listType
-                        .GetRuntimeMethod(nameof(List<object>.Add), new[] { classType })
-                        .Invoke(list, new object[] { item });
+                    var child = childToken.ToObject(classType);
+                    var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
+
+                    if (method != null)
+                    {
+                        method.Invoke(list, new object[] { child });
+
+                        i++;
+                    }
                 }
                 else
                 {
                     var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                    if (builtType != null && GetTypeHierarchy(builtType).Any(x => x == classType))
+                    if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
                     {
                         var child = (Thing)childToken.ToObject(builtType);
-                        listType
-                            .GetRuntimeMethod(nameof(List<object>.Add), new[] { classType })
-                            .Invoke(list, new object[] { child });
+                        var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
+
+                        if (method != null)
+                        {
+                            method.Invoke(list, new object[] { child });
+
+                            i++;
+                        }
                     }
+                }
+
+                if (i == count)
+                {
+                    break;
                 }
             }
 
-            return list;
-        }
-
-        private static IEnumerable<Type> GetTypeHierarchy(Type type)
-        {
-            if (type == null)
-            {
-                yield break;
-            }
-
-            yield return type;
-
-            var baseType = type.GetTypeInfo().BaseType;
-            while (baseType != null)
-            {
-                yield return baseType;
-                baseType = baseType.GetTypeInfo().BaseType;
-            }
+            return (IList)list;
         }
 
         private static string GetTypeNameFromToken(JToken token)

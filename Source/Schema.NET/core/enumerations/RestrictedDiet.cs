@@ -1,10 +1,13 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A diet restricted to certain foods or preparations for cultural, religious, health or lifestyle reasons.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum RestrictedDiet
     {
         /// <summary>

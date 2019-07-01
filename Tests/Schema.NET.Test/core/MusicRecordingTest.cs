@@ -68,12 +68,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_MusicRecordingJsonLd_ReturnsMusicRecording()
         {
-            var serializerSettings = new JsonSerializerSettings()
-            {
-                DateParseHandling = DateParseHandling.DateTimeOffset
-            };
-
-            Assert.Equal(this.musicRecording.ToString(), JsonConvert.DeserializeObject<MusicRecording>(this.json, serializerSettings).ToString());
+            Assert.Equal(this.musicRecording.ToString(), JsonConvert.DeserializeObject<MusicRecording>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.musicRecording, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<MusicRecording>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }
 }

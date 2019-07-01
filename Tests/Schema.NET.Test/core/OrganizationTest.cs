@@ -43,7 +43,10 @@ namespace Schema.NET.Test
             Assert.Equal(this.json, this.organization.ToString());
 
         [Fact]
-        public void Deserializing_OrganizationJsonLd_ReturnsOrganization() =>
-            Assert.Equal(this.organization.ToString(), JsonConvert.DeserializeObject<Organization>(this.json).ToString());
+        public void Deserializing_OrganizationJsonLd_ReturnsOrganization()
+        {
+            Assert.Equal(this.organization.ToString(), JsonConvert.DeserializeObject<Organization>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.organization, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Organization>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+        }
     }
 }

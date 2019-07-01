@@ -1,10 +1,13 @@
-﻿namespace Schema.NET
+namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// An enumeration of several kinds of Map.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MapCategoryType
     {
         /// <summary>

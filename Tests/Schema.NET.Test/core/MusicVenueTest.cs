@@ -76,12 +76,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_MusicVenueJsonLd_ReturnsMusicVenue()
         {
-            var serializerSettings = new JsonSerializerSettings()
-            {
-                DateParseHandling = DateParseHandling.DateTimeOffset
-            };
-
-            Assert.Equal(this.musicVenue.ToString(), JsonConvert.DeserializeObject<MusicVenue>(this.json, serializerSettings).ToString());
+            Assert.Equal(this.musicVenue.ToString(), JsonConvert.DeserializeObject<MusicVenue>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.musicVenue, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<MusicVenue>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }
 }
