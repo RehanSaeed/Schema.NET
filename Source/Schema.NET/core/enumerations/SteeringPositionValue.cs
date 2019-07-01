@@ -1,4 +1,4 @@
-namespace Schema.NET
+﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;

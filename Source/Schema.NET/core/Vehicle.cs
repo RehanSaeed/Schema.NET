@@ -158,6 +158,11 @@
         OneOrMany<SteeringPositionValue?> SteeringPosition { get; set; }
 
         /// <summary>
+        /// This is a StupidProperty! - for testing only
+        /// </summary>
+        OneOrMany<IQuantitativeValue> StupidProperty { get; set; }
+
+        /// <summary>
         /// The permitted vertical load (TWR) of a trailer attached to the vehicle. Also referred to as Tongue Load Rating (TLR) or Vertical Load Rating (VLR)&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): KGM for kilogram, LBR for pound&lt;br/&gt;&lt;br/&gt;
         /// &lt;ul&gt;
@@ -462,6 +467,13 @@
         public OneOrMany<SteeringPositionValue?> SteeringPosition { get; set; }
 
         /// <summary>
+        /// This is a StupidProperty! - for testing only
+        /// </summary>
+        [DataMember(Name = "stupidProperty", Order = 231)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IQuantitativeValue> StupidProperty { get; set; }
+
+        /// <summary>
         /// The permitted vertical load (TWR) of a trailer attached to the vehicle. Also referred to as Tongue Load Rating (TLR) or Vertical Load Rating (VLR)&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): KGM for kilogram, LBR for pound&lt;br/&gt;&lt;br/&gt;
         /// &lt;ul&gt;
@@ -470,7 +482,7 @@
         /// &lt;li&gt;Note 3: Note that you can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "tongueWeight", Order = 231)]
+        [DataMember(Name = "tongueWeight", Order = 232)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> TongueWeight { get; set; }
 
@@ -481,49 +493,49 @@
         /// * Note 2: You may also link to a &lt;a class="localLink" href="http://schema.org/QualitativeValue"&gt;QualitativeValue&lt;/a&gt; node that provides additional information using &lt;a class="localLink" href="http://schema.org/valueReference"&gt;valueReference&lt;/a&gt;.
         /// * Note 3: Note that you can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.
         /// </summary>
-        [DataMember(Name = "trailerWeight", Order = 232)]
+        [DataMember(Name = "trailerWeight", Order = 233)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> TrailerWeight { get; set; }
 
         /// <summary>
         /// A short text indicating the configuration of the vehicle, e.g. '5dr hatchback ST 2.5 MT 225 hp' or 'limited edition'.
         /// </summary>
-        [DataMember(Name = "vehicleConfiguration", Order = 233)]
+        [DataMember(Name = "vehicleConfiguration", Order = 234)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VehicleConfiguration { get; set; }
 
         /// <summary>
         /// Information about the engine or engines of the vehicle.
         /// </summary>
-        [DataMember(Name = "vehicleEngine", Order = 234)]
+        [DataMember(Name = "vehicleEngine", Order = 235)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IEngineSpecification> VehicleEngine { get; set; }
 
         /// <summary>
         /// The Vehicle Identification Number (VIN) is a unique serial number used by the automotive industry to identify individual motor vehicles.
         /// </summary>
-        [DataMember(Name = "vehicleIdentificationNumber", Order = 235)]
+        [DataMember(Name = "vehicleIdentificationNumber", Order = 236)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VehicleIdentificationNumber { get; set; }
 
         /// <summary>
         /// The color or color combination of the interior of the vehicle.
         /// </summary>
-        [DataMember(Name = "vehicleInteriorColor", Order = 236)]
+        [DataMember(Name = "vehicleInteriorColor", Order = 237)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VehicleInteriorColor { get; set; }
 
         /// <summary>
         /// The type or material of the interior of the vehicle (e.g. synthetic fabric, leather, wood, etc.). While most interior types are characterized by the material used, an interior type can also be based on vehicle usage or target audience.
         /// </summary>
-        [DataMember(Name = "vehicleInteriorType", Order = 237)]
+        [DataMember(Name = "vehicleInteriorType", Order = 238)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VehicleInteriorType { get; set; }
 
         /// <summary>
         /// The release date of a vehicle model (often used to differentiate versions of the same make and model).
         /// </summary>
-        [DataMember(Name = "vehicleModelDate", Order = 238)]
+        [DataMember(Name = "vehicleModelDate", Order = 239)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?>? VehicleModelDate { get; set; }
 
@@ -531,21 +543,21 @@
         /// The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): C62 for persons.
         /// </summary>
-        [DataMember(Name = "vehicleSeatingCapacity", Order = 239)]
+        [DataMember(Name = "vehicleSeatingCapacity", Order = 240)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, IQuantitativeValue>? VehicleSeatingCapacity { get; set; }
 
         /// <summary>
         /// Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school, or as a taxi. The legislation in many countries requires this information to be revealed when offering a car for sale.
         /// </summary>
-        [DataMember(Name = "vehicleSpecialUsage", Order = 240)]
+        [DataMember(Name = "vehicleSpecialUsage", Order = 241)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<CarUsageType?, string>? VehicleSpecialUsage { get; set; }
 
         /// <summary>
         /// The type of component used for transmitting the power from a rotating power source to the wheels or other relevant component(s) ("gearbox" for cars).
         /// </summary>
-        [DataMember(Name = "vehicleTransmission", Order = 241)]
+        [DataMember(Name = "vehicleTransmission", Order = 242)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri>? VehicleTransmission { get; set; }
 
@@ -558,7 +570,7 @@
         /// &lt;li&gt;Note 3: Note that you can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "weightTotal", Order = 242)]
+        [DataMember(Name = "weightTotal", Order = 243)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> WeightTotal { get; set; }
 
@@ -566,7 +578,7 @@
         /// The distance between the centers of the front and rear wheels.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): CMT for centimeters, MTR for meters, INH for inches, FOT for foot/feet
         /// </summary>
-        [DataMember(Name = "wheelbase", Order = 243)]
+        [DataMember(Name = "wheelbase", Order = 244)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> Wheelbase { get; set; }
     }

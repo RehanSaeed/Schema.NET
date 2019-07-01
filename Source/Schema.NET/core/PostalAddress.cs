@@ -15,12 +15,12 @@
         Values<ICountry, string>? AddressCountry { get; set; }
 
         /// <summary>
-        /// The locality. For example, Mountain View.
+        /// The locality in which the street address is, and which is in the region. For example, Mountain View.
         /// </summary>
         OneOrMany<string> AddressLocality { get; set; }
 
         /// <summary>
-        /// The region. For example, CA.
+        /// The region in which the locality is, and which is in the country. For example, California or another appropriate first-level &lt;a href="https://en.wikipedia.org/wiki/List_of_administrative_divisions_by_country"&gt;Administrative division&lt;/a&gt;
         /// </summary>
         OneOrMany<string> AddressRegion { get; set; }
 
@@ -60,14 +60,14 @@
         public Values<ICountry, string>? AddressCountry { get; set; }
 
         /// <summary>
-        /// The locality. For example, Mountain View.
+        /// The locality in which the street address is, and which is in the region. For example, Mountain View.
         /// </summary>
         [DataMember(Name = "addressLocality", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> AddressLocality { get; set; }
 
         /// <summary>
-        /// The region. For example, CA.
+        /// The region in which the locality is, and which is in the country. For example, California or another appropriate first-level &lt;a href="https://en.wikipedia.org/wiki/List_of_administrative_divisions_by_country"&gt;Administrative division&lt;/a&gt;
         /// </summary>
         [DataMember(Name = "addressRegion", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]

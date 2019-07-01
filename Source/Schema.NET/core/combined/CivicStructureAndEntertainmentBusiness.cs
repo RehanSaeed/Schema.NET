@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, EntertainmentBusiness for more information.
     /// </summary>
-    public partial interface ICivicStructureAndEntertainmentBusiness : IEntertainmentBusiness, ICivicStructure
+    public partial interface ICivicStructureAndEntertainmentBusiness : ICivicStructure, IEntertainmentBusiness
     {
     }
 
