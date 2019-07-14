@@ -37,6 +37,11 @@
         /// The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
         /// </summary>
         Values<IPropertyValue, string>? VariableMeasured { get; set; }
+
+        /// <summary>
+        /// Originally named &lt;a class="localLink" href="http://schema.org/variablesMeasured"&gt;variablesMeasured&lt;/a&gt;, The &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
+        /// </summary>
+        Values<IPropertyValue, string>? VariablesMeasured { get; set; }
     }
 
     /// <summary>
@@ -89,5 +94,12 @@
         [DataMember(Name = "variableMeasured", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPropertyValue, string>? VariableMeasured { get; set; }
+
+        /// <summary>
+        /// Originally named &lt;a class="localLink" href="http://schema.org/variablesMeasured"&gt;variablesMeasured&lt;/a&gt;, The &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
+        /// </summary>
+        [DataMember(Name = "variablesMeasured", Order = 211)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<IPropertyValue, string>? VariablesMeasured { get; set; }
     }
 }

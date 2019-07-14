@@ -124,12 +124,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_RestaurantJsonLd_ReturnsRestaurant()
         {
-            var serializerSettings = new JsonSerializerSettings()
-            {
-                DateParseHandling = DateParseHandling.DateTimeOffset
-            };
-
-            Assert.Equal(this.restaurant.ToString(), JsonConvert.DeserializeObject<Restaurant>(this.json, serializerSettings).ToString());
+            Assert.Equal(this.restaurant.ToString(), JsonConvert.DeserializeObject<Restaurant>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.restaurant, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Restaurant>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }
 }

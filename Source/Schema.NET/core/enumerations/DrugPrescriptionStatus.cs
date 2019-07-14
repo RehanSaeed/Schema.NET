@@ -1,10 +1,13 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Indicates whether this drug is available by prescription or over-the-counter.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DrugPrescriptionStatus
     {
         /// <summary>

@@ -1,10 +1,13 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// An enumeration of genders.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GenderType
     {
         /// <summary>

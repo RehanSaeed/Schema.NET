@@ -1,10 +1,13 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A value indicating a steering position.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum SteeringPositionValue
     {
         /// <summary>

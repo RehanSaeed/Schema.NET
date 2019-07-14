@@ -77,6 +77,17 @@ namespace Schema.NET.Test
             Assert.Equal(expectedCount, new Values<int, string, DayOfWeek>(items).Count);
 
         [Fact]
+        public void HasValue_DoesntHaveValue_ReturnsFalse() =>
+            Assert.False(default(Values<int, string, DayOfWeek>).HasValue);
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData("Foo")]
+        [InlineData(DayOfWeek.Friday)]
+        public void HasValue_HasValue_ReturnsTrue(params object[] parameters) =>
+            Assert.True(new Values<int, string, DayOfWeek>(parameters).HasValue);
+
+        [Fact]
         public void HasValue1_HasValue_ReturnsTrue() =>
             Assert.True(new Values<int, string, DayOfWeek>(1).HasValue1);
 
@@ -283,14 +294,20 @@ namespace Schema.NET.Test
 
         [Fact]
         public void GetHashCode_Value1Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal(1.GetHashCode(), new Values<int, string, DayOfWeek?>(1).GetHashCode());
+            Assert.Equal(
+                CombineHashCodes(CombineHashCodes(1.GetHashCode(), 0), 0),
+                new Values<int, string, DayOfWeek?>(1).GetHashCode());
 
         [Fact]
         public void GetHashCode_Value2Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal("Foo".GetHashCode(), new Values<int, string, DayOfWeek?>("Foo").GetHashCode());
+            Assert.Equal(
+                CombineHashCodes("Foo".GetHashCode(), 0),
+                new Values<int, string, DayOfWeek?>("Foo").GetHashCode());
 
         [Fact]
         public void GetHashCode_Value3Passed_ReturnsMatchingHashCode() =>
             Assert.Equal(DayOfWeek.Friday.GetHashCode(), new Values<int, string, DayOfWeek?>(DayOfWeek.Friday).GetHashCode());
+
+        private static int CombineHashCodes(int h1, int h2) => ((h1 << 5) + h1) ^ h2;
     }
 }

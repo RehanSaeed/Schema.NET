@@ -1,10 +1,13 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Target audiences for medical web pages. Enumerated type.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MedicalAudience
     {
         /// <summary>

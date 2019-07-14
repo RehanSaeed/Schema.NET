@@ -149,12 +149,12 @@ For more examples and actual running code samples, take a look at the unit tests
 
 ## Continuous Integration
 
-| Name            | Operating System | Status |
-| :---            | :---             | :---   |
+| Name            | Operating System | Status | History |
+| :---            | :---             | :---   | :---    |
 | Azure Pipelines | Ubuntu           | [![Azure Pipelines Ubuntu Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&stageName=Build&jobName=Build&configuration=Build%20Linux)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
 | Azure Pipelines | Mac              | [![Azure Pipelines Mac Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&stageName=Build&jobName=Build&configuration=Build%20Mac)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
 | Azure Pipelines | Windows          | [![Azure Pipelines Windows Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&stageName=Build&jobName=Build&configuration=Build%20Windows)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
-| AppVeyor        | Ubuntu & Windows | [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/djxrpkw8ckyf24c1?svg=true)](https://ci.appveyor.com/project/RehanSaeed/schema-net) |
+| AppVeyor        | Ubuntu & Windows | [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/djxrpkw8ckyf24c1?svg=true)](https://ci.appveyor.com/project/RehanSaeed/schema-net) | [![AppVeyor Build history](https://buildstats.info/appveyor/chart/RehanSaeed/schema-net?branch=master&includeBuildsFromPullRequest=false)](https://ci.appveyor.com/project/RehanSaeed/schema-net) |
 
 ## NuGet Packages
 
@@ -164,6 +164,7 @@ For more examples and actual running code samples, take a look at the unit tests
 
 ## Contributions and Thanks
 
+- [kirk-marple](https://github.com/kirk-marple) - Refactoring JSON serialization to be more efficient.
 - [nickevansuk](https://github.com/nickevansuk) - Adding better null value handling.
 - [MEmanuelsson](https://github.com/MEmanuelsson) - Added support for the schema.org Date type without time.
 - [halovanic](https://github.com/halovanic) - For adding interfaces to Schema.NET types for greater flexibility.

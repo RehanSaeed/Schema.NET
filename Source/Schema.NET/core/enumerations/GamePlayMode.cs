@@ -1,10 +1,13 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Indicates whether this game is multi-player, co-op or single-player.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GamePlayMode
     {
         /// <summary>

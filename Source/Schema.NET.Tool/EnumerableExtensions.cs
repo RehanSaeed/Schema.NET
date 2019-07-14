@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool
+namespace Schema.NET.Tool
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +8,11 @@
     {
         public static IEnumerable<T> Traverse<T>(T node, Func<T, T> parent)
         {
+            if (parent == null)
+            {
+                throw new ArgumentNullException(nameof(parent));
+            }
+
             for (var x = node; x != null; x = parent(x))
             {
                 yield return x;
@@ -16,6 +21,11 @@
 
         public static IEnumerable<T> Traverse<T>(T node, Func<T, IEnumerable<T>> children)
         {
+            if (children == null)
+            {
+                throw new ArgumentNullException(nameof(children));
+            }
+
             yield return node;
 
             var childNodes = children(node);

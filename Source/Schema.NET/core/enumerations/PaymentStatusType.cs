@@ -1,10 +1,13 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A specific payment status. For example, PaymentDue, PaymentComplete, etc.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PaymentStatusType
     {
         /// <summary>

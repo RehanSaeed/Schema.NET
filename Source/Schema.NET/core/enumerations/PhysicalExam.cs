@@ -1,10 +1,13 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A type of physical examination of a patient performed by a physician.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PhysicalExam
     {
         /// <summary>

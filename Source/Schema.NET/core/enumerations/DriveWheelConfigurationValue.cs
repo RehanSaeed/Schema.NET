@@ -1,10 +1,13 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A value indicating which roadwheels will receive torque.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DriveWheelConfigurationValue
     {
         /// <summary>

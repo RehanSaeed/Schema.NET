@@ -73,12 +73,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_NewsArticleJsonLd_ReturnsNewsArticle()
         {
-            var serializerSettings = new JsonSerializerSettings()
-            {
-                DateParseHandling = DateParseHandling.DateTimeOffset
-            };
-
-            Assert.Equal(this.article.ToString(), JsonConvert.DeserializeObject<NewsArticle>(this.json, serializerSettings).ToString());
+            Assert.Equal(this.article.ToString(), JsonConvert.DeserializeObject<NewsArticle>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.article, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<NewsArticle>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }
 }

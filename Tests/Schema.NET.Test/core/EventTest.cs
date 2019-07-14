@@ -107,13 +107,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_EventJsonLd_ReturnsEvent()
         {
-            var serializerSettings = new JsonSerializerSettings()
-            {
-                DateParseHandling = DateParseHandling.DateTimeOffset,
-                NullValueHandling = NullValueHandling.Ignore
-            };
-
-            Assert.Equal(this.@event.ToString(), JsonConvert.DeserializeObject<Event>(this.json, serializerSettings).ToString());
+            Assert.Equal(this.@event.ToString(), JsonConvert.DeserializeObject<Event>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(JsonConvert.SerializeObject(this.@event, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Event>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }
 }

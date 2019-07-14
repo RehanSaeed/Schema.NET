@@ -55,25 +55,29 @@ namespace Schema.NET.Tool.Repositories
 
         public async Task<List<SchemaObject>> GetSchemaObjects()
         {
-            var response = await this.httpClient
+            using (var response = await this.httpClient
                 .GetAsync(new Uri("/version/latest/all-layers.jsonld", UriKind.Relative))
-                .ConfigureAwait(false);
-            response.EnsureSuccessStatusCode();
-            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            return Deserialize<List<SchemaObject>>(json, new SchemaPropertyJsonConverter());
+                .ConfigureAwait(false))
+            {
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                return Deserialize<List<SchemaObject>>(json, new SchemaPropertyJsonConverter());
+            }
         }
 
         public async Task<List<SchemaTreeClass>> GetSchemaTreeClasses()
         {
-            var response = await this.httpClient
+            using (var response = await this.httpClient
                 .GetAsync(new Uri("/docs/tree.jsonld", UriKind.Relative))
-                .ConfigureAwait(false);
-            response.EnsureSuccessStatusCode();
-            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var schemaClass = Deserialize<SchemaTreeClass>(json);
-            return EnumerableExtensions
-                .Traverse(schemaClass, x => x.Children)
-                .ToList();
+                .ConfigureAwait(false))
+            {
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var schemaClass = Deserialize<SchemaTreeClass>(json);
+                return EnumerableExtensions
+                    .Traverse(schemaClass, x => x.Children)
+                    .ToList();
+            }
         }
 
         protected override void DisposeManaged() => this.httpClient.Dispose();

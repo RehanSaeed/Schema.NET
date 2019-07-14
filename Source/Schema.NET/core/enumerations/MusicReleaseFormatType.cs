@@ -1,10 +1,13 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc.).
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MusicReleaseFormatType
     {
         /// <summary>

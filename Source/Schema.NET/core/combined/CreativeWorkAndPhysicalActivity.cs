@@ -376,7 +376,7 @@
         public OneOrMany<bool?> IsAccessibleForFree { get; set; }
 
         /// <summary>
-        /// A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
+        /// A resource from which this work is derived or from which it is a modification or adaption.
         /// </summary>
         [DataMember(Name = "isBasedOn", Order = 356)]
         [JsonConverter(typeof(ValuesJsonConverter))]

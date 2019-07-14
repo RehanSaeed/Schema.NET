@@ -1,6 +1,8 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A card payment method of a particular brand or name.  Used to mark up a particular payment method and/or the financial product/service that supplies the card account.&lt;br/&gt;&lt;br/&gt;
@@ -14,6 +16,7 @@
     /// &lt;li&gt;http://purl.org/goodrelations/v1#VISA&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CreditCard
     {
     }

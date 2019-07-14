@@ -1,6 +1,8 @@
 ﻿namespace Schema.NET
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A payment method is a standardized procedure for transferring the monetary amount for a purchase. Payment methods are characterized by the legal and technical structures used, and by the organization or group carrying out the transaction.&lt;br/&gt;&lt;br/&gt;
@@ -17,6 +19,7 @@
     /// &lt;li&gt;http://purl.org/goodrelations/v1#PaySwarm&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PaymentMethod
     {
     }

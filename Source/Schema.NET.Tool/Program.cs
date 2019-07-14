@@ -12,11 +12,16 @@ namespace Schema.NET.Tool
     using Schema.NET.Tool.Services;
     using Schema.NET.Tool.ViewModels;
 
-    public class Program
+    public class Program : Disposable
     {
+#pragma warning disable CA2213 // Object is being disposed
+        private readonly SchemaRepository schemaRepository;
+#pragma warning restore CA2213 // Object is being disposed
         private readonly SchemaService schemaService;
 
-        public Program() =>
+        public Program()
+        {
+            this.schemaRepository = new SchemaRepository();
             this.schemaService = new SchemaService(
                 new List<IClassOverride>()
                 {
@@ -28,9 +33,29 @@ namespace Schema.NET.Tool
                 {
                     new WarnEmptyEnumerations()
                 },
-                new SchemaRepository());
+                this.schemaRepository);
+        }
 
-        public static void Main() => new Program().Execute().Wait();
+        public static async Task<int> Main()
+        {
+            var program = new Program();
+
+            try
+            {
+                await program.Execute().ConfigureAwait(false);
+                return 0;
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch
+#pragma warning restore CA1031 // Do not catch general exception types
+            {
+                return -1;
+            }
+            finally
+            {
+                program.Dispose();
+            }
+        }
 
         public async Task Execute()
         {
@@ -68,6 +93,8 @@ namespace Schema.NET.Tool
 
             Console.WriteLine("Finished Write Classes");
         }
+
+        protected override void DisposeManaged() => this.schemaRepository.Dispose();
 
         private static async Task ClearOutputDirectory(string directoryPath)
         {

@@ -17,6 +17,16 @@ namespace Schema.NET.Tool.Services
 
         public int Compare(string x, string y)
         {
+            if (x == null)
+            {
+                throw new ArgumentNullException(nameof(x));
+            }
+
+            if (y == null)
+            {
+                throw new ArgumentNullException(nameof(y));
+            }
+
             x = x.ToUpperInvariant();
             y = y.ToUpperInvariant();
 

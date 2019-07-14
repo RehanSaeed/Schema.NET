@@ -15,9 +15,23 @@ namespace Schema.NET
         /// <inheritdoc />
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var valuesType = objectType.GetUnderlyingTypeFromNullable();
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
 
-            if (valuesType.GenericTypeArguments.Length == 1)
+            if (objectType == null)
+            {
+                throw new ArgumentNullException(nameof(objectType));
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException(nameof(serializer));
+            }
+
+            var valuesType = objectType.GetUnderlyingTypeFromNullable();
+            if (valuesType != null && valuesType.GenericTypeArguments.Length == 1)
             {
                 var mainType = valuesType.GenericTypeArguments[0];
                 var genericType = typeof(OneOrMany<TimeSpan>);
@@ -46,6 +60,21 @@ namespace Schema.NET
         /// <param name="serializer">The JSON serializer.</param>
         public override void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException(nameof(serializer));
+            }
+
             if (value is TimeSpan duration)
             {
                 writer.WriteValue(XmlConvert.ToString(duration));
