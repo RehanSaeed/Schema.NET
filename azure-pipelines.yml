@@ -76,7 +76,7 @@ stages:
             inputs:
               command: push
               nuGetFeedType: internal
-              packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
+              packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
               publishVstsFeed: schema-net
   - deployment: NuGet
     pool:
