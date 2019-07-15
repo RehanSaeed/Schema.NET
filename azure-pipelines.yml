@@ -90,7 +90,6 @@ stages:
       runOnce:
         deploy:
           steps:
-          # Dotnet NuGet does not work yet https://github.com/Microsoft/azure-pipelines-tasks/issues/7160
           - task: NuGetCommand@2
             displayName: 'Dotnet NuGet Push'
             inputs:
