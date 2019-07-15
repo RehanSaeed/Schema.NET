@@ -73,18 +73,12 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: 'echo $(Build.ArtifactStagingDirectory)'
-            continueOnError: true
-          - script: 'ls -a $(Build.ArtifactStagingDirectory)'
-            continueOnError: true
-          - script: 'ls -a $(Build.ArtifactStagingDirectory)/Windows'
-            continueOnError: true
           - task: NuGetCommand@2
             displayName: 'Dotnet NuGet Push'
             inputs:
               command: push
               nuGetFeedType: internal
-              packagesToPush: '$(Build.ArtifactStagingDirectory)/Windows/*.nupkg'
+              packagesToPush: '/home/vsts/work/1/Windows/*.nupkg'
               publishVstsFeed: schema-net
               allowPackageConflicts: true
   - deployment: NuGet
