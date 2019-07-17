@@ -11,7 +11,7 @@ namespace Schema.NET
     /// <typeparam name="T1">The first type the values can take.</typeparam>
     /// <typeparam name="T2">The second type the values can take.</typeparam>
 #pragma warning disable CA1710 // Identifiers should have correct suffix
-    public struct Values<T1, T2>
+    public readonly struct Values<T1, T2>
         : IReadOnlyCollection<object>, IEnumerable<object>, IValues, IEquatable<Values<T1, T2>>
 #pragma warning restore CA1710 // Identifiers should have correct suffix
     {

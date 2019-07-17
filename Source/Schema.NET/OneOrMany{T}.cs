@@ -11,7 +11,7 @@ namespace Schema.NET
     /// <typeparam name="T">The type of the values.</typeparam>
     /// <seealso cref="ICollection{T}" />
 #pragma warning disable CA1710 // Identifiers should have correct suffix
-    public struct OneOrMany<T>
+    public readonly struct OneOrMany<T>
         : IReadOnlyCollection<T>, IEnumerable<T>, IValues, IEquatable<OneOrMany<T>>
 #pragma warning restore CA1710 // Identifiers should have correct suffix
     {
