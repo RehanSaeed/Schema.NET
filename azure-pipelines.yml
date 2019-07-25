@@ -72,7 +72,7 @@ stages:
         deploy:
           steps:
           - task: NuGetCommand@2
-            displayName: 'Dotnet NuGet Push'
+            displayName: 'NuGet Push'
             inputs:
               command: push
               nuGetFeedType: internal
@@ -89,7 +89,7 @@ stages:
         deploy:
           steps:
           - task: NuGetCommand@2
-            displayName: 'Dotnet NuGet Push'
+            displayName: 'NuGet Push'
             inputs:
               command: push
               nuGetFeedType: external
