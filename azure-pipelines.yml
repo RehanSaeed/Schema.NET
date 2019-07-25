@@ -80,7 +80,7 @@ stages:
               publishVstsFeed: schema-net
               allowPackageConflicts: true
   - deployment: NuGet
-    pool:deve
+    pool:
       vmImage: ubuntu-latest
     environment: 'NuGet'
     condition: startsWith(variables['build.sourceBranch'], 'refs/tags/')
