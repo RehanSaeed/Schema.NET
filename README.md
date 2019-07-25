@@ -149,6 +149,12 @@ This magic is all carried out using [implicit conversion operators](https://docs
 
 For more examples and actual running code samples, take a look at the unit tests in the project source code.
 
+## NuGet Packages
+
+| Name | NuGet | Azure Artifacts |
+| :--- | :---  | :---            |
+| Schema.NET | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET Azure Artifacts Package](https://feeds.dev.azure.com/schema-net/_apis/public/Packaging/Feeds/64e69c35-cb00-46e4-9cba-6d8faf1f41d6/Packages/fa72270b-6c54-4403-9307-aa826e43530e/Badge)](https://dev.azure.com/schema-net/Schema.NET/_packaging?_a=package&feed=64e69c35-cb00-46e4-9cba-6d8faf1f41d6&package=fa72270b-6c54-4403-9307-aa826e43530e&preferRelease=true) |
+
 ## Continuous Integration
 
 | Name            | Operating System | Status | History |
@@ -157,12 +163,6 @@ For more examples and actual running code samples, take a look at the unit tests
 | Azure Pipelines | Mac              | [![Azure Pipelines Mac Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&stageName=Build&jobName=Build&configuration=Build%20Mac)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
 | Azure Pipelines | Windows          | [![Azure Pipelines Windows Build Status](https://dev.azure.com/schema-net/Schema.NET/_apis/build/status/Schema.NET?branchName=master&stageName=Build&jobName=Build&configuration=Build%20Windows)](https://dev.azure.com/schema-net/Schema.NET/_build/latest?definitionId=1&branchName=master) |
 | AppVeyor        | Ubuntu & Windows | [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/djxrpkw8ckyf24c1?svg=true)](https://ci.appveyor.com/project/RehanSaeed/schema-net) | [![AppVeyor Build history](https://buildstats.info/appveyor/chart/RehanSaeed/schema-net?branch=master&includeBuildsFromPullRequest=false)](https://ci.appveyor.com/project/RehanSaeed/schema-net) |
-
-## NuGet Packages
-
-| Name | NuGet | Azure Artifacts |
-| :--- | :---  | :---            |
-| Schema.NET | [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) | [![Schema.NET Azure Artifacts Package](https://feeds.dev.azure.com/schema-net/_apis/public/Packaging/Feeds/64e69c35-cb00-46e4-9cba-6d8faf1f41d6/Packages/fa72270b-6c54-4403-9307-aa826e43530e/Badge)](https://dev.azure.com/schema-net/Schema.NET/_packaging?_a=package&feed=64e69c35-cb00-46e4-9cba-6d8faf1f41d6&package=fa72270b-6c54-4403-9307-aa826e43530e&preferRelease=true) |
 
 ## Contributions and Thanks
 
