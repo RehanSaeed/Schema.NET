@@ -57,11 +57,9 @@ stages:
       inputs:
         testResultsFormat: 'VSTest'
         testResultsFiles: '**/*.trx'
-    - task: PublishPipelineArtifact@0
+    - publish: './Artifacts'
+      artifact: $(matrixName)
       displayName: 'Publish Artifacts'
-      inputs:
-        artifactName: $(matrixName)
-        targetPath: './Artifacts'
 - stage: Deploy
   jobs:
   - deployment: AzureArtifacts
@@ -82,7 +80,7 @@ stages:
               publishVstsFeed: schema-net
               allowPackageConflicts: true
   - deployment: NuGet
-    pool:
+    pool:deve
       vmImage: ubuntu-latest
     environment: 'NuGet'
     condition: startsWith(variables['build.sourceBranch'], 'refs/tags/')
