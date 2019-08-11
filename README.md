@@ -161,7 +161,7 @@ For more examples and actual running code samples, take a look at the unit tests
 
 ## Contributions and Thanks
 
-Please view the [Contributing](CONTRIBUTING.md) guide for more information.
+Please view the [contributing guide](CONTRIBUTING.md) for more information.
 
 - [kirk-marple](https://github.com/kirk-marple) - Refactoring JSON serialization to be more efficient.
 - [nickevansuk](https://github.com/nickevansuk) - Adding better null value handling.
