@@ -3,7 +3,6 @@
   <PropertyGroup Label="Build">
     <TargetFrameworks>netcoreapp2.2</TargetFrameworks>
     <CodeAnalysisRuleSet>../../MinimumRecommendedRulesWithStyleCop.ruleset</CodeAnalysisRuleSet>
-    <IsPackable>false</IsPackable>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
