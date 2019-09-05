@@ -21,7 +21,7 @@
         /// <summary>
         /// Gets or sets the query input search parameter.
         /// </summary>
-        Values<string, PropertyValueSpecification>? QueryInput { get; set; }
+        Values<string, PropertyValueSpecification> QueryInput { get; set; }
     }
 
     /// <summary>
@@ -52,6 +52,6 @@
         /// </summary>
         [DataMember(Name = "query-input", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, PropertyValueSpecification>? QueryInput { get; set; }
+        public Values<string, PropertyValueSpecification> QueryInput { get; set; }
     }
 }

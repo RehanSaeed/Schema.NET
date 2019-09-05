@@ -12,12 +12,12 @@
         /// <summary>
         /// Indicates whether a FoodEstablishment accepts reservations. Values can be Boolean, an URL at which reservations can be made or (for backwards compatibility) the strings &lt;code&gt;Yes&lt;/code&gt; or &lt;code&gt;No&lt;/code&gt;.
         /// </summary>
-        Values<bool?, string, Uri>? AcceptsReservations { get; set; }
+        Values<bool?, string, Uri> AcceptsReservations { get; set; }
 
         /// <summary>
         /// Either the actual menu as a structured representation, as text, or a URL of the menu.
         /// </summary>
-        Values<IMenu, string, Uri>? HasMenu { get; set; }
+        Values<IMenu, string, Uri> HasMenu { get; set; }
 
         /// <summary>
         /// The cuisine of the restaurant.
@@ -47,14 +47,14 @@
         /// </summary>
         [DataMember(Name = "acceptsReservations", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<bool?, string, Uri>? AcceptsReservations { get; set; }
+        public Values<bool?, string, Uri> AcceptsReservations { get; set; }
 
         /// <summary>
         /// Either the actual menu as a structured representation, as text, or a URL of the menu.
         /// </summary>
         [DataMember(Name = "hasMenu", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMenu, string, Uri>? HasMenu { get; set; }
+        public Values<IMenu, string, Uri> HasMenu { get; set; }
 
         /// <summary>
         /// The cuisine of the restaurant.

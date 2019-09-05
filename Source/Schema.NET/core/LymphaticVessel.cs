@@ -17,7 +17,7 @@
         /// <summary>
         /// The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
         /// </summary>
-        Values<IAnatomicalStructure, IAnatomicalSystem>? RegionDrained { get; set; }
+        Values<IAnatomicalStructure, IAnatomicalSystem> RegionDrained { get; set; }
 
         /// <summary>
         /// The vasculature the lymphatic structure runs, or efferents, to.
@@ -49,7 +49,7 @@
         /// </summary>
         [DataMember(Name = "regionDrained", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAnatomicalStructure, IAnatomicalSystem>? RegionDrained { get; set; }
+        public Values<IAnatomicalStructure, IAnatomicalSystem> RegionDrained { get; set; }
 
         /// <summary>
         /// The vasculature the lymphatic structure runs, or efferents, to.

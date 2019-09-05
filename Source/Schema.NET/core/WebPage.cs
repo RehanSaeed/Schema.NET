@@ -12,12 +12,12 @@
         /// <summary>
         /// A set of links that can help a user understand and navigate a website hierarchy.
         /// </summary>
-        Values<IBreadcrumbList, string>? Breadcrumb { get; set; }
+        Values<IBreadcrumbList, string> Breadcrumb { get; set; }
 
         /// <summary>
         /// Date on which the content on this web page was last reviewed for accuracy and/or completeness.
         /// </summary>
-        Values<int?, DateTime?>? LastReviewed { get; set; }
+        Values<int?, DateTime?> LastReviewed { get; set; }
 
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.
@@ -37,7 +37,7 @@
         /// <summary>
         /// People or organizations that have reviewed the content on this web page for accuracy and/or completeness.
         /// </summary>
-        Values<IOrganization, IPerson>? ReviewedBy { get; set; }
+        Values<IOrganization, IPerson> ReviewedBy { get; set; }
 
         /// <summary>
         /// One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most.
@@ -53,7 +53,7 @@
         /// For more sophisticated markup of speakable sections beyond simple ID references, either CSS selectors or XPath expressions to pick out document section(s) as speakable. For this
         /// we define a supporting type, &lt;a class="localLink" href="http://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt;  which is defined to be a possible value of the &lt;em&gt;speakable&lt;/em&gt; property.
         /// </summary>
-        Values<ISpeakableSpecification, Uri>? Speakable { get; set; }
+        Values<ISpeakableSpecification, Uri> Speakable { get; set; }
 
         /// <summary>
         /// One of the domain specialities to which this web page's content applies.
@@ -78,14 +78,14 @@
         /// </summary>
         [DataMember(Name = "breadcrumb", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IBreadcrumbList, string>? Breadcrumb { get; set; }
+        public Values<IBreadcrumbList, string> Breadcrumb { get; set; }
 
         /// <summary>
         /// Date on which the content on this web page was last reviewed for accuracy and/or completeness.
         /// </summary>
         [DataMember(Name = "lastReviewed", Order = 207)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? LastReviewed { get; set; }
+        public Values<int?, DateTime?> LastReviewed { get; set; }
 
         /// <summary>
         /// Indicates if this web page element is the main subject of the page.
@@ -113,7 +113,7 @@
         /// </summary>
         [DataMember(Name = "reviewedBy", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? ReviewedBy { get; set; }
+        public Values<IOrganization, IPerson> ReviewedBy { get; set; }
 
         /// <summary>
         /// One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most.
@@ -133,7 +133,7 @@
         /// </summary>
         [DataMember(Name = "speakable", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ISpeakableSpecification, Uri>? Speakable { get; set; }
+        public Values<ISpeakableSpecification, Uri> Speakable { get; set; }
 
         /// <summary>
         /// One of the domain specialities to which this web page's content applies.

@@ -17,7 +17,7 @@
         /// <summary>
         /// The high level platform(s) where the Action can be performed for the given URL. To specify a specific application or operating system instance, use actionApplication.
         /// </summary>
-        Values<string, Uri>? ActionPlatform { get; set; }
+        Values<string, Uri> ActionPlatform { get; set; }
 
         /// <summary>
         /// The supported content type(s) for an EntryPoint response.
@@ -64,7 +64,7 @@
         /// </summary>
         [DataMember(Name = "actionPlatform", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? ActionPlatform { get; set; }
+        public Values<string, Uri> ActionPlatform { get; set; }
 
         /// <summary>
         /// The supported content type(s) for an EntryPoint response.

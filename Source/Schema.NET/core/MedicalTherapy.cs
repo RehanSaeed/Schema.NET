@@ -12,7 +12,7 @@
         /// <summary>
         /// A contraindication for this therapy.
         /// </summary>
-        Values<IMedicalContraindication, string>? Contraindication { get; set; }
+        Values<IMedicalContraindication, string> Contraindication { get; set; }
 
         /// <summary>
         /// A therapy that duplicates or overlaps this one.
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "contraindication", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMedicalContraindication, string>? Contraindication { get; set; }
+        public Values<IMedicalContraindication, string> Contraindication { get; set; }
 
         /// <summary>
         /// A therapy that duplicates or overlaps this one.

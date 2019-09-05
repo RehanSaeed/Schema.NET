@@ -12,7 +12,7 @@
         /// <summary>
         /// A type of sport (e.g. Baseball).
         /// </summary>
-        Values<string, Uri>? Sport { get; set; }
+        Values<string, Uri> Sport { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "sport", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? Sport { get; set; }
+        public Values<string, Uri> Sport { get; set; }
     }
 }

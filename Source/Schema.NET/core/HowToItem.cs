@@ -12,7 +12,7 @@
         /// <summary>
         /// The required quantity of the item(s).
         /// </summary>
-        Values<double?, IQuantitativeValue, string>? RequiredQuantity { get; set; }
+        Values<double?, IQuantitativeValue, string> RequiredQuantity { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "requiredQuantity", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<double?, IQuantitativeValue, string>? RequiredQuantity { get; set; }
+        public Values<double?, IQuantitativeValue, string> RequiredQuantity { get; set; }
     }
 }

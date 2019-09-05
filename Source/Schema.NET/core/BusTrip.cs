@@ -12,7 +12,7 @@
         /// <summary>
         /// The stop or station from which the bus arrives.
         /// </summary>
-        Values<IBusStation, IBusStop>? ArrivalBusStop { get; set; }
+        Values<IBusStation, IBusStop> ArrivalBusStop { get; set; }
 
         /// <summary>
         /// The name of the bus (e.g. Bolt Express).
@@ -27,7 +27,7 @@
         /// <summary>
         /// The stop or station from which the bus departs.
         /// </summary>
-        Values<IBusStation, IBusStop>? DepartureBusStop { get; set; }
+        Values<IBusStation, IBusStop> DepartureBusStop { get; set; }
     }
 
     /// <summary>
@@ -47,7 +47,7 @@
         /// </summary>
         [DataMember(Name = "arrivalBusStop", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IBusStation, IBusStop>? ArrivalBusStop { get; set; }
+        public Values<IBusStation, IBusStop> ArrivalBusStop { get; set; }
 
         /// <summary>
         /// The name of the bus (e.g. Bolt Express).
@@ -68,6 +68,6 @@
         /// </summary>
         [DataMember(Name = "departureBusStop", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IBusStation, IBusStop>? DepartureBusStop { get; set; }
+        public Values<IBusStation, IBusStop> DepartureBusStop { get; set; }
     }
 }

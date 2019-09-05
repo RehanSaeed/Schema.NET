@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of object. The options subject to this action.
         /// </summary>
-        Values<string, IThing>? ActionOption { get; set; }
+        Values<string, IThing> ActionOption { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "actionOption", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IThing>? ActionOption { get; set; }
+        public Values<string, IThing> ActionOption { get; set; }
     }
 }

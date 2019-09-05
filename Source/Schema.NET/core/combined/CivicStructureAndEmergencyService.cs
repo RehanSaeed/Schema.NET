@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, EmergencyService for more information.
     /// </summary>
-    public partial interface ICivicStructureAndEmergencyService : ICivicStructure, IEmergencyService
+    public partial interface ICivicStructureAndEmergencyService : IEmergencyService, ICivicStructure
     {
     }
 

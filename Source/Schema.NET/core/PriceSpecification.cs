@@ -39,7 +39,7 @@
         /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        Values<decimal?, string>? Price { get; set; }
+        Values<decimal?, string> Price { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -50,12 +50,12 @@
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> ValidThrough { get; set; }
 
         /// <summary>
         /// Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
@@ -115,7 +115,7 @@
         /// </summary>
         [DataMember(Name = "price", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<decimal?, string>? Price { get; set; }
+        public Values<decimal?, string> Price { get; set; }
 
         /// <summary>
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
@@ -129,15 +129,15 @@
         /// The date when the item becomes valid.
         /// </summary>
         [DataMember(Name = "validFrom", Order = 312)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
         [DataMember(Name = "validThrough", Order = 313)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> ValidThrough { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?> ValidThrough { get; set; }
 
         /// <summary>
         /// Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.

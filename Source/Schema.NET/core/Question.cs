@@ -12,7 +12,7 @@
         /// <summary>
         /// The answer(s) that has been accepted as best, typically on a Question/Answer site. Sites vary in their selection mechanisms, e.g. drawing on community opinion and/or the view of the Question author.
         /// </summary>
-        Values<IAnswer, IItemList>? AcceptedAnswer { get; set; }
+        Values<IAnswer, IItemList> AcceptedAnswer { get; set; }
 
         /// <summary>
         /// The number of answers this question has received.
@@ -27,7 +27,7 @@
         /// <summary>
         /// An answer (possibly one of several, possibly incorrect) to a Question, e.g. on a Question/Answer site.
         /// </summary>
-        Values<IAnswer, IItemList>? SuggestedAnswer { get; set; }
+        Values<IAnswer, IItemList> SuggestedAnswer { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.
@@ -52,7 +52,7 @@
         /// </summary>
         [DataMember(Name = "acceptedAnswer", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAnswer, IItemList>? AcceptedAnswer { get; set; }
+        public Values<IAnswer, IItemList> AcceptedAnswer { get; set; }
 
         /// <summary>
         /// The number of answers this question has received.
@@ -73,7 +73,7 @@
         /// </summary>
         [DataMember(Name = "suggestedAnswer", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAnswer, IItemList>? SuggestedAnswer { get; set; }
+        public Values<IAnswer, IItemList> SuggestedAnswer { get; set; }
 
         /// <summary>
         /// The number of upvotes this question, answer or comment has received from the community.

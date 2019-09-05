@@ -12,7 +12,7 @@
         /// <summary>
         /// Additional menu item(s) such as a side dish of salad or side order of fries that can be added to this menu item. Additionally it can be a menu section containing allowed add-on menu items for this menu item.
         /// </summary>
-        Values<IMenuItem, IMenuSection>? MenuAddOn { get; set; }
+        Values<IMenuItem, IMenuSection> MenuAddOn { get; set; }
 
         /// <summary>
         /// Nutrition information about the recipe or menu item.
@@ -47,7 +47,7 @@
         /// </summary>
         [DataMember(Name = "menuAddOn", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMenuItem, IMenuSection>? MenuAddOn { get; set; }
+        public Values<IMenuItem, IMenuSection> MenuAddOn { get; set; }
 
         /// <summary>
         /// Nutrition information about the recipe or menu item.

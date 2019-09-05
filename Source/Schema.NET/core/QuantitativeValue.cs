@@ -28,7 +28,7 @@
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
         /// </summary>
-        Values<string, Uri>? UnitCode { get; set; }
+        Values<string, Uri> UnitCode { get; set; }
 
         /// <summary>
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
@@ -45,12 +45,12 @@
         /// &lt;li&gt;Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        Values<bool?, double?, IStructuredValue, string>? Value { get; set; }
+        Values<bool?, double?, IStructuredValue, string> Value { get; set; }
 
         /// <summary>
         /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
         /// </summary>
-        Values<IPropertyValue, IQuantitativeValue, IStructuredValue>? ValueReference { get; set; }
+        Values<IPropertyValue, IQuantitativeValue, IStructuredValue> ValueReference { get; set; }
     }
 
     /// <summary>
@@ -92,7 +92,7 @@
         /// </summary>
         [DataMember(Name = "unitCode", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? UnitCode { get; set; }
+        public Values<string, Uri> UnitCode { get; set; }
 
         /// <summary>
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
@@ -113,13 +113,13 @@
         /// </summary>
         [DataMember(Name = "value", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<bool?, double?, IStructuredValue, string>? Value { get; set; }
+        public Values<bool?, double?, IStructuredValue, string> Value { get; set; }
 
         /// <summary>
         /// A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
         /// </summary>
         [DataMember(Name = "valueReference", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPropertyValue, IQuantitativeValue, IStructuredValue>? ValueReference { get; set; }
+        public Values<IPropertyValue, IQuantitativeValue, IStructuredValue> ValueReference { get; set; }
     }
 }

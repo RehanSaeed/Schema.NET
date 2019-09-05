@@ -22,7 +22,7 @@
         /// <summary>
         /// An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
         /// </summary>
-        Values<IOrganization, IPerson>? Broker { get; set; }
+        Values<IOrganization, IPerson> Broker { get; set; }
 
         /// <summary>
         /// A number that confirms the given order or payment has been received.
@@ -32,12 +32,12 @@
         /// <summary>
         /// Party placing the order or paying the invoice.
         /// </summary>
-        Values<IOrganization, IPerson>? Customer { get; set; }
+        Values<IOrganization, IPerson> Customer { get; set; }
 
         /// <summary>
         /// Any discount applied (to an Order).
         /// </summary>
-        Values<decimal?, string>? Discount { get; set; }
+        Values<decimal?, string> Discount { get; set; }
 
         /// <summary>
         /// Code used to redeem a discount.
@@ -58,7 +58,7 @@
         /// <summary>
         /// Date order was placed.
         /// </summary>
-        OneOrMany<DateTimeOffset?> OrderDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> OrderDate { get; set; }
 
         /// <summary>
         /// The delivery of the parcel related to this order or order item.
@@ -68,7 +68,7 @@
         /// <summary>
         /// The item ordered.
         /// </summary>
-        Values<IOrderItem, IProduct, IService>? OrderedItem { get; set; }
+        Values<IOrderItem, IProduct, IService> OrderedItem { get; set; }
 
         /// <summary>
         /// The identifier of the transaction.
@@ -88,7 +88,7 @@
         /// <summary>
         /// The date that payment is due.
         /// </summary>
-        OneOrMany<DateTimeOffset?> PaymentDueDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> PaymentDueDate { get; set; }
 
         /// <summary>
         /// The name of the credit card or other method of payment for the order.
@@ -108,7 +108,7 @@
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
         /// </summary>
-        Values<IOrganization, IPerson>? Seller { get; set; }
+        Values<IOrganization, IPerson> Seller { get; set; }
     }
 
     /// <summary>
@@ -142,7 +142,7 @@
         /// </summary>
         [DataMember(Name = "broker", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Broker { get; set; }
+        public Values<IOrganization, IPerson> Broker { get; set; }
 
         /// <summary>
         /// A number that confirms the given order or payment has been received.
@@ -156,14 +156,14 @@
         /// </summary>
         [DataMember(Name = "customer", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Customer { get; set; }
+        public Values<IOrganization, IPerson> Customer { get; set; }
 
         /// <summary>
         /// Any discount applied (to an Order).
         /// </summary>
         [DataMember(Name = "discount", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<decimal?, string>? Discount { get; set; }
+        public Values<decimal?, string> Discount { get; set; }
 
         /// <summary>
         /// Code used to redeem a discount.
@@ -191,8 +191,8 @@
         /// Date order was placed.
         /// </summary>
         [DataMember(Name = "orderDate", Order = 215)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> OrderDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?> OrderDate { get; set; }
 
         /// <summary>
         /// The delivery of the parcel related to this order or order item.
@@ -206,7 +206,7 @@
         /// </summary>
         [DataMember(Name = "orderedItem", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrderItem, IProduct, IService>? OrderedItem { get; set; }
+        public Values<IOrderItem, IProduct, IService> OrderedItem { get; set; }
 
         /// <summary>
         /// The identifier of the transaction.
@@ -233,8 +233,8 @@
         /// The date that payment is due.
         /// </summary>
         [DataMember(Name = "paymentDueDate", Order = 221)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> PaymentDueDate { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?> PaymentDueDate { get; set; }
 
         /// <summary>
         /// The name of the credit card or other method of payment for the order.
@@ -262,6 +262,6 @@
         /// </summary>
         [DataMember(Name = "seller", Order = 225)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Seller { get; set; }
+        public Values<IOrganization, IPerson> Seller { get; set; }
     }
 }

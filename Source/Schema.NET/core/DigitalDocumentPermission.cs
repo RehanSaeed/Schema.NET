@@ -12,7 +12,7 @@
         /// <summary>
         /// The person, organization, contact point, or audience that has been granted this permission.
         /// </summary>
-        Values<IAudience, IContactPoint, IOrganization, IPerson>? Grantee { get; set; }
+        Values<IAudience, IContactPoint, IOrganization, IPerson> Grantee { get; set; }
 
         /// <summary>
         /// The type of permission granted the person, organization, or audience.
@@ -37,7 +37,7 @@
         /// </summary>
         [DataMember(Name = "grantee", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAudience, IContactPoint, IOrganization, IPerson>? Grantee { get; set; }
+        public Values<IAudience, IContactPoint, IOrganization, IPerson> Grantee { get; set; }
 
         /// <summary>
         /// The type of permission granted the person, organization, or audience.

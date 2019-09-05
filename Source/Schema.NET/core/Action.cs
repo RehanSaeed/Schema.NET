@@ -18,13 +18,13 @@
         /// <summary>
         /// The direct performer or driver of the action (animate or inanimate). e.g. &lt;em&gt;John&lt;/em&gt; wrote a book.
         /// </summary>
-        Values<IOrganization, IPerson>? Agent { get; set; }
+        Values<IOrganization, IPerson> Agent { get; set; }
 
         /// <summary>
         /// The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to &lt;em&gt;December&lt;/em&gt;. For media, including audio and video, it's the time offset of the end of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        OneOrMany<DateTimeOffset?> EndTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> EndTime { get; set; }
 
         /// <summary>
         /// For failed actions, more information on the cause of the failure.
@@ -39,7 +39,7 @@
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
         /// </summary>
-        Values<IPlace, IPostalAddress, string>? Location { get; set; }
+        Values<IPlace, IPostalAddress, string> Location { get; set; }
 
         /// <summary>
         /// The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read &lt;em&gt;a book&lt;/em&gt;.
@@ -49,7 +49,7 @@
         /// <summary>
         /// Other co-agents that participated in the action indirectly. e.g. John wrote a book with &lt;em&gt;Steve&lt;/em&gt;.
         /// </summary>
-        Values<IOrganization, IPerson>? Participant { get; set; }
+        Values<IOrganization, IPerson> Participant { get; set; }
 
         /// <summary>
         /// The result produced in the action. e.g. John wrote &lt;em&gt;a book&lt;/em&gt;.
@@ -60,12 +60,12 @@
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        OneOrMany<DateTimeOffset?> StartTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> StartTime { get; set; }
 
         /// <summary>
         /// Indicates a target EntryPoint for an Action.
         /// </summary>
-        Values<IEntryPoint, Uri>? Target { get; set; }
+        Values<IEntryPoint, Uri> Target { get; set; }
     }
 
     /// <summary>
@@ -93,7 +93,7 @@
         /// </summary>
         [DataMember(Name = "agent", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Agent { get; set; }
+        public Values<IOrganization, IPerson> Agent { get; set; }
 
         /// <summary>
         /// The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to &lt;em&gt;December&lt;/em&gt;. For media, including audio and video, it's the time offset of the end of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
@@ -101,7 +101,7 @@
         /// </summary>
         [DataMember(Name = "endTime", Order = 108)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> EndTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> EndTime { get; set; }
 
         /// <summary>
         /// For failed actions, more information on the cause of the failure.
@@ -122,7 +122,7 @@
         /// </summary>
         [DataMember(Name = "location", Order = 111)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPlace, IPostalAddress, string>? Location { get; set; }
+        public Values<IPlace, IPostalAddress, string> Location { get; set; }
 
         /// <summary>
         /// The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read &lt;em&gt;a book&lt;/em&gt;.
@@ -136,7 +136,7 @@
         /// </summary>
         [DataMember(Name = "participant", Order = 113)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Participant { get; set; }
+        public Values<IOrganization, IPerson> Participant { get; set; }
 
         /// <summary>
         /// The result produced in the action. e.g. John wrote &lt;em&gt;a book&lt;/em&gt;.
@@ -151,13 +151,13 @@
         /// </summary>
         [DataMember(Name = "startTime", Order = 115)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> StartTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> StartTime { get; set; }
 
         /// <summary>
         /// Indicates a target EntryPoint for an Action.
         /// </summary>
         [DataMember(Name = "target", Order = 116)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IEntryPoint, Uri>? Target { get; set; }
+        public Values<IEntryPoint, Uri> Target { get; set; }
     }
 }

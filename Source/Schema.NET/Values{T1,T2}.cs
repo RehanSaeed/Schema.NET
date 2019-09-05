@@ -23,7 +23,7 @@ namespace Schema.NET
         {
             this.Value1 = value;
             this.Value2 = default;
-            this.HasValue1 = true;
+            this.HasValue1 = value.Count > 0 ? true : false;
             this.HasValue2 = false;
         }
 
@@ -36,7 +36,7 @@ namespace Schema.NET
             this.Value1 = default;
             this.Value2 = value;
             this.HasValue1 = false;
-            this.HasValue2 = true;
+            this.HasValue2 = value.Count > 0 ? true : false;
         }
 
         /// <summary>
@@ -323,6 +323,10 @@ namespace Schema.NET
                 {
                     return this.Value2.Equals(other.Value2);
                 }
+            }
+            else if (!other.HasValue1 && !other.HasValue2 && !this.HasValue1 && !this.HasValue2)
+            {
+                return true;
             }
 
             return false;

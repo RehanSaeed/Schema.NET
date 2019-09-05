@@ -17,7 +17,7 @@
         /// <summary>
         /// Specifying something physically contained by something else. Typically used here for the underlying anatomical structures, such as organs, that comprise the anatomical system.
         /// </summary>
-        Values<IAnatomicalStructure, IAnatomicalSystem>? ComprisedOf { get; set; }
+        Values<IAnatomicalStructure, IAnatomicalSystem> ComprisedOf { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
@@ -59,7 +59,7 @@
         /// </summary>
         [DataMember(Name = "comprisedOf", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAnatomicalStructure, IAnatomicalSystem>? ComprisedOf { get; set; }
+        public Values<IAnatomicalStructure, IAnatomicalSystem> ComprisedOf { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.

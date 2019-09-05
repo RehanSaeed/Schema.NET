@@ -12,7 +12,7 @@
         /// <summary>
         /// The amount of money.
         /// </summary>
-        Values<IMonetaryAmount, decimal?>? Amount { get; set; }
+        Values<IMonetaryAmount, decimal?> Amount { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "amount", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMonetaryAmount, decimal?>? Amount { get; set; }
+        public Values<IMonetaryAmount, decimal?> Amount { get; set; }
     }
 }

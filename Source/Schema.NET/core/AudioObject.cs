@@ -12,7 +12,7 @@
         /// <summary>
         /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
         /// </summary>
-        Values<IMediaObject, string>? Caption { get; set; }
+        Values<IMediaObject, string> Caption { get; set; }
 
         /// <summary>
         /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
@@ -37,7 +37,7 @@
         /// </summary>
         [DataMember(Name = "caption", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMediaObject, string>? Caption { get; set; }
+        public Values<IMediaObject, string> Caption { get; set; }
 
         /// <summary>
         /// If this MediaObject is an AudioObject or VideoObject, the transcript of that object.

@@ -12,7 +12,7 @@
         /// <summary>
         /// The amount of money.
         /// </summary>
-        Values<IMonetaryAmount, decimal?>? Amount { get; set; }
+        Values<IMonetaryAmount, decimal?> Amount { get; set; }
 
         /// <summary>
         /// The currency in which the monetary amount is expressed.&lt;br/&gt;&lt;br/&gt;
@@ -33,7 +33,7 @@
         /// <summary>
         /// The type of a loan or credit.
         /// </summary>
-        Values<string, Uri>? LoanType { get; set; }
+        Values<string, Uri> LoanType { get; set; }
 
         /// <summary>
         /// The only way you get the money back in the event of default is the security. Recourse is where you still have the opportunity to go back to the borrower for the rest of the money.
@@ -48,7 +48,7 @@
         /// <summary>
         /// Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)
         /// </summary>
-        Values<string, IThing>? RequiredCollateral { get; set; }
+        Values<string, IThing> RequiredCollateral { get; set; }
     }
 
     /// <summary>
@@ -68,7 +68,7 @@
         /// </summary>
         [DataMember(Name = "amount", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMonetaryAmount, decimal?>? Amount { get; set; }
+        public Values<IMonetaryAmount, decimal?> Amount { get; set; }
 
         /// <summary>
         /// The currency in which the monetary amount is expressed.&lt;br/&gt;&lt;br/&gt;
@@ -97,7 +97,7 @@
         /// </summary>
         [DataMember(Name = "loanType", Order = 410)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? LoanType { get; set; }
+        public Values<string, Uri> LoanType { get; set; }
 
         /// <summary>
         /// The only way you get the money back in the event of default is the security. Recourse is where you still have the opportunity to go back to the borrower for the rest of the money.
@@ -118,6 +118,6 @@
         /// </summary>
         [DataMember(Name = "requiredCollateral", Order = 413)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IThing>? RequiredCollateral { get; set; }
+        public Values<string, IThing> RequiredCollateral { get; set; }
     }
 }

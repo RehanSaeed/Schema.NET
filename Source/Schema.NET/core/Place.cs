@@ -18,7 +18,7 @@
         /// <summary>
         /// Physical address of the item.
         /// </summary>
-        Values<IPostalAddress, string>? Address { get; set; }
+        Values<IPostalAddress, string> Address { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
@@ -59,7 +59,7 @@
         /// <summary>
         /// The geo coordinates of the place.
         /// </summary>
-        Values<IGeoCoordinates, IGeoShape>? Geo { get; set; }
+        Values<IGeoCoordinates, IGeoShape> Geo { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a containing geometry to a contained geometry. "a contains b iff no points of b lie in the exterior of a, and at least one point of the interior of b lies in the interior of a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
@@ -119,7 +119,7 @@
         /// <summary>
         /// A URL to a map of the place.
         /// </summary>
-        Values<IMap, Uri>? HasMap { get; set; }
+        Values<IMap, Uri> HasMap { get; set; }
 
         /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
@@ -134,7 +134,7 @@
         /// <summary>
         /// An associated logo.
         /// </summary>
-        Values<IImageObject, Uri>? Logo { get; set; }
+        Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
@@ -149,7 +149,7 @@
         /// <summary>
         /// A photograph of this place.
         /// </summary>
-        Values<IImageObject, IPhotograph>? Photo { get; set; }
+        Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
         /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
@@ -208,7 +208,7 @@
         /// </summary>
         [DataMember(Name = "address", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPostalAddress, string>? Address { get; set; }
+        public Values<IPostalAddress, string> Address { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
@@ -265,7 +265,7 @@
         /// </summary>
         [DataMember(Name = "geo", Order = 115)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IGeoCoordinates, IGeoShape>? Geo { get; set; }
+        public Values<IGeoCoordinates, IGeoShape> Geo { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a containing geometry to a contained geometry. "a contains b iff no points of b lie in the exterior of a, and at least one point of the interior of b lies in the interior of a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
@@ -349,7 +349,7 @@
         /// </summary>
         [DataMember(Name = "hasMap", Order = 127)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMap, Uri>? HasMap { get; set; }
+        public Values<IMap, Uri> HasMap { get; set; }
 
         /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
@@ -370,7 +370,7 @@
         /// </summary>
         [DataMember(Name = "logo", Order = 130)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IImageObject, Uri>? Logo { get; set; }
+        public Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
@@ -391,7 +391,7 @@
         /// </summary>
         [DataMember(Name = "photo", Order = 133)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IImageObject, IPhotograph>? Photo { get; set; }
+        public Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
         /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value

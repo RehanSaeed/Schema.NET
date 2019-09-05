@@ -12,7 +12,7 @@
         /// <summary>
         /// An item within in a data feed. Data feeds may have many elements.
         /// </summary>
-        Values<IDataFeedItem, string, IThing>? DataFeedElement { get; set; }
+        Values<IDataFeedItem, string, IThing> DataFeedElement { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "dataFeedElement", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IDataFeedItem, string, IThing>? DataFeedElement { get; set; }
+        public Values<IDataFeedItem, string, IThing> DataFeedElement { get; set; }
     }
 }

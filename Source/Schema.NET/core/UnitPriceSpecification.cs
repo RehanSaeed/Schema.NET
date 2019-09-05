@@ -27,7 +27,7 @@
         /// <summary>
         /// The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
         /// </summary>
-        Values<string, Uri>? UnitCode { get; set; }
+        Values<string, Uri> UnitCode { get; set; }
 
         /// <summary>
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
@@ -74,7 +74,7 @@
         /// </summary>
         [DataMember(Name = "unitCode", Order = 409)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? UnitCode { get; set; }
+        public Values<string, Uri> UnitCode { get; set; }
 
         /// <summary>
         /// A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for

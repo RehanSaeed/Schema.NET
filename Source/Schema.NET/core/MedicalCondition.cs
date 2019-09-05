@@ -12,7 +12,7 @@
         /// <summary>
         /// The anatomy of the underlying organ system or structures associated with this entity.
         /// </summary>
-        Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy>? AssociatedAnatomy { get; set; }
+        Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy> AssociatedAnatomy { get; set; }
 
         /// <summary>
         /// Specifying a cause of something in general. e.g in medicine , one of the causative agent(s) that are most directly responsible for the pathophysiologic process that eventually results in the occurrence.
@@ -87,7 +87,7 @@
         /// <summary>
         /// The status of the study (enumerated).
         /// </summary>
-        Values<EventStatusType?, MedicalStudyStatus?, string>? Status { get; set; }
+        Values<EventStatusType?, MedicalStudyStatus?, string> Status { get; set; }
 
         /// <summary>
         /// A more specific type of the condition, where applicable, for example 'Type 1 Diabetes', 'Type 2 Diabetes', or 'Gestational Diabetes' for Diabetes.
@@ -117,7 +117,7 @@
         /// </summary>
         [DataMember(Name = "associatedAnatomy", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy>? AssociatedAnatomy { get; set; }
+        public Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy> AssociatedAnatomy { get; set; }
 
         /// <summary>
         /// Specifying a cause of something in general. e.g in medicine , one of the causative agent(s) that are most directly responsible for the pathophysiologic process that eventually results in the occurrence.
@@ -222,7 +222,7 @@
         /// </summary>
         [DataMember(Name = "status", Order = 221)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<EventStatusType?, MedicalStudyStatus?, string>? Status { get; set; }
+        public Values<EventStatusType?, MedicalStudyStatus?, string> Status { get; set; }
 
         /// <summary>
         /// A more specific type of the condition, where applicable, for example 'Type 1 Diabetes', 'Type 2 Diabetes', or 'Gestational Diabetes' for Diabetes.

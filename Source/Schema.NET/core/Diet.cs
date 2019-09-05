@@ -17,7 +17,7 @@
         /// <summary>
         /// People or organizations that endorse the plan.
         /// </summary>
-        Values<IOrganization, IPerson>? Endorsers { get; set; }
+        Values<IOrganization, IPerson> Endorsers { get; set; }
 
         /// <summary>
         /// Medical expert advice related to the plan.
@@ -64,7 +64,7 @@
         /// </summary>
         [DataMember(Name = "endorsers", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Endorsers { get; set; }
+        public Values<IOrganization, IPerson> Endorsers { get; set; }
 
         /// <summary>
         /// Medical expert advice related to the plan.

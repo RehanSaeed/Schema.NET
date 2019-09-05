@@ -12,7 +12,7 @@
         /// <summary>
         /// The date the ticket was issued.
         /// </summary>
-        OneOrMany<DateTimeOffset?> DateIssued { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> DateIssued { get; set; }
 
         /// <summary>
         /// The organization issuing the ticket or permit.
@@ -38,7 +38,7 @@
         /// <summary>
         /// Reference to an asset (e.g., Barcode, QR code image or PDF) usable for entrance.
         /// </summary>
-        Values<string, Uri>? TicketToken { get; set; }
+        Values<string, Uri> TicketToken { get; set; }
 
         /// <summary>
         /// The total price for the reservation or ticket, including applicable taxes, shipping, etc.&lt;br/&gt;&lt;br/&gt;
@@ -48,12 +48,12 @@
         /// &lt;li&gt;Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        Values<decimal?, IPriceSpecification, string>? TotalPrice { get; set; }
+        Values<decimal?, IPriceSpecification, string> TotalPrice { get; set; }
 
         /// <summary>
         /// The person or organization the reservation or ticket is for.
         /// </summary>
-        Values<IOrganization, IPerson>? UnderName { get; set; }
+        Values<IOrganization, IPerson> UnderName { get; set; }
     }
 
     /// <summary>
@@ -72,8 +72,8 @@
         /// The date the ticket was issued.
         /// </summary>
         [DataMember(Name = "dateIssued", Order = 206)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> DateIssued { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?> DateIssued { get; set; }
 
         /// <summary>
         /// The organization issuing the ticket or permit.
@@ -109,7 +109,7 @@
         /// </summary>
         [DataMember(Name = "ticketToken", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? TicketToken { get; set; }
+        public Values<string, Uri> TicketToken { get; set; }
 
         /// <summary>
         /// The total price for the reservation or ticket, including applicable taxes, shipping, etc.&lt;br/&gt;&lt;br/&gt;
@@ -121,13 +121,13 @@
         /// </summary>
         [DataMember(Name = "totalPrice", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<decimal?, IPriceSpecification, string>? TotalPrice { get; set; }
+        public Values<decimal?, IPriceSpecification, string> TotalPrice { get; set; }
 
         /// <summary>
         /// The person or organization the reservation or ticket is for.
         /// </summary>
         [DataMember(Name = "underName", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? UnderName { get; set; }
+        public Values<IOrganization, IPerson> UnderName { get; set; }
     }
 }

@@ -12,7 +12,7 @@
         /// <summary>
         /// A goal towards an action is taken. Can be concrete or abstract.
         /// </summary>
-        Values<MedicalDevicePurpose?, IThing>? Purpose { get; set; }
+        Values<MedicalDevicePurpose?, IThing> Purpose { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "purpose", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<MedicalDevicePurpose?, IThing>? Purpose { get; set; }
+        public Values<MedicalDevicePurpose?, IThing> Purpose { get; set; }
     }
 }

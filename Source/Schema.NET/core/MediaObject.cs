@@ -48,12 +48,12 @@
         /// The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to &lt;em&gt;December&lt;/em&gt;. For media, including audio and video, it's the time offset of the end of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        OneOrMany<DateTimeOffset?> EndTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> EndTime { get; set; }
 
         /// <summary>
         /// The height of the item.
         /// </summary>
-        Values<string, IQuantitativeValue, int>? Height { get; set; }
+        Values<string, IQuantitativeValue, int> Height { get; set; }
 
         /// <summary>
         /// Player type required&amp;#x2014;for example, Flash or Silverlight.
@@ -73,23 +73,23 @@
         /// <summary>
         /// Indicates if use of the media require a subscription  (either paid or free). Allowed values are &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; (note that an earlier version had 'yes', 'no').
         /// </summary>
-        Values<bool?, IMediaSubscription>? RequiresSubscription { get; set; }
+        Values<bool?, IMediaSubscription> RequiresSubscription { get; set; }
 
         /// <summary>
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
         /// Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
         /// </summary>
-        OneOrMany<DateTimeOffset?> StartTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> StartTime { get; set; }
 
         /// <summary>
         /// Date when this media object was uploaded to this site.
         /// </summary>
-        Values<int?, DateTime?>? UploadDate { get; set; }
+        Values<int?, DateTime?> UploadDate { get; set; }
 
         /// <summary>
         /// The width of the item.
         /// </summary>
-        Values<string, IQuantitativeValue, int>? Width { get; set; }
+        Values<string, IQuantitativeValue, int> Width { get; set; }
     }
 
     /// <summary>
@@ -160,7 +160,7 @@
         /// </summary>
         [DataMember(Name = "encodingFormat", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<string, Uri>? EncodingFormat { get; set; }
+        public override Values<string, Uri> EncodingFormat { get; set; }
 
         /// <summary>
         /// The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to &lt;em&gt;December&lt;/em&gt;. For media, including audio and video, it's the time offset of the end of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
@@ -168,14 +168,14 @@
         /// </summary>
         [DataMember(Name = "endTime", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> EndTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> EndTime { get; set; }
 
         /// <summary>
         /// The height of the item.
         /// </summary>
         [DataMember(Name = "height", Order = 215)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IQuantitativeValue, int>? Height { get; set; }
+        public Values<string, IQuantitativeValue, int> Height { get; set; }
 
         /// <summary>
         /// Player type required&amp;#x2014;for example, Flash or Silverlight.
@@ -203,7 +203,7 @@
         /// </summary>
         [DataMember(Name = "requiresSubscription", Order = 219)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<bool?, IMediaSubscription>? RequiresSubscription { get; set; }
+        public Values<bool?, IMediaSubscription> RequiresSubscription { get; set; }
 
         /// <summary>
         /// The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from &lt;em&gt;January&lt;/em&gt; to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.&lt;br/&gt;&lt;br/&gt;
@@ -211,20 +211,20 @@
         /// </summary>
         [DataMember(Name = "startTime", Order = 220)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> StartTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> StartTime { get; set; }
 
         /// <summary>
         /// Date when this media object was uploaded to this site.
         /// </summary>
         [DataMember(Name = "uploadDate", Order = 221)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? UploadDate { get; set; }
+        public Values<int?, DateTime?> UploadDate { get; set; }
 
         /// <summary>
         /// The width of the item.
         /// </summary>
         [DataMember(Name = "width", Order = 222)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IQuantitativeValue, int>? Width { get; set; }
+        public Values<string, IQuantitativeValue, int> Width { get; set; }
     }
 }

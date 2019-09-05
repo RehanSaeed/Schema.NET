@@ -12,7 +12,7 @@
         /// <summary>
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
         /// </summary>
-        Values<ILanguage, string>? SubtitleLanguage { get; set; }
+        Values<ILanguage, string> SubtitleLanguage { get; set; }
 
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "subtitleLanguage", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILanguage, string>? SubtitleLanguage { get; set; }
+        public Values<ILanguage, string> SubtitleLanguage { get; set; }
 
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).

@@ -34,7 +34,7 @@
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
+        public override Values<int?, IQuantitativeValue> NumberOfRooms { get; set; }
 
         /// <summary>
         /// The allowed total occupancy for the accommodation in persons (including infants etc). For individual accommodations, this is not necessarily the legal maximum but defines the permitted usage as per the contractual agreement (e.g. a double room used by a single person).

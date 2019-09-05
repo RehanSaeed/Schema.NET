@@ -25,7 +25,7 @@ namespace Schema.NET
             this.Value1 = value;
             this.Value2 = default;
             this.Value3 = default;
-            this.HasValue1 = true;
+            this.HasValue1 = value.Count > 0 ? true : false;
             this.HasValue2 = false;
             this.HasValue3 = false;
         }
@@ -40,7 +40,7 @@ namespace Schema.NET
             this.Value2 = value;
             this.Value3 = default;
             this.HasValue1 = false;
-            this.HasValue2 = true;
+            this.HasValue2 = value.Count > 0 ? true : false;
             this.HasValue3 = false;
         }
 
@@ -55,7 +55,7 @@ namespace Schema.NET
             this.Value3 = value;
             this.HasValue1 = false;
             this.HasValue2 = false;
-            this.HasValue3 = true;
+            this.HasValue3 = value.Count > 0 ? true : false;
         }
 
         /// <summary>
@@ -424,6 +424,10 @@ namespace Schema.NET
                 {
                     return this.Value3.Equals(other.Value3);
                 }
+            }
+            else if (!other.HasValue1 && !other.HasValue2 && !other.HasValue3 && !this.HasValue1 && !this.HasValue2 && !this.HasValue3)
+            {
+                return true;
             }
 
             return false;

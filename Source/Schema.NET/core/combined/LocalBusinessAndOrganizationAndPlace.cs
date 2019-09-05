@@ -7,7 +7,7 @@
     /// <summary>
     /// See LocalBusiness, Organization, Place for more information.
     /// </summary>
-    public partial interface ILocalBusinessAndOrganizationAndPlace : IPlace, ILocalBusiness, IOrganization
+    public partial interface ILocalBusinessAndOrganizationAndPlace : ILocalBusiness, IOrganization, IPlace
     {
     }
 
@@ -28,7 +28,7 @@
         /// </summary>
         [DataMember(Name = "actionableFeedbackPolicy", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<ICreativeWork, Uri>? ActionableFeedbackPolicy { get; set; }
+        public override Values<ICreativeWork, Uri> ActionableFeedbackPolicy { get; set; }
 
         /// <summary>
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
@@ -43,7 +43,7 @@
         /// </summary>
         [DataMember(Name = "address", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IPostalAddress, string>? Address { get; set; }
+        public override Values<IPostalAddress, string> Address { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
@@ -71,7 +71,7 @@
         /// </summary>
         [DataMember(Name = "areaServed", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
+        public override Values<IAdministrativeArea, IGeoShape, IPlace, string> AreaServed { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -93,7 +93,7 @@
         /// </summary>
         [DataMember(Name = "brand", Order = 215)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IBrand, IOrganization>? Brand { get; set; }
+        public override Values<IBrand, IOrganization> Brand { get; set; }
 
         /// <summary>
         /// A contact point for a person or organization.
@@ -121,7 +121,7 @@
         /// </summary>
         [DataMember(Name = "correctionsPolicy", Order = 219)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<ICreativeWork, Uri>? CorrectionsPolicy { get; set; }
+        public override Values<ICreativeWork, Uri> CorrectionsPolicy { get; set; }
 
         /// <summary>
         /// The currency accepted.&lt;br/&gt;&lt;br/&gt;
@@ -143,21 +143,21 @@
         /// </summary>
         [DataMember(Name = "dissolutionDate", Order = 222)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public override Values<int?, DateTime?>? DissolutionDate { get; set; }
+        public override Values<int?, DateTime?> DissolutionDate { get; set; }
 
         /// <summary>
         /// Statement on diversity policy by an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; e.g. a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;. For a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, a statement describing the newsroom’s diversity policy on both staffing and sources, typically providing staffing data.
         /// </summary>
         [DataMember(Name = "diversityPolicy", Order = 223)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<ICreativeWork, Uri>? DiversityPolicy { get; set; }
+        public override Values<ICreativeWork, Uri> DiversityPolicy { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a report on staffing diversity issues. In a news context this might be for example ASNE or RTDNA (US) reports, or self-reported.
         /// </summary>
         [DataMember(Name = "diversityStaffingReport", Order = 224)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IArticle, Uri>? DiversityStaffingReport { get; set; }
+        public override Values<IArticle, Uri> DiversityStaffingReport { get; set; }
 
         /// <summary>
         /// The Dun &amp;amp; Bradstreet DUNS number for identifying an organization or business person.
@@ -185,7 +185,7 @@
         /// </summary>
         [DataMember(Name = "ethicsPolicy", Order = 228)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<ICreativeWork, Uri>? EthicsPolicy { get; set; }
+        public override Values<ICreativeWork, Uri> EthicsPolicy { get; set; }
 
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
@@ -213,7 +213,7 @@
         /// </summary>
         [DataMember(Name = "foundingDate", Order = 232)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public override Values<int?, DateTime?>? FoundingDate { get; set; }
+        public override Values<int?, DateTime?> FoundingDate { get; set; }
 
         /// <summary>
         /// The place where the Organization was founded.
@@ -227,14 +227,14 @@
         /// </summary>
         [DataMember(Name = "funder", Order = 234)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IOrganization, IPerson>? Funder { get; set; }
+        public override Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
         /// The geo coordinates of the place.
         /// </summary>
         [DataMember(Name = "geo", Order = 235)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IGeoCoordinates, IGeoShape>? Geo { get; set; }
+        public override Values<IGeoCoordinates, IGeoShape> Geo { get; set; }
 
         /// <summary>
         /// Represents a relationship between two geometries (or the places they represent), relating a containing geometry to a contained geometry. "a contains b iff no points of b lie in the exterior of a, and at least one point of the interior of b lies in the interior of a". As defined in &lt;a href="https://en.wikipedia.org/wiki/DE-9IM"&gt;DE-9IM&lt;/a&gt;.
@@ -318,7 +318,7 @@
         /// </summary>
         [DataMember(Name = "hasMap", Order = 247)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IMap, Uri>? HasMap { get; set; }
+        public override Values<IMap, Uri> HasMap { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
@@ -349,18 +349,18 @@
         public override OneOrMany<string> IsicV4 { get; set; }
 
         /// <summary>
-        /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or yet relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
+        /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
         /// </summary>
         [DataMember(Name = "knowsAbout", Order = 252)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<string, IThing, Uri>? KnowsAbout { get; set; }
+        public override Values<string, IThing, Uri> KnowsAbout { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "knowsLanguage", Order = 253)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<ILanguage, string>? KnowsLanguage { get; set; }
+        public override Values<ILanguage, string> KnowsLanguage { get; set; }
 
         /// <summary>
         /// The official name of the organization, e.g. the registered company name.
@@ -381,14 +381,14 @@
         /// </summary>
         [DataMember(Name = "location", Order = 256)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IPlace, IPostalAddress, string>? Location { get; set; }
+        public override Values<IPlace, IPostalAddress, string> Location { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
         [DataMember(Name = "logo", Order = 257)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IImageObject, Uri>? Logo { get; set; }
+        public override Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
@@ -409,14 +409,14 @@
         /// </summary>
         [DataMember(Name = "member", Order = 260)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IOrganization, IPerson>? Member { get; set; }
+        public override Values<IOrganization, IPerson> Member { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
         /// </summary>
         [DataMember(Name = "memberOf", Order = 261)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IOrganization, IProgramMembership>? MemberOf { get; set; }
+        public override Values<IOrganization, IProgramMembership> MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -457,14 +457,14 @@
         /// </summary>
         [DataMember(Name = "ownershipFundingInfo", Order = 266)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IAboutPage, ICreativeWork, string, Uri>? OwnershipFundingInfo { get; set; }
+        public override Values<IAboutPage, ICreativeWork, string, Uri> OwnershipFundingInfo { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
         /// </summary>
         [DataMember(Name = "owns", Order = 267)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IOwnershipInfo, IProduct>? Owns { get; set; }
+        public override Values<IOwnershipInfo, IProduct> Owns { get; set; }
 
         /// <summary>
         /// The larger organization that this organization is a &lt;a class="localLink" href="http://schema.org/subOrganization"&gt;subOrganization&lt;/a&gt; of, if any.
@@ -485,7 +485,7 @@
         /// </summary>
         [DataMember(Name = "photo", Order = 270)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IImageObject, IPhotograph>? Photo { get; set; }
+        public override Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
@@ -507,7 +507,7 @@
         /// </summary>
         [DataMember(Name = "publishingPrinciples", Order = 273)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<ICreativeWork, Uri>? PublishingPrinciples { get; set; }
+        public override Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// A review of the item.
@@ -550,7 +550,7 @@
         /// </summary>
         [DataMember(Name = "sponsor", Order = 279)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IOrganization, IPerson>? Sponsor { get; set; }
+        public override Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
@@ -578,7 +578,7 @@
         /// </summary>
         [DataMember(Name = "unnamedSourcesPolicy", Order = 283)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<ICreativeWork, Uri>? UnnamedSourcesPolicy { get; set; }
+        public override Values<ICreativeWork, Uri> UnnamedSourcesPolicy { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.

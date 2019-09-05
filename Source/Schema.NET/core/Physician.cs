@@ -12,7 +12,7 @@
         /// <summary>
         /// A medical service available from this provider.
         /// </summary>
-        Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy>? AvailableService { get; set; }
+        Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy> AvailableService { get; set; }
 
         /// <summary>
         /// A hospital with which the physician or office is affiliated.
@@ -37,7 +37,7 @@
         /// </summary>
         [DataMember(Name = "availableService", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy>? AvailableService { get; set; }
+        public Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy> AvailableService { get; set; }
 
         /// <summary>
         /// A hospital with which the physician or office is affiliated.

@@ -12,7 +12,7 @@
         /// <summary>
         /// An agent associated with the publication event.
         /// </summary>
-        Values<IOrganization, IPerson>? PublishedBy { get; set; }
+        Values<IOrganization, IPerson> PublishedBy { get; set; }
 
         /// <summary>
         /// A broadcast service associated with the publication event.
@@ -44,7 +44,7 @@
         /// </summary>
         [DataMember(Name = "publishedBy", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? PublishedBy { get; set; }
+        public Values<IOrganization, IPerson> PublishedBy { get; set; }
 
         /// <summary>
         /// A broadcast service associated with the publication event.

@@ -17,7 +17,7 @@
         /// <summary>
         /// The type of bed to which the BedDetail refers, i.e. the type of bed available in the quantity indicated by quantity.
         /// </summary>
-        Values<BedType?, string>? TypeOfBed { get; set; }
+        Values<BedType?, string> TypeOfBed { get; set; }
     }
 
     /// <summary>
@@ -44,6 +44,6 @@
         /// </summary>
         [DataMember(Name = "typeOfBed", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<BedType?, string>? TypeOfBed { get; set; }
+        public Values<BedType?, string> TypeOfBed { get; set; }
     }
 }

@@ -19,7 +19,7 @@
         /// <summary>
         /// Indicates the approximate radius of a GeoCircle (metres unless indicated otherwise via Distance notation).
         /// </summary>
-        Values<string, double?, string>? GeoRadius { get; set; }
+        Values<string, double?, string> GeoRadius { get; set; }
     }
 
     /// <summary>
@@ -48,6 +48,6 @@
         /// </summary>
         [DataMember(Name = "geoRadius", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, double?, string>? GeoRadius { get; set; }
+        public Values<string, double?, string> GeoRadius { get; set; }
     }
 }

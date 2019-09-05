@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of location. The specific food establishment where the action occurred.
         /// </summary>
-        Values<IFoodEstablishment, IPlace>? FoodEstablishment { get; set; }
+        Values<IFoodEstablishment, IPlace> FoodEstablishment { get; set; }
 
         /// <summary>
         /// A sub property of location. The specific food event where the action occurred.
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "foodEstablishment", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IFoodEstablishment, IPlace>? FoodEstablishment { get; set; }
+        public Values<IFoodEstablishment, IPlace> FoodEstablishment { get; set; }
 
         /// <summary>
         /// A sub property of location. The specific food event where the action occurred.

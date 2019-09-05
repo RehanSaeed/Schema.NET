@@ -17,28 +17,28 @@
         /// <summary>
         /// A language someone may use with or at the item, service or place. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/inLanguage"&gt;inLanguage&lt;/a&gt;
         /// </summary>
-        Values<ILanguage, string>? AvailableLanguage { get; set; }
+        Values<ILanguage, string> AvailableLanguage { get; set; }
 
         /// <summary>
         /// The earliest someone may check into a lodging establishment.
         /// </summary>
-        OneOrMany<DateTimeOffset?> CheckinTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
-        OneOrMany<DateTimeOffset?> CheckoutTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> CheckoutTime { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
+        Values<int?, IQuantitativeValue> NumberOfRooms { get; set; }
 
         /// <summary>
         /// Indicates whether pets are allowed to enter the accommodation or lodging business. More detailed information can be put in a text value.
         /// </summary>
-        Values<bool?, string>? PetsAllowed { get; set; }
+        Values<bool?, string> PetsAllowed { get; set; }
 
         /// <summary>
         /// An official rating for a lodging business or food establishment, e.g. from national associations or standards bodies. Use the author property to indicate the rating organization, e.g. as an Organization with name such as (e.g. HOTREC, DEHOGA, WHR, or Hotelstars).
@@ -77,21 +77,21 @@
         /// </summary>
         [DataMember(Name = "availableLanguage", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILanguage, string>? AvailableLanguage { get; set; }
+        public Values<ILanguage, string> AvailableLanguage { get; set; }
 
         /// <summary>
         /// The earliest someone may check into a lodging establishment.
         /// </summary>
         [DataMember(Name = "checkinTime", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> CheckinTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
         [DataMember(Name = "checkoutTime", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> CheckoutTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> CheckoutTime { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
@@ -99,14 +99,14 @@
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
+        public Values<int?, IQuantitativeValue> NumberOfRooms { get; set; }
 
         /// <summary>
         /// Indicates whether pets are allowed to enter the accommodation or lodging business. More detailed information can be put in a text value.
         /// </summary>
         [DataMember(Name = "petsAllowed", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<bool?, string>? PetsAllowed { get; set; }
+        public Values<bool?, string> PetsAllowed { get; set; }
 
         /// <summary>
         /// An official rating for a lodging business or food establishment, e.g. from national associations or standards bodies. Use the author property to indicate the rating organization, e.g. as an Organization with name such as (e.g. HOTREC, DEHOGA, WHR, or Hotelstars).

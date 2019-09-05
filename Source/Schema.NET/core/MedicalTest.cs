@@ -17,7 +17,7 @@
         /// <summary>
         /// Range of acceptable values for a typical patient, when applicable.
         /// </summary>
-        Values<MedicalEnumeration?, string>? NormalRange { get; set; }
+        Values<MedicalEnumeration?, string> NormalRange { get; set; }
 
         /// <summary>
         /// A sign detected by the test.
@@ -59,7 +59,7 @@
         /// </summary>
         [DataMember(Name = "normalRange", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<MedicalEnumeration?, string>? NormalRange { get; set; }
+        public Values<MedicalEnumeration?, string> NormalRange { get; set; }
 
         /// <summary>
         /// A sign detected by the test.
