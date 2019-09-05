@@ -27,7 +27,7 @@ namespace Schema.NET
             this.Value2 = default;
             this.Value3 = default;
             this.Value4 = default;
-            this.HasValue1 = value.Count > 0 ? true : false;
+            this.HasValue1 = value.Count > 0;
             this.HasValue2 = false;
             this.HasValue3 = false;
             this.HasValue4 = false;
@@ -44,7 +44,7 @@ namespace Schema.NET
             this.Value3 = default;
             this.Value4 = default;
             this.HasValue1 = false;
-            this.HasValue2 = value.Count > 0 ? true : false;
+            this.HasValue2 = value.Count > 0;
             this.HasValue3 = false;
             this.HasValue4 = false;
         }
@@ -61,7 +61,7 @@ namespace Schema.NET
             this.Value4 = default;
             this.HasValue1 = false;
             this.HasValue2 = false;
-            this.HasValue3 = value.Count > 0 ? true : false;
+            this.HasValue3 = value.Count > 0;
             this.HasValue4 = false;
         }
 
@@ -78,7 +78,7 @@ namespace Schema.NET
             this.HasValue1 = false;
             this.HasValue2 = false;
             this.HasValue3 = false;
-            this.HasValue4 = value.Count > 0 ? true : false;
+            this.HasValue4 = value.Count > 0;
         }
 
         /// <summary>
@@ -501,7 +501,7 @@ namespace Schema.NET
                     return this.Value4.Equals(other.Value4);
                 }
             }
-            else if (!other.HasValue1 && !other.HasValue2 && !other.HasValue3 && !other.HasValue4 && !this.HasValue1 && !this.HasValue2 && !this.HasValue3 && !this.HasValue4)
+            else if (!other.HasValue && !this.HasValue)
             {
                 return true;
             }
