@@ -6,6 +6,6 @@ namespace Schema.NET.Tool.Repositories
 
     public interface ISchemaRepository
     {
-        Task<(List<SchemaClass> classes, List<SchemaProperty> properties, List<SchemaEnumerationValue> enumerationValues)> GetObjects();
+        Task<(List<SchemaClass> classes, List<SchemaProperty> properties, List<SchemaEnumerationValue> enumerationValues)> GetObjectsAsync();
     }
 }

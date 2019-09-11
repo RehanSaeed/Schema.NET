@@ -42,7 +42,7 @@ namespace Schema.NET.Tool
 
             try
             {
-                await program.Execute().ConfigureAwait(false);
+                await program.ExecuteAsync().ConfigureAwait(false);
                 return 0;
             }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -57,17 +57,17 @@ namespace Schema.NET.Tool
             }
         }
 
-        public async Task Execute()
+        public async Task ExecuteAsync()
         {
             Console.WriteLine("Executing Class and Property Download");
-            var (enumerations, classes) = await this.schemaService.GetObjects().ConfigureAwait(false);
+            var (enumerations, classes) = await this.schemaService.GetObjectsAsync().ConfigureAwait(false);
             Console.WriteLine("Finished Class and Property Download");
 
             var assemblyLocation = typeof(Program).GetTypeInfo().Assembly.Location;
             var outputDirectory = GetOutputDirectory(Path.GetDirectoryName(assemblyLocation));
 
             Console.WriteLine("Executing Clean Project Folder");
-            await ClearOutputDirectory(outputDirectory).ConfigureAwait(false);
+            await ClearOutputDirectoryAsync(outputDirectory).ConfigureAwait(false);
             Console.WriteLine("Finished Clean Project Folder");
 
             Console.WriteLine("Executing Write Classes");
@@ -96,7 +96,7 @@ namespace Schema.NET.Tool
 
         protected override void DisposeManaged() => this.schemaRepository.Dispose();
 
-        private static async Task ClearOutputDirectory(string directoryPath)
+        private static async Task ClearOutputDirectoryAsync(string directoryPath)
         {
             foreach (var filePath in Directory.GetFiles(directoryPath, "*.cs", SearchOption.AllDirectories))
             {

@@ -21,10 +21,10 @@ namespace Schema.NET.Tool.Repositories
                 BaseAddress = new Uri("https://schema.org")
             };
 
-        public async Task<(List<SchemaClass> classes, List<SchemaProperty> properties, List<SchemaEnumerationValue> enumerationValues)> GetObjects()
+        public async Task<(List<SchemaClass> classes, List<SchemaProperty> properties, List<SchemaEnumerationValue> enumerationValues)> GetObjectsAsync()
         {
-            var schemaObjects = await this.GetSchemaObjects().ConfigureAwait(false);
-            var schemaTreeClasses = await this.GetSchemaTreeClasses().ConfigureAwait(false);
+            var schemaObjects = await this.GetSchemaObjectsAsync().ConfigureAwait(false);
+            var schemaTreeClasses = await this.GetSchemaTreeClassesAsync().ConfigureAwait(false);
             var enumerations = schemaObjects.OfType<SchemaClass>().ToList();
             var classes = schemaObjects.OfType<SchemaClass>().ToList();
 
@@ -53,7 +53,7 @@ namespace Schema.NET.Tool.Repositories
                 schemaObjects.OfType<SchemaEnumerationValue>().ToList());
         }
 
-        public async Task<List<SchemaObject>> GetSchemaObjects()
+        public async Task<List<SchemaObject>> GetSchemaObjectsAsync()
         {
             using (var response = await this.httpClient
                 .GetAsync(new Uri("/version/latest/all-layers.jsonld", UriKind.Relative))
@@ -65,7 +65,7 @@ namespace Schema.NET.Tool.Repositories
             }
         }
 
-        public async Task<List<SchemaTreeClass>> GetSchemaTreeClasses()
+        public async Task<List<SchemaTreeClass>> GetSchemaTreeClassesAsync()
         {
             using (var response = await this.httpClient
                 .GetAsync(new Uri("/docs/tree.jsonld", UriKind.Relative))

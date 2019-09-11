@@ -27,10 +27,10 @@ namespace Schema.NET.Tool.Services
             this.schemaRepository = schemaRepository;
         }
 
-        public async Task<(List<Enumeration> enumerations, List<Class> classes)> GetObjects()
+        public async Task<(List<Enumeration> enumerations, List<Class> classes)> GetObjectsAsync()
         {
             var (schemaClasses, schemaProperties, schemaValues) = await this.schemaRepository
-                .GetObjects()
+                .GetObjectsAsync()
                 .ConfigureAwait(false);
 
             var enumerations = new List<Enumeration>();
