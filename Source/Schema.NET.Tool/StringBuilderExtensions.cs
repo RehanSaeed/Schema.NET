@@ -47,8 +47,10 @@ namespace Schema.NET.Tool
                 throw new ArgumentNullException(nameof(stringBuilder));
             }
 
-            value = value ?? string.Empty;
-            value = value.Trim().Replace("\n\n", "\n", StringComparison.Ordinal).Replace(" \n", "\n", StringComparison.Ordinal);
+            value = (value ?? string.Empty)
+                .Trim()
+                .Replace("\n\n", "\n", StringComparison.Ordinal)
+                .Replace(" \n", "\n", StringComparison.Ordinal);
             var escapedValue = XmlEscape(value);
 
             stringBuilder.AppendIndent(count);
