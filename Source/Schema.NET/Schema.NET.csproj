@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Build">
     <TargetFrameworks>netstandard1.1;netstandard2.0;net461;net472</TargetFrameworks>
@@ -18,7 +18,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/RehanSaeed/Schema.NET</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/RehanSaeed/Schema.NET/master/Images/Icon.png</PackageIconUrl>
+    <PackageIcon>Icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/RehanSaeed/Schema.NET.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Schema;.NET;Schema.org;Schema.NET;Structured Data;Google Structured Data</PackageTags>
@@ -51,6 +51,10 @@
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" PrivateAssets="all" Version="2.9.4" />
     <PackageReference Condition="'$(TargetFramework)' != 'netstandard1.1'" Include="Microsoft.VisualStudio.Threading.Analyzers" PrivateAssets="All" Version="16.3.52 " />
     <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All" Version="1.1.118" />
+  </ItemGroup>
+
+  <ItemGroup Label="Files">
+    <None Include="..\..\Images\Icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
