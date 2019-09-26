@@ -73,8 +73,16 @@ stages:
       runOnce:
         deploy:
           steps:
+          - task: NuGetToolInstaller@1
+            displayName: 'Install NuGet'
+          - script: nuget source Add -Name GitHub -Source https://nuget.pkg.github.com/RehanSaeed/index.json -UserName RehanSaeed -Password $(GitHubPersonalAccessToken)
+            displayName: 'Authenticate with GitHub'
+            failOnStderr: true
+          - script: nuget push $(Agent.BuildDirectory)/Windows/*.nupkg -Source GitHub -SkipDuplicate
+            displayName: 'NuGet Push to GitHub'
+            failOnStderr: true
           - task: NuGetCommand@2
-            displayName: 'NuGet Push'
+            displayName: 'NuGet Push to Azure Artifacts'
             inputs:
               command: push
               nuGetFeedType: internal
