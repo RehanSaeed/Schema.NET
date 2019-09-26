@@ -78,7 +78,7 @@ stages:
           - script: nuget source Add -Name GitHub -Source https://nuget.pkg.github.com/RehanSaeed/index.json -UserName RehanSaeed -Password $(GitHubPersonalAccessToken)
             displayName: 'Authenticate with GitHub'
             failOnStderr: true
-          - script: nuget push $(Agent.BuildDirectory)/Windows/*.nupkg -Source GitHub -SkipDuplicate
+          - script: nuget push $(Agent.BuildDirectory)\Windows\*.nupkg -Source GitHub -SkipDuplicate
             displayName: 'NuGet Push to GitHub'
             failOnStderr: true
           - task: NuGetCommand@2
