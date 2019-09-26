@@ -12,7 +12,7 @@
         /// <summary>
         /// The person or organization who wrote a composition, or who is the composer of a work performed at some event.
         /// </summary>
-        Values<IOrganization, IPerson>? Composer { get; set; }
+        Values<IOrganization, IPerson> Composer { get; set; }
 
         /// <summary>
         /// The date and place the work was first performed.
@@ -77,7 +77,7 @@
         /// </summary>
         [DataMember(Name = "composer", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Composer { get; set; }
+        public Values<IOrganization, IPerson> Composer { get; set; }
 
         /// <summary>
         /// The date and place the work was first performed.

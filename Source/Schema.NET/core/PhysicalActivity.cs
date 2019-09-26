@@ -12,12 +12,12 @@
         /// <summary>
         /// The anatomy of the underlying organ system or structures associated with this entity.
         /// </summary>
-        Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy>? AssociatedAnatomy { get; set; }
+        Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy> AssociatedAnatomy { get; set; }
 
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
-        Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
+        Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
 
         /// <summary>
         /// The characteristics of associated patients, such as age, gender, race etc.
@@ -47,14 +47,14 @@
         /// </summary>
         [DataMember(Name = "associatedAnatomy", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy>? AssociatedAnatomy { get; set; }
+        public Values<IAnatomicalStructure, IAnatomicalSystem, ISuperficialAnatomy> AssociatedAnatomy { get; set; }
 
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
         [DataMember(Name = "category", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
 
         /// <summary>
         /// The characteristics of associated patients, such as age, gender, race etc.

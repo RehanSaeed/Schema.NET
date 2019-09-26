@@ -17,7 +17,7 @@
         /// <summary>
         /// The item ordered.
         /// </summary>
-        Values<IOrderItem, IProduct, IService>? OrderedItem { get; set; }
+        Values<IOrderItem, IProduct, IService> OrderedItem { get; set; }
 
         /// <summary>
         /// The identifier of the order item.
@@ -59,7 +59,7 @@
         /// </summary>
         [DataMember(Name = "orderedItem", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrderItem, IProduct, IService>? OrderedItem { get; set; }
+        public Values<IOrderItem, IProduct, IService> OrderedItem { get; set; }
 
         /// <summary>
         /// The identifier of the order item.

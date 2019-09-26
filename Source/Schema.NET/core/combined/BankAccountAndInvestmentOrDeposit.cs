@@ -42,13 +42,13 @@
         /// </summary>
         [DataMember(Name = "amount", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMonetaryAmount, decimal?>? Amount { get; set; }
+        public Values<IMonetaryAmount, decimal?> Amount { get; set; }
 
         /// <summary>
         /// The type of a bank account.
         /// </summary>
         [DataMember(Name = "bankAccountType", Order = 409)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? BankAccountType { get; set; }
+        public Values<string, Uri> BankAccountType { get; set; }
     }
 }

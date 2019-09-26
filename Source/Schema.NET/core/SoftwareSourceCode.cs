@@ -22,7 +22,7 @@
         /// <summary>
         /// The computer programming language.
         /// </summary>
-        Values<IComputerLanguage, string>? ProgrammingLanguage { get; set; }
+        Values<IComputerLanguage, string> ProgrammingLanguage { get; set; }
 
         /// <summary>
         /// Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3, .Net Framework 3.0).
@@ -66,7 +66,7 @@
         /// </summary>
         [DataMember(Name = "programmingLanguage", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IComputerLanguage, string>? ProgrammingLanguage { get; set; }
+        public Values<IComputerLanguage, string> ProgrammingLanguage { get; set; }
 
         /// <summary>
         /// Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3, .Net Framework 3.0).

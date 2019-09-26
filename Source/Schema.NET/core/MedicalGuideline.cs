@@ -22,7 +22,7 @@
         /// <summary>
         /// Date on which this guideline's recommendation was made.
         /// </summary>
-        Values<int?, DateTime?>? GuidelineDate { get; set; }
+        Values<int?, DateTime?> GuidelineDate { get; set; }
 
         /// <summary>
         /// The medical conditions, treatments, etc. that are the subject of the guideline.
@@ -61,7 +61,7 @@
         /// </summary>
         [DataMember(Name = "guidelineDate", Order = 208)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? GuidelineDate { get; set; }
+        public Values<int?, DateTime?> GuidelineDate { get; set; }
 
         /// <summary>
         /// The medical conditions, treatments, etc. that are the subject of the guideline.

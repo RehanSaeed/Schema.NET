@@ -12,7 +12,7 @@
         /// <summary>
         /// The organization or person from which the product was acquired.
         /// </summary>
-        Values<IOrganization, IPerson>? AcquiredFrom { get; set; }
+        Values<IOrganization, IPerson> AcquiredFrom { get; set; }
 
         /// <summary>
         /// The date and time of obtaining the product.
@@ -27,7 +27,7 @@
         /// <summary>
         /// The product that this structured value is referring to.
         /// </summary>
-        Values<IProduct, IService>? TypeOfGood { get; set; }
+        Values<IProduct, IService> TypeOfGood { get; set; }
     }
 
     /// <summary>
@@ -47,7 +47,7 @@
         /// </summary>
         [DataMember(Name = "acquiredFrom", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? AcquiredFrom { get; set; }
+        public Values<IOrganization, IPerson> AcquiredFrom { get; set; }
 
         /// <summary>
         /// The date and time of obtaining the product.
@@ -68,6 +68,6 @@
         /// </summary>
         [DataMember(Name = "typeOfGood", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService>? TypeOfGood { get; set; }
+        public Values<IProduct, IService> TypeOfGood { get; set; }
     }
 }

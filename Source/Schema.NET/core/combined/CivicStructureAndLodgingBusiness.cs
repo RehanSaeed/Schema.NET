@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, LodgingBusiness for more information.
     /// </summary>
-    public partial interface ICivicStructureAndLodgingBusiness : ICivicStructure, ILodgingBusiness
+    public partial interface ICivicStructureAndLodgingBusiness : ILodgingBusiness, ICivicStructure
     {
     }
 
@@ -42,21 +42,21 @@
         /// </summary>
         [DataMember(Name = "availableLanguage", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILanguage, string>? AvailableLanguage { get; set; }
+        public Values<ILanguage, string> AvailableLanguage { get; set; }
 
         /// <summary>
         /// The earliest someone may check into a lodging establishment.
         /// </summary>
         [DataMember(Name = "checkinTime", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> CheckinTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
         [DataMember(Name = "checkoutTime", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> CheckoutTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> CheckoutTime { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
@@ -64,7 +64,7 @@
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
+        public Values<int?, IQuantitativeValue> NumberOfRooms { get; set; }
 
         /// <summary>
         /// The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.&lt;br/&gt;&lt;br/&gt;
@@ -84,7 +84,7 @@
         /// </summary>
         [DataMember(Name = "petsAllowed", Order = 313)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<bool?, string>? PetsAllowed { get; set; }
+        public Values<bool?, string> PetsAllowed { get; set; }
 
         /// <summary>
         /// An official rating for a lodging business or food establishment, e.g. from national associations or standards bodies. Use the author property to indicate the rating organization, e.g. as an Organization with name such as (e.g. HOTREC, DEHOGA, WHR, or Hotelstars).

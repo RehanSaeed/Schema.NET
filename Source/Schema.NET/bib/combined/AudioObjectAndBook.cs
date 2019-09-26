@@ -49,7 +49,7 @@
         /// </summary>
         [DataMember(Name = "caption", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMediaObject, string>? Caption { get; set; }
+        public Values<IMediaObject, string> Caption { get; set; }
 
         /// <summary>
         /// The illustrator of the book.

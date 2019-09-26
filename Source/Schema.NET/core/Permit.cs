@@ -32,7 +32,7 @@
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The geographic area where a permit or similar thing is valid.
@@ -42,7 +42,7 @@
         /// <summary>
         /// The date when the item is no longer valid.
         /// </summary>
-        Values<int?, DateTime?>? ValidUntil { get; set; }
+        Values<int?, DateTime?> ValidUntil { get; set; }
     }
 
     /// <summary>
@@ -89,8 +89,8 @@
         /// The date when the item becomes valid.
         /// </summary>
         [DataMember(Name = "validFrom", Order = 210)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> ValidFrom { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The geographic area where a permit or similar thing is valid.
@@ -104,6 +104,6 @@
         /// </summary>
         [DataMember(Name = "validUntil", Order = 212)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? ValidUntil { get; set; }
+        public Values<int?, DateTime?> ValidUntil { get; set; }
     }
 }

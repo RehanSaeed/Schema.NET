@@ -47,17 +47,17 @@
         /// <summary>
         /// Real or fictional location of the game (or part of game).
         /// </summary>
-        Values<IPlace, IPostalAddress, Uri>? GameLocation { get; set; }
+        Values<IPlace, IPostalAddress, Uri> GameLocation { get; set; }
 
         /// <summary>
         /// The electronic systems used to play &lt;a href="http://en.wikipedia.org/wiki/Category:Video_game_platforms"&gt;video games&lt;/a&gt;.
         /// </summary>
-        Values<string, IThing, Uri>? GamePlatform { get; set; }
+        Values<string, IThing, Uri> GamePlatform { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
-        Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// The number of episodes in this season or series.
@@ -161,21 +161,21 @@
         /// </summary>
         [DataMember(Name = "gameLocation", Order = 413)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPlace, IPostalAddress, Uri>? GameLocation { get; set; }
+        public Values<IPlace, IPostalAddress, Uri> GameLocation { get; set; }
 
         /// <summary>
         /// The electronic systems used to play &lt;a href="http://en.wikipedia.org/wiki/Category:Video_game_platforms"&gt;video games&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "gamePlatform", Order = 414)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IThing, Uri>? GamePlatform { get; set; }
+        public Values<string, IThing, Uri> GamePlatform { get; set; }
 
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
         [DataMember(Name = "musicBy", Order = 415)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        public Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// The number of episodes in this season or series.

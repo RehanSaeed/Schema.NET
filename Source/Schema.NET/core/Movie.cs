@@ -32,7 +32,7 @@
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
-        Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
@@ -42,7 +42,7 @@
         /// <summary>
         /// Languages in which subtitles/captions are available, in &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard format&lt;/a&gt;.
         /// </summary>
-        Values<ILanguage, string>? SubtitleLanguage { get; set; }
+        Values<ILanguage, string> SubtitleLanguage { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.
@@ -95,7 +95,7 @@
         /// </summary>
         [DataMember(Name = "musicBy", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        public Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// The production company or studio responsible for the item e.g. series, video game, episode etc.
@@ -109,7 +109,7 @@
         /// </summary>
         [DataMember(Name = "subtitleLanguage", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILanguage, string>? SubtitleLanguage { get; set; }
+        public Values<ILanguage, string> SubtitleLanguage { get; set; }
 
         /// <summary>
         /// The trailer of a movie or tv/radio series, season, episode, etc.

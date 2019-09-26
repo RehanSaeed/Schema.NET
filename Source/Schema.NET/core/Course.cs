@@ -17,17 +17,22 @@
         /// <summary>
         /// Requirements for taking the Course. May be completion of another &lt;a class="localLink" href="http://schema.org/Course"&gt;Course&lt;/a&gt; or a textual description like "permission of instructor". Requirements may be a pre-requisite competency, referenced using &lt;a class="localLink" href="http://schema.org/AlignmentObject"&gt;AlignmentObject&lt;/a&gt;.
         /// </summary>
-        Values<IAlignmentObject, ICourse, string>? CoursePrerequisites { get; set; }
+        Values<IAlignmentObject, ICourse, string> CoursePrerequisites { get; set; }
 
         /// <summary>
-        /// A description of the qualification, award, certificate, diploma or other educational credential awarded as a consequence of successful completion of this course.
+        /// A description of the qualification, award, certificate, diploma or other educational credential awarded as a consequence of successful completion of this course or program.
         /// </summary>
-        Values<string, Uri>? EducationalCredentialAwarded { get; set; }
+        Values<string, Uri> EducationalCredentialAwarded { get; set; }
 
         /// <summary>
         /// An offering of the course at a specific time and place or through specific media or mode of study or to a specific section of students.
         /// </summary>
         OneOrMany<ICourseInstance> HasCourseInstance { get; set; }
+
+        /// <summary>
+        /// A description of the qualification, award, certificate, diploma or other occupational credential awarded as a consequence of successful completion of this course or program.
+        /// </summary>
+        Values<string, Uri> OccupationalCredentialAwarded { get; set; }
     }
 
     /// <summary>
@@ -54,14 +59,14 @@
         /// </summary>
         [DataMember(Name = "coursePrerequisites", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAlignmentObject, ICourse, string>? CoursePrerequisites { get; set; }
+        public Values<IAlignmentObject, ICourse, string> CoursePrerequisites { get; set; }
 
         /// <summary>
-        /// A description of the qualification, award, certificate, diploma or other educational credential awarded as a consequence of successful completion of this course.
+        /// A description of the qualification, award, certificate, diploma or other educational credential awarded as a consequence of successful completion of this course or program.
         /// </summary>
         [DataMember(Name = "educationalCredentialAwarded", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? EducationalCredentialAwarded { get; set; }
+        public Values<string, Uri> EducationalCredentialAwarded { get; set; }
 
         /// <summary>
         /// An offering of the course at a specific time and place or through specific media or mode of study or to a specific section of students.
@@ -69,5 +74,12 @@
         [DataMember(Name = "hasCourseInstance", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICourseInstance> HasCourseInstance { get; set; }
+
+        /// <summary>
+        /// A description of the qualification, award, certificate, diploma or other occupational credential awarded as a consequence of successful completion of this course or program.
+        /// </summary>
+        [DataMember(Name = "occupationalCredentialAwarded", Order = 210)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<string, Uri> OccupationalCredentialAwarded { get; set; }
     }
 }

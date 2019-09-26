@@ -17,7 +17,7 @@
         /// <summary>
         /// The degree of mobility the joint allows.
         /// </summary>
-        Values<IMedicalEntity, string>? FunctionalClass { get; set; }
+        Values<IMedicalEntity, string> FunctionalClass { get; set; }
 
         /// <summary>
         /// The name given to how bone physically connects to each other.
@@ -49,7 +49,7 @@
         /// </summary>
         [DataMember(Name = "functionalClass", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMedicalEntity, string>? FunctionalClass { get; set; }
+        public Values<IMedicalEntity, string> FunctionalClass { get; set; }
 
         /// <summary>
         /// The name given to how bone physically connects to each other.

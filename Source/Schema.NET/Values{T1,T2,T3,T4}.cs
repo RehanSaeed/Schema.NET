@@ -27,7 +27,7 @@ namespace Schema.NET
             this.Value2 = default;
             this.Value3 = default;
             this.Value4 = default;
-            this.HasValue1 = true;
+            this.HasValue1 = value.Count > 0;
             this.HasValue2 = false;
             this.HasValue3 = false;
             this.HasValue4 = false;
@@ -44,7 +44,7 @@ namespace Schema.NET
             this.Value3 = default;
             this.Value4 = default;
             this.HasValue1 = false;
-            this.HasValue2 = true;
+            this.HasValue2 = value.Count > 0;
             this.HasValue3 = false;
             this.HasValue4 = false;
         }
@@ -61,24 +61,24 @@ namespace Schema.NET
             this.Value4 = default;
             this.HasValue1 = false;
             this.HasValue2 = false;
-            this.HasValue3 = true;
+            this.HasValue3 = value.Count > 0;
             this.HasValue4 = false;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
         /// </summary>
-        /// <param name="values">The value of type <typeparamref name="T4"/>.</param>
-        public Values(OneOrMany<T4> values)
+        /// <param name="value">The value of type <typeparamref name="T4"/>.</param>
+        public Values(OneOrMany<T4> value)
         {
             this.Value1 = default;
             this.Value2 = default;
             this.Value3 = default;
-            this.Value4 = values;
+            this.Value4 = value;
             this.HasValue1 = false;
             this.HasValue2 = false;
             this.HasValue3 = false;
-            this.HasValue4 = true;
+            this.HasValue4 = value.Count > 0;
         }
 
         /// <summary>
@@ -500,6 +500,10 @@ namespace Schema.NET
                 {
                     return this.Value4.Equals(other.Value4);
                 }
+            }
+            else if (!other.HasValue && !this.HasValue)
+            {
+                return true;
             }
 
             return false;

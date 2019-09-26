@@ -13,17 +13,17 @@
         /// <summary>
         /// Identifies the issue of publication; for example, "iii" or "2".
         /// </summary>
-        Values<int?, string>? IssueNumber { get; set; }
+        Values<int?, string> IssueNumber { get; set; }
 
         /// <summary>
         /// The page on which the work ends; for example "138" or "xvi".
         /// </summary>
-        Values<int?, string>? PageEnd { get; set; }
+        Values<int?, string> PageEnd { get; set; }
 
         /// <summary>
         /// The page on which the work starts; for example "135" or "xiii".
         /// </summary>
-        Values<int?, string>? PageStart { get; set; }
+        Values<int?, string> PageStart { get; set; }
 
         /// <summary>
         /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".
@@ -49,21 +49,21 @@
         /// </summary>
         [DataMember(Name = "issueNumber", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? IssueNumber { get; set; }
+        public Values<int?, string> IssueNumber { get; set; }
 
         /// <summary>
         /// The page on which the work ends; for example "138" or "xvi".
         /// </summary>
         [DataMember(Name = "pageEnd", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? PageEnd { get; set; }
+        public Values<int?, string> PageEnd { get; set; }
 
         /// <summary>
         /// The page on which the work starts; for example "135" or "xiii".
         /// </summary>
         [DataMember(Name = "pageStart", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, string>? PageStart { get; set; }
+        public Values<int?, string> PageStart { get; set; }
 
         /// <summary>
         /// Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".

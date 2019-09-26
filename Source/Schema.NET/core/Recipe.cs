@@ -42,12 +42,12 @@
         /// <summary>
         /// A step in making the recipe, in the form of a single item (document, video, etc.) or an ordered list with HowToStep and/or HowToSection items.
         /// </summary>
-        Values<ICreativeWork, IItemList, string>? RecipeInstructions { get; set; }
+        Values<ICreativeWork, IItemList, string> RecipeInstructions { get; set; }
 
         /// <summary>
         /// The quantity produced by the recipe (for example, number of people served, number of servings, etc).
         /// </summary>
-        Values<IQuantitativeValue, string>? RecipeYield { get; set; }
+        Values<IQuantitativeValue, string> RecipeYield { get; set; }
 
         /// <summary>
         /// Indicates a dietary restriction or guideline for which this recipe or menu item is suitable, e.g. diabetic, halal etc.
@@ -114,14 +114,14 @@
         /// </summary>
         [DataMember(Name = "recipeInstructions", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, IItemList, string>? RecipeInstructions { get; set; }
+        public Values<ICreativeWork, IItemList, string> RecipeInstructions { get; set; }
 
         /// <summary>
         /// The quantity produced by the recipe (for example, number of people served, number of servings, etc).
         /// </summary>
         [DataMember(Name = "recipeYield", Order = 313)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IQuantitativeValue, string>? RecipeYield { get; set; }
+        public Values<IQuantitativeValue, string> RecipeYield { get; set; }
 
         /// <summary>
         /// Indicates a dietary restriction or guideline for which this recipe or menu item is suitable, e.g. diabetic, halal etc.

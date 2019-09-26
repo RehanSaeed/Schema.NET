@@ -22,12 +22,12 @@
         /// <summary>
         /// The earliest date the package may arrive.
         /// </summary>
-        OneOrMany<DateTimeOffset?> ExpectedArrivalFrom { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> ExpectedArrivalFrom { get; set; }
 
         /// <summary>
         /// The latest date the package may arrive.
         /// </summary>
-        OneOrMany<DateTimeOffset?> ExpectedArrivalUntil { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> ExpectedArrivalUntil { get; set; }
 
         /// <summary>
         /// Method used for delivery or shipping.
@@ -52,7 +52,7 @@
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        Values<IOrganization, IPerson>? Provider { get; set; }
+        Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// Shipper tracking number.
@@ -95,15 +95,15 @@
         /// The earliest date the package may arrive.
         /// </summary>
         [DataMember(Name = "expectedArrivalFrom", Order = 208)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> ExpectedArrivalFrom { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?> ExpectedArrivalFrom { get; set; }
 
         /// <summary>
         /// The latest date the package may arrive.
         /// </summary>
         [DataMember(Name = "expectedArrivalUntil", Order = 209)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> ExpectedArrivalUntil { get; set; }
+        [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
+        public Values<int?, DateTime?, DateTimeOffset?> ExpectedArrivalUntil { get; set; }
 
         /// <summary>
         /// Method used for delivery or shipping.
@@ -138,7 +138,7 @@
         /// </summary>
         [DataMember(Name = "provider", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Provider { get; set; }
+        public Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// Shipper tracking number.

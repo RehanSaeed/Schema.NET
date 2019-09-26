@@ -17,7 +17,7 @@
         /// <summary>
         /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
         /// </summary>
-        Values<IMediaObject, string>? Caption { get; set; }
+        Values<IMediaObject, string> Caption { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
@@ -27,7 +27,7 @@
         /// <summary>
         /// The composer of the soundtrack.
         /// </summary>
-        Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// Thumbnail image for an image or video.
@@ -74,7 +74,7 @@
         /// </summary>
         [DataMember(Name = "caption", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMediaObject, string>? Caption { get; set; }
+        public Values<IMediaObject, string> Caption { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
@@ -88,7 +88,7 @@
         /// </summary>
         [DataMember(Name = "musicBy", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMusicGroup, IPerson>? MusicBy { get; set; }
+        public Values<IMusicGroup, IPerson> MusicBy { get; set; }
 
         /// <summary>
         /// Thumbnail image for an image or video.

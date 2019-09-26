@@ -12,7 +12,7 @@
         /// <summary>
         /// The country. For example, USA. You can also provide the two-letter &lt;a href="http://en.wikipedia.org/wiki/ISO_3166-1"&gt;ISO 3166-1 alpha-2 country code&lt;/a&gt;.
         /// </summary>
-        Values<ICountry, string>? AddressCountry { get; set; }
+        Values<ICountry, string> AddressCountry { get; set; }
 
         /// <summary>
         /// The locality in which the street address is, and which is in the region. For example, Mountain View.
@@ -57,7 +57,7 @@
         /// </summary>
         [DataMember(Name = "addressCountry", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICountry, string>? AddressCountry { get; set; }
+        public Values<ICountry, string> AddressCountry { get; set; }
 
         /// <summary>
         /// The locality in which the street address is, and which is in the region. For example, Mountain View.

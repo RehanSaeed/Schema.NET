@@ -17,7 +17,7 @@
         /// <summary>
         /// Physical address of the item.
         /// </summary>
-        Values<IPostalAddress, string>? Address { get; set; }
+        Values<IPostalAddress, string> Address { get; set; }
 
         /// <summary>
         /// An organization that this person is affiliated with. For example, a school/university, a club, or a team.
@@ -27,7 +27,7 @@
         /// <summary>
         /// An organization that the person is an alumni of.
         /// </summary>
-        Values<IEducationalOrganization, IOrganization>? AlumniOf { get; set; }
+        Values<IEducationalOrganization, IOrganization> AlumniOf { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -37,7 +37,7 @@
         /// <summary>
         /// Date of birth.
         /// </summary>
-        Values<int?, DateTime?>? BirthDate { get; set; }
+        Values<int?, DateTime?> BirthDate { get; set; }
 
         /// <summary>
         /// The place where the person was born.
@@ -47,7 +47,7 @@
         /// <summary>
         /// The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
         /// </summary>
-        Values<IBrand, IOrganization>? Brand { get; set; }
+        Values<IBrand, IOrganization> Brand { get; set; }
 
         /// <summary>
         /// A child of the person.
@@ -57,7 +57,7 @@
         /// <summary>
         /// A colleague of the person.
         /// </summary>
-        Values<IPerson, Uri>? Colleague { get; set; }
+        Values<IPerson, Uri> Colleague { get; set; }
 
         /// <summary>
         /// A contact point for a person or organization.
@@ -67,7 +67,7 @@
         /// <summary>
         /// Date of death.
         /// </summary>
-        Values<int?, DateTime?>? DeathDate { get; set; }
+        Values<int?, DateTime?> DeathDate { get; set; }
 
         /// <summary>
         /// The place where the person died.
@@ -102,12 +102,12 @@
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
         /// </summary>
-        Values<IOrganization, IPerson>? Funder { get; set; }
+        Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
         /// Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
         /// </summary>
-        Values<GenderType?, string>? Gender { get; set; }
+        Values<GenderType?, string> Gender { get; set; }
 
         /// <summary>
         /// Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.
@@ -137,12 +137,12 @@
         /// <summary>
         /// The height of the item.
         /// </summary>
-        Values<string, IQuantitativeValue>? Height { get; set; }
+        Values<string, IQuantitativeValue> Height { get; set; }
 
         /// <summary>
         /// A contact location for a person's residence.
         /// </summary>
-        Values<IContactPoint, IPlace>? HomeLocation { get; set; }
+        Values<IContactPoint, IPlace> HomeLocation { get; set; }
 
         /// <summary>
         /// An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
@@ -170,14 +170,14 @@
         OneOrMany<IPerson> Knows { get; set; }
 
         /// <summary>
-        /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or yet relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
+        /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
         /// </summary>
-        Values<string, IThing, Uri>? KnowsAbout { get; set; }
+        Values<string, IThing, Uri> KnowsAbout { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;.
         /// </summary>
-        Values<ILanguage, string>? KnowsLanguage { get; set; }
+        Values<ILanguage, string> KnowsLanguage { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
@@ -187,7 +187,7 @@
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
         /// </summary>
-        Values<IOrganization, IProgramMembership>? MemberOf { get; set; }
+        Values<IOrganization, IProgramMembership> MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -202,12 +202,12 @@
         /// <summary>
         /// The total financial value of the person as calculated by subtracting assets from liabilities.
         /// </summary>
-        Values<IMonetaryAmount, IPriceSpecification>? NetWorth { get; set; }
+        Values<IMonetaryAmount, IPriceSpecification> NetWorth { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
         /// </summary>
-        Values<IOwnershipInfo, IProduct>? Owns { get; set; }
+        Values<IOwnershipInfo, IProduct> Owns { get; set; }
 
         /// <summary>
         /// A parent of this person.
@@ -223,7 +223,7 @@
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
         /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
-        Values<ICreativeWork, Uri>? PublishingPrinciples { get; set; }
+        Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// The most generic familial relation.
@@ -243,7 +243,7 @@
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        Values<IOrganization, IPerson>? Sponsor { get; set; }
+        Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// The person's spouse.
@@ -273,7 +273,7 @@
         /// <summary>
         /// A contact location for a person's place of work.
         /// </summary>
-        Values<IContactPoint, IPlace>? WorkLocation { get; set; }
+        Values<IContactPoint, IPlace> WorkLocation { get; set; }
 
         /// <summary>
         /// Organizations that the person works for.
@@ -305,7 +305,7 @@
         /// </summary>
         [DataMember(Name = "address", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPostalAddress, string>? Address { get; set; }
+        public Values<IPostalAddress, string> Address { get; set; }
 
         /// <summary>
         /// An organization that this person is affiliated with. For example, a school/university, a club, or a team.
@@ -319,7 +319,7 @@
         /// </summary>
         [DataMember(Name = "alumniOf", Order = 109)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IEducationalOrganization, IOrganization>? AlumniOf { get; set; }
+        public Values<IEducationalOrganization, IOrganization> AlumniOf { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
@@ -333,7 +333,7 @@
         /// </summary>
         [DataMember(Name = "birthDate", Order = 111)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? BirthDate { get; set; }
+        public Values<int?, DateTime?> BirthDate { get; set; }
 
         /// <summary>
         /// The place where the person was born.
@@ -347,7 +347,7 @@
         /// </summary>
         [DataMember(Name = "brand", Order = 113)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IBrand, IOrganization>? Brand { get; set; }
+        public Values<IBrand, IOrganization> Brand { get; set; }
 
         /// <summary>
         /// A child of the person.
@@ -361,7 +361,7 @@
         /// </summary>
         [DataMember(Name = "colleague", Order = 115)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPerson, Uri>? Colleague { get; set; }
+        public Values<IPerson, Uri> Colleague { get; set; }
 
         /// <summary>
         /// A contact point for a person or organization.
@@ -375,7 +375,7 @@
         /// </summary>
         [DataMember(Name = "deathDate", Order = 117)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? DeathDate { get; set; }
+        public Values<int?, DateTime?> DeathDate { get; set; }
 
         /// <summary>
         /// The place where the person died.
@@ -424,14 +424,14 @@
         /// </summary>
         [DataMember(Name = "funder", Order = 124)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Funder { get; set; }
+        public Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
         /// Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
         /// </summary>
         [DataMember(Name = "gender", Order = 125)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<GenderType?, string>? Gender { get; set; }
+        public Values<GenderType?, string> Gender { get; set; }
 
         /// <summary>
         /// Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.
@@ -473,14 +473,14 @@
         /// </summary>
         [DataMember(Name = "height", Order = 131)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IQuantitativeValue>? Height { get; set; }
+        public Values<string, IQuantitativeValue> Height { get; set; }
 
         /// <summary>
         /// A contact location for a person's residence.
         /// </summary>
         [DataMember(Name = "homeLocation", Order = 132)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IContactPoint, IPlace>? HomeLocation { get; set; }
+        public Values<IContactPoint, IPlace> HomeLocation { get; set; }
 
         /// <summary>
         /// An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
@@ -518,18 +518,18 @@
         public OneOrMany<IPerson> Knows { get; set; }
 
         /// <summary>
-        /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or yet relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
+        /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
         /// </summary>
         [DataMember(Name = "knowsAbout", Order = 138)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IThing, Uri>? KnowsAbout { get; set; }
+        public Values<string, IThing, Uri> KnowsAbout { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "knowsLanguage", Order = 139)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILanguage, string>? KnowsLanguage { get; set; }
+        public Values<ILanguage, string> KnowsLanguage { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
@@ -543,7 +543,7 @@
         /// </summary>
         [DataMember(Name = "memberOf", Order = 141)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IProgramMembership>? MemberOf { get; set; }
+        public Values<IOrganization, IProgramMembership> MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -564,14 +564,14 @@
         /// </summary>
         [DataMember(Name = "netWorth", Order = 144)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMonetaryAmount, IPriceSpecification>? NetWorth { get; set; }
+        public Values<IMonetaryAmount, IPriceSpecification> NetWorth { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
         /// </summary>
         [DataMember(Name = "owns", Order = 145)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOwnershipInfo, IProduct>? Owns { get; set; }
+        public Values<IOwnershipInfo, IProduct> Owns { get; set; }
 
         /// <summary>
         /// A parent of this person.
@@ -593,7 +593,7 @@
         /// </summary>
         [DataMember(Name = "publishingPrinciples", Order = 148)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, Uri>? PublishingPrinciples { get; set; }
+        public Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// The most generic familial relation.
@@ -621,7 +621,7 @@
         /// </summary>
         [DataMember(Name = "sponsor", Order = 152)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Sponsor { get; set; }
+        public Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// The person's spouse.
@@ -663,7 +663,7 @@
         /// </summary>
         [DataMember(Name = "workLocation", Order = 158)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IContactPoint, IPlace>? WorkLocation { get; set; }
+        public Values<IContactPoint, IPlace> WorkLocation { get; set; }
 
         /// <summary>
         /// Organizations that the person works for.

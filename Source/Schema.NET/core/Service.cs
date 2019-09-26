@@ -17,7 +17,7 @@
         /// <summary>
         /// The geographic area where a service or offered item is provided.
         /// </summary>
-        Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
+        Values<IAdministrativeArea, IGeoShape, IPlace, string> AreaServed { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
@@ -37,17 +37,17 @@
         /// <summary>
         /// The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
         /// </summary>
-        Values<IBrand, IOrganization>? Brand { get; set; }
+        Values<IBrand, IOrganization> Brand { get; set; }
 
         /// <summary>
         /// An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
         /// </summary>
-        Values<IOrganization, IPerson>? Broker { get; set; }
+        Values<IOrganization, IPerson> Broker { get; set; }
 
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
-        Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
+        Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
@@ -62,17 +62,17 @@
         /// <summary>
         /// A pointer to another, somehow related product (or multiple products).
         /// </summary>
-        Values<IProduct, IService>? IsRelatedTo { get; set; }
+        Values<IProduct, IService> IsRelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to another, functionally similar product (or multiple products).
         /// </summary>
-        Values<IProduct, IService>? IsSimilarTo { get; set; }
+        Values<IProduct, IService> IsSimilarTo { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
-        Values<IImageObject, Uri>? Logo { get; set; }
+        Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
@@ -82,7 +82,7 @@
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        Values<IOrganization, IPerson>? Provider { get; set; }
+        Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// Indicates the mobility of a provided service (e.g. 'static', 'dynamic').
@@ -112,7 +112,7 @@
         /// <summary>
         /// Human-readable terms of service documentation.
         /// </summary>
-        Values<string, Uri>? TermsOfService { get; set; }
+        Values<string, Uri> TermsOfService { get; set; }
     }
 
     /// <summary>
@@ -139,7 +139,7 @@
         /// </summary>
         [DataMember(Name = "areaServed", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAdministrativeArea, IGeoShape, IPlace, string>? AreaServed { get; set; }
+        public Values<IAdministrativeArea, IGeoShape, IPlace, string> AreaServed { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
@@ -167,21 +167,21 @@
         /// </summary>
         [DataMember(Name = "brand", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IBrand, IOrganization>? Brand { get; set; }
+        public Values<IBrand, IOrganization> Brand { get; set; }
 
         /// <summary>
         /// An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
         /// </summary>
         [DataMember(Name = "broker", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Broker { get; set; }
+        public Values<IOrganization, IPerson> Broker { get; set; }
 
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
         [DataMember(Name = "category", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<PhysicalActivityCategory?, string, IThing>? Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
@@ -202,21 +202,21 @@
         /// </summary>
         [DataMember(Name = "isRelatedTo", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService>? IsRelatedTo { get; set; }
+        public Values<IProduct, IService> IsRelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to another, functionally similar product (or multiple products).
         /// </summary>
         [DataMember(Name = "isSimilarTo", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService>? IsSimilarTo { get; set; }
+        public Values<IProduct, IService> IsSimilarTo { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
         [DataMember(Name = "logo", Order = 218)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IImageObject, Uri>? Logo { get; set; }
+        public Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
@@ -230,7 +230,7 @@
         /// </summary>
         [DataMember(Name = "provider", Order = 220)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Provider { get; set; }
+        public Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// Indicates the mobility of a provided service (e.g. 'static', 'dynamic').
@@ -272,6 +272,6 @@
         /// </summary>
         [DataMember(Name = "termsOfService", Order = 226)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? TermsOfService { get; set; }
+        public Values<string, Uri> TermsOfService { get; set; }
     }
 }

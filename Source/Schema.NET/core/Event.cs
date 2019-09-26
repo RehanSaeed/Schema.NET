@@ -27,7 +27,7 @@
         /// <summary>
         /// A person or organization attending the event.
         /// </summary>
-        Values<IOrganization, IPerson>? Attendee { get; set; }
+        Values<IOrganization, IPerson> Attendee { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
@@ -37,12 +37,12 @@
         /// <summary>
         /// The person or organization who wrote a composition, or who is the composer of a work performed at some event.
         /// </summary>
-        Values<IOrganization, IPerson>? Composer { get; set; }
+        Values<IOrganization, IPerson> Composer { get; set; }
 
         /// <summary>
         /// A secondary contributor to the CreativeWork or Event.
         /// </summary>
-        Values<IOrganization, IPerson>? Contributor { get; set; }
+        Values<IOrganization, IPerson> Contributor { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
@@ -52,7 +52,7 @@
         /// <summary>
         /// The time admission will commence.
         /// </summary>
-        OneOrMany<DateTimeOffset?> DoorTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> DoorTime { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
@@ -67,12 +67,12 @@
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
         /// </summary>
-        Values<IOrganization, IPerson>? Funder { get; set; }
+        Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
         /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
         /// </summary>
-        Values<ILanguage, string>? InLanguage { get; set; }
+        Values<ILanguage, string> InLanguage { get; set; }
 
         /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
@@ -82,7 +82,7 @@
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
         /// </summary>
-        Values<IPlace, IPostalAddress, string>? Location { get; set; }
+        Values<IPlace, IPostalAddress, string> Location { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
@@ -97,17 +97,17 @@
         /// <summary>
         /// An organizer of an Event.
         /// </summary>
-        Values<IOrganization, IPerson>? Organizer { get; set; }
+        Values<IOrganization, IPerson> Organizer { get; set; }
 
         /// <summary>
         /// A performer at the event&amp;#x2014;for example, a presenter, musician, musical group or actor.
         /// </summary>
-        Values<IOrganization, IPerson>? Performer { get; set; }
+        Values<IOrganization, IPerson> Performer { get; set; }
 
         /// <summary>
         /// Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
         /// </summary>
-        Values<int?, DateTime?>? PreviousStartDate { get; set; }
+        Values<int?, DateTime?> PreviousStartDate { get; set; }
 
         /// <summary>
         /// The CreativeWork that captured all or part of this Event.
@@ -127,17 +127,17 @@
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        Values<IOrganization, IPerson>? Sponsor { get; set; }
+        Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        Values<int?, DateTime?, DateTimeOffset?>? StartDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        Values<int?, DateTime?, DateTimeOffset?>? EndDate { get; set; }
+        Values<int?, DateTime?, DateTimeOffset?> EndDate { get; set; }
 
         /// <summary>
         /// An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
@@ -152,7 +152,7 @@
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
         /// </summary>
-        Values<IOrganization, IPerson>? Translator { get; set; }
+        Values<IOrganization, IPerson> Translator { get; set; }
 
         /// <summary>
         /// The typical expected age range, e.g. '7-9', '11-'.
@@ -209,7 +209,7 @@
         /// </summary>
         [DataMember(Name = "attendee", Order = 109)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Attendee { get; set; }
+        public Values<IOrganization, IPerson> Attendee { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
@@ -223,14 +223,14 @@
         /// </summary>
         [DataMember(Name = "composer", Order = 111)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Composer { get; set; }
+        public Values<IOrganization, IPerson> Composer { get; set; }
 
         /// <summary>
         /// A secondary contributor to the CreativeWork or Event.
         /// </summary>
         [DataMember(Name = "contributor", Order = 112)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Contributor { get; set; }
+        public Values<IOrganization, IPerson> Contributor { get; set; }
 
         /// <summary>
         /// A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.
@@ -244,7 +244,7 @@
         /// </summary>
         [DataMember(Name = "doorTime", Order = 114)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> DoorTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> DoorTime { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
@@ -265,14 +265,14 @@
         /// </summary>
         [DataMember(Name = "funder", Order = 117)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Funder { get; set; }
+        public Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
         /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "inLanguage", Order = 118)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ILanguage, string>? InLanguage { get; set; }
+        public Values<ILanguage, string> InLanguage { get; set; }
 
         /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
@@ -286,7 +286,7 @@
         /// </summary>
         [DataMember(Name = "location", Order = 120)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPlace, IPostalAddress, string>? Location { get; set; }
+        public Values<IPlace, IPostalAddress, string> Location { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
@@ -307,21 +307,21 @@
         /// </summary>
         [DataMember(Name = "organizer", Order = 123)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Organizer { get; set; }
+        public Values<IOrganization, IPerson> Organizer { get; set; }
 
         /// <summary>
         /// A performer at the event&amp;#x2014;for example, a presenter, musician, musical group or actor.
         /// </summary>
         [DataMember(Name = "performer", Order = 124)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Performer { get; set; }
+        public Values<IOrganization, IPerson> Performer { get; set; }
 
         /// <summary>
         /// Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
         /// </summary>
         [DataMember(Name = "previousStartDate", Order = 125)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?>? PreviousStartDate { get; set; }
+        public Values<int?, DateTime?> PreviousStartDate { get; set; }
 
         /// <summary>
         /// The CreativeWork that captured all or part of this Event.
@@ -349,21 +349,21 @@
         /// </summary>
         [DataMember(Name = "sponsor", Order = 129)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Sponsor { get; set; }
+        public Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "startDate", Order = 130)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? StartDate { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "endDate", Order = 131)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
-        public Values<int?, DateTime?, DateTimeOffset?>? EndDate { get; set; }
+        public Values<int?, DateTime?, DateTimeOffset?> EndDate { get; set; }
 
         /// <summary>
         /// An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
@@ -384,7 +384,7 @@
         /// </summary>
         [DataMember(Name = "translator", Order = 134)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Translator { get; set; }
+        public Values<IOrganization, IPerson> Translator { get; set; }
 
         /// <summary>
         /// The typical expected age range, e.g. '7-9', '11-'.

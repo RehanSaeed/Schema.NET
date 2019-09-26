@@ -12,17 +12,17 @@
         /// <summary>
         /// A media object representing the circumstances after performing this direction.
         /// </summary>
-        Values<IMediaObject, Uri>? AfterMedia { get; set; }
+        Values<IMediaObject, Uri> AfterMedia { get; set; }
 
         /// <summary>
         /// A media object representing the circumstances before performing this direction.
         /// </summary>
-        Values<IMediaObject, Uri>? BeforeMedia { get; set; }
+        Values<IMediaObject, Uri> BeforeMedia { get; set; }
 
         /// <summary>
         /// A media object representing the circumstances while performing this direction.
         /// </summary>
-        Values<IMediaObject, Uri>? DuringMedia { get; set; }
+        Values<IMediaObject, Uri> DuringMedia { get; set; }
 
         /// <summary>
         /// The length of time it takes to perform instructions or a direction (not including time to prepare the supplies), in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
@@ -37,12 +37,12 @@
         /// <summary>
         /// A sub-property of instrument. A supply consumed when performing instructions or a direction.
         /// </summary>
-        Values<IHowToSupply, string>? Supply { get; set; }
+        Values<IHowToSupply, string> Supply { get; set; }
 
         /// <summary>
         /// A sub property of instrument. An object used (but not consumed) when performing instructions or a direction.
         /// </summary>
-        Values<IHowToTool, string>? Tool { get; set; }
+        Values<IHowToTool, string> Tool { get; set; }
 
         /// <summary>
         /// The total time required to perform instructions or a direction (including time to prepare the supplies), in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
@@ -67,21 +67,21 @@
         /// </summary>
         [DataMember(Name = "afterMedia", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMediaObject, Uri>? AfterMedia { get; set; }
+        public Values<IMediaObject, Uri> AfterMedia { get; set; }
 
         /// <summary>
         /// A media object representing the circumstances before performing this direction.
         /// </summary>
         [DataMember(Name = "beforeMedia", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMediaObject, Uri>? BeforeMedia { get; set; }
+        public Values<IMediaObject, Uri> BeforeMedia { get; set; }
 
         /// <summary>
         /// A media object representing the circumstances while performing this direction.
         /// </summary>
         [DataMember(Name = "duringMedia", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMediaObject, Uri>? DuringMedia { get; set; }
+        public Values<IMediaObject, Uri> DuringMedia { get; set; }
 
         /// <summary>
         /// The length of time it takes to perform instructions or a direction (not including time to prepare the supplies), in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.
@@ -102,14 +102,14 @@
         /// </summary>
         [DataMember(Name = "supply", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IHowToSupply, string>? Supply { get; set; }
+        public Values<IHowToSupply, string> Supply { get; set; }
 
         /// <summary>
         /// A sub property of instrument. An object used (but not consumed) when performing instructions or a direction.
         /// </summary>
         [DataMember(Name = "tool", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IHowToTool, string>? Tool { get; set; }
+        public Values<IHowToTool, string> Tool { get; set; }
 
         /// <summary>
         /// The total time required to perform instructions or a direction (including time to prepare the supplies), in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 duration format&lt;/a&gt;.

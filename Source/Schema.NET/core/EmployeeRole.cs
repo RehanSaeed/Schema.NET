@@ -12,7 +12,7 @@
         /// <summary>
         /// The base salary of the job or of an employee in an EmployeeRole.
         /// </summary>
-        Values<IMonetaryAmount, decimal?, IPriceSpecification>? BaseSalary { get; set; }
+        Values<IMonetaryAmount, decimal?, IPriceSpecification> BaseSalary { get; set; }
 
         /// <summary>
         /// The currency (coded using &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; ) used for the main salary information in this job posting or for this employee.
@@ -37,7 +37,7 @@
         /// </summary>
         [DataMember(Name = "baseSalary", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMonetaryAmount, decimal?, IPriceSpecification>? BaseSalary { get; set; }
+        public Values<IMonetaryAmount, decimal?, IPriceSpecification> BaseSalary { get; set; }
 
         /// <summary>
         /// The currency (coded using &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217&lt;/a&gt; ) used for the main salary information in this job posting or for this employee.

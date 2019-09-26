@@ -31,17 +31,17 @@
         /// If the &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; is "depression rating", the &lt;a class="localLink" href="http://schema.org/measurementTechnique"&gt;measurementTechnique&lt;/a&gt; could be "Zung Scale" or "HAM-D" or "Beck Depression Inventory".&lt;br/&gt;&lt;br/&gt;
         /// If there are several &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; properties recorded for some given data object, use a &lt;a class="localLink" href="http://schema.org/PropertyValue"&gt;PropertyValue&lt;/a&gt; for each &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; and attach the corresponding &lt;a class="localLink" href="http://schema.org/measurementTechnique"&gt;measurementTechnique&lt;/a&gt;.
         /// </summary>
-        Values<string, Uri>? MeasurementTechnique { get; set; }
+        Values<string, Uri> MeasurementTechnique { get; set; }
 
         /// <summary>
         /// The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
         /// </summary>
-        Values<IPropertyValue, string>? VariableMeasured { get; set; }
+        Values<IPropertyValue, string> VariableMeasured { get; set; }
 
         /// <summary>
         /// Originally named &lt;a class="localLink" href="http://schema.org/variablesMeasured"&gt;variablesMeasured&lt;/a&gt;, The &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
         /// </summary>
-        Values<IPropertyValue, string>? VariablesMeasured { get; set; }
+        Values<IPropertyValue, string> VariablesMeasured { get; set; }
     }
 
     /// <summary>
@@ -86,20 +86,20 @@
         /// </summary>
         [DataMember(Name = "measurementTechnique", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? MeasurementTechnique { get; set; }
+        public Values<string, Uri> MeasurementTechnique { get; set; }
 
         /// <summary>
         /// The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
         /// </summary>
         [DataMember(Name = "variableMeasured", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPropertyValue, string>? VariableMeasured { get; set; }
+        public Values<IPropertyValue, string> VariableMeasured { get; set; }
 
         /// <summary>
         /// Originally named &lt;a class="localLink" href="http://schema.org/variablesMeasured"&gt;variablesMeasured&lt;/a&gt;, The &lt;a class="localLink" href="http://schema.org/variableMeasured"&gt;variableMeasured&lt;/a&gt; property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.
         /// </summary>
         [DataMember(Name = "variablesMeasured", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPropertyValue, string>? VariablesMeasured { get; set; }
+        public Values<IPropertyValue, string> VariablesMeasured { get; set; }
     }
 }

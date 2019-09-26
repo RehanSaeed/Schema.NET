@@ -27,7 +27,7 @@
         /// <summary>
         /// The frequency used for over-the-air broadcasts. Numeric values or simple ranges e.g. 87-99. In addition a shortcut idiom is supported for frequences of AM and FM radio channels, e.g. "87 FM".
         /// </summary>
-        Values<IBroadcastFrequencySpecification, string>? BroadcastFrequency { get; set; }
+        Values<IBroadcastFrequencySpecification, string> BroadcastFrequency { get; set; }
 
         /// <summary>
         /// The timezone in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 format&lt;/a&gt; for which the service bases its broadcasts
@@ -88,7 +88,7 @@
         /// </summary>
         [DataMember(Name = "broadcastFrequency", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IBroadcastFrequencySpecification, string>? BroadcastFrequency { get; set; }
+        public Values<IBroadcastFrequencySpecification, string> BroadcastFrequency { get; set; }
 
         /// <summary>
         /// The timezone in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 format&lt;/a&gt; for which the service bases its broadcasts

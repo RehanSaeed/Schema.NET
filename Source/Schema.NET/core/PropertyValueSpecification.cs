@@ -12,7 +12,7 @@
         /// <summary>
         /// The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.
         /// </summary>
-        Values<string, IThing>? DefaultValue { get; set; }
+        Values<string, IThing> DefaultValue { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.
@@ -82,7 +82,7 @@
         /// </summary>
         [DataMember(Name = "defaultValue", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IThing>? DefaultValue { get; set; }
+        public Values<string, IThing> DefaultValue { get; set; }
 
         /// <summary>
         /// The upper value of some characteristic or property.

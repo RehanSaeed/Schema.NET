@@ -12,17 +12,17 @@
         /// <summary>
         /// The expected arrival time.
         /// </summary>
-        OneOrMany<DateTimeOffset?> ArrivalTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> ArrivalTime { get; set; }
 
         /// <summary>
         /// The expected departure time.
         /// </summary>
-        OneOrMany<DateTimeOffset?> DepartureTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> DepartureTime { get; set; }
 
         /// <summary>
         /// Destination(s) ( &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; ) that make up a trip. For a trip where destination order is important use &lt;a class="localLink" href="http://schema.org/ItemList"&gt;ItemList&lt;/a&gt; to specify that order (see examples).
         /// </summary>
-        Values<IItemList, IPlace>? Itinerary { get; set; }
+        Values<IItemList, IPlace> Itinerary { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
@@ -37,7 +37,7 @@
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        Values<IOrganization, IPerson>? Provider { get; set; }
+        Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// Identifies a &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; that is a subTrip of this Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
@@ -62,21 +62,21 @@
         /// </summary>
         [DataMember(Name = "arrivalTime", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> ArrivalTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> ArrivalTime { get; set; }
 
         /// <summary>
         /// The expected departure time.
         /// </summary>
         [DataMember(Name = "departureTime", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> DepartureTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> DepartureTime { get; set; }
 
         /// <summary>
         /// Destination(s) ( &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; ) that make up a trip. For a trip where destination order is important use &lt;a class="localLink" href="http://schema.org/ItemList"&gt;ItemList&lt;/a&gt; to specify that order (see examples).
         /// </summary>
         [DataMember(Name = "itinerary", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IItemList, IPlace>? Itinerary { get; set; }
+        public Values<IItemList, IPlace> Itinerary { get; set; }
 
         /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
@@ -97,7 +97,7 @@
         /// </summary>
         [DataMember(Name = "provider", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Provider { get; set; }
+        public Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// Identifies a &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; that is a subTrip of this Trip.  For example Day 1, Day 2, etc. of a multi-day trip.

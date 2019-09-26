@@ -12,12 +12,12 @@
         /// <summary>
         /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
         /// </summary>
-        Values<IMediaObject, string>? Caption { get; set; }
+        Values<IMediaObject, string> Caption { get; set; }
 
         /// <summary>
         /// exif data for this object.
         /// </summary>
-        Values<IPropertyValue, string>? ExifData { get; set; }
+        Values<IPropertyValue, string> ExifData { get; set; }
 
         /// <summary>
         /// Indicates whether this image is representative of the content of the page.
@@ -47,14 +47,14 @@
         /// </summary>
         [DataMember(Name = "caption", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMediaObject, string>? Caption { get; set; }
+        public Values<IMediaObject, string> Caption { get; set; }
 
         /// <summary>
         /// exif data for this object.
         /// </summary>
         [DataMember(Name = "exifData", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPropertyValue, string>? ExifData { get; set; }
+        public Values<IPropertyValue, string> ExifData { get; set; }
 
         /// <summary>
         /// Indicates whether this image is representative of the content of the page.

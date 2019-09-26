@@ -37,17 +37,17 @@ namespace Schema.NET
         /// <summary>
         /// The identifier property represents any kind of identifier for any kind of &lt;a class="localLink" href="http://schema.org/Thing"&gt;Thing&lt;/a&gt;, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See &lt;a href="/docs/datamodel.html#identifierBg"&gt;background notes&lt;/a&gt; for more details.
         /// </summary>
-        Values<IPropertyValue, string, Uri>? Identifier { get; set; }
+        Values<IPropertyValue, string, Uri> Identifier { get; set; }
 
         /// <summary>
         /// An image of the item. This can be a &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt; or a fully described &lt;a class="localLink" href="http://schema.org/ImageObject"&gt;ImageObject&lt;/a&gt;.
         /// </summary>
-        Values<IImageObject, Uri>? Image { get; set; }
+        Values<IImageObject, Uri> Image { get; set; }
 
         /// <summary>
         /// Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See &lt;a href="/docs/datamodel.html#mainEntityBackground"&gt;background notes&lt;/a&gt; for details.
         /// </summary>
-        Values<ICreativeWork, Uri>? MainEntityOfPage { get; set; }
+        Values<ICreativeWork, Uri> MainEntityOfPage { get; set; }
 
         /// <summary>
         /// Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
@@ -60,9 +60,9 @@ namespace Schema.NET
         OneOrMany<Uri> SameAs { get; set; }
 
         /// <summary>
-        /// A CreativeWork or Event about this Thing..
+        /// A CreativeWork or Event about this Thing.
         /// </summary>
-        Values<ICreativeWork, IEvent>? SubjectOf { get; set; }
+        Values<ICreativeWork, IEvent> SubjectOf { get; set; }
 
         /// <summary>
         /// URL of the item.
@@ -122,21 +122,21 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "identifier", Order = 11)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPropertyValue, string, Uri>? Identifier { get; set; }
+        public Values<IPropertyValue, string, Uri> Identifier { get; set; }
 
         /// <summary>
         /// An image of the item. This can be a &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt; or a fully described &lt;a class="localLink" href="http://schema.org/ImageObject"&gt;ImageObject&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "image", Order = 12)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IImageObject, Uri>? Image { get; set; }
+        public Values<IImageObject, Uri> Image { get; set; }
 
         /// <summary>
         /// Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See &lt;a href="/docs/datamodel.html#mainEntityBackground"&gt;background notes&lt;/a&gt; for details.
         /// </summary>
         [DataMember(Name = "mainEntityOfPage", Order = 13)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, Uri>? MainEntityOfPage { get; set; }
+        public Values<ICreativeWork, Uri> MainEntityOfPage { get; set; }
 
         /// <summary>
         /// Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
@@ -153,11 +153,11 @@ namespace Schema.NET
         public OneOrMany<Uri> SameAs { get; set; }
 
         /// <summary>
-        /// A CreativeWork or Event about this Thing..
+        /// A CreativeWork or Event about this Thing.
         /// </summary>
         [DataMember(Name = "subjectOf", Order = 16)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<ICreativeWork, IEvent>? SubjectOf { get; set; }
+        public Values<ICreativeWork, IEvent> SubjectOf { get; set; }
 
         /// <summary>
         /// URL of the item.

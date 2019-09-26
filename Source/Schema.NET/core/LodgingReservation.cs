@@ -13,12 +13,12 @@
         /// <summary>
         /// The earliest someone may check into a lodging establishment.
         /// </summary>
-        OneOrMany<DateTimeOffset?> CheckinTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
-        OneOrMany<DateTimeOffset?> CheckoutTime { get; set; }
+        Values<DateTimeOffset?, TimeSpan?> CheckoutTime { get; set; }
 
         /// <summary>
         /// A full description of the lodging unit.
@@ -33,12 +33,12 @@
         /// <summary>
         /// The number of adults staying in the unit.
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumAdults { get; set; }
+        Values<int?, IQuantitativeValue> NumAdults { get; set; }
 
         /// <summary>
         /// The number of children staying in the unit.
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumChildren { get; set; }
+        Values<int?, IQuantitativeValue> NumChildren { get; set; }
     }
 
     /// <summary>
@@ -59,14 +59,14 @@
         /// </summary>
         [DataMember(Name = "checkinTime", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> CheckinTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> CheckinTime { get; set; }
 
         /// <summary>
         /// The latest someone may check out of a lodging establishment.
         /// </summary>
         [DataMember(Name = "checkoutTime", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DateTimeOffset?> CheckoutTime { get; set; }
+        public Values<DateTimeOffset?, TimeSpan?> CheckoutTime { get; set; }
 
         /// <summary>
         /// A full description of the lodging unit.
@@ -87,13 +87,13 @@
         /// </summary>
         [DataMember(Name = "numAdults", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumAdults { get; set; }
+        public Values<int?, IQuantitativeValue> NumAdults { get; set; }
 
         /// <summary>
         /// The number of children staying in the unit.
         /// </summary>
         [DataMember(Name = "numChildren", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<int?, IQuantitativeValue>? NumChildren { get; set; }
+        public Values<int?, IQuantitativeValue> NumChildren { get; set; }
     }
 }

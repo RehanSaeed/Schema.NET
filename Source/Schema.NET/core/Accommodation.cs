@@ -22,7 +22,7 @@
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
-        Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
+        Values<int?, IQuantitativeValue> NumberOfRooms { get; set; }
 
         /// <summary>
         /// Indications regarding the permitted usage of the accommodation.
@@ -32,7 +32,7 @@
         /// <summary>
         /// Indicates whether pets are allowed to enter the accommodation or lodging business. More detailed information can be put in a text value.
         /// </summary>
-        Values<bool?, string>? PetsAllowed { get; set; }
+        Values<bool?, string> PetsAllowed { get; set; }
     }
 
     /// <summary>
@@ -71,7 +71,7 @@
         /// </summary>
         [DataMember(Name = "numberOfRooms", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual Values<int?, IQuantitativeValue>? NumberOfRooms { get; set; }
+        public virtual Values<int?, IQuantitativeValue> NumberOfRooms { get; set; }
 
         /// <summary>
         /// Indications regarding the permitted usage of the accommodation.
@@ -85,6 +85,6 @@
         /// </summary>
         [DataMember(Name = "petsAllowed", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<bool?, string>? PetsAllowed { get; set; }
+        public Values<bool?, string> PetsAllowed { get; set; }
     }
 }

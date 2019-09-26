@@ -12,7 +12,7 @@
         /// <summary>
         /// The kind of aircraft (e.g., "Boeing 747").
         /// </summary>
-        Values<string, IVehicle>? Aircraft { get; set; }
+        Values<string, IVehicle> Aircraft { get; set; }
 
         /// <summary>
         /// The airport where the flight terminates.
@@ -52,12 +52,12 @@
         /// <summary>
         /// The estimated time the flight will take.
         /// </summary>
-        Values<TimeSpan?, string>? EstimatedFlightDuration { get; set; }
+        Values<TimeSpan?, string> EstimatedFlightDuration { get; set; }
 
         /// <summary>
         /// The distance of the flight.
         /// </summary>
-        Values<string, string>? FlightDistance { get; set; }
+        Values<string, string> FlightDistance { get; set; }
 
         /// <summary>
         /// The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
@@ -72,7 +72,7 @@
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
         /// </summary>
-        Values<IOrganization, IPerson>? Seller { get; set; }
+        Values<IOrganization, IPerson> Seller { get; set; }
 
         /// <summary>
         /// The time when a passenger can check into the flight online.
@@ -97,7 +97,7 @@
         /// </summary>
         [DataMember(Name = "aircraft", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, IVehicle>? Aircraft { get; set; }
+        public Values<string, IVehicle> Aircraft { get; set; }
 
         /// <summary>
         /// The airport where the flight terminates.
@@ -153,14 +153,14 @@
         /// </summary>
         [DataMember(Name = "estimatedFlightDuration", Order = 314)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
-        public Values<TimeSpan?, string>? EstimatedFlightDuration { get; set; }
+        public Values<TimeSpan?, string> EstimatedFlightDuration { get; set; }
 
         /// <summary>
         /// The distance of the flight.
         /// </summary>
         [DataMember(Name = "flightDistance", Order = 315)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, string>? FlightDistance { get; set; }
+        public Values<string, string> FlightDistance { get; set; }
 
         /// <summary>
         /// The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
@@ -181,7 +181,7 @@
         /// </summary>
         [DataMember(Name = "seller", Order = 318)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Seller { get; set; }
+        public Values<IOrganization, IPerson> Seller { get; set; }
 
         /// <summary>
         /// The time when a passenger can check into the flight online.

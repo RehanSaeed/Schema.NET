@@ -12,7 +12,7 @@
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
         /// </summary>
-        Values<IOrganization, IPerson>? Seller { get; set; }
+        Values<IOrganization, IPerson> Seller { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "seller", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IOrganization, IPerson>? Seller { get; set; }
+        public Values<IOrganization, IPerson> Seller { get; set; }
     }
 }

@@ -31,12 +31,12 @@
         /// <summary>
         /// The type of engine or engines powering the vehicle.
         /// </summary>
-        Values<string, Uri>? EngineType { get; set; }
+        Values<string, Uri> EngineType { get; set; }
 
         /// <summary>
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
         /// </summary>
-        Values<string, Uri>? FuelType { get; set; }
+        Values<string, Uri> FuelType { get; set; }
 
         /// <summary>
         /// The torque (turning force) of the vehicle's engine.&lt;br/&gt;&lt;br/&gt;
@@ -89,14 +89,14 @@
         /// </summary>
         [DataMember(Name = "engineType", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? EngineType { get; set; }
+        public Values<string, Uri> EngineType { get; set; }
 
         /// <summary>
         /// The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
         /// </summary>
         [DataMember(Name = "fuelType", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? FuelType { get; set; }
+        public Values<string, Uri> FuelType { get; set; }
 
         /// <summary>
         /// The torque (turning force) of the vehicle's engine.&lt;br/&gt;&lt;br/&gt;

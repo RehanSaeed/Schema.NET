@@ -254,6 +254,17 @@ namespace Schema.NET.Test
         [InlineData("")]
         [InlineData(" ")]
         [InlineData("  ")]
+        public void ToString_NullEmptyOrWhiteSpace_OrganizationOmitsAddressProperty(string address)
+        {
+            var organization = new Organization() { Address = address };
+            Assert.Equal("{\"@context\":\"http://schema.org\",\"@type\":\"Organization\"}", organization.ToString());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
         public void ToString_NullEmptyOrWhiteSpace_BookOmitsNamePropertyFromList(string name)
         {
             var book = new Book() { Name = new List<string> { "Hamlet", name } };
@@ -269,6 +280,17 @@ namespace Schema.NET.Test
         {
             var book = new Book() { Name = new string[] { "Hamlet", name } };
             Assert.Equal("{\"@context\":\"http://schema.org\",\"@type\":\"Book\",\"name\":\"Hamlet\"}", book.ToString());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
+        public void ToString_EmptyOrWhiteSpace_OrganizationOmitsAddressProperty(string address)
+        {
+            var organization = new Organization() { Address = address };
+            Assert.Equal("{\"@context\":\"http://schema.org\",\"@type\":\"Organization\"}", organization.ToString());
         }
 
         [Theory]

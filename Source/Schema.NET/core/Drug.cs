@@ -122,7 +122,7 @@
         /// <summary>
         /// Indicates the status of drug prescription eg. local catalogs classifications or whether the drug is available by prescription or over-the-counter, etc.
         /// </summary>
-        Values<DrugPrescriptionStatus?, string>? PrescriptionStatus { get; set; }
+        Values<DrugPrescriptionStatus?, string> PrescriptionStatus { get; set; }
 
         /// <summary>
         /// Proprietary name given to the diet plan, typically by its originator or creator.
@@ -142,7 +142,7 @@
         /// <summary>
         /// Any FDA or other warnings about the drug (text or URL).
         /// </summary>
-        Values<string, Uri>? Warning { get; set; }
+        Values<string, Uri> Warning { get; set; }
     }
 
     /// <summary>
@@ -274,7 +274,7 @@
         /// </summary>
         [DataMember(Name = "legalStatus", Order = 322)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override Values<IDrugLegalStatus, MedicalEnumeration?, string>? LegalStatus { get; set; }
+        public override Values<IDrugLegalStatus, MedicalEnumeration?, string> LegalStatus { get; set; }
 
         /// <summary>
         /// The manufacturer of the product.
@@ -337,7 +337,7 @@
         /// </summary>
         [DataMember(Name = "prescriptionStatus", Order = 331)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<DrugPrescriptionStatus?, string>? PrescriptionStatus { get; set; }
+        public Values<DrugPrescriptionStatus?, string> PrescriptionStatus { get; set; }
 
         /// <summary>
         /// Proprietary name given to the diet plan, typically by its originator or creator.
@@ -365,6 +365,6 @@
         /// </summary>
         [DataMember(Name = "warning", Order = 335)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? Warning { get; set; }
+        public Values<string, Uri> Warning { get; set; }
     }
 }

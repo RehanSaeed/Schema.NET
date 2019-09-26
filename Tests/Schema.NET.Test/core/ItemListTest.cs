@@ -192,9 +192,9 @@ namespace Schema.NET.Test
 
             Assert.Equal("ItemList", itemList.Type);
             Assert.True(itemList.ItemListElement.HasValue);
-            Assert.Equal(2, itemList.ItemListElement.Value.Count);
-            var listItems = (List<IListItem>)itemList.ItemListElement.Value;
-            var things = (List<IThing>)itemList.ItemListElement.Value;
+            Assert.Equal(2, itemList.ItemListElement.Count);
+            var listItems = (List<IListItem>)itemList.ItemListElement;
+            var things = (List<IThing>)itemList.ItemListElement;
             Assert.Empty(listItems);
             Assert.Equal(2, things.Count);
             var thing1 = things.First();

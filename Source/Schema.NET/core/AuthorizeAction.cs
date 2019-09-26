@@ -12,7 +12,7 @@
         /// <summary>
         /// A sub property of participant. The participant who is at the receiving end of the action.
         /// </summary>
-        Values<IAudience, IContactPoint, IOrganization, IPerson>? Recipient { get; set; }
+        Values<IAudience, IContactPoint, IOrganization, IPerson> Recipient { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "recipient", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IAudience, IContactPoint, IOrganization, IPerson>? Recipient { get; set; }
+        public Values<IAudience, IContactPoint, IOrganization, IPerson> Recipient { get; set; }
     }
 }

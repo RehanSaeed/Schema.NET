@@ -35,7 +35,7 @@ namespace Schema.NET.Tool.ViewModels
                 }
                 else
                 {
-                    return $"Values<{adjustedTypesString}>?";
+                    return $"Values<{adjustedTypesString}>";
                 }
             }
         }

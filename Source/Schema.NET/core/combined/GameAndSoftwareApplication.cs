@@ -28,14 +28,14 @@
         /// </summary>
         [DataMember(Name = "applicationCategory", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? ApplicationCategory { get; set; }
+        public Values<string, Uri> ApplicationCategory { get; set; }
 
         /// <summary>
         /// Subcategory of the application, e.g. 'Arcade Game'.
         /// </summary>
         [DataMember(Name = "applicationSubCategory", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? ApplicationSubCategory { get; set; }
+        public Values<string, Uri> ApplicationSubCategory { get; set; }
 
         /// <summary>
         /// The name of the application suite to which the application belongs (e.g. Excel belongs to Office).
@@ -84,7 +84,7 @@
         /// </summary>
         [DataMember(Name = "featureList", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? FeatureList { get; set; }
+        public Values<string, Uri> FeatureList { get; set; }
 
         /// <summary>
         /// Size of the application / package (e.g. 18MB). In the absence of a unit (MB, KB etc.), KB will be assumed.
@@ -105,7 +105,7 @@
         /// </summary>
         [DataMember(Name = "gameLocation", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPlace, IPostalAddress, Uri>? GameLocation { get; set; }
+        public Values<IPlace, IPostalAddress, Uri> GameLocation { get; set; }
 
         /// <summary>
         /// URL at which the app may be installed, if different from the URL of the item.
@@ -119,7 +119,7 @@
         /// </summary>
         [DataMember(Name = "memoryRequirements", Order = 219)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? MemoryRequirements { get; set; }
+        public Values<string, Uri> MemoryRequirements { get; set; }
 
         /// <summary>
         /// Indicate how many people can play this game (minimum, maximum, or range).
@@ -161,14 +161,14 @@
         /// </summary>
         [DataMember(Name = "releaseNotes", Order = 225)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? ReleaseNotes { get; set; }
+        public Values<string, Uri> ReleaseNotes { get; set; }
 
         /// <summary>
         /// A link to a screenshot image of the app.
         /// </summary>
         [DataMember(Name = "screenshot", Order = 226)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IImageObject, Uri>? Screenshot { get; set; }
+        public Values<IImageObject, Uri> Screenshot { get; set; }
 
         /// <summary>
         /// Additional content for a software application.
@@ -189,7 +189,7 @@
         /// </summary>
         [DataMember(Name = "softwareRequirements", Order = 229)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? SoftwareRequirements { get; set; }
+        public Values<string, Uri> SoftwareRequirements { get; set; }
 
         /// <summary>
         /// Version of the software instance.
@@ -203,7 +203,7 @@
         /// </summary>
         [DataMember(Name = "storageRequirements", Order = 231)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<string, Uri>? StorageRequirements { get; set; }
+        public Values<string, Uri> StorageRequirements { get; set; }
 
         /// <summary>
         /// Supporting data for a SoftwareApplication.

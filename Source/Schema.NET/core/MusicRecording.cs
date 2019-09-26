@@ -12,7 +12,7 @@
         /// <summary>
         /// The artist that performed this album or recording.
         /// </summary>
-        Values<IMusicGroup, IPerson>? ByArtist { get; set; }
+        Values<IMusicGroup, IPerson> ByArtist { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.
@@ -57,7 +57,7 @@
         /// </summary>
         [DataMember(Name = "byArtist", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMusicGroup, IPerson>? ByArtist { get; set; }
+        public Values<IMusicGroup, IPerson> ByArtist { get; set; }
 
         /// <summary>
         /// The duration of the item (movie, audio recording, event, etc.) in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;.

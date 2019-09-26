@@ -12,7 +12,7 @@
         /// <summary>
         /// The estimated cost of the supply or supplies consumed when performing instructions.
         /// </summary>
-        Values<IMonetaryAmount, string>? EstimatedCost { get; set; }
+        Values<IMonetaryAmount, string> EstimatedCost { get; set; }
     }
 
     /// <summary>
@@ -32,6 +32,6 @@
         /// </summary>
         [DataMember(Name = "estimatedCost", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMonetaryAmount, string>? EstimatedCost { get; set; }
+        public Values<IMonetaryAmount, string> EstimatedCost { get; set; }
     }
 }
