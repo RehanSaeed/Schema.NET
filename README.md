@@ -163,6 +163,7 @@ For more examples and actual running code samples, take a look at the unit tests
 
 Please view the [contributing guide](CONTRIBUTING.md) for more information.
 
+- [shervinw](https://github.com/shervinw) - Added better null value handling for structs.
 - [kirk-marple](https://github.com/kirk-marple) - Refactoring JSON serialization to be more efficient.
 - [nickevansuk](https://github.com/nickevansuk) - Adding better null value handling.
 - [MEmanuelsson](https://github.com/MEmanuelsson) - Added support for the schema.org Date type without time.
