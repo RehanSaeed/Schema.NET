@@ -83,7 +83,7 @@ stages:
           - script: 'dotnet tool install --global Cake.Tool'
             displayName: 'Install Cake Tool'
             failOnStderr: true
-          - script: 'dotnet cake --target=PushAzureArtefacts --AzureArtefactsOrganization=RehanSaeed --ArtefactsDirectoryPath=$(Agent.BuildDirectory)\Windows --Verbosity=Diagnostic'
+          - script: 'dotnet cake --target=PushAzureArtefacts --AzureArtefactsOrganization=RehanSaeed --ArtefactsDirectoryPath=$(Agent.BuildDirectory)/Windows --Verbosity=Diagnostic'
             displayName: 'Dotnet Cake PushAzureArtefacts'
             failOnStderr: true
   - deployment: GitHub
@@ -105,7 +105,7 @@ stages:
           - script: 'dotnet tool install --global Cake.Tool'
             displayName: 'Install Cake Tool'
             failOnStderr: true
-          - script: 'dotnet cake --target=PushGitHub --GitHubUserName=$(GitHubUserName) --GitHubPassword=$(GitHubPersonalAccessToken) --ArtefactsDirectoryPath=$(Agent.BuildDirectory)\Windows --Verbosity=Diagnostic'
+          - script: 'dotnet cake --target=PushGitHub --GitHubUserName=$(GitHubUserName) --GitHubPassword=$(GitHubPersonalAccessToken) --ArtefactsDirectoryPath=$(Agent.BuildDirectory)/Windows --Verbosity=Diagnostic'
             displayName: 'Dotnet Cake PushGitHub'
             failOnStderr: true
   - deployment: NuGet
@@ -128,6 +128,6 @@ stages:
           - script: 'dotnet tool install --global Cake.Tool'
             displayName: 'Install Cake Tool'
             failOnStderr: true
-          - script: 'dotnet cake --target=PushNuGet --NuGetApiKey=$(NuGetApiKey) --ArtefactsDirectoryPath=$(Agent.BuildDirectory)\Windows --Verbosity=Diagnostic'
+          - script: 'dotnet cake --target=PushNuGet --NuGetApiKey=$(NuGetApiKey) --ArtefactsDirectoryPath=$(Agent.BuildDirectory)/Windows --Verbosity=Diagnostic'
             displayName: 'Dotnet Cake PushNuGet'
             failOnStderr: true
