@@ -15,6 +15,10 @@ var buildNumber =
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
+var artefactsDirectoryPath =
+    HasArgument("ArtefactsDirectoryPath") ? Argument<string>("ArtefactsDirectoryPath") :
+    EnvironmentVariable("ArtefactsDirectoryPath") != null ? EnvironmentVariable("ArtefactsDirectoryPath") :
+    "./Artefacts";
 var azureArtefactsOrganization =
     HasArgument("AzureArtefactsOrganization") ? Argument<string>("AzureArtefactsOrganization") :
     EnvironmentVariable("AzureArtefactsOrganization") != null ? EnvironmentVariable("AzureArtefactsOrganization") :
@@ -32,7 +36,7 @@ var nuGetApiKey =
     EnvironmentVariable("NuGetApiKey") != null ? EnvironmentVariable("NuGetApiKey") :
     null;
 
-var artefactsDirectory = Directory("./Artefacts");
+var artefactsDirectory = Directory(artefactsDirectoryPath);
 var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
 
 Task("Clean")
