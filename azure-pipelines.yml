@@ -57,11 +57,8 @@ stages:
       inputs:
         testResultsFormat: 'VSTest'
         testResultsFiles: '**/*.trx'
-    - publish: './build.cake'
-      artifact: '$(matrixName)CakeScript'
-      displayName: 'Publish Cake Script'
     - publish: './Artefacts'
-      artifact: '$(matrixName)Artefacts'
+      artifact: $(matrixName)
       displayName: 'Publish Artefacts'
 - stage: Deploy
   jobs:
@@ -75,7 +72,6 @@ stages:
         deploy:
           steps:
           - checkout: self
-            lfs: true
           - task: UseDotNet@2
             displayName: 'Install .NET Core SDK'
             inputs:
@@ -87,7 +83,7 @@ stages:
           - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
             displayName: 'Install Cake Tool'
             failOnStderr: true
-          - script: 'dotnet cake $(Agent.BuildDirectory)/WindowsCakeScript/build.cake --target=PushAzureArtefacts --AzureArtefactsOrganization=RehanSaeed'
+          - script: 'dotnet cake --target=PushAzureArtefacts --AzureArtefactsOrganization=RehanSaeed'
             displayName: 'Dotnet Cake PushAzureArtefacts'
             failOnStderr: true
   - deployment: GitHub
@@ -99,7 +95,6 @@ stages:
         deploy:
           steps:
           - checkout: self
-            lfs: true
           - task: UseDotNet@2
             displayName: 'Install .NET Core SDK'
             inputs:
@@ -110,7 +105,7 @@ stages:
           - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
             displayName: 'Install Cake Tool'
             failOnStderr: true
-          - script: 'dotnet cake $(Agent.BuildDirectory)/WindowsCakeScript/build.cake --target=PushGitHub --GitHubUserName=$(GitHubUserName) --GitHubPassword=$(GitHubPersonalAccessToken)'
+          - script: 'dotnet cake --target=PushGitHub --GitHubUserName=$(GitHubUserName) --GitHubPassword=$(GitHubPersonalAccessToken)'
             displayName: 'Dotnet Cake PushGitHub'
             failOnStderr: true
   - deployment: NuGet
@@ -123,7 +118,6 @@ stages:
         deploy:
           steps:
           - checkout: self
-            lfs: true
           - task: UseDotNet@2
             displayName: 'Install .NET Core SDK'
             inputs:
@@ -134,6 +128,6 @@ stages:
           - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
             displayName: 'Install Cake Tool'
             failOnStderr: true
-          - script: 'dotnet cake $(Agent.BuildDirectory)/WindowsCakeScript/build.cake --target=PushNuGet --NuGetApiKey=$(NuGetApiKey)'
+          - script: 'dotnet cake --target=PushNuGet --NuGetApiKey=$(NuGetApiKey)'
             displayName: 'Dotnet Cake PushNuGet'
             failOnStderr: true
