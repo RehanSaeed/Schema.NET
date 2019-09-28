@@ -15,9 +15,9 @@ var buildNumber =
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
-var azureArtifactsOrganization =
-    HasArgument("AzureArtifactsOrganization") ? Argument<string>("AzureArtifactsOrganization") :
-    EnvironmentVariable("AzureArtifactsOrganization") != null ? EnvironmentVariable("AzureArtifactsOrganization") :
+var azureArtefactsOrganization =
+    HasArgument("AzureArtefactsOrganization") ? Argument<string>("AzureArtefactsOrganization") :
+    EnvironmentVariable("AzureArtefactsOrganization") != null ? EnvironmentVariable("AzureArtefactsOrganization") :
     null;
 var gitHubUserName =
     HasArgument("GitHubUserName") ? Argument<string>("GitHubUserName") :
@@ -32,13 +32,13 @@ var nuGetApiKey =
     EnvironmentVariable("NuGetApiKey") != null ? EnvironmentVariable("NuGetApiKey") :
     null;
 
-var artifactsDirectory = Directory("./Artifacts");
+var artefactsDirectory = Directory("./Artefacts");
 var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
 
 Task("Clean")
     .Does(() =>
     {
-        CleanDirectory(artifactsDirectory);
+        CleanDirectory(artefactsDirectory);
         DeleteDirectories(GetDirectories("**/bin"), new DeleteDirectorySettings() { Force = true, Recursive = true });
         DeleteDirectories(GetDirectories("**/obj"), new DeleteDirectorySettings() { Force = true, Recursive = true });
     });
@@ -90,7 +90,7 @@ Task("Test")
                 Logger = $"trx;LogFileName={project.GetFilenameWithoutExtension()}.trx",
                 NoBuild = true,
                 NoRestore = true,
-                ResultsDirectory = artifactsDirectory,
+                ResultsDirectory = artefactsDirectory,
                 ArgumentCustomization = x => x.Append($"--logger html;LogFileName={project.GetFilenameWithoutExtension()}.html")
             });
     });
@@ -107,21 +107,21 @@ Task("Pack")
                 MSBuildSettings = new DotNetCoreMSBuildSettings().WithProperty("SymbolPackageFormat", "snupkg"),
                 NoBuild = true,
                 NoRestore = true,
-                OutputDirectory = artifactsDirectory,
+                OutputDirectory = artefactsDirectory,
                 VersionSuffix = versionSuffix,
             });
     });
 
-Task("PushAzureArtifacts")
-    .DoesForEach(GetFiles(artifactsDirectory + File("./*.nupkg")), nugetPackage =>
+Task("PushAzureArtefacts")
+    .DoesForEach(GetFiles(artefactsDirectory + File("./*.nupkg")), nugetPackage =>
     {
         NuGetPush(
             nugetPackage,
             new NuGetPushSettings()
             {
-                ApiKey = "AzureArtifacts",
+                ApiKey = "AzureArtefacts",
                 SkipDuplicate = true,
-                Source = $"https://pkgs.dev.azure.com/{azureArtifactsOrganization}/_packaging/{azureArtifactsOrganization}/nuget/v3/index.json",
+                Source = $"https://pkgs.dev.azure.com/{azureArtefactsOrganization}/_packaging/{azureArtefactsOrganization}/nuget/v3/index.json",
             });
     });
 
@@ -140,7 +140,7 @@ Task("AuthenticateGitHub")
 
 Task("PushGitHub")
     .IsDependentOn("AuthenticateGitHub")
-    .DoesForEach(GetFiles(artifactsDirectory + File("./*.nupkg")), nugetPackage =>
+    .DoesForEach(GetFiles(artefactsDirectory + File("./*.nupkg")), nugetPackage =>
     {
         NuGetPush(
             nugetPackage,
@@ -152,7 +152,7 @@ Task("PushGitHub")
     });
 
 Task("PushNuGet")
-    .DoesForEach(GetFiles(artifactsDirectory + File("./*.nupkg")), nugetPackage =>
+    .DoesForEach(GetFiles(artefactsDirectory + File("./*.nupkg")), nugetPackage =>
     {
         NuGetPush(
             nugetPackage,
