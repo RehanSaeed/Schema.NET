@@ -135,7 +135,7 @@ Task("AuthenticateGitHub")
             {
                 UserName = gitHubUserName,
                 Password = gitHubPassword,
-            })
+            });
     });
 
 Task("PushGitHub")
