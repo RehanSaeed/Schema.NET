@@ -74,15 +74,19 @@ stages:
       runOnce:
         deploy:
           steps:
+          - checkout: self
+            lfs: true
           - task: UseDotNet@2
             displayName: 'Install .NET Core SDK'
             inputs:
               packageType: 'sdk'
               version: '3.0.100'
+          - task: NuGetToolInstaller@1
+            displayName: 'Install NuGet'
+          - task: NuGetAuthenticate@0
           - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
             displayName: 'Install Cake Tool'
             failOnStderr: true
-          - task: NuGetAuthenticate@0
           - script: 'dotnet cake $(Agent.BuildDirectory)/WindowsCakeScript/build.cake --target=PushAzureArtefacts --AzureArtefactsOrganization=RehanSaeed'
             displayName: 'Dotnet Cake PushAzureArtefacts'
             failOnStderr: true
@@ -94,11 +98,15 @@ stages:
       runOnce:
         deploy:
           steps:
+          - checkout: self
+            lfs: true
           - task: UseDotNet@2
             displayName: 'Install .NET Core SDK'
             inputs:
               packageType: 'sdk'
               version: '3.0.100'
+          - task: NuGetToolInstaller@1
+            displayName: 'Install NuGet'
           - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
             displayName: 'Install Cake Tool'
             failOnStderr: true
@@ -114,11 +122,15 @@ stages:
       runOnce:
         deploy:
           steps:
+          - checkout: self
+            lfs: true
           - task: UseDotNet@2
             displayName: 'Install .NET Core SDK'
             inputs:
               packageType: 'sdk'
               version: '3.0.100'
+          - task: NuGetToolInstaller@1
+            displayName: 'Install NuGet'
           - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
             displayName: 'Install Cake Tool'
             failOnStderr: true
