@@ -15,6 +15,22 @@ var buildNumber =
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
     EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) :
     0;
+var azureArtifactsOrganization =
+    HasArgument("AzureArtifactsOrganization") ? Argument<string>("AzureArtifactsOrganization") :
+    EnvironmentVariable("AzureArtifactsOrganization") != null ? EnvironmentVariable("AzureArtifactsOrganization") :
+    null;
+var gitHubUserName =
+    HasArgument("GitHubUserName") ? Argument<string>("GitHubUserName") :
+    EnvironmentVariable("GitHubUserName") != null ? EnvironmentVariable("GitHubUserName") :
+    null;
+var gitHubPassword =
+    HasArgument("GitHubPassword") ? Argument<string>("GitHubPassword") :
+    EnvironmentVariable("GitHubPassword") != null ? EnvironmentVariable("GitHubPassword") :
+    null;
+var nuGetApiKey =
+    HasArgument("NuGetApiKey") ? Argument<string>("NuGetApiKey") :
+    EnvironmentVariable("NuGetApiKey") != null ? EnvironmentVariable("NuGetApiKey") :
+    null;
 
 var artifactsDirectory = Directory("./Artifacts");
 var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSuffix + "-" + buildNumber.ToString("D4");
@@ -64,22 +80,19 @@ Task("Build")
     });
 
 Task("Test")
-    .Does(() =>
+    .DoesForEach(GetFiles("./Tests/**/*.csproj"), project =>
     {
-        foreach(var project in GetFiles("./Tests/**/*.csproj"))
-        {
-            DotNetCoreTest(
-                project.ToString(),
-                new DotNetCoreTestSettings()
-                {
-                    Configuration = configuration,
-                    Logger = $"trx;LogFileName={project.GetFilenameWithoutExtension()}.trx",
-                    NoBuild = true,
-                    NoRestore = true,
-                    ResultsDirectory = artifactsDirectory,
-                    ArgumentCustomization = x => x.Append($"--logger html;LogFileName={project.GetFilenameWithoutExtension()}.html")
-                });
-        }
+        DotNetCoreTest(
+            project.ToString(),
+            new DotNetCoreTestSettings()
+            {
+                Configuration = configuration,
+                Logger = $"trx;LogFileName={project.GetFilenameWithoutExtension()}.trx",
+                NoBuild = true,
+                NoRestore = true,
+                ResultsDirectory = artifactsDirectory,
+                ArgumentCustomization = x => x.Append($"--logger html;LogFileName={project.GetFilenameWithoutExtension()}.html")
+            });
     });
 
 Task("Pack")
@@ -96,6 +109,58 @@ Task("Pack")
                 NoRestore = true,
                 OutputDirectory = artifactsDirectory,
                 VersionSuffix = versionSuffix,
+            });
+    });
+
+Task("PushAzureArtifacts")
+    .DoesForEach(GetFiles(artifactsDirectory + File("./*.nupkg")), nugetPackage =>
+    {
+        NuGetPush(
+            nugetPackage,
+            new NuGetPushSettings()
+            {
+                ApiKey = "AzureArtifacts",
+                SkipDuplicate = true,
+                Source = $"https://pkgs.dev.azure.com/{azureArtifactsOrganization}/_packaging/{azureArtifactsOrganization}/nuget/v3/index.json",
+            });
+    });
+
+Task("AuthenticateGitHub")
+    .Does(() =>
+    {
+        NuGetAddSource(
+            "GitHub",
+            "https://nuget.pkg.github.com/RehanSaeed/index.json",
+            new NuGetSourcesSettings()
+            {
+                UserName = gitHubUserName,
+                Password = gitHubPassword,
+            })
+    });
+
+Task("PushGitHub")
+    .IsDependentOn("AuthenticateGitHub")
+    .DoesForEach(GetFiles(artifactsDirectory + File("./*.nupkg")), nugetPackage =>
+    {
+        NuGetPush(
+            nugetPackage,
+            new NuGetPushSettings()
+            {
+                SkipDuplicate = true,
+                Source = "GitHub",
+            });
+    });
+
+Task("PushNuGet")
+    .DoesForEach(GetFiles(artifactsDirectory + File("./*.nupkg")), nugetPackage =>
+    {
+        NuGetPush(
+            nugetPackage,
+            new NuGetPushSettings()
+            {
+                ApiKey = nuGetApiKey,
+                SkipDuplicate = true,
+                Source = "https://api.nuget.org/v3/index.json",
             });
     });
 

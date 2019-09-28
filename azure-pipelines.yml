@@ -40,7 +40,7 @@ stages:
       inputs:
         packageType: 'sdk'
         version: '3.0.100'
-    - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0031 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
+    - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
       displayName: 'Install Cake Tool'
       failOnStderr: true
     - script: 'dotnet cake --target=Build'
@@ -65,28 +65,33 @@ stages:
   - deployment: AzureArtifacts
     displayName: 'Azure Artifacts'
     pool:
-      vmImage: windows-latest
+      vmImage: ubuntu-latest
     environment: 'Azure Artifacts'
     strategy:
       runOnce:
         deploy:
           steps:
-          - task: NuGetToolInstaller@1
-            displayName: 'Install NuGet'
-          - script: nuget source Add -Name GitHub -Source https://nuget.pkg.github.com/RehanSaeed/index.json -UserName RehanSaeed -Password $(GitHubPersonalAccessToken)
-            displayName: 'Authenticate with GitHub'
+          - task: NuGetAuthenticate@0
+          - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
+            displayName: 'Install Cake Tool'
             failOnStderr: true
-          - script: nuget push $(Agent.BuildDirectory)\Windows\*.nupkg -Source GitHub -SkipDuplicate
-            displayName: 'NuGet Push to GitHub'
+          - script: 'dotnet cake --target=PushAzureArtifacts --AzureArtifactsOrganization=RehanSaeed'
+            displayName: 'Dotnet Cake PushAzureArtifacts'
             failOnStderr: true
-          - task: NuGetCommand@2
-            displayName: 'NuGet Push to Azure Artifacts'
-            inputs:
-              command: push
-              nuGetFeedType: internal
-              packagesToPush: '$(Agent.BuildDirectory)/Windows/*.nupkg'
-              publishVstsFeed: schema-net
-              allowPackageConflicts: true # Only works on Windows
+  - deployment: GitHub
+    pool:
+      vmImage: ubuntu-latest
+    environment: 'GitHub'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
+            displayName: 'Install Cake Tool'
+            failOnStderr: true
+          - script: 'dotnet cake --target=PushGitHub --GitHubUserName=$(GitHubUserName) --GitHubPassword=$(GitHubPersonalAccessToken)'
+            displayName: 'Dotnet Cake PushGitHub'
+            failOnStderr: true
   - deployment: NuGet
     pool:
       vmImage: ubuntu-latest
@@ -96,8 +101,9 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: NuGetToolInstaller@1
-            displayName: 'Install NuGet'
-          - script: nuget push $(Agent.BuildDirectory)/Windows/*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey $(NuGetApiKey) -SkipDuplicate
-            displayName: 'NuGet Push'
+          - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0037 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
+            displayName: 'Install Cake Tool'
+            failOnStderr: true
+          - script: 'dotnet cake --target=PushNuGet --NuGetApiKey=$(NuGetApiKey)'
+            displayName: 'Dotnet Cake PushNuGet'
             failOnStderr: true
