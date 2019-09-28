@@ -13,8 +13,6 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   # Disable sending usage data to Microsoft
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  # Enable the dotnet cake CLI tool built with .NET Core 2 to run on .NET Core 3
-  DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX: 2
 
 stages:
 - stage: Build
@@ -42,7 +40,7 @@ stages:
       inputs:
         packageType: 'sdk'
         version: '3.0.100'
-    - script: 'dotnet tool install --global Cake.Tool'
+    - script: 'dotnet tool install --global Cake.Tool --version 0.35.0-alpha0031 --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json'
       displayName: 'Install Cake Tool'
       failOnStderr: true
     - script: 'dotnet cake --target=Build'
