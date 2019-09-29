@@ -83,7 +83,7 @@ stages:
           - script: 'dotnet tool install --global Cake.Tool'
             displayName: 'Install Cake Tool'
             failOnStderr: true
-          - script: 'dotnet cake --target=PushAzureArtefacts --AzureArtefactsOrganization=RehanSaeed --ArtefactsDirectoryPath=$(Agent.BuildDirectory)/Windows --Verbosity=Diagnostic'
+          - script: 'dotnet cake --target=PushAzureArtefacts --AzureArtefactsOrganization=schema-net --ArtefactsDirectoryPath=$(Agent.BuildDirectory)/Windows --Verbosity=Diagnostic'
             displayName: 'Dotnet Cake PushAzureArtefacts'
             failOnStderr: true
   - deployment: GitHub
