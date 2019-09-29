@@ -22,7 +22,6 @@ var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSu
 Task("Clean")
     .Does(() =>
     {
-        DotnetCoreClean
         CleanDirectory(artefactsDirectory);
         DeleteDirectories(GetDirectories("**/bin"), new DeleteDirectorySettings() { Force = true, Recursive = true });
         DeleteDirectories(GetDirectories("**/obj"), new DeleteDirectorySettings() { Force = true, Recursive = true });
