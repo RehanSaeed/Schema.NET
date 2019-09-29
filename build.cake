@@ -123,7 +123,7 @@ Task("PushAzureArtefacts")
             nugetPackage,
             new NuGetPushSettings()
             {
-                ApiKey = "AzureArtefacts",
+                ApiKey = "AzureArtifacts",
                 SkipDuplicate = true,
                 Source = $"https://pkgs.dev.azure.com/{azureArtefactsOrganization}/_packaging/{azureArtefactsOrganization}/nuget/v3/index.json",
             });
