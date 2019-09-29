@@ -22,6 +22,7 @@ var versionSuffix = string.IsNullOrEmpty(preReleaseSuffix) ? null : preReleaseSu
 Task("Clean")
     .Does(() =>
     {
+        DotnetCoreClean
         CleanDirectory(artefactsDirectory);
         DeleteDirectories(GetDirectories("**/bin"), new DeleteDirectorySettings() { Force = true, Recursive = true });
         DeleteDirectories(GetDirectories("**/obj"), new DeleteDirectorySettings() { Force = true, Recursive = true });
@@ -64,22 +65,19 @@ Task("Build")
     });
 
 Task("Test")
-    .Does(() =>
+    .DoesForEach(GetFiles("./Tests/**/*.csproj"), project =>
     {
-        foreach(var project in GetFiles("./Tests/**/*.csproj"))
-        {
-            DotNetCoreTest(
-                project.ToString(),
-                new DotNetCoreTestSettings()
-                {
-                    Configuration = configuration,
-                    Logger = $"trx;LogFileName={project.GetFilenameWithoutExtension()}.trx",
-                    NoBuild = true,
-                    NoRestore = true,
-                    ResultsDirectory = artefactsDirectory,
-                    ArgumentCustomization = x => x.Append($"--logger html;LogFileName={project.GetFilenameWithoutExtension()}.html")
-                });
-        }
+        DotNetCoreTest(
+            project.ToString(),
+            new DotNetCoreTestSettings()
+            {
+                Configuration = configuration,
+                Logger = $"trx;LogFileName={project.GetFilenameWithoutExtension()}.trx",
+                NoBuild = true,
+                NoRestore = true,
+                ResultsDirectory = artefactsDirectory,
+                ArgumentCustomization = x => x.Append($"--logger html;LogFileName={project.GetFilenameWithoutExtension()}.html")
+            });
     });
 
 Task("Pack")
