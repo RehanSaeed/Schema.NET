@@ -71,20 +71,12 @@ stages:
       runOnce:
         deploy:
           steps:
-          - checkout: self
-          - task: UseDotNet@2
-            displayName: 'Install .NET Core SDK'
-            inputs:
-              packageType: 'sdk'
-              version: '3.0.100'
           - task: NuGetToolInstaller@1
-            displayName: 'Install NuGet'
+            displayName: 'NuGet Install'
           - task: NuGetAuthenticate@0
-          - script: 'dotnet tool install --global Cake.Tool'
-            displayName: 'Install Cake Tool'
-            failOnStderr: true
-          - script: 'dotnet cake --target=PushAzureArtefacts --AzureArtefactsOrganization=schema-net --ArtefactsDirectoryPath=$(Agent.BuildDirectory)/Windows --Verbosity=Diagnostic'
-            displayName: 'Dotnet Cake PushAzureArtefacts'
+            displayName: 'NuGet Authenticate'
+          - script: nuget push $(Agent.BuildDirectory)\Windows\*.nupkg -Source https://pkgs.dev.azure.com/schema-net/_packaging/schema-net/nuget/v3/index.json -ApiKey AzureArtifacts -SkipDuplicate
+            displayName: 'NuGet Push'
             failOnStderr: true
   - deployment: GitHub
     pool:
@@ -94,19 +86,13 @@ stages:
       runOnce:
         deploy:
           steps:
-          - checkout: self
-          - task: UseDotNet@2
-            displayName: 'Install .NET Core SDK'
-            inputs:
-              packageType: 'sdk'
-              version: '3.0.100'
           - task: NuGetToolInstaller@1
-            displayName: 'Install NuGet'
-          - script: 'dotnet tool install --global Cake.Tool'
-            displayName: 'Install Cake Tool'
+            displayName: 'NuGet Install'
+          - script: nuget source Add -Name GitHub -Source https://nuget.pkg.github.com/RehanSaeed/index.json -UserName $(GitHubUserName) -Password $(GitHubPersonalAccessToken)
+            displayName: 'NuGet Add Source'
             failOnStderr: true
-          - script: 'dotnet cake --target=PushGitHub --GitHubUserName=$(GitHubUserName) --GitHubPassword=$(GitHubPersonalAccessToken) --ArtefactsDirectoryPath=$(Agent.BuildDirectory)/Windows --Verbosity=Diagnostic'
-            displayName: 'Dotnet Cake PushGitHub'
+          - script: nuget push $(Agent.BuildDirectory)\Windows\*.nupkg -Source GitHub -SkipDuplicate
+            displayName: 'NuGet Push'
             failOnStderr: true
   - deployment: NuGet
     pool:
@@ -117,17 +103,8 @@ stages:
       runOnce:
         deploy:
           steps:
-          - checkout: self
-          - task: UseDotNet@2
-            displayName: 'Install .NET Core SDK'
-            inputs:
-              packageType: 'sdk'
-              version: '3.0.100'
           - task: NuGetToolInstaller@1
             displayName: 'Install NuGet'
-          - script: 'dotnet tool install --global Cake.Tool'
-            displayName: 'Install Cake Tool'
-            failOnStderr: true
-          - script: 'dotnet cake --target=PushNuGet --NuGetApiKey=$(NuGetApiKey) --ArtefactsDirectoryPath=$(Agent.BuildDirectory)/Windows --Verbosity=Diagnostic'
-            displayName: 'Dotnet Cake PushNuGet'
+          - script: nuget push $(Agent.BuildDirectory)\Windows\*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey $(NuGetApiKey) -SkipDuplicate
+            displayName: 'NuGet Push'
             failOnStderr: true
