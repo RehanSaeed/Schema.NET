@@ -65,7 +65,7 @@ stages:
   - deployment: AzureArtefacts
     displayName: 'Azure Artefacts'
     pool:
-      vmImage: ubuntu-latest
+      vmImage: windows-latest
     environment: 'Azure Artefacts'
     strategy:
       runOnce:
@@ -88,7 +88,7 @@ stages:
             failOnStderr: true
   - deployment: GitHub
     pool:
-      vmImage: ubuntu-latest
+      vmImage: windows-latest
     environment: 'GitHub'
     strategy:
       runOnce:
@@ -110,7 +110,7 @@ stages:
             failOnStderr: true
   - deployment: NuGet
     pool:
-      vmImage: ubuntu-latest
+      vmImage: windows-latest
     environment: 'NuGet'
     condition: startsWith(variables['Build.sourceBranch'], 'refs/tags/')
     strategy:
