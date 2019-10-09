@@ -13,13 +13,13 @@
         /// <summary>
         /// The female gender.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Female")]
+        [EnumMember(Value = "https://schema.org/Female")]
         Female,
 
         /// <summary>
         /// The male gender.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Male")]
+        [EnumMember(Value = "https://schema.org/Male")]
         Male
     }
 }

@@ -13,19 +13,19 @@
         /// <summary>
         /// An ItemList ordered with lower values listed first.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/ItemListOrderAscending")]
+        [EnumMember(Value = "https://schema.org/ItemListOrderAscending")]
         ItemListOrderAscending,
 
         /// <summary>
         /// An ItemList ordered with higher values listed first.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/ItemListOrderDescending")]
+        [EnumMember(Value = "https://schema.org/ItemListOrderDescending")]
         ItemListOrderDescending,
 
         /// <summary>
         /// An ItemList ordered with no explicit order.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/ItemListUnordered")]
+        [EnumMember(Value = "https://schema.org/ItemListUnordered")]
         ItemListUnordered
     }
 }
