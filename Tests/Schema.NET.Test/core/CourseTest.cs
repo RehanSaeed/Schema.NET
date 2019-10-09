@@ -20,7 +20,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"Course\"," +
             "\"name\":\"Introduction to Computer Science and Programming\"," +
             "\"description\":\"Introductory CS course laying out the basics.\"," +

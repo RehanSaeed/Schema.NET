@@ -52,18 +52,18 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\": \"http://schema.org\"," +
+            "\"@context\": \"https://schema.org\"," +
             "\"@type\": \"MusicAlbum\"," +
             "\"name\": \"Hail to the Thief\"," +
             "\"identifier\": \"1oW3v5Har9mvXnGk0x4fHm\"," +
             "\"image\": [{" +
                     "\"$type\": \"Schema.NET.ImageObject, Schema.NET\"," +
-                    "\"@context\": \"http://schema.org\"," +
+                    "\"@context\": \"https://schema.org\"," +
                     "\"@type\": \"ImageObject\"," +
                     "\"contentUrl\": \"https://i.scdn.co/image/5ded47fd3d05325dd0faaf4619481e1f25a21ec7\"" +
                 "}, {" +
                     "\"$type\": \"Schema.NET.ImageObject, Schema.NET\"," +
-                    "\"@context\": \"http://schema.org\"," +
+                    "\"@context\": \"https://schema.org\"," +
                     "\"@type\": \"ImageObject\"," +
                     "\"contentUrl\": \"https://is4-ssl.mzstatic.com/image/thumb/Music69/v4/cc/1c/90/cc1c9039-c3ba-4256-e251-1687df46cb0a/cover.jpg/1400x1400bb.jpeg\"" +
                 "}" +
@@ -71,7 +71,7 @@ namespace Schema.NET.Test
             "\"sameAs\": \"https://music.apple.com/us/album/hail-to-the-thief/1097863576\"," +
             "\"url\": \"https://open.spotify.com/album/1oW3v5Har9mvXnGk0x4fHm\"," +
             "\"aggregateRating\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\": \"https://schema.org\"," +
                 "\"@type\": \"AggregateRating\"," +
                 "\"bestRating\": 100," +
                 "\"ratingValue\": 60," +
@@ -79,22 +79,22 @@ namespace Schema.NET.Test
             "}," +
             "\"datePublished\": \"2003-05-26\"," +
             "\"offers\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\": \"https://schema.org\"," +
                 "\"@type\": \"Offer\"," +
                 "\"gtin12\": \"634904078560\"" +
             "}," +
             "\"numTracks\": 14," +
             "\"albumRelease\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\": \"https://schema.org\"," +
                 "\"@type\": \"MusicRelease\"," +
                 "\"recordLabel\": {" +
-                    "\"@context\": \"http://schema.org\"," +
+                    "\"@context\": \"https://schema.org\"," +
                     "\"@type\": \"Organization\"," +
                     "\"name\": \"XL Recordings\"" +
                 "}" +
             "}," +
             "\"byArtist\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\": \"https://schema.org\"," +
                 "\"@type\": \"MusicGroup\"," +
                 "\"name\": \"Radiohead\"," +
                 "\"identifier\": \"4Z8W4fKeB5YxbusRsdQVPb\"" +

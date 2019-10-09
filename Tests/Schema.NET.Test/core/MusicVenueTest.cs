@@ -40,13 +40,13 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\": \"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\": \"MusicVenue\"," +
             "\"name\": \"Dolby Theatre\"," +
             "\"description\": \"Host to a range of prestigious events including movie premieres, concerts & the Oscars http://www.dolbytheatre.com\"," +
             "\"identifier\": \"KovZpZAdtaEA\"," +
             "\"image\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\": \"ImageObject\"," +
                 "\"contentUrl\": \"https://s1.ticketm.net/dam/v/e6b/380fa861-3f46-44a9-a514-21553f7fbe6b_379601_SOURCE.jpg\"" +
             "}," +
@@ -56,7 +56,7 @@ namespace Schema.NET.Test
             "]," +
             "\"url\": \"https://foursquare.com/dolbytheatre\"," +
             "\"address\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\": \"PostalAddress\"," +
                 "\"addressCountry\": \"US\"," +
                 "\"addressLocality\": \"Los Angeles\"," +
@@ -65,7 +65,7 @@ namespace Schema.NET.Test
                 "\"streetAddress\": \"6801 Hollywood Blvd\"" +
             "}," +
             "\"geo\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\": \"GeoCoordinates\"," +
                 "\"latitude\": \"34.1018929033898\"," +
                 "\"longitude\": \"-118.340147939959\"" +

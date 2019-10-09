@@ -33,7 +33,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"ItemList\"," +
             "\"itemListElement\":[" +
                 "{" +
@@ -85,7 +85,7 @@ namespace Schema.NET.Test
             };
             var expectedJson =
                 "{" +
-                    "\"@context\":\"http://schema.org\"," +
+                    "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"ItemList\"," +
                     "\"itemListElement\":[" +
                         "{" +
@@ -135,7 +135,7 @@ namespace Schema.NET.Test
             };
             var expectedJson =
                 "{" +
-                    "\"@context\":\"http://schema.org\"," +
+                    "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"ItemList\"," +
                     "\"itemListElement\":[" +
                         "{" +
@@ -167,7 +167,7 @@ namespace Schema.NET.Test
         {
             var json =
             "{" +
-                "\"@context\":\"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"ItemList\"," +
                 "\"itemListElement\":[" +
                     "{" +
