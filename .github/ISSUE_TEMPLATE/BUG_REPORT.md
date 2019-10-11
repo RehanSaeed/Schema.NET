@@ -1,3 +1,8 @@
+---
+title: 'Bug report'
+labels: bug
+---
+
 **Which [schema.org](https://schema.org) object is this about if any?**
 
 - Name - 
