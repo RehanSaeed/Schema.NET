@@ -13,19 +13,19 @@
         /// <summary>
         /// Indicates the usage of the vehicle for driving school.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/DrivingSchoolVehicleUsage")]
+        [EnumMember(Value = "https://schema.org/DrivingSchoolVehicleUsage")]
         DrivingSchoolVehicleUsage,
 
         /// <summary>
         /// Indicates the usage of the vehicle as a rental car.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/RentalVehicleUsage")]
+        [EnumMember(Value = "https://schema.org/RentalVehicleUsage")]
         RentalVehicleUsage,
 
         /// <summary>
         /// Indicates the usage of the car as a taxi.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/TaxiVehicleUsage")]
+        [EnumMember(Value = "https://schema.org/TaxiVehicleUsage")]
         TaxiVehicleUsage
     }
 }

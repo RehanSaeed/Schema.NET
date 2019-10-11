@@ -13,13 +13,13 @@
         /// <summary>
         /// The character of a medical substance, typically a medicine, of being available over the counter or not.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/OTC")]
+        [EnumMember(Value = "https://schema.org/OTC")]
         OTC,
 
         /// <summary>
         /// Available by prescription only.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/PrescriptionOnly")]
+        [EnumMember(Value = "https://schema.org/PrescriptionOnly")]
         PrescriptionOnly
     }
 }

@@ -13,37 +13,37 @@
         /// <summary>
         /// Pathogenic bacteria that cause bacterial infection.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Bacteria")]
+        [EnumMember(Value = "https://schema.org/Bacteria")]
         Bacteria,
 
         /// <summary>
         /// Pathogenic fungus.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Fungus")]
+        [EnumMember(Value = "https://schema.org/Fungus")]
         Fungus,
 
         /// <summary>
         /// Multicellular parasite that causes an infection.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/MulticellularParasite")]
+        [EnumMember(Value = "https://schema.org/MulticellularParasite")]
         MulticellularParasite,
 
         /// <summary>
         /// A prion is an infectious agent composed of protein in a misfolded form.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Prion")]
+        [EnumMember(Value = "https://schema.org/Prion")]
         Prion,
 
         /// <summary>
         /// Single-celled organism that causes an infection.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Protozoa")]
+        [EnumMember(Value = "https://schema.org/Protozoa")]
         Protozoa,
 
         /// <summary>
         /// Pathogenic virus that causes viral infection.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Virus")]
+        [EnumMember(Value = "https://schema.org/Virus")]
         Virus
     }
 }

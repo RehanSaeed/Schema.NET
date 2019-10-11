@@ -13,25 +13,25 @@
         /// <summary>
         /// All-wheel Drive is a transmission layout where the engine drives all four wheels.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/AllWheelDriveConfiguration")]
+        [EnumMember(Value = "https://schema.org/AllWheelDriveConfiguration")]
         AllWheelDriveConfiguration,
 
         /// <summary>
         /// Four-wheel drive is a transmission layout where the engine primarily drives two wheels with a part-time four-wheel drive capability.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/FourWheelDriveConfiguration")]
+        [EnumMember(Value = "https://schema.org/FourWheelDriveConfiguration")]
         FourWheelDriveConfiguration,
 
         /// <summary>
         /// Front-wheel drive is a transmission layout where the engine drives the front wheels.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/FrontWheelDriveConfiguration")]
+        [EnumMember(Value = "https://schema.org/FrontWheelDriveConfiguration")]
         FrontWheelDriveConfiguration,
 
         /// <summary>
         /// Real-wheel drive is a transmission layout where the engine drives the rear wheels.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/RearWheelDriveConfiguration")]
+        [EnumMember(Value = "https://schema.org/RearWheelDriveConfiguration")]
         RearWheelDriveConfiguration
     }
 }

@@ -226,12 +226,15 @@ namespace Schema.NET
         {
             const string SCHEMA_ORG = "http://schema.org/";
             const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
+            const string SCHEMA_ORG_HTTPS = "https://schema.org/";
+            const int SCHEMA_ORG_HTTPS_LENGTH = 19; // equivalent to "https://schema.org/".Length
             object args;
             var unwrappedType = type.GetUnderlyingTypeFromNullable();
             if (unwrappedType.GetTypeInfo().IsEnum)
             {
                 var en = token.ToString();
-                var enumString = en.Contains(SCHEMA_ORG) ? en.Substring(SCHEMA_ORG_LENGTH) : en;
+                var enumString = en.Contains(SCHEMA_ORG) ? en.Substring(SCHEMA_ORG_LENGTH) :
+                    en.Contains(SCHEMA_ORG_HTTPS) ? en.Substring(SCHEMA_ORG_HTTPS_LENGTH) : en;
                 args = Enum.Parse(unwrappedType, enumString);
             }
             else

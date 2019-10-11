@@ -13,25 +13,25 @@
         /// <summary>
         /// Indicates that the item is damaged.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/DamagedCondition")]
+        [EnumMember(Value = "https://schema.org/DamagedCondition")]
         DamagedCondition,
 
         /// <summary>
         /// Indicates that the item is new.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/NewCondition")]
+        [EnumMember(Value = "https://schema.org/NewCondition")]
         NewCondition,
 
         /// <summary>
         /// Indicates that the item is refurbished.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/RefurbishedCondition")]
+        [EnumMember(Value = "https://schema.org/RefurbishedCondition")]
         RefurbishedCondition,
 
         /// <summary>
         /// Indicates that the item is used.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/UsedCondition")]
+        [EnumMember(Value = "https://schema.org/UsedCondition")]
         UsedCondition
     }
 }

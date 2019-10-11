@@ -26,7 +26,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
             "{" +
-                "\"@context\":\"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"Book\"," +
                 "\"@id\":\"http://example.com/book/1\"," +
                 "\"author\":[" +
@@ -70,7 +70,7 @@ namespace Schema.NET.Test
         {
             var json =
                 @"{" +
-                    "\"@context\":\"http://schema.org\"," +
+                    "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"BankAccount\"," +
                     "\"bankAccountType\":[" +
                         "\"http://example.com/1\"," +
@@ -102,7 +102,7 @@ namespace Schema.NET.Test
             };
             var json =
                 @"{" +
-                    "\"@context\":\"http://schema.org\"," +
+                    "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"BankAccount\"," +
                     "\"bankAccountType\":[" +
                         "\"http://example.com/1\"," +
