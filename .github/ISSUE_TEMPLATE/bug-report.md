@@ -1,9 +1,9 @@
 ---
-name: 
-about: 
-title: Feature Request
-labels: 
-assignees: 
+name: Bug Report
+about: Report a bug
+title: Bug report
+labels: bug
+assignees: ''
 
 ---
 

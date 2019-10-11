@@ -1,6 +1,10 @@
 ---
-title: 'Bug report'
+name: 
+about: 
+title: Bug report
 labels: bug
+assignees: 
+
 ---
 
 **Which [schema.org](https://schema.org) object is this about if any?**
