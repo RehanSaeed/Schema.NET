@@ -8,8 +8,7 @@ assignees: ''
 
 **Which [schema.org](https://schema.org) object is this about if any?**
 
-- Name - 
-- Link - e.g. https://schema.org/Person
+- E.g. https://schema.org/Person
 
 **What are the steps to reproduce the problem?**
 
