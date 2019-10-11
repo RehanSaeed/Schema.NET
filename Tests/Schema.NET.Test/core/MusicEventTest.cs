@@ -47,25 +47,25 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\": \"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\": \"MusicEvent\"," +
             "\"name\": \"Arash & Tohi\"," +
             "\"identifier\": \"vv1AaZAQ8Gkds-P77\"," +
             "\"url\": \"https://www.ticketmaster.com/arash-tohi-hollywood-california-06-22-2019/event/09005690F1865104\"," +
             "\"location\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\": \"MusicVenue\"," +
                 "\"name\": \"Dolby Theatre\"," +
                 "\"identifier\": \"KovZpZAdtaEA\"" +
             "}," +
             "\"offers\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\": \"Offer\"," +
                 "\"url\": \"https://www.ticketmaster.com/arash-tohi-hollywood-california-06-22-2019/event/09005690F1865104\"," +
                 "\"availabilityEnds\": \"2019-06-23T01:00:00-07:00\"," +
                 "\"availabilityStarts\": \"2019-04-24T21:00:00-07:00\"," +
                 "\"priceSpecification\": {" +
-                    "\"@context\": \"http://schema.org\"," +
+                    "\"@context\":\"https://schema.org\"," +
                     "\"@type\": \"PriceSpecification\"," +
                     "\"maxPrice\": 295," +
                     "\"minPrice\": 80," +
@@ -75,14 +75,14 @@ namespace Schema.NET.Test
             "\"performer\": [" +
                 "{" +
                     "\"$type\": \"Schema.NET.MusicGroup, Schema.NET\"," +
-                    "\"@context\": \"http://schema.org\"," +
+                    "\"@context\":\"https://schema.org\"," +
                     "\"@type\": \"MusicGroup\"," +
                     "\"name\": \"Arash\"," +
                     "\"identifier\": \"K8vZ917ukD7\"" +
                 "}," +
                 "{" +
                     "\"$type\": \"Schema.NET.MusicGroup, Schema.NET\"," +
-                    "\"@context\": \"http://schema.org\"," +
+                    "\"@context\":\"https://schema.org\"," +
                     "\"@type\": \"MusicGroup\"," +
                     "\"name\": \"Tohi\"," +
                     "\"identifier\": \"K8vZ917bA70\"" +

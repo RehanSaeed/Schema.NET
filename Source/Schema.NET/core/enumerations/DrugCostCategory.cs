@@ -13,19 +13,19 @@
         /// <summary>
         /// The drug's cost represents the maximum reimbursement paid by an insurer for the drug.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/ReimbursementCap")]
+        [EnumMember(Value = "https://schema.org/ReimbursementCap")]
         ReimbursementCap,
 
         /// <summary>
         /// The drug's cost represents the retail cost of the drug.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Retail")]
+        [EnumMember(Value = "https://schema.org/Retail")]
         Retail,
 
         /// <summary>
         /// The drug's cost represents the wholesale acquisition cost of the drug.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Wholesale")]
+        [EnumMember(Value = "https://schema.org/Wholesale")]
         Wholesale
     }
 }

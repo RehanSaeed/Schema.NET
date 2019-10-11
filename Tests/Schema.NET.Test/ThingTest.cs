@@ -15,7 +15,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
             "{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"NewObject\"," +
             "\"name\":\"New Object\"," +
             "\"description\":\"This is the description of a new object we can't deserialize\"," +

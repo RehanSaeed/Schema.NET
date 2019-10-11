@@ -11,7 +11,7 @@ namespace Schema.NET.Test
     {
         private const string Json =
             "{" +
-                "\"@context\":\"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"Book\"," +
                 "\"@id\":\"http://example.com/book/1\"," +
                 "\"name\":\"The Catcher in the Rye</script><script>alert('gotcha');</script>\"," +
@@ -23,7 +23,7 @@ namespace Schema.NET.Test
 
         private const string JsonHtmlEscaped =
             "{" +
-                "\"@context\":\"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"Book\"," +
                 "\"@id\":\"http://example.com/book/1\"," +
                 "\"name\":\"The Catcher in the Rye\\u003c/script\\u003e\\u003cscript\\u003ealert(\\u0027gotcha\\u0027);\\u003c/script\\u003e\"," +
@@ -35,7 +35,7 @@ namespace Schema.NET.Test
 
         private const string JsonCustom =
             "{\r\n" +
-                "  \"@context\": \"http://schema.org\",\r\n" +
+                "  \"@context\": \"https://schema.org\",\r\n" +
                 "  \"@type\": \"Person\",\r\n" +
                 "  \"name\": \"J.D. Salinger\\u003c/script\\u003e\\u003cscript\\u003ealert(\\u0027gotcha\\u0027);\\u003c/script\\u003e\"\r\n" +
             "}";
@@ -90,7 +90,7 @@ namespace Schema.NET.Test
             var actual = localBusiness.ToString();
             var expected =
             "{" +
-                "\"@context\":\"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"LocalBusiness\"," +
                 "\"priceRange\":\"$$$\"" +
             "}";

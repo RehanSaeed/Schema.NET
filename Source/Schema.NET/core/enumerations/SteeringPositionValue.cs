@@ -13,13 +13,13 @@
         /// <summary>
         /// The steering position is on the left side of the vehicle (viewed from the main direction of driving).
         /// </summary>
-        [EnumMember(Value = "http://schema.org/LeftHandDriving")]
+        [EnumMember(Value = "https://schema.org/LeftHandDriving")]
         LeftHandDriving,
 
         /// <summary>
         /// The steering position is on the right side of the vehicle (viewed from the main direction of driving).
         /// </summary>
-        [EnumMember(Value = "http://schema.org/RightHandDriving")]
+        [EnumMember(Value = "https://schema.org/RightHandDriving")]
         RightHandDriving
     }
 }

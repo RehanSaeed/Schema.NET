@@ -21,7 +21,7 @@ namespace Schema.NET.Test
             };
             var expectedJson =
                 "{" +
-                    "\"@context\":\"http://schema.org\"," +
+                    "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"WebSite\"," +
                     "\"potentialAction\":{" +
                         "\"@type\":\"SearchAction\"," +
@@ -48,7 +48,7 @@ namespace Schema.NET.Test
             };
             var expectedJson =
                 "{" +
-                    "\"@context\":\"http://schema.org\"," +
+                    "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"WebSite\"," +
                     "\"name\":\"Your Site Name\"," +
                     "\"alternateName\":\"An Alternative Name\"," +
@@ -75,7 +75,7 @@ namespace Schema.NET.Test
 
             var json =
             "{" +
-                "\"@context\":\"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"WebSite\"," +
                 "\"potentialAction\":{" +
                     "\"@type\":\"SearchAction\"," +

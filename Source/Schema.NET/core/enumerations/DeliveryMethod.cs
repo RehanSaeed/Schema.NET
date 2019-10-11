@@ -24,7 +24,7 @@
         /// <summary>
         /// A DeliveryMethod in which an item is collected on site, e.g. in a store or at a box office.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/OnSitePickup")]
+        [EnumMember(Value = "https://schema.org/OnSitePickup")]
         OnSitePickup
     }
 }

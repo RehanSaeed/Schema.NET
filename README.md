@@ -165,7 +165,7 @@ Please view the [contributing guide](/.github/CONTRIBUTING.md) for more informat
 
 - [shervinw](https://github.com/shervinw) - Added better null value handling for structs.
 - [kirk-marple](https://github.com/kirk-marple) - Refactoring JSON serialization to be more efficient.
-- [nickevansuk](https://github.com/nickevansuk) - Adding better null value handling.
+- [nickevansuk](https://github.com/nickevansuk) - Adding better null value handling and use HTTPS instead of HTTP.
 - [MEmanuelsson](https://github.com/MEmanuelsson) - Added support for the schema.org Date type without time.
 - [halovanic](https://github.com/halovanic) - For adding interfaces to Schema.NET types for greater flexibility.
 - [AndreSteenbergen](https://github.com/AndreSteenbergen) - For enabling the tool to work on linux.

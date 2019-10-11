@@ -13,13 +13,13 @@
         /// <summary>
         /// The airline boards by groups based on check-in time, priority, etc.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/GroupBoardingPolicy")]
+        [EnumMember(Value = "https://schema.org/GroupBoardingPolicy")]
         GroupBoardingPolicy,
 
         /// <summary>
         /// The airline boards by zones of the plane.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/ZoneBoardingPolicy")]
+        [EnumMember(Value = "https://schema.org/ZoneBoardingPolicy")]
         ZoneBoardingPolicy
     }
 }

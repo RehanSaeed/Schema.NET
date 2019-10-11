@@ -23,7 +23,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"Person\"," +
             "\"name\":\"Name\"," +
             "\"sameAs\":[" +

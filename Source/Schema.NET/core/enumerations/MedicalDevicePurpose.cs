@@ -13,13 +13,13 @@
         /// <summary>
         /// A medical device used for diagnostic purposes.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Diagnostic")]
+        [EnumMember(Value = "https://schema.org/Diagnostic")]
         Diagnostic,
 
         /// <summary>
         /// A medical device used for therapeutic purposes.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Therapeutic")]
+        [EnumMember(Value = "https://schema.org/Therapeutic")]
         Therapeutic
     }
 }

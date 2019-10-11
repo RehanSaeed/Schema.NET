@@ -13,19 +13,19 @@
         /// <summary>
         /// Data derived from multiple randomized clinical trials or meta-analyses.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/EvidenceLevelA")]
+        [EnumMember(Value = "https://schema.org/EvidenceLevelA")]
         EvidenceLevelA,
 
         /// <summary>
         /// Data derived from a single randomized trial, or nonrandomized studies.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/EvidenceLevelB")]
+        [EnumMember(Value = "https://schema.org/EvidenceLevelB")]
         EvidenceLevelB,
 
         /// <summary>
         /// Only consensus opinion of experts, case studies, or standard-of-care.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/EvidenceLevelC")]
+        [EnumMember(Value = "https://schema.org/EvidenceLevelC")]
         EvidenceLevelC
     }
 }

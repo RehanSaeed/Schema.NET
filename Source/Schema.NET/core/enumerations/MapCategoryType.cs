@@ -13,25 +13,25 @@
         /// <summary>
         /// A parking map.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/ParkingMap")]
+        [EnumMember(Value = "https://schema.org/ParkingMap")]
         ParkingMap,
 
         /// <summary>
         /// A seating map.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/SeatingMap")]
+        [EnumMember(Value = "https://schema.org/SeatingMap")]
         SeatingMap,
 
         /// <summary>
         /// A transit map.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/TransitMap")]
+        [EnumMember(Value = "https://schema.org/TransitMap")]
         TransitMap,
 
         /// <summary>
         /// A venue map (e.g. for malls, auditoriums, museums, etc.).
         /// </summary>
-        [EnumMember(Value = "http://schema.org/VenueMap")]
+        [EnumMember(Value = "https://schema.org/VenueMap")]
         VenueMap
     }
 }
