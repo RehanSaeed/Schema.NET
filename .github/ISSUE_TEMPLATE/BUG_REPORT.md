@@ -12,7 +12,7 @@ A clear and concise description of what the bug is.
 
 ### To Reproduce
 
-Steps to reproduce the behaviour:
+A link to some code to reproduce the bug can speed up a fix. Alternatively, show steps to reproduce the behaviour:
 
 1. Go to '...'
 2. Click on '....'
