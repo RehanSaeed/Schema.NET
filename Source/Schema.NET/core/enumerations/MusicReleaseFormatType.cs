@@ -13,43 +13,43 @@
         /// <summary>
         /// CassetteFormat.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/CassetteFormat")]
+        [EnumMember(Value = "https://schema.org/CassetteFormat")]
         CassetteFormat,
 
         /// <summary>
         /// CDFormat.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/CDFormat")]
+        [EnumMember(Value = "https://schema.org/CDFormat")]
         CDFormat,
 
         /// <summary>
         /// DigitalAudioTapeFormat.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/DigitalAudioTapeFormat")]
+        [EnumMember(Value = "https://schema.org/DigitalAudioTapeFormat")]
         DigitalAudioTapeFormat,
 
         /// <summary>
         /// DigitalFormat.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/DigitalFormat")]
+        [EnumMember(Value = "https://schema.org/DigitalFormat")]
         DigitalFormat,
 
         /// <summary>
         /// DVDFormat.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/DVDFormat")]
+        [EnumMember(Value = "https://schema.org/DVDFormat")]
         DVDFormat,
 
         /// <summary>
         /// LaserDiscFormat.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/LaserDiscFormat")]
+        [EnumMember(Value = "https://schema.org/LaserDiscFormat")]
         LaserDiscFormat,
 
         /// <summary>
         /// VinylFormat.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/VinylFormat")]
+        [EnumMember(Value = "https://schema.org/VinylFormat")]
         VinylFormat
     }
 }

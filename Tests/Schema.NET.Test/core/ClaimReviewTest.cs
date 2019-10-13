@@ -36,7 +36,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"ClaimReview\"," +
             "\"url\":\"http://example.com/news/science/worldisflat.html\"," +
             "\"author\":{" +

@@ -13,19 +13,19 @@
         /// <summary>
         /// The invitee may or may not attend.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/RsvpResponseMaybe")]
+        [EnumMember(Value = "https://schema.org/RsvpResponseMaybe")]
         RsvpResponseMaybe,
 
         /// <summary>
         /// The invitee will not attend.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/RsvpResponseNo")]
+        [EnumMember(Value = "https://schema.org/RsvpResponseNo")]
         RsvpResponseNo,
 
         /// <summary>
         /// The invitee will attend.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/RsvpResponseYes")]
+        [EnumMember(Value = "https://schema.org/RsvpResponseYes")]
         RsvpResponseYes
     }
 }

@@ -13,31 +13,31 @@
         /// <summary>
         /// Book format: Audiobook. This is an enumerated value for use with the bookFormat property. There is also a type 'Audiobook' in the bib extension which includes Audiobook specific properties.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/AudiobookFormat")]
+        [EnumMember(Value = "https://schema.org/AudiobookFormat")]
         AudiobookFormat,
 
         /// <summary>
         /// Book format: Ebook.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/EBook")]
+        [EnumMember(Value = "https://schema.org/EBook")]
         EBook,
 
         /// <summary>
         /// Book format: GraphicNovel. May represent a bound collection of ComicIssue instances.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/GraphicNovel")]
+        [EnumMember(Value = "https://schema.org/GraphicNovel")]
         GraphicNovel,
 
         /// <summary>
         /// Book format: Hardcover.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Hardcover")]
+        [EnumMember(Value = "https://schema.org/Hardcover")]
         Hardcover,
 
         /// <summary>
         /// Book format: Paperback.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Paperback")]
+        [EnumMember(Value = "https://schema.org/Paperback")]
         Paperback
     }
 }

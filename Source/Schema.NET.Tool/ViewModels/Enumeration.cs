@@ -45,8 +45,18 @@ namespace Schema.NET.Tool.ViewModels
                 {
                     var isLast = i == (this.Values.Count - 1);
 
+                    // Convert enumeration values to https for future proofing
+                    // https://schema.org/docs/faq.html#19
+                    // "Over time we will migrate the schema.org site itself towards using https:
+                    //  as the default version of the site and our preferred form in examples."
+                    var httpsValueUri = new System.UriBuilder(value.Uri)
+                    {
+                        Scheme = System.Uri.UriSchemeHttps,
+                        Port = value.Uri.IsDefaultPort ? -1 : value.Uri.Port // -1 => default port for scheme
+                    }.Uri;
+
                     stringBuilder.AppendCommentSummary(8, value.Description);
-                    stringBuilder.AppendIndentLine(8, $"[EnumMember(Value = \"{value.Uri}\")]");
+                    stringBuilder.AppendIndentLine(8, $"[EnumMember(Value = \"{httpsValueUri}\")]");
                     stringBuilder.AppendIndent(8, value.Name);
                     if (!isLast)
                     {

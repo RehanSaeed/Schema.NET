@@ -46,7 +46,7 @@ namespace Schema.NET.Test
         {
             var json = new Thing().ToString();
 
-            Assert.Equal("{\"@context\":\"http://schema.org\",\"@type\":\"Thing\"}", json);
+            Assert.Equal("{\"@context\":\"https://schema.org\",\"@type\":\"Thing\"}", json);
         }
 
         [Fact]
@@ -57,7 +57,7 @@ namespace Schema.NET.Test
 
             var json = thing.ToString();
 
-            Assert.Equal("{\"@context\":{\"name\":\"http://schema.org\",\"@language\":\"en\"},\"@type\":\"Thing\"}", json);
+            Assert.Equal("{\"@context\":{\"name\":\"https://schema.org\",\"@language\":\"en\"},\"@type\":\"Thing\"}", json);
         }
     }
 }

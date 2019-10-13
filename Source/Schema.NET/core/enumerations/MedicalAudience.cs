@@ -13,13 +13,13 @@
         /// <summary>
         /// Medical clinicians, including practicing physicians and other medical professionals involved in clinical practice.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Clinician")]
+        [EnumMember(Value = "https://schema.org/Clinician")]
         Clinician,
 
         /// <summary>
         /// Medical researchers.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/MedicalResearcher")]
+        [EnumMember(Value = "https://schema.org/MedicalResearcher")]
         MedicalResearcher
     }
 }

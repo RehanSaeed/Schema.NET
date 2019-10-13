@@ -32,9 +32,9 @@ namespace Schema.NET.Test
                             UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true",
                             ActionPlatform = new List<Uri>()
                             {
-                                new Uri("http://schema.org/DesktopWebPlatform"),
-                                new Uri("http://schema.org/IOSPlatform"),
-                                new Uri("http://schema.org/AndroidPlatform")
+                                new Uri("https://schema.org/DesktopWebPlatform"),
+                                new Uri("https://schema.org/IOSPlatform"),
+                                new Uri("https://schema.org/AndroidPlatform")
                             }
                         },
                         ExpectsAcceptanceOf = new Offer()
@@ -61,9 +61,9 @@ namespace Schema.NET.Test
                             UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/031676947?purchase=true",
                             ActionPlatform = new List<Uri>()
                             {
-                                new Uri("http://schema.org/DesktopWebPlatform"),
-                                new Uri("http://schema.org/IOSPlatform"),
-                                new Uri("http://schema.org/AndroidPlatform")
+                                new Uri("https://schema.org/DesktopWebPlatform"),
+                                new Uri("https://schema.org/IOSPlatform"),
+                                new Uri("https://schema.org/AndroidPlatform")
                             }
                         },
                         ExpectsAcceptanceOf = new Offer()
@@ -83,7 +83,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"Book\"," +
             "\"@id\":\"http://example.com/book/1\"," +
             "\"name\":\"The Catcher in the Rye\"," +
@@ -100,15 +100,15 @@ namespace Schema.NET.Test
                         "\"target\":{" +
                             "\"@type\":\"EntryPoint\"," +
                             "\"actionPlatform\":[" +
-                                "\"http://schema.org/DesktopWebPlatform\"," +
-                                "\"http://schema.org/IOSPlatform\"," +
-                                "\"http://schema.org/AndroidPlatform\"" +
+                                "\"https://schema.org/DesktopWebPlatform\"," +
+                                "\"https://schema.org/IOSPlatform\"," +
+                                "\"https://schema.org/AndroidPlatform\"" +
                             "]," +
                             "\"urlTemplate\":\"http://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true\"" +
                         "}," +
                         "\"expectsAcceptanceOf\":{" +
                             "\"@type\":\"Offer\"," +
-                            "\"availability\":\"http://schema.org/InStock\"," +
+                            "\"availability\":\"https://schema.org/InStock\"," +
                             "\"eligibleRegion\":{" +
                                 "\"@type\":\"Country\"," +
                                 "\"name\":\"US\"" +
@@ -118,7 +118,7 @@ namespace Schema.NET.Test
                         "}" +
                     "}," +
                     "\"bookEdition\":\"2nd Edition\"," +
-                    "\"bookFormat\":\"http://schema.org/Hardcover\"," +
+                    "\"bookFormat\":\"https://schema.org/Hardcover\"," +
                     "\"isbn\":\"031676948\"" +
                 "}," +
                 "{" +
@@ -128,15 +128,15 @@ namespace Schema.NET.Test
                         "\"target\":{" +
                             "\"@type\":\"EntryPoint\"," +
                             "\"actionPlatform\":[" +
-                                "\"http://schema.org/DesktopWebPlatform\"," +
-                                "\"http://schema.org/IOSPlatform\"," +
-                                "\"http://schema.org/AndroidPlatform\"" +
+                                "\"https://schema.org/DesktopWebPlatform\"," +
+                                "\"https://schema.org/IOSPlatform\"," +
+                                "\"https://schema.org/AndroidPlatform\"" +
                             "]," +
                             "\"urlTemplate\":\"http://www.barnesandnoble.com/store/info/offer/031676947?purchase=true\"" +
                         "}," +
                         "\"expectsAcceptanceOf\":{" +
                             "\"@type\":\"Offer\"," +
-                            "\"availability\":\"http://schema.org/InStock\"," +
+                            "\"availability\":\"https://schema.org/InStock\"," +
                             "\"eligibleRegion\":{" +
                                 "\"@type\":\"Country\"," +
                                 "\"name\":\"UK\"" +
@@ -146,7 +146,7 @@ namespace Schema.NET.Test
                         "}" +
                     "}," +
                     "\"bookEdition\":\"1st Edition\"," +
-                    "\"bookFormat\":\"http://schema.org/EBook\"," +
+                    "\"bookFormat\":\"https://schema.org/EBook\"," +
                     "\"isbn\":\"031676947\"" +
                 "}" +
             "]" +

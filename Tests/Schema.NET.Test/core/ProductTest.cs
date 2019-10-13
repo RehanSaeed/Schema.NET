@@ -41,7 +41,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"Product\"," +
             "\"name\":\"Executive Anvil\"," +
             "\"description\":\"Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveller looking for something to drop from a height.\"," +
@@ -58,8 +58,8 @@ namespace Schema.NET.Test
             "\"mpn\":\"925872\"," +
             "\"offers\":{" +
                 "\"@type\":\"Offer\"," +
-                "\"availability\":\"http://schema.org/InStock\"," +
-                "\"itemCondition\":\"http://schema.org/UsedCondition\"," +
+                "\"availability\":\"https://schema.org/InStock\"," +
+                "\"itemCondition\":\"https://schema.org/UsedCondition\"," +
                 "\"price\":119.99," +
                 "\"priceCurrency\":\"USD\"," +
                 "\"priceValidUntil\":\"2020-11-05\"," +

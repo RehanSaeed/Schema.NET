@@ -13,7 +13,7 @@ namespace Schema.NET
         /// Gets or sets the name.
         /// </summary>
         [DataMember(Name = "name", Order = 0)]
-        public string Name { get; set; } = "http://schema.org";
+        public string Name { get; set; } = "https://schema.org";
 
         /// <summary>
         /// Gets or sets the language.

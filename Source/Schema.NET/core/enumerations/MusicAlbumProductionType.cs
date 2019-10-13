@@ -13,55 +13,55 @@
         /// <summary>
         /// CompilationAlbum.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/CompilationAlbum")]
+        [EnumMember(Value = "https://schema.org/CompilationAlbum")]
         CompilationAlbum,
 
         /// <summary>
         /// DemoAlbum.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/DemoAlbum")]
+        [EnumMember(Value = "https://schema.org/DemoAlbum")]
         DemoAlbum,
 
         /// <summary>
         /// DJMixAlbum.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/DJMixAlbum")]
+        [EnumMember(Value = "https://schema.org/DJMixAlbum")]
         DJMixAlbum,
 
         /// <summary>
         /// LiveAlbum.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/LiveAlbum")]
+        [EnumMember(Value = "https://schema.org/LiveAlbum")]
         LiveAlbum,
 
         /// <summary>
         /// MixtapeAlbum.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/MixtapeAlbum")]
+        [EnumMember(Value = "https://schema.org/MixtapeAlbum")]
         MixtapeAlbum,
 
         /// <summary>
         /// RemixAlbum.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/RemixAlbum")]
+        [EnumMember(Value = "https://schema.org/RemixAlbum")]
         RemixAlbum,
 
         /// <summary>
         /// SoundtrackAlbum.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/SoundtrackAlbum")]
+        [EnumMember(Value = "https://schema.org/SoundtrackAlbum")]
         SoundtrackAlbum,
 
         /// <summary>
         /// SpokenWordAlbum.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/SpokenWordAlbum")]
+        [EnumMember(Value = "https://schema.org/SpokenWordAlbum")]
         SpokenWordAlbum,
 
         /// <summary>
         /// StudioAlbum.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/StudioAlbum")]
+        [EnumMember(Value = "https://schema.org/StudioAlbum")]
         StudioAlbum
     }
 }

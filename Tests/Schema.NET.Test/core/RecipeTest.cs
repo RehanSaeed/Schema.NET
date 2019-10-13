@@ -47,7 +47,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
             "{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"Recipe\"," +
             "\"name\":\"Grandma's Holiday Apple Pie\"," +
             "\"description\":\"This is my grandmother's apple pie recipe. I like to add a dash of nutmeg.\"," +

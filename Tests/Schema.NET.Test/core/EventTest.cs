@@ -60,7 +60,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"Event\"," +
             "\"name\":\"Jan Lieberman Concert Series: Journey in Jazz\"," +
             "\"description\":\"Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.\"," +
@@ -81,7 +81,7 @@ namespace Schema.NET.Test
                 "{" +
                     "\"@type\":\"Offer\"," +
                     "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
-                    "\"availability\":\"http://schema.org/InStock\"," +
+                    "\"availability\":\"https://schema.org/InStock\"," +
                     "\"price\":30.0," +
                     "\"priceCurrency\":\"USD\"," +
                     "\"validFrom\":\"2017-01-20T16:20:00-08:00\"" +

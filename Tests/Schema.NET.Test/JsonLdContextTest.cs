@@ -31,7 +31,7 @@ namespace Schema.NET.Test
 
         public static IEnumerable<object[]> ToStringContexts => new List<object[]>
         {
-            new object[] { new JsonLdContext(), "http://schema.org" },
+            new object[] { new JsonLdContext(), "https://schema.org" },
             new object[] { new JsonLdContext() { Name = "a" }, "a" },
         };
 

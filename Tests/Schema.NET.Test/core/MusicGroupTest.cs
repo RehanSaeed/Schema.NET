@@ -20,12 +20,12 @@ namespace Schema.NET.Test
 
         private readonly string json =
         "{" +
-            "\"@context\": \"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\": \"MusicGroup\"," +
             "\"name\": \"Radiohead\"," +
             "\"identifier\": \"4Z8W4fKeB5YxbusRsdQVPb\"," +
             "\"image\": {" +
-                "\"@context\": \"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\": \"ImageObject\"," +
                 "\"contentUrl\": \"https://i.scdn.co/image/afcd616e1ef2d2786f47b3b4a8a6aeea24a72adc\"" +
             "}," +

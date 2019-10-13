@@ -13,25 +13,25 @@
         /// <summary>
         /// AlbumRelease.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/AlbumRelease")]
+        [EnumMember(Value = "https://schema.org/AlbumRelease")]
         AlbumRelease,
 
         /// <summary>
         /// BroadcastRelease.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/BroadcastRelease")]
+        [EnumMember(Value = "https://schema.org/BroadcastRelease")]
         BroadcastRelease,
 
         /// <summary>
         /// EPRelease.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/EPRelease")]
+        [EnumMember(Value = "https://schema.org/EPRelease")]
         EPRelease,
 
         /// <summary>
         /// SingleRelease.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/SingleRelease")]
+        [EnumMember(Value = "https://schema.org/SingleRelease")]
         SingleRelease
     }
 }

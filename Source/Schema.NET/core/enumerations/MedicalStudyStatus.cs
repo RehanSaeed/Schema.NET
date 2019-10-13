@@ -13,61 +13,61 @@
         /// <summary>
         /// Active, but not recruiting new participants.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/ActiveNotRecruiting")]
+        [EnumMember(Value = "https://schema.org/ActiveNotRecruiting")]
         ActiveNotRecruiting,
 
         /// <summary>
         /// Completed.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Completed")]
+        [EnumMember(Value = "https://schema.org/Completed")]
         Completed,
 
         /// <summary>
         /// Enrolling participants by invitation only.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/EnrollingByInvitation")]
+        [EnumMember(Value = "https://schema.org/EnrollingByInvitation")]
         EnrollingByInvitation,
 
         /// <summary>
         /// Not yet recruiting.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/NotYetRecruiting")]
+        [EnumMember(Value = "https://schema.org/NotYetRecruiting")]
         NotYetRecruiting,
 
         /// <summary>
         /// Recruiting participants.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Recruiting")]
+        [EnumMember(Value = "https://schema.org/Recruiting")]
         Recruiting,
 
         /// <summary>
         /// Results are available.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/ResultsAvailable")]
+        [EnumMember(Value = "https://schema.org/ResultsAvailable")]
         ResultsAvailable,
 
         /// <summary>
         /// Results are not available.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/ResultsNotAvailable")]
+        [EnumMember(Value = "https://schema.org/ResultsNotAvailable")]
         ResultsNotAvailable,
 
         /// <summary>
         /// Suspended.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Suspended")]
+        [EnumMember(Value = "https://schema.org/Suspended")]
         Suspended,
 
         /// <summary>
         /// Terminated.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Terminated")]
+        [EnumMember(Value = "https://schema.org/Terminated")]
         Terminated,
 
         /// <summary>
         /// Withdrawn.
         /// </summary>
-        [EnumMember(Value = "http://schema.org/Withdrawn")]
+        [EnumMember(Value = "https://schema.org/Withdrawn")]
         Withdrawn
     }
 }

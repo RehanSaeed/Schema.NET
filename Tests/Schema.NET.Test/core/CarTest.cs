@@ -35,7 +35,7 @@ namespace Schema.NET.Test
 
         private readonly string json =
             "{" +
-                "\"@context\":\"http://schema.org\"," +
+                "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"Car\"," +
                 "\"name\":\"Volvo XC90\"," +
                 "\"description\":\"The XC90 is pure reflection of luxury that embodies Swedish design heritage. See everything this luxury SUV has to offer.\"," +
@@ -46,8 +46,8 @@ namespace Schema.NET.Test
                 "}," +
                 "\"offers\":{" +
                     "\"@type\":\"Offer\"," +
-                    "\"availability\":\"http://schema.org/InStock\"," +
-                    "\"itemCondition\":\"http://schema.org/NewCondition\"," +
+                    "\"availability\":\"https://schema.org/InStock\"," +
+                    "\"itemCondition\":\"https://schema.org/NewCondition\"," +
                     "\"price\":47200.0," +
                     "\"priceCurrency\":\"USD\"," +
                     "\"priceValidUntil\":\"2020-11-05\"," +
