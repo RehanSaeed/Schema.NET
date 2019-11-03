@@ -64,7 +64,7 @@ namespace Schema.NET
         /// <param name="items">The collection.</param>
         /// <returns>The new hash code.</returns>
         public static HashCode OfEach<T>(IEnumerable<T> items) =>
-            items == null ? new HashCode(0) : new HashCode(GetHashCode(items, 0));
+            items is null ? new HashCode(0) : new HashCode(GetHashCode(items, 0));
 
         /// <summary>
         /// Adds the hash code of the specified item.
@@ -82,7 +82,7 @@ namespace Schema.NET
         /// <returns>The new hash code.</returns>
         public HashCode AndEach<T>(IEnumerable<T> items)
         {
-            if (items == null)
+            if (items is null)
             {
                 return new HashCode(this.value);
             }

@@ -139,7 +139,7 @@ namespace Schema.NET.Tool
                 .Select(x => x.FullName)
                 .Where(x => x.EndsWith("Schema.NET.csproj", StringComparison.Ordinal))
                 .FirstOrDefault();
-            if (projectFilePath == null)
+            if (projectFilePath is null)
             {
                 return GetOutputDirectory(directory.Parent.FullName);
             }

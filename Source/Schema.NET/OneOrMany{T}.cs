@@ -33,7 +33,7 @@ namespace Schema.NET
         /// </summary>
         /// <param name="array">The array of values.</param>
         public OneOrMany(params T[] array)
-            : this(array == null ? null : new List<T>(array))
+            : this(array is null ? null : new List<T>(array))
         {
         }
 
@@ -42,7 +42,7 @@ namespace Schema.NET
         /// </summary>
         /// <param name="collection">The collection of values.</param>
         public OneOrMany(IEnumerable<T> collection)
-            : this(collection == null ? null : new List<T>(collection))
+            : this(collection is null ? null : new List<T>(collection))
         {
         }
 
@@ -52,7 +52,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         public OneOrMany(List<T> list)
         {
-            if (list == null)
+            if (list is null)
             {
                 throw new ArgumentNullException(nameof(list));
             }
@@ -93,7 +93,7 @@ namespace Schema.NET
         /// Gets a value indicating whether this instance has a single item value.
         /// </summary>
         /// <value><c>true</c> if this instance has a single item value; otherwise, <c>false</c>.</value>
-        public bool HasOne => this.collection == null && this.item != null;
+        public bool HasOne => this.collection is null && this.item != null;
 
         /// <summary>
         /// Gets a value indicating whether this instance has more than one value.

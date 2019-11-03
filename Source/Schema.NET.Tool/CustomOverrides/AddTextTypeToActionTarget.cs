@@ -9,7 +9,7 @@ namespace Schema.NET.Tool.CustomOverrides
     {
         public bool CanOverride(Class @class)
         {
-            if (@class == null)
+            if (@class is null)
             {
                 throw new ArgumentNullException(nameof(@class));
             }
@@ -19,7 +19,7 @@ namespace Schema.NET.Tool.CustomOverrides
 
         public void Override(Class @class)
         {
-            if (@class == null)
+            if (@class is null)
             {
                 throw new ArgumentNullException(nameof(@class));
             }

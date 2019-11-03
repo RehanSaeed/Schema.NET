@@ -7,7 +7,7 @@ namespace Schema.NET.Tool.CustomOverrides
     {
         public bool CanOverride(Enumeration enumeration)
         {
-            if (enumeration == null)
+            if (enumeration is null)
             {
                 throw new ArgumentNullException(nameof(enumeration));
             }
@@ -17,7 +17,7 @@ namespace Schema.NET.Tool.CustomOverrides
 
         public void Override(Enumeration enumeration)
         {
-            if (enumeration == null)
+            if (enumeration is null)
             {
                 throw new ArgumentNullException(nameof(enumeration));
             }

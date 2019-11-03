@@ -10,7 +10,7 @@ namespace Schema.NET.Tool
 
         public static void AppendIndent(this StringBuilder stringBuilder, int count)
         {
-            if (stringBuilder == null)
+            if (stringBuilder is null)
             {
                 throw new ArgumentNullException(nameof(stringBuilder));
             }
@@ -20,7 +20,7 @@ namespace Schema.NET.Tool
 
         public static void AppendIndent(this StringBuilder stringBuilder, int count, string value)
         {
-            if (stringBuilder == null)
+            if (stringBuilder is null)
             {
                 throw new ArgumentNullException(nameof(stringBuilder));
             }
@@ -31,7 +31,7 @@ namespace Schema.NET.Tool
 
         public static void AppendIndentLine(this StringBuilder stringBuilder, int count, string value)
         {
-            if (stringBuilder == null)
+            if (stringBuilder is null)
             {
                 throw new ArgumentNullException(nameof(stringBuilder));
             }
@@ -42,7 +42,7 @@ namespace Schema.NET.Tool
 
         public static void AppendCommentLine(this StringBuilder stringBuilder, int count, string value)
         {
-            if (stringBuilder == null)
+            if (stringBuilder is null)
             {
                 throw new ArgumentNullException(nameof(stringBuilder));
             }
@@ -62,7 +62,7 @@ namespace Schema.NET.Tool
 
         public static void AppendCommentSummary(this StringBuilder stringBuilder, int count, string value)
         {
-            if (stringBuilder == null)
+            if (stringBuilder is null)
             {
                 throw new ArgumentNullException(nameof(stringBuilder));
             }

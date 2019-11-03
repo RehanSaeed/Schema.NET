@@ -14,17 +14,17 @@ namespace Schema.NET.Tool.Repositories
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (reader == null)
+            if (reader is null)
             {
                 throw new ArgumentNullException(nameof(reader));
             }
 
-            if (objectType == null)
+            if (objectType is null)
             {
                 throw new ArgumentNullException(nameof(objectType));
             }
 
-            if (serializer == null)
+            if (serializer is null)
             {
                 throw new ArgumentNullException(nameof(serializer));
             }
@@ -45,7 +45,7 @@ namespace Schema.NET.Tool.Repositories
         private static SchemaObject Read(JToken token)
         {
             var commentToken = token["rdfs:comment"];
-            if (commentToken == null)
+            if (commentToken is null)
             {
                 return null;
             }
@@ -65,7 +65,7 @@ namespace Schema.NET.Tool.Repositories
             var rangeIncludes = GetTokenValues(token["http://schema.org/rangeIncludes"], "@id").ToList();
             var subClassOf = GetTokenValues(token["rdfs:subClassOf"], "@id").ToList();
             var isPartOf = GetTokenValues(token["http://schema.org/isPartOf"]).FirstOrDefault();
-            var layer = isPartOf == null ?
+            var layer = isPartOf is null ?
                 LayerName.Core :
                 isPartOf.Replace("http://", string.Empty, StringComparison.Ordinal).Replace(".schema.org", string.Empty, StringComparison.Ordinal);
 

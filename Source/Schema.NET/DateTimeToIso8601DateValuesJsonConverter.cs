@@ -20,12 +20,12 @@ namespace Schema.NET
         /// <param name="serializer">The JSON serializer.</param>
         public override void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (writer == null)
+            if (writer is null)
             {
                 throw new ArgumentNullException(nameof(writer));
             }
 
-            if (serializer == null)
+            if (serializer is null)
             {
                 throw new ArgumentNullException(nameof(serializer));
             }

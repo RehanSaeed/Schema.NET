@@ -96,7 +96,7 @@ namespace Schema.NET.Tool.Services
                     var className = string.Join("And", @class.Parents.Select(x => x.Name).OrderBy(x => x));
 
                     var combinedClass = classes.FirstOrDefault(x => string.Equals(x.Name, className, StringComparison.Ordinal));
-                    if (combinedClass == null)
+                    if (combinedClass is null)
                     {
                         var classDescription = "See " + string.Join(", ", @class.Parents.Select(x => x.Name).OrderBy(x => x)) + " for more information.";
                         var parents = @class.Parents.SelectMany(x => x.Parents).GroupBy(x => x.Name).Select(x => x.First()).ToList();
@@ -172,7 +172,7 @@ namespace Schema.NET.Tool.Services
                 foreach (var parentClassId in @class.Parents.Select(x => x.Id).Distinct().ToList())
                 {
                     var parentClass = classes.FirstOrDefault(x => x.Id == parentClassId);
-                    if (parentClass == null)
+                    if (parentClass is null)
                     {
                         throw new Exception("Check that a new primitive type has not been added.");
                     }
@@ -243,7 +243,7 @@ namespace Schema.NET.Tool.Services
                             var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty, StringComparison.Ordinal);
                             var propertyTypeClass = schemaClasses
                                 .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
-                            return propertyTypeClass == null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
+                            return propertyTypeClass is null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
                         })
                         .Select(y =>
                         {

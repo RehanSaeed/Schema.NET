@@ -41,17 +41,17 @@ namespace Schema.NET
             object existingValue,
             JsonSerializer serializer)
         {
-            if (reader == null)
+            if (reader is null)
             {
                 throw new ArgumentNullException(nameof(reader));
             }
 
-            if (objectType == null)
+            if (objectType is null)
             {
                 throw new ArgumentNullException(nameof(objectType));
             }
 
-            if (serializer == null)
+            if (serializer is null)
             {
                 throw new ArgumentNullException(nameof(serializer));
             }
@@ -169,17 +169,17 @@ namespace Schema.NET
         /// <param name="serializer">The JSON serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (writer == null)
+            if (writer is null)
             {
                 throw new ArgumentNullException(nameof(writer));
             }
 
-            if (value == null)
+            if (value is null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
-            if (serializer == null)
+            if (serializer is null)
             {
                 throw new ArgumentNullException(nameof(serializer));
             }
@@ -209,12 +209,12 @@ namespace Schema.NET
         /// <param name="serializer">The JSON serializer.</param>
         public virtual void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (writer == null)
+            if (writer is null)
             {
                 throw new ArgumentNullException(nameof(writer));
             }
 
-            if (serializer == null)
+            if (serializer is null)
             {
                 throw new ArgumentNullException(nameof(serializer));
             }
@@ -425,7 +425,7 @@ namespace Schema.NET
                 }
 
                 // REVIEW: If argument still not assigned, only use ToObject if not casting primitive to interface or class
-                if (args == null)
+                if (args is null)
                 {
                     if (!type.GetTypeInfo().IsInterface && !type.GetTypeInfo().IsClass)
                     {
@@ -461,7 +461,7 @@ namespace Schema.NET
             var list = Activator.CreateInstance(listType);
             var i = 0;
 
-            if (count == null)
+            if (count is null)
             {
                 // if maximum item count not assigned, set to count of child tokens
                 count = token.Children().Count();

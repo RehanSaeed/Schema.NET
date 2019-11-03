@@ -18,12 +18,12 @@ namespace Schema.NET.Tool.Services
 
         public int Compare(string x, string y)
         {
-            if (x == null)
+            if (x is null)
             {
                 throw new ArgumentNullException(nameof(x));
             }
 
-            if (y == null)
+            if (y is null)
             {
                 throw new ArgumentNullException(nameof(y));
             }

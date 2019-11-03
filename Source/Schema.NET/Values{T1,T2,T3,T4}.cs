@@ -96,7 +96,7 @@ namespace Schema.NET
         /// <param name="items">The items.</param>
         public Values(IEnumerable<object> items)
         {
-            if (items == null)
+            if (items is null)
             {
                 throw new ArgumentNullException(nameof(items));
             }
