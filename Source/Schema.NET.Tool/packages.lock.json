@@ -4,14 +4,14 @@
     ".NETCoreApp,Version=v3.0": {
       "Microsoft.CodeAnalysis.FxCopAnalyzers": {
         "type": "Direct",
-        "requested": "[2.9.6, )",
-        "resolved": "2.9.6",
-        "contentHash": "GBZV6P8u3uIXYrlapvbpaaaB5LpF3hk+I2ThIcoVyENr8krNOovFyJhi6FQHgnxd0XLPj9J9Nt35iuqwVe/XJw==",
+        "requested": "[2.9.7, )",
+        "resolved": "2.9.7",
+        "contentHash": "/WbA9NXJmd7LW4ERe1v9YVRlpp0nnEMV5ne0ydnKT3/RMLzTt9AZjghuL6u3eSclyhcSI/mW/B4uPv2cAr4PXg==",
         "dependencies": {
-          "Microsoft.CodeAnalysis.VersionCheckAnalyzer": "[2.9.6]",
-          "Microsoft.CodeQuality.Analyzers": "[2.9.6]",
-          "Microsoft.NetCore.Analyzers": "[2.9.6]",
-          "Microsoft.NetFramework.Analyzers": "[2.9.6]"
+          "Microsoft.CodeAnalysis.VersionCheckAnalyzer": "[2.9.7]",
+          "Microsoft.CodeQuality.Analyzers": "[2.9.7]",
+          "Microsoft.NetCore.Analyzers": "[2.9.7]",
+          "Microsoft.NetFramework.Analyzers": "[2.9.7]"
         }
       },
       "Microsoft.VisualStudio.Threading.Analyzers": {
@@ -34,23 +34,23 @@
       },
       "Microsoft.CodeAnalysis.VersionCheckAnalyzer": {
         "type": "Transitive",
-        "resolved": "2.9.6",
-        "contentHash": "Q5rRN0+9TJsfsXaGKnzDjGkUZ4Rd8ZKmpSND1j49jsmLacCspp4ZaJ31nJn76B/W0qrb4GkEBxKtj3U9lo2gqg=="
+        "resolved": "2.9.7",
+        "contentHash": "ePzHjOnn2EJCYubovr+lVPfkOx7yXjF9pNzE2TSZgAAC4zE4fNAL2HU/f+AoJWP0oQH1hohkApwfZPS+I82ynQ=="
       },
       "Microsoft.CodeQuality.Analyzers": {
         "type": "Transitive",
-        "resolved": "2.9.6",
-        "contentHash": "jND04w/FPgfBYKkLLnosmvgHs8NMpMvQ7LQqyiCjMlKOM+MT6edgvTU0vAAowxGuLGceC6pjJm0kUVkG9qT3CQ=="
+        "resolved": "2.9.7",
+        "contentHash": "gl+jYeGvFxET/FUL/gNMKMxb3/p3NKUofBpGS+wYna8Jphbm2Tx6DDZaqPcpcNpabZKzPAvezzmtW7EILTbZtA=="
       },
       "Microsoft.NetCore.Analyzers": {
         "type": "Transitive",
-        "resolved": "2.9.6",
-        "contentHash": "YPcQ+gCt66btt9jNHNi4vrRK6AAP7EIO17quwUeHLUw7vhc6q18r2RYVTLKQvOQuOXs1UEYHArENpppwFP4MLA=="
+        "resolved": "2.9.7",
+        "contentHash": "NYQOi5n+36rVuh+Yh6UabkzH5lNaji+OIArnzbY1jUp+u2CL9A7DatJGrh7u/VOZJICVFR3UgVKobm0CLbIcRg=="
       },
       "Microsoft.NetFramework.Analyzers": {
         "type": "Transitive",
-        "resolved": "2.9.6",
-        "contentHash": "8VyWe53rtUkgJFAkbCZY5KT2t1tEmRrdK1Z+zbyRlzoKVEHyMs0+WNBeJ8d2YB/NjXaYAlaVG2CGZFnQUrwY6A=="
+        "resolved": "2.9.7",
+        "contentHash": "sC+Vt/m60axfe0jr8K3iXMXSwNhCp8jMJyn8gRMo9HDg2Nr7PpVGcNxqIt1rRbRiE6Lwqp8lo8AlFekHxvUCOg=="
       }
     }
   }
