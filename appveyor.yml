@@ -20,8 +20,17 @@ environment:
   # Disable sending usage data to Microsoft
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
-cache:
-  - '%USERPROFILE%\.nuget\packages -> **/packages.lock.json'
+for:
+- matrix:
+    only:
+      - image: Ubuntu
+  cache:
+    - '~/.nuget/packages -> **/packages.lock.json'
+- matrix:
+    only:
+      - image: Visual Studio 2019
+  cache:
+    - '%USERPROFILE%/.nuget/packages -> **/packages.lock.json'
 
 build_script:
 - sh: sudo apt update

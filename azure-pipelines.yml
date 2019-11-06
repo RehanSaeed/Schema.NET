@@ -40,11 +40,11 @@ stages:
       inputs:
         packageType: 'sdk'
         version: '3.0.100'
-    - task: CacheBeta@0
-      displayName: Cache NuGet packages
-      inputs:
-        key: nuget | **/packages.lock.json
-        path: $(Pipeline.Workspace)/.nuget/packages
+    # - task: CacheBeta@0
+    #   displayName: Cache NuGet packages
+    #   inputs:
+    #     key: nuget | **/packages.lock.json
+    #     path: $(Pipeline.Workspace)/.nuget/packages
     - script: 'dotnet tool install --global Cake.Tool'
       displayName: 'Install Cake Tool'
       failOnStderr: true
