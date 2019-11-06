@@ -20,6 +20,9 @@ environment:
   # Disable sending usage data to Microsoft
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
+cache:
+  - '%USERPROFILE%\.nuget\packages -> **/packages.lock.json'
+
 build_script:
 - sh: sudo apt update
 - sh: sudo apt install -y apt-transport-https dotnet-sdk-3.0
