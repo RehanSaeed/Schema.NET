@@ -74,11 +74,11 @@ namespace Schema.NET
                 if (tokenType == JsonToken.StartArray)
                 {
                     var unwrappedType = type.GetUnderlyingTypeFromNullable();
-                    argument = ReadJsonArray(token, unwrappedType);
+                    argument = ReadJsonArray(token, unwrappedType, serializer);
                 }
                 else
                 {
-                    argument = ParseTokenArguments(token, tokenType, type, value);
+                    argument = ParseTokenArguments(token, tokenType, type, value, serializer);
                 }
             }
             else
@@ -92,7 +92,7 @@ namespace Schema.NET
                         var type = mainType.GenericTypeArguments[i];
                         var unwrappedType = type.GetUnderlyingTypeFromNullable();
                         // only read as many items as there are tokens left
-                        var args = ReadJsonArray(token, unwrappedType, count - total);
+                        var args = ReadJsonArray(token, unwrappedType, serializer, count - total);
 
                         if (args != null && args.Count > 0)
                         {
@@ -120,7 +120,7 @@ namespace Schema.NET
 
                         try
                         {
-                            var args = ParseTokenArguments(token, tokenType, type, value);
+                            var args = ParseTokenArguments(token, tokenType, type, value, serializer);
 
                             if (args != null)
                             {
@@ -222,7 +222,7 @@ namespace Schema.NET
             serializer.Serialize(writer, value);
         }
 
-        private static object ParseTokenArguments(JToken token, JsonToken tokenType, Type type, object value)
+        private static object ParseTokenArguments(JToken token, JsonToken tokenType, Type type, object value, JsonSerializer serializer)
         {
             const string SCHEMA_ORG = "http://schema.org/";
             const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
@@ -241,42 +241,42 @@ namespace Schema.NET
             {
                 if (tokenType == JsonToken.StartObject)
                 {
-                    args = ParseTokenObjectArguments(token, type, unwrappedType);
+                    args = ParseTokenObjectArguments(token, type, unwrappedType, serializer);
                 }
                 else
                 {
-                    args = ParseTokenValueArguments(token, tokenType, type, unwrappedType, value);
+                    args = ParseTokenValueArguments(token, tokenType, type, unwrappedType, value, serializer);
                 }
             }
 
             return args;
         }
 
-        private static object ParseTokenObjectArguments(JToken token, Type type, Type unwrappedType)
+        private static object ParseTokenObjectArguments(JToken token, Type type, Type unwrappedType, JsonSerializer serializer)
         {
             object args = null;
             var typeName = GetTypeNameFromToken(token);
             if (string.IsNullOrEmpty(typeName))
             {
-                args = token.ToObject(unwrappedType);
+                args = token.ToObject(unwrappedType, serializer);
             }
             else if (typeName == type.Name)
             {
-                args = token.ToObject(type);
+                args = token.ToObject(type, serializer);
             }
             else
             {
                 var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
                 if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
                 {
-                    args = token.ToObject(builtType);
+                    args = token.ToObject(builtType, serializer);
                 }
             }
 
             return args;
         }
 
-        private static object ParseTokenValueArguments(JToken token, JsonToken tokenType, Type type, Type unwrappedType, object value)
+        private static object ParseTokenValueArguments(JToken token, JsonToken tokenType, Type type, Type unwrappedType, object value, JsonSerializer serializer)
         {
             object args = null;
             if (unwrappedType.IsPrimitiveType())
@@ -429,7 +429,7 @@ namespace Schema.NET
                 {
                     if (!type.GetTypeInfo().IsInterface && !type.GetTypeInfo().IsClass)
                     {
-                        args = token.ToObject(classType); // This is expected to throw on some case
+                        args = token.ToObject(classType, serializer); // This is expected to throw on some case
                     }
                 }
             }
@@ -454,7 +454,7 @@ namespace Schema.NET
             return type;
         }
 
-        private static IList ReadJsonArray(JToken token, Type type, int? count = null)
+        private static IList ReadJsonArray(JToken token, Type type, JsonSerializer serializer, int? count = null)
         {
             var classType = ToClass(type);
             var listType = typeof(List<>).MakeGenericType(type); // always read into list of interfaces
@@ -472,7 +472,7 @@ namespace Schema.NET
                 var typeName = GetTypeNameFromToken(childToken);
                 if (string.IsNullOrEmpty(typeName))
                 {
-                    var child = childToken.ToObject(classType);
+                    var child = childToken.ToObject(classType, serializer);
                     var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
 
                     if (method != null)
@@ -487,7 +487,7 @@ namespace Schema.NET
                     var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
                     if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
                     {
-                        var child = (Thing)childToken.ToObject(builtType);
+                        var child = (Thing)childToken.ToObject(builtType, serializer);
                         var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
 
                         if (method != null)
