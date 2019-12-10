@@ -55,6 +55,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{0555
 		.github\SECURITY.md = .github\SECURITY.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmarks", "Benchmarks", "{E25F6292-80CE-45FE-97B0-0EBBF8E1FC6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.NET.Benchmarks", "Benchmarks\Schema.NET.Benchmarks\Schema.NET.Benchmarks.csproj", "{EA1CBFC3-F165-4811-AA9F-157DEB8E31CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,10 @@ Global
 		{3E75002C-0EF2-4F04-8EC6-CED90BA27AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E75002C-0EF2-4F04-8EC6-CED90BA27AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E75002C-0EF2-4F04-8EC6-CED90BA27AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA1CBFC3-F165-4811-AA9F-157DEB8E31CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA1CBFC3-F165-4811-AA9F-157DEB8E31CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA1CBFC3-F165-4811-AA9F-157DEB8E31CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA1CBFC3-F165-4811-AA9F-157DEB8E31CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +91,7 @@ Global
 		{3E75002C-0EF2-4F04-8EC6-CED90BA27AD1} = {E1B24F25-B8A4-46EE-B7EB-7803DCFC543F}
 		{566DF0E2-1288-4083-9B55-4C8B69BB1432} = {0555C737-CE4B-4C78-87AB-6296E1E32D01}
 		{0555C737-CE4B-4C78-87AB-6296E1E32D01} = {7EDFA103-DB69-4C88-9DE4-97ADBF8253A1}
+		{EA1CBFC3-F165-4811-AA9F-157DEB8E31CC} = {E25F6292-80CE-45FE-97B0-0EBBF8E1FC6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {73F36209-F8D6-4066-8951-D97729F773CF}
