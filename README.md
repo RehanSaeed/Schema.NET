@@ -163,6 +163,7 @@ For more examples and actual running code samples, take a look at the unit tests
 
 Please view the [contributing guide](/.github/CONTRIBUTING.md) for more information.
 
+- [Turnerj](https://github.com/Turnerj) - Added `System.Text.Json` support, extra unit tests and bug fixes.
 - [shervinw](https://github.com/shervinw) - Added better null value handling for structs.
 - [kirk-marple](https://github.com/kirk-marple) - Refactoring JSON serialization to be more efficient.
 - [nickevansuk](https://github.com/nickevansuk) - Adding better null value handling and use HTTPS instead of HTTP.
