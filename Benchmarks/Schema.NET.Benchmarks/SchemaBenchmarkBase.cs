@@ -5,8 +5,15 @@ namespace Schema.NET.Benchmarks
     using BenchmarkDotNet.Jobs;
     using Newtonsoft.Json;
 
-    [SimpleJob(RuntimeMoniker.NetCoreApp30)]
+    [KeepBenchmarkFiles]
     [MemoryDiagnoser]
+    [MinColumn]
+    [MaxColumn]
+    [HtmlExporter]
+    [CsvMeasurementsExporter]
+    [RPlotExporter]
+    [SimpleJob(RuntimeMoniker.Net472)]
+    [SimpleJob(RuntimeMoniker.NetCoreApp30)]
     public abstract class SchemaBenchmarkBase
     {
         protected Thing Thing { get; set; }
