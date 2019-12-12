@@ -406,7 +406,7 @@ namespace Schema.NET.Test
         [Fact]
         public void GetHashCode_Value2Passed_ReturnsMatchingHashCode() =>
             Assert.Equal(
-                CombineHashCodes(CombineHashCodes("Foo".GetHashCode(), 0), 0),
+                CombineHashCodes(CombineHashCodes("Foo".GetHashCode(StringComparison.Ordinal), 0), 0),
                 new Values<int, string, DayOfWeek?, Person>("Foo").GetHashCode());
 
         [Fact]

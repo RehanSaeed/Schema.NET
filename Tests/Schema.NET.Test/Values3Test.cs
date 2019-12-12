@@ -301,7 +301,7 @@ namespace Schema.NET.Test
         [Fact]
         public void GetHashCode_Value2Passed_ReturnsMatchingHashCode() =>
             Assert.Equal(
-                CombineHashCodes("Foo".GetHashCode(), 0),
+                CombineHashCodes("Foo".GetHashCode(StringComparison.Ordinal), 0),
                 new Values<int, string, DayOfWeek?>("Foo").GetHashCode());
 
         [Fact]

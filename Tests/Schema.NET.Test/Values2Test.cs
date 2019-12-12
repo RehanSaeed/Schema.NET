@@ -206,7 +206,7 @@ namespace Schema.NET.Test
 
         [Fact]
         public void GetHashCode_Value2Passed_ReturnsMatchingHashCode() =>
-            Assert.Equal("Foo".GetHashCode(), new Values<int, string>("Foo").GetHashCode());
+            Assert.Equal("Foo".GetHashCode(StringComparison.Ordinal), new Values<int, string>("Foo").GetHashCode());
 
         [Fact]
         public void GetHashCode_Value1And2Passed_ReturnsMatchingHashCode() =>

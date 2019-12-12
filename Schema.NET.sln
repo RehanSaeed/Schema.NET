@@ -28,6 +28,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E1B24F25-B8A4-46EE-B7EB-7803DCFC543F}"
+	ProjectSection(SolutionItems) = preProject
+		Tests\.editorconfig = Tests\.editorconfig
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schema.NET.Test", "Tests\Schema.NET.Test\Schema.NET.Test.csproj", "{3E75002C-0EF2-4F04-8EC6-CED90BA27AD1}"
 EndProject
@@ -57,7 +60,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{0555
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmarks", "Benchmarks", "{E25F6292-80CE-45FE-97B0-0EBBF8E1FC6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.NET.Benchmarks", "Benchmarks\Schema.NET.Benchmarks\Schema.NET.Benchmarks.csproj", "{EA1CBFC3-F165-4811-AA9F-157DEB8E31CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schema.NET.Benchmarks", "Benchmarks\Schema.NET.Benchmarks\Schema.NET.Benchmarks.csproj", "{EA1CBFC3-F165-4811-AA9F-157DEB8E31CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

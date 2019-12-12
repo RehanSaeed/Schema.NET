@@ -30,7 +30,7 @@ namespace Schema.NET.Benchmarks
 
         protected void ConfigureBenchmark(Thing thing)
         {
-            this.Thing = thing;
+            this.Thing = thing ?? throw new ArgumentNullException(nameof(thing));
             this.ThingType = this.Thing.GetType();
             this.SerializedThing = this.Thing.ToString();
         }

@@ -66,6 +66,9 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void Deserializing_OrganizationJsonLd_WithHttpSchemaOrg_ReturnsOrganization() => Assert.Equal(this.organization.ToString().Replace("\"@context\":\"https://schema.org\"", "\"@context\":\"http://schema.org\""), JsonConvert.DeserializeObject<Organization>(this.jsonHttp, TestDefaults.DefaultJsonSerializerSettings).ToString());
+        public void Deserializing_OrganizationJsonLd_WithHttpSchemaOrg_ReturnsOrganization() =>
+            Assert.Equal(
+                this.organization.ToString().Replace("\"@context\":\"https://schema.org\"", "\"@context\":\"http://schema.org\"", StringComparison.Ordinal),
+                JsonConvert.DeserializeObject<Organization>(this.jsonHttp, TestDefaults.DefaultJsonSerializerSettings).ToString());
     }
 }

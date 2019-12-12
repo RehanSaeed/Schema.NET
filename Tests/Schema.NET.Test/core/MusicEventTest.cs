@@ -2,6 +2,7 @@ namespace Schema.NET.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using Newtonsoft.Json;
     using Xunit;
 
@@ -20,8 +21,8 @@ namespace Schema.NET.Test
             Offers = new Offer() // Recommended
             {
                 Url = new Uri("https://www.ticketmaster.com/arash-tohi-hollywood-california-06-22-2019/event/09005690F1865104"), // Recommended
-                AvailabilityStarts = DateTimeOffset.Parse("2019-04-24T21:00:00-07:00"), // Recommended
-                AvailabilityEnds = DateTimeOffset.Parse("2019-06-23T01:00:00-07:00"), // Recommended
+                AvailabilityStarts = DateTimeOffset.Parse("2019-04-24T21:00:00-07:00", CultureInfo.InvariantCulture), // Recommended
+                AvailabilityEnds = DateTimeOffset.Parse("2019-06-23T01:00:00-07:00", CultureInfo.InvariantCulture), // Recommended
                 PriceSpecification = new PriceSpecification() // Recommended
                 {
                     MinPrice = 80, // Recommended
@@ -42,7 +43,7 @@ namespace Schema.NET.Test
                     Identifier = "K8vZ917bA70" // Recommended
                 }
             },
-            StartDate = DateTimeOffset.Parse("2019-06-23T03:00:00-07:00") // Recommended
+            StartDate = DateTimeOffset.Parse("2019-06-23T03:00:00-07:00", CultureInfo.InvariantCulture) // Recommended
         };
 
         private readonly string json =

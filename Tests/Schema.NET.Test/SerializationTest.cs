@@ -76,7 +76,7 @@ namespace Schema.NET.Test
         [Fact]
         public void ToStringWithCustomSerializerSettings_UnsafeAuthorData_ReturnsExpectedJsonLd() =>
             Assert.Equal(
-                JsonCustom.Replace("\r\n", Environment.NewLine),
+                JsonCustom.Replace("\r\n", Environment.NewLine, StringComparison.Ordinal),
                 Person.ToString(this.customSerializerSettings));
 
         [Fact]
