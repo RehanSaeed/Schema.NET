@@ -19,7 +19,8 @@ namespace Schema.NET
                 new StringEnumConverter()
             },
             DefaultValueHandling = DefaultValueHandling.Ignore,
-            NullValueHandling = NullValueHandling.Ignore
+            NullValueHandling = NullValueHandling.Ignore,
+            DateParseHandling = DateParseHandling.DateTimeOffset
         };
 
         /// <summary>
@@ -34,8 +35,35 @@ namespace Schema.NET
             },
             DefaultValueHandling = DefaultValueHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
+            DateParseHandling = DateParseHandling.DateTimeOffset,
             StringEscapeHandling = StringEscapeHandling.EscapeHtml
         };
+        
+        
+        /// <summary>
+        /// Serializer settings used when deserializing.
+        /// </summary>
+        private static readonly JsonSerializerSettings DeserializerSettings = new JsonSerializerSettings()
+        {
+            Converters = new List<JsonConverter>()
+            {
+                new StringEnumConverter()
+            },
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore,
+            DateParseHandling = DateParseHandling.DateTimeOffset,
+            // The ASP.NET MVC framework defaults to 32 (so 32 levels deep in the JSON structure)
+            // to prevent stack overflow caused by malicious complex JSON requests.
+            MaxDepth = 32
+        };
+
+        /// <summary>
+        /// Returns a strongly typed model of the JSON-LD representation provided.
+        /// </summary>
+        /// <typeparam name="T">Type of schema.org object to deserialize (can use Thing for any)</typeparam>
+        /// <param name="str">JSON string</param>
+        /// <returns>Strongly typed schema.org model</returns>
+        public static T Deserialize<T>(string str) => JsonConvert.DeserializeObject<T>(str, DeserializerSettings);
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
