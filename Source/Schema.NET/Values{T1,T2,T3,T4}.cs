@@ -101,10 +101,30 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(items));
             }
 
-            var items1 = items.OfType<T1>().Concat(items.OfType<OneOrMany<T1>>().SelectMany(x => x)).ToList();
-            var items2 = items.OfType<T2>().Concat(items.OfType<OneOrMany<T2>>().SelectMany(x => x)).ToList();
-            var items3 = items.OfType<T3>().Concat(items.OfType<OneOrMany<T3>>().SelectMany(x => x)).ToList();
-            var items4 = items.OfType<T4>().Concat(items.OfType<OneOrMany<T4>>().SelectMany(x => x)).ToList();
+            var items1 = new List<T1>();
+            var items2 = new List<T2>();
+            var items3 = new List<T3>();
+            var items4 = new List<T4>();
+
+            foreach (var item in items)
+            {
+                if (item is T4 itemT4)
+                {
+                    items4.Add(itemT4);
+                }
+                else if (item is T3 itemT3)
+                {
+                    items3.Add(itemT3);
+                }
+                else if (item is T2 itemT2)
+                {
+                    items2.Add(itemT2);
+                }
+                else if (item is T1 itemT1)
+                {
+                    items1.Add(itemT1);
+                }
+            }
 
             this.HasValue1 = items1.Count > 0;
             this.HasValue2 = items2.Count > 0;

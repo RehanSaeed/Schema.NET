@@ -251,7 +251,13 @@ namespace Schema.NET.Test
                 "}" +
             "}";
             var result = this.DeserializeObject<Values<string, IBook>>(json);
-            Assert.Empty(result.Value2);
+            var actual = result.Value2.First();
+
+            Assert.Equal(new Uri("http://example.com/book/1"), ((Book)actual).Id);
+            Assert.Equal("The Catcher in the Rye", actual.Name);
+            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            var author = Assert.Single(actual.Author.Value2);
+            Assert.Equal("J.D. Salinger", author.Name);
         }
 
         [Fact]
@@ -311,7 +317,7 @@ namespace Schema.NET.Test
             Assert.Equal(new[] { "A", "B" }, result.Value2);
         }
 
-        [Fact(Skip = "The ordering of the types shouldn't matter - this should be fixed")]
+        [Fact]
         public void ReadJson_Values_MultiValue_SameType_ArgumentsSwapped()
         {
             var json = "{\"Property\":[\"A\",\"B\"]}";
@@ -319,7 +325,7 @@ namespace Schema.NET.Test
             Assert.Equal(new[] { "A", "B" }, result.Value1);
         }
 
-        [Fact(Skip = "Mixed types doesn't work - this should be fixed")]
+        [Fact]
         public void ReadJson_Values_MultiValue_MixedType()
         {
             var json = "{\"Property\":[1,\"B\"]}";
@@ -328,7 +334,7 @@ namespace Schema.NET.Test
             Assert.Equal(new[] { "B" }, result.Value2);
         }
 
-        [Fact(Skip = "An array of nullable primitive values isn't handled properly, passed as non-primitive to OneOrMany constructor - this needs to be fixed")]
+        [Fact]
         public void ReadJson_Values_MultiValue_NullablePrimitiveAsString()
         {
             var json = "{\"Property\":[\"123\",\"456\"]}";
@@ -403,7 +409,7 @@ namespace Schema.NET.Test
             Assert.Equal(123, result.First());
         }
 
-        [Fact(Skip = "An array of nullable primitive values isn't handled properly, passed as non-primitive to OneOrMany constructor - this needs to be fixed")]
+        [Fact]
         public void ReadJson_OneOrMany_MultiValue_NullablePrimitiveAsString()
         {
             var json = "{\"Property\":[\"123\",\"456\"]}";

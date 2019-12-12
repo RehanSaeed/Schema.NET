@@ -16,7 +16,24 @@ namespace Schema.NET
     /// <seealso cref="JsonConverter" />
     public class ValuesJsonConverter : JsonConverter
     {
-        private const string NamespacePrefix = "Schema.NET.";
+        private static readonly Dictionary<string, TypeInfo> ThingTypeLookup = new Dictionary<string, TypeInfo>();
+
+        private static readonly MethodInfo CastMethodBase = typeof(Enumerable).GetTypeInfo().GetDeclaredMethod(nameof(Enumerable.Cast));
+
+        static ValuesJsonConverter()
+        {
+            var iThingTypeInfo = typeof(IThing).GetTypeInfo();
+            var thisAssembly = iThingTypeInfo.Assembly;
+
+            foreach (var type in thisAssembly.ExportedTypes)
+            {
+                var typeInfo = type.GetTypeInfo();
+                if (iThingTypeInfo.IsAssignableFrom(typeInfo))
+                {
+                    ThingTypeLookup.Add(type.Name, typeInfo);
+                }
+            }
+        }
 
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
@@ -56,109 +73,37 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(serializer));
             }
 
-            var mainType = objectType.GetUnderlyingTypeFromNullable();
-
-            object argument = null;
-
-            var tokenType = reader.TokenType;
-            var value = reader.Value;
-
             var token = JToken.Load(reader);
-            var count = token.Children().Count();
+            var items = new List<object>();
 
-#pragma warning disable CA1062 // Validate arguments of public methods
-            if (mainType.GenericTypeArguments.Length == 1)
-#pragma warning restore CA1062 // Validate arguments of public methods
+            if (token.Type == JTokenType.Array)
             {
-                var type = mainType.GenericTypeArguments[0];
-                if (tokenType == JsonToken.StartArray)
+                foreach (var childToken in token.Children())
                 {
-                    var unwrappedType = type.GetUnderlyingTypeFromNullable();
-                    argument = ReadJsonArray(token, unwrappedType, serializer);
-                }
-                else
-                {
-                    argument = ParseTokenArguments(token, tokenType, type, value, serializer);
+                    var item = ProcessToken(childToken, objectType.GenericTypeArguments, serializer);
+                    items.Add(item);
                 }
             }
             else
             {
-                if (tokenType == JsonToken.StartArray)
-                {
-                    var total = 0;
-                    var items = new List<object>();
-                    for (var i = mainType.GenericTypeArguments.Length - 1; i >= 0; i--)
-                    {
-                        var type = mainType.GenericTypeArguments[i];
-                        var unwrappedType = type.GetUnderlyingTypeFromNullable();
-                        // only read as many items as there are tokens left
-                        var args = ReadJsonArray(token, unwrappedType, serializer, count - total);
-
-                        if (args != null && args.Count > 0)
-                        {
-                            var genericType = typeof(OneOrMany<>).MakeGenericType(type);
-                            var item = (IValues)Activator.CreateInstance(genericType, args);
-                            items.Add(item);
-
-                            total += args.Count;
-
-                            if (total >= count)
-                            {
-                                // if we have deserialized enough items as there are tokens, break
-                                break;
-                            }
-                        }
-                    }
-
-                    argument = items;
-                }
-                else
-                {
-                    for (var i = mainType.GenericTypeArguments.Length - 1; i >= 0; i--)
-                    {
-                        var type = mainType.GenericTypeArguments[i];
-
-                        try
-                        {
-                            var args = ParseTokenArguments(token, tokenType, type, value, serializer);
-
-                            if (args != null)
-                            {
-                                var genericType = typeof(OneOrMany<>).MakeGenericType(type);
-                                argument = Activator.CreateInstance(genericType, args);
-                            }
-                        }
-#pragma warning disable CA1031 // Do not catch general exception types
-                        catch (Exception e)
-                        {
-                            // Nasty, but we're trying brute force as a last resort, to
-                            // see which type has the right constructor for this value
-                            Debug.WriteLine(e);
-                        }
-#pragma warning restore CA1031 // Do not catch general exception types
-
-                        if (argument != null)
-                        {
-                            // return first valid argument, going from right to left in generic type arguments
-                            break;
-                        }
-                    }
-                }
+                var item = ProcessToken(token, objectType.GenericTypeArguments, serializer);
+                items.Add(item);
             }
 
-            object instance = null;
-            try
+            IEnumerable argument;
+            if (objectType.GetGenericTypeDefinition() == typeof(OneOrMany<>))
             {
-                instance = Activator.CreateInstance(mainType, argument);
+                // OneOrMany<T> requires `IEnumerable<T>` as a constructor argument
+                var castType = objectType.GenericTypeArguments[0];
+                argument = (IEnumerable)CastMethodBase.MakeGenericMethod(castType).Invoke(null, new object[] { items });
             }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
+            else
             {
-                Debug.WriteLine(e);
+                // Values<> support `IEnumerable<object>` as a constructor argument
+                argument = items;
             }
-#pragma warning restore CA1031 // Do not catch general exception types
 
-            return instance;
+            return Activator.CreateInstance(objectType, argument);
         }
 
         /// <summary>
@@ -222,296 +167,189 @@ namespace Schema.NET
             serializer.Serialize(writer, value);
         }
 
-        private static object ParseTokenArguments(JToken token, JsonToken tokenType, Type type, object value, JsonSerializer serializer)
+        private static object ProcessToken(JToken token, Type[] targetTypes, JsonSerializer serializer)
         {
-            const string SCHEMA_ORG = "http://schema.org/";
-            const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
-            const string SCHEMA_ORG_HTTPS = "https://schema.org/";
-            const int SCHEMA_ORG_HTTPS_LENGTH = 19; // equivalent to "https://schema.org/".Length
-            object args;
-            var unwrappedType = type.GetUnderlyingTypeFromNullable();
-            if (unwrappedType.GetTypeInfo().IsEnum)
+            if (token.Type == JTokenType.Object)
             {
-                var en = token.ToString();
-                var enumString = en.Contains(SCHEMA_ORG) ? en.Substring(SCHEMA_ORG_LENGTH) :
-                    en.Contains(SCHEMA_ORG_HTTPS) ? en.Substring(SCHEMA_ORG_HTTPS_LENGTH) : en;
-                args = Enum.Parse(unwrappedType, enumString);
-            }
-            else
-            {
-                if (tokenType == JsonToken.StartObject)
+                var explicitTypeFromToken = token.SelectToken("@type")?.ToString();
+                if (!string.IsNullOrEmpty(explicitTypeFromToken) && ThingTypeLookup.TryGetValue(explicitTypeFromToken, out var explicitType))
                 {
-                    args = ParseTokenObjectArguments(token, type, unwrappedType, serializer);
-                }
-                else
-                {
-                    args = ParseTokenValueArguments(token, tokenType, type, unwrappedType, value, serializer);
+                    for (var i = 0; i < targetTypes.Length; i++)
+                    {
+                        var targetTypeInfo = targetTypes[i].GetTypeInfo();
+                        if (targetTypeInfo.IsAssignableFrom(explicitType))
+                        {
+                            return token.ToObject(explicitType.AsType(), serializer);
+                        }
+                    }
                 }
             }
 
-            return args;
+            for (var i = targetTypes.Length - 1; i >= 0; i--)
+            {
+                var underlyingTargetType = targetTypes[i].GetUnderlyingTypeFromNullable();
+                if (TryProcessTokenAsType(token, underlyingTargetType, serializer, out var value))
+                {
+                    return value;
+                }
+            }
+
+            return null;
         }
 
-        private static object ParseTokenObjectArguments(JToken token, Type type, Type unwrappedType, JsonSerializer serializer)
+        private static bool TryProcessTokenAsType(JToken token, Type targetType, JsonSerializer serializer, out object value)
         {
-            object args = null;
-            var typeName = GetTypeNameFromToken(token);
-            if (string.IsNullOrEmpty(typeName))
-            {
-                args = token.ToObject(unwrappedType, serializer);
-            }
-            else if (typeName == type.Name)
-            {
-                args = token.ToObject(type, serializer);
-            }
-            else
-            {
-                var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
-                {
-                    args = token.ToObject(builtType, serializer);
-                }
-            }
+            var success = false;
+            object result = null;
 
-            return args;
-        }
-
-        private static object ParseTokenValueArguments(JToken token, JsonToken tokenType, Type type, Type unwrappedType, object value, JsonSerializer serializer)
-        {
-            object args = null;
-            if (unwrappedType.IsPrimitiveType())
+            var tokenType = token.Type;
+            if (tokenType == JTokenType.Null)
             {
-                if (value is string)
+                success = true;
+            }
+            else if (tokenType == JTokenType.Object)
+            {
+                if (targetType.IsPrimitiveType())
                 {
-                    if (unwrappedType == typeof(string))
-                    {
-                        args = value;
-                    }
-                    else if (unwrappedType == typeof(int))
-                    {
-                        if (int.TryParse((string)value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var i))
-                        {
-                            args = i;
-                        }
-                    }
-                    else if (unwrappedType == typeof(long))
-                    {
-                        if (long.TryParse((string)value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var i))
-                        {
-                            args = i;
-                        }
-                    }
-                    else if (unwrappedType == typeof(float))
-                    {
-                        if (float.TryParse((string)value, NumberStyles.Float, CultureInfo.InvariantCulture, out var i))
-                        {
-                            args = i;
-                        }
-                    }
-                    else if (unwrappedType == typeof(double))
-                    {
-                        if (double.TryParse((string)value, NumberStyles.Float, CultureInfo.InvariantCulture, out var i))
-                        {
-                            args = i;
-                        }
-                    }
-                    else if (unwrappedType == typeof(bool))
-                    {
-                        if (bool.TryParse((string)value, out var i))
-                        {
-                            args = i;
-                        }
-                    }
-                }
-                else if (value is short || value is int || value is long || value is float || value is double)
-                {
-                    // Can safely convert between numeric types
-                    if (unwrappedType == typeof(short) || unwrappedType == typeof(int) || unwrappedType == typeof(long) || unwrappedType == typeof(float) || unwrappedType == typeof(double))
-                    {
-                        args = Convert.ChangeType(value, unwrappedType, CultureInfo.InvariantCulture);
-                    }
-                }
-                else if (value is bool)
-                {
-                    if (unwrappedType == typeof(bool))
-                    {
-                        args = value;
-                    }
-                }
-                else if (value is DateTime || value is DateTimeOffset)
-                {
-                    // NO-OP: can't put a date into a primitive type
+                    success = false;
                 }
                 else
                 {
-                    args = value;
-                }
-            }
-            else if (unwrappedType == typeof(decimal))
-            {
-                if (value is string)
-                {
-                    if (decimal.TryParse((string)value, NumberStyles.Currency, CultureInfo.InvariantCulture, out var i))
+                    try
                     {
-                        args = i;
-                    }
-                }
-                else
-                {
-                    args = Convert.ToDecimal(value, CultureInfo.InvariantCulture);
-                }
-            }
-            else if (unwrappedType == typeof(DateTime))
-            {
-                if (value is string)
-                {
-                    if (DateTime.TryParse((string)value, CultureInfo.InvariantCulture, DateTimeStyles.None, out var i))
-                    {
-                        args = i;
-                    }
-                }
-                else if (value is DateTime)
-                {
-                    args = value;
-                }
-                else if (value is DateTimeOffset)
-                {
-                    args = ((DateTimeOffset)value).DateTime;
-                }
-                else if (value is short || value is int || value is long || value is float || value is double)
-                {
-                    // NO-OP: can't put a primitive type into a date
-                }
-                else
-                {
-                    args = Convert.ToDateTime(value, CultureInfo.InvariantCulture);
-                }
-            }
-            else if (unwrappedType == typeof(DateTimeOffset))
-            {
-                if (value is string)
-                {
-                    if (DateTimeOffset.TryParse((string)value, CultureInfo.InvariantCulture, DateTimeStyles.None, out var i))
-                    {
-                        args = i;
-                    }
-                }
-                else if (value is DateTime)
-                {
-                    args = new DateTimeOffset((DateTime)value);
-                }
-                else if (value is DateTimeOffset)
-                {
-                    args = value;
-                }
-                else
-                {
-                    args = Convert.ToDateTime(value, CultureInfo.InvariantCulture);
-                }
-            }
-            else
-            {
-                var classType = ToClass(type);
-                if (tokenType == JsonToken.String)
-                {
-                    if (classType == typeof(Uri))
-                    {
-                        // REVIEW: Avoid invalid URIs being assigned as URI (Should we only allow absolute URIs?)
-                        if (Uri.TryCreate((string)value, UriKind.Absolute, out var i))
+                        // If the target is an interface, attempt to identify concrete target
+                        var localTargetType = targetType;
+                        var typeInfo = localTargetType.GetTypeInfo();
+                        if (typeInfo.IsInterface && ThingTypeLookup.TryGetValue(typeInfo.Name.Substring(1), out var concreteTypeInfo))
                         {
-                            args = i;
+                            localTargetType = concreteTypeInfo.AsType();
                         }
-                    }
-                }
 
-                // REVIEW: If argument still not assigned, only use ToObject if not casting primitive to interface or class
-                if (args is null)
-                {
-                    if (!type.GetTypeInfo().IsInterface && !type.GetTypeInfo().IsClass)
+                        result = token.ToObject(localTargetType, serializer);
+                        success = true;
+                    }
+#pragma warning disable CA1031 // Do not catch general exception types
+                    catch (Exception ex)
                     {
-                        args = token.ToObject(classType, serializer); // This is expected to throw on some case
+                        Debug.WriteLine(ex.Message);
+                        success = false;
                     }
+#pragma warning restore CA1031 // Do not catch general exception types
                 }
             }
-
-            return args;
-        }
-
-        /// <summary>
-        /// Gets the class type definition.
-        /// </summary>
-        /// <param name="type">The type under consideration.</param>
-        /// <returns>
-        /// The implementing class for <paramref name="type" /> or <paramref name="type" /> if it is already a class.
-        /// </returns>
-        private static Type ToClass(Type type)
-        {
-            if (type.GetTypeInfo().IsInterface)
+            else if (tokenType == JTokenType.String)
             {
-                return Type.GetType($"{type.Namespace}.{type.Name.Substring(1)}");
-            }
+                var valueString = token.ToObject<string>();
 
-            return type;
-        }
-
-        private static IList ReadJsonArray(JToken token, Type type, JsonSerializer serializer, int? count = null)
-        {
-            var classType = ToClass(type);
-            var listType = typeof(List<>).MakeGenericType(type); // always read into list of interfaces
-            var list = Activator.CreateInstance(listType);
-            var i = 0;
-
-            if (count is null)
-            {
-                // if maximum item count not assigned, set to count of child tokens
-                count = token.Children().Count();
-            }
-
-            foreach (var childToken in token.Children())
-            {
-                var typeName = GetTypeNameFromToken(childToken);
-                if (string.IsNullOrEmpty(typeName))
+                if (targetType.GetTypeInfo().IsEnum)
                 {
-                    var child = childToken.ToObject(classType, serializer);
-                    var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
+                    const string SCHEMA_ORG = "http://schema.org/";
+                    const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
+                    const string SCHEMA_ORG_HTTPS = "https://schema.org/";
+                    const int SCHEMA_ORG_HTTPS_LENGTH = 19; // equivalent to "https://schema.org/".Length
 
-                    if (method != null)
+                    var enumString = valueString.Contains(SCHEMA_ORG) ? valueString.Substring(SCHEMA_ORG_LENGTH) :
+                        valueString.Contains(SCHEMA_ORG_HTTPS) ? valueString.Substring(SCHEMA_ORG_HTTPS_LENGTH) : valueString;
+
+                    try
                     {
-                        method.Invoke(list, new object[] { child });
-
-                        i++;
+                        result = Enum.Parse(targetType, enumString);
+                        success = true;
                     }
-                }
-                else
-                {
-                    var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                    if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
+#pragma warning disable CA1031 // Do not catch general exception types
+                    catch (Exception ex)
                     {
-                        var child = (Thing)childToken.ToObject(builtType, serializer);
-                        var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
-
-                        if (method != null)
-                        {
-                            method.Invoke(list, new object[] { child });
-
-                            i++;
-                        }
+                        Debug.WriteLine(ex.Message);
+                        success = false;
+                    }
+#pragma warning restore CA1031 // Do not catch general exception types
+                }
+                else if (targetType.IsPrimitiveType())
+                {
+                    if (targetType == typeof(string))
+                    {
+                        success = true;
+                        result = valueString;
+                    }
+                    else if (targetType == typeof(int))
+                    {
+                        success = int.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(long))
+                    {
+                        success = long.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(float))
+                    {
+                        success = float.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(double))
+                    {
+                        success = double.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(bool))
+                    {
+                        success = bool.TryParse(valueString, out var localResult);
+                        result = localResult;
                     }
                 }
-
-                if (i == count)
+                else if (targetType == typeof(decimal))
                 {
-                    break;
+                    success = decimal.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(DateTime))
+                {
+                    success = DateTime.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(DateTimeOffset))
+                {
+                    success = DateTimeOffset.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(Uri))
+                {
+                    success = Uri.TryCreate(valueString, UriKind.Absolute, out var localResult);
+                    result = localResult;
+                }
+            }
+            else if (tokenType == JTokenType.Integer || tokenType == JTokenType.Float)
+            {
+                if (targetType.GetTypeInfo().IsPrimitive || targetType == typeof(decimal))
+                {
+                    result = token.ToObject(targetType);
+                    success = true;
+                }
+            }
+            else if (tokenType == JTokenType.Date)
+            {
+                if (targetType == typeof(DateTime))
+                {
+                    result = token.ToObject(targetType);
+                    success = true;
+                }
+                else if (targetType == typeof(DateTimeOffset))
+                {
+                    result = token.ToObject(targetType);
+                    success = true;
+                }
+            }
+            else if (tokenType == JTokenType.Boolean)
+            {
+                if (targetType == typeof(bool))
+                {
+                    result = token.ToObject(targetType);
+                    success = true;
                 }
             }
 
-            return (IList)list;
-        }
-
-        private static string GetTypeNameFromToken(JToken token)
-        {
-            var o = token as JObject;
-            return o?.SelectToken("@type")?.ToString();
+            value = result;
+            return success;
         }
     }
 }
