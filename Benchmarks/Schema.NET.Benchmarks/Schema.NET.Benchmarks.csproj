@@ -14,6 +14,8 @@
 
   <ItemGroup Label="Package References">
     <PackageReference Include="BenchmarkDotNet" Version="0.12.0" />
+    <!-- See https://github.com/Microsoft/dotnet/tree/master/releases/reference-assemblies -->
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzer Package References">
