@@ -328,6 +328,7 @@ namespace Schema.NET
                 if (targetType.GetTypeInfo().IsPrimitive || targetType == typeof(decimal))
                 {
                     result = Convert.ChangeType(reader.Value, targetType, CultureInfo.InvariantCulture);
+                    success = true;
                 }
             }
             else if (tokenType == JsonToken.Date)
