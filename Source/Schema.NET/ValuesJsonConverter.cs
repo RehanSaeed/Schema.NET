@@ -71,20 +71,29 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(serializer));
             }
 
-            var token = JToken.Load(reader);
             var items = new List<object>();
 
-            if (token.Type == JTokenType.Array)
+            if (reader.TokenType == JsonToken.StartArray)
             {
-                foreach (var childToken in token.Children())
+                while (reader.Read())
                 {
-                    var item = ProcessToken(childToken, objectType.GenericTypeArguments, serializer);
+                    if (reader.TokenType == JsonToken.EndArray)
+                    {
+                        break;
+                    }
+
+                    if (reader.TokenType == JsonToken.Null)
+                    {
+                        continue;
+                    }
+
+                    var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
                     items.Add(item);
                 }
             }
-            else
+            else if (reader.TokenType != JsonToken.Null)
             {
-                var item = ProcessToken(token, objectType.GenericTypeArguments, serializer);
+                var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
                 items.Add(item);
             }
 
@@ -152,10 +161,13 @@ namespace Schema.NET
             serializer.Serialize(writer, value);
         }
 
-        private static object ProcessToken(JToken token, Type[] targetTypes, JsonSerializer serializer)
+        private static object ProcessToken(JsonReader reader, Type[] targetTypes, JsonSerializer serializer)
         {
-            if (token.Type == JTokenType.Object)
+            if (reader.TokenType == JsonToken.StartObject)
             {
+                var token = JToken.ReadFrom(reader);
+
+                // Use the type property (if provided) to identify the correct type
                 var explicitTypeFromToken = token.SelectToken("@type")?.ToString();
                 if (!string.IsNullOrEmpty(explicitTypeFromToken) && ThingTypeLookup.TryGetValue(explicitTypeFromToken, out var explicitTypeInfo))
                 {
@@ -168,61 +180,98 @@ namespace Schema.NET
                         }
                     }
                 }
-            }
 
-            for (var i = targetTypes.Length - 1; i >= 0; i--)
-            {
-                var underlyingTargetType = targetTypes[i].GetUnderlyingTypeFromNullable();
-                if (TryProcessTokenAsType(token, underlyingTargetType, serializer, out var value))
+                // Brute force the type by checking against every possible target
+                for (var i = targetTypes.Length - 1; i >= 0; i--)
                 {
-                    return value;
+                    var underlyingTargetType = targetTypes[i].GetUnderlyingTypeFromNullable();
+                    if (!underlyingTargetType.IsPrimitiveType())
+                    {
+                        try
+                        {
+                            // If the target is an interface, attempt to identify concrete target
+                            var localTargetType = underlyingTargetType;
+                            var typeInfo = localTargetType.GetTypeInfo();
+                            if (typeInfo.IsInterface && ThingTypeLookup.TryGetValue(typeInfo.Name.Substring(1), out var concreteTypeInfo))
+                            {
+                                localTargetType = concreteTypeInfo.AsType();
+                            }
+
+                            return token.ToObject(localTargetType, serializer);
+                        }
+#pragma warning disable CA1031 // Do not catch general exception types
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex.Message);
+                        }
+#pragma warning restore CA1031 // Do not catch general exception types
+                    }
+                }
+            }
+            else
+            {
+                // Brute force the type by checking against every possible target
+                for (var i = targetTypes.Length - 1; i >= 0; i--)
+                {
+                    var underlyingTargetType = targetTypes[i].GetUnderlyingTypeFromNullable();
+                    if (TryProcessTokenAsType(reader, underlyingTargetType, out var value))
+                    {
+                        return value;
+                    }
                 }
             }
 
             return null;
         }
 
-        private static bool TryProcessTokenAsType(JToken token, Type targetType, JsonSerializer serializer, out object value)
+        private static bool TryProcessTokenAsType(JsonReader reader, Type targetType, out object value)
         {
             var success = false;
             object result = null;
 
-            var tokenType = token.Type;
-            if (tokenType == JTokenType.Object)
+            var tokenType = reader.TokenType;
+            if (reader.ValueType == targetType)
             {
-                if (targetType.IsPrimitiveType())
-                {
-                    success = false;
-                }
-                else
-                {
-                    try
-                    {
-                        // If the target is an interface, attempt to identify concrete target
-                        var localTargetType = targetType;
-                        var typeInfo = localTargetType.GetTypeInfo();
-                        if (typeInfo.IsInterface && ThingTypeLookup.TryGetValue(typeInfo.Name.Substring(1), out var concreteTypeInfo))
-                        {
-                            localTargetType = concreteTypeInfo.AsType();
-                        }
-
-                        result = token.ToObject(localTargetType, serializer);
-                        success = true;
-                    }
-#pragma warning disable CA1031 // Do not catch general exception types
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex.Message);
-                        success = false;
-                    }
-#pragma warning restore CA1031 // Do not catch general exception types
-                }
+                result = reader.Value;
+                success = true;
             }
-            else if (tokenType == JTokenType.String)
+            else if (tokenType == JsonToken.String)
             {
-                var valueString = token.ToObject<string>();
-
-                if (targetType.GetTypeInfo().IsEnum)
+                var valueString = (string)reader.Value;
+                if (targetType.GetTypeInfo().IsPrimitive)
+                {
+                    if (targetType == typeof(int))
+                    {
+                        success = int.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(long))
+                    {
+                        success = long.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(float))
+                    {
+                        success = float.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(double))
+                    {
+                        success = double.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(bool))
+                    {
+                        success = bool.TryParse(valueString, out var localResult);
+                        result = localResult;
+                    }
+                }
+                else if (targetType == typeof(decimal))
+                {
+                    success = decimal.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
+                    result = localResult;
+                }
+                else if (targetType.GetTypeInfo().IsEnum)
                 {
                     const string SCHEMA_ORG = "http://schema.org/";
                     const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
@@ -256,44 +305,6 @@ namespace Schema.NET
                     }
 #pragma warning restore CA1031 // Do not catch general exception types
                 }
-                else if (targetType.IsPrimitiveType())
-                {
-                    if (targetType == typeof(string))
-                    {
-                        success = true;
-                        result = valueString;
-                    }
-                    else if (targetType == typeof(int))
-                    {
-                        success = int.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
-                        result = localResult;
-                    }
-                    else if (targetType == typeof(long))
-                    {
-                        success = long.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
-                        result = localResult;
-                    }
-                    else if (targetType == typeof(float))
-                    {
-                        success = float.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
-                        result = localResult;
-                    }
-                    else if (targetType == typeof(double))
-                    {
-                        success = double.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
-                        result = localResult;
-                    }
-                    else if (targetType == typeof(bool))
-                    {
-                        success = bool.TryParse(valueString, out var localResult);
-                        result = localResult;
-                    }
-                }
-                else if (targetType == typeof(decimal))
-                {
-                    success = decimal.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
-                    result = localResult;
-                }
                 else if (targetType == typeof(DateTime))
                 {
                     success = DateTime.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out var localResult);
@@ -310,38 +321,25 @@ namespace Schema.NET
                     result = localResult;
                 }
             }
-            else if (tokenType == JTokenType.Integer || tokenType == JTokenType.Float)
+            else if (tokenType == JsonToken.Integer || tokenType == JsonToken.Float)
             {
                 if (targetType.GetTypeInfo().IsPrimitive || targetType == typeof(decimal))
                 {
-                    result = token.ToObject(targetType);
-                    success = true;
+                    result = Convert.ChangeType(reader.Value, targetType, CultureInfo.InvariantCulture);
                 }
             }
-            else if (tokenType == JTokenType.Date)
+            else if (tokenType == JsonToken.Date)
             {
-                if (targetType == typeof(DateTime))
+                if (targetType == typeof(DateTime) && reader.Value is DateTimeOffset dateTimeOffset)
                 {
-                    result = token.ToObject(targetType);
+                    result = dateTimeOffset.UtcDateTime;
                     success = true;
                 }
-                else if (targetType == typeof(DateTimeOffset))
+                else if (targetType == typeof(DateTimeOffset) && reader.Value is DateTime dateTime)
                 {
-                    result = token.ToObject(targetType);
+                    result = new DateTimeOffset(dateTime);
                     success = true;
                 }
-            }
-            else if (tokenType == JTokenType.Boolean)
-            {
-                if (targetType == typeof(bool))
-                {
-                    result = token.ToObject(targetType);
-                    success = true;
-                }
-            }
-            else if (tokenType == JTokenType.Null)
-            {
-                success = true;
             }
 
             value = result;
