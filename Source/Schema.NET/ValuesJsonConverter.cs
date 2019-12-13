@@ -71,10 +71,10 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(serializer));
             }
 
-            var items = new List<object>();
-
             if (reader.TokenType == JsonToken.StartArray)
             {
+                var items = new List<object>();
+
                 while (reader.Read())
                 {
                     if (reader.TokenType == JsonToken.EndArray)
@@ -90,14 +90,16 @@ namespace Schema.NET
                     var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
                     items.Add(item);
                 }
+
+                return Activator.CreateInstance(objectType, items);
             }
             else if (reader.TokenType != JsonToken.Null)
             {
                 var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
-                items.Add(item);
+                return Activator.CreateInstance(objectType, (IEnumerable)new[] { item });
             }
 
-            return Activator.CreateInstance(objectType, items);
+            return default;
         }
 
         /// <summary>
