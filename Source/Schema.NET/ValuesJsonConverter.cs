@@ -18,8 +18,6 @@ namespace Schema.NET
     {
         private static readonly Dictionary<string, TypeInfo> ThingTypeLookup = new Dictionary<string, TypeInfo>();
 
-        private static readonly MethodInfo CastMethodBase = typeof(Enumerable).GetTypeInfo().GetDeclaredMethod(nameof(Enumerable.Cast));
-
         static ValuesJsonConverter()
         {
             var iThingTypeInfo = typeof(IThing).GetTypeInfo();
@@ -90,20 +88,7 @@ namespace Schema.NET
                 items.Add(item);
             }
 
-            IEnumerable argument;
-            if (objectType.GetGenericTypeDefinition() == typeof(OneOrMany<>))
-            {
-                // OneOrMany<T> requires `IEnumerable<T>` as a constructor argument
-                var castType = objectType.GenericTypeArguments[0];
-                argument = (IEnumerable)CastMethodBase.MakeGenericMethod(castType).Invoke(null, new object[] { items });
-            }
-            else
-            {
-                // Values<> support `IEnumerable<object>` as a constructor argument
-                argument = items;
-            }
-
-            return Activator.CreateInstance(objectType, argument);
+            return Activator.CreateInstance(objectType, items);
         }
 
         /// <summary>
@@ -172,14 +157,14 @@ namespace Schema.NET
             if (token.Type == JTokenType.Object)
             {
                 var explicitTypeFromToken = token.SelectToken("@type")?.ToString();
-                if (!string.IsNullOrEmpty(explicitTypeFromToken) && ThingTypeLookup.TryGetValue(explicitTypeFromToken, out var explicitType))
+                if (!string.IsNullOrEmpty(explicitTypeFromToken) && ThingTypeLookup.TryGetValue(explicitTypeFromToken, out var explicitTypeInfo))
                 {
                     for (var i = 0; i < targetTypes.Length; i++)
                     {
                         var targetTypeInfo = targetTypes[i].GetTypeInfo();
-                        if (targetTypeInfo.IsAssignableFrom(explicitType))
+                        if (targetTypeInfo.IsAssignableFrom(explicitTypeInfo))
                         {
-                            return token.ToObject(explicitType.AsType(), serializer);
+                            return token.ToObject(explicitTypeInfo.AsType(), serializer);
                         }
                     }
                 }

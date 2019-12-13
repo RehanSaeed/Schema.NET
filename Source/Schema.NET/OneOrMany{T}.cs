@@ -70,6 +70,38 @@ namespace Schema.NET
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
+        /// </summary>
+        /// <param name="list">The list of values.</param>
+        public OneOrMany(IEnumerable<object> list)
+        {
+            if (list is null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
+
+            var items = new List<T>();
+            foreach (var item in list)
+            {
+                if (item is T itemT)
+                {
+                    items.Add(itemT);
+                }
+            }
+
+            if (items.Count == 1)
+            {
+                this.collection = null;
+                this.item = items[0];
+            }
+            else
+            {
+                this.collection = items;
+                this.item = default;
+            }
+        }
+
+        /// <summary>
         /// Gets the number of elements contained in the <see cref="OneOrMany{T}"/>.
         /// </summary>
         public int Count
