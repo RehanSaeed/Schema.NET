@@ -127,7 +127,7 @@ namespace Schema.NET
             }
             else
             {
-                this.WriteObject(writer, values.Cast<object>().ToList(), serializer);
+                this.WriteObject(writer, values.Cast<object>(), serializer);
             }
         }
 
