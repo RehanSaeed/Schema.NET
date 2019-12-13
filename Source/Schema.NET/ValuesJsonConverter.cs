@@ -188,11 +188,7 @@ namespace Schema.NET
             object result = null;
 
             var tokenType = token.Type;
-            if (tokenType == JTokenType.Null)
-            {
-                success = true;
-            }
-            else if (tokenType == JTokenType.Object)
+            if (tokenType == JTokenType.Object)
             {
                 if (targetType.IsPrimitiveType())
                 {
@@ -342,6 +338,10 @@ namespace Schema.NET
                     result = token.ToObject(targetType);
                     success = true;
                 }
+            }
+            else if (tokenType == JTokenType.Null)
+            {
+                success = true;
             }
 
             value = result;
