@@ -233,8 +233,19 @@ namespace Schema.NET
                     const string SCHEMA_ORG_HTTPS = "https://schema.org/";
                     const int SCHEMA_ORG_HTTPS_LENGTH = 19; // equivalent to "https://schema.org/".Length
 
-                    var enumString = valueString.Contains(SCHEMA_ORG) ? valueString.Substring(SCHEMA_ORG_LENGTH) :
-                        valueString.Contains(SCHEMA_ORG_HTTPS) ? valueString.Substring(SCHEMA_ORG_HTTPS_LENGTH) : valueString;
+                    string enumString;
+                    if (valueString.StartsWith(SCHEMA_ORG, StringComparison.OrdinalIgnoreCase))
+                    {
+                        enumString = valueString.Substring(SCHEMA_ORG_LENGTH);
+                    }
+                    else if (valueString.StartsWith(SCHEMA_ORG_HTTPS, StringComparison.OrdinalIgnoreCase))
+                    {
+                        enumString = valueString.Substring(SCHEMA_ORG_HTTPS_LENGTH);
+                    }
+                    else
+                    {
+                        enumString = valueString;
+                    }
 
                     try
                     {
