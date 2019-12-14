@@ -417,6 +417,71 @@ namespace Schema.NET.Test
             Assert.Equal(new int?[] { 123, 456 }, result);
         }
 
+        [Fact]
+        public void ReadJson_ExplicitExternalTypes_AllowCustomNamespace()
+        {
+            var json = "{\"Property\":[" +
+                "{" +
+                    "\"@type\":\"ExternalSchemaModelCustomNamespace, Schema.NET.Test\"," +
+                    "\"name\":\"Property from Thing\"," +
+                    "\"myCustomProperty\":\"My Test String\"" +
+                "}" +
+            "]}";
+            var result = this.DeserializeObject<Values<string, SomeCustomNamespace.ExternalSchemaModelCustomNamespace>>(json);
+            var actual = Assert.Single(result.Value2);
+            Assert.Equal(new[] { "Property from Thing" }, actual.Name);
+            Assert.Equal(new[] { "My Test String" }, actual.MyCustomProperty);
+        }
+
+        [Fact]
+        public void ReadJson_ExplicitExternalTypes_AllowSharedNamespace()
+        {
+            var json = "{\"Property\":[" +
+                "{" +
+                    "\"@type\":\"ExternalSchemaModelSharedNamespace, Schema.NET.Test\"," +
+                    "\"name\":\"Property from Thing\"," +
+                    "\"myCustomProperty\":\"My Test String\"" +
+                "}" +
+            "]}";
+            var result = this.DeserializeObject<Values<string, ExternalSchemaModelSharedNamespace>>(json);
+            var actual = Assert.Single(result.Value2);
+            Assert.Equal(new[] { "Property from Thing" }, actual.Name);
+            Assert.Equal(new[] { "My Test String" }, actual.MyCustomProperty);
+        }
+
+        [Fact]
+        public void ReadJson_ImplicitExternalTypes_DenyCustomNamespace()
+        {
+            var json = "{\"Property\":[" +
+                "{" +
+                    "\"@type\":\"ExternalSchemaModelCustomNamespace, Schema.NET.Test\"," +
+                    "\"name\":\"Property from Thing\"," +
+                    "\"myCustomProperty\":\"My Test String\"" +
+                "}" +
+            "]}";
+            var result = this.DeserializeObject<Values<string, IThing>>(json);
+            var actual = Assert.Single(result.Value2);
+            Assert.IsNotType<SomeCustomNamespace.ExternalSchemaModelCustomNamespace>(actual);
+            Assert.Equal(new[] { "Property from Thing" }, actual.Name);
+        }
+
+        [Fact]
+        public void ReadJson_ImplicitExternalTypes_AllowSharedNamespace()
+        {
+            var json = "{\"Property\":[" +
+                "{" +
+                    "\"@type\":\"ExternalSchemaModelSharedNamespace, Schema.NET.Test\"," +
+                    "\"name\":\"Property from Thing\"," +
+                    "\"myCustomProperty\":\"My Test String\"" +
+                "}" +
+            "]}";
+            var result = this.DeserializeObject<Values<string, IThing>>(json);
+            var actual = Assert.Single(result.Value2);
+            Assert.IsType<ExternalSchemaModelSharedNamespace>(actual);
+            Assert.Equal(new[] { "Property from Thing" }, actual.Name);
+            Assert.Equal(new[] { "My Test String" }, ((ExternalSchemaModelSharedNamespace)actual).MyCustomProperty);
+        }
+
         private string SerializeObject<T>(T value)
             where T : IValues
             => JsonConvert.SerializeObject(new TestModel<T> { Property = value });
@@ -433,3 +498,42 @@ namespace Schema.NET.Test
         }
     }
 }
+
+#pragma warning disable SA1649 // File name should match first type name
+#pragma warning disable SA1403 // File may only contain a single namespace
+#pragma warning disable SA1402 // File may only contain a single type
+namespace SomeCustomNamespace
+{
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Schema.NET;
+
+    public class ExternalSchemaModelCustomNamespace : Thing
+    {
+        [DataMember(Name = "@type")]
+        public override string Type => "ExternalSchemaModelCustomNamespace";
+
+        [DataMember(Name = "myCustomProperty")]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> MyCustomProperty { get; set; }
+    }
+}
+
+namespace Schema.NET
+{
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+
+    public class ExternalSchemaModelSharedNamespace : Thing
+    {
+        [DataMember(Name = "@type")]
+        public override string Type => "ExternalSchemaModelSharedNamespace";
+
+        [DataMember(Name = "myCustomProperty")]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> MyCustomProperty { get; set; }
+    }
+}
+#pragma warning restore SA1402 // File may only contain a single type
+#pragma warning restore SA1403 // File may only contain a single namespace
+#pragma warning restore SA1649 // File name should match first type name

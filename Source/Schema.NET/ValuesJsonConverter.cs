@@ -16,7 +16,9 @@ namespace Schema.NET
     /// <seealso cref="JsonConverter" />
     public class ValuesJsonConverter : JsonConverter
     {
-        private static readonly Dictionary<string, TypeInfo> ThingTypeLookup = new Dictionary<string, TypeInfo>();
+        private const string NamespacePrefix = "Schema.NET.";
+
+        private static readonly Dictionary<string, Type> BuiltInThingTypeLookup = new Dictionary<string, Type>(StringComparer.Ordinal);
 
         static ValuesJsonConverter()
         {
@@ -26,9 +28,9 @@ namespace Schema.NET
             foreach (var type in thisAssembly.ExportedTypes)
             {
                 var typeInfo = type.GetTypeInfo();
-                if (iThingTypeInfo.IsAssignableFrom(typeInfo))
+                if (typeInfo.IsClass && iThingTypeInfo.IsAssignableFrom(typeInfo))
                 {
-                    ThingTypeLookup.Add(type.Name, typeInfo);
+                    BuiltInThingTypeLookup.Add(type.Name, type);
                 }
             }
         }
@@ -171,14 +173,15 @@ namespace Schema.NET
 
                 // Use the type property (if provided) to identify the correct type
                 var explicitTypeFromToken = token.SelectToken("@type")?.ToString();
-                if (!string.IsNullOrEmpty(explicitTypeFromToken) && ThingTypeLookup.TryGetValue(explicitTypeFromToken, out var explicitTypeInfo))
+                if (!string.IsNullOrEmpty(explicitTypeFromToken) && TryGetConcreteType(explicitTypeFromToken, out var explicitType))
                 {
+                    var explicitTypeInfo = explicitType.GetTypeInfo();
                     for (var i = 0; i < targetTypes.Length; i++)
                     {
                         var targetTypeInfo = targetTypes[i].GetTypeInfo();
                         if (targetTypeInfo.IsAssignableFrom(explicitTypeInfo))
                         {
-                            return token.ToObject(explicitTypeInfo.AsType(), serializer);
+                            return token.ToObject(explicitType, serializer);
                         }
                     }
                 }
@@ -194,9 +197,9 @@ namespace Schema.NET
                             // If the target is an interface, attempt to identify concrete target
                             var localTargetType = underlyingTargetType;
                             var typeInfo = localTargetType.GetTypeInfo();
-                            if (typeInfo.IsInterface && ThingTypeLookup.TryGetValue(typeInfo.Name.Substring(1), out var concreteTypeInfo))
+                            if (typeInfo.IsInterface && TryGetConcreteType(typeInfo.Name.Substring(1), out var concreteType))
                             {
-                                localTargetType = concreteTypeInfo.AsType();
+                                localTargetType = concreteType;
                             }
 
                             return token.ToObject(localTargetType, serializer);
@@ -347,6 +350,19 @@ namespace Schema.NET
 
             value = result;
             return success;
+        }
+
+        private static bool TryGetConcreteType(string typeName, out Type type)
+        {
+            if (BuiltInThingTypeLookup.TryGetValue(typeName, out type))
+            {
+                return true;
+            }
+            else
+            {
+                type = Type.GetType($"{NamespacePrefix}{typeName}", false);
+                return !(type is null);
+            }
         }
     }
 }
