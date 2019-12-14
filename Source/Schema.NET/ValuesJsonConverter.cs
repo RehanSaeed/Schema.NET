@@ -325,6 +325,11 @@ namespace Schema.NET
                     success = Uri.TryCreate(valueString, UriKind.Absolute, out var localResult);
                     result = localResult;
                 }
+                else if (targetType == typeof(Guid))
+                {
+                    success = Guid.TryParse(valueString, out var localResult);
+                    result = localResult;
+                }
             }
             else if (tokenType == JsonToken.Integer || tokenType == JsonToken.Float)
             {

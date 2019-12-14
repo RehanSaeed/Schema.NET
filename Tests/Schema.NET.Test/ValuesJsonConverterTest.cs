@@ -112,6 +112,14 @@ namespace Schema.NET.Test
         }
 
         [Fact]
+        public void ReadJson_Values_SingleValue_GuidAsString()
+        {
+            var json = "{\"Property\":\"13ec75b3-250c-48a2-8bd0-dfee62852bd4\"}";
+            var result = this.DeserializeObject<Values<string, Guid>>(json);
+            Assert.Equal(new Guid("13ec75b3-250c-48a2-8bd0-dfee62852bd4"), result.Value2.First());
+        }
+
+        [Fact]
         public void ReadJson_Values_SingleValue_NullablePrimitiveAsString()
         {
             var json = "{\"Property\":\"123\"}";
