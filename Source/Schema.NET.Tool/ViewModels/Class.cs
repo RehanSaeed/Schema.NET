@@ -150,17 +150,6 @@ namespace Schema.NET.Tool.ViewModels
 
             stringBuilder.AppendIndentLine(4, "{");
 
-            if (string.Equals(this.Name, "Thing", StringComparison.OrdinalIgnoreCase))
-            {
-                // Context Property
-                stringBuilder.AppendIndentLine(8, "/// <summary>");
-                stringBuilder.AppendIndentLine(8, "/// Gets the context for the object, specifying that it comes from schema.org.");
-                stringBuilder.AppendIndentLine(8, "/// </summary>");
-                stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@context\", Order = 0)]");
-                stringBuilder.AppendIndentLine(8, $"public override string Context => \"http://schema.org\";");
-                stringBuilder.AppendLine();
-            }
-
             // Type Property
             stringBuilder.AppendIndentLine(8, "/// <summary>");
             stringBuilder.AppendIndentLine(8, "/// Gets the name of the type as specified by schema.org.");
