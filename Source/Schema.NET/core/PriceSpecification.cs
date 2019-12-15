@@ -67,7 +67,7 @@
     /// A structured value representing a price or price range. Typically, only the subclasses of this type are used for markup. It is recommended to use &lt;a class="localLink" href="http://schema.org/MonetaryAmount"&gt;MonetaryAmount&lt;/a&gt; to describe independent amounts of money such as a salary, credit card limits, etc.
     /// </summary>
     [DataContract]
-    public partial class PriceSpecification : StructuredValue, IPriceSpecification
+    public partial class PriceSpecification : StructuredValue, IPriceSpecification, IEquatable<PriceSpecification>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -145,5 +145,47 @@
         [DataMember(Name = "valueAddedTaxIncluded", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<bool?> ValueAddedTaxIncluded { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PriceSpecification other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.EligibleQuantity == other.EligibleQuantity &&
+                this.EligibleTransactionVolume == other.EligibleTransactionVolume &&
+                this.MaxPrice == other.MaxPrice &&
+                this.MinPrice == other.MinPrice &&
+                this.Price == other.Price &&
+                this.PriceCurrency == other.PriceCurrency &&
+                this.ValidFrom == other.ValidFrom &&
+                this.ValidThrough == other.ValidThrough &&
+                this.ValueAddedTaxIncluded == other.ValueAddedTaxIncluded &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PriceSpecification);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.EligibleQuantity)
+            .And(this.EligibleTransactionVolume)
+            .And(this.MaxPrice)
+            .And(this.MinPrice)
+            .And(this.Price)
+            .And(this.PriceCurrency)
+            .And(this.ValidFrom)
+            .And(this.ValidThrough)
+            .And(this.ValueAddedTaxIncluded)
+            .And(base.GetHashCode());
     }
 }

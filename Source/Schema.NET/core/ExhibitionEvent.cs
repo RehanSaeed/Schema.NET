@@ -15,7 +15,7 @@
     /// Event type: Exhibition event, e.g. at a museum, library, archive, tradeshow, ...
     /// </summary>
     [DataContract]
-    public partial class ExhibitionEvent : Event, IExhibitionEvent
+    public partial class ExhibitionEvent : Event, IExhibitionEvent, IEquatable<ExhibitionEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

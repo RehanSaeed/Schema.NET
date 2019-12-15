@@ -15,7 +15,7 @@
     /// A distillery.
     /// </summary>
     [DataContract]
-    public partial class Distillery : FoodEstablishment, IDistillery
+    public partial class Distillery : FoodEstablishment, IDistillery, IEquatable<Distillery>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

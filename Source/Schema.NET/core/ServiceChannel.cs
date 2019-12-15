@@ -54,7 +54,7 @@
     /// A means for accessing a service, e.g. a government office location, web site, or phone number.
     /// </summary>
     [DataContract]
-    public partial class ServiceChannel : Intangible, IServiceChannel
+    public partial class ServiceChannel : Intangible, IServiceChannel, IEquatable<ServiceChannel>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "serviceUrl", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<Uri> ServiceUrl { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ServiceChannel other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AvailableLanguage == other.AvailableLanguage &&
+                this.ProcessingTime == other.ProcessingTime &&
+                this.ProvidesService == other.ProvidesService &&
+                this.ServiceLocation == other.ServiceLocation &&
+                this.ServicePhone == other.ServicePhone &&
+                this.ServicePostalAddress == other.ServicePostalAddress &&
+                this.ServiceSmsNumber == other.ServiceSmsNumber &&
+                this.ServiceUrl == other.ServiceUrl &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ServiceChannel);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AvailableLanguage)
+            .And(this.ProcessingTime)
+            .And(this.ProvidesService)
+            .And(this.ServiceLocation)
+            .And(this.ServicePhone)
+            .And(this.ServicePostalAddress)
+            .And(this.ServiceSmsNumber)
+            .And(this.ServiceUrl)
+            .And(base.GetHashCode());
     }
 }

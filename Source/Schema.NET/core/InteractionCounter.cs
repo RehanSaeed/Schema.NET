@@ -29,7 +29,7 @@
     /// A summary of how users have interacted with this CreativeWork. In most cases, authors will use a subtype to specify the specific type of interaction.
     /// </summary>
     [DataContract]
-    public partial class InteractionCounter : StructuredValue, IInteractionCounter
+    public partial class InteractionCounter : StructuredValue, IInteractionCounter, IEquatable<InteractionCounter>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "userInteractionCount", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> UserInteractionCount { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(InteractionCounter other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.InteractionService == other.InteractionService &&
+                this.InteractionType == other.InteractionType &&
+                this.UserInteractionCount == other.UserInteractionCount &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as InteractionCounter);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.InteractionService)
+            .And(this.InteractionType)
+            .And(this.UserInteractionCount)
+            .And(base.GetHashCode());
     }
 }

@@ -15,7 +15,7 @@
     /// A pond.
     /// </summary>
     [DataContract]
-    public partial class Pond : BodyOfWater, IPond
+    public partial class Pond : BodyOfWater, IPond, IEquatable<Pond>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

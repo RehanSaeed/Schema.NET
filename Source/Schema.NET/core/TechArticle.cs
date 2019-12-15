@@ -24,7 +24,7 @@
     /// A technical article - Example: How-to (task) topics, step-by-step, procedural troubleshooting, specifications, etc.
     /// </summary>
     [DataContract]
-    public partial class TechArticle : Article, ITechArticle
+    public partial class TechArticle : Article, ITechArticle, IEquatable<TechArticle>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "proficiencyLevel", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> ProficiencyLevel { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(TechArticle other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Dependencies == other.Dependencies &&
+                this.ProficiencyLevel == other.ProficiencyLevel &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as TechArticle);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Dependencies)
+            .And(this.ProficiencyLevel)
+            .And(base.GetHashCode());
     }
 }

@@ -15,7 +15,7 @@
     /// A recycling center.
     /// </summary>
     [DataContract]
-    public partial class RecyclingCenter : LocalBusiness, IRecyclingCenter
+    public partial class RecyclingCenter : LocalBusiness, IRecyclingCenter, IEquatable<RecyclingCenter>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
     /// </summary>
     [DataContract]
-    public partial class Reservoir : BodyOfWater, IReservoir
+    public partial class Reservoir : BodyOfWater, IReservoir, IEquatable<Reservoir>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

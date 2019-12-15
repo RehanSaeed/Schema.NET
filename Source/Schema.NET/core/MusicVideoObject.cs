@@ -15,7 +15,7 @@
     /// A music video file.
     /// </summary>
     [DataContract]
-    public partial class MusicVideoObject : MediaObject, IMusicVideoObject
+    public partial class MusicVideoObject : MediaObject, IMusicVideoObject, IEquatable<MusicVideoObject>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

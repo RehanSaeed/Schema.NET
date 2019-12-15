@@ -15,7 +15,7 @@
     /// A medical procedure involving an incision with instruments; performed for diagnose, or therapeutic purposes.
     /// </summary>
     [DataContract]
-    public partial class SurgicalProcedure : MedicalProcedure, ISurgicalProcedure
+    public partial class SurgicalProcedure : MedicalProcedure, ISurgicalProcedure, IEquatable<SurgicalProcedure>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

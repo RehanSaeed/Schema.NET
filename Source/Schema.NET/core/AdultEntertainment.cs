@@ -15,7 +15,7 @@
     /// An adult entertainment establishment.
     /// </summary>
     [DataContract]
-    public partial class AdultEntertainment : EntertainmentBusiness, IAdultEntertainment
+    public partial class AdultEntertainment : EntertainmentBusiness, IAdultEntertainment, IEquatable<AdultEntertainment>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

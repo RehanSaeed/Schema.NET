@@ -15,7 +15,7 @@
     /// A government building.
     /// </summary>
     [DataContract]
-    public partial class GovernmentBuilding : CivicStructure, IGovernmentBuilding
+    public partial class GovernmentBuilding : CivicStructure, IGovernmentBuilding, IEquatable<GovernmentBuilding>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

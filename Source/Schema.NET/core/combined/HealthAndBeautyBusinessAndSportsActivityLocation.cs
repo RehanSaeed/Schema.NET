@@ -15,7 +15,7 @@
     /// See HealthAndBeautyBusiness, SportsActivityLocation for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class HealthAndBeautyBusinessAndSportsActivityLocation : LocalBusiness, IHealthAndBeautyBusinessAndSportsActivityLocation
+    public abstract partial class HealthAndBeautyBusinessAndSportsActivityLocation : LocalBusiness, IHealthAndBeautyBusinessAndSportsActivityLocation, IEquatable<HealthAndBeautyBusinessAndSportsActivityLocation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

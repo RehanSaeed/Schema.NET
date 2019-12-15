@@ -15,7 +15,7 @@
     /// A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
     /// </summary>
     [DataContract]
-    public partial class RVPark : CivicStructure, IRVPark
+    public partial class RVPark : CivicStructure, IRVPark, IEquatable<RVPark>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

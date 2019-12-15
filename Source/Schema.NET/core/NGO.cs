@@ -15,7 +15,7 @@
     /// Organization: Non-governmental Organization.
     /// </summary>
     [DataContract]
-    public partial class NGO : Organization, INGO
+    public partial class NGO : Organization, INGO, IEquatable<NGO>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A taxi stand.
     /// </summary>
     [DataContract]
-    public partial class TaxiStand : CivicStructure, ITaxiStand
+    public partial class TaxiStand : CivicStructure, ITaxiStand, IEquatable<TaxiStand>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

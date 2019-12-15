@@ -15,7 +15,7 @@
     /// A preschool.
     /// </summary>
     [DataContract]
-    public partial class Preschool : EducationalOrganization, IPreschool
+    public partial class Preschool : EducationalOrganization, IPreschool, IEquatable<Preschool>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -27,7 +27,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class ReplyAction : CommunicateAction, IReplyAction
+    public partial class ReplyAction : CommunicateAction, IReplyAction, IEquatable<ReplyAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -41,5 +41,31 @@
         [DataMember(Name = "resultComment", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IComment> ResultComment { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ReplyAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ResultComment == other.ResultComment &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ReplyAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ResultComment)
+            .And(base.GetHashCode());
     }
 }

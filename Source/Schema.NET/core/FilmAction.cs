@@ -15,7 +15,7 @@
     /// The act of capturing sound and moving images on film, video, or digitally.
     /// </summary>
     [DataContract]
-    public partial class FilmAction : CreateAction, IFilmAction
+    public partial class FilmAction : CreateAction, IFilmAction, IEquatable<FilmAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -115,7 +115,7 @@
     /// An order is a confirmation of a transaction (a receipt), which can contain multiple line items, each represented by an Offer that has been accepted by the customer.
     /// </summary>
     [DataContract]
-    public partial class Order : Intangible, IOrder
+    public partial class Order : Intangible, IOrder, IEquatable<Order>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -263,5 +263,69 @@
         [DataMember(Name = "seller", Order = 225)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Seller { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Order other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AcceptedOffer == other.AcceptedOffer &&
+                this.BillingAddress == other.BillingAddress &&
+                this.Broker == other.Broker &&
+                this.ConfirmationNumber == other.ConfirmationNumber &&
+                this.Customer == other.Customer &&
+                this.Discount == other.Discount &&
+                this.DiscountCode == other.DiscountCode &&
+                this.DiscountCurrency == other.DiscountCurrency &&
+                this.IsGift == other.IsGift &&
+                this.OrderDate == other.OrderDate &&
+                this.OrderDelivery == other.OrderDelivery &&
+                this.OrderedItem == other.OrderedItem &&
+                this.OrderNumber == other.OrderNumber &&
+                this.OrderStatus == other.OrderStatus &&
+                this.PartOfInvoice == other.PartOfInvoice &&
+                this.PaymentDueDate == other.PaymentDueDate &&
+                this.PaymentMethod == other.PaymentMethod &&
+                this.PaymentMethodId == other.PaymentMethodId &&
+                this.PaymentUrl == other.PaymentUrl &&
+                this.Seller == other.Seller &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Order);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AcceptedOffer)
+            .And(this.BillingAddress)
+            .And(this.Broker)
+            .And(this.ConfirmationNumber)
+            .And(this.Customer)
+            .And(this.Discount)
+            .And(this.DiscountCode)
+            .And(this.DiscountCurrency)
+            .And(this.IsGift)
+            .And(this.OrderDate)
+            .And(this.OrderDelivery)
+            .And(this.OrderedItem)
+            .And(this.OrderNumber)
+            .And(this.OrderStatus)
+            .And(this.PartOfInvoice)
+            .And(this.PaymentDueDate)
+            .And(this.PaymentMethod)
+            .And(this.PaymentMethodId)
+            .And(this.PaymentUrl)
+            .And(this.Seller)
+            .And(base.GetHashCode());
     }
 }

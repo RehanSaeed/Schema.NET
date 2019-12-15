@@ -34,7 +34,7 @@
     /// Used to describe a seat, such as a reserved seat in an event reservation.
     /// </summary>
     [DataContract]
-    public partial class Seat : Intangible, ISeat
+    public partial class Seat : Intangible, ISeat, IEquatable<Seat>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "seatSection", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> SeatSection { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Seat other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.SeatingType == other.SeatingType &&
+                this.SeatNumber == other.SeatNumber &&
+                this.SeatRow == other.SeatRow &&
+                this.SeatSection == other.SeatSection &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Seat);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.SeatingType)
+            .And(this.SeatNumber)
+            .And(this.SeatRow)
+            .And(this.SeatSection)
+            .And(base.GetHashCode());
     }
 }

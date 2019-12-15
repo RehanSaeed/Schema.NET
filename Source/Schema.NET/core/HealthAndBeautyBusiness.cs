@@ -15,7 +15,7 @@
     /// Health and beauty.
     /// </summary>
     [DataContract]
-    public partial class HealthAndBeautyBusiness : LocalBusiness, IHealthAndBeautyBusiness
+    public partial class HealthAndBeautyBusiness : LocalBusiness, IHealthAndBeautyBusiness, IEquatable<HealthAndBeautyBusiness>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -69,7 +69,7 @@
     /// The delivery of a parcel either via the postal service or a commercial service.
     /// </summary>
     [DataContract]
-    public partial class ParcelDelivery : Intangible, IParcelDelivery
+    public partial class ParcelDelivery : Intangible, IParcelDelivery, IEquatable<ParcelDelivery>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -153,5 +153,51 @@
         [DataMember(Name = "trackingUrl", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<Uri> TrackingUrl { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ParcelDelivery other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DeliveryAddress == other.DeliveryAddress &&
+                this.DeliveryStatus == other.DeliveryStatus &&
+                this.ExpectedArrivalFrom == other.ExpectedArrivalFrom &&
+                this.ExpectedArrivalUntil == other.ExpectedArrivalUntil &&
+                this.HasDeliveryMethod == other.HasDeliveryMethod &&
+                this.ItemShipped == other.ItemShipped &&
+                this.OriginAddress == other.OriginAddress &&
+                this.PartOfOrder == other.PartOfOrder &&
+                this.Provider == other.Provider &&
+                this.TrackingNumber == other.TrackingNumber &&
+                this.TrackingUrl == other.TrackingUrl &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ParcelDelivery);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DeliveryAddress)
+            .And(this.DeliveryStatus)
+            .And(this.ExpectedArrivalFrom)
+            .And(this.ExpectedArrivalUntil)
+            .And(this.HasDeliveryMethod)
+            .And(this.ItemShipped)
+            .And(this.OriginAddress)
+            .And(this.PartOfOrder)
+            .And(this.Provider)
+            .And(this.TrackingNumber)
+            .And(this.TrackingUrl)
+            .And(base.GetHashCode());
     }
 }

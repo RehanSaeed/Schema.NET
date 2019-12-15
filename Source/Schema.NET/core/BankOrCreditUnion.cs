@@ -15,7 +15,7 @@
     /// Bank or credit union.
     /// </summary>
     [DataContract]
-    public partial class BankOrCreditUnion : FinancialService, IBankOrCreditUnion
+    public partial class BankOrCreditUnion : FinancialService, IBankOrCreditUnion, IEquatable<BankOrCreditUnion>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

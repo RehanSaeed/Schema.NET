@@ -15,7 +15,7 @@
     /// The act of producing a visual/graphical representation of an object, typically with a pen/pencil and paper as instruments.
     /// </summary>
     [DataContract]
-    public partial class DrawAction : CreateAction, IDrawAction
+    public partial class DrawAction : CreateAction, IDrawAction, IEquatable<DrawAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

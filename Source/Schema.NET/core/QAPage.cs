@@ -15,7 +15,7 @@
     /// A QAPage is a WebPage focussed on a specific Question and its Answer(s), e.g. in a question answering site or documenting Frequently Asked Questions (FAQs).
     /// </summary>
     [DataContract]
-    public partial class QAPage : WebPage, IQAPage
+    public partial class QAPage : WebPage, IQAPage, IEquatable<QAPage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

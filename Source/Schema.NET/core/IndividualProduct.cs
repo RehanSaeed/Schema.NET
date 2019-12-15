@@ -19,7 +19,7 @@
     /// A single, identifiable product instance (e.g. a laptop with a particular serial number).
     /// </summary>
     [DataContract]
-    public partial class IndividualProduct : Product, IIndividualProduct
+    public partial class IndividualProduct : Product, IIndividualProduct, IEquatable<IndividualProduct>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "serialNumber", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> SerialNumber { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(IndividualProduct other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.SerialNumber == other.SerialNumber &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as IndividualProduct);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.SerialNumber)
+            .And(base.GetHashCode());
     }
 }

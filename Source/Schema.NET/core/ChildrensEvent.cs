@@ -15,7 +15,7 @@
     /// Event type: Children's event.
     /// </summary>
     [DataContract]
-    public partial class ChildrensEvent : Event, IChildrensEvent
+    public partial class ChildrensEvent : Event, IChildrensEvent, IEquatable<ChildrensEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

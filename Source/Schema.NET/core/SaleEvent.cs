@@ -15,7 +15,7 @@
     /// Event type: Sales event.
     /// </summary>
     [DataContract]
-    public partial class SaleEvent : Event, ISaleEvent
+    public partial class SaleEvent : Event, ISaleEvent, IEquatable<SaleEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

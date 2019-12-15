@@ -15,7 +15,7 @@
     /// An agent inspects, determines, investigates, inquires, or examines an object's accuracy, quality, condition, or state.
     /// </summary>
     [DataContract]
-    public partial class CheckAction : FindAction, ICheckAction
+    public partial class CheckAction : FindAction, ICheckAction, IEquatable<CheckAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

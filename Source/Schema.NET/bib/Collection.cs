@@ -19,7 +19,7 @@
     /// A created collection of Creative Works or other artefacts.
     /// </summary>
     [DataContract]
-    public partial class Collection : CreativeWork, ICollection
+    public partial class Collection : CreativeWork, ICollection, IEquatable<Collection>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "collectionSize", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> CollectionSize { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Collection other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CollectionSize == other.CollectionSize &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Collection);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CollectionSize)
+            .And(base.GetHashCode());
     }
 }

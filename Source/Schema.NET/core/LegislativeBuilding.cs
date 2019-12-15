@@ -15,7 +15,7 @@
     /// A legislative building&amp;#x2014;for example, the state capitol.
     /// </summary>
     [DataContract]
-    public partial class LegislativeBuilding : GovernmentBuilding, ILegislativeBuilding
+    public partial class LegislativeBuilding : GovernmentBuilding, ILegislativeBuilding, IEquatable<LegislativeBuilding>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

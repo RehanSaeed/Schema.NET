@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, LodgingBusiness for more information.
     /// </summary>
-    public partial interface ICivicStructureAndLodgingBusiness : ILodgingBusiness, ICivicStructure
+    public partial interface ICivicStructureAndLodgingBusiness : ICivicStructure, ILodgingBusiness
     {
     }
 
@@ -15,7 +15,7 @@
     /// See CivicStructure, LodgingBusiness for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class CivicStructureAndLodgingBusiness : LocalBusinessAndPlace, ICivicStructureAndLodgingBusiness
+    public abstract partial class CivicStructureAndLodgingBusiness : LocalBusinessAndPlace, ICivicStructureAndLodgingBusiness, IEquatable<CivicStructureAndLodgingBusiness>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -92,5 +92,47 @@
         [DataMember(Name = "starRating", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IRating> StarRating { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CivicStructureAndLodgingBusiness other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AmenityFeature == other.AmenityFeature &&
+                this.Audience == other.Audience &&
+                this.AvailableLanguage == other.AvailableLanguage &&
+                this.CheckinTime == other.CheckinTime &&
+                this.CheckoutTime == other.CheckoutTime &&
+                this.NumberOfRooms == other.NumberOfRooms &&
+                this.OpeningHours == other.OpeningHours &&
+                this.PetsAllowed == other.PetsAllowed &&
+                this.StarRating == other.StarRating &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CivicStructureAndLodgingBusiness);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AmenityFeature)
+            .And(this.Audience)
+            .And(this.AvailableLanguage)
+            .And(this.CheckinTime)
+            .And(this.CheckoutTime)
+            .And(this.NumberOfRooms)
+            .And(this.OpeningHours)
+            .And(this.PetsAllowed)
+            .And(this.StarRating)
+            .And(base.GetHashCode());
     }
 }

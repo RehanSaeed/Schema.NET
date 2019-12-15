@@ -15,7 +15,7 @@
     /// A real-estate agent.
     /// </summary>
     [DataContract]
-    public partial class RealEstateAgent : LocalBusiness, IRealEstateAgent
+    public partial class RealEstateAgent : LocalBusiness, IRealEstateAgent, IEquatable<RealEstateAgent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

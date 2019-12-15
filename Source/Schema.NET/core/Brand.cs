@@ -34,7 +34,7 @@
     /// A brand is a name used by an organization or business person for labeling a product, product group, or similar.
     /// </summary>
     [DataContract]
-    public partial class Brand : Intangible, IBrand
+    public partial class Brand : Intangible, IBrand, IEquatable<Brand>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "slogan", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Slogan { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Brand other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AggregateRating == other.AggregateRating &&
+                this.Logo == other.Logo &&
+                this.Review == other.Review &&
+                this.Slogan == other.Slogan &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Brand);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AggregateRating)
+            .And(this.Logo)
+            .And(this.Review)
+            .And(this.Slogan)
+            .And(base.GetHashCode());
     }
 }

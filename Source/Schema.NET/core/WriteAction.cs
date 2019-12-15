@@ -19,7 +19,7 @@
     /// The act of authoring written creative content.
     /// </summary>
     [DataContract]
-    public partial class WriteAction : CreateAction, IWriteAction
+    public partial class WriteAction : CreateAction, IWriteAction, IEquatable<WriteAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "inLanguage", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ILanguage, string> InLanguage { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(WriteAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.InLanguage == other.InLanguage &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as WriteAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.InLanguage)
+            .And(base.GetHashCode());
     }
 }

@@ -43,7 +43,7 @@
     /// A more detailed overview of &lt;a href="/docs/news.html"&gt;schema.org News markup&lt;/a&gt; is also available.
     /// </summary>
     [DataContract]
-    public partial class NewsArticle : Article, INewsArticle
+    public partial class NewsArticle : Article, INewsArticle, IEquatable<NewsArticle>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -87,5 +87,39 @@
         [DataMember(Name = "printSection", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PrintSection { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(NewsArticle other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Dateline == other.Dateline &&
+                this.PrintColumn == other.PrintColumn &&
+                this.PrintEdition == other.PrintEdition &&
+                this.PrintPage == other.PrintPage &&
+                this.PrintSection == other.PrintSection &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as NewsArticle);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Dateline)
+            .And(this.PrintColumn)
+            .And(this.PrintEdition)
+            .And(this.PrintPage)
+            .And(this.PrintSection)
+            .And(base.GetHashCode());
     }
 }

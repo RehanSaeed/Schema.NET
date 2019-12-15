@@ -15,7 +15,7 @@
     /// A governmental organization or agency.
     /// </summary>
     [DataContract]
-    public partial class GovernmentOrganization : Organization, IGovernmentOrganization
+    public partial class GovernmentOrganization : Organization, IGovernmentOrganization, IEquatable<GovernmentOrganization>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

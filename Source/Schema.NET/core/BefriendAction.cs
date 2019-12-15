@@ -23,7 +23,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class BefriendAction : InteractAction, IBefriendAction
+    public partial class BefriendAction : InteractAction, IBefriendAction, IEquatable<BefriendAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

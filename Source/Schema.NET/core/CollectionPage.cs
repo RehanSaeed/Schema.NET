@@ -15,7 +15,7 @@
     /// Web page type: Collection page.
     /// </summary>
     [DataContract]
-    public partial class CollectionPage : WebPage, ICollectionPage
+    public partial class CollectionPage : WebPage, ICollectionPage, IEquatable<CollectionPage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

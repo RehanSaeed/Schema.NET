@@ -15,7 +15,7 @@
     /// A museum.
     /// </summary>
     [DataContract]
-    public partial class Museum : CivicStructure, IMuseum
+    public partial class Museum : CivicStructure, IMuseum, IEquatable<Museum>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

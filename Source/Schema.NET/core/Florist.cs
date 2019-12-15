@@ -15,7 +15,7 @@
     /// A florist.
     /// </summary>
     [DataContract]
-    public partial class Florist : Store, IFlorist
+    public partial class Florist : Store, IFlorist, IEquatable<Florist>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

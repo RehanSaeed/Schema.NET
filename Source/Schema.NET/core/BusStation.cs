@@ -15,7 +15,7 @@
     /// A bus station.
     /// </summary>
     [DataContract]
-    public partial class BusStation : CivicStructure, IBusStation
+    public partial class BusStation : CivicStructure, IBusStation, IEquatable<BusStation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

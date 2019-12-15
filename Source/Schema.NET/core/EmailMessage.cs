@@ -15,7 +15,7 @@
     /// An email message.
     /// </summary>
     [DataContract]
-    public partial class EmailMessage : Message, IEmailMessage
+    public partial class EmailMessage : Message, IEmailMessage, IEquatable<EmailMessage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

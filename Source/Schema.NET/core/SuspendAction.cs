@@ -15,7 +15,7 @@
     /// The act of momentarily pausing a device or application (e.g. pause music playback or pause a timer).
     /// </summary>
     [DataContract]
-    public partial class SuspendAction : ControlAction, ISuspendAction
+    public partial class SuspendAction : ControlAction, ISuspendAction, IEquatable<SuspendAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

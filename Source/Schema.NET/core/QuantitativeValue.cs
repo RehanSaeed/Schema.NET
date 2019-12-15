@@ -57,7 +57,7 @@
     /// A point value or interval for product characteristics and other purposes.
     /// </summary>
     [DataContract]
-    public partial class QuantitativeValue : StructuredValue, IQuantitativeValue
+    public partial class QuantitativeValue : StructuredValue, IQuantitativeValue, IEquatable<QuantitativeValue>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -121,5 +121,43 @@
         [DataMember(Name = "valueReference", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPropertyValue, IQuantitativeValue, IStructuredValue> ValueReference { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(QuantitativeValue other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AdditionalProperty == other.AdditionalProperty &&
+                this.MaxValue == other.MaxValue &&
+                this.MinValue == other.MinValue &&
+                this.UnitCode == other.UnitCode &&
+                this.UnitText == other.UnitText &&
+                this.Value == other.Value &&
+                this.ValueReference == other.ValueReference &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as QuantitativeValue);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AdditionalProperty)
+            .And(this.MaxValue)
+            .And(this.MinValue)
+            .And(this.UnitCode)
+            .And(this.UnitText)
+            .And(this.Value)
+            .And(this.ValueReference)
+            .And(base.GetHashCode());
     }
 }

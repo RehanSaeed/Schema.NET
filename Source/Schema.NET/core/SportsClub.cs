@@ -15,7 +15,7 @@
     /// A sports club.
     /// </summary>
     [DataContract]
-    public partial class SportsClub : SportsActivityLocation, ISportsClub
+    public partial class SportsClub : SportsActivityLocation, ISportsClub, IEquatable<SportsClub>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// An electrician.
     /// </summary>
     [DataContract]
-    public partial class Electrician : HomeAndConstructionBusiness, IElectrician
+    public partial class Electrician : HomeAndConstructionBusiness, IElectrician, IEquatable<Electrician>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

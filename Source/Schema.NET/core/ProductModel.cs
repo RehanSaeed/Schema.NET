@@ -29,7 +29,7 @@
     /// A datasheet or vendor specification of a product (in the sense of a prototypical description).
     /// </summary>
     [DataContract]
-    public partial class ProductModel : Product, IProductModel
+    public partial class ProductModel : Product, IProductModel, IEquatable<ProductModel>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "successorOf", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IProductModel> SuccessorOf { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ProductModel other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.IsVariantOf == other.IsVariantOf &&
+                this.PredecessorOf == other.PredecessorOf &&
+                this.SuccessorOf == other.SuccessorOf &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ProductModel);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.IsVariantOf)
+            .And(this.PredecessorOf)
+            .And(this.SuccessorOf)
+            .And(base.GetHashCode());
     }
 }

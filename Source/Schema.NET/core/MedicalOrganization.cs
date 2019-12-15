@@ -29,7 +29,7 @@
     /// A medical organization (physical or not), such as hospital, institution or clinic.
     /// </summary>
     [DataContract]
-    public partial class MedicalOrganization : Organization, IMedicalOrganization
+    public partial class MedicalOrganization : Organization, IMedicalOrganization, IEquatable<MedicalOrganization>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "medicalSpecialty", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<MedicalSpecialty?> MedicalSpecialty { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalOrganization other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.HealthPlanNetworkId == other.HealthPlanNetworkId &&
+                this.IsAcceptingNewPatients == other.IsAcceptingNewPatients &&
+                this.MedicalSpecialty == other.MedicalSpecialty &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalOrganization);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.HealthPlanNetworkId)
+            .And(this.IsAcceptingNewPatients)
+            .And(this.MedicalSpecialty)
+            .And(base.GetHashCode());
     }
 }

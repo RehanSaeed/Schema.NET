@@ -53,7 +53,7 @@
     /// Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.
     /// </summary>
     [DataContract]
-    public partial class EngineSpecification : StructuredValue, IEngineSpecification
+    public partial class EngineSpecification : StructuredValue, IEngineSpecification, IEquatable<EngineSpecification>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -109,5 +109,39 @@
         [DataMember(Name = "torque", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> Torque { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(EngineSpecification other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.EngineDisplacement == other.EngineDisplacement &&
+                this.EnginePower == other.EnginePower &&
+                this.EngineType == other.EngineType &&
+                this.FuelType == other.FuelType &&
+                this.Torque == other.Torque &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as EngineSpecification);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.EngineDisplacement)
+            .And(this.EnginePower)
+            .And(this.EngineType)
+            .And(this.FuelType)
+            .And(this.Torque)
+            .And(base.GetHashCode());
     }
 }

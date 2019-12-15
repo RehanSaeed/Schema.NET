@@ -15,7 +15,7 @@
     /// Event type: Festival.
     /// </summary>
     [DataContract]
-    public partial class Festival : Event, IFestival
+    public partial class Festival : Event, IFestival, IEquatable<Festival>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

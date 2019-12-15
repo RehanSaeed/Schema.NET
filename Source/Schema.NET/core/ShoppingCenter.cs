@@ -15,7 +15,7 @@
     /// A shopping center or mall.
     /// </summary>
     [DataContract]
-    public partial class ShoppingCenter : LocalBusiness, IShoppingCenter
+    public partial class ShoppingCenter : LocalBusiness, IShoppingCenter, IEquatable<ShoppingCenter>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

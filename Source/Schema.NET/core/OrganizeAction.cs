@@ -15,7 +15,7 @@
     /// The act of manipulating/administering/supervising/controlling one or more objects.
     /// </summary>
     [DataContract]
-    public partial class OrganizeAction : Action, IOrganizeAction
+    public partial class OrganizeAction : Action, IOrganizeAction, IEquatable<OrganizeAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

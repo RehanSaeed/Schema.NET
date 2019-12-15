@@ -15,7 +15,7 @@
     /// The act of marrying a person.
     /// </summary>
     [DataContract]
-    public partial class MarryAction : InteractAction, IMarryAction
+    public partial class MarryAction : InteractAction, IMarryAction, IEquatable<MarryAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

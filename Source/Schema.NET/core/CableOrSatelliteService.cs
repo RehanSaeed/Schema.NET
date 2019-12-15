@@ -15,7 +15,7 @@
     /// A service which provides access to media programming like TV or radio. Access may be via cable or satellite.
     /// </summary>
     [DataContract]
-    public partial class CableOrSatelliteService : Service, ICableOrSatelliteService
+    public partial class CableOrSatelliteService : Service, ICableOrSatelliteService, IEquatable<CableOrSatelliteService>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

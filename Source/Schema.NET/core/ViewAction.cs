@@ -15,7 +15,7 @@
     /// The act of consuming static visual content.
     /// </summary>
     [DataContract]
-    public partial class ViewAction : ConsumeAction, IViewAction
+    public partial class ViewAction : ConsumeAction, IViewAction, IEquatable<ViewAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

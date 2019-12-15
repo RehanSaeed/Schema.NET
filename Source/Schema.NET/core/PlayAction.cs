@@ -34,7 +34,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class PlayAction : Action, IPlayAction
+    public partial class PlayAction : Action, IPlayAction, IEquatable<PlayAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -55,5 +55,33 @@
         [DataMember(Name = "event", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IEvent> Event { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PlayAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Audience == other.Audience &&
+                this.Event == other.Event &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PlayAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Audience)
+            .And(this.Event)
+            .And(base.GetHashCode());
     }
 }

@@ -44,7 +44,7 @@
     /// A statistical distribution of values.
     /// </summary>
     [DataContract]
-    public partial class QuantitativeValueDistribution : StructuredValue, IQuantitativeValueDistribution
+    public partial class QuantitativeValueDistribution : StructuredValue, IQuantitativeValueDistribution, IEquatable<QuantitativeValueDistribution>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "percentile90", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<double?> Percentile90 { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(QuantitativeValueDistribution other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Duration == other.Duration &&
+                this.Median == other.Median &&
+                this.Percentile10 == other.Percentile10 &&
+                this.Percentile25 == other.Percentile25 &&
+                this.Percentile75 == other.Percentile75 &&
+                this.Percentile90 == other.Percentile90 &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as QuantitativeValueDistribution);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Duration)
+            .And(this.Median)
+            .And(this.Percentile10)
+            .And(this.Percentile25)
+            .And(this.Percentile75)
+            .And(this.Percentile90)
+            .And(base.GetHashCode());
     }
 }

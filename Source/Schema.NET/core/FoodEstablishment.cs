@@ -34,7 +34,7 @@
     /// A food-related business.
     /// </summary>
     [DataContract]
-    public partial class FoodEstablishment : LocalBusiness, IFoodEstablishment
+    public partial class FoodEstablishment : LocalBusiness, IFoodEstablishment, IEquatable<FoodEstablishment>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "starRating", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IRating> StarRating { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(FoodEstablishment other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AcceptsReservations == other.AcceptsReservations &&
+                this.HasMenu == other.HasMenu &&
+                this.ServesCuisine == other.ServesCuisine &&
+                this.StarRating == other.StarRating &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as FoodEstablishment);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AcceptsReservations)
+            .And(this.HasMenu)
+            .And(this.ServesCuisine)
+            .And(this.StarRating)
+            .And(base.GetHashCode());
     }
 }

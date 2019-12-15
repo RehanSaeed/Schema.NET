@@ -65,7 +65,7 @@
     /// A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as &lt;code&gt;breadcrumb&lt;/code&gt; may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page.
     /// </summary>
     [DataContract]
-    public partial class WebPage : CreativeWork, IWebPage
+    public partial class WebPage : CreativeWork, IWebPage, IEquatable<WebPage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -141,5 +141,47 @@
         [DataMember(Name = "specialty", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<Specialty?> Specialty { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(WebPage other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Breadcrumb == other.Breadcrumb &&
+                this.LastReviewed == other.LastReviewed &&
+                this.MainContentOfPage == other.MainContentOfPage &&
+                this.PrimaryImageOfPage == other.PrimaryImageOfPage &&
+                this.RelatedLink == other.RelatedLink &&
+                this.ReviewedBy == other.ReviewedBy &&
+                this.SignificantLink == other.SignificantLink &&
+                this.Speakable == other.Speakable &&
+                this.Specialty == other.Specialty &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as WebPage);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Breadcrumb)
+            .And(this.LastReviewed)
+            .And(this.MainContentOfPage)
+            .And(this.PrimaryImageOfPage)
+            .And(this.RelatedLink)
+            .And(this.ReviewedBy)
+            .And(this.SignificantLink)
+            .And(this.Speakable)
+            .And(this.Specialty)
+            .And(base.GetHashCode());
     }
 }

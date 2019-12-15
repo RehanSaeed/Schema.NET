@@ -15,7 +15,7 @@
     /// The act of swallowing solid objects.
     /// </summary>
     [DataContract]
-    public partial class EatAction : ConsumeAction, IEatAction
+    public partial class EatAction : ConsumeAction, IEatAction, IEquatable<EatAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

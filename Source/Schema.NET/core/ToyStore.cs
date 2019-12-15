@@ -15,7 +15,7 @@
     /// A toy store.
     /// </summary>
     [DataContract]
-    public partial class ToyStore : Store, IToyStore
+    public partial class ToyStore : Store, IToyStore, IEquatable<ToyStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

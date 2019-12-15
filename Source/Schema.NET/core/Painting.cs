@@ -15,7 +15,7 @@
     /// A painting.
     /// </summary>
     [DataContract]
-    public partial class Painting : CreativeWork, IPainting
+    public partial class Painting : CreativeWork, IPainting, IEquatable<Painting>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

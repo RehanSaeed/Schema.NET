@@ -17,7 +17,7 @@
     /// See also &lt;a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"&gt;blog post&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class Periodical : CreativeWorkSeries, IPeriodical
+    public partial class Periodical : CreativeWorkSeries, IPeriodical, IEquatable<Periodical>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

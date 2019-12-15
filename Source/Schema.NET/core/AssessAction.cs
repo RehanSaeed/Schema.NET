@@ -15,7 +15,7 @@
     /// The act of forming one's opinion, reaction or sentiment.
     /// </summary>
     [DataContract]
-    public partial class AssessAction : Action, IAssessAction
+    public partial class AssessAction : Action, IAssessAction, IEquatable<AssessAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

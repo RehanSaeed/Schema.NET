@@ -19,7 +19,7 @@
     /// Any collection of tests commonly ordered together.
     /// </summary>
     [DataContract]
-    public partial class MedicalTestPanel : MedicalTest, IMedicalTestPanel
+    public partial class MedicalTestPanel : MedicalTest, IMedicalTestPanel, IEquatable<MedicalTestPanel>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "subTest", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalTest> SubTest { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalTestPanel other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.SubTest == other.SubTest &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalTestPanel);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.SubTest)
+            .And(base.GetHashCode());
     }
 }

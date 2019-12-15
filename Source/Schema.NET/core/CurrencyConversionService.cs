@@ -15,7 +15,7 @@
     /// A service to convert funds from one currency to another currency.
     /// </summary>
     [DataContract]
-    public partial class CurrencyConversionService : FinancialProduct, ICurrencyConversionService
+    public partial class CurrencyConversionService : FinancialProduct, ICurrencyConversionService, IEquatable<CurrencyConversionService>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

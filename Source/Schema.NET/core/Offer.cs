@@ -231,7 +231,7 @@
     /// For &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GTIN&lt;/a&gt;-related fields, see &lt;a href="http://www.gs1.org/barcodes/support/check_digit_calculator"&gt;Check Digit calculator&lt;/a&gt; and &lt;a href="http://www.gs1us.org/resources/standards/gtin-validation-guide"&gt;validation guide&lt;/a&gt; from &lt;a href="http://www.gs1.org/"&gt;GS1&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class Offer : Intangible, IOffer
+    public partial class Offer : Intangible, IOffer, IEquatable<Offer>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -535,5 +535,111 @@
         [DataMember(Name = "warranty", Order = 246)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IWarrantyPromise> Warranty { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Offer other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AcceptedPaymentMethod == other.AcceptedPaymentMethod &&
+                this.AddOn == other.AddOn &&
+                this.AdvanceBookingRequirement == other.AdvanceBookingRequirement &&
+                this.AggregateRating == other.AggregateRating &&
+                this.AreaServed == other.AreaServed &&
+                this.Availability == other.Availability &&
+                this.AvailabilityEnds == other.AvailabilityEnds &&
+                this.AvailabilityStarts == other.AvailabilityStarts &&
+                this.AvailableAtOrFrom == other.AvailableAtOrFrom &&
+                this.AvailableDeliveryMethod == other.AvailableDeliveryMethod &&
+                this.BusinessFunction == other.BusinessFunction &&
+                this.Category == other.Category &&
+                this.DeliveryLeadTime == other.DeliveryLeadTime &&
+                this.EligibleCustomerType == other.EligibleCustomerType &&
+                this.EligibleDuration == other.EligibleDuration &&
+                this.EligibleQuantity == other.EligibleQuantity &&
+                this.EligibleRegion == other.EligibleRegion &&
+                this.EligibleTransactionVolume == other.EligibleTransactionVolume &&
+                this.Gtin == other.Gtin &&
+                this.Gtin12 == other.Gtin12 &&
+                this.Gtin13 == other.Gtin13 &&
+                this.Gtin14 == other.Gtin14 &&
+                this.Gtin8 == other.Gtin8 &&
+                this.IncludesObject == other.IncludesObject &&
+                this.IneligibleRegion == other.IneligibleRegion &&
+                this.InventoryLevel == other.InventoryLevel &&
+                this.ItemCondition == other.ItemCondition &&
+                this.ItemOffered == other.ItemOffered &&
+                this.Mpn == other.Mpn &&
+                this.OfferedBy == other.OfferedBy &&
+                this.Price == other.Price &&
+                this.PriceCurrency == other.PriceCurrency &&
+                this.PriceSpecification == other.PriceSpecification &&
+                this.PriceValidUntil == other.PriceValidUntil &&
+                this.Review == other.Review &&
+                this.Seller == other.Seller &&
+                this.SerialNumber == other.SerialNumber &&
+                this.Sku == other.Sku &&
+                this.ValidFrom == other.ValidFrom &&
+                this.ValidThrough == other.ValidThrough &&
+                this.Warranty == other.Warranty &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Offer);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AcceptedPaymentMethod)
+            .And(this.AddOn)
+            .And(this.AdvanceBookingRequirement)
+            .And(this.AggregateRating)
+            .And(this.AreaServed)
+            .And(this.Availability)
+            .And(this.AvailabilityEnds)
+            .And(this.AvailabilityStarts)
+            .And(this.AvailableAtOrFrom)
+            .And(this.AvailableDeliveryMethod)
+            .And(this.BusinessFunction)
+            .And(this.Category)
+            .And(this.DeliveryLeadTime)
+            .And(this.EligibleCustomerType)
+            .And(this.EligibleDuration)
+            .And(this.EligibleQuantity)
+            .And(this.EligibleRegion)
+            .And(this.EligibleTransactionVolume)
+            .And(this.Gtin)
+            .And(this.Gtin12)
+            .And(this.Gtin13)
+            .And(this.Gtin14)
+            .And(this.Gtin8)
+            .And(this.IncludesObject)
+            .And(this.IneligibleRegion)
+            .And(this.InventoryLevel)
+            .And(this.ItemCondition)
+            .And(this.ItemOffered)
+            .And(this.Mpn)
+            .And(this.OfferedBy)
+            .And(this.Price)
+            .And(this.PriceCurrency)
+            .And(this.PriceSpecification)
+            .And(this.PriceValidUntil)
+            .And(this.Review)
+            .And(this.Seller)
+            .And(this.SerialNumber)
+            .And(this.Sku)
+            .And(this.ValidFrom)
+            .And(this.ValidThrough)
+            .And(this.Warranty)
+            .And(base.GetHashCode());
     }
 }

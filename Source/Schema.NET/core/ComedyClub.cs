@@ -15,7 +15,7 @@
     /// A comedy club.
     /// </summary>
     [DataContract]
-    public partial class ComedyClub : EntertainmentBusiness, IComedyClub
+    public partial class ComedyClub : EntertainmentBusiness, IComedyClub, IEquatable<ComedyClub>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -59,7 +59,7 @@
     /// A product taken by mouth that contains a dietary ingredient intended to supplement the diet. Dietary ingredients may include vitamins, minerals, herbs or other botanicals, amino acids, and substances such as enzymes, organ tissues, glandulars and metabolites.
     /// </summary>
     [DataContract]
-    public partial class DietarySupplement : Substance, IDietarySupplement
+    public partial class DietarySupplement : Substance, IDietarySupplement, IEquatable<DietarySupplement>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -150,5 +150,53 @@
         [DataMember(Name = "targetPopulation", Order = 317)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> TargetPopulation { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(DietarySupplement other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ActiveIngredient == other.ActiveIngredient &&
+                this.Background == other.Background &&
+                this.IsProprietary == other.IsProprietary &&
+                this.LegalStatus == other.LegalStatus &&
+                this.Manufacturer == other.Manufacturer &&
+                this.MaximumIntake == other.MaximumIntake &&
+                this.MechanismOfAction == other.MechanismOfAction &&
+                this.NonProprietaryName == other.NonProprietaryName &&
+                this.ProprietaryName == other.ProprietaryName &&
+                this.RecommendedIntake == other.RecommendedIntake &&
+                this.SafetyConsideration == other.SafetyConsideration &&
+                this.TargetPopulation == other.TargetPopulation &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as DietarySupplement);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ActiveIngredient)
+            .And(this.Background)
+            .And(this.IsProprietary)
+            .And(this.LegalStatus)
+            .And(this.Manufacturer)
+            .And(this.MaximumIntake)
+            .And(this.MechanismOfAction)
+            .And(this.NonProprietaryName)
+            .And(this.ProprietaryName)
+            .And(this.RecommendedIntake)
+            .And(this.SafetyConsideration)
+            .And(this.TargetPopulation)
+            .And(base.GetHashCode());
     }
 }

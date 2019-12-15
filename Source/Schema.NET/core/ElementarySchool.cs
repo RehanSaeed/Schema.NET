@@ -15,7 +15,7 @@
     /// An elementary school.
     /// </summary>
     [DataContract]
-    public partial class ElementarySchool : EducationalOrganization, IElementarySchool
+    public partial class ElementarySchool : EducationalOrganization, IElementarySchool, IEquatable<ElementarySchool>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

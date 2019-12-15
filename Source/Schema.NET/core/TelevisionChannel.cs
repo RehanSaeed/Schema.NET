@@ -15,7 +15,7 @@
     /// A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
     /// </summary>
     [DataContract]
-    public partial class TelevisionChannel : BroadcastChannel, ITelevisionChannel
+    public partial class TelevisionChannel : BroadcastChannel, ITelevisionChannel, IEquatable<TelevisionChannel>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

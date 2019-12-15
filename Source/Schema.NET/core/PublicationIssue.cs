@@ -36,7 +36,7 @@
     /// See also &lt;a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"&gt;blog post&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class PublicationIssue : CreativeWork, IPublicationIssue
+    public partial class PublicationIssue : CreativeWork, IPublicationIssue, IEquatable<PublicationIssue>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -71,5 +71,37 @@
         [DataMember(Name = "pagination", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Pagination { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PublicationIssue other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.IssueNumber == other.IssueNumber &&
+                this.PageEnd == other.PageEnd &&
+                this.PageStart == other.PageStart &&
+                this.Pagination == other.Pagination &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PublicationIssue);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.IssueNumber)
+            .And(this.PageEnd)
+            .And(this.PageStart)
+            .And(this.Pagination)
+            .And(base.GetHashCode());
     }
 }

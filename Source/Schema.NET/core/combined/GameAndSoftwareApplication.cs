@@ -15,7 +15,7 @@
     /// See Game, SoftwareApplication for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class GameAndSoftwareApplication : CreativeWork, IGameAndSoftwareApplication
+    public abstract partial class GameAndSoftwareApplication : CreativeWork, IGameAndSoftwareApplication, IEquatable<GameAndSoftwareApplication>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -211,5 +211,83 @@
         [DataMember(Name = "supportingData", Order = 232)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IDataFeed> SupportingData { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(GameAndSoftwareApplication other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ApplicationCategory == other.ApplicationCategory &&
+                this.ApplicationSubCategory == other.ApplicationSubCategory &&
+                this.ApplicationSuite == other.ApplicationSuite &&
+                this.AvailableOnDevice == other.AvailableOnDevice &&
+                this.CharacterAttribute == other.CharacterAttribute &&
+                this.CountriesNotSupported == other.CountriesNotSupported &&
+                this.CountriesSupported == other.CountriesSupported &&
+                this.DownloadUrl == other.DownloadUrl &&
+                this.FeatureList == other.FeatureList &&
+                this.FileSize == other.FileSize &&
+                this.GameItem == other.GameItem &&
+                this.GameLocation == other.GameLocation &&
+                this.InstallUrl == other.InstallUrl &&
+                this.MemoryRequirements == other.MemoryRequirements &&
+                this.NumberOfPlayers == other.NumberOfPlayers &&
+                this.OperatingSystem == other.OperatingSystem &&
+                this.Permissions == other.Permissions &&
+                this.ProcessorRequirements == other.ProcessorRequirements &&
+                this.Quest == other.Quest &&
+                this.ReleaseNotes == other.ReleaseNotes &&
+                this.Screenshot == other.Screenshot &&
+                this.SoftwareAddOn == other.SoftwareAddOn &&
+                this.SoftwareHelp == other.SoftwareHelp &&
+                this.SoftwareRequirements == other.SoftwareRequirements &&
+                this.SoftwareVersion == other.SoftwareVersion &&
+                this.StorageRequirements == other.StorageRequirements &&
+                this.SupportingData == other.SupportingData &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as GameAndSoftwareApplication);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ApplicationCategory)
+            .And(this.ApplicationSubCategory)
+            .And(this.ApplicationSuite)
+            .And(this.AvailableOnDevice)
+            .And(this.CharacterAttribute)
+            .And(this.CountriesNotSupported)
+            .And(this.CountriesSupported)
+            .And(this.DownloadUrl)
+            .And(this.FeatureList)
+            .And(this.FileSize)
+            .And(this.GameItem)
+            .And(this.GameLocation)
+            .And(this.InstallUrl)
+            .And(this.MemoryRequirements)
+            .And(this.NumberOfPlayers)
+            .And(this.OperatingSystem)
+            .And(this.Permissions)
+            .And(this.ProcessorRequirements)
+            .And(this.Quest)
+            .And(this.ReleaseNotes)
+            .And(this.Screenshot)
+            .And(this.SoftwareAddOn)
+            .And(this.SoftwareHelp)
+            .And(this.SoftwareRequirements)
+            .And(this.SoftwareVersion)
+            .And(this.StorageRequirements)
+            .And(this.SupportingData)
+            .And(base.GetHashCode());
     }
 }

@@ -29,7 +29,7 @@
     /// A set of characteristics belonging to businesses, e.g. who compose an item's target audience.
     /// </summary>
     [DataContract]
-    public partial class BusinessAudience : Audience, IBusinessAudience
+    public partial class BusinessAudience : Audience, IBusinessAudience, IEquatable<BusinessAudience>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "yearsInOperation", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> YearsInOperation { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(BusinessAudience other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.NumberOfEmployees == other.NumberOfEmployees &&
+                this.YearlyRevenue == other.YearlyRevenue &&
+                this.YearsInOperation == other.YearsInOperation &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as BusinessAudience);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.NumberOfEmployees)
+            .And(this.YearlyRevenue)
+            .And(this.YearsInOperation)
+            .And(base.GetHashCode());
     }
 }

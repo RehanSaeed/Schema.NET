@@ -15,7 +15,7 @@
     /// A day spa.
     /// </summary>
     [DataContract]
-    public partial class DaySpa : HealthAndBeautyBusiness, IDaySpa
+    public partial class DaySpa : HealthAndBeautyBusiness, IDaySpa, IEquatable<DaySpa>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

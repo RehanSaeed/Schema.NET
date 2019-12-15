@@ -15,7 +15,7 @@
     /// A radio channel that uses AM.
     /// </summary>
     [DataContract]
-    public partial class AMRadioChannel : RadioChannel, IAMRadioChannel
+    public partial class AMRadioChannel : RadioChannel, IAMRadioChannel, IEquatable<AMRadioChannel>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

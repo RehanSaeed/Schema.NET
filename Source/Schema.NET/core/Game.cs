@@ -39,7 +39,7 @@
     /// The Game type represents things which are games. These are typically rule-governed recreational activities, e.g. role-playing games in which players assume the role of characters in a fictional setting.
     /// </summary>
     [DataContract]
-    public partial class Game : CreativeWork, IGame
+    public partial class Game : CreativeWork, IGame, IEquatable<Game>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "quest", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IThing> Quest { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Game other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CharacterAttribute == other.CharacterAttribute &&
+                this.GameItem == other.GameItem &&
+                this.GameLocation == other.GameLocation &&
+                this.NumberOfPlayers == other.NumberOfPlayers &&
+                this.Quest == other.Quest &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Game);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CharacterAttribute)
+            .And(this.GameItem)
+            .And(this.GameLocation)
+            .And(this.NumberOfPlayers)
+            .And(this.Quest)
+            .And(base.GetHashCode());
     }
 }

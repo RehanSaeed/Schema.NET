@@ -23,7 +23,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class FindAction : Action, IFindAction
+    public partial class FindAction : Action, IFindAction, IEquatable<FindAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

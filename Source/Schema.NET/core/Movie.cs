@@ -54,7 +54,7 @@
     /// A movie.
     /// </summary>
     [DataContract]
-    public partial class Movie : CreativeWork, IMovie
+    public partial class Movie : CreativeWork, IMovie, IEquatable<Movie>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "trailer", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IVideoObject> Trailer { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Movie other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Actor == other.Actor &&
+                this.CountryOfOrigin == other.CountryOfOrigin &&
+                this.Director == other.Director &&
+                this.Duration == other.Duration &&
+                this.MusicBy == other.MusicBy &&
+                this.ProductionCompany == other.ProductionCompany &&
+                this.SubtitleLanguage == other.SubtitleLanguage &&
+                this.Trailer == other.Trailer &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Movie);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Actor)
+            .And(this.CountryOfOrigin)
+            .And(this.Director)
+            .And(this.Duration)
+            .And(this.MusicBy)
+            .And(this.ProductionCompany)
+            .And(this.SubtitleLanguage)
+            .And(this.Trailer)
+            .And(base.GetHashCode());
     }
 }

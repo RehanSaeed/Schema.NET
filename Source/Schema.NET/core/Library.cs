@@ -15,7 +15,7 @@
     /// A library.
     /// </summary>
     [DataContract]
-    public partial class Library : LocalBusiness, ILibrary
+    public partial class Library : LocalBusiness, ILibrary, IEquatable<Library>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

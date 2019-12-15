@@ -39,7 +39,7 @@
     /// An intangible item that describes an alignment between a learning resource and a node in an educational framework.
     /// </summary>
     [DataContract]
-    public partial class AlignmentObject : Intangible, IAlignmentObject
+    public partial class AlignmentObject : Intangible, IAlignmentObject, IEquatable<AlignmentObject>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "targetUrl", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<Uri> TargetUrl { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(AlignmentObject other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AlignmentType == other.AlignmentType &&
+                this.EducationalFramework == other.EducationalFramework &&
+                this.TargetDescription == other.TargetDescription &&
+                this.TargetName == other.TargetName &&
+                this.TargetUrl == other.TargetUrl &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as AlignmentObject);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AlignmentType)
+            .And(this.EducationalFramework)
+            .And(this.TargetDescription)
+            .And(this.TargetName)
+            .And(this.TargetUrl)
+            .And(base.GetHashCode());
     }
 }

@@ -44,7 +44,7 @@
     /// A MusicRelease is a specific release of a music album.
     /// </summary>
     [DataContract]
-    public partial class MusicRelease : MusicPlaylist, IMusicRelease
+    public partial class MusicRelease : MusicPlaylist, IMusicRelease, IEquatable<MusicRelease>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "releaseOf", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMusicAlbum> ReleaseOf { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MusicRelease other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CatalogNumber == other.CatalogNumber &&
+                this.CreditedTo == other.CreditedTo &&
+                this.Duration == other.Duration &&
+                this.MusicReleaseFormat == other.MusicReleaseFormat &&
+                this.RecordLabel == other.RecordLabel &&
+                this.ReleaseOf == other.ReleaseOf &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MusicRelease);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CatalogNumber)
+            .And(this.CreditedTo)
+            .And(this.Duration)
+            .And(this.MusicReleaseFormat)
+            .And(this.RecordLabel)
+            .And(this.ReleaseOf)
+            .And(base.GetHashCode());
     }
 }

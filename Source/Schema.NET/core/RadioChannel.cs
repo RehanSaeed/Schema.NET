@@ -15,7 +15,7 @@
     /// A unique instance of a radio BroadcastService on a CableOrSatelliteService lineup.
     /// </summary>
     [DataContract]
-    public partial class RadioChannel : BroadcastChannel, IRadioChannel
+    public partial class RadioChannel : BroadcastChannel, IRadioChannel, IEquatable<RadioChannel>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

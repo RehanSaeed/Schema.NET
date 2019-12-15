@@ -15,7 +15,7 @@
     /// A graveyard.
     /// </summary>
     [DataContract]
-    public partial class Cemetery : CivicStructure, ICemetery
+    public partial class Cemetery : CivicStructure, ICemetery, IEquatable<Cemetery>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

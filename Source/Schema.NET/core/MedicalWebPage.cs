@@ -15,7 +15,7 @@
     /// A web page that provides medical information.
     /// </summary>
     [DataContract]
-    public partial class MedicalWebPage : WebPage, IMedicalWebPage
+    public partial class MedicalWebPage : WebPage, IMedicalWebPage, IEquatable<MedicalWebPage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

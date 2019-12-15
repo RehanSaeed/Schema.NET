@@ -15,7 +15,7 @@
     /// A general contractor.
     /// </summary>
     [DataContract]
-    public partial class GeneralContractor : HomeAndConstructionBusiness, IGeneralContractor
+    public partial class GeneralContractor : HomeAndConstructionBusiness, IGeneralContractor, IEquatable<GeneralContractor>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

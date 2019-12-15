@@ -15,7 +15,7 @@
     /// A motorcycle dealer.
     /// </summary>
     [DataContract]
-    public partial class MotorcycleDealer : AutomotiveBusiness, IMotorcycleDealer
+    public partial class MotorcycleDealer : AutomotiveBusiness, IMotorcycleDealer, IEquatable<MotorcycleDealer>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

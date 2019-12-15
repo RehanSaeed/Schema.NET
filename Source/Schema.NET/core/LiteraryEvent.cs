@@ -15,7 +15,7 @@
     /// Event type: Literary event.
     /// </summary>
     [DataContract]
-    public partial class LiteraryEvent : Event, ILiteraryEvent
+    public partial class LiteraryEvent : Event, ILiteraryEvent, IEquatable<LiteraryEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// An outlet store.
     /// </summary>
     [DataContract]
-    public partial class OutletStore : Store, IOutletStore
+    public partial class OutletStore : Store, IOutletStore, IEquatable<OutletStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

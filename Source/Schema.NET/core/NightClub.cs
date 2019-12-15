@@ -15,7 +15,7 @@
     /// A nightclub or discotheque.
     /// </summary>
     [DataContract]
-    public partial class NightClub : EntertainmentBusiness, INightClub
+    public partial class NightClub : EntertainmentBusiness, INightClub, IEquatable<NightClub>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

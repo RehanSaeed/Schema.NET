@@ -15,7 +15,7 @@
     /// See AudioObject, Book for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class AudioObjectAndBook : MediaObject, IAudioObjectAndBook
+    public abstract partial class AudioObjectAndBook : MediaObject, IAudioObjectAndBook, IEquatable<AudioObjectAndBook>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -78,5 +78,45 @@
         [DataMember(Name = "transcript", Order = 313)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Transcript { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(AudioObjectAndBook other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Abridged == other.Abridged &&
+                this.BookEdition == other.BookEdition &&
+                this.BookFormat == other.BookFormat &&
+                this.Caption == other.Caption &&
+                this.Illustrator == other.Illustrator &&
+                this.Isbn == other.Isbn &&
+                this.NumberOfPages == other.NumberOfPages &&
+                this.Transcript == other.Transcript &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as AudioObjectAndBook);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Abridged)
+            .And(this.BookEdition)
+            .And(this.BookFormat)
+            .And(this.Caption)
+            .And(this.Illustrator)
+            .And(this.Isbn)
+            .And(this.NumberOfPages)
+            .And(this.Transcript)
+            .And(base.GetHashCode());
     }
 }

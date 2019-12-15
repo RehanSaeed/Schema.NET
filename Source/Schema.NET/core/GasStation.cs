@@ -15,7 +15,7 @@
     /// A gas station.
     /// </summary>
     [DataContract]
-    public partial class GasStation : AutomotiveBusiness, IGasStation
+    public partial class GasStation : AutomotiveBusiness, IGasStation, IEquatable<GasStation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

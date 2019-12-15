@@ -15,7 +15,7 @@
     /// A store that sells reading glasses and similar devices for improving vision.
     /// </summary>
     [DataContract]
-    public partial class Optician : MedicalBusiness, IOptician
+    public partial class Optician : MedicalBusiness, IOptician, IEquatable<Optician>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

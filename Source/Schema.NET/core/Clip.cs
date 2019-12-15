@@ -59,7 +59,7 @@
     /// A short TV or radio program or a segment/part of a program.
     /// </summary>
     [DataContract]
-    public partial class Clip : CreativeWork, IClip
+    public partial class Clip : CreativeWork, IClip, IEquatable<Clip>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -129,5 +129,47 @@
         [DataMember(Name = "startOffset", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<double?> StartOffset { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Clip other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Actor == other.Actor &&
+                this.ClipNumber == other.ClipNumber &&
+                this.Director == other.Director &&
+                this.EndOffset == other.EndOffset &&
+                this.MusicBy == other.MusicBy &&
+                this.PartOfEpisode == other.PartOfEpisode &&
+                this.PartOfSeason == other.PartOfSeason &&
+                this.PartOfSeries == other.PartOfSeries &&
+                this.StartOffset == other.StartOffset &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Clip);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Actor)
+            .And(this.ClipNumber)
+            .And(this.Director)
+            .And(this.EndOffset)
+            .And(this.MusicBy)
+            .And(this.PartOfEpisode)
+            .And(this.PartOfSeason)
+            .And(this.PartOfSeries)
+            .And(this.StartOffset)
+            .And(base.GetHashCode());
     }
 }

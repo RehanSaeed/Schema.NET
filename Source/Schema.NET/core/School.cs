@@ -15,7 +15,7 @@
     /// A school.
     /// </summary>
     [DataContract]
-    public partial class School : EducationalOrganization, ISchool
+    public partial class School : EducationalOrganization, ISchool, IEquatable<School>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

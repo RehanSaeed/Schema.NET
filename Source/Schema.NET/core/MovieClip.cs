@@ -15,7 +15,7 @@
     /// A short segment/part of a movie.
     /// </summary>
     [DataContract]
-    public partial class MovieClip : Clip, IMovieClip
+    public partial class MovieClip : Clip, IMovieClip, IEquatable<MovieClip>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

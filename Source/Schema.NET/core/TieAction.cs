@@ -15,7 +15,7 @@
     /// The act of reaching a draw in a competitive activity.
     /// </summary>
     [DataContract]
-    public partial class TieAction : AchieveAction, ITieAction
+    public partial class TieAction : AchieveAction, ITieAction, IEquatable<TieAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

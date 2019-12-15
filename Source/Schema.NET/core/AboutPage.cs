@@ -15,7 +15,7 @@
     /// Web page type: About page.
     /// </summary>
     [DataContract]
-    public partial class AboutPage : WebPage, IAboutPage
+    public partial class AboutPage : WebPage, IAboutPage, IEquatable<AboutPage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

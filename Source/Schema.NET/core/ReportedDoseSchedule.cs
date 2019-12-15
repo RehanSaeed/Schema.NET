@@ -15,7 +15,7 @@
     /// A patient-reported or observed dosing schedule for a drug or supplement.
     /// </summary>
     [DataContract]
-    public partial class ReportedDoseSchedule : DoseSchedule, IReportedDoseSchedule
+    public partial class ReportedDoseSchedule : DoseSchedule, IReportedDoseSchedule, IEquatable<ReportedDoseSchedule>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

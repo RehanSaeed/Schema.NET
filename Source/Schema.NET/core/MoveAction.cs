@@ -32,7 +32,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class MoveAction : Action, IMoveAction
+    public partial class MoveAction : Action, IMoveAction, IEquatable<MoveAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -53,5 +53,33 @@
         [DataMember(Name = "toLocation", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPlace> ToLocation { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MoveAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.FromLocation == other.FromLocation &&
+                this.ToLocation == other.ToLocation &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MoveAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.FromLocation)
+            .And(this.ToLocation)
+            .And(base.GetHashCode());
     }
 }

@@ -15,7 +15,7 @@
     /// A college, university, or other third-level educational institution.
     /// </summary>
     [DataContract]
-    public partial class CollegeOrUniversity : EducationalOrganization, ICollegeOrUniversity
+    public partial class CollegeOrUniversity : EducationalOrganization, ICollegeOrUniversity, IEquatable<CollegeOrUniversity>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

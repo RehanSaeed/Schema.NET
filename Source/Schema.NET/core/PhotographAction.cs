@@ -15,7 +15,7 @@
     /// The act of capturing still images of objects using a camera.
     /// </summary>
     [DataContract]
-    public partial class PhotographAction : CreateAction, IPhotographAction
+    public partial class PhotographAction : CreateAction, IPhotographAction, IEquatable<PhotographAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

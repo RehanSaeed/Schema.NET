@@ -15,7 +15,7 @@
     /// A home goods store.
     /// </summary>
     [DataContract]
-    public partial class HomeGoodsStore : Store, IHomeGoodsStore
+    public partial class HomeGoodsStore : Store, IHomeGoodsStore, IEquatable<HomeGoodsStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// The act of  departing from a place. An agent departs from an fromLocation for a destination, optionally with participants.
     /// </summary>
     [DataContract]
-    public partial class DepartAction : MoveAction, IDepartAction
+    public partial class DepartAction : MoveAction, IDepartAction, IEquatable<DepartAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// An emergency service, such as a fire station or ER.
     /// </summary>
     [DataContract]
-    public partial class EmergencyService : LocalBusiness, IEmergencyService
+    public partial class EmergencyService : LocalBusiness, IEmergencyService, IEquatable<EmergencyService>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

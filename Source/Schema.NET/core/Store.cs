@@ -15,7 +15,7 @@
     /// A retail good store.
     /// </summary>
     [DataContract]
-    public partial class Store : LocalBusiness, IStore
+    public partial class Store : LocalBusiness, IStore, IEquatable<Store>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

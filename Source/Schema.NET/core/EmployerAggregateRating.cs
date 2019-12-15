@@ -15,7 +15,7 @@
     /// An aggregate rating of an Organization related to its role as an employer.
     /// </summary>
     [DataContract]
-    public partial class EmployerAggregateRating : AggregateRating, IEmployerAggregateRating
+    public partial class EmployerAggregateRating : AggregateRating, IEmployerAggregateRating, IEquatable<EmployerAggregateRating>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

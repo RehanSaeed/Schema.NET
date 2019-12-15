@@ -15,7 +15,7 @@
     /// A fast-food restaurant.
     /// </summary>
     [DataContract]
-    public partial class FastFoodRestaurant : FoodEstablishment, IFastFoodRestaurant
+    public partial class FastFoodRestaurant : FoodEstablishment, IFastFoodRestaurant, IEquatable<FastFoodRestaurant>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

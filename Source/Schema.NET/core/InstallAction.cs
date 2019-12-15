@@ -15,7 +15,7 @@
     /// The act of installing an application.
     /// </summary>
     [DataContract]
-    public partial class InstallAction : ConsumeAction, IInstallAction
+    public partial class InstallAction : ConsumeAction, IInstallAction, IEquatable<InstallAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

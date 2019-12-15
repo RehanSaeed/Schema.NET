@@ -41,7 +41,7 @@
     /// A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
     /// </summary>
     [DataContract]
-    public partial class LocalBusiness : OrganizationAndPlace, ILocalBusiness
+    public partial class LocalBusiness : OrganizationAndPlace, ILocalBusiness, IEquatable<LocalBusiness>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -83,5 +83,37 @@
         [DataMember(Name = "priceRange", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PriceRange { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(LocalBusiness other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CurrenciesAccepted == other.CurrenciesAccepted &&
+                this.OpeningHours == other.OpeningHours &&
+                this.PaymentAccepted == other.PaymentAccepted &&
+                this.PriceRange == other.PriceRange &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as LocalBusiness);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CurrenciesAccepted)
+            .And(this.OpeningHours)
+            .And(this.PaymentAccepted)
+            .And(this.PriceRange)
+            .And(base.GetHashCode());
     }
 }

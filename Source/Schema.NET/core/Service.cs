@@ -119,7 +119,7 @@
     /// A service provided by an organization, e.g. delivery service, print services, etc.
     /// </summary>
     [DataContract]
-    public partial class Service : Intangible, IService
+    public partial class Service : Intangible, IService, IEquatable<Service>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -273,5 +273,71 @@
         [DataMember(Name = "termsOfService", Order = 226)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> TermsOfService { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Service other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AggregateRating == other.AggregateRating &&
+                this.AreaServed == other.AreaServed &&
+                this.Audience == other.Audience &&
+                this.AvailableChannel == other.AvailableChannel &&
+                this.Award == other.Award &&
+                this.Brand == other.Brand &&
+                this.Broker == other.Broker &&
+                this.Category == other.Category &&
+                this.HasOfferCatalog == other.HasOfferCatalog &&
+                this.HoursAvailable == other.HoursAvailable &&
+                this.IsRelatedTo == other.IsRelatedTo &&
+                this.IsSimilarTo == other.IsSimilarTo &&
+                this.Logo == other.Logo &&
+                this.Offers == other.Offers &&
+                this.Provider == other.Provider &&
+                this.ProviderMobility == other.ProviderMobility &&
+                this.Review == other.Review &&
+                this.ServiceOutput == other.ServiceOutput &&
+                this.ServiceType == other.ServiceType &&
+                this.Slogan == other.Slogan &&
+                this.TermsOfService == other.TermsOfService &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Service);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AggregateRating)
+            .And(this.AreaServed)
+            .And(this.Audience)
+            .And(this.AvailableChannel)
+            .And(this.Award)
+            .And(this.Brand)
+            .And(this.Broker)
+            .And(this.Category)
+            .And(this.HasOfferCatalog)
+            .And(this.HoursAvailable)
+            .And(this.IsRelatedTo)
+            .And(this.IsSimilarTo)
+            .And(this.Logo)
+            .And(this.Offers)
+            .And(this.Provider)
+            .And(this.ProviderMobility)
+            .And(this.Review)
+            .And(this.ServiceOutput)
+            .And(this.ServiceType)
+            .And(this.Slogan)
+            .And(this.TermsOfService)
+            .And(base.GetHashCode());
     }
 }

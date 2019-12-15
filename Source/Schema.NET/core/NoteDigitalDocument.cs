@@ -15,7 +15,7 @@
     /// A file containing a note, primarily for the author.
     /// </summary>
     [DataContract]
-    public partial class NoteDigitalDocument : DigitalDocument, INoteDigitalDocument
+    public partial class NoteDigitalDocument : DigitalDocument, INoteDigitalDocument, IEquatable<NoteDigitalDocument>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

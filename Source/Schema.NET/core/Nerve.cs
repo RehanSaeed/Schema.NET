@@ -29,7 +29,7 @@
     /// A common pathway for the electrochemical nerve impulses that are transmitted along each of the axons.
     /// </summary>
     [DataContract]
-    public partial class Nerve : AnatomicalStructure, INerve
+    public partial class Nerve : AnatomicalStructure, INerve, IEquatable<Nerve>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "sourcedFrom", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IBrainStructure> SourcedFrom { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Nerve other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.NerveMotor == other.NerveMotor &&
+                this.SensoryUnit == other.SensoryUnit &&
+                this.SourcedFrom == other.SourcedFrom &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Nerve);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.NerveMotor)
+            .And(this.SensoryUnit)
+            .And(this.SourcedFrom)
+            .And(base.GetHashCode());
     }
 }

@@ -15,7 +15,7 @@
     /// An Insurance agency.
     /// </summary>
     [DataContract]
-    public partial class InsuranceAgency : FinancialService, IInsuranceAgency
+    public partial class InsuranceAgency : FinancialService, IInsuranceAgency, IEquatable<InsuranceAgency>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

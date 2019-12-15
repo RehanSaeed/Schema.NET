@@ -15,7 +15,7 @@
     /// A stadium.
     /// </summary>
     [DataContract]
-    public partial class StadiumOrArena : CivicStructureAndSportsActivityLocation, IStadiumOrArena
+    public partial class StadiumOrArena : CivicStructureAndSportsActivityLocation, IStadiumOrArena, IEquatable<StadiumOrArena>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

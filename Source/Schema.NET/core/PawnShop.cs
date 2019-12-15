@@ -15,7 +15,7 @@
     /// A shop that will buy, or lend money against the security of, personal possessions.
     /// </summary>
     [DataContract]
-    public partial class PawnShop : Store, IPawnShop
+    public partial class PawnShop : Store, IPawnShop, IEquatable<PawnShop>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

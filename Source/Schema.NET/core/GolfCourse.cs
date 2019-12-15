@@ -15,7 +15,7 @@
     /// A golf course.
     /// </summary>
     [DataContract]
-    public partial class GolfCourse : SportsActivityLocation, IGolfCourse
+    public partial class GolfCourse : SportsActivityLocation, IGolfCourse, IEquatable<GolfCourse>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

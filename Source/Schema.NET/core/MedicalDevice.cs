@@ -54,7 +54,7 @@
     /// Any object used in a medical capacity, such as to diagnose or treat a patient.
     /// </summary>
     [DataContract]
-    public partial class MedicalDevice : MedicalEntity, IMedicalDevice
+    public partial class MedicalDevice : MedicalEntity, IMedicalDevice, IEquatable<MedicalDevice>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "seriousAdverseOutcome", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalEntity> SeriousAdverseOutcome { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalDevice other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AdverseOutcome == other.AdverseOutcome &&
+                this.Contraindication == other.Contraindication &&
+                this.Indication == other.Indication &&
+                this.PostOp == other.PostOp &&
+                this.PreOp == other.PreOp &&
+                this.Procedure == other.Procedure &&
+                this.Purpose == other.Purpose &&
+                this.SeriousAdverseOutcome == other.SeriousAdverseOutcome &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalDevice);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AdverseOutcome)
+            .And(this.Contraindication)
+            .And(this.Indication)
+            .And(this.PostOp)
+            .And(this.PreOp)
+            .And(this.Procedure)
+            .And(this.Purpose)
+            .And(this.SeriousAdverseOutcome)
+            .And(base.GetHashCode());
     }
 }

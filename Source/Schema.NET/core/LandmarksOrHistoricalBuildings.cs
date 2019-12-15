@@ -15,7 +15,7 @@
     /// An historical landmark or building.
     /// </summary>
     [DataContract]
-    public partial class LandmarksOrHistoricalBuildings : Place, ILandmarksOrHistoricalBuildings
+    public partial class LandmarksOrHistoricalBuildings : Place, ILandmarksOrHistoricalBuildings, IEquatable<LandmarksOrHistoricalBuildings>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

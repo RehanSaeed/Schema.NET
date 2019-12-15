@@ -15,7 +15,7 @@
     /// A short radio program or a segment/part of a radio program.
     /// </summary>
     [DataContract]
-    public partial class RadioClip : Clip, IRadioClip
+    public partial class RadioClip : Clip, IRadioClip, IEquatable<RadioClip>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

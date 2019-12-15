@@ -15,7 +15,7 @@
     /// An event venue.
     /// </summary>
     [DataContract]
-    public partial class EventVenue : CivicStructure, IEventVenue
+    public partial class EventVenue : CivicStructure, IEventVenue, IEquatable<EventVenue>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

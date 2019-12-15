@@ -15,7 +15,7 @@
     /// A piece of sculpture.
     /// </summary>
     [DataContract]
-    public partial class Sculpture : CreativeWork, ISculpture
+    public partial class Sculpture : CreativeWork, ISculpture, IEquatable<Sculpture>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

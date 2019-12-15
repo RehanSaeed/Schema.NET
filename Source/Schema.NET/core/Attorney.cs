@@ -17,7 +17,7 @@
     /// This type is deprecated - &lt;a class="localLink" href="http://schema.org/LegalService"&gt;LegalService&lt;/a&gt; is more inclusive and less ambiguous.
     /// </summary>
     [DataContract]
-    public partial class Attorney : LegalService, IAttorney
+    public partial class Attorney : LegalService, IAttorney, IEquatable<Attorney>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

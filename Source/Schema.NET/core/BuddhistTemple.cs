@@ -15,7 +15,7 @@
     /// A Buddhist temple.
     /// </summary>
     [DataContract]
-    public partial class BuddhistTemple : PlaceOfWorship, IBuddhistTemple
+    public partial class BuddhistTemple : PlaceOfWorship, IBuddhistTemple, IEquatable<BuddhistTemple>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

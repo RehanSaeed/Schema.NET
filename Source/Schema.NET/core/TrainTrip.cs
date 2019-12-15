@@ -44,7 +44,7 @@
     /// A trip on a commercial train line.
     /// </summary>
     [DataContract]
-    public partial class TrainTrip : Trip, ITrainTrip
+    public partial class TrainTrip : Trip, ITrainTrip, IEquatable<TrainTrip>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "trainNumber", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> TrainNumber { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(TrainTrip other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ArrivalPlatform == other.ArrivalPlatform &&
+                this.ArrivalStation == other.ArrivalStation &&
+                this.DeparturePlatform == other.DeparturePlatform &&
+                this.DepartureStation == other.DepartureStation &&
+                this.TrainName == other.TrainName &&
+                this.TrainNumber == other.TrainNumber &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as TrainTrip);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ArrivalPlatform)
+            .And(this.ArrivalStation)
+            .And(this.DeparturePlatform)
+            .And(this.DepartureStation)
+            .And(this.TrainName)
+            .And(this.TrainNumber)
+            .And(base.GetHashCode());
     }
 }

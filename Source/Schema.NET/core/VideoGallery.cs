@@ -15,7 +15,7 @@
     /// Web page type: Video gallery page.
     /// </summary>
     [DataContract]
-    public partial class VideoGallery : CollectionPage, IVideoGallery
+    public partial class VideoGallery : CollectionPage, IVideoGallery, IEquatable<VideoGallery>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

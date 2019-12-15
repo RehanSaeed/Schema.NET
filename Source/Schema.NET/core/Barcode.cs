@@ -15,7 +15,7 @@
     /// An image of a visual machine-readable code such as a barcode or QR code.
     /// </summary>
     [DataContract]
-    public partial class Barcode : ImageObject, IBarcode
+    public partial class Barcode : ImageObject, IBarcode, IEquatable<Barcode>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

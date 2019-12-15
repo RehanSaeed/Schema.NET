@@ -15,7 +15,7 @@
     /// Any feature associated or not with a medical condition. In medicine a symptom is generally subjective while a sign is objective.
     /// </summary>
     [DataContract]
-    public partial class MedicalSignOrSymptom : MedicalCondition, IMedicalSignOrSymptom
+    public partial class MedicalSignOrSymptom : MedicalCondition, IMedicalSignOrSymptom, IEquatable<MedicalSignOrSymptom>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -36,5 +36,33 @@
         [DataMember(Name = "possibleTreatment", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IMedicalTherapy> PossibleTreatment { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalSignOrSymptom other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Cause == other.Cause &&
+                this.PossibleTreatment == other.PossibleTreatment &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalSignOrSymptom);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Cause)
+            .And(this.PossibleTreatment)
+            .And(base.GetHashCode());
     }
 }

@@ -15,7 +15,7 @@
     /// An ocean (for example, the Pacific).
     /// </summary>
     [DataContract]
-    public partial class OceanBodyOfWater : BodyOfWater, IOceanBodyOfWater
+    public partial class OceanBodyOfWater : BodyOfWater, IOceanBodyOfWater, IEquatable<OceanBodyOfWater>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

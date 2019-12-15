@@ -15,7 +15,7 @@
     /// A tire shop.
     /// </summary>
     [DataContract]
-    public partial class TireShop : Store, ITireShop
+    public partial class TireShop : Store, ITireShop, IEquatable<TireShop>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

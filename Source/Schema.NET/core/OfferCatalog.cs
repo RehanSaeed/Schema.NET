@@ -15,7 +15,7 @@
     /// An OfferCatalog is an ItemList that contains related Offers and/or further OfferCatalogs that are offeredBy the same provider.
     /// </summary>
     [DataContract]
-    public partial class OfferCatalog : ItemList, IOfferCatalog
+    public partial class OfferCatalog : ItemList, IOfferCatalog, IEquatable<OfferCatalog>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

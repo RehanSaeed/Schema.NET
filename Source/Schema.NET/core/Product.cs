@@ -190,7 +190,7 @@
     /// Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.
     /// </summary>
     [DataContract]
-    public partial class Product : Thing, IProduct
+    public partial class Product : Thing, IProduct, IEquatable<Product>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -443,5 +443,99 @@
         [DataMember(Name = "width", Order = 140)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IQuantitativeValue> Width { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Product other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AdditionalProperty == other.AdditionalProperty &&
+                this.AggregateRating == other.AggregateRating &&
+                this.Audience == other.Audience &&
+                this.Award == other.Award &&
+                this.Brand == other.Brand &&
+                this.Category == other.Category &&
+                this.Color == other.Color &&
+                this.Depth == other.Depth &&
+                this.Gtin == other.Gtin &&
+                this.Gtin12 == other.Gtin12 &&
+                this.Gtin13 == other.Gtin13 &&
+                this.Gtin14 == other.Gtin14 &&
+                this.Gtin8 == other.Gtin8 &&
+                this.Height == other.Height &&
+                this.IsAccessoryOrSparePartFor == other.IsAccessoryOrSparePartFor &&
+                this.IsConsumableFor == other.IsConsumableFor &&
+                this.IsRelatedTo == other.IsRelatedTo &&
+                this.IsSimilarTo == other.IsSimilarTo &&
+                this.ItemCondition == other.ItemCondition &&
+                this.Logo == other.Logo &&
+                this.Manufacturer == other.Manufacturer &&
+                this.Material == other.Material &&
+                this.Model == other.Model &&
+                this.Mpn == other.Mpn &&
+                this.Nsn == other.Nsn &&
+                this.Offers == other.Offers &&
+                this.ProductID == other.ProductID &&
+                this.ProductionDate == other.ProductionDate &&
+                this.PurchaseDate == other.PurchaseDate &&
+                this.ReleaseDate == other.ReleaseDate &&
+                this.Review == other.Review &&
+                this.Sku == other.Sku &&
+                this.Slogan == other.Slogan &&
+                this.Weight == other.Weight &&
+                this.Width == other.Width &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Product);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AdditionalProperty)
+            .And(this.AggregateRating)
+            .And(this.Audience)
+            .And(this.Award)
+            .And(this.Brand)
+            .And(this.Category)
+            .And(this.Color)
+            .And(this.Depth)
+            .And(this.Gtin)
+            .And(this.Gtin12)
+            .And(this.Gtin13)
+            .And(this.Gtin14)
+            .And(this.Gtin8)
+            .And(this.Height)
+            .And(this.IsAccessoryOrSparePartFor)
+            .And(this.IsConsumableFor)
+            .And(this.IsRelatedTo)
+            .And(this.IsSimilarTo)
+            .And(this.ItemCondition)
+            .And(this.Logo)
+            .And(this.Manufacturer)
+            .And(this.Material)
+            .And(this.Model)
+            .And(this.Mpn)
+            .And(this.Nsn)
+            .And(this.Offers)
+            .And(this.ProductID)
+            .And(this.ProductionDate)
+            .And(this.PurchaseDate)
+            .And(this.ReleaseDate)
+            .And(this.Review)
+            .And(this.Sku)
+            .And(this.Slogan)
+            .And(this.Weight)
+            .And(this.Width)
+            .And(base.GetHashCode());
     }
 }

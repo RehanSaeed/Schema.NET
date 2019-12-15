@@ -15,7 +15,7 @@
     /// A bowling alley.
     /// </summary>
     [DataContract]
-    public partial class BowlingAlley : SportsActivityLocation, IBowlingAlley
+    public partial class BowlingAlley : SportsActivityLocation, IBowlingAlley, IEquatable<BowlingAlley>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

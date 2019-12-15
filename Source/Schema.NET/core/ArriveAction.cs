@@ -15,7 +15,7 @@
     /// The act of arriving at a place. An agent arrives at a destination from a fromLocation, optionally with participants.
     /// </summary>
     [DataContract]
-    public partial class ArriveAction : MoveAction, IArriveAction
+    public partial class ArriveAction : MoveAction, IArriveAction, IEquatable<ArriveAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

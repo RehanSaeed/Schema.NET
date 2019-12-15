@@ -15,7 +15,7 @@
     /// Event type: Education event.
     /// </summary>
     [DataContract]
-    public partial class EducationEvent : Event, IEducationEvent
+    public partial class EducationEvent : Event, IEducationEvent, IEquatable<EducationEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A file containing slides or used for a presentation.
     /// </summary>
     [DataContract]
-    public partial class PresentationDigitalDocument : DigitalDocument, IPresentationDigitalDocument
+    public partial class PresentationDigitalDocument : DigitalDocument, IPresentationDigitalDocument, IEquatable<PresentationDigitalDocument>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

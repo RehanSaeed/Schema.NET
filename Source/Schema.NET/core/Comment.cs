@@ -29,7 +29,7 @@
     /// A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the &lt;a class="localLink" href="http://schema.org/text"&gt;text&lt;/a&gt; property, and its topic via &lt;a class="localLink" href="http://schema.org/about"&gt;about&lt;/a&gt;, properties shared with all CreativeWorks.
     /// </summary>
     [DataContract]
-    public partial class Comment : CreativeWork, IComment
+    public partial class Comment : CreativeWork, IComment, IEquatable<Comment>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "upvoteCount", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> UpvoteCount { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Comment other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DownvoteCount == other.DownvoteCount &&
+                this.ParentItem == other.ParentItem &&
+                this.UpvoteCount == other.UpvoteCount &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Comment);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DownvoteCount)
+            .And(this.ParentItem)
+            .And(this.UpvoteCount)
+            .And(base.GetHashCode());
     }
 }

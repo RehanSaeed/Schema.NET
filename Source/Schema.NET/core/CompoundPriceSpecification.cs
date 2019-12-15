@@ -19,7 +19,7 @@
     /// A compound price specification is one that bundles multiple prices that all apply in combination for different dimensions of consumption. Use the name property of the attached unit price specification for indicating the dimension of a price component (e.g. "electricity" or "final cleaning").
     /// </summary>
     [DataContract]
-    public partial class CompoundPriceSpecification : PriceSpecification, ICompoundPriceSpecification
+    public partial class CompoundPriceSpecification : PriceSpecification, ICompoundPriceSpecification, IEquatable<CompoundPriceSpecification>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "priceComponent", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IUnitPriceSpecification> PriceComponent { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CompoundPriceSpecification other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.PriceComponent == other.PriceComponent &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CompoundPriceSpecification);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.PriceComponent)
+            .And(base.GetHashCode());
     }
 }

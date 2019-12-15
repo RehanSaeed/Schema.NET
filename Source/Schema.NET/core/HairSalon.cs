@@ -15,7 +15,7 @@
     /// A hair salon.
     /// </summary>
     [DataContract]
-    public partial class HairSalon : HealthAndBeautyBusiness, IHairSalon
+    public partial class HairSalon : HealthAndBeautyBusiness, IHairSalon, IEquatable<HairSalon>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

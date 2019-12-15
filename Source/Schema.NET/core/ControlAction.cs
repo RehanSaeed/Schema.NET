@@ -15,7 +15,7 @@
     /// An agent controls a device or application.
     /// </summary>
     [DataContract]
-    public partial class ControlAction : Action, IControlAction
+    public partial class ControlAction : Action, IControlAction, IEquatable<ControlAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

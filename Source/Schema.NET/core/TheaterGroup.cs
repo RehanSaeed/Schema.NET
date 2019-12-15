@@ -15,7 +15,7 @@
     /// A theater group or company, for example, the Royal Shakespeare Company or Druid Theatre.
     /// </summary>
     [DataContract]
-    public partial class TheaterGroup : PerformingGroup, ITheaterGroup
+    public partial class TheaterGroup : PerformingGroup, ITheaterGroup, IEquatable<TheaterGroup>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

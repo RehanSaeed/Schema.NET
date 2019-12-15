@@ -19,7 +19,7 @@
     /// A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
     /// </summary>
     [DataContract]
-    public partial class SocialMediaPosting : Article, ISocialMediaPosting
+    public partial class SocialMediaPosting : Article, ISocialMediaPosting, IEquatable<SocialMediaPosting>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "sharedContent", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> SharedContent { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(SocialMediaPosting other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.SharedContent == other.SharedContent &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as SocialMediaPosting);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.SharedContent)
+            .And(base.GetHashCode());
     }
 }

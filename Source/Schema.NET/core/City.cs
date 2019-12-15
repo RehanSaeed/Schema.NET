@@ -15,7 +15,7 @@
     /// A city or town.
     /// </summary>
     [DataContract]
-    public partial class City : AdministrativeArea, ICity
+    public partial class City : AdministrativeArea, ICity, IEquatable<City>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

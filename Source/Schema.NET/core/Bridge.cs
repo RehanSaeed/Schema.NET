@@ -15,7 +15,7 @@
     /// A bridge.
     /// </summary>
     [DataContract]
-    public partial class Bridge : CivicStructure, IBridge
+    public partial class Bridge : CivicStructure, IBridge, IEquatable<Bridge>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A bar or pub.
     /// </summary>
     [DataContract]
-    public partial class BarOrPub : FoodEstablishment, IBarOrPub
+    public partial class BarOrPub : FoodEstablishment, IBarOrPub, IEquatable<BarOrPub>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

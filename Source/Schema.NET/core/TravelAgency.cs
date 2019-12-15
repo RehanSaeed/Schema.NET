@@ -15,7 +15,7 @@
     /// A travel agency.
     /// </summary>
     [DataContract]
-    public partial class TravelAgency : LocalBusiness, ITravelAgency
+    public partial class TravelAgency : LocalBusiness, ITravelAgency, IEquatable<TravelAgency>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -21,7 +21,7 @@
     /// See also the dedicated &lt;a href="/docs/hotels.html"&gt;document on the use of schema.org for marking up hotels and other forms of accommodations&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class CampingPitch : Accommodation, ICampingPitch
+    public partial class CampingPitch : Accommodation, ICampingPitch, IEquatable<CampingPitch>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

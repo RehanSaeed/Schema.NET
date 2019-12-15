@@ -15,7 +15,7 @@
     /// Season dedicated to radio broadcast and associated online delivery.
     /// </summary>
     [DataContract]
-    public partial class RadioSeason : CreativeWorkSeason, IRadioSeason
+    public partial class RadioSeason : CreativeWorkSeason, IRadioSeason, IEquatable<RadioSeason>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -39,7 +39,7 @@
     /// An anatomical system is a group of anatomical structures that work together to perform a certain task. Anatomical systems, such as organ systems, are one organizing principle of anatomy, and can includes circulatory, digestive, endocrine, integumentary, immune, lymphatic, muscular, nervous, reproductive, respiratory, skeletal, urinary, vestibular, and other systems.
     /// </summary>
     [DataContract]
-    public partial class AnatomicalSystem : MedicalEntity, IAnatomicalSystem
+    public partial class AnatomicalSystem : MedicalEntity, IAnatomicalSystem, IEquatable<AnatomicalSystem>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "relatedTherapy", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(AnatomicalSystem other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AssociatedPathophysiology == other.AssociatedPathophysiology &&
+                this.ComprisedOf == other.ComprisedOf &&
+                this.RelatedCondition == other.RelatedCondition &&
+                this.RelatedStructure == other.RelatedStructure &&
+                this.RelatedTherapy == other.RelatedTherapy &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as AnatomicalSystem);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AssociatedPathophysiology)
+            .And(this.ComprisedOf)
+            .And(this.RelatedCondition)
+            .And(this.RelatedStructure)
+            .And(this.RelatedTherapy)
+            .And(base.GetHashCode());
     }
 }

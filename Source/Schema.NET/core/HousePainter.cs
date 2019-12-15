@@ -15,7 +15,7 @@
     /// A house painting service.
     /// </summary>
     [DataContract]
-    public partial class HousePainter : HomeAndConstructionBusiness, IHousePainter
+    public partial class HousePainter : HomeAndConstructionBusiness, IHousePainter, IEquatable<HousePainter>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

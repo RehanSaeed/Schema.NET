@@ -15,7 +15,7 @@
     /// An embassy.
     /// </summary>
     [DataContract]
-    public partial class Embassy : GovernmentBuilding, IEmbassy
+    public partial class Embassy : GovernmentBuilding, IEmbassy, IEquatable<Embassy>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

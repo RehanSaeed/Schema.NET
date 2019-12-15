@@ -54,7 +54,7 @@
     /// A process of care used in either a diagnostic, therapeutic, preventive or palliative capacity that relies on invasive (surgical), non-invasive, or other techniques.
     /// </summary>
     [DataContract]
-    public partial class MedicalProcedure : MedicalEntity, IMedicalProcedure
+    public partial class MedicalProcedure : MedicalEntity, IMedicalProcedure, IEquatable<MedicalProcedure>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "status", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<EventStatusType?, MedicalStudyStatus?, string> Status { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalProcedure other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.BodyLocation == other.BodyLocation &&
+                this.Followup == other.Followup &&
+                this.HowPerformed == other.HowPerformed &&
+                this.Indication == other.Indication &&
+                this.Outcome == other.Outcome &&
+                this.Preparation == other.Preparation &&
+                this.ProcedureType == other.ProcedureType &&
+                this.Status == other.Status &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalProcedure);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.BodyLocation)
+            .And(this.Followup)
+            .And(this.HowPerformed)
+            .And(this.Indication)
+            .And(this.Outcome)
+            .And(this.Preparation)
+            .And(this.ProcedureType)
+            .And(this.Status)
+            .And(base.GetHashCode());
     }
 }

@@ -15,7 +15,7 @@
     /// A public swimming pool.
     /// </summary>
     [DataContract]
-    public partial class PublicSwimmingPool : SportsActivityLocation, IPublicSwimmingPool
+    public partial class PublicSwimmingPool : SportsActivityLocation, IPublicSwimmingPool, IEquatable<PublicSwimmingPool>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

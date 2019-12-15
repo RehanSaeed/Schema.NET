@@ -15,7 +15,7 @@
     /// The act of distributing content to people for their amusement or edification.
     /// </summary>
     [DataContract]
-    public partial class ShareAction : CommunicateAction, IShareAction
+    public partial class ShareAction : CommunicateAction, IShareAction, IEquatable<ShareAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

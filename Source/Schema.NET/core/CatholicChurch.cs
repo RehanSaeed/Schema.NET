@@ -15,7 +15,7 @@
     /// A Catholic church.
     /// </summary>
     [DataContract]
-    public partial class CatholicChurch : Church, ICatholicChurch
+    public partial class CatholicChurch : Church, ICatholicChurch, IEquatable<CatholicChurch>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A short segment/part of a video game.
     /// </summary>
     [DataContract]
-    public partial class VideoGameClip : Clip, IVideoGameClip
+    public partial class VideoGameClip : Clip, IVideoGameClip, IEquatable<VideoGameClip>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

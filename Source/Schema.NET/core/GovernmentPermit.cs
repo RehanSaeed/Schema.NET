@@ -15,7 +15,7 @@
     /// A permit issued by a government agency.
     /// </summary>
     [DataContract]
-    public partial class GovernmentPermit : Permit, IGovernmentPermit
+    public partial class GovernmentPermit : Permit, IGovernmentPermit, IEquatable<GovernmentPermit>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

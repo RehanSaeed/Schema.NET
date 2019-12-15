@@ -62,7 +62,7 @@
     /// See also &lt;a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"&gt;blog post&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class Article : CreativeWork, IArticle
+    public partial class Article : CreativeWork, IArticle, IEquatable<Article>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -131,5 +131,45 @@
         [DataMember(Name = "wordCount", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> WordCount { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Article other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ArticleBody == other.ArticleBody &&
+                this.ArticleSection == other.ArticleSection &&
+                this.Backstory == other.Backstory &&
+                this.PageEnd == other.PageEnd &&
+                this.PageStart == other.PageStart &&
+                this.Pagination == other.Pagination &&
+                this.Speakable == other.Speakable &&
+                this.WordCount == other.WordCount &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Article);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ArticleBody)
+            .And(this.ArticleSection)
+            .And(this.Backstory)
+            .And(this.PageEnd)
+            .And(this.PageStart)
+            .And(this.Pagination)
+            .And(this.Speakable)
+            .And(this.WordCount)
+            .And(base.GetHashCode());
     }
 }

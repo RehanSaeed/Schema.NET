@@ -15,7 +15,7 @@
     /// Web page type: Contact page.
     /// </summary>
     [DataContract]
-    public partial class ContactPage : WebPage, IContactPage
+    public partial class ContactPage : WebPage, IContactPage, IEquatable<ContactPage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// The act of allocating an action/event/task to some destination (someone or something).
     /// </summary>
     [DataContract]
-    public partial class AssignAction : AllocateAction, IAssignAction
+    public partial class AssignAction : AllocateAction, IAssignAction, IEquatable<AssignAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

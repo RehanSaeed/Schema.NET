@@ -46,7 +46,7 @@
     /// Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
     /// </summary>
     [DataContract]
-    public partial class LodgingReservation : Reservation, ILodgingReservation
+    public partial class LodgingReservation : Reservation, ILodgingReservation, IEquatable<LodgingReservation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -95,5 +95,41 @@
         [DataMember(Name = "numChildren", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<int?, IQuantitativeValue> NumChildren { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(LodgingReservation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CheckinTime == other.CheckinTime &&
+                this.CheckoutTime == other.CheckoutTime &&
+                this.LodgingUnitDescription == other.LodgingUnitDescription &&
+                this.LodgingUnitType == other.LodgingUnitType &&
+                this.NumAdults == other.NumAdults &&
+                this.NumChildren == other.NumChildren &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as LodgingReservation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CheckinTime)
+            .And(this.CheckoutTime)
+            .And(this.LodgingUnitDescription)
+            .And(this.LodgingUnitType)
+            .And(this.NumAdults)
+            .And(this.NumChildren)
+            .And(base.GetHashCode());
     }
 }

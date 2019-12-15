@@ -20,7 +20,7 @@
     /// Residence type: Single-family home.
     /// </summary>
     [DataContract]
-    public partial class SingleFamilyResidence : House, ISingleFamilyResidence
+    public partial class SingleFamilyResidence : House, ISingleFamilyResidence, IEquatable<SingleFamilyResidence>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -43,5 +43,33 @@
         [DataMember(Name = "occupancy", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> Occupancy { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(SingleFamilyResidence other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.NumberOfRooms == other.NumberOfRooms &&
+                this.Occupancy == other.Occupancy &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as SingleFamilyResidence);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.NumberOfRooms)
+            .And(this.Occupancy)
+            .And(base.GetHashCode());
     }
 }

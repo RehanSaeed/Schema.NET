@@ -15,7 +15,7 @@
     /// A step in the instructions for how to achieve a result. It is an ordered list with HowToDirection and/or HowToTip items.
     /// </summary>
     [DataContract]
-    public partial class HowToStep : CreativeWorkAndItemListAndListItem, IHowToStep
+    public partial class HowToStep : CreativeWorkAndItemListAndListItem, IHowToStep, IEquatable<HowToStep>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

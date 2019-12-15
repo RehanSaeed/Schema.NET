@@ -49,7 +49,7 @@
     /// A trip or journey. An itinerary of visits to one or more places.
     /// </summary>
     [DataContract]
-    public partial class Trip : Intangible, ITrip
+    public partial class Trip : Intangible, ITrip, IEquatable<Trip>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -105,5 +105,43 @@
         [DataMember(Name = "subTrip", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ITrip> SubTrip { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Trip other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ArrivalTime == other.ArrivalTime &&
+                this.DepartureTime == other.DepartureTime &&
+                this.Itinerary == other.Itinerary &&
+                this.Offers == other.Offers &&
+                this.PartOfTrip == other.PartOfTrip &&
+                this.Provider == other.Provider &&
+                this.SubTrip == other.SubTrip &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Trip);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ArrivalTime)
+            .And(this.DepartureTime)
+            .And(this.Itinerary)
+            .And(this.Offers)
+            .And(this.PartOfTrip)
+            .And(this.Provider)
+            .And(this.SubTrip)
+            .And(base.GetHashCode());
     }
 }

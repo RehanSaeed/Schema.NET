@@ -15,7 +15,7 @@
     /// Residence type: Apartment complex.
     /// </summary>
     [DataContract]
-    public partial class ApartmentComplex : Residence, IApartmentComplex
+    public partial class ApartmentComplex : Residence, IApartmentComplex, IEquatable<ApartmentComplex>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

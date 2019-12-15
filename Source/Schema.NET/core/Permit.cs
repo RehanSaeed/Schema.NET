@@ -49,7 +49,7 @@
     /// A permit issued by an organization, e.g. a parking pass.
     /// </summary>
     [DataContract]
-    public partial class Permit : Intangible, IPermit
+    public partial class Permit : Intangible, IPermit, IEquatable<Permit>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -105,5 +105,43 @@
         [DataMember(Name = "validUntil", Order = 212)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?> ValidUntil { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Permit other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.IssuedBy == other.IssuedBy &&
+                this.IssuedThrough == other.IssuedThrough &&
+                this.PermitAudience == other.PermitAudience &&
+                this.ValidFor == other.ValidFor &&
+                this.ValidFrom == other.ValidFrom &&
+                this.ValidIn == other.ValidIn &&
+                this.ValidUntil == other.ValidUntil &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Permit);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.IssuedBy)
+            .And(this.IssuedThrough)
+            .And(this.PermitAudience)
+            .And(this.ValidFor)
+            .And(this.ValidFrom)
+            .And(this.ValidIn)
+            .And(this.ValidUntil)
+            .And(base.GetHashCode());
     }
 }

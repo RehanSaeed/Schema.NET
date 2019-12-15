@@ -15,7 +15,7 @@
     /// The act of consuming audio content.
     /// </summary>
     [DataContract]
-    public partial class ListenAction : ConsumeAction, IListenAction
+    public partial class ListenAction : ConsumeAction, IListenAction, IEquatable<ListenAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

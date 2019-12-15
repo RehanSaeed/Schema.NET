@@ -15,7 +15,7 @@
     /// Beach.
     /// </summary>
     [DataContract]
-    public partial class Beach : CivicStructure, IBeach
+    public partial class Beach : CivicStructure, IBeach, IEquatable<Beach>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

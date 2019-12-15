@@ -29,7 +29,7 @@
     /// One of the sections into which a book is divided. A chapter usually has a section number or a name.
     /// </summary>
     [DataContract]
-    public partial class Chapter : CreativeWork, IChapter
+    public partial class Chapter : CreativeWork, IChapter, IEquatable<Chapter>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "pagination", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Pagination { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Chapter other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.PageEnd == other.PageEnd &&
+                this.PageStart == other.PageStart &&
+                this.Pagination == other.Pagination &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Chapter);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.PageEnd)
+            .And(this.PageStart)
+            .And(this.Pagination)
+            .And(base.GetHashCode());
     }
 }

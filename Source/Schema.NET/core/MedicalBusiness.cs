@@ -15,7 +15,7 @@
     /// A particular physical or virtual business of an organization for medical purposes. Examples of MedicalBusiness include differents business run by health professionals.
     /// </summary>
     [DataContract]
-    public partial class MedicalBusiness : LocalBusiness, IMedicalBusiness
+    public partial class MedicalBusiness : LocalBusiness, IMedicalBusiness, IEquatable<MedicalBusiness>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

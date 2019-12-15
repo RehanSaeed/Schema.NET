@@ -28,7 +28,7 @@
     /// A collection of datasets.
     /// </summary>
     [DataContract]
-    public partial class DataCatalog : CreativeWork, IDataCatalog
+    public partial class DataCatalog : CreativeWork, IDataCatalog, IEquatable<DataCatalog>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -53,5 +53,33 @@
         [DataMember(Name = "measurementTechnique", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> MeasurementTechnique { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(DataCatalog other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Dataset == other.Dataset &&
+                this.MeasurementTechnique == other.MeasurementTechnique &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as DataCatalog);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Dataset)
+            .And(this.MeasurementTechnique)
+            .And(base.GetHashCode());
     }
 }

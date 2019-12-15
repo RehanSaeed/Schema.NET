@@ -15,7 +15,7 @@
     /// The act of swallowing liquids.
     /// </summary>
     [DataContract]
-    public partial class DrinkAction : ConsumeAction, IDrinkAction
+    public partial class DrinkAction : ConsumeAction, IDrinkAction, IEquatable<DrinkAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

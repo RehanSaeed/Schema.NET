@@ -15,7 +15,7 @@
     /// A park.
     /// </summary>
     [DataContract]
-    public partial class Park : CivicStructure, IPark
+    public partial class Park : CivicStructure, IPark, IEquatable<Park>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

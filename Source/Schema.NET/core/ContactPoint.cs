@@ -59,7 +59,7 @@
     /// A contact point&amp;#x2014;for example, a Customer Complaints department.
     /// </summary>
     [DataContract]
-    public partial class ContactPoint : StructuredValue, IContactPoint
+    public partial class ContactPoint : StructuredValue, IContactPoint, IEquatable<ContactPoint>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -129,5 +129,47 @@
         [DataMember(Name = "telephone", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Telephone { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ContactPoint other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AreaServed == other.AreaServed &&
+                this.AvailableLanguage == other.AvailableLanguage &&
+                this.ContactOption == other.ContactOption &&
+                this.ContactType == other.ContactType &&
+                this.Email == other.Email &&
+                this.FaxNumber == other.FaxNumber &&
+                this.HoursAvailable == other.HoursAvailable &&
+                this.ProductSupported == other.ProductSupported &&
+                this.Telephone == other.Telephone &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ContactPoint);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AreaServed)
+            .And(this.AvailableLanguage)
+            .And(this.ContactOption)
+            .And(this.ContactType)
+            .And(this.Email)
+            .And(this.FaxNumber)
+            .And(this.HoursAvailable)
+            .And(this.ProductSupported)
+            .And(this.Telephone)
+            .And(base.GetHashCode());
     }
 }

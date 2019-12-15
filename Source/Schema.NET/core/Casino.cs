@@ -15,7 +15,7 @@
     /// A casino.
     /// </summary>
     [DataContract]
-    public partial class Casino : EntertainmentBusiness, ICasino
+    public partial class Casino : EntertainmentBusiness, ICasino, IEquatable<Casino>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

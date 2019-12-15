@@ -15,7 +15,7 @@
     /// A short TV program or a segment/part of a TV program.
     /// </summary>
     [DataContract]
-    public partial class TVClip : Clip, ITVClip
+    public partial class TVClip : Clip, ITVClip, IEquatable<TVClip>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

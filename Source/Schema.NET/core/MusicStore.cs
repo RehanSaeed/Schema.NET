@@ -15,7 +15,7 @@
     /// A music store.
     /// </summary>
     [DataContract]
-    public partial class MusicStore : Store, IMusicStore
+    public partial class MusicStore : Store, IMusicStore, IEquatable<MusicStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

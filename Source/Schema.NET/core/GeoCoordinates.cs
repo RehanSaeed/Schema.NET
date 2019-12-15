@@ -44,7 +44,7 @@
     /// The geographic coordinates of a place or event.
     /// </summary>
     [DataContract]
-    public partial class GeoCoordinates : StructuredValue, IGeoCoordinates
+    public partial class GeoCoordinates : StructuredValue, IGeoCoordinates, IEquatable<GeoCoordinates>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "postalCode", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PostalCode { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(GeoCoordinates other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Address == other.Address &&
+                this.AddressCountry == other.AddressCountry &&
+                this.Elevation == other.Elevation &&
+                this.Latitude == other.Latitude &&
+                this.Longitude == other.Longitude &&
+                this.PostalCode == other.PostalCode &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as GeoCoordinates);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Address)
+            .And(this.AddressCountry)
+            .And(this.Elevation)
+            .And(this.Latitude)
+            .And(this.Longitude)
+            .And(this.PostalCode)
+            .And(base.GetHashCode());
     }
 }

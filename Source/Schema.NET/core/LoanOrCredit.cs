@@ -55,7 +55,7 @@
     /// A financial product for the loaning of an amount of money under agreed terms and charges.
     /// </summary>
     [DataContract]
-    public partial class LoanOrCredit : FinancialProduct, ILoanOrCredit
+    public partial class LoanOrCredit : FinancialProduct, ILoanOrCredit, IEquatable<LoanOrCredit>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -119,5 +119,45 @@
         [DataMember(Name = "requiredCollateral", Order = 413)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IThing> RequiredCollateral { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(LoanOrCredit other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Amount == other.Amount &&
+                this.Currency == other.Currency &&
+                this.GracePeriod == other.GracePeriod &&
+                this.LoanTerm == other.LoanTerm &&
+                this.LoanType == other.LoanType &&
+                this.RecourseLoan == other.RecourseLoan &&
+                this.RenegotiableLoan == other.RenegotiableLoan &&
+                this.RequiredCollateral == other.RequiredCollateral &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as LoanOrCredit);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Amount)
+            .And(this.Currency)
+            .And(this.GracePeriod)
+            .And(this.LoanTerm)
+            .And(this.LoanType)
+            .And(this.RecourseLoan)
+            .And(this.RenegotiableLoan)
+            .And(this.RequiredCollateral)
+            .And(base.GetHashCode());
     }
 }

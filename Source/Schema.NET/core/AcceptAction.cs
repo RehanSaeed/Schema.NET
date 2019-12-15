@@ -23,7 +23,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class AcceptAction : AllocateAction, IAcceptAction
+    public partial class AcceptAction : AllocateAction, IAcceptAction, IEquatable<AcceptAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

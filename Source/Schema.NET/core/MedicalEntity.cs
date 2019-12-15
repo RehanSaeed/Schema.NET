@@ -44,7 +44,7 @@
     /// The most generic type of entity related to health and the practice of medicine.
     /// </summary>
     [DataContract]
-    public partial class MedicalEntity : Thing, IMedicalEntity
+    public partial class MedicalEntity : Thing, IMedicalEntity, IEquatable<MedicalEntity>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "study", Order = 111)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalStudy> Study { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalEntity other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Guideline == other.Guideline &&
+                this.LegalStatus == other.LegalStatus &&
+                this.MedicineSystem == other.MedicineSystem &&
+                this.RecognizingAuthority == other.RecognizingAuthority &&
+                this.RelevantSpecialty == other.RelevantSpecialty &&
+                this.Study == other.Study &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalEntity);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Guideline)
+            .And(this.LegalStatus)
+            .And(this.MedicineSystem)
+            .And(this.RecognizingAuthority)
+            .And(this.RelevantSpecialty)
+            .And(this.Study)
+            .And(base.GetHashCode());
     }
 }

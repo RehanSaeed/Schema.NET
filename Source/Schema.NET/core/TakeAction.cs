@@ -25,7 +25,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class TakeAction : TransferAction, ITakeAction
+    public partial class TakeAction : TransferAction, ITakeAction, IEquatable<TakeAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

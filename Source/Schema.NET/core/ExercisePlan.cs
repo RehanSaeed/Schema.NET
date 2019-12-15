@@ -54,7 +54,7 @@
     /// Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician.
     /// </summary>
     [DataContract]
-    public partial class ExercisePlan : CreativeWorkAndPhysicalActivity, IExercisePlan
+    public partial class ExercisePlan : CreativeWorkAndPhysicalActivity, IExercisePlan, IEquatable<ExercisePlan>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "workload", Order = 413)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Workload { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ExercisePlan other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ActivityDuration == other.ActivityDuration &&
+                this.ActivityFrequency == other.ActivityFrequency &&
+                this.AdditionalVariable == other.AdditionalVariable &&
+                this.ExerciseType == other.ExerciseType &&
+                this.Intensity == other.Intensity &&
+                this.Repetitions == other.Repetitions &&
+                this.RestPeriods == other.RestPeriods &&
+                this.Workload == other.Workload &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ExercisePlan);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ActivityDuration)
+            .And(this.ActivityFrequency)
+            .And(this.AdditionalVariable)
+            .And(this.ExerciseType)
+            .And(this.Intensity)
+            .And(this.Repetitions)
+            .And(this.RestPeriods)
+            .And(this.Workload)
+            .And(base.GetHashCode());
     }
 }

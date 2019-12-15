@@ -49,7 +49,7 @@
     /// A rating is an evaluation on a numeric scale, such as 1 to 5 stars.
     /// </summary>
     [DataContract]
-    public partial class Rating : Intangible, IRating
+    public partial class Rating : Intangible, IRating, IEquatable<Rating>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -103,5 +103,41 @@
         [DataMember(Name = "worstRating", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, string> WorstRating { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Rating other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Author == other.Author &&
+                this.BestRating == other.BestRating &&
+                this.RatingExplanation == other.RatingExplanation &&
+                this.RatingValue == other.RatingValue &&
+                this.ReviewAspect == other.ReviewAspect &&
+                this.WorstRating == other.WorstRating &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Rating);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Author)
+            .And(this.BestRating)
+            .And(this.RatingExplanation)
+            .And(this.RatingValue)
+            .And(this.ReviewAspect)
+            .And(this.WorstRating)
+            .And(base.GetHashCode());
     }
 }

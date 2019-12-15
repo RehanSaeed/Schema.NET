@@ -15,7 +15,7 @@
     /// Any complaint sensed and expressed by the patient (therefore defined as subjective)  like stomachache, lower-back pain, or fatigue.
     /// </summary>
     [DataContract]
-    public partial class MedicalSymptom : MedicalSignOrSymptom, IMedicalSymptom
+    public partial class MedicalSymptom : MedicalSignOrSymptom, IMedicalSymptom, IEquatable<MedicalSymptom>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

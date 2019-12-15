@@ -15,7 +15,7 @@
     /// A body of water, such as a sea, ocean, or lake.
     /// </summary>
     [DataContract]
-    public partial class BodyOfWater : Landform, IBodyOfWater
+    public partial class BodyOfWater : Landform, IBodyOfWater, IEquatable<BodyOfWater>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A notary.
     /// </summary>
     [DataContract]
-    public partial class Notary : LegalService, INotary
+    public partial class Notary : LegalService, INotary, IEquatable<Notary>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

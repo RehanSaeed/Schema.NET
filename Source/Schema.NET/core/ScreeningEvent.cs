@@ -29,7 +29,7 @@
     /// A screening of a movie or other video.
     /// </summary>
     [DataContract]
-    public partial class ScreeningEvent : Event, IScreeningEvent
+    public partial class ScreeningEvent : Event, IScreeningEvent, IEquatable<ScreeningEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "workPresented", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMovie> WorkPresented { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ScreeningEvent other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.SubtitleLanguage == other.SubtitleLanguage &&
+                this.VideoFormat == other.VideoFormat &&
+                this.WorkPresented == other.WorkPresented &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ScreeningEvent);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.SubtitleLanguage)
+            .And(this.VideoFormat)
+            .And(this.WorkPresented)
+            .And(base.GetHashCode());
     }
 }

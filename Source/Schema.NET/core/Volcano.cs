@@ -15,7 +15,7 @@
     /// A volcano, like Fuji san.
     /// </summary>
     [DataContract]
-    public partial class Volcano : Landform, IVolcano
+    public partial class Volcano : Landform, IVolcano, IEquatable<Volcano>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

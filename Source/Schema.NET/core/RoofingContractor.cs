@@ -15,7 +15,7 @@
     /// A roofing contractor.
     /// </summary>
     [DataContract]
-    public partial class RoofingContractor : HomeAndConstructionBusiness, IRoofingContractor
+    public partial class RoofingContractor : HomeAndConstructionBusiness, IRoofingContractor, IEquatable<RoofingContractor>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

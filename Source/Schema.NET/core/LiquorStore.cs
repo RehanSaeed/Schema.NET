@@ -15,7 +15,7 @@
     /// A shop that sells alcoholic drinks such as wine, beer, whisky and other spirits.
     /// </summary>
     [DataContract]
-    public partial class LiquorStore : Store, ILiquorStore
+    public partial class LiquorStore : Store, ILiquorStore, IEquatable<LiquorStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

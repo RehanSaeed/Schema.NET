@@ -15,7 +15,7 @@
     /// A motorcycle or motorbike is a single-track, two-wheeled motor vehicle.
     /// </summary>
     [DataContract]
-    public partial class Motorcycle : Vehicle, IMotorcycle
+    public partial class Motorcycle : Vehicle, IMotorcycle, IEquatable<Motorcycle>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

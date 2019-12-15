@@ -15,7 +15,7 @@
     /// A mountain, like Mount Whitney or Mount Everest.
     /// </summary>
     [DataContract]
-    public partial class Mountain : Landform, IMountain
+    public partial class Mountain : Landform, IMountain, IEquatable<Mountain>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

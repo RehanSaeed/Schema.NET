@@ -15,7 +15,7 @@
     /// Event type: Food event.
     /// </summary>
     [DataContract]
-    public partial class FoodEvent : Event, IFoodEvent
+    public partial class FoodEvent : Event, IFoodEvent, IEquatable<FoodEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

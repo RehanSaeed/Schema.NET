@@ -15,7 +15,7 @@
     /// Event type: A social dance.
     /// </summary>
     [DataContract]
-    public partial class DanceEvent : Event, IDanceEvent
+    public partial class DanceEvent : Event, IDanceEvent, IEquatable<DanceEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

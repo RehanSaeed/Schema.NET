@@ -15,7 +15,7 @@
     /// The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer).
     /// </summary>
     [DataContract]
-    public partial class ResumeAction : ControlAction, IResumeAction
+    public partial class ResumeAction : ControlAction, IResumeAction, IEquatable<ResumeAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// The act of stopping or deactivating a device or application (e.g. stopping a timer or turning off a flashlight).
     /// </summary>
     [DataContract]
-    public partial class DeactivateAction : ControlAction, IDeactivateAction
+    public partial class DeactivateAction : ControlAction, IDeactivateAction, IEquatable<DeactivateAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

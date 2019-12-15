@@ -15,7 +15,7 @@
     /// An answer offered to a question; perhaps correct, perhaps opinionated or wrong.
     /// </summary>
     [DataContract]
-    public partial class Answer : Comment, IAnswer
+    public partial class Answer : Comment, IAnswer, IEquatable<Answer>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

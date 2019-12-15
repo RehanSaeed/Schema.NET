@@ -15,7 +15,7 @@
     /// A tennis complex.
     /// </summary>
     [DataContract]
-    public partial class TennisComplex : SportsActivityLocation, ITennisComplex
+    public partial class TennisComplex : SportsActivityLocation, ITennisComplex, IEquatable<TennisComplex>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

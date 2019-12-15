@@ -44,7 +44,7 @@
     /// When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
     /// </summary>
     [DataContract]
-    public partial class AggregateOffer : Offer, IAggregateOffer
+    public partial class AggregateOffer : Offer, IAggregateOffer, IEquatable<AggregateOffer>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -89,5 +89,37 @@
         [DataMember(Name = "offers", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IOffer> Offers { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(AggregateOffer other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.HighPrice == other.HighPrice &&
+                this.LowPrice == other.LowPrice &&
+                this.OfferCount == other.OfferCount &&
+                this.Offers == other.Offers &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as AggregateOffer);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.HighPrice)
+            .And(this.LowPrice)
+            .And(this.OfferCount)
+            .And(this.Offers)
+            .And(base.GetHashCode());
     }
 }

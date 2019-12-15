@@ -15,7 +15,7 @@
     /// A process of care using radiation aimed at improving a health condition.
     /// </summary>
     [DataContract]
-    public partial class RadiationTherapy : MedicalTherapy, IRadiationTherapy
+    public partial class RadiationTherapy : MedicalTherapy, IRadiationTherapy, IEquatable<RadiationTherapy>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

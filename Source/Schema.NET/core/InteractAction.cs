@@ -15,7 +15,7 @@
     /// The act of interacting with another person or organization.
     /// </summary>
     [DataContract]
-    public partial class InteractAction : Action, IInteractAction
+    public partial class InteractAction : Action, IInteractAction, IEquatable<InteractAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

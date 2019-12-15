@@ -15,7 +15,7 @@
     /// A defence establishment, such as an army or navy base.
     /// </summary>
     [DataContract]
-    public partial class DefenceEstablishment : GovernmentBuilding, IDefenceEstablishment
+    public partial class DefenceEstablishment : GovernmentBuilding, IDefenceEstablishment, IEquatable<DefenceEstablishment>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

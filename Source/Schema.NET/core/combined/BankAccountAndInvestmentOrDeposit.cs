@@ -15,7 +15,7 @@
     /// See BankAccount, InvestmentOrDeposit for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class BankAccountAndInvestmentOrDeposit : FinancialProduct, IBankAccountAndInvestmentOrDeposit
+    public abstract partial class BankAccountAndInvestmentOrDeposit : FinancialProduct, IBankAccountAndInvestmentOrDeposit, IEquatable<BankAccountAndInvestmentOrDeposit>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -50,5 +50,37 @@
         [DataMember(Name = "bankAccountType", Order = 409)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> BankAccountType { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(BankAccountAndInvestmentOrDeposit other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AccountMinimumInflow == other.AccountMinimumInflow &&
+                this.AccountOverdraftLimit == other.AccountOverdraftLimit &&
+                this.Amount == other.Amount &&
+                this.BankAccountType == other.BankAccountType &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as BankAccountAndInvestmentOrDeposit);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AccountMinimumInflow)
+            .And(this.AccountOverdraftLimit)
+            .And(this.Amount)
+            .And(this.BankAccountType)
+            .And(base.GetHashCode());
     }
 }

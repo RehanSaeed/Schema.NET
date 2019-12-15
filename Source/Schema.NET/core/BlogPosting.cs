@@ -15,7 +15,7 @@
     /// A blog post.
     /// </summary>
     [DataContract]
-    public partial class BlogPosting : SocialMediaPosting, IBlogPosting
+    public partial class BlogPosting : SocialMediaPosting, IBlogPosting, IEquatable<BlogPosting>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

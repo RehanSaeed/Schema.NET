@@ -15,7 +15,7 @@
     /// The act of expressing a positive sentiment about the object. An agent likes an object (a proposition, topic or theme) with participants.
     /// </summary>
     [DataContract]
-    public partial class LikeAction : ReactAction, ILikeAction
+    public partial class LikeAction : ReactAction, ILikeAction, IEquatable<LikeAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

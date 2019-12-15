@@ -15,7 +15,7 @@
     /// A city hall.
     /// </summary>
     [DataContract]
-    public partial class CityHall : GovernmentBuilding, ICityHall
+    public partial class CityHall : GovernmentBuilding, ICityHall, IEquatable<CityHall>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// The act of inserting at the beginning if an ordered collection.
     /// </summary>
     [DataContract]
-    public partial class PrependAction : InsertAction, IPrependAction
+    public partial class PrependAction : InsertAction, IPrependAction, IEquatable<PrependAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

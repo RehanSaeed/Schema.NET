@@ -15,7 +15,7 @@
     /// A dance group&amp;#x2014;for example, the Alvin Ailey Dance Theater or Riverdance.
     /// </summary>
     [DataContract]
-    public partial class DanceGroup : PerformingGroup, IDanceGroup
+    public partial class DanceGroup : PerformingGroup, IDanceGroup, IEquatable<DanceGroup>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

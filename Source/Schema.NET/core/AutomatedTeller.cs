@@ -15,7 +15,7 @@
     /// ATM/cash machine.
     /// </summary>
     [DataContract]
-    public partial class AutomatedTeller : FinancialService, IAutomatedTeller
+    public partial class AutomatedTeller : FinancialService, IAutomatedTeller, IEquatable<AutomatedTeller>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

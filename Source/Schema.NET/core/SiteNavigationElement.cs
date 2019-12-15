@@ -15,7 +15,7 @@
     /// A navigation element of the page.
     /// </summary>
     [DataContract]
-    public partial class SiteNavigationElement : WebPageElement, ISiteNavigationElement
+    public partial class SiteNavigationElement : WebPageElement, ISiteNavigationElement, IEquatable<SiteNavigationElement>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -24,7 +24,7 @@
     /// A collection of music tracks in playlist form.
     /// </summary>
     [DataContract]
-    public partial class MusicPlaylist : CreativeWork, IMusicPlaylist
+    public partial class MusicPlaylist : CreativeWork, IMusicPlaylist, IEquatable<MusicPlaylist>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "track", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IItemList, IMusicRecording> Track { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MusicPlaylist other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.NumTracks == other.NumTracks &&
+                this.Track == other.Track &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MusicPlaylist);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.NumTracks)
+            .And(this.Track)
+            .And(base.GetHashCode());
     }
 }

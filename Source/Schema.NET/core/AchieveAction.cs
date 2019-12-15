@@ -15,7 +15,7 @@
     /// The act of accomplishing something via previous efforts. It is an instantaneous action rather than an ongoing process.
     /// </summary>
     [DataContract]
-    public partial class AchieveAction : Action, IAchieveAction
+    public partial class AchieveAction : Action, IAchieveAction, IEquatable<AchieveAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

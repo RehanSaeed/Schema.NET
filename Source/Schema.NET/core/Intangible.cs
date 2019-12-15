@@ -15,7 +15,7 @@
     /// A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc.
     /// </summary>
     [DataContract]
-    public partial class Intangible : Thing, IIntangible
+    public partial class Intangible : Thing, IIntangible, IEquatable<Intangible>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

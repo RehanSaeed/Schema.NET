@@ -15,7 +15,7 @@
     /// A photograph.
     /// </summary>
     [DataContract]
-    public partial class Photograph : CreativeWork, IPhotograph
+    public partial class Photograph : CreativeWork, IPhotograph, IEquatable<Photograph>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -69,7 +69,7 @@
     /// A Property value specification.
     /// </summary>
     [DataContract]
-    public partial class PropertyValueSpecification : Intangible, IPropertyValueSpecification
+    public partial class PropertyValueSpecification : Intangible, IPropertyValueSpecification, IEquatable<PropertyValueSpecification>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -153,5 +153,51 @@
         [DataMember(Name = "valueRequired", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<bool?> ValueRequired { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PropertyValueSpecification other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DefaultValue == other.DefaultValue &&
+                this.MaxValue == other.MaxValue &&
+                this.MinValue == other.MinValue &&
+                this.MultipleValues == other.MultipleValues &&
+                this.ReadonlyValue == other.ReadonlyValue &&
+                this.StepValue == other.StepValue &&
+                this.ValueMaxLength == other.ValueMaxLength &&
+                this.ValueMinLength == other.ValueMinLength &&
+                this.ValueName == other.ValueName &&
+                this.ValuePattern == other.ValuePattern &&
+                this.ValueRequired == other.ValueRequired &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PropertyValueSpecification);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DefaultValue)
+            .And(this.MaxValue)
+            .And(this.MinValue)
+            .And(this.MultipleValues)
+            .And(this.ReadonlyValue)
+            .And(this.StepValue)
+            .And(this.ValueMaxLength)
+            .And(this.ValueMinLength)
+            .And(this.ValueName)
+            .And(this.ValuePattern)
+            .And(this.ValueRequired)
+            .And(base.GetHashCode());
     }
 }

@@ -29,7 +29,7 @@
     /// A product provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies which comprise the financial services industry.
     /// </summary>
     [DataContract]
-    public partial class FinancialProduct : Service, IFinancialProduct
+    public partial class FinancialProduct : Service, IFinancialProduct, IEquatable<FinancialProduct>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "interestRate", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, IQuantitativeValue> InterestRate { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(FinancialProduct other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AnnualPercentageRate == other.AnnualPercentageRate &&
+                this.FeesAndCommissionsSpecification == other.FeesAndCommissionsSpecification &&
+                this.InterestRate == other.InterestRate &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as FinancialProduct);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AnnualPercentageRate)
+            .And(this.FeesAndCommissionsSpecification)
+            .And(this.InterestRate)
+            .And(base.GetHashCode());
     }
 }

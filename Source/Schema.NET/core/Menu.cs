@@ -24,7 +24,7 @@
     /// A structured representation of food or drink items available from a FoodEstablishment.
     /// </summary>
     [DataContract]
-    public partial class Menu : CreativeWork, IMenu
+    public partial class Menu : CreativeWork, IMenu, IEquatable<Menu>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "hasMenuSection", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMenuSection> HasMenuSection { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Menu other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.HasMenuItem == other.HasMenuItem &&
+                this.HasMenuSection == other.HasMenuSection &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Menu);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.HasMenuItem)
+            .And(this.HasMenuSection)
+            .And(base.GetHashCode());
     }
 }

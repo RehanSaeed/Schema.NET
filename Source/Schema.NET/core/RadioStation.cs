@@ -15,7 +15,7 @@
     /// A radio station.
     /// </summary>
     [DataContract]
-    public partial class RadioStation : LocalBusiness, IRadioStation
+    public partial class RadioStation : LocalBusiness, IRadioStation, IEquatable<RadioStation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

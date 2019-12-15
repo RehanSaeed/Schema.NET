@@ -24,7 +24,7 @@
     /// Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
     /// </summary>
     [DataContract]
-    public partial class Substance : MedicalEntity, ISubstance
+    public partial class Substance : MedicalEntity, ISubstance, IEquatable<Substance>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "maximumIntake", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IMaximumDoseSchedule> MaximumIntake { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Substance other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ActiveIngredient == other.ActiveIngredient &&
+                this.MaximumIntake == other.MaximumIntake &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Substance);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ActiveIngredient)
+            .And(this.MaximumIntake)
+            .And(base.GetHashCode());
     }
 }

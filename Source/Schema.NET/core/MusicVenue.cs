@@ -15,7 +15,7 @@
     /// A music venue.
     /// </summary>
     [DataContract]
-    public partial class MusicVenue : CivicStructure, IMusicVenue
+    public partial class MusicVenue : CivicStructure, IMusicVenue, IEquatable<MusicVenue>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

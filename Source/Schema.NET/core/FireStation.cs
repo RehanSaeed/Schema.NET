@@ -15,7 +15,7 @@
     /// A fire station. With firemen.
     /// </summary>
     [DataContract]
-    public partial class FireStation : CivicStructureAndEmergencyService, IFireStation
+    public partial class FireStation : CivicStructureAndEmergencyService, IFireStation, IEquatable<FireStation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

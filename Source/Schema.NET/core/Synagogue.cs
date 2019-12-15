@@ -15,7 +15,7 @@
     /// A synagogue.
     /// </summary>
     [DataContract]
-    public partial class Synagogue : PlaceOfWorship, ISynagogue
+    public partial class Synagogue : PlaceOfWorship, ISynagogue, IEquatable<Synagogue>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

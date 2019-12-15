@@ -54,7 +54,7 @@
     /// A direction indicating a single action to do in the instructions for how to achieve a result.
     /// </summary>
     [DataContract]
-    public partial class HowToDirection : CreativeWorkAndListItem, IHowToDirection
+    public partial class HowToDirection : CreativeWorkAndListItem, IHowToDirection, IEquatable<HowToDirection>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "totalTime", Order = 313)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
         public OneOrMany<TimeSpan?> TotalTime { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(HowToDirection other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AfterMedia == other.AfterMedia &&
+                this.BeforeMedia == other.BeforeMedia &&
+                this.DuringMedia == other.DuringMedia &&
+                this.PerformTime == other.PerformTime &&
+                this.PrepTime == other.PrepTime &&
+                this.Supply == other.Supply &&
+                this.Tool == other.Tool &&
+                this.TotalTime == other.TotalTime &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as HowToDirection);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AfterMedia)
+            .And(this.BeforeMedia)
+            .And(this.DuringMedia)
+            .And(this.PerformTime)
+            .And(this.PrepTime)
+            .And(this.Supply)
+            .And(this.Tool)
+            .And(this.TotalTime)
+            .And(base.GetHashCode());
     }
 }

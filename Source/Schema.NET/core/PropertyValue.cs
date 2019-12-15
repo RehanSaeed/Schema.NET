@@ -70,7 +70,7 @@
     /// Always use specific schema.org properties when a) they exist and b) you can populate them. Using PropertyValue as a substitute will typically not trigger the same effect as using the original, specific property.
     /// </summary>
     [DataContract]
-    public partial class PropertyValue : StructuredValue, IPropertyValue
+    public partial class PropertyValue : StructuredValue, IPropertyValue, IEquatable<PropertyValue>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -147,5 +147,45 @@
         [DataMember(Name = "valueReference", Order = 313)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPropertyValue, IQuantitativeValue, IStructuredValue> ValueReference { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PropertyValue other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.MaxValue == other.MaxValue &&
+                this.MeasurementTechnique == other.MeasurementTechnique &&
+                this.MinValue == other.MinValue &&
+                this.PropertyID == other.PropertyID &&
+                this.UnitCode == other.UnitCode &&
+                this.UnitText == other.UnitText &&
+                this.Value == other.Value &&
+                this.ValueReference == other.ValueReference &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PropertyValue);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.MaxValue)
+            .And(this.MeasurementTechnique)
+            .And(this.MinValue)
+            .And(this.PropertyID)
+            .And(this.UnitCode)
+            .And(this.UnitText)
+            .And(this.Value)
+            .And(this.ValueReference)
+            .And(base.GetHashCode());
     }
 }

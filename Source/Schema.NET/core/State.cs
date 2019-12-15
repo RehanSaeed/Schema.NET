@@ -15,7 +15,7 @@
     /// A state or province of a country.
     /// </summary>
     [DataContract]
-    public partial class State : AdministrativeArea, IState
+    public partial class State : AdministrativeArea, IState, IEquatable<State>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

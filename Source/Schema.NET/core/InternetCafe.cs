@@ -15,7 +15,7 @@
     /// An internet cafe.
     /// </summary>
     [DataContract]
-    public partial class InternetCafe : LocalBusiness, IInternetCafe
+    public partial class InternetCafe : LocalBusiness, IInternetCafe, IEquatable<InternetCafe>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -29,7 +29,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class LeaveAction : InteractAction, ILeaveAction
+    public partial class LeaveAction : InteractAction, ILeaveAction, IEquatable<LeaveAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -43,5 +43,31 @@
         [DataMember(Name = "event", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IEvent> Event { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(LeaveAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Event == other.Event &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as LeaveAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Event)
+            .And(base.GetHashCode());
     }
 }

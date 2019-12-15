@@ -15,7 +15,7 @@
     /// The act of dressing oneself in clothing.
     /// </summary>
     [DataContract]
-    public partial class WearAction : UseAction, IWearAction
+    public partial class WearAction : UseAction, IWearAction, IEquatable<WearAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

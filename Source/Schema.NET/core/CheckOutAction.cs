@@ -27,7 +27,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class CheckOutAction : CommunicateAction, ICheckOutAction
+    public partial class CheckOutAction : CommunicateAction, ICheckOutAction, IEquatable<CheckOutAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

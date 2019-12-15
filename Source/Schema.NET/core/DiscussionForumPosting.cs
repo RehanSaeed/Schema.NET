@@ -15,7 +15,7 @@
     /// A posting to a discussion forum.
     /// </summary>
     [DataContract]
-    public partial class DiscussionForumPosting : SocialMediaPosting, IDiscussionForumPosting
+    public partial class DiscussionForumPosting : SocialMediaPosting, IDiscussionForumPosting, IEquatable<DiscussionForumPosting>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

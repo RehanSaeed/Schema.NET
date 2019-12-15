@@ -64,7 +64,7 @@
     /// A media season e.g. tv, radio, video game etc.
     /// </summary>
     [DataContract]
-    public partial class CreativeWorkSeason : CreativeWork, ICreativeWorkSeason
+    public partial class CreativeWorkSeason : CreativeWork, ICreativeWorkSeason, IEquatable<CreativeWorkSeason>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -141,5 +141,49 @@
         [DataMember(Name = "trailer", Order = 215)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IVideoObject> Trailer { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CreativeWorkSeason other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Actor == other.Actor &&
+                this.Director == other.Director &&
+                this.Episode == other.Episode &&
+                this.NumberOfEpisodes == other.NumberOfEpisodes &&
+                this.PartOfSeries == other.PartOfSeries &&
+                this.ProductionCompany == other.ProductionCompany &&
+                this.SeasonNumber == other.SeasonNumber &&
+                this.StartDate == other.StartDate &&
+                this.EndDate == other.EndDate &&
+                this.Trailer == other.Trailer &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CreativeWorkSeason);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Actor)
+            .And(this.Director)
+            .And(this.Episode)
+            .And(this.NumberOfEpisodes)
+            .And(this.PartOfSeries)
+            .And(this.ProductionCompany)
+            .And(this.SeasonNumber)
+            .And(this.StartDate)
+            .And(this.EndDate)
+            .And(this.Trailer)
+            .And(base.GetHashCode());
     }
 }

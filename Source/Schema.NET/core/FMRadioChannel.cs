@@ -15,7 +15,7 @@
     /// A radio channel that uses FM.
     /// </summary>
     [DataContract]
-    public partial class FMRadioChannel : RadioChannel, IFMRadioChannel
+    public partial class FMRadioChannel : RadioChannel, IFMRadioChannel, IEquatable<FMRadioChannel>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

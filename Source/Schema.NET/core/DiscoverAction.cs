@@ -15,7 +15,7 @@
     /// The act of discovering/finding an object.
     /// </summary>
     [DataContract]
-    public partial class DiscoverAction : FindAction, IDiscoverAction
+    public partial class DiscoverAction : FindAction, IDiscoverAction, IEquatable<DiscoverAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

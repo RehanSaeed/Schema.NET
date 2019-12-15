@@ -19,7 +19,7 @@
     ///     Wanderer".
     /// </summary>
     [DataContract]
-    public partial class ComicSeries : Periodical, IComicSeries
+    public partial class ComicSeries : Periodical, IComicSeries, IEquatable<ComicSeries>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

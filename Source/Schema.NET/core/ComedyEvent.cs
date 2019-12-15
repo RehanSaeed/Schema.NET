@@ -15,7 +15,7 @@
     /// Event type: Comedy event.
     /// </summary>
     [DataContract]
-    public partial class ComedyEvent : Event, IComedyEvent
+    public partial class ComedyEvent : Event, IComedyEvent, IEquatable<ComedyEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -23,7 +23,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class ConfirmAction : InformAction, IConfirmAction
+    public partial class ConfirmAction : InformAction, IConfirmAction, IEquatable<ConfirmAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

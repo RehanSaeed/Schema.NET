@@ -15,7 +15,7 @@
     /// A courthouse.
     /// </summary>
     [DataContract]
-    public partial class Courthouse : GovernmentBuilding, ICourthouse
+    public partial class Courthouse : GovernmentBuilding, ICourthouse, IEquatable<Courthouse>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

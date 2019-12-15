@@ -15,7 +15,7 @@
     /// A locksmith.
     /// </summary>
     [DataContract]
-    public partial class Locksmith : HomeAndConstructionBusiness, ILocksmith
+    public partial class Locksmith : HomeAndConstructionBusiness, ILocksmith, IEquatable<Locksmith>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

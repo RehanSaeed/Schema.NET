@@ -15,7 +15,7 @@
     /// A playground.
     /// </summary>
     [DataContract]
-    public partial class Playground : CivicStructure, IPlayground
+    public partial class Playground : CivicStructure, IPlayground, IEquatable<Playground>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

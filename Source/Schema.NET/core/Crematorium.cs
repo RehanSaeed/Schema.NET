@@ -15,7 +15,7 @@
     /// A crematorium.
     /// </summary>
     [DataContract]
-    public partial class Crematorium : CivicStructure, ICrematorium
+    public partial class Crematorium : CivicStructure, ICrematorium, IEquatable<Crematorium>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

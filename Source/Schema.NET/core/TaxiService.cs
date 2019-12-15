@@ -15,7 +15,7 @@
     /// A service for a vehicle for hire with a driver for local travel. Fares are usually calculated based on distance traveled.
     /// </summary>
     [DataContract]
-    public partial class TaxiService : Service, ITaxiService
+    public partial class TaxiService : Service, ITaxiService, IEquatable<TaxiService>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

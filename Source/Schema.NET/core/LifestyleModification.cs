@@ -15,7 +15,7 @@
     /// A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition.
     /// </summary>
     [DataContract]
-    public partial class LifestyleModification : MedicalEntity, ILifestyleModification
+    public partial class LifestyleModification : MedicalEntity, ILifestyleModification, IEquatable<LifestyleModification>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

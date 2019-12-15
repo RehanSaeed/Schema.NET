@@ -15,7 +15,7 @@
     /// A self-storage facility.
     /// </summary>
     [DataContract]
-    public partial class SelfStorage : LocalBusiness, ISelfStorage
+    public partial class SelfStorage : LocalBusiness, ISelfStorage, IEquatable<SelfStorage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

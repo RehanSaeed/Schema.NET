@@ -15,7 +15,7 @@
     /// Web page type: Profile page.
     /// </summary>
     [DataContract]
-    public partial class ProfilePage : WebPage, IProfilePage
+    public partial class ProfilePage : WebPage, IProfilePage, IEquatable<ProfilePage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

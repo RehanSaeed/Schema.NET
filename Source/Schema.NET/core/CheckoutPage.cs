@@ -15,7 +15,7 @@
     /// Web page type: Checkout page.
     /// </summary>
     [DataContract]
-    public partial class CheckoutPage : WebPage, ICheckoutPage
+    public partial class CheckoutPage : WebPage, ICheckoutPage, IEquatable<CheckoutPage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

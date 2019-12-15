@@ -15,7 +15,7 @@
     /// A dry-cleaning business.
     /// </summary>
     [DataContract]
-    public partial class DryCleaningOrLaundry : LocalBusiness, IDryCleaningOrLaundry
+    public partial class DryCleaningOrLaundry : LocalBusiness, IDryCleaningOrLaundry, IEquatable<DryCleaningOrLaundry>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// The act of editing a recipient by removing one of its objects.
     /// </summary>
     [DataContract]
-    public partial class DeleteAction : UpdateAction, IDeleteAction
+    public partial class DeleteAction : UpdateAction, IDeleteAction, IEquatable<DeleteAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

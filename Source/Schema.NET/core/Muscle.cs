@@ -49,7 +49,7 @@
     /// A muscle is an anatomical structure consisting of a contractile form of tissue that animals use to effect movement.
     /// </summary>
     [DataContract]
-    public partial class Muscle : AnatomicalStructure, IMuscle
+    public partial class Muscle : AnatomicalStructure, IMuscle, IEquatable<Muscle>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -105,5 +105,43 @@
         [DataMember(Name = "origin", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAnatomicalStructure> Origin { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Muscle other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Action == other.Action &&
+                this.Antagonist == other.Antagonist &&
+                this.BloodSupply == other.BloodSupply &&
+                this.Insertion == other.Insertion &&
+                this.MuscleAction == other.MuscleAction &&
+                this.Nerve == other.Nerve &&
+                this.Origin == other.Origin &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Muscle);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Action)
+            .And(this.Antagonist)
+            .And(this.BloodSupply)
+            .And(this.Insertion)
+            .And(this.MuscleAction)
+            .And(this.Nerve)
+            .And(this.Origin)
+            .And(base.GetHashCode());
     }
 }

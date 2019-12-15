@@ -15,7 +15,7 @@
     /// A middle school (typically for children aged around 11-14, although this varies somewhat).
     /// </summary>
     [DataContract]
-    public partial class MiddleSchool : EducationalOrganization, IMiddleSchool
+    public partial class MiddleSchool : EducationalOrganization, IMiddleSchool, IEquatable<MiddleSchool>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

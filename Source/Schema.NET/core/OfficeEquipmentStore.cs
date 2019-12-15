@@ -15,7 +15,7 @@
     /// An office equipment store.
     /// </summary>
     [DataContract]
-    public partial class OfficeEquipmentStore : Store, IOfficeEquipmentStore
+    public partial class OfficeEquipmentStore : Store, IOfficeEquipmentStore, IEquatable<OfficeEquipmentStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

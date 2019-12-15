@@ -15,7 +15,7 @@
     /// A moving company.
     /// </summary>
     [DataContract]
-    public partial class MovingCompany : HomeAndConstructionBusiness, IMovingCompany
+    public partial class MovingCompany : HomeAndConstructionBusiness, IMovingCompany, IEquatable<MovingCompany>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

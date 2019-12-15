@@ -24,7 +24,7 @@
     /// The costs of settling the payment using a particular payment method.
     /// </summary>
     [DataContract]
-    public partial class PaymentChargeSpecification : PriceSpecification, IPaymentChargeSpecification
+    public partial class PaymentChargeSpecification : PriceSpecification, IPaymentChargeSpecification, IEquatable<PaymentChargeSpecification>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "appliesToPaymentMethod", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<PaymentMethod?> AppliesToPaymentMethod { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PaymentChargeSpecification other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AppliesToDeliveryMethod == other.AppliesToDeliveryMethod &&
+                this.AppliesToPaymentMethod == other.AppliesToPaymentMethod &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PaymentChargeSpecification);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AppliesToDeliveryMethod)
+            .And(this.AppliesToPaymentMethod)
+            .And(base.GetHashCode());
     }
 }

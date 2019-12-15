@@ -24,7 +24,7 @@
     /// The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another.
     /// </summary>
     [DataContract]
-    public partial class TransferAction : Action, ITransferAction
+    public partial class TransferAction : Action, ITransferAction, IEquatable<TransferAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "toLocation", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPlace> ToLocation { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(TransferAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.FromLocation == other.FromLocation &&
+                this.ToLocation == other.ToLocation &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as TransferAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.FromLocation)
+            .And(this.ToLocation)
+            .And(base.GetHashCode());
     }
 }

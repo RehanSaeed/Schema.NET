@@ -15,7 +15,7 @@
     /// A utility class that serves as the umbrella for a number of 'intangible' things in the medical space.
     /// </summary>
     [DataContract]
-    public partial class MedicalIntangible : MedicalEntity, IMedicalIntangible
+    public partial class MedicalIntangible : MedicalEntity, IMedicalIntangible, IEquatable<MedicalIntangible>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

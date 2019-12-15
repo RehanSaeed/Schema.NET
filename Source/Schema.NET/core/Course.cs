@@ -39,7 +39,7 @@
     /// A description of an educational course which may be offered as distinct instances at which take place at different times or take place at different locations, or be offered through different media or modes of study. An educational course is a sequence of one or more educational events and/or creative works which aims to build knowledge, competence or ability of learners.
     /// </summary>
     [DataContract]
-    public partial class Course : CreativeWork, ICourse
+    public partial class Course : CreativeWork, ICourse, IEquatable<Course>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "occupationalCredentialAwarded", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> OccupationalCredentialAwarded { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Course other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CourseCode == other.CourseCode &&
+                this.CoursePrerequisites == other.CoursePrerequisites &&
+                this.EducationalCredentialAwarded == other.EducationalCredentialAwarded &&
+                this.HasCourseInstance == other.HasCourseInstance &&
+                this.OccupationalCredentialAwarded == other.OccupationalCredentialAwarded &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Course);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CourseCode)
+            .And(this.CoursePrerequisites)
+            .And(this.EducationalCredentialAwarded)
+            .And(this.HasCourseInstance)
+            .And(this.OccupationalCredentialAwarded)
+            .And(base.GetHashCode());
     }
 }

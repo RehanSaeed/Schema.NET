@@ -15,7 +15,7 @@
     /// A sea (for example, the Caspian sea).
     /// </summary>
     [DataContract]
-    public partial class SeaBodyOfWater : BodyOfWater, ISeaBodyOfWater
+    public partial class SeaBodyOfWater : BodyOfWater, ISeaBodyOfWater, IEquatable<SeaBodyOfWater>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

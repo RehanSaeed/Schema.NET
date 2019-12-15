@@ -15,7 +15,7 @@
     /// The act of editing by adding an object to a collection.
     /// </summary>
     [DataContract]
-    public partial class AddAction : UpdateAction, IAddAction
+    public partial class AddAction : UpdateAction, IAddAction, IEquatable<AddAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// An advertising section of the page.
     /// </summary>
     [DataContract]
-    public partial class WPAdBlock : WebPageElement, IWPAdBlock
+    public partial class WPAdBlock : WebPageElement, IWPAdBlock, IEquatable<WPAdBlock>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

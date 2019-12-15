@@ -15,7 +15,7 @@
     /// A spreadsheet file.
     /// </summary>
     [DataContract]
-    public partial class SpreadsheetDigitalDocument : DigitalDocument, ISpreadsheetDigitalDocument
+    public partial class SpreadsheetDigitalDocument : DigitalDocument, ISpreadsheetDigitalDocument, IEquatable<SpreadsheetDigitalDocument>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

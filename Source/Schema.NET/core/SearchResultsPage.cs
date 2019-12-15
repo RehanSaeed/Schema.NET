@@ -15,7 +15,7 @@
     /// Web page type: Search results page.
     /// </summary>
     [DataContract]
-    public partial class SearchResultsPage : WebPage, ISearchResultsPage
+    public partial class SearchResultsPage : WebPage, ISearchResultsPage, IEquatable<SearchResultsPage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

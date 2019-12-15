@@ -27,7 +27,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class SubscribeAction : InteractAction, ISubscribeAction
+    public partial class SubscribeAction : InteractAction, ISubscribeAction, IEquatable<SubscribeAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

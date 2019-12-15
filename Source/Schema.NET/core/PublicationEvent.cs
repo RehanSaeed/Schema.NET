@@ -24,7 +24,7 @@
     /// A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media.
     /// </summary>
     [DataContract]
-    public partial class PublicationEvent : Event, IPublicationEvent
+    public partial class PublicationEvent : Event, IPublicationEvent, IEquatable<PublicationEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -52,5 +52,35 @@
         [DataMember(Name = "publishedOn", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IBroadcastService> PublishedOn { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PublicationEvent other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.IsAccessibleForFree == other.IsAccessibleForFree &&
+                this.PublishedBy == other.PublishedBy &&
+                this.PublishedOn == other.PublishedOn &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PublicationEvent);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.IsAccessibleForFree)
+            .And(this.PublishedBy)
+            .And(this.PublishedOn)
+            .And(base.GetHashCode());
     }
 }

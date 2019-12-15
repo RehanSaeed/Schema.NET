@@ -82,7 +82,7 @@
     /// Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, restaurant reservations, flights, or rental cars, use &lt;a class="localLink" href="http://schema.org/Offer"&gt;Offer&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class Reservation : Intangible, IReservation
+    public partial class Reservation : Intangible, IReservation, IEquatable<Reservation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -179,5 +179,53 @@
         [DataMember(Name = "underName", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> UnderName { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Reservation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.BookingTime == other.BookingTime &&
+                this.Broker == other.Broker &&
+                this.ModifiedTime == other.ModifiedTime &&
+                this.PriceCurrency == other.PriceCurrency &&
+                this.ProgramMembershipUsed == other.ProgramMembershipUsed &&
+                this.Provider == other.Provider &&
+                this.ReservationFor == other.ReservationFor &&
+                this.ReservationId == other.ReservationId &&
+                this.ReservationStatus == other.ReservationStatus &&
+                this.ReservedTicket == other.ReservedTicket &&
+                this.TotalPrice == other.TotalPrice &&
+                this.UnderName == other.UnderName &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Reservation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.BookingTime)
+            .And(this.Broker)
+            .And(this.ModifiedTime)
+            .And(this.PriceCurrency)
+            .And(this.ProgramMembershipUsed)
+            .And(this.Provider)
+            .And(this.ReservationFor)
+            .And(this.ReservationId)
+            .And(this.ReservationStatus)
+            .And(this.ReservedTicket)
+            .And(this.TotalPrice)
+            .And(this.UnderName)
+            .And(base.GetHashCode());
     }
 }

@@ -15,7 +15,7 @@
     /// A sidebar section of the page.
     /// </summary>
     [DataContract]
-    public partial class WPSideBar : WebPageElement, IWPSideBar
+    public partial class WPSideBar : WebPageElement, IWPSideBar, IEquatable<WPSideBar>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

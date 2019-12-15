@@ -15,7 +15,7 @@
     /// A tourist information center.
     /// </summary>
     [DataContract]
-    public partial class TouristInformationCenter : LocalBusiness, ITouristInformationCenter
+    public partial class TouristInformationCenter : LocalBusiness, ITouristInformationCenter, IEquatable<TouristInformationCenter>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

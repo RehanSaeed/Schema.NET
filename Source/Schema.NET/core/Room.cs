@@ -19,7 +19,7 @@
     /// See also the &lt;a href="/docs/hotels.html"&gt;dedicated document on the use of schema.org for marking up hotels and other forms of accommodations&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class Room : Accommodation, IRoom
+    public partial class Room : Accommodation, IRoom, IEquatable<Room>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

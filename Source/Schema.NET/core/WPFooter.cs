@@ -15,7 +15,7 @@
     /// The footer section of the page.
     /// </summary>
     [DataContract]
-    public partial class WPFooter : WebPageElement, IWPFooter
+    public partial class WPFooter : WebPageElement, IWPFooter, IEquatable<WPFooter>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

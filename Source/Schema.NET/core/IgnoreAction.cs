@@ -15,7 +15,7 @@
     /// The act of intentionally disregarding the object. An agent ignores an object.
     /// </summary>
     [DataContract]
-    public partial class IgnoreAction : AssessAction, IIgnoreAction
+    public partial class IgnoreAction : AssessAction, IIgnoreAction, IEquatable<IgnoreAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

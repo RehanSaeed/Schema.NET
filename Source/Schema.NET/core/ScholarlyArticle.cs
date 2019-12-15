@@ -15,7 +15,7 @@
     /// A scholarly article.
     /// </summary>
     [DataContract]
-    public partial class ScholarlyArticle : Article, IScholarlyArticle
+    public partial class ScholarlyArticle : Article, IScholarlyArticle, IEquatable<ScholarlyArticle>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

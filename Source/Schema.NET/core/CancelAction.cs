@@ -23,7 +23,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class CancelAction : PlanAction, ICancelAction
+    public partial class CancelAction : PlanAction, ICancelAction, IEquatable<CancelAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

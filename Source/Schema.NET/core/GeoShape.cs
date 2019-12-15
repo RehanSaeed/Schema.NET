@@ -54,7 +54,7 @@
     /// The geographic shape of a place. A GeoShape can be described using several properties whose values are based on latitude/longitude pairs. Either whitespace or commas can be used to separate latitude and longitude; whitespace should be used when writing a list of several such points.
     /// </summary>
     [DataContract]
-    public partial class GeoShape : StructuredValue, IGeoShape
+    public partial class GeoShape : StructuredValue, IGeoShape, IEquatable<GeoShape>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "postalCode", Order = 313)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PostalCode { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(GeoShape other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Address == other.Address &&
+                this.AddressCountry == other.AddressCountry &&
+                this.Box == other.Box &&
+                this.Circle == other.Circle &&
+                this.Elevation == other.Elevation &&
+                this.Line == other.Line &&
+                this.Polygon == other.Polygon &&
+                this.PostalCode == other.PostalCode &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as GeoShape);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Address)
+            .And(this.AddressCountry)
+            .And(this.Box)
+            .And(this.Circle)
+            .And(this.Elevation)
+            .And(this.Line)
+            .And(this.Polygon)
+            .And(this.PostalCode)
+            .And(base.GetHashCode());
     }
 }

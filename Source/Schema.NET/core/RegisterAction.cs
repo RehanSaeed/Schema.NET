@@ -27,7 +27,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class RegisterAction : InteractAction, IRegisterAction
+    public partial class RegisterAction : InteractAction, IRegisterAction, IEquatable<RegisterAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

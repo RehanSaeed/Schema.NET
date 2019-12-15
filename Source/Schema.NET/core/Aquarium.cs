@@ -15,7 +15,7 @@
     /// Aquarium.
     /// </summary>
     [DataContract]
-    public partial class Aquarium : CivicStructure, IAquarium
+    public partial class Aquarium : CivicStructure, IAquarium, IEquatable<Aquarium>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

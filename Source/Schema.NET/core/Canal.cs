@@ -15,7 +15,7 @@
     /// A canal, like the Panama Canal.
     /// </summary>
     [DataContract]
-    public partial class Canal : BodyOfWater, ICanal
+    public partial class Canal : BodyOfWater, ICanal, IEquatable<Canal>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

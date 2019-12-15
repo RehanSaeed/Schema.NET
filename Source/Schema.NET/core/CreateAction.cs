@@ -15,7 +15,7 @@
     /// The act of deliberately creating/producing/generating/building a result out of the agent.
     /// </summary>
     [DataContract]
-    public partial class CreateAction : Action, ICreateAction
+    public partial class CreateAction : Action, ICreateAction, IEquatable<CreateAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

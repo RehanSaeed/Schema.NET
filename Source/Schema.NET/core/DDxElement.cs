@@ -24,7 +24,7 @@
     /// An alternative, closely-related condition typically considered later in the differential diagnosis process along with the signs that are used to distinguish it.
     /// </summary>
     [DataContract]
-    public partial class DDxElement : MedicalIntangible, IDDxElement
+    public partial class DDxElement : MedicalIntangible, IDDxElement, IEquatable<DDxElement>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "distinguishingSign", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalSignOrSymptom> DistinguishingSign { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(DDxElement other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Diagnosis == other.Diagnosis &&
+                this.DistinguishingSign == other.DistinguishingSign &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as DDxElement);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Diagnosis)
+            .And(this.DistinguishingSign)
+            .And(base.GetHashCode());
     }
 }

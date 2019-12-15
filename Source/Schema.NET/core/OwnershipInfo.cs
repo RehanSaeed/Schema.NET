@@ -34,7 +34,7 @@
     /// A structured value providing information about when a certain organization or person owned a certain product.
     /// </summary>
     [DataContract]
-    public partial class OwnershipInfo : StructuredValue, IOwnershipInfo
+    public partial class OwnershipInfo : StructuredValue, IOwnershipInfo, IEquatable<OwnershipInfo>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "typeOfGood", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IProduct, IService> TypeOfGood { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(OwnershipInfo other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AcquiredFrom == other.AcquiredFrom &&
+                this.OwnedFrom == other.OwnedFrom &&
+                this.OwnedThrough == other.OwnedThrough &&
+                this.TypeOfGood == other.TypeOfGood &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as OwnershipInfo);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AcquiredFrom)
+            .And(this.OwnedFrom)
+            .And(this.OwnedThrough)
+            .And(this.TypeOfGood)
+            .And(base.GetHashCode());
     }
 }

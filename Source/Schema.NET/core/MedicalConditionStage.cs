@@ -24,7 +24,7 @@
     /// A stage of a medical condition, such as 'Stage IIIa'.
     /// </summary>
     [DataContract]
-    public partial class MedicalConditionStage : MedicalIntangible, IMedicalConditionStage
+    public partial class MedicalConditionStage : MedicalIntangible, IMedicalConditionStage, IEquatable<MedicalConditionStage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "subStageSuffix", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> SubStageSuffix { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalConditionStage other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.StageAsNumber == other.StageAsNumber &&
+                this.SubStageSuffix == other.SubStageSuffix &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalConditionStage);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.StageAsNumber)
+            .And(this.SubStageSuffix)
+            .And(base.GetHashCode());
     }
 }

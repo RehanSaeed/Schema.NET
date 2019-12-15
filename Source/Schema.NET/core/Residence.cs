@@ -15,7 +15,7 @@
     /// The place where a person lives.
     /// </summary>
     [DataContract]
-    public partial class Residence : Place, IResidence
+    public partial class Residence : Place, IResidence, IEquatable<Residence>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A mosque.
     /// </summary>
     [DataContract]
-    public partial class Mosque : PlaceOfWorship, IMosque
+    public partial class Mosque : PlaceOfWorship, IMosque, IEquatable<Mosque>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

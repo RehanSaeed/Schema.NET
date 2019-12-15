@@ -15,7 +15,7 @@
     /// A plumbing service.
     /// </summary>
     [DataContract]
-    public partial class Plumber : HomeAndConstructionBusiness, IPlumber
+    public partial class Plumber : HomeAndConstructionBusiness, IPlumber, IEquatable<Plumber>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

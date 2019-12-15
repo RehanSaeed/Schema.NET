@@ -15,7 +15,7 @@
     /// A zoo.
     /// </summary>
     [DataContract]
-    public partial class Zoo : CivicStructure, IZoo
+    public partial class Zoo : CivicStructure, IZoo, IEquatable<Zoo>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -124,7 +124,7 @@
     /// A software application.
     /// </summary>
     [DataContract]
-    public partial class SoftwareApplication : CreativeWork, ISoftwareApplication
+    public partial class SoftwareApplication : CreativeWork, ISoftwareApplication, IEquatable<SoftwareApplication>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -285,5 +285,73 @@
         [DataMember(Name = "supportingData", Order = 227)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IDataFeed> SupportingData { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(SoftwareApplication other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ApplicationCategory == other.ApplicationCategory &&
+                this.ApplicationSubCategory == other.ApplicationSubCategory &&
+                this.ApplicationSuite == other.ApplicationSuite &&
+                this.AvailableOnDevice == other.AvailableOnDevice &&
+                this.CountriesNotSupported == other.CountriesNotSupported &&
+                this.CountriesSupported == other.CountriesSupported &&
+                this.DownloadUrl == other.DownloadUrl &&
+                this.FeatureList == other.FeatureList &&
+                this.FileSize == other.FileSize &&
+                this.InstallUrl == other.InstallUrl &&
+                this.MemoryRequirements == other.MemoryRequirements &&
+                this.OperatingSystem == other.OperatingSystem &&
+                this.Permissions == other.Permissions &&
+                this.ProcessorRequirements == other.ProcessorRequirements &&
+                this.ReleaseNotes == other.ReleaseNotes &&
+                this.Screenshot == other.Screenshot &&
+                this.SoftwareAddOn == other.SoftwareAddOn &&
+                this.SoftwareHelp == other.SoftwareHelp &&
+                this.SoftwareRequirements == other.SoftwareRequirements &&
+                this.SoftwareVersion == other.SoftwareVersion &&
+                this.StorageRequirements == other.StorageRequirements &&
+                this.SupportingData == other.SupportingData &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as SoftwareApplication);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ApplicationCategory)
+            .And(this.ApplicationSubCategory)
+            .And(this.ApplicationSuite)
+            .And(this.AvailableOnDevice)
+            .And(this.CountriesNotSupported)
+            .And(this.CountriesSupported)
+            .And(this.DownloadUrl)
+            .And(this.FeatureList)
+            .And(this.FileSize)
+            .And(this.InstallUrl)
+            .And(this.MemoryRequirements)
+            .And(this.OperatingSystem)
+            .And(this.Permissions)
+            .And(this.ProcessorRequirements)
+            .And(this.ReleaseNotes)
+            .And(this.Screenshot)
+            .And(this.SoftwareAddOn)
+            .And(this.SoftwareHelp)
+            .And(this.SoftwareRequirements)
+            .And(this.SoftwareVersion)
+            .And(this.StorageRequirements)
+            .And(this.SupportingData)
+            .And(base.GetHashCode());
     }
 }

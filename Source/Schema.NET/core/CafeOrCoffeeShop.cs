@@ -15,7 +15,7 @@
     /// A cafe or coffee shop.
     /// </summary>
     [DataContract]
-    public partial class CafeOrCoffeeShop : FoodEstablishment, ICafeOrCoffeeShop
+    public partial class CafeOrCoffeeShop : FoodEstablishment, ICafeOrCoffeeShop, IEquatable<CafeOrCoffeeShop>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

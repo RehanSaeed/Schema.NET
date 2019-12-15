@@ -15,7 +15,7 @@
     /// A medical procedure intended primarily for palliative purposes, aimed at relieving the symptoms of an underlying health condition.
     /// </summary>
     [DataContract]
-    public partial class PalliativeProcedure : MedicalTherapy, IPalliativeProcedure
+    public partial class PalliativeProcedure : MedicalTherapy, IPalliativeProcedure, IEquatable<PalliativeProcedure>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

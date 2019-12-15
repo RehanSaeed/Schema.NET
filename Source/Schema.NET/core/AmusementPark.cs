@@ -15,7 +15,7 @@
     /// An amusement park.
     /// </summary>
     [DataContract]
-    public partial class AmusementPark : EntertainmentBusiness, IAmusementPark
+    public partial class AmusementPark : EntertainmentBusiness, IAmusementPark, IEquatable<AmusementPark>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

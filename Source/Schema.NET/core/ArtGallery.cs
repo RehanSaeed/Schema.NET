@@ -15,7 +15,7 @@
     /// An art gallery.
     /// </summary>
     [DataContract]
-    public partial class ArtGallery : EntertainmentBusiness, IArtGallery
+    public partial class ArtGallery : EntertainmentBusiness, IArtGallery, IEquatable<ArtGallery>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

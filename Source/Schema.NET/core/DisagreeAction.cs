@@ -15,7 +15,7 @@
     /// The act of expressing a difference of opinion with the object. An agent disagrees to/about an object (a proposition, topic or theme) with participants.
     /// </summary>
     [DataContract]
-    public partial class DisagreeAction : ReactAction, IDisagreeAction
+    public partial class DisagreeAction : ReactAction, IDisagreeAction, IEquatable<DisagreeAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A Childcare center.
     /// </summary>
     [DataContract]
-    public partial class ChildCare : LocalBusiness, IChildCare
+    public partial class ChildCare : LocalBusiness, IChildCare, IEquatable<ChildCare>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

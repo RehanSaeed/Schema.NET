@@ -15,7 +15,7 @@
     /// Rigid connective tissue that comprises up the skeletal structure of the human body.
     /// </summary>
     [DataContract]
-    public partial class Bone : AnatomicalStructure, IBone
+    public partial class Bone : AnatomicalStructure, IBone, IEquatable<Bone>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

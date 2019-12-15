@@ -15,7 +15,7 @@
     /// A Service to transfer funds from a person or organization to a beneficiary person or organization.
     /// </summary>
     [DataContract]
-    public partial class PaymentService : FinancialProduct, IPaymentService
+    public partial class PaymentService : FinancialProduct, IPaymentService, IEquatable<PaymentService>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

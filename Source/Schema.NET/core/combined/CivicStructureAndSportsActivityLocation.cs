@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, SportsActivityLocation for more information.
     /// </summary>
-    public partial interface ICivicStructureAndSportsActivityLocation : ISportsActivityLocation, ICivicStructure
+    public partial interface ICivicStructureAndSportsActivityLocation : ICivicStructure, ISportsActivityLocation
     {
     }
 
@@ -15,7 +15,7 @@
     /// See CivicStructure, SportsActivityLocation for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class CivicStructureAndSportsActivityLocation : LocalBusinessAndPlace, ICivicStructureAndSportsActivityLocation
+    public abstract partial class CivicStructureAndSportsActivityLocation : LocalBusinessAndPlace, ICivicStructureAndSportsActivityLocation, IEquatable<CivicStructureAndSportsActivityLocation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -35,5 +35,31 @@
         [DataMember(Name = "openingHours", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> OpeningHours { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CivicStructureAndSportsActivityLocation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.OpeningHours == other.OpeningHours &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CivicStructureAndSportsActivityLocation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.OpeningHours)
+            .And(base.GetHashCode());
     }
 }

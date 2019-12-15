@@ -175,7 +175,7 @@
     /// An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the &lt;a class="localLink" href="http://schema.org/offers"&gt;offers&lt;/a&gt; property. Repeated events may be structured as separate Event objects.
     /// </summary>
     [DataContract]
-    public partial class Event : Thing, IEvent
+    public partial class Event : Thing, IEvent, IEquatable<Event>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -407,5 +407,93 @@
         [DataMember(Name = "workPerformed", Order = 137)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> WorkPerformed { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Event other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.About == other.About &&
+                this.Actor == other.Actor &&
+                this.AggregateRating == other.AggregateRating &&
+                this.Attendee == other.Attendee &&
+                this.Audience == other.Audience &&
+                this.Composer == other.Composer &&
+                this.Contributor == other.Contributor &&
+                this.Director == other.Director &&
+                this.DoorTime == other.DoorTime &&
+                this.Duration == other.Duration &&
+                this.EventStatus == other.EventStatus &&
+                this.Funder == other.Funder &&
+                this.InLanguage == other.InLanguage &&
+                this.IsAccessibleForFree == other.IsAccessibleForFree &&
+                this.Location == other.Location &&
+                this.MaximumAttendeeCapacity == other.MaximumAttendeeCapacity &&
+                this.Offers == other.Offers &&
+                this.Organizer == other.Organizer &&
+                this.Performer == other.Performer &&
+                this.PreviousStartDate == other.PreviousStartDate &&
+                this.RecordedIn == other.RecordedIn &&
+                this.RemainingAttendeeCapacity == other.RemainingAttendeeCapacity &&
+                this.Review == other.Review &&
+                this.Sponsor == other.Sponsor &&
+                this.StartDate == other.StartDate &&
+                this.EndDate == other.EndDate &&
+                this.SubEvent == other.SubEvent &&
+                this.SuperEvent == other.SuperEvent &&
+                this.Translator == other.Translator &&
+                this.TypicalAgeRange == other.TypicalAgeRange &&
+                this.WorkFeatured == other.WorkFeatured &&
+                this.WorkPerformed == other.WorkPerformed &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Event);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.About)
+            .And(this.Actor)
+            .And(this.AggregateRating)
+            .And(this.Attendee)
+            .And(this.Audience)
+            .And(this.Composer)
+            .And(this.Contributor)
+            .And(this.Director)
+            .And(this.DoorTime)
+            .And(this.Duration)
+            .And(this.EventStatus)
+            .And(this.Funder)
+            .And(this.InLanguage)
+            .And(this.IsAccessibleForFree)
+            .And(this.Location)
+            .And(this.MaximumAttendeeCapacity)
+            .And(this.Offers)
+            .And(this.Organizer)
+            .And(this.Performer)
+            .And(this.PreviousStartDate)
+            .And(this.RecordedIn)
+            .And(this.RemainingAttendeeCapacity)
+            .And(this.Review)
+            .And(this.Sponsor)
+            .And(this.StartDate)
+            .And(this.EndDate)
+            .And(this.SubEvent)
+            .And(this.SuperEvent)
+            .And(this.Translator)
+            .And(this.TypicalAgeRange)
+            .And(this.WorkFeatured)
+            .And(this.WorkPerformed)
+            .And(base.GetHashCode());
     }
 }

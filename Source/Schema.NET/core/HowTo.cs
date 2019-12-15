@@ -54,7 +54,7 @@
     /// Instructions that explain how to achieve a result by performing a sequence of steps.
     /// </summary>
     [DataContract]
-    public partial class HowTo : CreativeWork, IHowTo
+    public partial class HowTo : CreativeWork, IHowTo, IEquatable<HowTo>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "yield", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IQuantitativeValue, string> Yield { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(HowTo other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.EstimatedCost == other.EstimatedCost &&
+                this.PerformTime == other.PerformTime &&
+                this.PrepTime == other.PrepTime &&
+                this.Step == other.Step &&
+                this.Supply == other.Supply &&
+                this.Tool == other.Tool &&
+                this.TotalTime == other.TotalTime &&
+                this.Yield == other.Yield &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as HowTo);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.EstimatedCost)
+            .And(this.PerformTime)
+            .And(this.PrepTime)
+            .And(this.Step)
+            .And(this.Supply)
+            .And(this.Tool)
+            .And(this.TotalTime)
+            .And(this.Yield)
+            .And(base.GetHashCode());
     }
 }

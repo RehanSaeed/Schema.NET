@@ -76,7 +76,7 @@
     /// A work of art that is primarily visual in character.
     /// </summary>
     [DataContract]
-    public partial class VisualArtwork : CreativeWork, IVisualArtwork
+    public partial class VisualArtwork : CreativeWork, IVisualArtwork, IEquatable<VisualArtwork>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -169,5 +169,53 @@
         [DataMember(Name = "width", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IQuantitativeValue> Width { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(VisualArtwork other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ArtEdition == other.ArtEdition &&
+                this.Artform == other.Artform &&
+                this.Artist == other.Artist &&
+                this.ArtMedium == other.ArtMedium &&
+                this.ArtworkSurface == other.ArtworkSurface &&
+                this.Colorist == other.Colorist &&
+                this.Depth == other.Depth &&
+                this.Height == other.Height &&
+                this.Inker == other.Inker &&
+                this.Letterer == other.Letterer &&
+                this.Penciler == other.Penciler &&
+                this.Width == other.Width &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as VisualArtwork);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ArtEdition)
+            .And(this.Artform)
+            .And(this.Artist)
+            .And(this.ArtMedium)
+            .And(this.ArtworkSurface)
+            .And(this.Colorist)
+            .And(this.Depth)
+            .And(this.Height)
+            .And(this.Inker)
+            .And(this.Letterer)
+            .And(this.Penciler)
+            .And(this.Width)
+            .And(base.GetHashCode());
     }
 }

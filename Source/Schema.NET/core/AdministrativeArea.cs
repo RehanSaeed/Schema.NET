@@ -15,7 +15,7 @@
     /// A geographical region, typically under the jurisdiction of a particular government.
     /// </summary>
     [DataContract]
-    public partial class AdministrativeArea : Place, IAdministrativeArea
+    public partial class AdministrativeArea : Place, IAdministrativeArea, IEquatable<AdministrativeArea>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

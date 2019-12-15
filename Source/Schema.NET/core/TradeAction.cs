@@ -37,7 +37,7 @@
     /// The act of participating in an exchange of goods and services for monetary compensation. An agent trades an object, product or service with a participant in exchange for a one time or periodic payment.
     /// </summary>
     [DataContract]
-    public partial class TradeAction : Action, ITradeAction
+    public partial class TradeAction : Action, ITradeAction, IEquatable<TradeAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -73,5 +73,35 @@
         [DataMember(Name = "priceSpecification", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPriceSpecification> PriceSpecification { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(TradeAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Price == other.Price &&
+                this.PriceCurrency == other.PriceCurrency &&
+                this.PriceSpecification == other.PriceSpecification &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as TradeAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Price)
+            .And(this.PriceCurrency)
+            .And(this.PriceSpecification)
+            .And(base.GetHashCode());
     }
 }

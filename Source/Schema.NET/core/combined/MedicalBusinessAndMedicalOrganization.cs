@@ -15,7 +15,7 @@
     /// See MedicalBusiness, MedicalOrganization for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class MedicalBusinessAndMedicalOrganization : LocalBusinessAndOrganization, IMedicalBusinessAndMedicalOrganization
+    public abstract partial class MedicalBusinessAndMedicalOrganization : LocalBusinessAndOrganization, IMedicalBusinessAndMedicalOrganization, IEquatable<MedicalBusinessAndMedicalOrganization>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -43,5 +43,35 @@
         [DataMember(Name = "medicalSpecialty", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<MedicalSpecialty?> MedicalSpecialty { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalBusinessAndMedicalOrganization other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.HealthPlanNetworkId == other.HealthPlanNetworkId &&
+                this.IsAcceptingNewPatients == other.IsAcceptingNewPatients &&
+                this.MedicalSpecialty == other.MedicalSpecialty &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalBusinessAndMedicalOrganization);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.HealthPlanNetworkId)
+            .And(this.IsAcceptingNewPatients)
+            .And(this.MedicalSpecialty)
+            .And(base.GetHashCode());
     }
 }

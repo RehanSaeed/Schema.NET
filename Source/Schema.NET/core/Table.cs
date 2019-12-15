@@ -15,7 +15,7 @@
     /// A table on a Web page.
     /// </summary>
     [DataContract]
-    public partial class Table : WebPageElement, ITable
+    public partial class Table : WebPageElement, ITable, IEquatable<Table>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

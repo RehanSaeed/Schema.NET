@@ -15,7 +15,7 @@
     /// An auto parts store.
     /// </summary>
     [DataContract]
-    public partial class AutoPartsStore : AutomotiveBusinessAndStore, IAutoPartsStore
+    public partial class AutoPartsStore : AutomotiveBusinessAndStore, IAutoPartsStore, IEquatable<AutoPartsStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

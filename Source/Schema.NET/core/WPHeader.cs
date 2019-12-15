@@ -15,7 +15,7 @@
     /// The header section of the page.
     /// </summary>
     [DataContract]
-    public partial class WPHeader : WebPageElement, IWPHeader
+    public partial class WPHeader : WebPageElement, IWPHeader, IEquatable<WPHeader>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

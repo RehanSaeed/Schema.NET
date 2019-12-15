@@ -15,7 +15,7 @@
     /// A sports location, such as a playing field.
     /// </summary>
     [DataContract]
-    public partial class SportsActivityLocation : LocalBusiness, ISportsActivityLocation
+    public partial class SportsActivityLocation : LocalBusiness, ISportsActivityLocation, IEquatable<SportsActivityLocation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

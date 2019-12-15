@@ -15,7 +15,7 @@
     /// Place of worship, such as a church, synagogue, or mosque.
     /// </summary>
     [DataContract]
-    public partial class PlaceOfWorship : CivicStructure, IPlaceOfWorship
+    public partial class PlaceOfWorship : CivicStructure, IPlaceOfWorship, IEquatable<PlaceOfWorship>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

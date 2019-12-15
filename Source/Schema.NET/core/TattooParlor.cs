@@ -15,7 +15,7 @@
     /// A tattoo parlor.
     /// </summary>
     [DataContract]
-    public partial class TattooParlor : HealthAndBeautyBusiness, ITattooParlor
+    public partial class TattooParlor : HealthAndBeautyBusiness, ITattooParlor, IEquatable<TattooParlor>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A pet store.
     /// </summary>
     [DataContract]
-    public partial class PetStore : Store, IPetStore
+    public partial class PetStore : Store, IPetStore, IEquatable<PetStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

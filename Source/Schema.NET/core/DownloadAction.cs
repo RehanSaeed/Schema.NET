@@ -15,7 +15,7 @@
     /// The act of downloading an object.
     /// </summary>
     [DataContract]
-    public partial class DownloadAction : TransferAction, IDownloadAction
+    public partial class DownloadAction : TransferAction, IDownloadAction, IEquatable<DownloadAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

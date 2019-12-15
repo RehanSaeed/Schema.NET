@@ -15,7 +15,7 @@
     /// A post office.
     /// </summary>
     [DataContract]
-    public partial class PostOffice : GovernmentOffice, IPostOffice
+    public partial class PostOffice : GovernmentOffice, IPostOffice, IEquatable<PostOffice>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

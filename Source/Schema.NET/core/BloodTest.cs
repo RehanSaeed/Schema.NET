@@ -15,7 +15,7 @@
     /// A medical test performed on a sample of a patient's blood.
     /// </summary>
     [DataContract]
-    public partial class BloodTest : MedicalTest, IBloodTest
+    public partial class BloodTest : MedicalTest, IBloodTest, IEquatable<BloodTest>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

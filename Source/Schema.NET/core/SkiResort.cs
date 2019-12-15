@@ -15,7 +15,7 @@
     /// A ski resort.
     /// </summary>
     [DataContract]
-    public partial class SkiResort : SportsActivityLocation, ISkiResort
+    public partial class SkiResort : SportsActivityLocation, ISkiResort, IEquatable<SkiResort>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// An agent bookmarks/flags/labels/tags/marks an object.
     /// </summary>
     [DataContract]
-    public partial class BookmarkAction : OrganizeAction, IBookmarkAction
+    public partial class BookmarkAction : OrganizeAction, IBookmarkAction, IEquatable<BookmarkAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -59,7 +59,7 @@
     /// A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via &lt;a class="localLink" href="http://schema.org/suitableForDiet"&gt;suitableForDiet&lt;/a&gt;. The &lt;a class="localLink" href="http://schema.org/keywords"&gt;keywords&lt;/a&gt; property can also be used to add more detail.
     /// </summary>
     [DataContract]
-    public partial class Recipe : HowTo, IRecipe
+    public partial class Recipe : HowTo, IRecipe, IEquatable<Recipe>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -129,5 +129,47 @@
         [DataMember(Name = "suitableForDiet", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<RestrictedDiet?> SuitableForDiet { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Recipe other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CookingMethod == other.CookingMethod &&
+                this.CookTime == other.CookTime &&
+                this.Nutrition == other.Nutrition &&
+                this.RecipeCategory == other.RecipeCategory &&
+                this.RecipeCuisine == other.RecipeCuisine &&
+                this.RecipeIngredient == other.RecipeIngredient &&
+                this.RecipeInstructions == other.RecipeInstructions &&
+                this.RecipeYield == other.RecipeYield &&
+                this.SuitableForDiet == other.SuitableForDiet &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Recipe);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CookingMethod)
+            .And(this.CookTime)
+            .And(this.Nutrition)
+            .And(this.RecipeCategory)
+            .And(this.RecipeCuisine)
+            .And(this.RecipeIngredient)
+            .And(this.RecipeInstructions)
+            .And(this.RecipeYield)
+            .And(this.SuitableForDiet)
+            .And(base.GetHashCode());
     }
 }

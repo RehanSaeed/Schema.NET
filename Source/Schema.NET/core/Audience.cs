@@ -24,7 +24,7 @@
     /// Intended audience for an item, i.e. the group for whom the item was created.
     /// </summary>
     [DataContract]
-    public partial class Audience : Intangible, IAudience
+    public partial class Audience : Intangible, IAudience, IEquatable<Audience>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "geographicArea", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAdministrativeArea> GeographicArea { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Audience other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AudienceType == other.AudienceType &&
+                this.GeographicArea == other.GeographicArea &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Audience);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AudienceType)
+            .And(this.GeographicArea)
+            .And(base.GetHashCode());
     }
 }

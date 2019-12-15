@@ -23,7 +23,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class ReserveAction : PlanAction, IReserveAction
+    public partial class ReserveAction : PlanAction, IReserveAction, IEquatable<ReserveAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

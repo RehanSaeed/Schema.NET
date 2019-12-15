@@ -15,7 +15,7 @@
     /// The artwork on the cover of a comic.
     /// </summary>
     [DataContract]
-    public partial class ComicCoverArt : ComicStoryAndCoverArt, IComicCoverArt
+    public partial class ComicCoverArt : ComicStoryAndCoverArt, IComicCoverArt, IEquatable<ComicCoverArt>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

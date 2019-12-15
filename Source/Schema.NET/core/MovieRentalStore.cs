@@ -15,7 +15,7 @@
     /// A movie rental store.
     /// </summary>
     [DataContract]
-    public partial class MovieRentalStore : Store, IMovieRentalStore
+    public partial class MovieRentalStore : Store, IMovieRentalStore, IEquatable<MovieRentalStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

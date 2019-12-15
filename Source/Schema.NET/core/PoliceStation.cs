@@ -15,7 +15,7 @@
     /// A police station.
     /// </summary>
     [DataContract]
-    public partial class PoliceStation : CivicStructureAndEmergencyService, IPoliceStation
+    public partial class PoliceStation : CivicStructureAndEmergencyService, IPoliceStation, IEquatable<PoliceStation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

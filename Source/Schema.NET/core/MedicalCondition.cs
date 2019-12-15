@@ -104,7 +104,7 @@
     /// Any condition of the human body that affects the normal functioning of a person, whether physically or mentally. Includes diseases, injuries, disabilities, disorders, syndromes, etc.
     /// </summary>
     [DataContract]
-    public partial class MedicalCondition : MedicalEntity, IMedicalCondition
+    public partial class MedicalCondition : MedicalEntity, IMedicalCondition, IEquatable<MedicalCondition>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -237,5 +237,65 @@
         [DataMember(Name = "typicalTest", Order = 223)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalTest> TypicalTest { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalCondition other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AssociatedAnatomy == other.AssociatedAnatomy &&
+                this.Cause == other.Cause &&
+                this.DifferentialDiagnosis == other.DifferentialDiagnosis &&
+                this.Drug == other.Drug &&
+                this.Epidemiology == other.Epidemiology &&
+                this.ExpectedPrognosis == other.ExpectedPrognosis &&
+                this.NaturalProgression == other.NaturalProgression &&
+                this.Pathophysiology == other.Pathophysiology &&
+                this.PossibleComplication == other.PossibleComplication &&
+                this.PossibleTreatment == other.PossibleTreatment &&
+                this.PrimaryPrevention == other.PrimaryPrevention &&
+                this.RiskFactor == other.RiskFactor &&
+                this.SecondaryPrevention == other.SecondaryPrevention &&
+                this.SignOrSymptom == other.SignOrSymptom &&
+                this.Stage == other.Stage &&
+                this.Status == other.Status &&
+                this.Subtype == other.Subtype &&
+                this.TypicalTest == other.TypicalTest &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalCondition);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AssociatedAnatomy)
+            .And(this.Cause)
+            .And(this.DifferentialDiagnosis)
+            .And(this.Drug)
+            .And(this.Epidemiology)
+            .And(this.ExpectedPrognosis)
+            .And(this.NaturalProgression)
+            .And(this.Pathophysiology)
+            .And(this.PossibleComplication)
+            .And(this.PossibleTreatment)
+            .And(this.PrimaryPrevention)
+            .And(this.RiskFactor)
+            .And(this.SecondaryPrevention)
+            .And(this.SignOrSymptom)
+            .And(this.Stage)
+            .And(this.Status)
+            .And(this.Subtype)
+            .And(this.TypicalTest)
+            .And(base.GetHashCode());
     }
 }

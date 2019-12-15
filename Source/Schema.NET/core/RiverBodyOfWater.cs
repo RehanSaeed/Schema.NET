@@ -15,7 +15,7 @@
     /// A river (for example, the broad majestic Shannon).
     /// </summary>
     [DataContract]
-    public partial class RiverBodyOfWater : BodyOfWater, IRiverBodyOfWater
+    public partial class RiverBodyOfWater : BodyOfWater, IRiverBodyOfWater, IEquatable<RiverBodyOfWater>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

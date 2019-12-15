@@ -29,7 +29,7 @@
     /// A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
     /// </summary>
     [DataContract]
-    public partial class MusicGroup : PerformingGroup, IMusicGroup
+    public partial class MusicGroup : PerformingGroup, IMusicGroup, IEquatable<MusicGroup>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "track", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IItemList, IMusicRecording> Track { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MusicGroup other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Album == other.Album &&
+                this.Genre == other.Genre &&
+                this.Track == other.Track &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MusicGroup);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Album)
+            .And(this.Genre)
+            .And(this.Track)
+            .And(base.GetHashCode());
     }
 }

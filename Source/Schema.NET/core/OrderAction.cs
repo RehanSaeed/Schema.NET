@@ -19,7 +19,7 @@
     /// An agent orders an object/product/service to be delivered/sent.
     /// </summary>
     [DataContract]
-    public partial class OrderAction : TradeAction, IOrderAction
+    public partial class OrderAction : TradeAction, IOrderAction, IEquatable<OrderAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "deliveryMethod", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<DeliveryMethod?> DeliveryMethod { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(OrderAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DeliveryMethod == other.DeliveryMethod &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as OrderAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DeliveryMethod)
+            .And(base.GetHashCode());
     }
 }

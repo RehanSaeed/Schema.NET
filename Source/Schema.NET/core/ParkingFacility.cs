@@ -15,7 +15,7 @@
     /// A parking lot or other parking facility.
     /// </summary>
     [DataContract]
-    public partial class ParkingFacility : CivicStructure, IParkingFacility
+    public partial class ParkingFacility : CivicStructure, IParkingFacility, IEquatable<ParkingFacility>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A pharmacy or drugstore.
     /// </summary>
     [DataContract]
-    public partial class Pharmacy : MedicalBusinessAndMedicalOrganization, IPharmacy
+    public partial class Pharmacy : MedicalBusinessAndMedicalOrganization, IPharmacy, IEquatable<Pharmacy>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

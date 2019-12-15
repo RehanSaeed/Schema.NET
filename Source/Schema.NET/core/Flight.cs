@@ -84,7 +84,7 @@
     /// An airline flight.
     /// </summary>
     [DataContract]
-    public partial class Flight : Trip, IFlight
+    public partial class Flight : Trip, IFlight, IEquatable<Flight>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -189,5 +189,57 @@
         [DataMember(Name = "webCheckinTime", Order = 319)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<DateTimeOffset?> WebCheckinTime { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Flight other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Aircraft == other.Aircraft &&
+                this.ArrivalAirport == other.ArrivalAirport &&
+                this.ArrivalGate == other.ArrivalGate &&
+                this.ArrivalTerminal == other.ArrivalTerminal &&
+                this.BoardingPolicy == other.BoardingPolicy &&
+                this.DepartureAirport == other.DepartureAirport &&
+                this.DepartureGate == other.DepartureGate &&
+                this.DepartureTerminal == other.DepartureTerminal &&
+                this.EstimatedFlightDuration == other.EstimatedFlightDuration &&
+                this.FlightDistance == other.FlightDistance &&
+                this.FlightNumber == other.FlightNumber &&
+                this.MealService == other.MealService &&
+                this.Seller == other.Seller &&
+                this.WebCheckinTime == other.WebCheckinTime &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Flight);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Aircraft)
+            .And(this.ArrivalAirport)
+            .And(this.ArrivalGate)
+            .And(this.ArrivalTerminal)
+            .And(this.BoardingPolicy)
+            .And(this.DepartureAirport)
+            .And(this.DepartureGate)
+            .And(this.DepartureTerminal)
+            .And(this.EstimatedFlightDuration)
+            .And(this.FlightDistance)
+            .And(this.FlightNumber)
+            .And(this.MealService)
+            .And(this.Seller)
+            .And(this.WebCheckinTime)
+            .And(base.GetHashCode());
     }
 }

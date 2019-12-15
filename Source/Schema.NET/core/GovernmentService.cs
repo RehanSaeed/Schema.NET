@@ -19,7 +19,7 @@
     /// A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
     /// </summary>
     [DataContract]
-    public partial class GovernmentService : Service, IGovernmentService
+    public partial class GovernmentService : Service, IGovernmentService, IEquatable<GovernmentService>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "serviceOperator", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IOrganization> ServiceOperator { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(GovernmentService other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ServiceOperator == other.ServiceOperator &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as GovernmentService);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ServiceOperator)
+            .And(base.GetHashCode());
     }
 }

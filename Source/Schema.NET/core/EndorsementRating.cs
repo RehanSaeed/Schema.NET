@@ -23,7 +23,7 @@
     /// endorsement rating is particularly useful in the absence of numeric scales as it helps consumers understand that the rating is broadly positive.
     /// </summary>
     [DataContract]
-    public partial class EndorsementRating : Rating, IEndorsementRating
+    public partial class EndorsementRating : Rating, IEndorsementRating, IEquatable<EndorsementRating>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

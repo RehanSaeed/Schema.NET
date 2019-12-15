@@ -15,7 +15,7 @@
     /// A page devoted to a single item, such as a particular product or hotel.
     /// </summary>
     [DataContract]
-    public partial class ItemPage : WebPage, IItemPage
+    public partial class ItemPage : WebPage, IItemPage, IEquatable<ItemPage>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

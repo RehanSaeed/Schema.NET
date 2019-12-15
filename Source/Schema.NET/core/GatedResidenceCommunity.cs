@@ -15,7 +15,7 @@
     /// Residence type: Gated community.
     /// </summary>
     [DataContract]
-    public partial class GatedResidenceCommunity : Residence, IGatedResidenceCommunity
+    public partial class GatedResidenceCommunity : Residence, IGatedResidenceCommunity, IEquatable<GatedResidenceCommunity>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

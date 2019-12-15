@@ -15,7 +15,7 @@
     /// An educational organization.
     /// </summary>
     [DataContract]
-    public partial class EducationalOrganization : Organization, IEducationalOrganization
+    public partial class EducationalOrganization : Organization, IEducationalOrganization, IEquatable<EducationalOrganization>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -29,5 +29,31 @@
         [DataMember(Name = "alumni", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IPerson> Alumni { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(EducationalOrganization other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Alumni == other.Alumni &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as EducationalOrganization);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Alumni)
+            .And(base.GetHashCode());
     }
 }

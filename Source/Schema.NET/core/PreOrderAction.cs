@@ -15,7 +15,7 @@
     /// An agent orders a (not yet released) object/product/service to be delivered/sent.
     /// </summary>
     [DataContract]
-    public partial class PreOrderAction : TradeAction, IPreOrderAction
+    public partial class PreOrderAction : TradeAction, IPreOrderAction, IEquatable<PreOrderAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

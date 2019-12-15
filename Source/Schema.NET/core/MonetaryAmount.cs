@@ -51,7 +51,7 @@
     /// A monetary value or range. This type can be used to describe an amount of money such as $50 USD, or a range as in describing a bank account being suitable for a balance between £1,000 and £1,000,000 GBP, or the value of a salary, etc. It is recommended to use &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; Types to describe the price of an Offer, Invoice, etc.
     /// </summary>
     [DataContract]
-    public partial class MonetaryAmount : StructuredValue, IMonetaryAmount
+    public partial class MonetaryAmount : StructuredValue, IMonetaryAmount, IEquatable<MonetaryAmount>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -107,5 +107,41 @@
         [DataMember(Name = "value", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<bool?, double?, IStructuredValue, string> Value { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MonetaryAmount other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Currency == other.Currency &&
+                this.MaxValue == other.MaxValue &&
+                this.MinValue == other.MinValue &&
+                this.ValidFrom == other.ValidFrom &&
+                this.ValidThrough == other.ValidThrough &&
+                this.Value == other.Value &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MonetaryAmount);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Currency)
+            .And(this.MaxValue)
+            .And(this.MinValue)
+            .And(this.ValidFrom)
+            .And(this.ValidThrough)
+            .And(this.Value)
+            .And(base.GetHashCode());
     }
 }

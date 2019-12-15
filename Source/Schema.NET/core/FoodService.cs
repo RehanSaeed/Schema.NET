@@ -15,7 +15,7 @@
     /// A food service, like breakfast, lunch, or dinner.
     /// </summary>
     [DataContract]
-    public partial class FoodService : Service, IFoodService
+    public partial class FoodService : Service, IFoodService, IEquatable<FoodService>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

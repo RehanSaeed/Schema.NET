@@ -24,7 +24,7 @@
     /// A subclass of OrganizationRole used to describe employee relationships.
     /// </summary>
     [DataContract]
-    public partial class EmployeeRole : OrganizationRole, IEmployeeRole
+    public partial class EmployeeRole : OrganizationRole, IEmployeeRole, IEquatable<EmployeeRole>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "salaryCurrency", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> SalaryCurrency { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(EmployeeRole other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.BaseSalary == other.BaseSalary &&
+                this.SalaryCurrency == other.SalaryCurrency &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as EmployeeRole);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.BaseSalary)
+            .And(this.SalaryCurrency)
+            .And(base.GetHashCode());
     }
 }

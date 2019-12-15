@@ -15,7 +15,7 @@
     /// The artwork on the outer surface of a CreativeWork.
     /// </summary>
     [DataContract]
-    public partial class CoverArt : VisualArtwork, ICoverArt
+    public partial class CoverArt : VisualArtwork, ICoverArt, IEquatable<CoverArt>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

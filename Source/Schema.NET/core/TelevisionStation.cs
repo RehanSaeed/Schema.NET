@@ -15,7 +15,7 @@
     /// A television station.
     /// </summary>
     [DataContract]
-    public partial class TelevisionStation : LocalBusiness, ITelevisionStation
+    public partial class TelevisionStation : LocalBusiness, ITelevisionStation, IEquatable<TelevisionStation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// The act of consuming dynamic/moving visual content.
     /// </summary>
     [DataContract]
-    public partial class WatchAction : ConsumeAction, IWatchAction
+    public partial class WatchAction : ConsumeAction, IWatchAction, IEquatable<WatchAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

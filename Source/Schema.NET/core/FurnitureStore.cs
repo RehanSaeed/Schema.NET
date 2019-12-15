@@ -15,7 +15,7 @@
     /// A furniture store.
     /// </summary>
     [DataContract]
-    public partial class FurnitureStore : Store, IFurnitureStore
+    public partial class FurnitureStore : Store, IFurnitureStore, IEquatable<FurnitureStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

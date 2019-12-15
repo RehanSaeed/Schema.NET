@@ -15,7 +15,7 @@
     /// A gym.
     /// </summary>
     [DataContract]
-    public partial class ExerciseGym : SportsActivityLocation, IExerciseGym
+    public partial class ExerciseGym : SportsActivityLocation, IExerciseGym, IEquatable<ExerciseGym>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

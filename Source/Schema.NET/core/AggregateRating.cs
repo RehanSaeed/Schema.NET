@@ -29,7 +29,7 @@
     /// The average rating based on multiple ratings or reviews.
     /// </summary>
     [DataContract]
-    public partial class AggregateRating : Rating, IAggregateRating
+    public partial class AggregateRating : Rating, IAggregateRating, IEquatable<AggregateRating>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "reviewCount", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> ReviewCount { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(AggregateRating other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ItemReviewed == other.ItemReviewed &&
+                this.RatingCount == other.RatingCount &&
+                this.ReviewCount == other.ReviewCount &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as AggregateRating);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ItemReviewed)
+            .And(this.RatingCount)
+            .And(this.ReviewCount)
+            .And(base.GetHashCode());
     }
 }

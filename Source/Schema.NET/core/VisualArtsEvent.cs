@@ -15,7 +15,7 @@
     /// Event type: Visual arts event.
     /// </summary>
     [DataContract]
-    public partial class VisualArtsEvent : Event, IVisualArtsEvent
+    public partial class VisualArtsEvent : Event, IVisualArtsEvent, IEquatable<VisualArtsEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

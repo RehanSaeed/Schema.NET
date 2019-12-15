@@ -15,7 +15,7 @@
     /// A vet's office.
     /// </summary>
     [DataContract]
-    public partial class VeterinaryCare : MedicalOrganization, IVeterinaryCare
+    public partial class VeterinaryCare : MedicalOrganization, IVeterinaryCare, IEquatable<VeterinaryCare>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

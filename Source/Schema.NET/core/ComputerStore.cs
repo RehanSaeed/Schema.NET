@@ -15,7 +15,7 @@
     /// A computer store.
     /// </summary>
     [DataContract]
-    public partial class ComputerStore : Store, IComputerStore
+    public partial class ComputerStore : Store, IComputerStore, IEquatable<ComputerStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

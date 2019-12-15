@@ -15,7 +15,7 @@
     /// The act of applying an object to its intended purpose.
     /// </summary>
     [DataContract]
-    public partial class UseAction : ConsumeAction, IUseAction
+    public partial class UseAction : ConsumeAction, IUseAction, IEquatable<UseAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

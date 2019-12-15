@@ -49,7 +49,7 @@
     /// A medical study is an umbrella type covering all kinds of research studies relating to human medicine or health, including observational studies and interventional trials and registries, randomized, controlled or not. When the specific type of study is known, use one of the extensions of this type, such as MedicalTrial or MedicalObservationalStudy. Also, note that this type should be used to mark up data that describes the study itself; to tag an article that publishes the results of a study, use MedicalScholarlyArticle. Note: use the code property of MedicalEntity to store study IDs, e.g. clinicaltrials.gov ID.
     /// </summary>
     [DataContract]
-    public partial class MedicalStudy : MedicalEntity, IMedicalStudy
+    public partial class MedicalStudy : MedicalEntity, IMedicalStudy, IEquatable<MedicalStudy>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -105,5 +105,43 @@
         [DataMember(Name = "studySubject", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalEntity> StudySubject { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalStudy other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.HealthCondition == other.HealthCondition &&
+                this.Outcome == other.Outcome &&
+                this.Population == other.Population &&
+                this.Sponsor == other.Sponsor &&
+                this.Status == other.Status &&
+                this.StudyLocation == other.StudyLocation &&
+                this.StudySubject == other.StudySubject &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalStudy);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.HealthCondition)
+            .And(this.Outcome)
+            .And(this.Population)
+            .And(this.Sponsor)
+            .And(this.Status)
+            .And(this.StudyLocation)
+            .And(this.StudySubject)
+            .And(base.GetHashCode());
     }
 }

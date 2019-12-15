@@ -15,7 +15,7 @@
     /// A theater or other performing art center.
     /// </summary>
     [DataContract]
-    public partial class PerformingArtsTheater : CivicStructure, IPerformingArtsTheater
+    public partial class PerformingArtsTheater : CivicStructure, IPerformingArtsTheater, IEquatable<PerformingArtsTheater>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

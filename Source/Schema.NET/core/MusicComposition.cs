@@ -64,7 +64,7 @@
     /// A musical composition.
     /// </summary>
     [DataContract]
-    public partial class MusicComposition : CreativeWork, IMusicComposition
+    public partial class MusicComposition : CreativeWork, IMusicComposition, IEquatable<MusicComposition>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -141,5 +141,49 @@
         [DataMember(Name = "recordedAs", Order = 215)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMusicRecording> RecordedAs { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MusicComposition other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Composer == other.Composer &&
+                this.FirstPerformance == other.FirstPerformance &&
+                this.IncludedComposition == other.IncludedComposition &&
+                this.IswcCode == other.IswcCode &&
+                this.Lyricist == other.Lyricist &&
+                this.Lyrics == other.Lyrics &&
+                this.MusicalKey == other.MusicalKey &&
+                this.MusicArrangement == other.MusicArrangement &&
+                this.MusicCompositionForm == other.MusicCompositionForm &&
+                this.RecordedAs == other.RecordedAs &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MusicComposition);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Composer)
+            .And(this.FirstPerformance)
+            .And(this.IncludedComposition)
+            .And(this.IswcCode)
+            .And(this.Lyricist)
+            .And(this.Lyrics)
+            .And(this.MusicalKey)
+            .And(this.MusicArrangement)
+            .And(this.MusicCompositionForm)
+            .And(this.RecordedAs)
+            .And(base.GetHashCode());
     }
 }

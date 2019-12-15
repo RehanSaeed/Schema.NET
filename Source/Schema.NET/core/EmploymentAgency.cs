@@ -15,7 +15,7 @@
     /// An employment agency.
     /// </summary>
     [DataContract]
-    public partial class EmploymentAgency : LocalBusiness, IEmploymentAgency
+    public partial class EmploymentAgency : LocalBusiness, IEmploymentAgency, IEquatable<EmploymentAgency>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A store that sells materials useful or necessary for various hobbies.
     /// </summary>
     [DataContract]
-    public partial class HobbyShop : Store, IHobbyShop
+    public partial class HobbyShop : Store, IHobbyShop, IEquatable<HobbyShop>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// The act of consuming written content.
     /// </summary>
     [DataContract]
-    public partial class ReadAction : ConsumeAction, IReadAction
+    public partial class ReadAction : ConsumeAction, IReadAction, IEquatable<ReadAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

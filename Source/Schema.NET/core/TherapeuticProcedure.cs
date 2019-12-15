@@ -29,7 +29,7 @@
     /// A medical procedure intended primarily for therapeutic purposes, aimed at improving a health condition.
     /// </summary>
     [DataContract]
-    public partial class TherapeuticProcedure : MedicalProcedure, ITherapeuticProcedure
+    public partial class TherapeuticProcedure : MedicalProcedure, ITherapeuticProcedure, IEquatable<TherapeuticProcedure>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -64,5 +64,37 @@
         [DataMember(Name = "indication", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IMedicalIndication> Indication { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(TherapeuticProcedure other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AdverseOutcome == other.AdverseOutcome &&
+                this.DoseSchedule == other.DoseSchedule &&
+                this.Drug == other.Drug &&
+                this.Indication == other.Indication &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as TherapeuticProcedure);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AdverseOutcome)
+            .And(this.DoseSchedule)
+            .And(this.Drug)
+            .And(this.Indication)
+            .And(base.GetHashCode());
     }
 }

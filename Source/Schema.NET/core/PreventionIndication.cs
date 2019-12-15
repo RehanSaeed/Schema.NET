@@ -15,7 +15,7 @@
     /// An indication for preventing an underlying condition, symptom, etc.
     /// </summary>
     [DataContract]
-    public partial class PreventionIndication : MedicalIndication, IPreventionIndication
+    public partial class PreventionIndication : MedicalIndication, IPreventionIndication, IEquatable<PreventionIndication>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

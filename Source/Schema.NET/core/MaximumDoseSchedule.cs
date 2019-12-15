@@ -15,7 +15,7 @@
     /// The maximum dosing schedule considered safe for a drug or supplement as recommended by an authority or by the drug/supplement's manufacturer. Capture the recommending authority in the recognizingAuthority property of MedicalEntity.
     /// </summary>
     [DataContract]
-    public partial class MaximumDoseSchedule : DoseSchedule, IMaximumDoseSchedule
+    public partial class MaximumDoseSchedule : DoseSchedule, IMaximumDoseSchedule, IEquatable<MaximumDoseSchedule>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

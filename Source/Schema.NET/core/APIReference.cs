@@ -34,7 +34,7 @@
     /// Reference documentation for application programming interfaces (APIs).
     /// </summary>
     [DataContract]
-    public partial class APIReference : TechArticle, IAPIReference
+    public partial class APIReference : TechArticle, IAPIReference, IEquatable<APIReference>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "targetPlatform", Order = 409)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> TargetPlatform { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(APIReference other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AssemblyVersion == other.AssemblyVersion &&
+                this.ExecutableLibraryName == other.ExecutableLibraryName &&
+                this.ProgrammingModel == other.ProgrammingModel &&
+                this.TargetPlatform == other.TargetPlatform &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as APIReference);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AssemblyVersion)
+            .And(this.ExecutableLibraryName)
+            .And(this.ProgrammingModel)
+            .And(this.TargetPlatform)
+            .And(base.GetHashCode());
     }
 }

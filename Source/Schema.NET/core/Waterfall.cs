@@ -15,7 +15,7 @@
     /// A waterfall, like Niagara.
     /// </summary>
     [DataContract]
-    public partial class Waterfall : BodyOfWater, IWaterfall
+    public partial class Waterfall : BodyOfWater, IWaterfall, IEquatable<Waterfall>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

@@ -15,7 +15,7 @@
     /// A file composed primarily of text.
     /// </summary>
     [DataContract]
-    public partial class TextDigitalDocument : DigitalDocument, ITextDigitalDocument
+    public partial class TextDigitalDocument : DigitalDocument, ITextDigitalDocument, IEquatable<TextDigitalDocument>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

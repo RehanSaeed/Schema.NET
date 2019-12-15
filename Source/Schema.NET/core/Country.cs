@@ -15,7 +15,7 @@
     /// A country.
     /// </summary>
     [DataContract]
-    public partial class Country : AdministrativeArea, ICountry
+    public partial class Country : AdministrativeArea, ICountry, IEquatable<Country>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

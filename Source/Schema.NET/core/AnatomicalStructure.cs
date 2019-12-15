@@ -59,7 +59,7 @@
     /// Any part of the human body, typically a component of an anatomical system. Organs, tissues, and cells are all anatomical structures.
     /// </summary>
     [DataContract]
-    public partial class AnatomicalStructure : MedicalEntity, IAnatomicalStructure
+    public partial class AnatomicalStructure : MedicalEntity, IAnatomicalStructure, IEquatable<AnatomicalStructure>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -129,5 +129,47 @@
         [DataMember(Name = "subStructure", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAnatomicalStructure> SubStructure { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(AnatomicalStructure other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AssociatedPathophysiology == other.AssociatedPathophysiology &&
+                this.BodyLocation == other.BodyLocation &&
+                this.ConnectedTo == other.ConnectedTo &&
+                this.Diagram == other.Diagram &&
+                this.Function == other.Function &&
+                this.PartOfSystem == other.PartOfSystem &&
+                this.RelatedCondition == other.RelatedCondition &&
+                this.RelatedTherapy == other.RelatedTherapy &&
+                this.SubStructure == other.SubStructure &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as AnatomicalStructure);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AssociatedPathophysiology)
+            .And(this.BodyLocation)
+            .And(this.ConnectedTo)
+            .And(this.Diagram)
+            .And(this.Function)
+            .And(this.PartOfSystem)
+            .And(this.RelatedCondition)
+            .And(this.RelatedTherapy)
+            .And(this.SubStructure)
+            .And(base.GetHashCode());
     }
 }
