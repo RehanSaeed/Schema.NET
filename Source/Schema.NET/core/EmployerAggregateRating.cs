@@ -22,5 +22,29 @@
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "EmployerAggregateRating";
+
+        /// <inheritdoc/>
+        public bool Equals(EmployerAggregateRating other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as EmployerAggregateRating);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(base.GetHashCode());
     }
 }

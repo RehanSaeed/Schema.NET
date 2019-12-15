@@ -22,5 +22,29 @@
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "FAQPage";
+
+        /// <inheritdoc/>
+        public bool Equals(FAQPage other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as FAQPage);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(base.GetHashCode());
     }
 }
