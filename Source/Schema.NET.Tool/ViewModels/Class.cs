@@ -191,11 +191,8 @@ namespace Schema.NET.Tool.ViewModels
                 stringBuilder.AppendIndent(16, $"this.{property.Name} == other.{property.Name}");
             }
 
-            if (!string.Equals(this.Name, "Thing", StringComparison.OrdinalIgnoreCase))
-            {
-                stringBuilder.AppendLine(" &&");
-                stringBuilder.AppendIndent(16, "base.Equals(other)");
-            }
+            stringBuilder.AppendLine(" &&");
+            stringBuilder.AppendIndent(16, "base.Equals(other)");
 
             stringBuilder.AppendLine(";");
 
@@ -214,11 +211,8 @@ namespace Schema.NET.Tool.ViewModels
                 stringBuilder.AppendIndent(12, $".And(this.{property.Name})");
             }
 
-            if (!string.Equals(this.Name, "Thing", StringComparison.OrdinalIgnoreCase))
-            {
-                stringBuilder.AppendLine();
-                stringBuilder.AppendIndent(12, $".And(base.GetHashCode())");
-            }
+            stringBuilder.AppendLine();
+            stringBuilder.AppendIndent(12, $".And(base.GetHashCode())");
 
             stringBuilder.AppendLine(";");
 

@@ -191,7 +191,8 @@
                 this.PotentialAction == other.PotentialAction &&
                 this.SameAs == other.SameAs &&
                 this.SubjectOf == other.SubjectOf &&
-                this.Url == other.Url;
+                this.Url == other.Url &&
+                base.Equals(other);
         }
 
         /// <inheritdoc/>
@@ -210,6 +211,7 @@
             .And(this.PotentialAction)
             .And(this.SameAs)
             .And(this.SubjectOf)
-            .And(this.Url);
+            .And(this.Url)
+            .And(base.GetHashCode());
     }
 }
