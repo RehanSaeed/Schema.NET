@@ -16,19 +16,16 @@ namespace Schema.NET
     /// <seealso cref="JsonConverter" />
     public class ValuesJsonConverter : JsonConverter
     {
-        private const string NamespacePrefix = "Schema.NET.";
-
+        private static readonly TypeInfo ThingInterfaceTypeInfo = typeof(IThing).GetTypeInfo();
         private static readonly Dictionary<string, Type> BuiltInThingTypeLookup = new Dictionary<string, Type>(StringComparer.Ordinal);
 
         static ValuesJsonConverter()
         {
-            var iThingTypeInfo = typeof(IThing).GetTypeInfo();
-            var thisAssembly = iThingTypeInfo.Assembly;
-
+            var thisAssembly = ThingInterfaceTypeInfo.Assembly;
             foreach (var type in thisAssembly.ExportedTypes)
             {
                 var typeInfo = type.GetTypeInfo();
-                if (typeInfo.IsClass && iThingTypeInfo.IsAssignableFrom(typeInfo))
+                if (typeInfo.IsClass && ThingInterfaceTypeInfo.IsAssignableFrom(typeInfo))
                 {
                     BuiltInThingTypeLookup.Add(type.Name, type);
                 }
@@ -365,8 +362,28 @@ namespace Schema.NET
             }
             else
             {
-                type = Type.GetType($"{NamespacePrefix}{typeName}", false);
-                return !(type is null);
+                try
+                {
+                    var localType = Type.GetType(typeName, false);
+                    if (ThingInterfaceTypeInfo.IsAssignableFrom(localType.GetTypeInfo()))
+                    {
+                        type = localType;
+                        return !(type is null);
+                    }
+                    else
+                    {
+                        type = null;
+                        return false;
+                    }
+                }
+#pragma warning disable CA1031 // Do not catch general exception types
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    type = null;
+                    return false;
+                }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
         }
     }

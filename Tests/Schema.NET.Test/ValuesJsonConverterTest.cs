@@ -458,19 +458,20 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void ReadJson_ImplicitExternalTypes_DenyCustomNamespace()
+        public void ReadJson_ImplicitExternalTypes_AllowCustomNamespace()
         {
             var json = "{\"Property\":[" +
                 "{" +
-                    "\"@type\":\"ExternalSchemaModelCustomNamespace, Schema.NET.Test\"," +
+                    "\"@type\":\"SomeCustomNamespace.ExternalSchemaModelCustomNamespace, Schema.NET.Test\"," +
                     "\"name\":\"Property from Thing\"," +
                     "\"myCustomProperty\":\"My Test String\"" +
                 "}" +
             "]}";
             var result = this.DeserializeObject<Values<string, IThing>>(json);
             var actual = Assert.Single(result.Value2);
-            Assert.IsNotType<SomeCustomNamespace.ExternalSchemaModelCustomNamespace>(actual);
+            Assert.IsType<SomeCustomNamespace.ExternalSchemaModelCustomNamespace>(actual);
             Assert.Equal(new[] { "Property from Thing" }, actual.Name);
+            Assert.Equal(new[] { "My Test String" }, ((SomeCustomNamespace.ExternalSchemaModelCustomNamespace)actual).MyCustomProperty);
         }
 
         [Fact]
@@ -478,7 +479,7 @@ namespace Schema.NET.Test
         {
             var json = "{\"Property\":[" +
                 "{" +
-                    "\"@type\":\"ExternalSchemaModelSharedNamespace, Schema.NET.Test\"," +
+                    "\"@type\":\"Schema.NET.ExternalSchemaModelSharedNamespace, Schema.NET.Test\"," +
                     "\"name\":\"Property from Thing\"," +
                     "\"myCustomProperty\":\"My Test String\"" +
                 "}" +
