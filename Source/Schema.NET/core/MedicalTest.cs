@@ -39,7 +39,7 @@
     /// Any medical test, typically performed for diagnostic purposes.
     /// </summary>
     [DataContract]
-    public partial class MedicalTest : MedicalEntity, IMedicalTest
+    public partial class MedicalTest : MedicalEntity, IMedicalTest, IEquatable<MedicalTest>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "usesDevice", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalDevice> UsesDevice { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalTest other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AffectedBy == other.AffectedBy &&
+                this.NormalRange == other.NormalRange &&
+                this.SignDetected == other.SignDetected &&
+                this.UsedToDiagnose == other.UsedToDiagnose &&
+                this.UsesDevice == other.UsesDevice &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalTest);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AffectedBy)
+            .And(this.NormalRange)
+            .And(this.SignDetected)
+            .And(this.UsedToDiagnose)
+            .And(this.UsesDevice)
+            .And(base.GetHashCode());
     }
 }

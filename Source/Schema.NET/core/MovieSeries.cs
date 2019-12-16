@@ -39,7 +39,7 @@
     /// A series of movies. Included movies can be indicated with the hasPart property.
     /// </summary>
     [DataContract]
-    public partial class MovieSeries : CreativeWorkSeries, IMovieSeries
+    public partial class MovieSeries : CreativeWorkSeries, IMovieSeries, IEquatable<MovieSeries>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "trailer", Order = 410)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IVideoObject> Trailer { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MovieSeries other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Actor == other.Actor &&
+                this.Director == other.Director &&
+                this.MusicBy == other.MusicBy &&
+                this.ProductionCompany == other.ProductionCompany &&
+                this.Trailer == other.Trailer &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MovieSeries);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Actor)
+            .And(this.Director)
+            .And(this.MusicBy)
+            .And(this.ProductionCompany)
+            .And(this.Trailer)
+            .And(base.GetHashCode());
     }
 }

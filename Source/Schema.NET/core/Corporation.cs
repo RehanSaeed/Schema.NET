@@ -19,7 +19,7 @@
     /// Organization: A business corporation.
     /// </summary>
     [DataContract]
-    public partial class Corporation : Organization, ICorporation
+    public partial class Corporation : Organization, ICorporation, IEquatable<Corporation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "tickerSymbol", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> TickerSymbol { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Corporation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.TickerSymbol == other.TickerSymbol &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Corporation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.TickerSymbol)
+            .And(base.GetHashCode());
     }
 }

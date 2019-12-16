@@ -40,7 +40,7 @@
     /// A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
     /// </summary>
     [DataContract]
-    public partial class TypeAndQuantityNode : StructuredValue, ITypeAndQuantityNode
+    public partial class TypeAndQuantityNode : StructuredValue, ITypeAndQuantityNode, IEquatable<TypeAndQuantityNode>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -83,5 +83,39 @@
         [DataMember(Name = "unitText", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> UnitText { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(TypeAndQuantityNode other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AmountOfThisGood == other.AmountOfThisGood &&
+                this.BusinessFunction == other.BusinessFunction &&
+                this.TypeOfGood == other.TypeOfGood &&
+                this.UnitCode == other.UnitCode &&
+                this.UnitText == other.UnitText &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as TypeAndQuantityNode);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AmountOfThisGood)
+            .And(this.BusinessFunction)
+            .And(this.TypeOfGood)
+            .And(this.UnitCode)
+            .And(this.UnitText)
+            .And(base.GetHashCode());
     }
 }

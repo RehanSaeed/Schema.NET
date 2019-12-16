@@ -34,7 +34,7 @@
     /// A single item within a larger data feed.
     /// </summary>
     [DataContract]
-    public partial class DataFeedItem : Intangible, IDataFeedItem
+    public partial class DataFeedItem : Intangible, IDataFeedItem, IEquatable<DataFeedItem>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "item", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IThing> Item { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(DataFeedItem other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DateCreated == other.DateCreated &&
+                this.DateDeleted == other.DateDeleted &&
+                this.DateModified == other.DateModified &&
+                this.Item == other.Item &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as DataFeedItem);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DateCreated)
+            .And(this.DateDeleted)
+            .And(this.DateModified)
+            .And(this.Item)
+            .And(base.GetHashCode());
     }
 }

@@ -1,4 +1,4 @@
-namespace Schema.NET
+﻿namespace Schema.NET
 {
     using System;
     using System.Runtime.Serialization;
@@ -74,7 +74,7 @@ namespace Schema.NET
     /// The most generic type of item.
     /// </summary>
     [DataContract]
-    public partial class Thing : IThing
+    public partial class Thing : IThing, IEquatable<Thing>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -165,5 +165,53 @@ namespace Schema.NET
         [DataMember(Name = "url", Order = 17)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<Uri> Url { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Thing other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Name == other.Name &&
+                this.Description == other.Description &&
+                this.AdditionalType == other.AdditionalType &&
+                this.AlternateName == other.AlternateName &&
+                this.DisambiguatingDescription == other.DisambiguatingDescription &&
+                this.Identifier == other.Identifier &&
+                this.Image == other.Image &&
+                this.MainEntityOfPage == other.MainEntityOfPage &&
+                this.PotentialAction == other.PotentialAction &&
+                this.SameAs == other.SameAs &&
+                this.SubjectOf == other.SubjectOf &&
+                this.Url == other.Url &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Thing);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Name)
+            .And(this.Description)
+            .And(this.AdditionalType)
+            .And(this.AlternateName)
+            .And(this.DisambiguatingDescription)
+            .And(this.Identifier)
+            .And(this.Image)
+            .And(this.MainEntityOfPage)
+            .And(this.PotentialAction)
+            .And(this.SameAs)
+            .And(this.SubjectOf)
+            .And(this.Url)
+            .And(base.GetHashCode());
     }
 }

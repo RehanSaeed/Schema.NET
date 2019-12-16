@@ -19,7 +19,7 @@
     /// The act of asking someone to attend an event. Reciprocal of RsvpAction.
     /// </summary>
     [DataContract]
-    public partial class InviteAction : CommunicateAction, IInviteAction
+    public partial class InviteAction : CommunicateAction, IInviteAction, IEquatable<InviteAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "event", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IEvent> Event { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(InviteAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Event == other.Event &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as InviteAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Event)
+            .And(base.GetHashCode());
     }
 }

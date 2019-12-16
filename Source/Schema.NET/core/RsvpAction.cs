@@ -29,7 +29,7 @@
     /// The act of notifying an event organizer as to whether you expect to attend the event.
     /// </summary>
     [DataContract]
-    public partial class RsvpAction : InformAction, IRsvpAction
+    public partial class RsvpAction : InformAction, IRsvpAction, IEquatable<RsvpAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "rsvpResponse", Order = 508)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<RsvpResponseType?> RsvpResponse { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(RsvpAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AdditionalNumberOfGuests == other.AdditionalNumberOfGuests &&
+                this.Comment == other.Comment &&
+                this.RsvpResponse == other.RsvpResponse &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as RsvpAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AdditionalNumberOfGuests)
+            .And(this.Comment)
+            .And(this.RsvpResponse)
+            .And(base.GetHashCode());
     }
 }

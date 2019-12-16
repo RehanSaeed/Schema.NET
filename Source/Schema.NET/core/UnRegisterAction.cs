@@ -25,12 +25,36 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class UnRegisterAction : InteractAction, IUnRegisterAction
+    public partial class UnRegisterAction : InteractAction, IUnRegisterAction, IEquatable<UnRegisterAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "UnRegisterAction";
+
+        /// <inheritdoc/>
+        public bool Equals(UnRegisterAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as UnRegisterAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(base.GetHashCode());
     }
 }

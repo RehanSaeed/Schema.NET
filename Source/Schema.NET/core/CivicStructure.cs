@@ -25,7 +25,7 @@
     /// A public structure, such as a town hall or concert hall.
     /// </summary>
     [DataContract]
-    public partial class CivicStructure : Place, ICivicStructure
+    public partial class CivicStructure : Place, ICivicStructure, IEquatable<CivicStructure>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,31 @@
         [DataMember(Name = "openingHours", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> OpeningHours { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CivicStructure other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.OpeningHours == other.OpeningHours &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CivicStructure);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.OpeningHours)
+            .And(base.GetHashCode());
     }
 }

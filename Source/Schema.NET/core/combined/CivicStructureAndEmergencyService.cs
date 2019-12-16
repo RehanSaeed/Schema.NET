@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, EmergencyService for more information.
     /// </summary>
-    public partial interface ICivicStructureAndEmergencyService : IEmergencyService, ICivicStructure
+    public partial interface ICivicStructureAndEmergencyService : ICivicStructure, IEmergencyService
     {
     }
 
@@ -15,7 +15,7 @@
     /// See CivicStructure, EmergencyService for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class CivicStructureAndEmergencyService : LocalBusinessAndPlace, ICivicStructureAndEmergencyService
+    public abstract partial class CivicStructureAndEmergencyService : LocalBusinessAndPlace, ICivicStructureAndEmergencyService, IEquatable<CivicStructureAndEmergencyService>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -35,5 +35,31 @@
         [DataMember(Name = "openingHours", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> OpeningHours { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CivicStructureAndEmergencyService other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.OpeningHours == other.OpeningHours &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CivicStructureAndEmergencyService);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.OpeningHours)
+            .And(base.GetHashCode());
     }
 }

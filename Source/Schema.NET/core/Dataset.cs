@@ -48,7 +48,7 @@
     /// A body of structured information describing some topic(s) of interest.
     /// </summary>
     [DataContract]
-    public partial class Dataset : CreativeWork, IDataset
+    public partial class Dataset : CreativeWork, IDataset, IEquatable<Dataset>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -101,5 +101,41 @@
         [DataMember(Name = "variablesMeasured", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPropertyValue, string> VariablesMeasured { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Dataset other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Distribution == other.Distribution &&
+                this.IncludedInDataCatalog == other.IncludedInDataCatalog &&
+                this.Issn == other.Issn &&
+                this.MeasurementTechnique == other.MeasurementTechnique &&
+                this.VariableMeasured == other.VariableMeasured &&
+                this.VariablesMeasured == other.VariablesMeasured &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Dataset);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Distribution)
+            .And(this.IncludedInDataCatalog)
+            .And(this.Issn)
+            .And(this.MeasurementTechnique)
+            .And(this.VariableMeasured)
+            .And(this.VariablesMeasured)
+            .And(base.GetHashCode());
     }
 }

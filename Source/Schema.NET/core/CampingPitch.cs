@@ -21,12 +21,36 @@
     /// See also the dedicated &lt;a href="/docs/hotels.html"&gt;document on the use of schema.org for marking up hotels and other forms of accommodations&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class CampingPitch : Accommodation, ICampingPitch
+    public partial class CampingPitch : Accommodation, ICampingPitch, IEquatable<CampingPitch>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "CampingPitch";
+
+        /// <inheritdoc/>
+        public bool Equals(CampingPitch other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CampingPitch);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(base.GetHashCode());
     }
 }

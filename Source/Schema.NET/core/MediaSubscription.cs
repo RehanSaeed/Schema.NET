@@ -24,7 +24,7 @@
     /// A subscription which allows a user to access media including audio, video, books, etc.
     /// </summary>
     [DataContract]
-    public partial class MediaSubscription : Intangible, IMediaSubscription
+    public partial class MediaSubscription : Intangible, IMediaSubscription, IEquatable<MediaSubscription>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "expectsAcceptanceOf", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IOffer> ExpectsAcceptanceOf { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MediaSubscription other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Authenticator == other.Authenticator &&
+                this.ExpectsAcceptanceOf == other.ExpectsAcceptanceOf &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MediaSubscription);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Authenticator)
+            .And(this.ExpectsAcceptanceOf)
+            .And(base.GetHashCode());
     }
 }

@@ -32,7 +32,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class SendAction : TransferAction, ISendAction
+    public partial class SendAction : TransferAction, ISendAction, IEquatable<SendAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -53,5 +53,33 @@
         [DataMember(Name = "recipient", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAudience, IContactPoint, IOrganization, IPerson> Recipient { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(SendAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DeliveryMethod == other.DeliveryMethod &&
+                this.Recipient == other.Recipient &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as SendAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DeliveryMethod)
+            .And(this.Recipient)
+            .And(base.GetHashCode());
     }
 }

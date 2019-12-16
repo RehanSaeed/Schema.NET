@@ -59,7 +59,7 @@
     /// A single message from a sender to one or more organizations or people.
     /// </summary>
     [DataContract]
-    public partial class Message : CreativeWork, IMessage
+    public partial class Message : CreativeWork, IMessage, IEquatable<Message>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -129,5 +129,47 @@
         [DataMember(Name = "toRecipient", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAudience, IContactPoint, IOrganization, IPerson> ToRecipient { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Message other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.BccRecipient == other.BccRecipient &&
+                this.CcRecipient == other.CcRecipient &&
+                this.DateRead == other.DateRead &&
+                this.DateReceived == other.DateReceived &&
+                this.DateSent == other.DateSent &&
+                this.MessageAttachment == other.MessageAttachment &&
+                this.Recipient == other.Recipient &&
+                this.Sender == other.Sender &&
+                this.ToRecipient == other.ToRecipient &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Message);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.BccRecipient)
+            .And(this.CcRecipient)
+            .And(this.DateRead)
+            .And(this.DateReceived)
+            .And(this.DateSent)
+            .And(this.MessageAttachment)
+            .And(this.Recipient)
+            .And(this.Sender)
+            .And(this.ToRecipient)
+            .And(base.GetHashCode());
     }
 }

@@ -44,7 +44,7 @@
     /// The mailing address.
     /// </summary>
     [DataContract]
-    public partial class PostalAddress : ContactPoint, IPostalAddress
+    public partial class PostalAddress : ContactPoint, IPostalAddress, IEquatable<PostalAddress>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "streetAddress", Order = 411)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> StreetAddress { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PostalAddress other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AddressCountry == other.AddressCountry &&
+                this.AddressLocality == other.AddressLocality &&
+                this.AddressRegion == other.AddressRegion &&
+                this.PostalCode == other.PostalCode &&
+                this.PostOfficeBoxNumber == other.PostOfficeBoxNumber &&
+                this.StreetAddress == other.StreetAddress &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PostalAddress);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AddressCountry)
+            .And(this.AddressLocality)
+            .And(this.AddressRegion)
+            .And(this.PostalCode)
+            .And(this.PostOfficeBoxNumber)
+            .And(this.StreetAddress)
+            .And(base.GetHashCode());
     }
 }

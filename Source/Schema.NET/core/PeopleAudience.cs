@@ -49,7 +49,7 @@
     /// A set of characteristics belonging to people, e.g. who compose an item's target audience.
     /// </summary>
     [DataContract]
-    public partial class PeopleAudience : Audience, IPeopleAudience
+    public partial class PeopleAudience : Audience, IPeopleAudience, IEquatable<PeopleAudience>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -105,5 +105,43 @@
         [DataMember(Name = "suggestedMinAge", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> SuggestedMinAge { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PeopleAudience other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.HealthCondition == other.HealthCondition &&
+                this.RequiredGender == other.RequiredGender &&
+                this.RequiredMaxAge == other.RequiredMaxAge &&
+                this.RequiredMinAge == other.RequiredMinAge &&
+                this.SuggestedGender == other.SuggestedGender &&
+                this.SuggestedMaxAge == other.SuggestedMaxAge &&
+                this.SuggestedMinAge == other.SuggestedMinAge &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PeopleAudience);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.HealthCondition)
+            .And(this.RequiredGender)
+            .And(this.RequiredMaxAge)
+            .And(this.RequiredMinAge)
+            .And(this.SuggestedGender)
+            .And(this.SuggestedMaxAge)
+            .And(this.SuggestedMinAge)
+            .And(base.GetHashCode());
     }
 }

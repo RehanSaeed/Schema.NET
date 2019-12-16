@@ -19,7 +19,7 @@
     /// A guideline recommendation that is regarded as efficacious and where quality of the data supporting the recommendation is sound.
     /// </summary>
     [DataContract]
-    public partial class MedicalGuidelineRecommendation : MedicalGuideline, IMedicalGuidelineRecommendation
+    public partial class MedicalGuidelineRecommendation : MedicalGuideline, IMedicalGuidelineRecommendation, IEquatable<MedicalGuidelineRecommendation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "recommendationStrength", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> RecommendationStrength { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalGuidelineRecommendation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.RecommendationStrength == other.RecommendationStrength &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalGuidelineRecommendation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.RecommendationStrength)
+            .And(base.GetHashCode());
     }
 }

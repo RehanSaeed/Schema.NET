@@ -135,11 +135,11 @@ namespace Schema.NET.Tool.ViewModels
             stringBuilder.Append($" : ");
             if (this.Parents.Count == 0)
             {
-                stringBuilder.AppendLine($"I{this.Name}");
+                stringBuilder.AppendLine($"I{this.Name}, IEquatable<{this.Name}>");
             }
             else if (this.Parents.Count == 1)
             {
-                stringBuilder.AppendLine($"{this.Parents.First().Name}, I{this.Name}");
+                stringBuilder.AppendLine($"{this.Parents.First().Name}, I{this.Name}, IEquatable<{this.Name}>");
             }
             else
             {
@@ -150,42 +150,71 @@ namespace Schema.NET.Tool.ViewModels
 
             stringBuilder.AppendIndentLine(4, "{");
 
-            if (string.Equals(this.Name, "Thing", StringComparison.OrdinalIgnoreCase))
-            {
-                // Context Property
-                stringBuilder.AppendIndentLine(8, "/// <summary>");
-                stringBuilder.AppendIndentLine(8, "/// Gets the context for the object, specifying that it comes from schema.org.");
-                stringBuilder.AppendIndentLine(8, "/// </summary>");
-                stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@context\", Order = 0)]");
-                stringBuilder.AppendIndentLine(8, $"public override string Context => \"http://schema.org\";");
-                stringBuilder.AppendLine();
-            }
-
             // Type Property
             stringBuilder.AppendIndentLine(8, "/// <summary>");
             stringBuilder.AppendIndentLine(8, "/// Gets the name of the type as specified by schema.org.");
             stringBuilder.AppendIndentLine(8, "/// </summary>");
             stringBuilder.AppendIndentLine(8, "[DataMember(Name = \"@type\", Order = 1)]");
             stringBuilder.AppendIndentLine(8, $"public override string Type => \"{this.Name}\";");
+            stringBuilder.AppendLine();
 
             // Properties
-            var properties = this.Properties.OrderBy(x => x.Order).ToList();
-            if (properties.Count > 0)
+            var properties = this.Properties.OrderBy(x => x.Order).ToArray();
+            foreach (var property in properties)
+            {
+                property.AppendIndentLine(stringBuilder, 8);
+                stringBuilder.AppendLine();
+            }
+
+            // Object Equality
+            stringBuilder.AppendIndentLine(8, "/// <inheritdoc/>");
+            stringBuilder.AppendIndentLine(8, $"public bool Equals({this.Name} other)");
+            stringBuilder.AppendIndentLine(8, "{");
+
+            stringBuilder.AppendIndentLine(12, "if (other is null)");
+            stringBuilder.AppendIndentLine(12, "{");
+            stringBuilder.AppendIndentLine(16, "return false;");
+            stringBuilder.AppendIndentLine(12, "}");
+            stringBuilder.AppendLine();
+
+            stringBuilder.AppendIndentLine(12, "if (ReferenceEquals(this, other))");
+            stringBuilder.AppendIndentLine(12, "{");
+            stringBuilder.AppendIndentLine(16, "return true;");
+            stringBuilder.AppendIndentLine(12, "}");
+            stringBuilder.AppendLine();
+
+            stringBuilder.AppendIndent(12, "return this.Type == other.Type");
+
+            foreach (var property in properties)
+            {
+                stringBuilder.AppendLine(" &&");
+                stringBuilder.AppendIndent(16, $"this.{property.Name} == other.{property.Name}");
+            }
+
+            stringBuilder.AppendLine(" &&");
+            stringBuilder.AppendIndent(16, "base.Equals(other)");
+
+            stringBuilder.AppendLine(";");
+
+            stringBuilder.AppendIndentLine(8, "}");
+            stringBuilder.AppendLine();
+
+            stringBuilder.AppendIndentLine(8, "/// <inheritdoc/>");
+            stringBuilder.AppendIndentLine(8, $"public override bool Equals(object obj) => this.Equals(obj as {this.Name});");
+            stringBuilder.AppendLine();
+
+            stringBuilder.AppendIndentLine(8, "/// <inheritdoc/>");
+            stringBuilder.AppendIndent(8, "public override int GetHashCode() => HashCode.Of(this.Type)");
+            foreach (var property in properties)
             {
                 stringBuilder.AppendLine();
-                var i = 0;
-                foreach (var property in properties)
-                {
-                    var isLast = i == (properties.Count - 1);
-                    property.AppendIndentLine(stringBuilder, 8);
-                    if (!isLast)
-                    {
-                        stringBuilder.AppendLine();
-                    }
-
-                    ++i;
-                }
+                stringBuilder.AppendIndent(12, $".And(this.{property.Name})");
             }
+
+            stringBuilder.AppendLine();
+            stringBuilder.AppendIndent(12, $".And(base.GetHashCode())");
+
+            stringBuilder.AppendLine(";");
 
             stringBuilder.AppendIndentLine(4, "}");
             stringBuilder.AppendLine("}");

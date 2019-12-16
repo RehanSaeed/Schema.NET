@@ -30,7 +30,7 @@
     /// A bus (also omnibus or autobus) is a road vehicle designed to carry passengers. Coaches are luxury busses, usually in service for long distance travel.
     /// </summary>
     [DataContract]
-    public partial class BusOrCoach : Vehicle, IBusOrCoach
+    public partial class BusOrCoach : Vehicle, IBusOrCoach, IEquatable<BusOrCoach>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,33 @@
         [DataMember(Name = "roofLoad", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> RoofLoad { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(BusOrCoach other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AcrissCode == other.AcrissCode &&
+                this.RoofLoad == other.RoofLoad &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as BusOrCoach);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AcrissCode)
+            .And(this.RoofLoad)
+            .And(base.GetHashCode());
     }
 }

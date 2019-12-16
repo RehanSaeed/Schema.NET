@@ -33,7 +33,7 @@
     /// Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
     /// </summary>
     [DataContract]
-    public partial class FoodEstablishmentReservation : Reservation, IFoodEstablishmentReservation
+    public partial class FoodEstablishmentReservation : Reservation, IFoodEstablishmentReservation, IEquatable<FoodEstablishmentReservation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -63,5 +63,35 @@
         [DataMember(Name = "startTime", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<DateTimeOffset?, TimeSpan?> StartTime { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(FoodEstablishmentReservation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.EndTime == other.EndTime &&
+                this.PartySize == other.PartySize &&
+                this.StartTime == other.StartTime &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as FoodEstablishmentReservation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.EndTime)
+            .And(this.PartySize)
+            .And(this.StartTime)
+            .And(base.GetHashCode());
     }
 }

@@ -24,7 +24,7 @@
     /// A permission for a particular person or group to access a particular file.
     /// </summary>
     [DataContract]
-    public partial class DigitalDocumentPermission : Intangible, IDigitalDocumentPermission
+    public partial class DigitalDocumentPermission : Intangible, IDigitalDocumentPermission, IEquatable<DigitalDocumentPermission>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "permissionType", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<DigitalDocumentPermissionType?> PermissionType { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(DigitalDocumentPermission other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Grantee == other.Grantee &&
+                this.PermissionType == other.PermissionType &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as DigitalDocumentPermission);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Grantee)
+            .And(this.PermissionType)
+            .And(base.GetHashCode());
     }
 }

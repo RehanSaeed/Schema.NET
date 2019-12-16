@@ -34,7 +34,7 @@
     /// A review of an item - for example, of a restaurant, movie, or store.
     /// </summary>
     [DataContract]
-    public partial class Review : CreativeWork, IReview
+    public partial class Review : CreativeWork, IReview, IEquatable<Review>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "reviewRating", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IRating> ReviewRating { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Review other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ItemReviewed == other.ItemReviewed &&
+                this.ReviewAspect == other.ReviewAspect &&
+                this.ReviewBody == other.ReviewBody &&
+                this.ReviewRating == other.ReviewRating &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Review);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ItemReviewed)
+            .And(this.ReviewAspect)
+            .And(this.ReviewBody)
+            .And(this.ReviewRating)
+            .And(base.GetHashCode());
     }
 }

@@ -44,7 +44,7 @@
     /// A music recording (track), usually a single song.
     /// </summary>
     [DataContract]
-    public partial class MusicRecording : CreativeWork, IMusicRecording
+    public partial class MusicRecording : CreativeWork, IMusicRecording, IEquatable<MusicRecording>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "recordingOf", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMusicComposition> RecordingOf { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MusicRecording other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ByArtist == other.ByArtist &&
+                this.Duration == other.Duration &&
+                this.InAlbum == other.InAlbum &&
+                this.InPlaylist == other.InPlaylist &&
+                this.IsrcCode == other.IsrcCode &&
+                this.RecordingOf == other.RecordingOf &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MusicRecording);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ByArtist)
+            .And(this.Duration)
+            .And(this.InAlbum)
+            .And(this.InPlaylist)
+            .And(this.IsrcCode)
+            .And(this.RecordingOf)
+            .And(base.GetHashCode());
     }
 }

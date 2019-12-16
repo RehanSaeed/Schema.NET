@@ -29,7 +29,7 @@
     /// The act of producing/preparing food.
     /// </summary>
     [DataContract]
-    public partial class CookAction : CreateAction, ICookAction
+    public partial class CookAction : CreateAction, ICookAction, IEquatable<CookAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "recipe", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IRecipe> Recipe { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CookAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.FoodEstablishment == other.FoodEstablishment &&
+                this.FoodEvent == other.FoodEvent &&
+                this.Recipe == other.Recipe &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CookAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.FoodEstablishment)
+            .And(this.FoodEvent)
+            .And(this.Recipe)
+            .And(base.GetHashCode());
     }
 }

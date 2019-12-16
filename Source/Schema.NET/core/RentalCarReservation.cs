@@ -36,7 +36,7 @@
     /// Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
     /// </summary>
     [DataContract]
-    public partial class RentalCarReservation : Reservation, IRentalCarReservation
+    public partial class RentalCarReservation : Reservation, IRentalCarReservation, IEquatable<RentalCarReservation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -71,5 +71,37 @@
         [DataMember(Name = "pickupTime", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<DateTimeOffset?> PickupTime { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(RentalCarReservation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DropoffLocation == other.DropoffLocation &&
+                this.DropoffTime == other.DropoffTime &&
+                this.PickupLocation == other.PickupLocation &&
+                this.PickupTime == other.PickupTime &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as RentalCarReservation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DropoffLocation)
+            .And(this.DropoffTime)
+            .And(this.PickupLocation)
+            .And(this.PickupTime)
+            .And(base.GetHashCode());
     }
 }

@@ -29,7 +29,7 @@
     /// A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
     /// </summary>
     [DataContract]
-    public partial class LiveBlogPosting : BlogPosting, ILiveBlogPosting
+    public partial class LiveBlogPosting : BlogPosting, ILiveBlogPosting, IEquatable<LiveBlogPosting>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "liveBlogUpdate", Order = 508)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IBlogPosting> LiveBlogUpdate { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(LiveBlogPosting other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CoverageEndTime == other.CoverageEndTime &&
+                this.CoverageStartTime == other.CoverageStartTime &&
+                this.LiveBlogUpdate == other.LiveBlogUpdate &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as LiveBlogPosting);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CoverageEndTime)
+            .And(this.CoverageStartTime)
+            .And(this.LiveBlogUpdate)
+            .And(base.GetHashCode());
     }
 }

@@ -29,7 +29,7 @@
     /// The act of conveying information to another person via a communication medium (instrument) such as speech, email, or telephone conversation.
     /// </summary>
     [DataContract]
-    public partial class CommunicateAction : InteractAction, ICommunicateAction
+    public partial class CommunicateAction : InteractAction, ICommunicateAction, IEquatable<CommunicateAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "recipient", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAudience, IContactPoint, IOrganization, IPerson> Recipient { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CommunicateAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.About == other.About &&
+                this.InLanguage == other.InLanguage &&
+                this.Recipient == other.Recipient &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CommunicateAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.About)
+            .And(this.InLanguage)
+            .And(this.Recipient)
+            .And(base.GetHashCode());
     }
 }

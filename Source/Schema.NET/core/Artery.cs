@@ -29,7 +29,7 @@
     /// A type of blood vessel that specifically carries blood away from the heart.
     /// </summary>
     [DataContract]
-    public partial class Artery : Vessel, IArtery
+    public partial class Artery : Vessel, IArtery, IEquatable<Artery>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "supplyTo", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAnatomicalStructure> SupplyTo { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Artery other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ArterialBranch == other.ArterialBranch &&
+                this.Source == other.Source &&
+                this.SupplyTo == other.SupplyTo &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Artery);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ArterialBranch)
+            .And(this.Source)
+            .And(this.SupplyTo)
+            .And(base.GetHashCode());
     }
 }

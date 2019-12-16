@@ -44,7 +44,7 @@
     /// A unique instance of a BroadcastService on a CableOrSatelliteService lineup.
     /// </summary>
     [DataContract]
-    public partial class BroadcastChannel : Intangible, IBroadcastChannel
+    public partial class BroadcastChannel : Intangible, IBroadcastChannel, IEquatable<BroadcastChannel>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "providesBroadcastService", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IBroadcastService> ProvidesBroadcastService { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(BroadcastChannel other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.BroadcastChannelId == other.BroadcastChannelId &&
+                this.BroadcastFrequency == other.BroadcastFrequency &&
+                this.BroadcastServiceTier == other.BroadcastServiceTier &&
+                this.Genre == other.Genre &&
+                this.InBroadcastLineup == other.InBroadcastLineup &&
+                this.ProvidesBroadcastService == other.ProvidesBroadcastService &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as BroadcastChannel);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.BroadcastChannelId)
+            .And(this.BroadcastFrequency)
+            .And(this.BroadcastServiceTier)
+            .And(this.Genre)
+            .And(this.InBroadcastLineup)
+            .And(this.ProvidesBroadcastService)
+            .And(base.GetHashCode());
     }
 }

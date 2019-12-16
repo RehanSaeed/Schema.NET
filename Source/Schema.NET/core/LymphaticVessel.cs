@@ -29,7 +29,7 @@
     /// A type of blood vessel that specifically carries lymph fluid unidirectionally toward the heart.
     /// </summary>
     [DataContract]
-    public partial class LymphaticVessel : Vessel, ILymphaticVessel
+    public partial class LymphaticVessel : Vessel, ILymphaticVessel, IEquatable<LymphaticVessel>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "runsTo", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IVessel> RunsTo { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(LymphaticVessel other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.OriginatesFrom == other.OriginatesFrom &&
+                this.RegionDrained == other.RegionDrained &&
+                this.RunsTo == other.RunsTo &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as LymphaticVessel);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.OriginatesFrom)
+            .And(this.RegionDrained)
+            .And(this.RunsTo)
+            .And(base.GetHashCode());
     }
 }

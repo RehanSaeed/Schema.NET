@@ -29,7 +29,7 @@
     /// A type of blood vessel that specifically carries blood to the heart.
     /// </summary>
     [DataContract]
-    public partial class Vein : Vessel, IVein
+    public partial class Vein : Vessel, IVein, IEquatable<Vein>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "tributary", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAnatomicalStructure> Tributary { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Vein other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DrainsTo == other.DrainsTo &&
+                this.RegionDrained == other.RegionDrained &&
+                this.Tributary == other.Tributary &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Vein);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DrainsTo)
+            .And(this.RegionDrained)
+            .And(this.Tributary)
+            .And(base.GetHashCode());
     }
 }

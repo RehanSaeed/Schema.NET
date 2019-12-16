@@ -23,7 +23,7 @@
     /// A dataset in downloadable form.
     /// </summary>
     [DataContract]
-    public partial class DataDownload : MediaObject, IDataDownload
+    public partial class DataDownload : MediaObject, IDataDownload, IEquatable<DataDownload>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -41,5 +41,31 @@
         [DataMember(Name = "measurementTechnique", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> MeasurementTechnique { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(DataDownload other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.MeasurementTechnique == other.MeasurementTechnique &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as DataDownload);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.MeasurementTechnique)
+            .And(base.GetHashCode());
     }
 }

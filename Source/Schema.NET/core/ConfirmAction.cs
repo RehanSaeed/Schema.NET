@@ -23,12 +23,36 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class ConfirmAction : InformAction, IConfirmAction
+    public partial class ConfirmAction : InformAction, IConfirmAction, IEquatable<ConfirmAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ConfirmAction";
+
+        /// <inheritdoc/>
+        public bool Equals(ConfirmAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ConfirmAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(base.GetHashCode());
     }
 }

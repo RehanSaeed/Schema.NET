@@ -27,7 +27,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class AskAction : CommunicateAction, IAskAction
+    public partial class AskAction : CommunicateAction, IAskAction, IEquatable<AskAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -41,5 +41,31 @@
         [DataMember(Name = "question", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuestion> Question { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(AskAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Question == other.Question &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as AskAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Question)
+            .And(base.GetHashCode());
     }
 }

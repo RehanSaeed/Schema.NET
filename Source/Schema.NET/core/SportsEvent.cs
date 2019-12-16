@@ -29,7 +29,7 @@
     /// Event type: Sports event.
     /// </summary>
     [DataContract]
-    public partial class SportsEvent : Event, ISportsEvent
+    public partial class SportsEvent : Event, ISportsEvent, IEquatable<SportsEvent>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "homeTeam", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPerson, ISportsTeam> HomeTeam { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(SportsEvent other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AwayTeam == other.AwayTeam &&
+                this.Competitor == other.Competitor &&
+                this.HomeTeam == other.HomeTeam &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as SportsEvent);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AwayTeam)
+            .And(this.Competitor)
+            .And(this.HomeTeam)
+            .And(base.GetHashCode());
     }
 }

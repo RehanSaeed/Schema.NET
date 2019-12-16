@@ -34,7 +34,7 @@
     /// An list item, e.g. a step in a checklist or how-to description.
     /// </summary>
     [DataContract]
-    public partial class ListItem : Intangible, IListItem
+    public partial class ListItem : Intangible, IListItem, IEquatable<ListItem>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "previousItem", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IListItem> PreviousItem { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ListItem other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Item == other.Item &&
+                this.NextItem == other.NextItem &&
+                this.Position == other.Position &&
+                this.PreviousItem == other.PreviousItem &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ListItem);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Item)
+            .And(this.NextItem)
+            .And(this.Position)
+            .And(this.PreviousItem)
+            .And(base.GetHashCode());
     }
 }

@@ -34,7 +34,7 @@
     /// An image file.
     /// </summary>
     [DataContract]
-    public partial class ImageObject : MediaObject, IImageObject
+    public partial class ImageObject : MediaObject, IImageObject, IEquatable<ImageObject>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "thumbnail", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IImageObject> Thumbnail { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ImageObject other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Caption == other.Caption &&
+                this.ExifData == other.ExifData &&
+                this.RepresentativeOfPage == other.RepresentativeOfPage &&
+                this.Thumbnail == other.Thumbnail &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ImageObject);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Caption)
+            .And(this.ExifData)
+            .And(this.RepresentativeOfPage)
+            .And(this.Thumbnail)
+            .And(base.GetHashCode());
     }
 }

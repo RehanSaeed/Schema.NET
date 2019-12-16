@@ -89,7 +89,7 @@
     /// A statement of the money due for goods or services; a bill.
     /// </summary>
     [DataContract]
-    public partial class Invoice : Intangible, IInvoice
+    public partial class Invoice : Intangible, IInvoice, IEquatable<Invoice>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -201,5 +201,59 @@
         [DataMember(Name = "totalPaymentDue", Order = 220)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMonetaryAmount, IPriceSpecification> TotalPaymentDue { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Invoice other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AccountId == other.AccountId &&
+                this.BillingPeriod == other.BillingPeriod &&
+                this.Broker == other.Broker &&
+                this.Category == other.Category &&
+                this.ConfirmationNumber == other.ConfirmationNumber &&
+                this.Customer == other.Customer &&
+                this.MinimumPaymentDue == other.MinimumPaymentDue &&
+                this.PaymentDueDate == other.PaymentDueDate &&
+                this.PaymentMethod == other.PaymentMethod &&
+                this.PaymentMethodId == other.PaymentMethodId &&
+                this.PaymentStatus == other.PaymentStatus &&
+                this.Provider == other.Provider &&
+                this.ReferencesOrder == other.ReferencesOrder &&
+                this.ScheduledPaymentDate == other.ScheduledPaymentDate &&
+                this.TotalPaymentDue == other.TotalPaymentDue &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Invoice);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AccountId)
+            .And(this.BillingPeriod)
+            .And(this.Broker)
+            .And(this.Category)
+            .And(this.ConfirmationNumber)
+            .And(this.Customer)
+            .And(this.MinimumPaymentDue)
+            .And(this.PaymentDueDate)
+            .And(this.PaymentMethod)
+            .And(this.PaymentMethodId)
+            .And(this.PaymentStatus)
+            .And(this.Provider)
+            .And(this.ReferencesOrder)
+            .And(this.ScheduledPaymentDate)
+            .And(this.TotalPaymentDue)
+            .And(base.GetHashCode());
     }
 }

@@ -44,7 +44,7 @@
     /// A book.
     /// </summary>
     [DataContract]
-    public partial class Book : CreativeWork, IBook
+    public partial class Book : CreativeWork, IBook, IEquatable<Book>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "numberOfPages", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> NumberOfPages { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Book other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Abridged == other.Abridged &&
+                this.BookEdition == other.BookEdition &&
+                this.BookFormat == other.BookFormat &&
+                this.Illustrator == other.Illustrator &&
+                this.Isbn == other.Isbn &&
+                this.NumberOfPages == other.NumberOfPages &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Book);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Abridged)
+            .And(this.BookEdition)
+            .And(this.BookFormat)
+            .And(this.Illustrator)
+            .And(this.Isbn)
+            .And(this.NumberOfPages)
+            .And(base.GetHashCode());
     }
 }

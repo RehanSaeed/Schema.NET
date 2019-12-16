@@ -15,12 +15,36 @@
     /// A file containing slides or used for a presentation.
     /// </summary>
     [DataContract]
-    public partial class PresentationDigitalDocument : DigitalDocument, IPresentationDigitalDocument
+    public partial class PresentationDigitalDocument : DigitalDocument, IPresentationDigitalDocument, IEquatable<PresentationDigitalDocument>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PresentationDigitalDocument";
+
+        /// <inheritdoc/>
+        public bool Equals(PresentationDigitalDocument other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PresentationDigitalDocument);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(base.GetHashCode());
     }
 }

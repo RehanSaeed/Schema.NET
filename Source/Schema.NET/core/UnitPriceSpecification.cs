@@ -40,7 +40,7 @@
     /// The price asked for a given offer by the respective organization or person.
     /// </summary>
     [DataContract]
-    public partial class UnitPriceSpecification : PriceSpecification, IUnitPriceSpecification
+    public partial class UnitPriceSpecification : PriceSpecification, IUnitPriceSpecification, IEquatable<UnitPriceSpecification>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -83,5 +83,39 @@
         [DataMember(Name = "unitText", Order = 410)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> UnitText { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(UnitPriceSpecification other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.BillingIncrement == other.BillingIncrement &&
+                this.PriceType == other.PriceType &&
+                this.ReferenceQuantity == other.ReferenceQuantity &&
+                this.UnitCode == other.UnitCode &&
+                this.UnitText == other.UnitText &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as UnitPriceSpecification);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.BillingIncrement)
+            .And(this.PriceType)
+            .And(this.ReferenceQuantity)
+            .And(this.UnitCode)
+            .And(this.UnitText)
+            .And(base.GetHashCode());
     }
 }

@@ -29,7 +29,7 @@
     /// An instance of a &lt;a class="localLink" href="http://schema.org/Course"&gt;Course&lt;/a&gt; which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.
     /// </summary>
     [DataContract]
-    public partial class CourseInstance : Event, ICourseInstance
+    public partial class CourseInstance : Event, ICourseInstance, IEquatable<CourseInstance>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "instructor", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPerson> Instructor { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CourseInstance other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CourseMode == other.CourseMode &&
+                this.CourseWorkload == other.CourseWorkload &&
+                this.Instructor == other.Instructor &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CourseInstance);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CourseMode)
+            .And(this.CourseWorkload)
+            .And(this.Instructor)
+            .And(base.GetHashCode());
     }
 }

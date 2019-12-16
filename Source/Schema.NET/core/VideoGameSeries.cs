@@ -99,7 +99,7 @@
     /// A video game series.
     /// </summary>
     [DataContract]
-    public partial class VideoGameSeries : CreativeWorkSeries, IVideoGameSeries
+    public partial class VideoGameSeries : CreativeWorkSeries, IVideoGameSeries, IEquatable<VideoGameSeries>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -225,5 +225,63 @@
         [DataMember(Name = "trailer", Order = 422)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IVideoObject> Trailer { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(VideoGameSeries other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Actor == other.Actor &&
+                this.CharacterAttribute == other.CharacterAttribute &&
+                this.CheatCode == other.CheatCode &&
+                this.ContainsSeason == other.ContainsSeason &&
+                this.Director == other.Director &&
+                this.Episode == other.Episode &&
+                this.GameItem == other.GameItem &&
+                this.GameLocation == other.GameLocation &&
+                this.GamePlatform == other.GamePlatform &&
+                this.MusicBy == other.MusicBy &&
+                this.NumberOfEpisodes == other.NumberOfEpisodes &&
+                this.NumberOfPlayers == other.NumberOfPlayers &&
+                this.NumberOfSeasons == other.NumberOfSeasons &&
+                this.PlayMode == other.PlayMode &&
+                this.ProductionCompany == other.ProductionCompany &&
+                this.Quest == other.Quest &&
+                this.Trailer == other.Trailer &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as VideoGameSeries);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Actor)
+            .And(this.CharacterAttribute)
+            .And(this.CheatCode)
+            .And(this.ContainsSeason)
+            .And(this.Director)
+            .And(this.Episode)
+            .And(this.GameItem)
+            .And(this.GameLocation)
+            .And(this.GamePlatform)
+            .And(this.MusicBy)
+            .And(this.NumberOfEpisodes)
+            .And(this.NumberOfPlayers)
+            .And(this.NumberOfSeasons)
+            .And(this.PlayMode)
+            .And(this.ProductionCompany)
+            .And(this.Quest)
+            .And(this.Trailer)
+            .And(base.GetHashCode());
     }
 }

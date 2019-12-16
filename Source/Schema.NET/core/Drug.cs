@@ -149,7 +149,7 @@
     /// A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism. Here the term drug is used interchangeably with the term medicine although clinical knowledge make a clear difference between them.
     /// </summary>
     [DataContract]
-    public partial class Drug : Substance, IDrug
+    public partial class Drug : Substance, IDrug, IEquatable<Drug>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -366,5 +366,89 @@
         [DataMember(Name = "warning", Order = 335)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> Warning { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Drug other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ActiveIngredient == other.ActiveIngredient &&
+                this.AdministrationRoute == other.AdministrationRoute &&
+                this.AlcoholWarning == other.AlcoholWarning &&
+                this.AvailableStrength == other.AvailableStrength &&
+                this.BreastfeedingWarning == other.BreastfeedingWarning &&
+                this.ClinicalPharmacology == other.ClinicalPharmacology &&
+                this.Cost == other.Cost &&
+                this.DosageForm == other.DosageForm &&
+                this.DoseSchedule == other.DoseSchedule &&
+                this.DrugClass == other.DrugClass &&
+                this.DrugUnit == other.DrugUnit &&
+                this.FoodWarning == other.FoodWarning &&
+                this.InteractingDrug == other.InteractingDrug &&
+                this.IsAvailableGenerically == other.IsAvailableGenerically &&
+                this.IsProprietary == other.IsProprietary &&
+                this.LabelDetails == other.LabelDetails &&
+                this.LegalStatus == other.LegalStatus &&
+                this.Manufacturer == other.Manufacturer &&
+                this.MaximumIntake == other.MaximumIntake &&
+                this.MechanismOfAction == other.MechanismOfAction &&
+                this.NonProprietaryName == other.NonProprietaryName &&
+                this.Overdosage == other.Overdosage &&
+                this.PregnancyCategory == other.PregnancyCategory &&
+                this.PregnancyWarning == other.PregnancyWarning &&
+                this.PrescribingInfo == other.PrescribingInfo &&
+                this.PrescriptionStatus == other.PrescriptionStatus &&
+                this.ProprietaryName == other.ProprietaryName &&
+                this.RelatedDrug == other.RelatedDrug &&
+                this.Rxcui == other.Rxcui &&
+                this.Warning == other.Warning &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Drug);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ActiveIngredient)
+            .And(this.AdministrationRoute)
+            .And(this.AlcoholWarning)
+            .And(this.AvailableStrength)
+            .And(this.BreastfeedingWarning)
+            .And(this.ClinicalPharmacology)
+            .And(this.Cost)
+            .And(this.DosageForm)
+            .And(this.DoseSchedule)
+            .And(this.DrugClass)
+            .And(this.DrugUnit)
+            .And(this.FoodWarning)
+            .And(this.InteractingDrug)
+            .And(this.IsAvailableGenerically)
+            .And(this.IsProprietary)
+            .And(this.LabelDetails)
+            .And(this.LegalStatus)
+            .And(this.Manufacturer)
+            .And(this.MaximumIntake)
+            .And(this.MechanismOfAction)
+            .And(this.NonProprietaryName)
+            .And(this.Overdosage)
+            .And(this.PregnancyCategory)
+            .And(this.PregnancyWarning)
+            .And(this.PrescribingInfo)
+            .And(this.PrescriptionStatus)
+            .And(this.ProprietaryName)
+            .And(this.RelatedDrug)
+            .And(this.Rxcui)
+            .And(this.Warning)
+            .And(base.GetHashCode());
     }
 }

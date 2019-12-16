@@ -74,7 +74,7 @@
     /// The act of participating in exertive activity for the purposes of improving health and fitness.
     /// </summary>
     [DataContract]
-    public partial class ExerciseAction : PlayAction, IExerciseAction
+    public partial class ExerciseAction : PlayAction, IExerciseAction, IEquatable<ExerciseAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -165,5 +165,53 @@
         [DataMember(Name = "toLocation", Order = 317)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPlace> ToLocation { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ExerciseAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Diet == other.Diet &&
+                this.Distance == other.Distance &&
+                this.ExerciseCourse == other.ExerciseCourse &&
+                this.ExercisePlan == other.ExercisePlan &&
+                this.ExerciseRelatedDiet == other.ExerciseRelatedDiet &&
+                this.ExerciseType == other.ExerciseType &&
+                this.FromLocation == other.FromLocation &&
+                this.Opponent == other.Opponent &&
+                this.SportsActivityLocation == other.SportsActivityLocation &&
+                this.SportsEvent == other.SportsEvent &&
+                this.SportsTeam == other.SportsTeam &&
+                this.ToLocation == other.ToLocation &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ExerciseAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Diet)
+            .And(this.Distance)
+            .And(this.ExerciseCourse)
+            .And(this.ExercisePlan)
+            .And(this.ExerciseRelatedDiet)
+            .And(this.ExerciseType)
+            .And(this.FromLocation)
+            .And(this.Opponent)
+            .And(this.SportsActivityLocation)
+            .And(this.SportsEvent)
+            .And(this.SportsTeam)
+            .And(this.ToLocation)
+            .And(base.GetHashCode());
     }
 }

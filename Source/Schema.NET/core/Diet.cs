@@ -44,7 +44,7 @@
     /// A strategy of regulating the intake of food to achieve or maintain a specific health-related goal.
     /// </summary>
     [DataContract]
-    public partial class Diet : CreativeWorkAndLifestyleModification, IDiet
+    public partial class Diet : CreativeWorkAndLifestyleModification, IDiet, IEquatable<Diet>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "risks", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Risks { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Diet other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DietFeatures == other.DietFeatures &&
+                this.Endorsers == other.Endorsers &&
+                this.ExpertConsiderations == other.ExpertConsiderations &&
+                this.Overview == other.Overview &&
+                this.PhysiologicalBenefits == other.PhysiologicalBenefits &&
+                this.Risks == other.Risks &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Diet);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DietFeatures)
+            .And(this.Endorsers)
+            .And(this.ExpertConsiderations)
+            .And(this.Overview)
+            .And(this.PhysiologicalBenefits)
+            .And(this.Risks)
+            .And(base.GetHashCode());
     }
 }

@@ -39,7 +39,7 @@
     /// Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates.
     /// </summary>
     [DataContract]
-    public partial class SoftwareSourceCode : CreativeWork, ISoftwareSourceCode
+    public partial class SoftwareSourceCode : CreativeWork, ISoftwareSourceCode, IEquatable<SoftwareSourceCode>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "targetProduct", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ISoftwareApplication> TargetProduct { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(SoftwareSourceCode other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CodeRepository == other.CodeRepository &&
+                this.CodeSampleType == other.CodeSampleType &&
+                this.ProgrammingLanguage == other.ProgrammingLanguage &&
+                this.RuntimePlatform == other.RuntimePlatform &&
+                this.TargetProduct == other.TargetProduct &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as SoftwareSourceCode);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CodeRepository)
+            .And(this.CodeSampleType)
+            .And(this.ProgrammingLanguage)
+            .And(this.RuntimePlatform)
+            .And(this.TargetProduct)
+            .And(base.GetHashCode());
     }
 }

@@ -15,7 +15,7 @@
     /// See ComicStory, CoverArt for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class ComicStoryAndCoverArt : VisualArtwork, IComicStoryAndCoverArt
+    public abstract partial class ComicStoryAndCoverArt : VisualArtwork, IComicStoryAndCoverArt, IEquatable<ComicStoryAndCoverArt>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -59,5 +59,39 @@
         [DataMember(Name = "penciler", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IPerson> Penciler { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ComicStoryAndCoverArt other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Artist == other.Artist &&
+                this.Colorist == other.Colorist &&
+                this.Inker == other.Inker &&
+                this.Letterer == other.Letterer &&
+                this.Penciler == other.Penciler &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ComicStoryAndCoverArt);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Artist)
+            .And(this.Colorist)
+            .And(this.Inker)
+            .And(this.Letterer)
+            .And(this.Penciler)
+            .And(base.GetHashCode());
     }
 }

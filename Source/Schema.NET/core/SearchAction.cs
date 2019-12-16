@@ -32,7 +32,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class SearchAction : Action, ISearchAction
+    public partial class SearchAction : Action, ISearchAction, IEquatable<SearchAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -53,5 +53,33 @@
         [DataMember(Name = "query-input", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, PropertyValueSpecification> QueryInput { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(SearchAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Query == other.Query &&
+                this.QueryInput == other.QueryInput &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as SearchAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Query)
+            .And(this.QueryInput)
+            .And(base.GetHashCode());
     }
 }

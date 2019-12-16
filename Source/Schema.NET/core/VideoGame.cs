@@ -59,7 +59,7 @@
     /// A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
     /// </summary>
     [DataContract]
-    public partial class VideoGame : GameAndSoftwareApplication, IVideoGame
+    public partial class VideoGame : GameAndSoftwareApplication, IVideoGame, IEquatable<VideoGame>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -129,5 +129,47 @@
         [DataMember(Name = "trailer", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IVideoObject> Trailer { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(VideoGame other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Actor == other.Actor &&
+                this.CheatCode == other.CheatCode &&
+                this.Director == other.Director &&
+                this.GamePlatform == other.GamePlatform &&
+                this.GameServer == other.GameServer &&
+                this.GameTip == other.GameTip &&
+                this.MusicBy == other.MusicBy &&
+                this.PlayMode == other.PlayMode &&
+                this.Trailer == other.Trailer &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as VideoGame);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Actor)
+            .And(this.CheatCode)
+            .And(this.Director)
+            .And(this.GamePlatform)
+            .And(this.GameServer)
+            .And(this.GameTip)
+            .And(this.MusicBy)
+            .And(this.PlayMode)
+            .And(this.Trailer)
+            .And(base.GetHashCode());
     }
 }

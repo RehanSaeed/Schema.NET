@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, EmergencyService, MedicalOrganization for more information.
     /// </summary>
-    public partial interface ICivicStructureAndEmergencyServiceAndMedicalOrganization : IEmergencyService, IMedicalOrganization, ICivicStructure
+    public partial interface ICivicStructureAndEmergencyServiceAndMedicalOrganization : ICivicStructure, IEmergencyService, IMedicalOrganization
     {
     }
 
@@ -15,7 +15,7 @@
     /// See CivicStructure, EmergencyService, MedicalOrganization for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class CivicStructureAndEmergencyServiceAndMedicalOrganization : LocalBusinessAndOrganizationAndPlace, ICivicStructureAndEmergencyServiceAndMedicalOrganization
+    public abstract partial class CivicStructureAndEmergencyServiceAndMedicalOrganization : LocalBusinessAndOrganizationAndPlace, ICivicStructureAndEmergencyServiceAndMedicalOrganization, IEquatable<CivicStructureAndEmergencyServiceAndMedicalOrganization>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -56,5 +56,37 @@
         [DataMember(Name = "openingHours", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> OpeningHours { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CivicStructureAndEmergencyServiceAndMedicalOrganization other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.HealthPlanNetworkId == other.HealthPlanNetworkId &&
+                this.IsAcceptingNewPatients == other.IsAcceptingNewPatients &&
+                this.MedicalSpecialty == other.MedicalSpecialty &&
+                this.OpeningHours == other.OpeningHours &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CivicStructureAndEmergencyServiceAndMedicalOrganization);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.HealthPlanNetworkId)
+            .And(this.IsAcceptingNewPatients)
+            .And(this.MedicalSpecialty)
+            .And(this.OpeningHours)
+            .And(base.GetHashCode());
     }
 }

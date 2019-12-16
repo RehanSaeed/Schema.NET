@@ -46,7 +46,7 @@
         OneOrMany<string> Responsibilities { get; set; }
 
         /// <summary>
-        /// Skills required to fulfill this role or in this Occupation.
+        /// A statement of knowledge, skill, ability, task or any other assertion expressing a competency that is desired or required to fulfill this role or to work in this occupation.
         /// </summary>
         OneOrMany<string> Skills { get; set; }
     }
@@ -55,7 +55,7 @@
     /// A profession, may involve prolonged training and/or a formal qualification.
     /// </summary>
     [DataContract]
-    public partial class Occupation : Intangible, IOccupation
+    public partial class Occupation : Intangible, IOccupation, IEquatable<Occupation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -114,10 +114,50 @@
         public OneOrMany<string> Responsibilities { get; set; }
 
         /// <summary>
-        /// Skills required to fulfill this role or in this Occupation.
+        /// A statement of knowledge, skill, ability, task or any other assertion expressing a competency that is desired or required to fulfill this role or to work in this occupation.
         /// </summary>
         [DataMember(Name = "skills", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Skills { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Occupation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.EducationRequirements == other.EducationRequirements &&
+                this.EstimatedSalary == other.EstimatedSalary &&
+                this.ExperienceRequirements == other.ExperienceRequirements &&
+                this.OccupationalCategory == other.OccupationalCategory &&
+                this.OccupationLocation == other.OccupationLocation &&
+                this.Qualifications == other.Qualifications &&
+                this.Responsibilities == other.Responsibilities &&
+                this.Skills == other.Skills &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Occupation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.EducationRequirements)
+            .And(this.EstimatedSalary)
+            .And(this.ExperienceRequirements)
+            .And(this.OccupationalCategory)
+            .And(this.OccupationLocation)
+            .And(this.Qualifications)
+            .And(this.Responsibilities)
+            .And(this.Skills)
+            .And(base.GetHashCode());
     }
 }

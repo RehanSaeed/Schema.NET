@@ -20,7 +20,7 @@
     /// An apartment (in American English) or flat (in British English) is a self-contained housing unit (a type of residential real estate) that occupies only part of a building (Source: Wikipedia, the free encyclopedia, see &lt;a href="http://en.wikipedia.org/wiki/Apartment"&gt;http://en.wikipedia.org/wiki/Apartment&lt;/a&gt;).
     /// </summary>
     [DataContract]
-    public partial class Apartment : Accommodation, IApartment
+    public partial class Apartment : Accommodation, IApartment, IEquatable<Apartment>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -43,5 +43,33 @@
         [DataMember(Name = "occupancy", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> Occupancy { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Apartment other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.NumberOfRooms == other.NumberOfRooms &&
+                this.Occupancy == other.Occupancy &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Apartment);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.NumberOfRooms)
+            .And(this.Occupancy)
+            .And(base.GetHashCode());
     }
 }

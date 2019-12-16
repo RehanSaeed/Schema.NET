@@ -54,7 +54,7 @@
     /// A media episode (e.g. TV, radio, video game) which can be part of a series or season.
     /// </summary>
     [DataContract]
-    public partial class Episode : CreativeWork, IEpisode
+    public partial class Episode : CreativeWork, IEpisode, IEquatable<Episode>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "trailer", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IVideoObject> Trailer { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Episode other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Actor == other.Actor &&
+                this.Director == other.Director &&
+                this.EpisodeNumber == other.EpisodeNumber &&
+                this.MusicBy == other.MusicBy &&
+                this.PartOfSeason == other.PartOfSeason &&
+                this.PartOfSeries == other.PartOfSeries &&
+                this.ProductionCompany == other.ProductionCompany &&
+                this.Trailer == other.Trailer &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Episode);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Actor)
+            .And(this.Director)
+            .And(this.EpisodeNumber)
+            .And(this.MusicBy)
+            .And(this.PartOfSeason)
+            .And(this.PartOfSeries)
+            .And(this.ProductionCompany)
+            .And(this.Trailer)
+            .And(base.GetHashCode());
     }
 }

@@ -39,7 +39,7 @@
     /// An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
     /// </summary>
     [DataContract]
-    public partial class OrderItem : Intangible, IOrderItem
+    public partial class OrderItem : Intangible, IOrderItem, IEquatable<OrderItem>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "orderQuantity", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<double?> OrderQuantity { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(OrderItem other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.OrderDelivery == other.OrderDelivery &&
+                this.OrderedItem == other.OrderedItem &&
+                this.OrderItemNumber == other.OrderItemNumber &&
+                this.OrderItemStatus == other.OrderItemStatus &&
+                this.OrderQuantity == other.OrderQuantity &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as OrderItem);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.OrderDelivery)
+            .And(this.OrderedItem)
+            .And(this.OrderItemNumber)
+            .And(this.OrderItemStatus)
+            .And(this.OrderQuantity)
+            .And(base.GetHashCode());
     }
 }

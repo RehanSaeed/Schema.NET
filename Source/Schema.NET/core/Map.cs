@@ -19,7 +19,7 @@
     /// A map.
     /// </summary>
     [DataContract]
-    public partial class Map : CreativeWork, IMap
+    public partial class Map : CreativeWork, IMap, IEquatable<Map>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,5 +33,31 @@
         [DataMember(Name = "mapType", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<MapCategoryType?> MapType { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Map other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.MapType == other.MapType &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Map);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.MapType)
+            .And(base.GetHashCode());
     }
 }

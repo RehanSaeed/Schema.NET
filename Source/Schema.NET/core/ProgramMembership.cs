@@ -39,7 +39,7 @@
     /// Used to describe membership in a loyalty programs (e.g. "StarAliance"), traveler clubs (e.g. "AAA"), purchase clubs ("Safeway Club"), etc.
     /// </summary>
     [DataContract]
-    public partial class ProgramMembership : Intangible, IProgramMembership
+    public partial class ProgramMembership : Intangible, IProgramMembership, IEquatable<ProgramMembership>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "programName", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> ProgramName { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ProgramMembership other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.HostingOrganization == other.HostingOrganization &&
+                this.Member == other.Member &&
+                this.MembershipNumber == other.MembershipNumber &&
+                this.MembershipPointsEarned == other.MembershipPointsEarned &&
+                this.ProgramName == other.ProgramName &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ProgramMembership);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.HostingOrganization)
+            .And(this.Member)
+            .And(this.MembershipNumber)
+            .And(this.MembershipPointsEarned)
+            .And(this.ProgramName)
+            .And(base.GetHashCode());
     }
 }

@@ -74,7 +74,7 @@
     /// Nutritional information about the recipe.
     /// </summary>
     [DataContract]
-    public partial class NutritionInformation : StructuredValue, INutritionInformation
+    public partial class NutritionInformation : StructuredValue, INutritionInformation, IEquatable<NutritionInformation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -165,5 +165,53 @@
         [DataMember(Name = "unsaturatedFatContent", Order = 317)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> UnsaturatedFatContent { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(NutritionInformation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Calories == other.Calories &&
+                this.CarbohydrateContent == other.CarbohydrateContent &&
+                this.CholesterolContent == other.CholesterolContent &&
+                this.FatContent == other.FatContent &&
+                this.FiberContent == other.FiberContent &&
+                this.ProteinContent == other.ProteinContent &&
+                this.SaturatedFatContent == other.SaturatedFatContent &&
+                this.ServingSize == other.ServingSize &&
+                this.SodiumContent == other.SodiumContent &&
+                this.SugarContent == other.SugarContent &&
+                this.TransFatContent == other.TransFatContent &&
+                this.UnsaturatedFatContent == other.UnsaturatedFatContent &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as NutritionInformation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Calories)
+            .And(this.CarbohydrateContent)
+            .And(this.CholesterolContent)
+            .And(this.FatContent)
+            .And(this.FiberContent)
+            .And(this.ProteinContent)
+            .And(this.SaturatedFatContent)
+            .And(this.ServingSize)
+            .And(this.SodiumContent)
+            .And(this.SugarContent)
+            .And(this.TransFatContent)
+            .And(this.UnsaturatedFatContent)
+            .And(base.GetHashCode());
     }
 }

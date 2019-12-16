@@ -36,7 +36,7 @@
     /// The price for the delivery of an offer using a particular delivery method.
     /// </summary>
     [DataContract]
-    public partial class DeliveryChargeSpecification : PriceSpecification, IDeliveryChargeSpecification
+    public partial class DeliveryChargeSpecification : PriceSpecification, IDeliveryChargeSpecification, IEquatable<DeliveryChargeSpecification>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -73,5 +73,37 @@
         [DataMember(Name = "ineligibleRegion", Order = 409)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IGeoShape, IPlace, string> IneligibleRegion { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(DeliveryChargeSpecification other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AppliesToDeliveryMethod == other.AppliesToDeliveryMethod &&
+                this.AreaServed == other.AreaServed &&
+                this.EligibleRegion == other.EligibleRegion &&
+                this.IneligibleRegion == other.IneligibleRegion &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as DeliveryChargeSpecification);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AppliesToDeliveryMethod)
+            .And(this.AreaServed)
+            .And(this.EligibleRegion)
+            .And(this.IneligibleRegion)
+            .And(base.GetHashCode());
     }
 }

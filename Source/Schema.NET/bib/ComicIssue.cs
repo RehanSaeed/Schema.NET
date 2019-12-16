@@ -58,7 +58,7 @@
     ///     description of the issue (if any).
     /// </summary>
     [DataContract]
-    public partial class ComicIssue : PublicationIssue, IComicIssue
+    public partial class ComicIssue : PublicationIssue, IComicIssue, IEquatable<ComicIssue>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -111,5 +111,41 @@
         [DataMember(Name = "variantCover", Order = 311)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VariantCover { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(ComicIssue other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Artist == other.Artist &&
+                this.Colorist == other.Colorist &&
+                this.Inker == other.Inker &&
+                this.Letterer == other.Letterer &&
+                this.Penciler == other.Penciler &&
+                this.VariantCover == other.VariantCover &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as ComicIssue);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Artist)
+            .And(this.Colorist)
+            .And(this.Inker)
+            .And(this.Letterer)
+            .And(this.Penciler)
+            .And(this.VariantCover)
+            .And(base.GetHashCode());
     }
 }

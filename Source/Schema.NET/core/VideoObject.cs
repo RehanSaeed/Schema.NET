@@ -54,7 +54,7 @@
     /// A video file.
     /// </summary>
     [DataContract]
-    public partial class VideoObject : MediaObject, IVideoObject
+    public partial class VideoObject : MediaObject, IVideoObject, IEquatable<VideoObject>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -117,5 +117,45 @@
         [DataMember(Name = "videoQuality", Order = 313)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VideoQuality { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(VideoObject other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Actor == other.Actor &&
+                this.Caption == other.Caption &&
+                this.Director == other.Director &&
+                this.MusicBy == other.MusicBy &&
+                this.Thumbnail == other.Thumbnail &&
+                this.Transcript == other.Transcript &&
+                this.VideoFrameSize == other.VideoFrameSize &&
+                this.VideoQuality == other.VideoQuality &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as VideoObject);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Actor)
+            .And(this.Caption)
+            .And(this.Director)
+            .And(this.MusicBy)
+            .And(this.Thumbnail)
+            .And(this.Transcript)
+            .And(this.VideoFrameSize)
+            .And(this.VideoQuality)
+            .And(base.GetHashCode());
     }
 }

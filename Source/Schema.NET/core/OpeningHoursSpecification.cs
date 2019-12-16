@@ -43,7 +43,7 @@
     /// If the value for the &lt;a class="localLink" href="http://schema.org/closes"&gt;closes&lt;/a&gt; property is less than the value for the &lt;a class="localLink" href="http://schema.org/opens"&gt;opens&lt;/a&gt; property then the hour range is assumed to span over the next day.
     /// </summary>
     [DataContract]
-    public partial class OpeningHoursSpecification : StructuredValue, IOpeningHoursSpecification
+    public partial class OpeningHoursSpecification : StructuredValue, IOpeningHoursSpecification, IEquatable<OpeningHoursSpecification>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -85,5 +85,39 @@
         [DataMember(Name = "validThrough", Order = 310)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> ValidThrough { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(OpeningHoursSpecification other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Closes == other.Closes &&
+                this.DayOfWeek == other.DayOfWeek &&
+                this.Opens == other.Opens &&
+                this.ValidFrom == other.ValidFrom &&
+                this.ValidThrough == other.ValidThrough &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as OpeningHoursSpecification);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Closes)
+            .And(this.DayOfWeek)
+            .And(this.Opens)
+            .And(this.ValidFrom)
+            .And(this.ValidThrough)
+            .And(base.GetHashCode());
     }
 }

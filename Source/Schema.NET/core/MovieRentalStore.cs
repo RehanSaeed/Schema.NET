@@ -15,12 +15,36 @@
     /// A movie rental store.
     /// </summary>
     [DataContract]
-    public partial class MovieRentalStore : Store, IMovieRentalStore
+    public partial class MovieRentalStore : Store, IMovieRentalStore, IEquatable<MovieRentalStore>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MovieRentalStore";
+
+        /// <inheritdoc/>
+        public bool Equals(MovieRentalStore other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MovieRentalStore);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(base.GetHashCode());
     }
 }

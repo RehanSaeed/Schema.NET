@@ -34,7 +34,7 @@
     /// A food or drink item listed in a menu or menu section.
     /// </summary>
     [DataContract]
-    public partial class MenuItem : Intangible, IMenuItem
+    public partial class MenuItem : Intangible, IMenuItem, IEquatable<MenuItem>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "suitableForDiet", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<RestrictedDiet?> SuitableForDiet { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MenuItem other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.MenuAddOn == other.MenuAddOn &&
+                this.Nutrition == other.Nutrition &&
+                this.Offers == other.Offers &&
+                this.SuitableForDiet == other.SuitableForDiet &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MenuItem);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.MenuAddOn)
+            .And(this.Nutrition)
+            .And(this.Offers)
+            .And(this.SuitableForDiet)
+            .And(base.GetHashCode());
     }
 }

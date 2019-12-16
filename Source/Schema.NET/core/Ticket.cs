@@ -60,7 +60,7 @@
     /// Used to describe a ticket to an event, a flight, a bus ride, etc.
     /// </summary>
     [DataContract]
-    public partial class Ticket : Intangible, ITicket
+    public partial class Ticket : Intangible, ITicket, IEquatable<Ticket>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -129,5 +129,45 @@
         [DataMember(Name = "underName", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> UnderName { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Ticket other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.DateIssued == other.DateIssued &&
+                this.IssuedBy == other.IssuedBy &&
+                this.PriceCurrency == other.PriceCurrency &&
+                this.TicketedSeat == other.TicketedSeat &&
+                this.TicketNumber == other.TicketNumber &&
+                this.TicketToken == other.TicketToken &&
+                this.TotalPrice == other.TotalPrice &&
+                this.UnderName == other.UnderName &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Ticket);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.DateIssued)
+            .And(this.IssuedBy)
+            .And(this.PriceCurrency)
+            .And(this.TicketedSeat)
+            .And(this.TicketNumber)
+            .And(this.TicketToken)
+            .And(this.TotalPrice)
+            .And(this.UnderName)
+            .And(base.GetHashCode());
     }
 }

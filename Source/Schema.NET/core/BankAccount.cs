@@ -29,7 +29,7 @@
     /// A product or service offered by a bank whereby one may deposit, withdraw or transfer money and in some cases be paid interest.
     /// </summary>
     [DataContract]
-    public partial class BankAccount : FinancialProduct, IBankAccount
+    public partial class BankAccount : FinancialProduct, IBankAccount, IEquatable<BankAccount>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "bankAccountType", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> BankAccountType { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(BankAccount other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AccountMinimumInflow == other.AccountMinimumInflow &&
+                this.AccountOverdraftLimit == other.AccountOverdraftLimit &&
+                this.BankAccountType == other.BankAccountType &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as BankAccount);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AccountMinimumInflow)
+            .And(this.AccountOverdraftLimit)
+            .And(this.BankAccountType)
+            .And(base.GetHashCode());
     }
 }

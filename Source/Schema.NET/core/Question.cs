@@ -39,7 +39,7 @@
     /// A specific question - e.g. from a user seeking answers online, or collected in a Frequently Asked Questions (FAQ) document.
     /// </summary>
     [DataContract]
-    public partial class Question : CreativeWork, IQuestion
+    public partial class Question : CreativeWork, IQuestion, IEquatable<Question>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "upvoteCount", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> UpvoteCount { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Question other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AcceptedAnswer == other.AcceptedAnswer &&
+                this.AnswerCount == other.AnswerCount &&
+                this.DownvoteCount == other.DownvoteCount &&
+                this.SuggestedAnswer == other.SuggestedAnswer &&
+                this.UpvoteCount == other.UpvoteCount &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Question);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AcceptedAnswer)
+            .And(this.AnswerCount)
+            .And(this.DownvoteCount)
+            .And(this.SuggestedAnswer)
+            .And(this.UpvoteCount)
+            .And(base.GetHashCode());
     }
 }

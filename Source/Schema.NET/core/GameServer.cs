@@ -29,7 +29,7 @@
     /// Server that provides game interaction in a multiplayer game.
     /// </summary>
     [DataContract]
-    public partial class GameServer : Intangible, IGameServer
+    public partial class GameServer : Intangible, IGameServer, IEquatable<GameServer>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -57,5 +57,35 @@
         [DataMember(Name = "serverStatus", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<GameServerStatus?> ServerStatus { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(GameServer other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Game == other.Game &&
+                this.PlayersOnline == other.PlayersOnline &&
+                this.ServerStatus == other.ServerStatus &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as GameServer);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Game)
+            .And(this.PlayersOnline)
+            .And(this.ServerStatus)
+            .And(base.GetHashCode());
     }
 }

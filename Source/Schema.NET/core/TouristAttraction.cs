@@ -24,7 +24,7 @@
     /// A tourist attraction.  In principle any Thing can be a &lt;a class="localLink" href="http://schema.org/TouristAttraction"&gt;TouristAttraction&lt;/a&gt;, from a &lt;a class="localLink" href="http://schema.org/Mountain"&gt;Mountain&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/LandmarksOrHistoricalBuildings"&gt;LandmarksOrHistoricalBuildings&lt;/a&gt; to a &lt;a class="localLink" href="http://schema.org/LocalBusiness"&gt;LocalBusiness&lt;/a&gt;.  This Type can be used on its own to describe a general &lt;a class="localLink" href="http://schema.org/TouristAttraction"&gt;TouristAttraction&lt;/a&gt;, or be used as an &lt;a class="localLink" href="http://schema.org/additionalType"&gt;additionalType&lt;/a&gt; to add tourist attraction properties to any other type.  (See examples below)
     /// </summary>
     [DataContract]
-    public partial class TouristAttraction : Place, ITouristAttraction
+    public partial class TouristAttraction : Place, ITouristAttraction, IEquatable<TouristAttraction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "touristType", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAudience, string> TouristType { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(TouristAttraction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AvailableLanguage == other.AvailableLanguage &&
+                this.TouristType == other.TouristType &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as TouristAttraction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AvailableLanguage)
+            .And(this.TouristType)
+            .And(base.GetHashCode());
     }
 }

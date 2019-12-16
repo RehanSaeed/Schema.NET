@@ -24,7 +24,7 @@
     /// An agent pays a price to a participant.
     /// </summary>
     [DataContract]
-    public partial class PayAction : TradeAction, IPayAction
+    public partial class PayAction : TradeAction, IPayAction, IEquatable<PayAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "recipient", Order = 307)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAudience, IContactPoint, IOrganization, IPerson> Recipient { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PayAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Purpose == other.Purpose &&
+                this.Recipient == other.Recipient &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PayAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Purpose)
+            .And(this.Recipient)
+            .And(base.GetHashCode());
     }
 }

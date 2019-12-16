@@ -39,7 +39,7 @@
     /// A specific strength in which a medical drug is available in a specific country.
     /// </summary>
     [DataContract]
-    public partial class DrugStrength : MedicalIntangible, IDrugStrength
+    public partial class DrugStrength : MedicalIntangible, IDrugStrength, IEquatable<DrugStrength>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -81,5 +81,39 @@
         [DataMember(Name = "strengthValue", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<double?> StrengthValue { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(DrugStrength other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ActiveIngredient == other.ActiveIngredient &&
+                this.AvailableIn == other.AvailableIn &&
+                this.MaximumIntake == other.MaximumIntake &&
+                this.StrengthUnit == other.StrengthUnit &&
+                this.StrengthValue == other.StrengthValue &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as DrugStrength);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ActiveIngredient)
+            .And(this.AvailableIn)
+            .And(this.MaximumIntake)
+            .And(this.StrengthUnit)
+            .And(this.StrengthValue)
+            .And(base.GetHashCode());
     }
 }

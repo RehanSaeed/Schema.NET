@@ -35,7 +35,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class FollowAction : InteractAction, IFollowAction
+    public partial class FollowAction : InteractAction, IFollowAction, IEquatable<FollowAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -49,5 +49,31 @@
         [DataMember(Name = "followee", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Followee { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(FollowAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Followee == other.Followee &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as FollowAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Followee)
+            .And(base.GetHashCode());
     }
 }

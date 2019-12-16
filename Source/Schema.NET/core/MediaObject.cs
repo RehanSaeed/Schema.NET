@@ -96,7 +96,7 @@
     /// A media object, such as an image, video, or audio object embedded in a web page or a downloadable dataset i.e. DataDownload. Note that a creative work may have many media objects associated with it on the same web page. For example, a page about a single song (MusicRecording) may have a music video (VideoObject), and a high and low bandwidth audio stream (2 AudioObject's).
     /// </summary>
     [DataContract]
-    public partial class MediaObject : CreativeWork, IMediaObject
+    public partial class MediaObject : CreativeWork, IMediaObject, IEquatable<MediaObject>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -226,5 +226,63 @@
         [DataMember(Name = "width", Order = 222)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IQuantitativeValue, int> Width { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MediaObject other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AssociatedArticle == other.AssociatedArticle &&
+                this.Bitrate == other.Bitrate &&
+                this.ContentSize == other.ContentSize &&
+                this.ContentUrl == other.ContentUrl &&
+                this.Duration == other.Duration &&
+                this.EmbedUrl == other.EmbedUrl &&
+                this.EncodesCreativeWork == other.EncodesCreativeWork &&
+                this.EncodingFormat == other.EncodingFormat &&
+                this.EndTime == other.EndTime &&
+                this.Height == other.Height &&
+                this.PlayerType == other.PlayerType &&
+                this.ProductionCompany == other.ProductionCompany &&
+                this.RegionsAllowed == other.RegionsAllowed &&
+                this.RequiresSubscription == other.RequiresSubscription &&
+                this.StartTime == other.StartTime &&
+                this.UploadDate == other.UploadDate &&
+                this.Width == other.Width &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MediaObject);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AssociatedArticle)
+            .And(this.Bitrate)
+            .And(this.ContentSize)
+            .And(this.ContentUrl)
+            .And(this.Duration)
+            .And(this.EmbedUrl)
+            .And(this.EncodesCreativeWork)
+            .And(this.EncodingFormat)
+            .And(this.EndTime)
+            .And(this.Height)
+            .And(this.PlayerType)
+            .And(this.ProductionCompany)
+            .And(this.RegionsAllowed)
+            .And(this.RequiresSubscription)
+            .And(this.StartTime)
+            .And(this.UploadDate)
+            .And(this.Width)
+            .And(base.GetHashCode());
     }
 }

@@ -24,7 +24,7 @@
     /// A web page element, like a table or an image.
     /// </summary>
     [DataContract]
-    public partial class WebPageElement : CreativeWork, IWebPageElement
+    public partial class WebPageElement : CreativeWork, IWebPageElement, IEquatable<WebPageElement>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -45,5 +45,33 @@
         [DataMember(Name = "xpath", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Xpath { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(WebPageElement other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.CssSelector == other.CssSelector &&
+                this.Xpath == other.Xpath &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as WebPageElement);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.CssSelector)
+            .And(this.Xpath)
+            .And(base.GetHashCode());
     }
 }

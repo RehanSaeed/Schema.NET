@@ -325,7 +325,7 @@ namespace Schema.NET.Test
 
         [Fact]
         public void EqualsOperator_NotEqualValue4Passed_ReturnsFalse() =>
-            Assert.False(new Values<int, string, DayOfWeek, Person>(new Person()) == new Values<int, string, DayOfWeek, Person>(new Person()));
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new Person { Name = "A" }) == new Values<int, string, DayOfWeek, Person>(new Person { Name = "B" }));
 
         [Fact]
         public void NotEqualsOperator_EqualValue1Passed_ReturnsFalse() =>
@@ -360,7 +360,7 @@ namespace Schema.NET.Test
 
         [Fact]
         public void NotEqualsOperator_NotEqualValue4Passed_ReturnsTrue() =>
-            Assert.True(new Values<int, string, DayOfWeek, Person>(new Person()) != new Values<int, string, DayOfWeek, Person>(new Person()));
+            Assert.True(new Values<int, string, DayOfWeek, Person>(new Person { Name = "A" }) != new Values<int, string, DayOfWeek, Person>(new Person { Name = "B" }));
 
         [Fact]
         public void Equals_EqualValue1Passed_ReturnsTrue() =>
@@ -395,7 +395,7 @@ namespace Schema.NET.Test
 
         [Fact]
         public void Equals_NotEqualValue4Passed_ReturnsFalse() =>
-            Assert.False(new Values<int, string, DayOfWeek, Person>(new Person()).Equals(new Values<int, string, DayOfWeek, Person>(new Person())));
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new Person { Name = "A" }).Equals(new Values<int, string, DayOfWeek, Person>(new Person { Name = "B" })));
 
         [Fact]
         public void GetHashCode_Value1Passed_ReturnsMatchingHashCode() =>

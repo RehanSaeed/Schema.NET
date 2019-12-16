@@ -9,7 +9,7 @@ namespace Schema.NET
     /// See https://json-ld.org/spec/latest/json-ld
     /// </summary>
     [DataContract]
-    public class JsonLdObject
+    public class JsonLdObject : IEquatable<JsonLdObject>
     {
         /// <summary>
         /// Gets the context used to define the short-hand names that are used throughout a JSON-LD document.
@@ -44,5 +44,31 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@id", Order = 2)]
         public virtual Uri Id { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(JsonLdObject other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Context == other.Context &&
+                this.Type == other.Type &&
+                this.Id == other.Id;
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as JsonLdObject);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Context)
+                .And(this.Type)
+                .And(this.Id);
     }
 }

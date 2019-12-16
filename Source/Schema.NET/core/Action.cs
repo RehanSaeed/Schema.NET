@@ -73,7 +73,7 @@
     /// See also &lt;a href="http://blog.schema.org/2014/04/announcing-schemaorg-actions.html"&gt;blog post&lt;/a&gt; and &lt;a href="http://schema.org/docs/actions.html"&gt;Actions overview document&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class Action : Thing, IAction
+    public partial class Action : Thing, IAction, IEquatable<Action>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -159,5 +159,51 @@
         [DataMember(Name = "target", Order = 116)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IEntryPoint, Uri> Target { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Action other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ActionStatus == other.ActionStatus &&
+                this.Agent == other.Agent &&
+                this.EndTime == other.EndTime &&
+                this.Error == other.Error &&
+                this.Instrument == other.Instrument &&
+                this.Location == other.Location &&
+                this.Object == other.Object &&
+                this.Participant == other.Participant &&
+                this.Result == other.Result &&
+                this.StartTime == other.StartTime &&
+                this.Target == other.Target &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Action);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ActionStatus)
+            .And(this.Agent)
+            .And(this.EndTime)
+            .And(this.Error)
+            .And(this.Instrument)
+            .And(this.Location)
+            .And(this.Object)
+            .And(this.Participant)
+            .And(this.Result)
+            .And(this.StartTime)
+            .And(this.Target)
+            .And(base.GetHashCode());
     }
 }

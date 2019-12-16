@@ -44,7 +44,7 @@
     /// An entry point, within some Web-based protocol.
     /// </summary>
     [DataContract]
-    public partial class EntryPoint : Intangible, IEntryPoint
+    public partial class EntryPoint : Intangible, IEntryPoint, IEquatable<EntryPoint>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -93,5 +93,41 @@
         [DataMember(Name = "urlTemplate", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> UrlTemplate { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(EntryPoint other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ActionApplication == other.ActionApplication &&
+                this.ActionPlatform == other.ActionPlatform &&
+                this.ContentType == other.ContentType &&
+                this.EncodingType == other.EncodingType &&
+                this.HttpMethod == other.HttpMethod &&
+                this.UrlTemplate == other.UrlTemplate &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as EntryPoint);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ActionApplication)
+            .And(this.ActionPlatform)
+            .And(this.ContentType)
+            .And(this.EncodingType)
+            .And(this.HttpMethod)
+            .And(this.UrlTemplate)
+            .And(base.GetHashCode());
     }
 }

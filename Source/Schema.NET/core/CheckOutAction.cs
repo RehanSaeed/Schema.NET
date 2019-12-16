@@ -27,12 +27,36 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class CheckOutAction : CommunicateAction, ICheckOutAction
+    public partial class CheckOutAction : CommunicateAction, ICheckOutAction, IEquatable<CheckOutAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "CheckOutAction";
+
+        /// <inheritdoc/>
+        public bool Equals(CheckOutAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CheckOutAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(base.GetHashCode());
     }
 }

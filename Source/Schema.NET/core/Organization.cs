@@ -270,7 +270,7 @@
     /// An organization such as a school, NGO, corporation, club, etc.
     /// </summary>
     [DataContract]
-    public partial class Organization : Thing, IOrganization
+    public partial class Organization : Thing, IOrganization, IEquatable<Organization>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -635,5 +635,131 @@
         [DataMember(Name = "vatID", Order = 156)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VatID { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Organization other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ActionableFeedbackPolicy == other.ActionableFeedbackPolicy &&
+                this.Address == other.Address &&
+                this.AggregateRating == other.AggregateRating &&
+                this.Alumni == other.Alumni &&
+                this.AreaServed == other.AreaServed &&
+                this.Award == other.Award &&
+                this.Brand == other.Brand &&
+                this.ContactPoint == other.ContactPoint &&
+                this.CorrectionsPolicy == other.CorrectionsPolicy &&
+                this.Department == other.Department &&
+                this.DissolutionDate == other.DissolutionDate &&
+                this.DiversityPolicy == other.DiversityPolicy &&
+                this.DiversityStaffingReport == other.DiversityStaffingReport &&
+                this.Duns == other.Duns &&
+                this.Email == other.Email &&
+                this.Employee == other.Employee &&
+                this.EthicsPolicy == other.EthicsPolicy &&
+                this.Event == other.Event &&
+                this.FaxNumber == other.FaxNumber &&
+                this.Founder == other.Founder &&
+                this.FoundingDate == other.FoundingDate &&
+                this.FoundingLocation == other.FoundingLocation &&
+                this.Funder == other.Funder &&
+                this.GlobalLocationNumber == other.GlobalLocationNumber &&
+                this.HasOfferCatalog == other.HasOfferCatalog &&
+                this.HasPOS == other.HasPOS &&
+                this.IsicV4 == other.IsicV4 &&
+                this.KnowsAbout == other.KnowsAbout &&
+                this.KnowsLanguage == other.KnowsLanguage &&
+                this.LegalName == other.LegalName &&
+                this.LeiCode == other.LeiCode &&
+                this.Location == other.Location &&
+                this.Logo == other.Logo &&
+                this.MakesOffer == other.MakesOffer &&
+                this.Member == other.Member &&
+                this.MemberOf == other.MemberOf &&
+                this.Naics == other.Naics &&
+                this.NumberOfEmployees == other.NumberOfEmployees &&
+                this.OwnershipFundingInfo == other.OwnershipFundingInfo &&
+                this.Owns == other.Owns &&
+                this.ParentOrganization == other.ParentOrganization &&
+                this.PublishingPrinciples == other.PublishingPrinciples &&
+                this.Review == other.Review &&
+                this.Seeks == other.Seeks &&
+                this.Slogan == other.Slogan &&
+                this.Sponsor == other.Sponsor &&
+                this.SubOrganization == other.SubOrganization &&
+                this.TaxID == other.TaxID &&
+                this.Telephone == other.Telephone &&
+                this.UnnamedSourcesPolicy == other.UnnamedSourcesPolicy &&
+                this.VatID == other.VatID &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Organization);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ActionableFeedbackPolicy)
+            .And(this.Address)
+            .And(this.AggregateRating)
+            .And(this.Alumni)
+            .And(this.AreaServed)
+            .And(this.Award)
+            .And(this.Brand)
+            .And(this.ContactPoint)
+            .And(this.CorrectionsPolicy)
+            .And(this.Department)
+            .And(this.DissolutionDate)
+            .And(this.DiversityPolicy)
+            .And(this.DiversityStaffingReport)
+            .And(this.Duns)
+            .And(this.Email)
+            .And(this.Employee)
+            .And(this.EthicsPolicy)
+            .And(this.Event)
+            .And(this.FaxNumber)
+            .And(this.Founder)
+            .And(this.FoundingDate)
+            .And(this.FoundingLocation)
+            .And(this.Funder)
+            .And(this.GlobalLocationNumber)
+            .And(this.HasOfferCatalog)
+            .And(this.HasPOS)
+            .And(this.IsicV4)
+            .And(this.KnowsAbout)
+            .And(this.KnowsLanguage)
+            .And(this.LegalName)
+            .And(this.LeiCode)
+            .And(this.Location)
+            .And(this.Logo)
+            .And(this.MakesOffer)
+            .And(this.Member)
+            .And(this.MemberOf)
+            .And(this.Naics)
+            .And(this.NumberOfEmployees)
+            .And(this.OwnershipFundingInfo)
+            .And(this.Owns)
+            .And(this.ParentOrganization)
+            .And(this.PublishingPrinciples)
+            .And(this.Review)
+            .And(this.Seeks)
+            .And(this.Slogan)
+            .And(this.Sponsor)
+            .And(this.SubOrganization)
+            .And(this.TaxID)
+            .And(this.Telephone)
+            .And(this.UnnamedSourcesPolicy)
+            .And(this.VatID)
+            .And(base.GetHashCode());
     }
 }

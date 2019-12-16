@@ -34,7 +34,7 @@
     /// Any recommendation made by a standard society (e.g. ACC/AHA) or consensus statement that denotes how to diagnose and treat a particular condition. Note: this type should be used to tag the actual guideline recommendation; if the guideline recommendation occurs in a larger scholarly article, use MedicalScholarlyArticle to tag the overall article, not this type. Note also: the organization making the recommendation should be captured in the recognizingAuthority base property of MedicalEntity.
     /// </summary>
     [DataContract]
-    public partial class MedicalGuideline : MedicalEntity, IMedicalGuideline
+    public partial class MedicalGuideline : MedicalEntity, IMedicalGuideline, IEquatable<MedicalGuideline>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "guidelineSubject", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalEntity> GuidelineSubject { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(MedicalGuideline other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.EvidenceLevel == other.EvidenceLevel &&
+                this.EvidenceOrigin == other.EvidenceOrigin &&
+                this.GuidelineDate == other.GuidelineDate &&
+                this.GuidelineSubject == other.GuidelineSubject &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as MedicalGuideline);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.EvidenceLevel)
+            .And(this.EvidenceOrigin)
+            .And(this.GuidelineDate)
+            .And(this.GuidelineSubject)
+            .And(base.GetHashCode());
     }
 }

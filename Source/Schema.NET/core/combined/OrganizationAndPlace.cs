@@ -15,7 +15,7 @@
     /// See Organization, Place for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class OrganizationAndPlace : Thing, IOrganizationAndPlace
+    public abstract partial class OrganizationAndPlace : Thing, IOrganizationAndPlace, IEquatable<OrganizationAndPlace>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -355,114 +355,128 @@
         public virtual Values<ILanguage, string> KnowsLanguage { get; set; }
 
         /// <summary>
+        /// The latitude of a location. For example &lt;code&gt;37.42242&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
+        /// </summary>
+        [DataMember(Name = "latitude", Order = 153)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual Values<double?, string> Latitude { get; set; }
+
+        /// <summary>
         /// The official name of the organization, e.g. the registered company name.
         /// </summary>
-        [DataMember(Name = "legalName", Order = 153)]
+        [DataMember(Name = "legalName", Order = 154)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> LegalName { get; set; }
 
         /// <summary>
         /// An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.
         /// </summary>
-        [DataMember(Name = "leiCode", Order = 154)]
+        [DataMember(Name = "leiCode", Order = 155)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> LeiCode { get; set; }
 
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
         /// </summary>
-        [DataMember(Name = "location", Order = 155)]
+        [DataMember(Name = "location", Order = 156)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IPlace, IPostalAddress, string> Location { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
-        [DataMember(Name = "logo", Order = 156)]
+        [DataMember(Name = "logo", Order = 157)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
+        /// The longitude of a location. For example &lt;code&gt;-122.08585&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
+        /// </summary>
+        [DataMember(Name = "longitude", Order = 158)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual Values<double?, string> Longitude { get; set; }
+
+        /// <summary>
         /// A pointer to products or services offered by the organization or person.
         /// </summary>
-        [DataMember(Name = "makesOffer", Order = 157)]
+        [DataMember(Name = "makesOffer", Order = 159)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOffer> MakesOffer { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
         /// </summary>
-        [DataMember(Name = "maximumAttendeeCapacity", Order = 158)]
+        [DataMember(Name = "maximumAttendeeCapacity", Order = 160)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<int?> MaximumAttendeeCapacity { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
         /// </summary>
-        [DataMember(Name = "member", Order = 159)]
+        [DataMember(Name = "member", Order = 161)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IOrganization, IPerson> Member { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
         /// </summary>
-        [DataMember(Name = "memberOf", Order = 160)]
+        [DataMember(Name = "memberOf", Order = 162)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IOrganization, IProgramMembership> MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
         /// </summary>
-        [DataMember(Name = "naics", Order = 161)]
+        [DataMember(Name = "naics", Order = 163)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> Naics { get; set; }
 
         /// <summary>
         /// The number of employees in an organization e.g. business.
         /// </summary>
-        [DataMember(Name = "numberOfEmployees", Order = 162)]
+        [DataMember(Name = "numberOfEmployees", Order = 164)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
 
         /// <summary>
         /// The opening hours of a certain place.
         /// </summary>
-        [DataMember(Name = "openingHoursSpecification", Order = 163)]
+        [DataMember(Name = "openingHoursSpecification", Order = 165)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence.   Note that the &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt; is also available and can be used to make basic funder information machine-readable.
         /// </summary>
-        [DataMember(Name = "ownershipFundingInfo", Order = 164)]
+        [DataMember(Name = "ownershipFundingInfo", Order = 166)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IAboutPage, ICreativeWork, string, Uri> OwnershipFundingInfo { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
         /// </summary>
-        [DataMember(Name = "owns", Order = 165)]
+        [DataMember(Name = "owns", Order = 167)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IOwnershipInfo, IProduct> Owns { get; set; }
 
         /// <summary>
         /// The larger organization that this organization is a &lt;a class="localLink" href="http://schema.org/subOrganization"&gt;subOrganization&lt;/a&gt; of, if any.
         /// </summary>
-        [DataMember(Name = "parentOrganization", Order = 166)]
+        [DataMember(Name = "parentOrganization", Order = 168)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOrganization> ParentOrganization { get; set; }
 
         /// <summary>
         /// A photograph of this place.
         /// </summary>
-        [DataMember(Name = "photo", Order = 167)]
+        [DataMember(Name = "photo", Order = 169)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
         /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
         /// </summary>
-        [DataMember(Name = "publicAccess", Order = 168)]
+        [DataMember(Name = "publicAccess", Order = 170)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<bool?> PublicAccess { get; set; }
 
@@ -470,35 +484,35 @@
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
         /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
-        [DataMember(Name = "publishingPrinciples", Order = 169)]
+        [DataMember(Name = "publishingPrinciples", Order = 171)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 170)]
+        [DataMember(Name = "review", Order = 172)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
-        [DataMember(Name = "seeks", Order = 171)]
+        [DataMember(Name = "seeks", Order = 173)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IDemand> Seeks { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
         /// </summary>
-        [DataMember(Name = "slogan", Order = 172)]
+        [DataMember(Name = "slogan", Order = 174)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> Slogan { get; set; }
 
         /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
         /// </summary>
-        [DataMember(Name = "smokingAllowed", Order = 173)]
+        [DataMember(Name = "smokingAllowed", Order = 175)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<bool?> SmokingAllowed { get; set; }
 
@@ -506,50 +520,228 @@
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
         /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "specialOpeningHoursSpecification", Order = 174)]
+        [DataMember(Name = "specialOpeningHoursSpecification", Order = 176)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 175)]
+        [DataMember(Name = "sponsor", Order = 177)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
         /// </summary>
-        [DataMember(Name = "subOrganization", Order = 176)]
+        [DataMember(Name = "subOrganization", Order = 178)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOrganization> SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
         /// </summary>
-        [DataMember(Name = "taxID", Order = 177)]
+        [DataMember(Name = "taxID", Order = 179)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> TaxID { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 178)]
+        [DataMember(Name = "telephone", Order = 180)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> Telephone { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (typically a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement about policy on use of unnamed sources and the decision process required.
         /// </summary>
-        [DataMember(Name = "unnamedSourcesPolicy", Order = 179)]
+        [DataMember(Name = "unnamedSourcesPolicy", Order = 181)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<ICreativeWork, Uri> UnnamedSourcesPolicy { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.
         /// </summary>
-        [DataMember(Name = "vatID", Order = 180)]
+        [DataMember(Name = "vatID", Order = 182)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> VatID { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(OrganizationAndPlace other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.ActionableFeedbackPolicy == other.ActionableFeedbackPolicy &&
+                this.AdditionalProperty == other.AdditionalProperty &&
+                this.Address == other.Address &&
+                this.AggregateRating == other.AggregateRating &&
+                this.Alumni == other.Alumni &&
+                this.AmenityFeature == other.AmenityFeature &&
+                this.AreaServed == other.AreaServed &&
+                this.Award == other.Award &&
+                this.BranchCode == other.BranchCode &&
+                this.Brand == other.Brand &&
+                this.ContactPoint == other.ContactPoint &&
+                this.ContainedInPlace == other.ContainedInPlace &&
+                this.ContainsPlace == other.ContainsPlace &&
+                this.CorrectionsPolicy == other.CorrectionsPolicy &&
+                this.Department == other.Department &&
+                this.DissolutionDate == other.DissolutionDate &&
+                this.DiversityPolicy == other.DiversityPolicy &&
+                this.DiversityStaffingReport == other.DiversityStaffingReport &&
+                this.Duns == other.Duns &&
+                this.Email == other.Email &&
+                this.Employee == other.Employee &&
+                this.EthicsPolicy == other.EthicsPolicy &&
+                this.Event == other.Event &&
+                this.FaxNumber == other.FaxNumber &&
+                this.Founder == other.Founder &&
+                this.FoundingDate == other.FoundingDate &&
+                this.FoundingLocation == other.FoundingLocation &&
+                this.Funder == other.Funder &&
+                this.Geo == other.Geo &&
+                this.GeoContains == other.GeoContains &&
+                this.GeoCoveredBy == other.GeoCoveredBy &&
+                this.GeoCovers == other.GeoCovers &&
+                this.GeoCrosses == other.GeoCrosses &&
+                this.GeoDisjoint == other.GeoDisjoint &&
+                this.GeoEquals == other.GeoEquals &&
+                this.GeoIntersects == other.GeoIntersects &&
+                this.GeoOverlaps == other.GeoOverlaps &&
+                this.GeoTouches == other.GeoTouches &&
+                this.GeoWithin == other.GeoWithin &&
+                this.GlobalLocationNumber == other.GlobalLocationNumber &&
+                this.HasMap == other.HasMap &&
+                this.HasOfferCatalog == other.HasOfferCatalog &&
+                this.HasPOS == other.HasPOS &&
+                this.IsAccessibleForFree == other.IsAccessibleForFree &&
+                this.IsicV4 == other.IsicV4 &&
+                this.KnowsAbout == other.KnowsAbout &&
+                this.KnowsLanguage == other.KnowsLanguage &&
+                this.Latitude == other.Latitude &&
+                this.LegalName == other.LegalName &&
+                this.LeiCode == other.LeiCode &&
+                this.Location == other.Location &&
+                this.Logo == other.Logo &&
+                this.Longitude == other.Longitude &&
+                this.MakesOffer == other.MakesOffer &&
+                this.MaximumAttendeeCapacity == other.MaximumAttendeeCapacity &&
+                this.Member == other.Member &&
+                this.MemberOf == other.MemberOf &&
+                this.Naics == other.Naics &&
+                this.NumberOfEmployees == other.NumberOfEmployees &&
+                this.OpeningHoursSpecification == other.OpeningHoursSpecification &&
+                this.OwnershipFundingInfo == other.OwnershipFundingInfo &&
+                this.Owns == other.Owns &&
+                this.ParentOrganization == other.ParentOrganization &&
+                this.Photo == other.Photo &&
+                this.PublicAccess == other.PublicAccess &&
+                this.PublishingPrinciples == other.PublishingPrinciples &&
+                this.Review == other.Review &&
+                this.Seeks == other.Seeks &&
+                this.Slogan == other.Slogan &&
+                this.SmokingAllowed == other.SmokingAllowed &&
+                this.SpecialOpeningHoursSpecification == other.SpecialOpeningHoursSpecification &&
+                this.Sponsor == other.Sponsor &&
+                this.SubOrganization == other.SubOrganization &&
+                this.TaxID == other.TaxID &&
+                this.Telephone == other.Telephone &&
+                this.UnnamedSourcesPolicy == other.UnnamedSourcesPolicy &&
+                this.VatID == other.VatID &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as OrganizationAndPlace);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.ActionableFeedbackPolicy)
+            .And(this.AdditionalProperty)
+            .And(this.Address)
+            .And(this.AggregateRating)
+            .And(this.Alumni)
+            .And(this.AmenityFeature)
+            .And(this.AreaServed)
+            .And(this.Award)
+            .And(this.BranchCode)
+            .And(this.Brand)
+            .And(this.ContactPoint)
+            .And(this.ContainedInPlace)
+            .And(this.ContainsPlace)
+            .And(this.CorrectionsPolicy)
+            .And(this.Department)
+            .And(this.DissolutionDate)
+            .And(this.DiversityPolicy)
+            .And(this.DiversityStaffingReport)
+            .And(this.Duns)
+            .And(this.Email)
+            .And(this.Employee)
+            .And(this.EthicsPolicy)
+            .And(this.Event)
+            .And(this.FaxNumber)
+            .And(this.Founder)
+            .And(this.FoundingDate)
+            .And(this.FoundingLocation)
+            .And(this.Funder)
+            .And(this.Geo)
+            .And(this.GeoContains)
+            .And(this.GeoCoveredBy)
+            .And(this.GeoCovers)
+            .And(this.GeoCrosses)
+            .And(this.GeoDisjoint)
+            .And(this.GeoEquals)
+            .And(this.GeoIntersects)
+            .And(this.GeoOverlaps)
+            .And(this.GeoTouches)
+            .And(this.GeoWithin)
+            .And(this.GlobalLocationNumber)
+            .And(this.HasMap)
+            .And(this.HasOfferCatalog)
+            .And(this.HasPOS)
+            .And(this.IsAccessibleForFree)
+            .And(this.IsicV4)
+            .And(this.KnowsAbout)
+            .And(this.KnowsLanguage)
+            .And(this.Latitude)
+            .And(this.LegalName)
+            .And(this.LeiCode)
+            .And(this.Location)
+            .And(this.Logo)
+            .And(this.Longitude)
+            .And(this.MakesOffer)
+            .And(this.MaximumAttendeeCapacity)
+            .And(this.Member)
+            .And(this.MemberOf)
+            .And(this.Naics)
+            .And(this.NumberOfEmployees)
+            .And(this.OpeningHoursSpecification)
+            .And(this.OwnershipFundingInfo)
+            .And(this.Owns)
+            .And(this.ParentOrganization)
+            .And(this.Photo)
+            .And(this.PublicAccess)
+            .And(this.PublishingPrinciples)
+            .And(this.Review)
+            .And(this.Seeks)
+            .And(this.Slogan)
+            .And(this.SmokingAllowed)
+            .And(this.SpecialOpeningHoursSpecification)
+            .And(this.Sponsor)
+            .And(this.SubOrganization)
+            .And(this.TaxID)
+            .And(this.Telephone)
+            .And(this.UnnamedSourcesPolicy)
+            .And(this.VatID)
+            .And(base.GetHashCode());
     }
 }

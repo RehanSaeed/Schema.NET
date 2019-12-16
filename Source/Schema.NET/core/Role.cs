@@ -31,7 +31,7 @@
     /// See also &lt;a href="http://blog.schema.org/2014/06/introducing-role.html"&gt;blog post&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class Role : Intangible, IRole
+    public partial class Role : Intangible, IRole, IEquatable<Role>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -59,5 +59,35 @@
         [DataMember(Name = "endDate", Order = 208)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> EndDate { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(Role other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.RoleName == other.RoleName &&
+                this.StartDate == other.StartDate &&
+                this.EndDate == other.EndDate &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Role);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.RoleName)
+            .And(this.StartDate)
+            .And(this.EndDate)
+            .And(base.GetHashCode());
     }
 }

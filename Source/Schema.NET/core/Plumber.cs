@@ -15,12 +15,36 @@
     /// A plumbing service.
     /// </summary>
     [DataContract]
-    public partial class Plumber : HomeAndConstructionBusiness, IPlumber
+    public partial class Plumber : HomeAndConstructionBusiness, IPlumber, IEquatable<Plumber>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Plumber";
+
+        /// <inheritdoc/>
+        public bool Equals(Plumber other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as Plumber);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(base.GetHashCode());
     }
 }

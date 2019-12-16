@@ -33,7 +33,7 @@
     /// It is common for properties applicable to an item from the series to be usefully applied to the containing group. Schema.org attempts to anticipate some of these cases, but publishers should be free to apply properties of the series parts to the series as a whole wherever they seem appropriate.
     /// </summary>
     [DataContract]
-    public partial class CreativeWorkSeries : CreativeWorkAndSeries, ICreativeWorkSeries
+    public partial class CreativeWorkSeries : CreativeWorkAndSeries, ICreativeWorkSeries, IEquatable<CreativeWorkSeries>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -61,5 +61,35 @@
         [DataMember(Name = "endDate", Order = 308)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> EndDate { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(CreativeWorkSeries other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Issn == other.Issn &&
+                this.StartDate == other.StartDate &&
+                this.EndDate == other.EndDate &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as CreativeWorkSeries);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Issn)
+            .And(this.StartDate)
+            .And(this.EndDate)
+            .And(base.GetHashCode());
     }
 }

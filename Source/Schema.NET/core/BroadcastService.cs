@@ -35,6 +35,11 @@
         OneOrMany<string> BroadcastTimezone { get; set; }
 
         /// <summary>
+        /// A &lt;a href="https://en.wikipedia.org/wiki/Call_sign"&gt;callsign&lt;/a&gt;, as used in broadcasting and radio communications to identify people, radio and TV stations, or vehicles.
+        /// </summary>
+        OneOrMany<string> CallSign { get; set; }
+
+        /// <summary>
         /// A broadcast channel of a broadcast service.
         /// </summary>
         OneOrMany<IBroadcastChannel> HasBroadcastChannel { get; set; }
@@ -54,7 +59,7 @@
     /// A delivery service through which content is provided via broadcast over the air or online.
     /// </summary>
     [DataContract]
-    public partial class BroadcastService : Service, IBroadcastService
+    public partial class BroadcastService : Service, IBroadcastService, IEquatable<BroadcastService>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -98,24 +103,73 @@
         public OneOrMany<string> BroadcastTimezone { get; set; }
 
         /// <summary>
+        /// A &lt;a href="https://en.wikipedia.org/wiki/Call_sign"&gt;callsign&lt;/a&gt;, as used in broadcasting and radio communications to identify people, radio and TV stations, or vehicles.
+        /// </summary>
+        [DataMember(Name = "callSign", Order = 311)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> CallSign { get; set; }
+
+        /// <summary>
         /// A broadcast channel of a broadcast service.
         /// </summary>
-        [DataMember(Name = "hasBroadcastChannel", Order = 311)]
+        [DataMember(Name = "hasBroadcastChannel", Order = 312)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IBroadcastChannel> HasBroadcastChannel { get; set; }
 
         /// <summary>
         /// A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
         /// </summary>
-        [DataMember(Name = "parentService", Order = 312)]
+        [DataMember(Name = "parentService", Order = 313)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IBroadcastService> ParentService { get; set; }
 
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).
         /// </summary>
-        [DataMember(Name = "videoFormat", Order = 313)]
+        [DataMember(Name = "videoFormat", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VideoFormat { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(BroadcastService other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.BroadcastAffiliateOf == other.BroadcastAffiliateOf &&
+                this.BroadcastDisplayName == other.BroadcastDisplayName &&
+                this.Broadcaster == other.Broadcaster &&
+                this.BroadcastFrequency == other.BroadcastFrequency &&
+                this.BroadcastTimezone == other.BroadcastTimezone &&
+                this.CallSign == other.CallSign &&
+                this.HasBroadcastChannel == other.HasBroadcastChannel &&
+                this.ParentService == other.ParentService &&
+                this.VideoFormat == other.VideoFormat &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as BroadcastService);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.BroadcastAffiliateOf)
+            .And(this.BroadcastDisplayName)
+            .And(this.Broadcaster)
+            .And(this.BroadcastFrequency)
+            .And(this.BroadcastTimezone)
+            .And(this.CallSign)
+            .And(this.HasBroadcastChannel)
+            .And(this.ParentService)
+            .And(this.VideoFormat)
+            .And(base.GetHashCode());
     }
 }

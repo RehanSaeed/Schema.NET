@@ -59,7 +59,7 @@
     /// CreativeWorkSeries dedicated to radio broadcast and associated online delivery.
     /// </summary>
     [DataContract]
-    public partial class RadioSeries : CreativeWorkSeries, IRadioSeries
+    public partial class RadioSeries : CreativeWorkSeries, IRadioSeries, IEquatable<RadioSeries>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -129,5 +129,47 @@
         [DataMember(Name = "trailer", Order = 414)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IVideoObject> Trailer { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(RadioSeries other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Actor == other.Actor &&
+                this.ContainsSeason == other.ContainsSeason &&
+                this.Director == other.Director &&
+                this.Episode == other.Episode &&
+                this.MusicBy == other.MusicBy &&
+                this.NumberOfEpisodes == other.NumberOfEpisodes &&
+                this.NumberOfSeasons == other.NumberOfSeasons &&
+                this.ProductionCompany == other.ProductionCompany &&
+                this.Trailer == other.Trailer &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as RadioSeries);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Actor)
+            .And(this.ContainsSeason)
+            .And(this.Director)
+            .And(this.Episode)
+            .And(this.MusicBy)
+            .And(this.NumberOfEpisodes)
+            .And(this.NumberOfSeasons)
+            .And(this.ProductionCompany)
+            .And(this.Trailer)
+            .And(base.GetHashCode());
     }
 }

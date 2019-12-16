@@ -36,7 +36,7 @@
     /// Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use &lt;a class="localLink" href="http://schema.org/Offer"&gt;Offer&lt;/a&gt;.
     /// </summary>
     [DataContract]
-    public partial class FlightReservation : Reservation, IFlightReservation
+    public partial class FlightReservation : Reservation, IFlightReservation, IEquatable<FlightReservation>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -71,5 +71,37 @@
         [DataMember(Name = "securityScreening", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> SecurityScreening { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(FlightReservation other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.BoardingGroup == other.BoardingGroup &&
+                this.PassengerPriorityStatus == other.PassengerPriorityStatus &&
+                this.PassengerSequenceNumber == other.PassengerSequenceNumber &&
+                this.SecurityScreening == other.SecurityScreening &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as FlightReservation);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.BoardingGroup)
+            .And(this.PassengerPriorityStatus)
+            .And(this.PassengerSequenceNumber)
+            .And(this.SecurityScreening)
+            .And(base.GetHashCode());
     }
 }

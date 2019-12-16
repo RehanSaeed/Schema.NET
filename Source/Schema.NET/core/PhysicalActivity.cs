@@ -34,7 +34,7 @@
     /// Any bodily activity that enhances or maintains physical fitness and overall health and wellness. Includes activity that is part of daily living and routine, structured exercise, and exercise prescribed as part of a medical treatment or recovery plan.
     /// </summary>
     [DataContract]
-    public partial class PhysicalActivity : LifestyleModification, IPhysicalActivity
+    public partial class PhysicalActivity : LifestyleModification, IPhysicalActivity, IEquatable<PhysicalActivity>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -69,5 +69,37 @@
         [DataMember(Name = "pathophysiology", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Pathophysiology { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(PhysicalActivity other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AssociatedAnatomy == other.AssociatedAnatomy &&
+                this.Category == other.Category &&
+                this.Epidemiology == other.Epidemiology &&
+                this.Pathophysiology == other.Pathophysiology &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as PhysicalActivity);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AssociatedAnatomy)
+            .And(this.Category)
+            .And(this.Epidemiology)
+            .And(this.Pathophysiology)
+            .And(base.GetHashCode());
     }
 }

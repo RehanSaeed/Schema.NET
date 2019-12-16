@@ -7,7 +7,7 @@
     /// <summary>
     /// See LocalBusiness, Place for more information.
     /// </summary>
-    public partial interface ILocalBusinessAndPlace : ILocalBusiness, IPlace
+    public partial interface ILocalBusinessAndPlace : IPlace, ILocalBusiness
     {
     }
 
@@ -15,7 +15,7 @@
     /// See LocalBusiness, Place for more information.
     /// </summary>
     [DataContract]
-    public abstract partial class LocalBusinessAndPlace : OrganizationAndPlace, ILocalBusinessAndPlace
+    public abstract partial class LocalBusinessAndPlace : OrganizationAndPlace, ILocalBusinessAndPlace, IEquatable<LocalBusinessAndPlace>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -202,16 +202,30 @@
         public override OneOrMany<string> IsicV4 { get; set; }
 
         /// <summary>
+        /// The latitude of a location. For example &lt;code&gt;37.42242&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
+        /// </summary>
+        [DataMember(Name = "latitude", Order = 231)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override Values<double?, string> Latitude { get; set; }
+
+        /// <summary>
         /// An associated logo.
         /// </summary>
-        [DataMember(Name = "logo", Order = 231)]
+        [DataMember(Name = "logo", Order = 232)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
+        /// The longitude of a location. For example &lt;code&gt;-122.08585&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
+        /// </summary>
+        [DataMember(Name = "longitude", Order = 233)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override Values<double?, string> Longitude { get; set; }
+
+        /// <summary>
         /// The total number of individuals that may attend an event or venue.
         /// </summary>
-        [DataMember(Name = "maximumAttendeeCapacity", Order = 232)]
+        [DataMember(Name = "maximumAttendeeCapacity", Order = 234)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<int?> MaximumAttendeeCapacity { get; set; }
 
@@ -224,63 +238,63 @@
         /// &lt;li&gt;If a business is open 7 days a week, then it can be specified as &lt;code&gt;&amp;lt;time itemprop=&amp;quot;openingHours&amp;quot; datetime=&amp;quot;Mo-Su&amp;quot;&amp;gt;Monday through Sunday, all day&amp;lt;/time&amp;gt;&lt;/code&gt;.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "openingHours", Order = 233)]
+        [DataMember(Name = "openingHours", Order = 235)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> OpeningHours { get; set; }
 
         /// <summary>
         /// The opening hours of a certain place.
         /// </summary>
-        [DataMember(Name = "openingHoursSpecification", Order = 234)]
+        [DataMember(Name = "openingHoursSpecification", Order = 236)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IOpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// Cash, Credit Card, Cryptocurrency, Local Exchange Tradings System, etc.
         /// </summary>
-        [DataMember(Name = "paymentAccepted", Order = 235)]
+        [DataMember(Name = "paymentAccepted", Order = 237)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PaymentAccepted { get; set; }
 
         /// <summary>
         /// A photograph of this place.
         /// </summary>
-        [DataMember(Name = "photo", Order = 236)]
+        [DataMember(Name = "photo", Order = 238)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
         /// </summary>
-        [DataMember(Name = "priceRange", Order = 237)]
+        [DataMember(Name = "priceRange", Order = 239)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PriceRange { get; set; }
 
         /// <summary>
         /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
         /// </summary>
-        [DataMember(Name = "publicAccess", Order = 238)]
+        [DataMember(Name = "publicAccess", Order = 240)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<bool?> PublicAccess { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 239)]
+        [DataMember(Name = "review", Order = 241)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
         /// </summary>
-        [DataMember(Name = "slogan", Order = 240)]
+        [DataMember(Name = "slogan", Order = 242)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> Slogan { get; set; }
 
         /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
         /// </summary>
-        [DataMember(Name = "smokingAllowed", Order = 241)]
+        [DataMember(Name = "smokingAllowed", Order = 243)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<bool?> SmokingAllowed { get; set; }
 
@@ -288,15 +302,119 @@
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
         /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "specialOpeningHoursSpecification", Order = 242)]
+        [DataMember(Name = "specialOpeningHoursSpecification", Order = 244)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IOpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 243)]
+        [DataMember(Name = "telephone", Order = 245)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> Telephone { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(LocalBusinessAndPlace other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.AdditionalProperty == other.AdditionalProperty &&
+                this.Address == other.Address &&
+                this.AggregateRating == other.AggregateRating &&
+                this.AmenityFeature == other.AmenityFeature &&
+                this.BranchCode == other.BranchCode &&
+                this.ContainedInPlace == other.ContainedInPlace &&
+                this.ContainsPlace == other.ContainsPlace &&
+                this.CurrenciesAccepted == other.CurrenciesAccepted &&
+                this.Event == other.Event &&
+                this.FaxNumber == other.FaxNumber &&
+                this.Geo == other.Geo &&
+                this.GeoContains == other.GeoContains &&
+                this.GeoCoveredBy == other.GeoCoveredBy &&
+                this.GeoCovers == other.GeoCovers &&
+                this.GeoCrosses == other.GeoCrosses &&
+                this.GeoDisjoint == other.GeoDisjoint &&
+                this.GeoEquals == other.GeoEquals &&
+                this.GeoIntersects == other.GeoIntersects &&
+                this.GeoOverlaps == other.GeoOverlaps &&
+                this.GeoTouches == other.GeoTouches &&
+                this.GeoWithin == other.GeoWithin &&
+                this.GlobalLocationNumber == other.GlobalLocationNumber &&
+                this.HasMap == other.HasMap &&
+                this.IsAccessibleForFree == other.IsAccessibleForFree &&
+                this.IsicV4 == other.IsicV4 &&
+                this.Latitude == other.Latitude &&
+                this.Logo == other.Logo &&
+                this.Longitude == other.Longitude &&
+                this.MaximumAttendeeCapacity == other.MaximumAttendeeCapacity &&
+                this.OpeningHours == other.OpeningHours &&
+                this.OpeningHoursSpecification == other.OpeningHoursSpecification &&
+                this.PaymentAccepted == other.PaymentAccepted &&
+                this.Photo == other.Photo &&
+                this.PriceRange == other.PriceRange &&
+                this.PublicAccess == other.PublicAccess &&
+                this.Review == other.Review &&
+                this.Slogan == other.Slogan &&
+                this.SmokingAllowed == other.SmokingAllowed &&
+                this.SpecialOpeningHoursSpecification == other.SpecialOpeningHoursSpecification &&
+                this.Telephone == other.Telephone &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as LocalBusinessAndPlace);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.AdditionalProperty)
+            .And(this.Address)
+            .And(this.AggregateRating)
+            .And(this.AmenityFeature)
+            .And(this.BranchCode)
+            .And(this.ContainedInPlace)
+            .And(this.ContainsPlace)
+            .And(this.CurrenciesAccepted)
+            .And(this.Event)
+            .And(this.FaxNumber)
+            .And(this.Geo)
+            .And(this.GeoContains)
+            .And(this.GeoCoveredBy)
+            .And(this.GeoCovers)
+            .And(this.GeoCrosses)
+            .And(this.GeoDisjoint)
+            .And(this.GeoEquals)
+            .And(this.GeoIntersects)
+            .And(this.GeoOverlaps)
+            .And(this.GeoTouches)
+            .And(this.GeoWithin)
+            .And(this.GlobalLocationNumber)
+            .And(this.HasMap)
+            .And(this.IsAccessibleForFree)
+            .And(this.IsicV4)
+            .And(this.Latitude)
+            .And(this.Logo)
+            .And(this.Longitude)
+            .And(this.MaximumAttendeeCapacity)
+            .And(this.OpeningHours)
+            .And(this.OpeningHoursSpecification)
+            .And(this.PaymentAccepted)
+            .And(this.Photo)
+            .And(this.PriceRange)
+            .And(this.PublicAccess)
+            .And(this.Review)
+            .And(this.Slogan)
+            .And(this.SmokingAllowed)
+            .And(this.SpecialOpeningHoursSpecification)
+            .And(this.Telephone)
+            .And(base.GetHashCode());
     }
 }

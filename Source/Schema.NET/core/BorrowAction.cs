@@ -27,7 +27,7 @@
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
-    public partial class BorrowAction : TransferAction, IBorrowAction
+    public partial class BorrowAction : TransferAction, IBorrowAction, IEquatable<BorrowAction>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -41,5 +41,31 @@
         [DataMember(Name = "lender", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Lender { get; set; }
+
+        /// <inheritdoc/>
+        public bool Equals(BorrowAction other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Type == other.Type &&
+                this.Lender == other.Lender &&
+                base.Equals(other);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => this.Equals(obj as BorrowAction);
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.Lender)
+            .And(base.GetHashCode());
     }
 }
