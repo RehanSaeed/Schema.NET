@@ -83,6 +83,60 @@ namespace Schema.NET.Test
                 Url = new Uri("https://schema.net/Thing")
             });
 
+        [Fact]
+        public void Equality_AreNotEqual_DifferentTypes_SameBaseProperties() => CompareNotEqual(
+            new Thing
+            {
+                Name = "Person Name",
+                Url = new Uri("https://schema.net")
+            }, new Person
+            {
+                Name = "Person Name",
+                Url = new Uri("https://schema.net")
+            });
+
+        [Fact]
+        public void Equality_AreEqual_SameDerivedType_SameBaseProperties() => CompareEqual(
+            new Person
+            {
+                Name = "Person Name",
+                Url = new Uri("https://schema.net")
+            }, new Person
+            {
+                Name = "Person Name",
+                Url = new Uri("https://schema.net")
+            });
+
+        [Fact]
+        public void Equality_AreEqual_SameDerivedType_SameDerivedProperties() => CompareEqual(
+            new Person
+            {
+                AdditionalName = "Extra Name"
+            }, new Person
+            {
+                AdditionalName = "Extra Name"
+            });
+
+        [Fact]
+        public void Equality_AreNotEqual_SameDerivedType_DifferentBaseProperties() => CompareNotEqual(
+            new Person
+            {
+                Name = "A"
+            }, new Person
+            {
+                Name = "B"
+            });
+
+        [Fact]
+        public void Equality_AreNotEqual_SameDerivedType_DifferentDerivedProperties() => CompareNotEqual(
+            new Person
+            {
+                AdditionalName = "A"
+            }, new Person
+            {
+                AdditionalName = "B"
+            });
+
         private static void CompareEqual<T>(T a, T b)
         {
             Assert.Equal(a.GetHashCode(), b?.GetHashCode());
