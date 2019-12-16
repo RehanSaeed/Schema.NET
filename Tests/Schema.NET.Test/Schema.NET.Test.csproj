@@ -29,6 +29,7 @@
         Version="1.0.0"
         ExcludeAssets="All"
         PrivateAssets="All" />
+    <Reference Include="System.Runtime" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' AND '$(TargetFramework)' == 'net472' ">
     <FrameworkPathOverride>$(NuGetPackageRoot)microsoft.targetingpack.netframework.v4.7.2/1.0.0/lib/net472/</FrameworkPathOverride>
