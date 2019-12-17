@@ -7,6 +7,7 @@ namespace Schema.NET
     using System.Globalization;
     using System.Linq;
     using System.Reflection;
+    using System.Xml;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -319,8 +320,25 @@ namespace Schema.NET
                 }
                 else if (targetType == typeof(TimeSpan))
                 {
-                    success = TimeSpan.TryParse(valueString, CultureInfo.InvariantCulture, out var localResult);
-                    result = localResult;
+                    if (TimeSpan.TryParse(valueString, CultureInfo.InvariantCulture, out var localResult))
+                    {
+                        success = true;
+                        result = localResult;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            result = XmlConvert.ToTimeSpan(valueString);
+                            success = true;
+                        }
+#pragma warning disable CA1031 // Do not catch general exception types
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex);
+                        }
+#pragma warning restore CA1031 // Do not catch general exception types
+                    }
                 }
                 else if (targetType == typeof(Uri))
                 {
