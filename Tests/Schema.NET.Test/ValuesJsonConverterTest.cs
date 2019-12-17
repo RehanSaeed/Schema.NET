@@ -64,7 +64,7 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void WriteJson_DateTime_ISO8601()
+        public void WriteJson_DateTime_ISO8601_DateTime()
         {
             var value = new OneOrMany<DateTime>(new DateTime(2000, 1, 1, 12, 34, 56));
             var json = this.SerializeObject(value);
@@ -72,7 +72,7 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void WriteJson_DateTimeOffset_ISO8601()
+        public void WriteJson_DateTimeOffset_ISO8601_DateTimeWithTimeOffset()
         {
             var value = new OneOrMany<DateTimeOffset>(new DateTimeOffset(2000, 1, 1, 12, 34, 56, TimeSpan.FromHours(1)));
             var json = this.SerializeObject(value);
@@ -80,7 +80,7 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void WriteJson_TimeSpan_ISO8601()
+        public void WriteJson_TimeSpan_ISO8601_TimeOfDay()
         {
             var value = new OneOrMany<TimeSpan>(new TimeSpan(12, 34, 56));
             var json = this.SerializeObject(value);
@@ -208,7 +208,7 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void ReadJson_Values_SingleValue_TimeSpanAsISO8601String()
+        public void ReadJson_Values_SingleValue_TimeSpanAsISO8601TimeOfDayString()
         {
             var json = "{\"Property\":\"12:34\"}";
             var result = this.DeserializeObject<Values<string, TimeSpan>>(json);
