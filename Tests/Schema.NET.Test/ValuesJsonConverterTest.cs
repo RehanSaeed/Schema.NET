@@ -64,6 +64,30 @@ namespace Schema.NET.Test
         }
 
         [Fact]
+        public void WriteJson_DateTime_ISO8601()
+        {
+            var value = new OneOrMany<DateTime>(new DateTime(2000, 1, 1, 12, 34, 56));
+            var json = this.SerializeObject(value);
+            Assert.Equal("{\"Property\":\"2000-01-01T12:34:56\"}", json);
+        }
+
+        [Fact]
+        public void WriteJson_DateTimeOffset_ISO8601()
+        {
+            var value = new OneOrMany<DateTimeOffset>(new DateTimeOffset(2000, 1, 1, 12, 34, 56, TimeSpan.FromHours(1)));
+            var json = this.SerializeObject(value);
+            Assert.Equal("{\"Property\":\"2000-01-01T12:34:56+01:00\"}", json);
+        }
+
+        [Fact]
+        public void WriteJson_TimeSpan_ISO8601()
+        {
+            var value = new OneOrMany<TimeSpan>(new TimeSpan(12, 34, 56));
+            var json = this.SerializeObject(value);
+            Assert.Equal("{\"Property\":\"12:34:56\"}", json);
+        }
+
+        [Fact]
         public void ReadJson_Values_SingleValue_String()
         {
             var json = "{\"Property\":\"Test String\"}";
