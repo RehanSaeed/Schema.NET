@@ -138,7 +138,13 @@ namespace Schema.NET
             }
             else
             {
-                this.WriteObject(writer, values.Cast<object>(), serializer);
+                writer.WriteStartArray();
+                foreach (var item in values)
+                {
+                    this.WriteObject(writer, item, serializer);
+                }
+
+                writer.WriteEndArray();
             }
         }
 
