@@ -184,6 +184,14 @@ namespace Schema.NET.Test
         }
 
         [Fact]
+        public void ReadJson_Values_SingleValue_TimeSpanAsISO8601String()
+        {
+            var json = "{\"Property\":\"12:34\"}";
+            var result = this.DeserializeObject<Values<string, TimeSpan>>(json);
+            Assert.Equal(new TimeSpan(12, 34, 0), result.Value2.First());
+        }
+
+        [Fact]
         public void ReadJson_ParseValueToken_UriAsString()
         {
             var json = "{\"Property\":\"https://schema.org/Thing\"}";

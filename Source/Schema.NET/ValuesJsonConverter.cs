@@ -317,6 +317,11 @@ namespace Schema.NET
                     success = DateTimeOffset.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out var localResult);
                     result = localResult;
                 }
+                else if (targetType == typeof(TimeSpan))
+                {
+                    success = TimeSpan.TryParse(valueString, CultureInfo.InvariantCulture, out var localResult);
+                    result = localResult;
+                }
                 else if (targetType == typeof(Uri))
                 {
                     success = Uri.TryCreate(valueString, UriKind.Absolute, out var localResult);
