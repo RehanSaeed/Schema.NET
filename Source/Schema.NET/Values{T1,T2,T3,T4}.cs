@@ -473,40 +473,15 @@ namespace Schema.NET
         /// </returns>
         public bool Equals(Values<T1, T2, T3, T4> other)
         {
-            if (other.HasValue1)
-            {
-                if (this.HasValue1)
-                {
-                    return this.Value1.Equals(other.Value1);
-                }
-            }
-            else if (other.HasValue2)
-            {
-                if (this.HasValue2)
-                {
-                    return this.Value2.Equals(other.Value2);
-                }
-            }
-            else if (other.HasValue3)
-            {
-                if (this.HasValue3)
-                {
-                    return this.Value3.Equals(other.Value3);
-                }
-            }
-            else if (other.HasValue4)
-            {
-                if (this.HasValue4)
-                {
-                    return this.Value4.Equals(other.Value4);
-                }
-            }
-            else if (!other.HasValue && !this.HasValue)
+            if (!other.HasValue && !this.HasValue)
             {
                 return true;
             }
 
-            return false;
+            return this.Value1.Equals(other.Value1) &&
+                this.Value2.Equals(other.Value2) &&
+                this.Value3.Equals(other.Value3) &&
+                this.Value4.Equals(other.Value4);
         }
 
         /// <summary>
