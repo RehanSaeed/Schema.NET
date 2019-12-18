@@ -201,6 +201,34 @@ namespace Schema.NET.Test
             Assert.False(new Values<int, string>("Foo").Equals(new Values<int, string>("Bar")));
 
         [Fact]
+        public void Equals_EqualValuesPassed_ReturnsTrue() =>
+            Assert.True(new Values<int, string>(new object[] { 0, "Foo" }).Equals(new object[] { 0, "Foo" }));
+
+        [Fact]
+        public void Equals_MixedTypes_Value1EqualValue2NotEqual_ReturnsFalse() =>
+            Assert.False(new Values<int, string>(new object[] { 0, "Foo" }).Equals(new Values<int, string>(new object[] { 0, "Bar" })));
+
+        [Fact]
+        public void Equals_MixedTypes_Value1NotEqualValue2Equal_ReturnsFalse() =>
+            Assert.False(new Values<int, string>(new object[] { 0, "Foo" }).Equals(new Values<int, string>(new object[] { 1, "Foo" })));
+
+        [Fact]
+        public void Equals_MixedTypes_ThisMissingValue2_ReturnsFalse() =>
+            Assert.False(new Values<int, string>(new object[] { 0 }).Equals(new Values<int, string>(new object[] { 0, "Foo" })));
+
+        [Fact]
+        public void Equals_MixedTypes_ThisMissingValue1_ReturnsFalse() =>
+            Assert.False(new Values<int, string>(new object[] { "Foo" }).Equals(new Values<int, string>(new object[] { 0, "Foo" })));
+
+        [Fact]
+        public void Equals_MixedTypes_OtherMissingValue2_ReturnsFalse() =>
+            Assert.False(new Values<int, string>(new object[] { 0, "Foo" }).Equals(new Values<int, string>(new object[] { 0 })));
+
+        [Fact]
+        public void Equals_MixedTypes_OtherMissingValue1_ReturnsFalse() =>
+            Assert.False(new Values<int, string>(new object[] { 0, "Foo" }).Equals(new Values<int, string>(new object[] { "Foo" })));
+
+        [Fact]
         public void GetHashCode_Value1Passed_ReturnsMatchingHashCode() =>
             Assert.Equal(CombineHashCodes(1.GetHashCode(), 0), new Values<int, string>(1).GetHashCode());
 

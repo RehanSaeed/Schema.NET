@@ -398,6 +398,54 @@ namespace Schema.NET.Test
             Assert.False(new Values<int, string, DayOfWeek, Person>(new Person { Name = "A" }).Equals(new Values<int, string, DayOfWeek, Person>(new Person { Name = "B" })));
 
         [Fact]
+        public void Equals_MixedTypes_Value1EqualValue2EqualValue3EqualValue4NotEqual_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person { Name = "Schema" } })));
+
+        [Fact]
+        public void Equals_MixedTypes_Value1EqualValue2EqualValue3NotEqualValue4Equal_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Wednesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_Value1EqualValue2NotEqualValue3EqualValue4Equal_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Bar", DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_Value1NotEqualValue2EqualValue3EqualValue4Equal_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 1, "Foo", DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_ThisMissingValue4_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_ThisMissingValue3_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_ThisMissingValue2_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_ThisMissingValue1_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_OtherMissingValue4_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday })));
+
+        [Fact]
+        public void Equals_MixedTypes_OtherMissingValue3_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_OtherMissingValue2_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { 0, DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_OtherMissingValue1_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek, Person>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek, Person>(new object[] { "Foo", DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
         public void GetHashCode_Value1Passed_ReturnsMatchingHashCode() =>
             Assert.Equal(
                 CombineHashCodes(CombineHashCodes(CombineHashCodes(1.GetHashCode(), 0), 0), 0),

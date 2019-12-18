@@ -66,26 +66,6 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void DeserializeObject_DeserializesBankAccountTypeToStringAndUri_BankAccountTypeHasStringAndUriValues()
-        {
-            var json =
-                @"{" +
-                    "\"@context\":\"https://schema.org\"," +
-                    "\"@type\":\"BankAccount\"," +
-                    "\"bankAccountType\":[" +
-                        "\"http://example.com/1\"," +
-                    "]" +
-                "}";
-
-            var bankAccount = JsonConvert.DeserializeObject<BankAccount>(json, TestDefaults.DefaultJsonSerializerSettings);
-
-            Assert.True(bankAccount.BankAccountType.HasValue);
-            Assert.Equal(
-                new List<object>() { "http://example.com/1", new Uri("http://example.com/1") },
-                bankAccount.BankAccountType);
-        }
-
-        [Fact]
         public void ToString_Book_MatchesExpectedJson() =>
             Assert.Equal(this.json, this.book.ToString());
 
