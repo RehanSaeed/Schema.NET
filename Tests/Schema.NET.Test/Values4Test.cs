@@ -398,6 +398,22 @@ namespace Schema.NET.Test
             Assert.False(new Values<int, string, DayOfWeek, Person>(new Person()).Equals(new Values<int, string, DayOfWeek, Person>(new Person())));
 
         [Fact]
+        public void Equals_MixedTypes_Value1EqualValue2EqualValue3EqualValue4NotEqual_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person { Name = "Schema" } })));
+
+        [Fact]
+        public void Equals_MixedTypes_Value1EqualValue2EqualValue3NotEqualValue4Equal_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek>(new object[] { 0, "Foo", DayOfWeek.Wednesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_Value1EqualValue2NotEqualValue3EqualValue4Equal_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek>(new object[] { 0, "Bar", DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
+        public void Equals_MixedTypes_Value1NotEqualValue2EqualValue3EqualValue4Equal_ReturnsFalse() =>
+            Assert.False(new Values<int, string, DayOfWeek>(new object[] { 0, "Foo", DayOfWeek.Tuesday, new Person() }).Equals(new Values<int, string, DayOfWeek>(new object[] { 1, "Foo", DayOfWeek.Tuesday, new Person() })));
+
+        [Fact]
         public void GetHashCode_Value1Passed_ReturnsMatchingHashCode() =>
             Assert.Equal(
                 CombineHashCodes(CombineHashCodes(CombineHashCodes(1.GetHashCode(), 0), 0), 0),
