@@ -32,6 +32,6 @@
         /// The status of a reservation when a request has been sent, but not confirmed.
         /// </summary>
         [EnumMember(Value = "https://schema.org/ReservationPending")]
-        ReservationPending
+        ReservationPending,
     }
 }

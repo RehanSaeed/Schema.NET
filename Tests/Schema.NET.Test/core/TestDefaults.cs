@@ -16,7 +16,7 @@ namespace Schema.NET.Test
             NullValueHandling = NullValueHandling.Ignore,
             TypeNameHandling = TypeNameHandling.None,
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
-            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
         };
     }
 }

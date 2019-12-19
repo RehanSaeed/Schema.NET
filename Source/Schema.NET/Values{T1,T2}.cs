@@ -92,12 +92,12 @@ namespace Schema.NET
         public bool HasValue => this.HasValue1 || this.HasValue2;
 
         /// <summary>
-        /// Gets whether the value of type <typeparamref name="T1" /> has a value.
+        /// Gets a value indicating whether the value of type <typeparamref name="T1" /> has a value.
         /// </summary>
         public bool HasValue1 { get; }
 
         /// <summary>
-        /// Gets whether the value of type <typeparamref name="T2" /> has a value.
+        /// Gets a value indicating whether the value of type <typeparamref name="T2" /> has a value.
         /// </summary>
         public bool HasValue2 { get; }
 

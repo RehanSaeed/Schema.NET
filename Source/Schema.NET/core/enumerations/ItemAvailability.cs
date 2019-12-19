@@ -62,6 +62,6 @@
         /// Indicates that the item has sold out.
         /// </summary>
         [EnumMember(Value = "https://schema.org/SoldOut")]
-        SoldOut
+        SoldOut,
     }
 }

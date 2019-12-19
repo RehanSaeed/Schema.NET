@@ -38,6 +38,6 @@
         /// The payment is due and considered late.
         /// </summary>
         [EnumMember(Value = "https://schema.org/PaymentPastDue")]
-        PaymentPastDue
+        PaymentPastDue,
     }
 }

@@ -3,6 +3,9 @@ namespace Schema.NET
     using System.Linq;
     using System.Text;
 
+    /// <summary>
+    /// A Property value specification.
+    /// </summary>
     public partial class PropertyValueSpecification
     {
         /// <summary>

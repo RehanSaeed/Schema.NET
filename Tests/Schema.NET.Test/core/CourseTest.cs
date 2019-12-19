@@ -14,8 +14,8 @@ namespace Schema.NET.Test
             Provider = new Organization() // Recommended
             {
                 Name = "University of Technology - Eureka",
-                SameAs = new Uri("http://www.ut-eureka.edu")
-            }
+                SameAs = new Uri("http://www.ut-eureka.edu"),
+            },
         };
 
         private readonly string json =

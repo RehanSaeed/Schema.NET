@@ -26,6 +26,6 @@
         /// Indicates the usage of the car as a taxi.
         /// </summary>
         [EnumMember(Value = "https://schema.org/TaxiVehicleUsage")]
-        TaxiVehicleUsage
+        TaxiVehicleUsage,
     }
 }

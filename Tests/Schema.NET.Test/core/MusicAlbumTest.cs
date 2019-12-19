@@ -15,11 +15,11 @@ namespace Schema.NET.Test
             {
                 new ImageObject() // Recommended
                 {
-                    ContentUrl = new Uri("https://i.scdn.co/image/5ded47fd3d05325dd0faaf4619481e1f25a21ec7") // Required
+                    ContentUrl = new Uri("https://i.scdn.co/image/5ded47fd3d05325dd0faaf4619481e1f25a21ec7"), // Required
                 },
                 new ImageObject() // Recommended
                 {
-                    ContentUrl = new Uri("https://is4-ssl.mzstatic.com/image/thumb/Music69/v4/cc/1c/90/cc1c9039-c3ba-4256-e251-1687df46cb0a/cover.jpg/1400x1400bb.jpeg") // Required
+                    ContentUrl = new Uri("https://is4-ssl.mzstatic.com/image/thumb/Music69/v4/cc/1c/90/cc1c9039-c3ba-4256-e251-1687df46cb0a/cover.jpg/1400x1400bb.jpeg"), // Required
                 },
             },
             SameAs = new Uri("https://music.apple.com/us/album/hail-to-the-thief/1097863576"), // Recommended
@@ -28,25 +28,25 @@ namespace Schema.NET.Test
             {
                 BestRating = 100, // Required
                 RatingValue = 60, // Required
-                WorstRating = 0 // Required
+                WorstRating = 0, // Required
             },
             DatePublished = new DateTime(2003, 5, 26), // Recommended
             Offers = new Offer() // Recommended
             {
-                Gtin12 = "634904078560"
+                Gtin12 = "634904078560",
             },
             NumTracks = 14, // Recommended
             AlbumRelease = new MusicRelease() // Recommended
             {
                 RecordLabel = new Organization()
                 {
-                    Name = "XL Recordings"// Required
-                }
+                    Name = "XL Recordings", // Required
+                },
             },
             ByArtist = new MusicGroup() // Recommended
             {
                 Name = "Radiohead", // Required
-                Identifier = "4Z8W4fKeB5YxbusRsdQVPb" // Recommended
+                Identifier = "4Z8W4fKeB5YxbusRsdQVPb", // Recommended
             },
         };
 

@@ -43,26 +43,26 @@ namespace Schema.NET.Test
         private static readonly Person Person = new Person()
         {
             Name = "J.D. Salinger</script><script>alert('gotcha');</script>",
-            Description = (string)null
+            Description = (string)null,
         };
 
         private readonly Book book = new Book()
         {
             Id = new Uri("http://example.com/book/1"),
             Name = "The Catcher in the Rye</script><script>alert('gotcha');</script>",
-            Author = Person
+            Author = Person,
         };
 
         private readonly JsonSerializerSettings customSerializerSettings = new JsonSerializerSettings()
         {
             Converters = new List<JsonConverter>()
             {
-                new StringEnumConverter()
+                new StringEnumConverter(),
             },
             DefaultValueHandling = DefaultValueHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
             StringEscapeHandling = StringEscapeHandling.EscapeHtml,
-            Formatting = Formatting.Indented
+            Formatting = Formatting.Indented,
         };
 
         [Fact]
@@ -85,7 +85,7 @@ namespace Schema.NET.Test
             var localBusiness = new LocalBusiness()
             {
                 PriceRange = "$$$",
-                Address = (string)null
+                Address = (string)null,
             };
             var actual = localBusiness.ToString();
             var expected =

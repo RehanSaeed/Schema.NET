@@ -44,6 +44,6 @@
         /// Pathogenic virus that causes viral infection.
         /// </summary>
         [EnumMember(Value = "https://schema.org/Virus")]
-        Virus
+        Virus,
     }
 }

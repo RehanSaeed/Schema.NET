@@ -50,6 +50,6 @@
         /// VinylFormat.
         /// </summary>
         [EnumMember(Value = "https://schema.org/VinylFormat")]
-        VinylFormat
+        VinylFormat,
     }
 }

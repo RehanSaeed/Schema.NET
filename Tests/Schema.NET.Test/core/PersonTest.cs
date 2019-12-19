@@ -16,9 +16,9 @@ namespace Schema.NET.Test
                 new Uri("http://www.facebook.com/your-profile"),
                 new Uri("http://instagram.com/yourProfile"),
                 new Uri("http://www.linkedin.com/in/yourprofile"),
-                new Uri("http://plus.google.com/your_profile")
+                new Uri("http://plus.google.com/your_profile"),
             },
-            Url = new Uri("https://example.com") // Required
+            Url = new Uri("https://example.com"), // Required
         };
 
         private readonly string json =

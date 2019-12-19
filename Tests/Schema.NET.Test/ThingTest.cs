@@ -10,17 +10,17 @@ namespace Schema.NET.Test
         {
             Name = "New Object",
             Description = "This is the description of a new object we can't deserialize",
-            Image = new Uri("https://example.com/image.jpg")
+            Image = new Uri("https://example.com/image.jpg"),
         };
 
         private readonly string json =
             "{" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\":\"NewObject\"," +
-            "\"name\":\"New Object\"," +
-            "\"description\":\"This is the description of a new object we can't deserialize\"," +
-            "\"image\":\"https://example.com/image.jpg\"," +
-            "\"someProperty\":\"not supported\"" +
+                "\"@context\":\"https://schema.org\"," +
+                "\"@type\":\"NewObject\"," +
+                "\"name\":\"New Object\"," +
+                "\"description\":\"This is the description of a new object we can't deserialize\"," +
+                "\"image\":\"https://example.com/image.jpg\"," +
+                "\"someProperty\":\"not supported\"" +
             "}";
 
         [Fact]
@@ -36,10 +36,11 @@ namespace Schema.NET.Test
         public void Equality_AreEqual_SinglePropertyValue() => CompareEqual(
             new Thing
             {
-                Name = "Custom Name"
-            }, new Thing
+                Name = "Custom Name",
+            },
+            new Thing
             {
-                Name = "Custom Name"
+                Name = "Custom Name",
             });
 
         [Fact]
@@ -47,28 +48,31 @@ namespace Schema.NET.Test
             new Thing
             {
                 Name = "Custom Name",
-                Url = new Uri("https://schema.net")
-            }, new Thing
+                Url = new Uri("https://schema.net"),
+            },
+            new Thing
             {
                 Name = "Custom Name",
-                Url = new Uri("https://schema.net")
+                Url = new Uri("https://schema.net"),
             });
 
         [Fact]
         public void Equality_AreNotEqual_Null() => CompareNotEqual(
             new Thing
             {
-                Name = "A"
-            }, null);
+                Name = "A",
+            },
+            null);
 
         [Fact]
         public void Equality_AreNotEqual_SinglePropertyValue() => CompareNotEqual(
             new Thing
             {
-                Name = "A"
-            }, new Thing
+                Name = "A",
+            },
+            new Thing
             {
-                Name = "B"
+                Name = "B",
             });
 
         [Fact]
@@ -76,11 +80,12 @@ namespace Schema.NET.Test
             new Thing
             {
                 Name = "A",
-                Url = new Uri("https://schema.net")
-            }, new Thing
+                Url = new Uri("https://schema.net"),
+            },
+            new Thing
             {
                 Name = "B",
-                Url = new Uri("https://schema.net/Thing")
+                Url = new Uri("https://schema.net/Thing"),
             });
 
         [Fact]
@@ -88,11 +93,12 @@ namespace Schema.NET.Test
             new Thing
             {
                 Name = "Person Name",
-                Url = new Uri("https://schema.net")
-            }, new Person
+                Url = new Uri("https://schema.net"),
+            },
+            new Person
             {
                 Name = "Person Name",
-                Url = new Uri("https://schema.net")
+                Url = new Uri("https://schema.net"),
             });
 
         [Fact]
@@ -100,41 +106,45 @@ namespace Schema.NET.Test
             new Person
             {
                 Name = "Person Name",
-                Url = new Uri("https://schema.net")
-            }, new Person
+                Url = new Uri("https://schema.net"),
+            },
+            new Person
             {
                 Name = "Person Name",
-                Url = new Uri("https://schema.net")
+                Url = new Uri("https://schema.net"),
             });
 
         [Fact]
         public void Equality_AreEqual_SameDerivedType_SameDerivedProperties() => CompareEqual(
             new Person
             {
-                AdditionalName = "Extra Name"
-            }, new Person
+                AdditionalName = "Extra Name",
+            },
+            new Person
             {
-                AdditionalName = "Extra Name"
+                AdditionalName = "Extra Name",
             });
 
         [Fact]
         public void Equality_AreNotEqual_SameDerivedType_DifferentBaseProperties() => CompareNotEqual(
             new Person
             {
-                Name = "A"
-            }, new Person
+                Name = "A",
+            },
+            new Person
             {
-                Name = "B"
+                Name = "B",
             });
 
         [Fact]
         public void Equality_AreNotEqual_SameDerivedType_DifferentDerivedProperties() => CompareNotEqual(
             new Person
             {
-                AdditionalName = "A"
-            }, new Person
+                AdditionalName = "A",
+            },
+            new Person
             {
-                AdditionalName = "B"
+                AdditionalName = "B",
             });
 
         private static void CompareEqual<T>(T a, T b)

@@ -26,8 +26,8 @@ namespace Schema.NET.Test
                     AddressLocality = "Santa Clara",
                     PostalCode = "95051",
                     AddressRegion = "CA",
-                    AddressCountry = "US"
-                }
+                    AddressCountry = "US",
+                },
             },
             Image = new Uri("http://www.example.com/event_image/12345"), // Recommended
             EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)), // Recommended
@@ -48,14 +48,14 @@ namespace Schema.NET.Test
                     Price = 30M, // Recommended
                     PriceCurrency = "USD", // Recommended
                     Availability = NullItemAvailability, // Should be ignored
-                    ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)) // Recommended
+                    ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)), // Recommended
                 },
             },
             Performer = new Person() // Recommended
             {
                 Name = "Andy Lagunoff", // Recommended
-                Telephone = NullString // Should be ignored
-            }
+                Telephone = NullString, // Should be ignored
+            },
         };
 
         private readonly string json =

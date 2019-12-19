@@ -20,6 +20,6 @@
         /// Available by prescription only.
         /// </summary>
         [EnumMember(Value = "https://schema.org/PrescriptionOnly")]
-        PrescriptionOnly
+        PrescriptionOnly,
     }
 }

@@ -21,20 +21,20 @@ namespace Schema.NET.Test
                 AddressLocality = "New York",
                 AddressRegion = "NY",
                 PostalCode = "10019",
-                StreetAddress = "148 W 51st St"
+                StreetAddress = "148 W 51st St",
             },
             Telephone = "+12122459600",
             Geo = new GeoCoordinates()
             {
                 Latitude = 40.761293D,
-                Longitude = -73.982294
+                Longitude = -73.982294,
             },
             AggregateRating = new AggregateRating()
             {
                 RatingValue = 88D,
                 BestRating = 100D,
                 WorstRating = 1D,
-                RatingCount = 20
+                RatingCount = 20,
             },
             Review = new Review()
             {
@@ -43,12 +43,12 @@ namespace Schema.NET.Test
                 Author = new Person()
                 {
                     Name = "Lisa Kennedy",
-                    SameAs = new Uri("https://plus.google.com/114108465800532712602")
+                    SameAs = new Uri("https://plus.google.com/114108465800532712602"),
                 },
                 Publisher = new Organization()
                 {
                     Name = "Denver Post",
-                    SameAs = new Uri("http://www.denverpost.com")
+                    SameAs = new Uri("http://www.denverpost.com"),
                 },
                 DatePublished = new DateTime(2014, 3, 13),
                 InLanguage = "en",
@@ -56,9 +56,9 @@ namespace Schema.NET.Test
                 {
                     WorstRating = 1D,
                     BestRating = 4D,
-                    RatingValue = 3.5
-                }
-            }
+                    RatingValue = 3.5,
+                },
+            },
         };
 
         private readonly string json =

@@ -13,7 +13,7 @@ namespace Schema.NET.Test
             Image = new Uri("http://www.example.com/volvo_xc90.jpg"), // Required
             Brand = new Brand // Recommended
             {
-                Name = "Volvo"
+                Name = "Volvo",
             },
             Offers = new Offer // Recommended
             {
@@ -26,11 +26,11 @@ namespace Schema.NET.Test
                 Availability = ItemAvailability.InStock, // Recommended
                 Seller = new Organization
                 {
-                    Name = "Volvo Dealer"
-                }
+                    Name = "Volvo Dealer",
+                },
             },
             ModelDate = 2019,
-            VehicleModelDate = 2019
+            VehicleModelDate = 2019,
         };
 
         private readonly string json =

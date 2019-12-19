@@ -12,7 +12,7 @@ namespace Schema.NET.Test
             Identifier = "37kUGdEJJ7NaMl5LFW4EA4", // Recommended
             Image = new ImageObject() // Recommended
             {
-                ContentUrl = new Uri("https://is4-ssl.mzstatic.com/image/thumb/Music69/v4/cc/1c/90/cc1c9039-c3ba-4256-e251-1687df46cb0a/cover.jpg/1400x1400bb.jpeg") // Required
+                ContentUrl = new Uri("https://is4-ssl.mzstatic.com/image/thumb/Music69/v4/cc/1c/90/cc1c9039-c3ba-4256-e251-1687df46cb0a/cover.jpg/1400x1400bb.jpeg"), // Required
             },
             SameAs = new Uri("https://music.apple.com/us/album/2-2-5/1097863576?i=1097863810"), // Recommended
             Url = new Uri("https://open.spotify.com/track/37kUGdEJJ7NaMl5LFW4EA4"), // Recommended
@@ -22,15 +22,15 @@ namespace Schema.NET.Test
             ByArtist = new MusicGroup() // Recommended
             {
                 Name = "Radiohead", // Required
-                Identifier = "4Z8W4fKeB5YxbusRsdQVPb" // Recommended
+                Identifier = "4Z8W4fKeB5YxbusRsdQVPb", // Recommended
             },
             Duration = new TimeSpan(0, 0, 3, 19, 360), // Recommended
             InAlbum = new MusicAlbum() // Recommended
             {
                 Name = "Hail To the Thief", // Required
-                Identifier = "1oW3v5Har9mvXnGk0x4fHm" // Recommended
+                Identifier = "1oW3v5Har9mvXnGk0x4fHm", // Recommended
             },
-            IsrcCode = "GBAYE0300801" // Recommended
+            IsrcCode = "GBAYE0300801", // Recommended
         };
 
         private readonly string json =

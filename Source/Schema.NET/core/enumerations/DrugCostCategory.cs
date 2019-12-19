@@ -26,6 +26,6 @@
         /// The drug's cost represents the wholesale acquisition cost of the drug.
         /// </summary>
         [EnumMember(Value = "https://schema.org/Wholesale")]
-        Wholesale
+        Wholesale,
     }
 }

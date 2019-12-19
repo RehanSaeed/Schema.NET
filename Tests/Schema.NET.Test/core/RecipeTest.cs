@@ -14,14 +14,14 @@ namespace Schema.NET.Test
             Image = new Uri("https://example.com/image.jpg"),
             Author = new Person()
             {
-                Name = "Carol Smith"
+                Name = "Carol Smith",
             },
             DatePublished = new DateTime(2009, 11, 5),
             Description = "This is my grandmother's apple pie recipe. I like to add a dash of nutmeg.",
             AggregateRating = new AggregateRating()
             {
                 RatingValue = 4D,
-                ReviewCount = 35
+                ReviewCount = 35,
             },
             PrepTime = new TimeSpan(0, 30, 0),
             CookTime = new TimeSpan(1, 0, 0),
@@ -31,18 +31,18 @@ namespace Schema.NET.Test
             {
                 ServingSize = "1 medium slice",
                 Calories = "250 cal",
-                FatContent = "12 g"
+                FatContent = "12 g",
             },
             RecipeIngredient = new List<string>()
             {
                 "Thinly-sliced apples:6 cups",
-                "White sugar:3/4 cup"
+                "White sugar:3/4 cup",
             },
             RecipeInstructions = new List<ICreativeWork>()
             {
                 new HowToStep { Text = "1. Cut and peel apples..." },
-                new HowToStep { Text = "2. Put in pie shell..." }
-            }
+                new HowToStep { Text = "2. Put in pie shell..." },
+            },
         };
 
         private readonly string json =

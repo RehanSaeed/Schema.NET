@@ -32,6 +32,6 @@
         /// SingleRelease.
         /// </summary>
         [EnumMember(Value = "https://schema.org/SingleRelease")]
-        SingleRelease
+        SingleRelease,
     }
 }

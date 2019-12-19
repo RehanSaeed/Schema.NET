@@ -92,6 +92,6 @@
         /// Throat assessment with  clinical examination.
         /// </summary>
         [EnumMember(Value = "https://schema.org/Throat")]
-        Throat
+        Throat,
     }
 }

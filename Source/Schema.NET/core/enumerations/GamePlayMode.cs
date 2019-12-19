@@ -26,6 +26,6 @@
         /// Play mode: SinglePlayer. Which is played by a lone player.
         /// </summary>
         [EnumMember(Value = "https://schema.org/SinglePlayer")]
-        SinglePlayer
+        SinglePlayer,
     }
 }

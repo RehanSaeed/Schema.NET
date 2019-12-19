@@ -19,8 +19,8 @@ namespace Schema.NET.Test
                     {
                         Id = new Uri("http://example.com/books"),
                         Name = "Books",
-                        Image = new Uri("http://example.com/images/icon-book.png")
-                    }
+                        Image = new Uri("http://example.com/images/icon-book.png"),
+                    },
                 },
                 new ListItem()
                 {
@@ -29,10 +29,10 @@ namespace Schema.NET.Test
                     {
                         Id = new Uri("http://example.com/books/authors"),
                         Name = "Authors",
-                        Image = new Uri("http://example.com/images/icon-author.png")
-                    }
-                }
-            }
+                        Image = new Uri("http://example.com/images/icon-author.png"),
+                    },
+                },
+            },
         };
 
         private readonly string json =

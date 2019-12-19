@@ -20,6 +20,6 @@
         /// Medical researchers.
         /// </summary>
         [EnumMember(Value = "https://schema.org/MedicalResearcher")]
-        MedicalResearcher
+        MedicalResearcher,
     }
 }

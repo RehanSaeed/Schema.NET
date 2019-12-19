@@ -15,7 +15,7 @@ namespace Schema.NET.Test
             Name = "The Catcher in the Rye",
             Author = new Person()
             {
-                Name = "J.D. Salinger"
+                Name = "J.D. Salinger",
             },
             Url = new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"),
             WorkExample = new List<ICreativeWork>()
@@ -34,8 +34,8 @@ namespace Schema.NET.Test
                             {
                                 new Uri("https://schema.org/DesktopWebPlatform"),
                                 new Uri("https://schema.org/IOSPlatform"),
-                                new Uri("https://schema.org/AndroidPlatform")
-                            }
+                                new Uri("https://schema.org/AndroidPlatform"),
+                            },
                         },
                         ExpectsAcceptanceOf = new Offer()
                         {
@@ -43,10 +43,10 @@ namespace Schema.NET.Test
                             PriceCurrency = "USD",
                             EligibleRegion = new Country()
                             {
-                                Name = "US"
+                                Name = "US",
                             },
-                            Availability = ItemAvailability.InStock
-                        }
+                            Availability = ItemAvailability.InStock,
+                        },
                     },
                 },
                 new Book()
@@ -63,8 +63,8 @@ namespace Schema.NET.Test
                             {
                                 new Uri("https://schema.org/DesktopWebPlatform"),
                                 new Uri("https://schema.org/IOSPlatform"),
-                                new Uri("https://schema.org/AndroidPlatform")
-                            }
+                                new Uri("https://schema.org/AndroidPlatform"),
+                            },
                         },
                         ExpectsAcceptanceOf = new Offer()
                         {
@@ -72,13 +72,13 @@ namespace Schema.NET.Test
                             PriceCurrency = "USD",
                             EligibleRegion = new Country()
                             {
-                                Name = "UK"
+                                Name = "UK",
                             },
-                            Availability = ItemAvailability.InStock
-                        }
+                            Availability = ItemAvailability.InStock,
+                        },
                     },
-                }
-            }
+                },
+            },
         };
 
         private readonly string json =

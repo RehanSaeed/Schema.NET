@@ -32,6 +32,6 @@
         /// A venue map (e.g. for malls, auditoriums, museums, etc.).
         /// </summary>
         [EnumMember(Value = "https://schema.org/VenueMap")]
-        VenueMap
+        VenueMap,
     }
 }

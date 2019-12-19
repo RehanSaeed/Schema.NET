@@ -17,18 +17,18 @@ namespace Schema.NET.Test
                         Position = 1, // Required
                         Item = new Recipe() // Required
                         {
-                            Name = "Recipe 1"
-                        }
+                            Name = "Recipe 1",
+                        },
                     },
                     new ListItem()
                     {
                         Position = 2,
                         Item = new Recipe()
                         {
-                            Name = "Recipe 2"
-                        }
-                    }
-                }
+                            Name = "Recipe 2",
+                        },
+                    },
+                },
         };
 
         private readonly string json =
@@ -74,14 +74,14 @@ namespace Schema.NET.Test
                     new ListItem() // Required
                     {
                         Position = 1, // Required
-                        Url = new Uri("http://example.com/articles/1") // Required
+                        Url = new Uri("http://example.com/articles/1"), // Required
                     },
                     new ListItem()
                     {
                         Position = 2,
-                        Url = new Uri("http://example.com/articles/2")
-                    }
-                }
+                        Url = new Uri("http://example.com/articles/2"),
+                    },
+                },
             };
             var expectedJson =
                 "{" +
@@ -120,18 +120,18 @@ namespace Schema.NET.Test
                         Position = 1, // Required
                         Item = new Recipe() // Required
                         {
-                            Name = "Recipe 1"
-                        }
+                            Name = "Recipe 1",
+                        },
                     },
                     new ListItem()
                     {
                         Position = 2,
                         Item = new Recipe()
                         {
-                            Name = "Recipe 2"
-                        }
-                    }
-                }
+                            Name = "Recipe 2",
+                        },
+                    },
+                },
             };
             var expectedJson =
                 "{" +

@@ -62,6 +62,6 @@
         /// StudioAlbum.
         /// </summary>
         [EnumMember(Value = "https://schema.org/StudioAlbum")]
-        StudioAlbum
+        StudioAlbum,
     }
 }

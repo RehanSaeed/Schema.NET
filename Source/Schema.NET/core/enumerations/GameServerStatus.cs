@@ -32,6 +32,6 @@
         /// Game server status: OnlineFull. Server is online but unavailable. The maximum number of players has reached.
         /// </summary>
         [EnumMember(Value = "https://schema.org/OnlineFull")]
-        OnlineFull
+        OnlineFull,
     }
 }

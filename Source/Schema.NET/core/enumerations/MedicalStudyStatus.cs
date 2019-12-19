@@ -68,6 +68,6 @@
         /// Withdrawn.
         /// </summary>
         [EnumMember(Value = "https://schema.org/Withdrawn")]
-        Withdrawn
+        Withdrawn,
     }
 }

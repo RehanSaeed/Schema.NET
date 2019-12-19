@@ -12,10 +12,10 @@ namespace Schema.NET.Test
             Identifier = "4Z8W4fKeB5YxbusRsdQVPb", // Recommended
             Image = new ImageObject() // Recommended
             {
-                ContentUrl = new Uri("https://i.scdn.co/image/afcd616e1ef2d2786f47b3b4a8a6aeea24a72adc") // Required
+                ContentUrl = new Uri("https://i.scdn.co/image/afcd616e1ef2d2786f47b3b4a8a6aeea24a72adc"), // Required
             },
             SameAs = new Uri("https://music.apple.com/us/artist/radiohead/657515"), // Recommended
-            Url = new Uri("https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb") // Recommended
+            Url = new Uri("https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"), // Recommended
         };
 
         private readonly string json =

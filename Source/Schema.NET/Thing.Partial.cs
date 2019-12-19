@@ -5,6 +5,9 @@ namespace Schema.NET
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
+    /// <summary>
+    /// The most generic type of item.
+    /// </summary>
     public partial class Thing : JsonLdObject
     {
         private const string ContextPropertyJson = "\"@context\":\"https://schema.org\",";
@@ -16,10 +19,10 @@ namespace Schema.NET
         {
             Converters = new List<JsonConverter>()
             {
-                new StringEnumConverter()
+                new StringEnumConverter(),
             },
             DefaultValueHandling = DefaultValueHandling.Ignore,
-            NullValueHandling = NullValueHandling.Ignore
+            NullValueHandling = NullValueHandling.Ignore,
         };
 
         /// <summary>
@@ -30,11 +33,11 @@ namespace Schema.NET
         {
             Converters = new List<JsonConverter>()
             {
-                new StringEnumConverter()
+                new StringEnumConverter(),
             },
             DefaultValueHandling = DefaultValueHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
-            StringEscapeHandling = StringEscapeHandling.EscapeHtml
+            StringEscapeHandling = StringEscapeHandling.EscapeHtml,
         };
 
         /// <summary>
