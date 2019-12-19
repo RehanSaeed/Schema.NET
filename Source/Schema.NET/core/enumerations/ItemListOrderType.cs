@@ -26,6 +26,6 @@
         /// An ItemList ordered with no explicit order.
         /// </summary>
         [EnumMember(Value = "https://schema.org/ItemListUnordered")]
-        ItemListUnordered
+        ItemListUnordered,
     }
 }

@@ -14,12 +14,12 @@ namespace Schema.NET.Test
             Identifier = "KovZpZAdtaEA", // Recommended
             Image = new ImageObject() // Recommended
             {
-                ContentUrl = new Uri("https://s1.ticketm.net/dam/v/e6b/380fa861-3f46-44a9-a514-21553f7fbe6b_379601_SOURCE.jpg") // Required
+                ContentUrl = new Uri("https://s1.ticketm.net/dam/v/e6b/380fa861-3f46-44a9-a514-21553f7fbe6b_379601_SOURCE.jpg"), // Required
             },
             SameAs = new List<Uri>
             {
                 new Uri("https://www.twitter.com/dolbytheatre"), // Recommended
-                new Uri("http://www.dolbytheatre.com") // Recommended
+                new Uri("http://www.dolbytheatre.com"), // Recommended
             },
             Url = new Uri("https://foursquare.com/dolbytheatre"), // Recommended
             Address = new PostalAddress() // Recommended
@@ -28,14 +28,14 @@ namespace Schema.NET.Test
                 AddressLocality = "Los Angeles", // Recommended
                 AddressRegion = "CA", // Recommended
                 PostalCode = "90028", // Recommended
-                AddressCountry = "US" // Recommended
+                AddressCountry = "US", // Recommended
             },
             Geo = new GeoCoordinates() // Recommended
             {
                 Latitude = "34.1018929033898", // Recommended
-                Longitude = "-118.340147939959" // Recommended
+                Longitude = "-118.340147939959", // Recommended
             },
-            Telephone = "(323) 308-6300" // Recommended
+            Telephone = "(323) 308-6300", // Recommended
         };
 
         private readonly string json =

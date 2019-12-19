@@ -28,8 +28,8 @@ namespace Schema.NET
         public virtual JsonLdContext Context { get; internal set; } = new JsonLdContext();
 
         /// <summary>
-        /// Gets or sets the type, used to uniquely identify things that are being described in the document with IRIs
-        /// or blank node identifiers.
+        /// Gets the type, used to uniquely identify things that are being described in the document with IRIs or
+        /// blank node identifiers.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public virtual string Type { get; }

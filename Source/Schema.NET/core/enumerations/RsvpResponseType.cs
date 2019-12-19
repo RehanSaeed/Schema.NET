@@ -26,6 +26,6 @@
         /// The invitee will attend.
         /// </summary>
         [EnumMember(Value = "https://schema.org/RsvpResponseYes")]
-        RsvpResponseYes
+        RsvpResponseYes,
     }
 }

@@ -74,6 +74,6 @@
         /// A diet exclusive of animal meat.
         /// </summary>
         [EnumMember(Value = "https://schema.org/VegetarianDiet")]
-        VegetarianDiet
+        VegetarianDiet,
     }
 }

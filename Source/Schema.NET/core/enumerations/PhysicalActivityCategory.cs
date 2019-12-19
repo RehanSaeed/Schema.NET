@@ -50,6 +50,6 @@
         /// Physical activity that is engaged in to improve muscle and bone strength. Also referred to as resistance training.
         /// </summary>
         [EnumMember(Value = "https://schema.org/StrengthTraining")]
-        StrengthTraining
+        StrengthTraining,
     }
 }

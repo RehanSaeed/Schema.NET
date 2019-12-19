@@ -20,6 +20,6 @@
         /// A medical device used for therapeutic purposes.
         /// </summary>
         [EnumMember(Value = "https://schema.org/Therapeutic")]
-        Therapeutic
+        Therapeutic,
     }
 }

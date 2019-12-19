@@ -20,6 +20,6 @@
         /// The associated telephone number is toll free.
         /// </summary>
         [EnumMember(Value = "https://schema.org/TollFree")]
-        TollFree
+        TollFree,
     }
 }

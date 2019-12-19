@@ -44,6 +44,6 @@
         /// A designation that the drug in question has not been assigned a pregnancy category designation by the US FDA.
         /// </summary>
         [EnumMember(Value = "https://schema.org/FDAnotEvaluated")]
-        FDAnotEvaluated
+        FDAnotEvaluated,
     }
 }

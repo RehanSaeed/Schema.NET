@@ -20,6 +20,6 @@
         /// The airline boards by zones of the plane.
         /// </summary>
         [EnumMember(Value = "https://schema.org/ZoneBoardingPolicy")]
-        ZoneBoardingPolicy
+        ZoneBoardingPolicy,
     }
 }

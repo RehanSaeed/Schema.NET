@@ -26,6 +26,6 @@
         /// Permission to write or edit the document.
         /// </summary>
         [EnumMember(Value = "https://schema.org/WritePermission")]
-        WritePermission
+        WritePermission,
     }
 }

@@ -56,6 +56,6 @@
         /// OrderStatus representing that an order has been returned.
         /// </summary>
         [EnumMember(Value = "https://schema.org/OrderReturned")]
-        OrderReturned
+        OrderReturned,
     }
 }

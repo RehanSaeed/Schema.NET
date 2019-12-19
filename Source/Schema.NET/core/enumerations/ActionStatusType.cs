@@ -32,6 +32,6 @@
         /// A description of an action that is supported.
         /// </summary>
         [EnumMember(Value = "https://schema.org/PotentialActionStatus")]
-        PotentialActionStatus
+        PotentialActionStatus,
     }
 }

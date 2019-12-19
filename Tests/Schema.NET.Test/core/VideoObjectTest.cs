@@ -22,14 +22,14 @@ namespace Schema.NET.Test
                 {
                     Height = 60, // Required
                     Url = new Uri("https://example.com/logo.jpg"), // Required
-                    Width = 600 // Required
-                }
+                    Width = 600, // Required
+                },
             },
             ContentUrl = new Uri("https://www.example.com/video123.flv"), // Recommended
             EmbedUrl = new Uri("https://www.example.com/videoplayer.swf?video=123"), // Recommended
             InteractionStatistic = new InteractionCounter()
             {
-                UserInteractionCount = 2347 // Recommended
+                UserInteractionCount = 2347, // Recommended
             },
         };
 

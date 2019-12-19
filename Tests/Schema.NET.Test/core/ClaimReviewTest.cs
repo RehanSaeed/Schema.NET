@@ -16,22 +16,22 @@ namespace Schema.NET.Test
                 Author = new Organization() // Required
                 {
                     Name = "Square World Society", // Required
-                    SameAs = new Uri("https://example.flatworlders.com/we-know-that-the-world-is-flat") // Recommended
+                    SameAs = new Uri("https://example.flatworlders.com/we-know-that-the-world-is-flat"), // Recommended
                 },
                 DatePublished = new DateTime(2016, 6, 20), // Optional
             },
             ClaimReviewed = "The world is flat", // Required
             Author = new Organization() // Required
             {
-                Name = "Example.com science watch"
+                Name = "Example.com science watch",
             },
             ReviewRating = new Rating() // Required
             {
                 RatingValue = 1D, // Required
                 BestRating = 5D, // Required
                 WorstRating = 1D, // Required
-                AlternateName = "False" // Recommended
-            }
+                AlternateName = "False", // Recommended
+            },
         };
 
         private readonly string json =

@@ -114,7 +114,9 @@ namespace Schema.NET
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() =>
 #pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
             throw new NotSupportedException("Implicitly convert this struct to an int to get the hash code.");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
 #pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
 
         private static int CombineHashCodes(int h1, int h2)

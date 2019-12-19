@@ -20,6 +20,6 @@
         /// The steering position is on the right side of the vehicle (viewed from the main direction of driving).
         /// </summary>
         [EnumMember(Value = "https://schema.org/RightHandDriving")]
-        RightHandDriving
+        RightHandDriving,
     }
 }

@@ -15,9 +15,9 @@ namespace Schema.NET.Test
                 PotentialAction = new SearchAction() // Required
                 {
                     Target = new Uri("http://example.com/search?&q={query}"), // Required
-                    QueryInput = "required" // Required
+                    QueryInput = "required", // Required
                 },
-                Url = new Uri("https://example.com") // Required
+                Url = new Uri("https://example.com"), // Required
             };
             var expectedJson =
                 "{" +
@@ -44,7 +44,7 @@ namespace Schema.NET.Test
             {
                 AlternateName = "An Alternative Name", // Optional
                 Name = "Your Site Name", // Required
-                Url = new Uri("https://example.com") // Required
+                Url = new Uri("https://example.com"), // Required
             };
             var expectedJson =
                 "{" +
@@ -68,9 +68,9 @@ namespace Schema.NET.Test
                 PotentialAction = new SearchAction() // Required
                 {
                     Target = new Uri("http://example.com/search?&q={query}"), // Required
-                    QueryInput = "required" // Required
+                    QueryInput = "required", // Required
                 },
-                Url = new Uri("https://example.com") // Required
+                Url = new Uri("https://example.com"), // Required
             };
 
             var json =

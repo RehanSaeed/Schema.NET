@@ -38,6 +38,6 @@
         /// Book format: Paperback.
         /// </summary>
         [EnumMember(Value = "https://schema.org/Paperback")]
-        Paperback
+        Paperback,
     }
 }

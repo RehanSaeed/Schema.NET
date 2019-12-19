@@ -77,8 +77,8 @@ namespace Schema.NET.Test
                 BankAccountType = new List<object>()
                 {
                     "http://example.com/1",
-                    new Uri("http://example.com/2")
-                }
+                    new Uri("http://example.com/2"),
+                },
             };
             var json =
                 @"{" +

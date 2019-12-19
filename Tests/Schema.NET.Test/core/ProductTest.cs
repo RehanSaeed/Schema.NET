@@ -15,12 +15,12 @@ namespace Schema.NET.Test
             Mpn = "925872", // Recommended
             Brand = new Brand() // Recommended
             {
-                Name = "ACME"
+                Name = "ACME",
             },
             AggregateRating = new AggregateRating() // Recommended
             {
                 ReviewCount = 89,
-                RatingValue = 4.4D
+                RatingValue = 4.4D,
             },
             Review = new OneOrMany<IReview>((IReview)null), // Recommended
             Offers = new Offer() // Recommended
@@ -34,9 +34,9 @@ namespace Schema.NET.Test
                 Availability = ItemAvailability.InStock, // Recommended
                 Seller = new Organization()
                 {
-                    Name = "Executive Objects"
-                }
-            }
+                    Name = "Executive Objects",
+                },
+            },
         };
 
         private readonly string json =

@@ -44,6 +44,6 @@
         /// X-ray imaging.
         /// </summary>
         [EnumMember(Value = "https://schema.org/XRay")]
-        XRay
+        XRay,
     }
 }

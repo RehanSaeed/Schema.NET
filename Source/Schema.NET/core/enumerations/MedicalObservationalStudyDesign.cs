@@ -44,6 +44,6 @@
         /// A registry-based study design.
         /// </summary>
         [EnumMember(Value = "https://schema.org/Registry")]
-        Registry
+        Registry,
     }
 }

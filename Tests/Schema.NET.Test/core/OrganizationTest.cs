@@ -16,10 +16,10 @@ namespace Schema.NET.Test
                 AvailableLanguage = "English", // Recommended
                 ContactOption = ContactPointOption.TollFree, // Recommended
                 ContactType = "customer service", // Required
-                Telephone = "+1-401-555-1212" // Required
+                Telephone = "+1-401-555-1212", // Required
             },
             Url = new Uri("https://example.com"), // Required
-            Logo = new Uri("https://example.com/logo.png")
+            Logo = new Uri("https://example.com/logo.png"),
         };
 
         private readonly string json =

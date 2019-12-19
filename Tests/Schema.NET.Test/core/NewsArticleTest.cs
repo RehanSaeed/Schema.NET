@@ -14,13 +14,13 @@ namespace Schema.NET.Test
             {
                 Url = new Uri("https://google.com/thumbnail1.jpg"), // Recommended
                 Height = 800, // Recommended
-                Width = 800 // Recommended
+                Width = 800, // Recommended
             },
             DatePublished = new DateTime(2015, 2, 5), // Ignored
             DateModified = new DateTimeOffset(2015, 2, 5, 9, 20, 0, TimeSpan.Zero), // Ignored
             Author = new Person() // Ignored
             {
-                Name = "John Doe" // Ignored
+                Name = "John Doe", // Ignored
             },
             Publisher = new Organization() // Ignored
             {
@@ -29,10 +29,10 @@ namespace Schema.NET.Test
                 {
                     Url = new Uri("https://google.com/logo.jpg"), // Ignored
                     Height = 60, // Ignored
-                    Width = 600 // Ignored
-                }
+                    Width = 600, // Ignored
+                },
             },
-            Description = "A most wonderful article" // Ignored
+            Description = "A most wonderful article", // Ignored
         };
 
         private readonly string json =

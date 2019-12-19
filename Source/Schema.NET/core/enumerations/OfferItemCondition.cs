@@ -32,6 +32,6 @@
         /// Indicates that the item is used.
         /// </summary>
         [EnumMember(Value = "https://schema.org/UsedCondition")]
-        UsedCondition
+        UsedCondition,
     }
 }

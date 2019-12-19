@@ -14,7 +14,7 @@ namespace Schema.NET.Test
             Identifier = new PropertyValue() // Recommended
             {
                 Name = "MagsRUs Wheel Company",
-                Value = "1234567"
+                Value = "1234567",
             },
             DatePosted = new DateTime(2017, 1, 18), // Required
             ValidThrough = new DateTimeOffset(2017, 3, 18, 0, 0, 0, TimeSpan.Zero), // Required
@@ -22,7 +22,7 @@ namespace Schema.NET.Test
             HiringOrganization = new Organization() // Required
             {
                 Name = "MagsRUs Wheel Company",
-                SameAs = new Uri("http://www.magsruswheelcompany.com")
+                SameAs = new Uri("http://www.magsruswheelcompany.com"),
             },
             JobLocation = new Place() // Required
             {
@@ -32,8 +32,8 @@ namespace Schema.NET.Test
                     AddressLocality = "Detroit",
                     AddressRegion = "MI",
                     PostalCode = "48201",
-                    StreetAddress = "555 Clancy St"
-                }
+                    StreetAddress = "555 Clancy St",
+                },
             },
             BaseSalary = new MonetaryAmount() // Recommended
             {
@@ -41,9 +41,9 @@ namespace Schema.NET.Test
                 Value = new QuantitativeValue()
                 {
                     Value = 40D,
-                    UnitText = "HOUR" // HOUR, WEEK, MONTH, YEAR
-                }
-            }
+                    UnitText = "HOUR", // HOUR, WEEK, MONTH, YEAR
+                },
+            },
         };
 
         private readonly string json =

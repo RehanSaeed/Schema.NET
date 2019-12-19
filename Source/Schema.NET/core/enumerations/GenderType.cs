@@ -20,6 +20,6 @@
         /// The male gender.
         /// </summary>
         [EnumMember(Value = "https://schema.org/Male")]
-        Male
+        Male,
     }
 }

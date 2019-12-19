@@ -16,7 +16,7 @@ namespace Schema.NET.Test
             Location = new MusicVenue() // Recommended
             {
                 Name = "Dolby Theatre", // Required
-                Identifier = "KovZpZAdtaEA" // Recommended
+                Identifier = "KovZpZAdtaEA", // Recommended
             },
             Offers = new Offer() // Recommended
             {
@@ -27,23 +27,23 @@ namespace Schema.NET.Test
                 {
                     MinPrice = 80, // Recommended
                     MaxPrice = 295, // Recommended
-                    PriceCurrency = "USD" // Recommended
-                }
+                    PriceCurrency = "USD", // Recommended
+                },
             },
             Performer = new List<IOrganization>() // Recommended
             {
                 new MusicGroup() // Recommended
                 {
                     Name = "Arash", // Required
-                    Identifier = "K8vZ917ukD7" // Recommended
+                    Identifier = "K8vZ917ukD7", // Recommended
                 },
                 new MusicGroup() // Recommended
                 {
                     Name = "Tohi", // Required
-                    Identifier = "K8vZ917bA70" // Recommended
-                }
+                    Identifier = "K8vZ917bA70", // Recommended
+                },
             },
-            StartDate = DateTimeOffset.Parse("2019-06-23T03:00:00-07:00", CultureInfo.InvariantCulture) // Recommended
+            StartDate = DateTimeOffset.Parse("2019-06-23T03:00:00-07:00", CultureInfo.InvariantCulture), // Recommended
         };
 
         private readonly string json =
