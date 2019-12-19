@@ -201,8 +201,8 @@ namespace Schema.NET.Test
             var thing2 = things.Last();
             var listItem1 = (IListItem)thing1;
             var listItem2 = (IListItem)thing2;
-            Assert.Equal(1, listItem1.Position);
-            Assert.Equal(2, listItem2.Position);
+            Assert.Equal(1, (int)listItem1.Position);
+            Assert.Equal(2, (int)listItem2.Position);
             var recipe1 = Assert.IsType<Recipe>(listItem1.Item.Single());
             var recipe2 = Assert.IsType<Recipe>(listItem2.Item.Single());
             Assert.Equal("Recipe 1", recipe1.Name);

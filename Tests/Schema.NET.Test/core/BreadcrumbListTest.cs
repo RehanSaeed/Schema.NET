@@ -87,8 +87,8 @@ namespace Schema.NET.Test
             var thing2 = things.Last();
             var listItem1 = (IListItem)thing1;
             var listItem2 = (IListItem)thing2;
-            Assert.Equal(1, listItem1.Position);
-            Assert.Equal(2, listItem2.Position);
+            Assert.Equal(1, (int)listItem1.Position);
+            Assert.Equal(2, (int)listItem2.Position);
             var book = listItem1.Item.OfType<IBook>().FirstOrDefault();
             Assert.NotNull(book);
             Assert.Equal("Books", book.Name);
