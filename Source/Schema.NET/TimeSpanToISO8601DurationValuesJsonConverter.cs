@@ -12,46 +12,6 @@ namespace Schema.NET
     /// <seealso cref="ValuesJsonConverter" />
     public class TimeSpanToISO8601DurationValuesJsonConverter : ValuesJsonConverter
     {
-        /// <inheritdoc />
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            if (reader is null)
-            {
-                throw new ArgumentNullException(nameof(reader));
-            }
-
-            if (objectType is null)
-            {
-                throw new ArgumentNullException(nameof(objectType));
-            }
-
-            if (serializer is null)
-            {
-                throw new ArgumentNullException(nameof(serializer));
-            }
-
-            var valuesType = objectType.GetUnderlyingTypeFromNullable();
-            if (valuesType != null && valuesType.GenericTypeArguments.Length == 1)
-            {
-                var mainType = valuesType.GenericTypeArguments[0];
-                var genericType = typeof(OneOrMany<TimeSpan>);
-                if (mainType.IsNullable())
-                {
-                    mainType = Nullable.GetUnderlyingType(mainType);
-                    genericType = typeof(OneOrMany<TimeSpan?>);
-                }
-
-                if (mainType == typeof(TimeSpan))
-                {
-                    var timeSpan = XmlConvert.ToTimeSpan(reader.Value.ToString());
-                    var instance = Activator.CreateInstance(genericType, timeSpan);
-                    return instance;
-                }
-            }
-
-            return base.ReadJson(reader, objectType, existingValue, serializer);
-        }
-
         /// <summary>
         /// Writes the object retrieved from <see cref="IValues"/> when one is found.
         /// </summary>

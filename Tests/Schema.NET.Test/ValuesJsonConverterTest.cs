@@ -64,6 +64,30 @@ namespace Schema.NET.Test
         }
 
         [Fact]
+        public void WriteJson_DateTime_ISO8601_DateTime()
+        {
+            var value = new OneOrMany<DateTime>(new DateTime(2000, 1, 1, 12, 34, 56));
+            var json = this.SerializeObject(value);
+            Assert.Equal("{\"Property\":\"2000-01-01T12:34:56\"}", json);
+        }
+
+        [Fact]
+        public void WriteJson_DateTimeOffset_ISO8601_DateTimeWithTimeOffset()
+        {
+            var value = new OneOrMany<DateTimeOffset>(new DateTimeOffset(2000, 1, 1, 12, 34, 56, TimeSpan.FromHours(1)));
+            var json = this.SerializeObject(value);
+            Assert.Equal("{\"Property\":\"2000-01-01T12:34:56+01:00\"}", json);
+        }
+
+        [Fact]
+        public void WriteJson_TimeSpan_ISO8601_TimeOfDay()
+        {
+            var value = new OneOrMany<TimeSpan>(new TimeSpan(12, 34, 56));
+            var json = this.SerializeObject(value);
+            Assert.Equal("{\"Property\":\"12:34:56\"}", json);
+        }
+
+        [Fact]
         public void ReadJson_Values_SingleValue_String()
         {
             var json = "{\"Property\":\"Test String\"}";
@@ -109,6 +133,14 @@ namespace Schema.NET.Test
             var json = "{\"Property\":\"true\"}";
             var result = this.DeserializeObject<Values<string, bool>>(json);
             Assert.True(result.Value2.First());
+        }
+
+        [Fact]
+        public void ReadJson_Values_SingleValue_GuidAsString()
+        {
+            var json = "{\"Property\":\"13ec75b3-250c-48a2-8bd0-dfee62852bd4\"}";
+            var result = this.DeserializeObject<Values<string, Guid>>(json);
+            Assert.Equal(new Guid("13ec75b3-250c-48a2-8bd0-dfee62852bd4"), result.Value2.First());
         }
 
         [Fact]
@@ -173,6 +205,22 @@ namespace Schema.NET.Test
             var json = "{\"Property\":\"2000-01-01T12:34:00+01:00\"}";
             var result = this.DeserializeObject<Values<string, DateTimeOffset>>(json);
             Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(1)), result.Value2.First());
+        }
+
+        [Fact]
+        public void ReadJson_Values_SingleValue_TimeSpanAsISO8601TimeOfDayString()
+        {
+            var json = "{\"Property\":\"12:34\"}";
+            var result = this.DeserializeObject<Values<string, TimeSpan>>(json);
+            Assert.Equal(new TimeSpan(12, 34, 0), result.Value2.First());
+        }
+
+        [Fact]
+        public void ReadJson_Values_SingleValue_TimeSpanAsISO8601DurationString()
+        {
+            var json = "{\"Property\":\"PT12H34M\"}";
+            var result = this.DeserializeObject<Values<string, TimeSpan>>(json);
+            Assert.Equal(new TimeSpan(12, 34, 0), result.Value2.First());
         }
 
         [Fact]
@@ -251,7 +299,13 @@ namespace Schema.NET.Test
                 "}" +
             "}";
             var result = this.DeserializeObject<Values<string, IBook>>(json);
-            Assert.Empty(result.Value2);
+            var actual = result.Value2.First();
+
+            Assert.Equal(new Uri("http://example.com/book/1"), ((Book)actual).Id);
+            Assert.Equal("The Catcher in the Rye", actual.Name);
+            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            var author = Assert.Single(actual.Author.Value2);
+            Assert.Equal("J.D. Salinger", author.Name);
         }
 
         [Fact]
@@ -311,7 +365,7 @@ namespace Schema.NET.Test
             Assert.Equal(new[] { "A", "B" }, result.Value2);
         }
 
-        [Fact(Skip = "The ordering of the types shouldn't matter - this should be fixed")]
+        [Fact]
         public void ReadJson_Values_MultiValue_SameType_ArgumentsSwapped()
         {
             var json = "{\"Property\":[\"A\",\"B\"]}";
@@ -319,7 +373,7 @@ namespace Schema.NET.Test
             Assert.Equal(new[] { "A", "B" }, result.Value1);
         }
 
-        [Fact(Skip = "Mixed types doesn't work - this should be fixed")]
+        [Fact]
         public void ReadJson_Values_MultiValue_MixedType()
         {
             var json = "{\"Property\":[1,\"B\"]}";
@@ -328,7 +382,7 @@ namespace Schema.NET.Test
             Assert.Equal(new[] { "B" }, result.Value2);
         }
 
-        [Fact(Skip = "An array of nullable primitive values isn't handled properly, passed as non-primitive to OneOrMany constructor - this needs to be fixed")]
+        [Fact]
         public void ReadJson_Values_MultiValue_NullablePrimitiveAsString()
         {
             var json = "{\"Property\":[\"123\",\"456\"]}";
@@ -403,12 +457,78 @@ namespace Schema.NET.Test
             Assert.Equal(123, result.First());
         }
 
-        [Fact(Skip = "An array of nullable primitive values isn't handled properly, passed as non-primitive to OneOrMany constructor - this needs to be fixed")]
+        [Fact]
         public void ReadJson_OneOrMany_MultiValue_NullablePrimitiveAsString()
         {
             var json = "{\"Property\":[\"123\",\"456\"]}";
             var result = this.DeserializeObject<OneOrMany<int?>>(json);
             Assert.Equal(new int?[] { 123, 456 }, result);
+        }
+
+        [Fact]
+        public void ReadJson_ExplicitExternalTypes_AllowCustomNamespace()
+        {
+            var json = "{\"Property\":[" +
+                "{" +
+                    "\"@type\":\"ExternalSchemaModelCustomNamespace, Schema.NET.Test\"," +
+                    "\"name\":\"Property from Thing\"," +
+                    "\"myCustomProperty\":\"My Test String\"" +
+                "}" +
+            "]}";
+            var result = this.DeserializeObject<Values<string, SomeCustomNamespace.ExternalSchemaModelCustomNamespace>>(json);
+            var actual = Assert.Single(result.Value2);
+            Assert.Equal(new[] { "Property from Thing" }, actual.Name);
+            Assert.Equal(new[] { "My Test String" }, actual.MyCustomProperty);
+        }
+
+        [Fact]
+        public void ReadJson_ExplicitExternalTypes_AllowSharedNamespace()
+        {
+            var json = "{\"Property\":[" +
+                "{" +
+                    "\"@type\":\"ExternalSchemaModelSharedNamespace, Schema.NET.Test\"," +
+                    "\"name\":\"Property from Thing\"," +
+                    "\"myCustomProperty\":\"My Test String\"" +
+                "}" +
+            "]}";
+            var result = this.DeserializeObject<Values<string, ExternalSchemaModelSharedNamespace>>(json);
+            var actual = Assert.Single(result.Value2);
+            Assert.Equal(new[] { "Property from Thing" }, actual.Name);
+            Assert.Equal(new[] { "My Test String" }, actual.MyCustomProperty);
+        }
+
+        [Fact]
+        public void ReadJson_ImplicitExternalTypes_AllowCustomNamespace()
+        {
+            var json = "{\"Property\":[" +
+                "{" +
+                    "\"@type\":\"SomeCustomNamespace.ExternalSchemaModelCustomNamespace, Schema.NET.Test\"," +
+                    "\"name\":\"Property from Thing\"," +
+                    "\"myCustomProperty\":\"My Test String\"" +
+                "}" +
+            "]}";
+            var result = this.DeserializeObject<Values<string, IThing>>(json);
+            var actual = Assert.Single(result.Value2);
+            Assert.IsType<SomeCustomNamespace.ExternalSchemaModelCustomNamespace>(actual);
+            Assert.Equal(new[] { "Property from Thing" }, actual.Name);
+            Assert.Equal(new[] { "My Test String" }, ((SomeCustomNamespace.ExternalSchemaModelCustomNamespace)actual).MyCustomProperty);
+        }
+
+        [Fact]
+        public void ReadJson_ImplicitExternalTypes_AllowSharedNamespace()
+        {
+            var json = "{\"Property\":[" +
+                "{" +
+                    "\"@type\":\"Schema.NET.ExternalSchemaModelSharedNamespace, Schema.NET.Test\"," +
+                    "\"name\":\"Property from Thing\"," +
+                    "\"myCustomProperty\":\"My Test String\"" +
+                "}" +
+            "]}";
+            var result = this.DeserializeObject<Values<string, IThing>>(json);
+            var actual = Assert.Single(result.Value2);
+            Assert.IsType<ExternalSchemaModelSharedNamespace>(actual);
+            Assert.Equal(new[] { "Property from Thing" }, actual.Name);
+            Assert.Equal(new[] { "My Test String" }, ((ExternalSchemaModelSharedNamespace)actual).MyCustomProperty);
         }
 
         private string SerializeObject<T>(T value)
