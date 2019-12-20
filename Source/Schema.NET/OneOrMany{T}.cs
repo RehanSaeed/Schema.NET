@@ -4,6 +4,7 @@ namespace Schema.NET
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.CompilerServices;
 
     /// <summary>
     /// A single or list of values.
@@ -15,8 +16,7 @@ namespace Schema.NET
         : IReadOnlyCollection<T>, IEnumerable<T>, IValues, IEquatable<OneOrMany<T>>
 #pragma warning restore CA1710 // Identifiers should have correct suffix
     {
-        private readonly List<T> collection;
-        private readonly T item;
+        private readonly T[] collection;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
@@ -24,8 +24,16 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         public OneOrMany(T item)
         {
-            this.collection = null;
-            this.item = item;
+            if (item is null || (item is string itemAsString && string.IsNullOrWhiteSpace(itemAsString)))
+            {
+                this.collection = null;
+                this.HasOne = false;
+            }
+            else
+            {
+                this.collection = new[] { item };
+                this.HasOne = true;
+            }
         }
 
         /// <summary>
@@ -33,8 +41,61 @@ namespace Schema.NET
         /// </summary>
         /// <param name="array">The array of values.</param>
         public OneOrMany(params T[] array)
-            : this(array is null ? null : new List<T>(array))
         {
+            if (array is null)
+            {
+                throw new ArgumentNullException(nameof(array));
+            }
+
+            if (array.Length > 0)
+            {
+                var items = new T[array.Length];
+                var index = 0;
+
+                if (typeof(T) == typeof(string))
+                {
+                    for (var i = 0; i < array.Length; i++)
+                    {
+                        var item = array[i];
+                        if (!string.IsNullOrWhiteSpace(item as string))
+                        {
+                            items[index] = item;
+                            index++;
+                        }
+                    }
+                }
+                else
+                {
+                    for (var i = 0; i < array.Length; i++)
+                    {
+                        var item = array[i];
+                        if (item != null)
+                        {
+                            items[index] = item;
+                            index++;
+                        }
+                    }
+                }
+
+                if (index > 0)
+                {
+                    if (index == array.Length)
+                    {
+                        this.collection = items;
+                    }
+                    else
+                    {
+                        this.collection = new T[index];
+                        Array.Copy(items, 0, this.collection, 0, index);
+                    }
+
+                    this.HasOne = index == 1;
+                    return;
+                }
+            }
+
+            this.collection = null;
+            this.HasOne = false;
         }
 
         /// <summary>
@@ -42,96 +103,35 @@ namespace Schema.NET
         /// </summary>
         /// <param name="collection">The collection of values.</param>
         public OneOrMany(IEnumerable<T> collection)
-            : this(collection is null ? null : new List<T>(collection))
+            : this(collection.ToArray())
         {
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
         /// </summary>
-        /// <param name="list">The list of values.</param>
-        public OneOrMany(List<T> list)
+        /// <param name="collection">The list of values.</param>
+        public OneOrMany(IEnumerable<object> collection)
+            : this(collection?.Cast<T>())
         {
-            if (list is null)
-            {
-                throw new ArgumentNullException(nameof(list));
-            }
-
-            if (list.Count == 1)
-            {
-                this.collection = null;
-                this.item = list[0];
-            }
-            else
-            {
-                this.collection = list;
-                this.item = default;
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
-        /// </summary>
-        /// <param name="list">The list of values.</param>
-        public OneOrMany(IEnumerable<object> list)
-        {
-            if (list is null)
-            {
-                throw new ArgumentNullException(nameof(list));
-            }
-
-            var items = new List<T>();
-            foreach (var item in list)
-            {
-                if (item is T itemT)
-                {
-                    items.Add(itemT);
-                }
-            }
-
-            if (items.Count == 1)
-            {
-                this.collection = null;
-                this.item = items[0];
-            }
-            else
-            {
-                this.collection = items;
-                this.item = default;
-            }
         }
 
         /// <summary>
         /// Gets the number of elements contained in the <see cref="OneOrMany{T}"/>.
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                if (this.HasOne)
-                {
-                    return 1;
-                }
-                else if (this.HasMany)
-                {
-                    return this.collection.Count;
-                }
-
-                return 0;
-            }
-        }
+        public int Count => this.collection?.Length ?? 0;
 
         /// <summary>
         /// Gets a value indicating whether this instance has a single item value.
         /// </summary>
         /// <value><c>true</c> if this instance has a single item value; otherwise, <c>false</c>.</value>
-        public bool HasOne => this.collection is null && this.item != null;
+        public bool HasOne { get; }
 
         /// <summary>
         /// Gets a value indicating whether this instance has more than one value.
         /// </summary>
         /// <value><c>true</c> if this instance has more than one value; otherwise, <c>false</c>.</value>
-        public bool HasMany => this.collection != null;
+        public bool HasMany => this.collection?.Length > 1;
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T"/> to <see cref="OneOrMany{T}"/>.
@@ -139,7 +139,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator OneOrMany<T>(T item) => item != null && IsStringNullOrWhiteSpace(item) ? default : new OneOrMany<T>(item);
+        public static implicit operator OneOrMany<T>(T item) => new OneOrMany<T>(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator OneOrMany<T>(T[] array) => new OneOrMany<T>(array?.Where(x => x != null && !IsStringNullOrWhiteSpace(x)));
+        public static implicit operator OneOrMany<T>(T[] array) => new OneOrMany<T>(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator OneOrMany<T>(List<T> list) => new OneOrMany<T>(list?.Where(x => x != null && !IsStringNullOrWhiteSpace(x)));
+        public static implicit operator OneOrMany<T>(List<T> list) => new OneOrMany<T>(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -219,16 +219,12 @@ namespace Schema.NET
         /// <returns>An enumerator for the <see cref="OneOrMany{T}"/>.</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            if (this.HasMany)
+            if (this.collection != null)
             {
-                foreach (var item in this.collection)
+                for (var i = 0; i < this.collection.Length; i++)
                 {
-                    yield return item;
+                    yield return this.collection[i];
                 }
-            }
-            else if (this.HasOne)
-            {
-                yield return this.item;
             }
         }
 
@@ -253,16 +249,16 @@ namespace Schema.NET
             }
             else if (this.HasOne && other.HasOne)
             {
-                return this.item.Equals(other.item);
+                return this.collection[0].Equals(other.collection[0]);
             }
             else if (this.HasMany && other.HasMany)
             {
-                if (this.collection.Count != other.collection.Count)
+                if (this.collection.Length != other.collection.Length)
                 {
                     return false;
                 }
 
-                for (var i = 0; i < this.collection.Count; i++)
+                for (var i = 0; i < this.collection.Length; i++)
                 {
                     if (!EqualityComparer<T>.Default.Equals(this.collection[i], other.collection[i]))
                     {
@@ -291,26 +287,6 @@ namespace Schema.NET
         /// <returns>
         /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
-        public override int GetHashCode()
-        {
-            if (this.HasOne)
-            {
-                return HashCode.Of(this.item);
-            }
-            else if (this.HasMany)
-            {
-                return HashCode.OfEach(this.collection);
-            }
-
-            return 0;
-        }
-
-        /// <summary>
-        /// Checks whether the generic T item is a string that is either null or contains whitespace.
-        /// </summary>
-        /// <returns>
-        /// Returns true if the supplied item is a string that is null or contains whitespace.
-        /// </returns>
-        private static bool IsStringNullOrWhiteSpace(T item) => item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string);
+        public override int GetHashCode() => this.collection is null ? 0 : HashCode.OfEach(this.collection);
     }
 }
