@@ -25,7 +25,7 @@ namespace Schema.NET.Test
             var values = new Values<int, string>("Foo");
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.True(values.HasValue2);
             Assert.Single(values.Value2);
             Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
@@ -98,7 +98,7 @@ namespace Schema.NET.Test
             Values<int, string> values = "Foo";
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.True(values.HasValue2);
             Assert.Single(values.Value2);
             Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
@@ -122,7 +122,7 @@ namespace Schema.NET.Test
             Values<int, string> values = new List<string>() { "Foo", "Bar" };
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.True(values.HasValue2);
             Assert.Equal(2, values.Value2.Count);
             Assert.Equal(new List<object>() { "Foo", "Bar" }, ((IValues)values).Cast<object>().ToList());
