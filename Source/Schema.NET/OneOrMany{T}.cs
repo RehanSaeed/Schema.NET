@@ -239,6 +239,34 @@ namespace Schema.NET
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
         /// <summary>
+        /// Creates an array from <see cref="OneOrMany{T}" />.
+        /// </summary>
+        /// <returns>An array containing all the elements.</returns>
+        public T[] ToArray()
+        {
+            if (this.HasOne)
+            {
+                return new[] { this.collection[0] };
+            }
+            else if (this.HasMany)
+            {
+                var result = new T[this.collection.Length];
+                Array.Copy(this.collection, 0, result, 0, this.collection.Length);
+                return result;
+            }
+            else
+            {
+                return new T[0];
+            }
+        }
+
+        /// <summary>
+        /// Returns the first item from <see cref="OneOrMany{T}"/> or default <typeparamref name="T"/>.
+        /// </summary>
+        /// <returns>The first element in the <see cref="OneOrMany{T}"/></returns>
+        public T FirstOrDefault() => this.Count > 0 ? this.collection[0] : default;
+
+        /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.
         /// </summary>
         /// <param name="other">An object to compare with this object.</param>
