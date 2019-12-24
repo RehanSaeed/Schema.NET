@@ -39,24 +39,19 @@ namespace Schema.NET
         /// <summary>
         /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
         /// </summary>
-        /// <param name="array">The array of values.</param>
-        public OneOrMany(params T[] array)
+        /// <param name="span">The span of values.</param>
+        public OneOrMany(ReadOnlySpan<T> span)
         {
-            if (array is null)
+            if (!span.IsEmpty)
             {
-                throw new ArgumentNullException(nameof(array));
-            }
-
-            if (array.Length > 0)
-            {
-                var items = new T[array.Length];
+                var items = new T[span.Length];
                 var index = 0;
 
                 if (typeof(T) == typeof(string))
                 {
-                    for (var i = 0; i < array.Length; i++)
+                    for (var i = 0; i < span.Length; i++)
                     {
-                        var item = array[i];
+                        var item = span[i];
                         if (!string.IsNullOrWhiteSpace(item as string))
                         {
                             items[index] = item;
@@ -66,9 +61,9 @@ namespace Schema.NET
                 }
                 else
                 {
-                    for (var i = 0; i < array.Length; i++)
+                    for (var i = 0; i < span.Length; i++)
                     {
-                        var item = array[i];
+                        var item = span[i];
                         if (item != null)
                         {
                             items[index] = item;
@@ -79,7 +74,7 @@ namespace Schema.NET
 
                 if (index > 0)
                 {
-                    if (index == array.Length)
+                    if (index == span.Length)
                     {
                         this.collection = items;
                     }
@@ -101,9 +96,18 @@ namespace Schema.NET
         /// <summary>
         /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
         /// </summary>
+        /// <param name="array">The array of values.</param>
+        public OneOrMany(params T[] array)
+            : this(array.AsSpan())
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
+        /// </summary>
         /// <param name="collection">The collection of values.</param>
         public OneOrMany(IEnumerable<T> collection)
-            : this(collection.ToArray())
+            : this(collection.ToArray().AsSpan())
         {
         }
 
@@ -112,7 +116,7 @@ namespace Schema.NET
         /// </summary>
         /// <param name="collection">The list of values.</param>
         public OneOrMany(IEnumerable<object> collection)
-            : this(collection?.Cast<T>())
+            : this(collection.Cast<T>().ToArray().AsSpan())
         {
         }
 
