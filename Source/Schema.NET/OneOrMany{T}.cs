@@ -287,6 +287,6 @@ namespace Schema.NET
         /// <returns>
         /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
-        public override int GetHashCode() => this.collection is null ? 0 : HashCode.OfEach(this.collection);
+        public override int GetHashCode() => HashCode.OfEach(this.collection);
     }
 }
