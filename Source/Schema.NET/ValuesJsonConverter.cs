@@ -1,11 +1,11 @@
 namespace Schema.NET
 {
     using System;
-    using System.Collections;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Globalization;
-    using System.Linq;
+    using System.Linq.Expressions;
     using System.Reflection;
     using System.Xml;
     using Newtonsoft.Json;
@@ -19,6 +19,8 @@ namespace Schema.NET
     {
         private static readonly TypeInfo ThingInterfaceTypeInfo = typeof(IThing).GetTypeInfo();
         private static readonly Dictionary<string, Type> BuiltInThingTypeLookup = new Dictionary<string, Type>(StringComparer.Ordinal);
+        private static readonly ConcurrentDictionary<Type, Func<IEnumerable<object>, object>> TypeInstantiationMap = new ConcurrentDictionary<Type, Func<IEnumerable<object>, object>>();
+        private static readonly ParameterExpression[] ConstructorParameterExpression = new[] { Expression.Parameter(typeof(IEnumerable<object>)) };
 
         static ValuesJsonConverter()
         {
@@ -71,6 +73,8 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(serializer));
             }
 
+            var dynamicConstructor = GetDynamicConstructor(objectType);
+
             if (reader.TokenType == JsonToken.StartArray)
             {
                 var items = new List<object>();
@@ -91,12 +95,12 @@ namespace Schema.NET
                     items.Add(item);
                 }
 
-                return Activator.CreateInstance(objectType, items);
+                return dynamicConstructor(items);
             }
             else if (reader.TokenType != JsonToken.Null)
             {
                 var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
-                return Activator.CreateInstance(objectType, (IEnumerable)new[] { item });
+                return dynamicConstructor(new[] { item });
             }
 
             return default;
@@ -167,6 +171,31 @@ namespace Schema.NET
             }
 
             serializer.Serialize(writer, value);
+        }
+
+        private static Func<IEnumerable<object>, object> GetDynamicConstructor(Type objectType)
+        {
+            if (!TypeInstantiationMap.TryGetValue(objectType, out var dynamicConstructor))
+            {
+                foreach (var constructor in objectType.GetTypeInfo().DeclaredConstructors)
+                {
+                    var paramters = constructor.GetParameters();
+                    if (constructor.IsPublic && paramters.Length == 1 && paramters[0].ParameterType == typeof(IEnumerable<object>))
+                    {
+                        var newExpression = Expression.Lambda(
+                            typeof(Func<IEnumerable<object>, object>),
+                            Expression.Convert(Expression.New(constructor, ConstructorParameterExpression), typeof(object)),
+                            ConstructorParameterExpression);
+
+                        var constructorDelegate = newExpression.Compile();
+                        dynamicConstructor = (Func<IEnumerable<object>, object>)constructorDelegate;
+                        TypeInstantiationMap.TryAdd(objectType, dynamicConstructor);
+                        break;
+                    }
+                }
+            }
+
+            return dynamicConstructor;
         }
 
         private static object ProcessToken(JsonReader reader, Type[] targetTypes, JsonSerializer serializer)
