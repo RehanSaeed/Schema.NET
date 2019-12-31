@@ -265,12 +265,6 @@ namespace Schema.NET
         }
 
         /// <summary>
-        /// Returns the first item from <see cref="OneOrMany{T}"/> or default <typeparamref name="T"/>.
-        /// </summary>
-        /// <returns>The first element in the <see cref="OneOrMany{T}"/></returns>
-        public T FirstOrDefault() => this.Count > 0 ? this.collection[0] : default;
-
-        /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.
         /// </summary>
         /// <param name="other">An object to compare with this object.</param>
