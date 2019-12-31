@@ -78,33 +78,48 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(items));
             }
 
-            var items1 = new List<T1>();
-            var items2 = new List<T2>();
-            var items3 = new List<T3>();
+            List<T1> items1 = null;
+            List<T2> items2 = null;
+            List<T3> items3 = null;
 
             foreach (var item in items)
             {
                 if (item is T3 itemT3)
                 {
+                    if (items3 == null)
+                    {
+                        items3 = new List<T3>();
+                    }
+
                     items3.Add(itemT3);
                 }
                 else if (item is T2 itemT2)
                 {
+                    if (items2 == null)
+                    {
+                        items2 = new List<T2>();
+                    }
+
                     items2.Add(itemT2);
                 }
                 else if (item is T1 itemT1)
                 {
+                    if (items1 == null)
+                    {
+                        items1 = new List<T1>();
+                    }
+
                     items1.Add(itemT1);
                 }
             }
 
-            this.HasValue1 = items1.Count > 0;
-            this.HasValue2 = items2.Count > 0;
-            this.HasValue3 = items3.Count > 0;
+            this.HasValue1 = items1?.Count > 0;
+            this.HasValue2 = items2?.Count > 0;
+            this.HasValue3 = items3?.Count > 0;
 
-            this.Value1 = items1;
-            this.Value2 = items2;
-            this.Value3 = items3;
+            this.Value1 = items1 == null ? default : (OneOrMany<T1>)items1;
+            this.Value2 = items2 == null ? default : (OneOrMany<T2>)items2;
+            this.Value3 = items3 == null ? default : (OneOrMany<T3>)items3;
         }
 
         /// <summary>
