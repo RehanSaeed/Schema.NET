@@ -19,8 +19,6 @@ namespace Schema.NET
     {
         private static readonly TypeInfo ThingInterfaceTypeInfo = typeof(IThing).GetTypeInfo();
         private static readonly Dictionary<string, Type> BuiltInThingTypeLookup = new Dictionary<string, Type>(StringComparer.Ordinal);
-        private static readonly ConcurrentDictionary<Type, Func<IEnumerable<object>, object>> TypeInstantiationMap = new ConcurrentDictionary<Type, Func<IEnumerable<object>, object>>();
-        private static readonly ParameterExpression[] ConstructorParameterExpression = new[] { Expression.Parameter(typeof(IEnumerable<object>)) };
 
         static ValuesJsonConverter()
         {
@@ -73,7 +71,7 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(serializer));
             }
 
-            var dynamicConstructor = GetDynamicConstructor(objectType);
+            var dynamicConstructor = FastActivator.GetDynamicConstructor<IEnumerable<object>>(objectType);
 
             if (reader.TokenType == JsonToken.StartArray)
             {
@@ -171,31 +169,6 @@ namespace Schema.NET
             }
 
             serializer.Serialize(writer, value);
-        }
-
-        private static Func<IEnumerable<object>, object> GetDynamicConstructor(Type objectType)
-        {
-            if (!TypeInstantiationMap.TryGetValue(objectType, out var dynamicConstructor))
-            {
-                foreach (var constructor in objectType.GetTypeInfo().DeclaredConstructors)
-                {
-                    var paramters = constructor.GetParameters();
-                    if (constructor.IsPublic && paramters.Length == 1 && paramters[0].ParameterType == typeof(IEnumerable<object>))
-                    {
-                        var newExpression = Expression.Lambda(
-                            typeof(Func<IEnumerable<object>, object>),
-                            Expression.Convert(Expression.New(constructor, ConstructorParameterExpression), typeof(object)),
-                            ConstructorParameterExpression);
-
-                        var constructorDelegate = newExpression.Compile();
-                        dynamicConstructor = (Func<IEnumerable<object>, object>)constructorDelegate;
-                        TypeInstantiationMap.TryAdd(objectType, dynamicConstructor);
-                        break;
-                    }
-                }
-            }
-
-            return dynamicConstructor;
         }
 
         private static object ProcessToken(JsonReader reader, Type[] targetTypes, JsonSerializer serializer)
