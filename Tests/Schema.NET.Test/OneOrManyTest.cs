@@ -57,7 +57,7 @@ namespace Schema.NET.Test
             Assert.Throws<ArgumentNullException>(() => new OneOrMany<int>((List<int>)null));
 
         [Fact]
-        public void Count_DefaultStructConstructor_ReturnsOne() => Assert.Single(default(OneOrMany<int>));
+        public void Count_DefaultStructConstructor_ReturnsZero() => Assert.Empty(default(OneOrMany<int>));
 
         [Fact]
         public void Count_DefaultClassConstructor_ReturnsZero() => Assert.Empty(default(OneOrMany<string>));
@@ -76,7 +76,7 @@ namespace Schema.NET.Test
             Assert.Equal(2, new OneOrMany<int>(new List<int>() { 1, 2 }).Count);
 
         [Fact]
-        public void HasOne_DefaultStructConstructor_ReturnsTrue() => Assert.True(default(OneOrMany<int>).HasOne);
+        public void HasOne_DefaultStructConstructor_ReturnsFalse() => Assert.False(default(OneOrMany<int>).HasOne);
 
         [Fact]
         public void HasOne_DefaultClassConstructor_ReturnsFalse() => Assert.False(default(OneOrMany<string>).HasOne);
@@ -169,11 +169,8 @@ namespace Schema.NET.Test
             Assert.True(new OneOrMany<int>(1) != new OneOrMany<int>(2));
 
         [Fact]
-        public void GetEnumerator_DefaultStructConstructor_ReturnsZero()
-        {
-            var item = Assert.Single(((IEnumerable)default(OneOrMany<int>)).Cast<object>());
-            Assert.Equal(0, item);
-        }
+        public void GetEnumerator_DefaultStructConstructor_ReturnsNull() =>
+            Assert.Empty(((IEnumerable)default(OneOrMany<int>)).Cast<object>());
 
         [Fact]
         public void GetEnumerator_DefaultClassConstructor_ReturnsNull() =>

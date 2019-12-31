@@ -25,7 +25,7 @@ namespace Schema.NET.Test
             var values = new Values<int, string, DayOfWeek, Person>("Foo");
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.True(values.HasValue2);
             Assert.Single(values.Value2);
             Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
@@ -37,7 +37,7 @@ namespace Schema.NET.Test
             var values = new Values<int, string, DayOfWeek, Person>(DayOfWeek.Friday);
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.False(values.HasValue2);
             Assert.Empty(values.Value2);
             Assert.True(values.HasValue3);
@@ -51,11 +51,11 @@ namespace Schema.NET.Test
             var values = new Values<int, string, DayOfWeek, Person>(new Person());
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.False(values.HasValue2);
             Assert.Empty(values.Value2);
             Assert.False(values.HasValue3);
-            Assert.Single(values.Value3);
+            Assert.Empty(values.Value3);
             Assert.True(values.HasValue4);
             Assert.Single(values.Value4);
             var item = Assert.Single(((IValues)values).Cast<object>().ToList());
@@ -157,7 +157,7 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = "Foo";
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.True(values.HasValue2);
             Assert.Single(values.Value2);
             Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
@@ -169,7 +169,7 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = DayOfWeek.Friday;
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.False(values.HasValue2);
             Assert.Empty(values.Value2);
             Assert.True(values.HasValue3);
@@ -183,11 +183,11 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = new Person();
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.False(values.HasValue2);
             Assert.Empty(values.Value2);
             Assert.False(values.HasValue3);
-            Assert.Single(values.Value3);
+            Assert.Empty(values.Value3);
             Assert.True(values.HasValue4);
             Assert.Single(values.Value4);
             var item = Assert.Single(((IValues)values).Cast<object>().ToList());
@@ -212,7 +212,7 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = new List<string>() { "Foo", "Bar" };
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.True(values.HasValue2);
             Assert.Equal(2, values.Value2.Count);
             Assert.Equal(new List<object>() { "Foo", "Bar" }, ((IValues)values).Cast<object>().ToList());
@@ -224,7 +224,7 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = new List<DayOfWeek>() { DayOfWeek.Friday, DayOfWeek.Monday };
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.False(values.HasValue2);
             Assert.Empty(values.Value2);
             Assert.True(values.HasValue3);
@@ -238,11 +238,11 @@ namespace Schema.NET.Test
             Values<int, string, DayOfWeek, Person> values = new List<Person>() { new Person(), new Person() };
 
             Assert.False(values.HasValue1);
-            Assert.Single(values.Value1);
+            Assert.Empty(values.Value1);
             Assert.False(values.HasValue2);
             Assert.Empty(values.Value2);
             Assert.False(values.HasValue3);
-            Assert.Single(values.Value3);
+            Assert.Empty(values.Value3);
             Assert.True(values.HasValue4);
             Assert.Equal(2, values.Value4.Count);
             Assert.Equal(2, ((IValues)values).Cast<object>().ToList().Count);
