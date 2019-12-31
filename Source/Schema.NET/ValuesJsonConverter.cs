@@ -1,11 +1,11 @@
 namespace Schema.NET
 {
     using System;
-    using System.Collections;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Globalization;
-    using System.Linq;
+    using System.Linq.Expressions;
     using System.Reflection;
     using System.Xml;
     using Newtonsoft.Json;
@@ -71,6 +71,8 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(serializer));
             }
 
+            var dynamicConstructor = FastActivator.GetDynamicConstructor<IEnumerable<object>>(objectType);
+
             if (reader.TokenType == JsonToken.StartArray)
             {
                 var items = new List<object>();
@@ -91,12 +93,12 @@ namespace Schema.NET
                     items.Add(item);
                 }
 
-                return Activator.CreateInstance(objectType, items);
+                return dynamicConstructor(items);
             }
             else if (reader.TokenType != JsonToken.Null)
             {
                 var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
-                return Activator.CreateInstance(objectType, (IEnumerable)new[] { item });
+                return dynamicConstructor(new[] { item });
             }
 
             return default;
