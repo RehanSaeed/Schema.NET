@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RunSettings>
+    <DataCollectionRunSettings>
+        <DataCollectors>
+            <DataCollector friendlyName="XPlat code coverage">
+                <Configuration>
+                    <Format>json,cobertura,opencover</Format>
+                    <!--<Exclude>[coverlet.*.tests?]*,[*]Coverlet.Core*</Exclude>-->
+                    <!-- [Assembly-Filter]Type-Filter -->
+                    <!--<Include>[coverlet.*]*,[*]Coverlet.Core*</Include>-->
+                    <!-- [Assembly-Filter]Type-Filter -->
+                    <!--<ExcludeByAttribute>Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>-->
+                    <!--<ExcludeByFile>../dir1/class1.cs,../dir2/*.cs,../dir3/**/*.cs,</ExcludeByFile>-->
+                    <!-- Absolute or relative file paths -->
+                    <!--<IncludeDirectory>../dir1/,../dir2/,</IncludeDirectory>-->
+                    <!--<SingleHit>false</SingleHit>-->
+                    <!--<UseSourceLink>true</UseSourceLink>-->
+                    <!--<IncludeTestAssembly>true</IncludeTestAssembly>-->
+                </Configuration>
+            </DataCollector>
+        </DataCollectors>
+    </DataCollectionRunSettings>
+</RunSettings>
