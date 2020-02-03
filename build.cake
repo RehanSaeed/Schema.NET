@@ -84,8 +84,7 @@ Task("Test")
                 ResultsDirectory = artefactsDirectory,
                 ArgumentCustomization = x => x
                     .Append($"--logger html;LogFileName={project.GetFilenameWithoutExtension()}.html")
-                    .Append("--collect:\"XPlat Code Coverage\"")
-                    //.Append("--settings coverlet.runsettings"),
+                    .Append("--collect:\"XPlat Code Coverage\""),
             });
     });
 

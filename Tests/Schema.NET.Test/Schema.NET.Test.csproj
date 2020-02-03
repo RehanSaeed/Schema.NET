@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Package References">
-    <PackageReference Include="coverlet.collector" Version="1.2.0">
-      <PrivateAssets>all</PrivateAssets>
+    <PackageReference Include="coverlet.collector" PrivateAssets="All" Version="1.2.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <!-- See https://github.com/Microsoft/dotnet/tree/master/releases/reference-assemblies -->
