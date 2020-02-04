@@ -16,7 +16,7 @@
     </PackageReference>
     <!-- See https://github.com/Microsoft/dotnet/tree/master/releases/reference-assemblies -->
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0-preview-20200116-01" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0-preview-20200203-01" />
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="16.5.0-preview-20200116-01" />
     <PackageReference Include="Moq" Version="4.13.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
