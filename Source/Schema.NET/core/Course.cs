@@ -30,6 +30,11 @@
         OneOrMany<ICourseInstance> HasCourseInstance { get; set; }
 
         /// <summary>
+        /// The number of credits or units awarded by a Course or required to complete an EducationalOccupationalProgram.
+        /// </summary>
+        Values<int?, IStructuredValue> NumberOfCredits { get; set; }
+
+        /// <summary>
         /// A description of the qualification, award, certificate, diploma or other occupational credential awarded as a consequence of successful completion of this course or program.
         /// </summary>
         Values<string, Uri> OccupationalCredentialAwarded { get; set; }
@@ -76,9 +81,16 @@
         public OneOrMany<ICourseInstance> HasCourseInstance { get; set; }
 
         /// <summary>
+        /// The number of credits or units awarded by a Course or required to complete an EducationalOccupationalProgram.
+        /// </summary>
+        [DataMember(Name = "numberOfCredits", Order = 210)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<int?, IStructuredValue> NumberOfCredits { get; set; }
+
+        /// <summary>
         /// A description of the qualification, award, certificate, diploma or other occupational credential awarded as a consequence of successful completion of this course or program.
         /// </summary>
-        [DataMember(Name = "occupationalCredentialAwarded", Order = 210)]
+        [DataMember(Name = "occupationalCredentialAwarded", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> OccupationalCredentialAwarded { get; set; }
 
@@ -100,6 +112,7 @@
                 this.CoursePrerequisites == other.CoursePrerequisites &&
                 this.EducationalCredentialAwarded == other.EducationalCredentialAwarded &&
                 this.HasCourseInstance == other.HasCourseInstance &&
+                this.NumberOfCredits == other.NumberOfCredits &&
                 this.OccupationalCredentialAwarded == other.OccupationalCredentialAwarded &&
                 base.Equals(other);
         }
@@ -113,6 +126,7 @@
             .And(this.CoursePrerequisites)
             .And(this.EducationalCredentialAwarded)
             .And(this.HasCourseInstance)
+            .And(this.NumberOfCredits)
             .And(this.OccupationalCredentialAwarded)
             .And(base.GetHashCode());
     }

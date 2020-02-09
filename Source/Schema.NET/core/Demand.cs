@@ -132,9 +132,9 @@
         OneOrMany<OfferItemCondition?> ItemCondition { get; set; }
 
         /// <summary>
-        /// The item being offered.
+        /// An item being offered (or demanded). The transactional nature of the offer or demand is documented using &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt;, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
-        Values<IProduct, IService> ItemOffered { get; set; }
+        Values<IAggregateOffer, ICreativeWork, IEvent, IMenuItem, IProduct, IService, ITrip> ItemOffered { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
@@ -360,11 +360,11 @@
         public OneOrMany<OfferItemCondition?> ItemCondition { get; set; }
 
         /// <summary>
-        /// The item being offered.
+        /// An item being offered (or demanded). The transactional nature of the offer or demand is documented using &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt;, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         [DataMember(Name = "itemOffered", Order = 230)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService> ItemOffered { get; set; }
+        public Values<IAggregateOffer, ICreativeWork, IEvent, IMenuItem, IProduct, IService, ITrip> ItemOffered { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.

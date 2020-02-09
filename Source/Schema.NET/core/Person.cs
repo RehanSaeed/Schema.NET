@@ -160,6 +160,11 @@
         OneOrMany<string> HonorificSuffix { get; set; }
 
         /// <summary>
+        /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
+        /// </summary>
+        OneOrMany<IInteractionCounter> InteractionStatistic { get; set; }
+
+        /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
         OneOrMany<string> IsicV4 { get; set; }
@@ -509,93 +514,100 @@
         public OneOrMany<string> HonorificSuffix { get; set; }
 
         /// <summary>
+        /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
+        /// </summary>
+        [DataMember(Name = "interactionStatistic", Order = 136)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IInteractionCounter> InteractionStatistic { get; set; }
+
+        /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
-        [DataMember(Name = "isicV4", Order = 136)]
+        [DataMember(Name = "isicV4", Order = 137)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> IsicV4 { get; set; }
 
         /// <summary>
         /// The job title of the person (for example, Financial Manager).
         /// </summary>
-        [DataMember(Name = "jobTitle", Order = 137)]
+        [DataMember(Name = "jobTitle", Order = 138)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> JobTitle { get; set; }
 
         /// <summary>
         /// The most generic bi-directional social/work relation.
         /// </summary>
-        [DataMember(Name = "knows", Order = 138)]
+        [DataMember(Name = "knows", Order = 139)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPerson> Knows { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
         /// </summary>
-        [DataMember(Name = "knowsAbout", Order = 139)]
+        [DataMember(Name = "knowsAbout", Order = 140)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, IThing, Uri> KnowsAbout { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "knowsLanguage", Order = 140)]
+        [DataMember(Name = "knowsLanguage", Order = 141)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ILanguage, string> KnowsLanguage { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
         /// </summary>
-        [DataMember(Name = "makesOffer", Order = 141)]
+        [DataMember(Name = "makesOffer", Order = 142)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IOffer> MakesOffer { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
         /// </summary>
-        [DataMember(Name = "memberOf", Order = 142)]
+        [DataMember(Name = "memberOf", Order = 143)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IProgramMembership> MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
         /// </summary>
-        [DataMember(Name = "naics", Order = 143)]
+        [DataMember(Name = "naics", Order = 144)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Naics { get; set; }
 
         /// <summary>
         /// Nationality of the person.
         /// </summary>
-        [DataMember(Name = "nationality", Order = 144)]
+        [DataMember(Name = "nationality", Order = 145)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICountry> Nationality { get; set; }
 
         /// <summary>
         /// The total financial value of the person as calculated by subtracting assets from liabilities.
         /// </summary>
-        [DataMember(Name = "netWorth", Order = 145)]
+        [DataMember(Name = "netWorth", Order = 146)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMonetaryAmount, IPriceSpecification> NetWorth { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
         /// </summary>
-        [DataMember(Name = "owns", Order = 146)]
+        [DataMember(Name = "owns", Order = 147)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOwnershipInfo, IProduct> Owns { get; set; }
 
         /// <summary>
         /// A parent of this person.
         /// </summary>
-        [DataMember(Name = "parent", Order = 147)]
+        [DataMember(Name = "parent", Order = 148)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPerson> Parent { get; set; }
 
         /// <summary>
         /// Event that this person is a performer or participant in.
         /// </summary>
-        [DataMember(Name = "performerIn", Order = 148)]
+        [DataMember(Name = "performerIn", Order = 149)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IEvent> PerformerIn { get; set; }
 
@@ -603,84 +615,84 @@
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
         /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
-        [DataMember(Name = "publishingPrinciples", Order = 149)]
+        [DataMember(Name = "publishingPrinciples", Order = 150)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// The most generic familial relation.
         /// </summary>
-        [DataMember(Name = "relatedTo", Order = 150)]
+        [DataMember(Name = "relatedTo", Order = 151)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPerson> RelatedTo { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
-        [DataMember(Name = "seeks", Order = 151)]
+        [DataMember(Name = "seeks", Order = 152)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IDemand> Seeks { get; set; }
 
         /// <summary>
         /// A sibling of the person.
         /// </summary>
-        [DataMember(Name = "sibling", Order = 152)]
+        [DataMember(Name = "sibling", Order = 153)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPerson> Sibling { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 153)]
+        [DataMember(Name = "sponsor", Order = 154)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// The person's spouse.
         /// </summary>
-        [DataMember(Name = "spouse", Order = 154)]
+        [DataMember(Name = "spouse", Order = 155)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPerson> Spouse { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
         /// </summary>
-        [DataMember(Name = "taxID", Order = 155)]
+        [DataMember(Name = "taxID", Order = 156)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> TaxID { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 156)]
+        [DataMember(Name = "telephone", Order = 157)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Telephone { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.
         /// </summary>
-        [DataMember(Name = "vatID", Order = 157)]
+        [DataMember(Name = "vatID", Order = 158)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VatID { get; set; }
 
         /// <summary>
         /// The weight of the product or person.
         /// </summary>
-        [DataMember(Name = "weight", Order = 158)]
+        [DataMember(Name = "weight", Order = 159)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IQuantitativeValue> Weight { get; set; }
 
         /// <summary>
         /// A contact location for a person's place of work.
         /// </summary>
-        [DataMember(Name = "workLocation", Order = 159)]
+        [DataMember(Name = "workLocation", Order = 160)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IContactPoint, IPlace> WorkLocation { get; set; }
 
         /// <summary>
         /// Organizations that the person works for.
         /// </summary>
-        [DataMember(Name = "worksFor", Order = 160)]
+        [DataMember(Name = "worksFor", Order = 161)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IOrganization> WorksFor { get; set; }
 
@@ -728,6 +740,7 @@
                 this.HomeLocation == other.HomeLocation &&
                 this.HonorificPrefix == other.HonorificPrefix &&
                 this.HonorificSuffix == other.HonorificSuffix &&
+                this.InteractionStatistic == other.InteractionStatistic &&
                 this.IsicV4 == other.IsicV4 &&
                 this.JobTitle == other.JobTitle &&
                 this.Knows == other.Knows &&
@@ -791,6 +804,7 @@
             .And(this.HomeLocation)
             .And(this.HonorificPrefix)
             .And(this.HonorificSuffix)
+            .And(this.InteractionStatistic)
             .And(this.IsicV4)
             .And(this.JobTitle)
             .And(this.Knows)

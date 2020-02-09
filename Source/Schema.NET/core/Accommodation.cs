@@ -45,6 +45,11 @@
         OneOrMany<int?> NumberOfFullBathrooms { get; set; }
 
         /// <summary>
+        /// Number of partial bathrooms - The total number of half and ¼ bathrooms in an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/BathroomsPartial+Field"&gt;BathroomsPartial field in RESO&lt;/a&gt;.
+        /// </summary>
+        OneOrMany<int?> NumberOfPartialBathrooms { get; set; }
+
+        /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
@@ -59,6 +64,11 @@
         /// Indicates whether pets are allowed to enter the accommodation or lodging business. More detailed information can be put in a text value.
         /// </summary>
         Values<bool?, string> PetsAllowed { get; set; }
+
+        /// <summary>
+        /// The year an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; was constructed. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/YearBuilt+Field"&gt;YearBuilt field in RESO&lt;/a&gt;.
+        /// </summary>
+        OneOrMany<int?> YearBuilt { get; set; }
     }
 
     /// <summary>
@@ -128,26 +138,40 @@
         public OneOrMany<int?> NumberOfFullBathrooms { get; set; }
 
         /// <summary>
+        /// Number of partial bathrooms - The total number of half and ¼ bathrooms in an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/BathroomsPartial+Field"&gt;BathroomsPartial field in RESO&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "numberOfPartialBathrooms", Order = 213)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> NumberOfPartialBathrooms { get; set; }
+
+        /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
-        [DataMember(Name = "numberOfRooms", Order = 213)]
+        [DataMember(Name = "numberOfRooms", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<int?, IQuantitativeValue> NumberOfRooms { get; set; }
 
         /// <summary>
         /// Indications regarding the permitted usage of the accommodation.
         /// </summary>
-        [DataMember(Name = "permittedUsage", Order = 214)]
+        [DataMember(Name = "permittedUsage", Order = 215)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PermittedUsage { get; set; }
 
         /// <summary>
         /// Indicates whether pets are allowed to enter the accommodation or lodging business. More detailed information can be put in a text value.
         /// </summary>
-        [DataMember(Name = "petsAllowed", Order = 215)]
+        [DataMember(Name = "petsAllowed", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<bool?, string> PetsAllowed { get; set; }
+
+        /// <summary>
+        /// The year an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; was constructed. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/YearBuilt+Field"&gt;YearBuilt field in RESO&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "yearBuilt", Order = 217)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> YearBuilt { get; set; }
 
         /// <inheritdoc/>
         public bool Equals(Accommodation other)
@@ -170,9 +194,11 @@
                 this.LeaseLength == other.LeaseLength &&
                 this.NumberOfBathroomsTotal == other.NumberOfBathroomsTotal &&
                 this.NumberOfFullBathrooms == other.NumberOfFullBathrooms &&
+                this.NumberOfPartialBathrooms == other.NumberOfPartialBathrooms &&
                 this.NumberOfRooms == other.NumberOfRooms &&
                 this.PermittedUsage == other.PermittedUsage &&
                 this.PetsAllowed == other.PetsAllowed &&
+                this.YearBuilt == other.YearBuilt &&
                 base.Equals(other);
         }
 
@@ -188,9 +214,11 @@
             .And(this.LeaseLength)
             .And(this.NumberOfBathroomsTotal)
             .And(this.NumberOfFullBathrooms)
+            .And(this.NumberOfPartialBathrooms)
             .And(this.NumberOfRooms)
             .And(this.PermittedUsage)
             .And(this.PetsAllowed)
+            .And(this.YearBuilt)
             .And(base.GetHashCode());
     }
 }

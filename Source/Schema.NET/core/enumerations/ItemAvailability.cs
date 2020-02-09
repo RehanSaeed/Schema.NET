@@ -47,7 +47,7 @@
         OutOfStock,
 
         /// <summary>
-        /// Indicates that the item is available for pre-order, but will be delivered when generally available.
+        /// Indicates that the item is available for pre-order.
         /// </summary>
         [EnumMember(Value = "https://schema.org/PreOrder")]
         PreOrder,

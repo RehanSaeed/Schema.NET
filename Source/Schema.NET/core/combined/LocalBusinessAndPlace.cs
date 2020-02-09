@@ -7,7 +7,7 @@
     /// <summary>
     /// See LocalBusiness, Place for more information.
     /// </summary>
-    public partial interface ILocalBusinessAndPlace : IPlace, ILocalBusiness
+    public partial interface ILocalBusinessAndPlace : ILocalBusiness, IPlace
     {
     }
 

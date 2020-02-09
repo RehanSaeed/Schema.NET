@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, LodgingBusiness for more information.
     /// </summary>
-    public partial interface ICivicStructureAndLodgingBusiness : ICivicStructure, ILodgingBusiness
+    public partial interface ICivicStructureAndLodgingBusiness : ILodgingBusiness, ICivicStructure
     {
     }
 
