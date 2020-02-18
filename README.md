@@ -164,6 +164,7 @@ For more examples and actual running code samples, take a look at the unit tests
 
 Please view the [contributing guide](/.github/CONTRIBUTING.md) for more information.
 
+- [kirkone](https://github.com/kirkone) - CI reads .NET Core version from new global.json file.
 - [Turnerj](https://github.com/Turnerj) - Added `System.Text.Json` support, Had all types implement `IEquatable<T>` `GetHashCode` and added extra unit tests and bug fixes.
 - [shervinw](https://github.com/shervinw) - Added better null value handling for structs.
 - [kirk-marple](https://github.com/kirk-marple) - Refactoring JSON serialization to be more efficient.
