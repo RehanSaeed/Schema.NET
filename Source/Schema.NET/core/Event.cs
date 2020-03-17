@@ -90,6 +90,16 @@
         OneOrMany<int?> MaximumAttendeeCapacity { get; set; }
 
         /// <summary>
+        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="http://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="http://schema.org/OfflineEventAttendanceMode"&gt;OfflineEventAttendanceMode&lt;/a&gt; (or the offline aspects, in the case of a &lt;a class="localLink" href="http://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
+        /// </summary>
+        OneOrMany<int?> MaximumPhysicalAttendeeCapacity { get; set; }
+
+        /// <summary>
+        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="http://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="http://schema.org/OnlineEventAttendanceMode"&gt;OnlineEventAttendanceMode&lt;/a&gt; (or the online aspects, in the case of a &lt;a class="localLink" href="http://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
+        /// </summary>
+        OneOrMany<int?> MaximumVirtualAttendeeCapacity { get; set; }
+
+        /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="http://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         Values<IDemand, IOffer> Offers { get; set; }
@@ -296,100 +306,114 @@
         public OneOrMany<int?> MaximumAttendeeCapacity { get; set; }
 
         /// <summary>
+        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="http://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="http://schema.org/OfflineEventAttendanceMode"&gt;OfflineEventAttendanceMode&lt;/a&gt; (or the offline aspects, in the case of a &lt;a class="localLink" href="http://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
+        /// </summary>
+        [DataMember(Name = "maximumPhysicalAttendeeCapacity", Order = 122)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> MaximumPhysicalAttendeeCapacity { get; set; }
+
+        /// <summary>
+        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="http://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="http://schema.org/OnlineEventAttendanceMode"&gt;OnlineEventAttendanceMode&lt;/a&gt; (or the online aspects, in the case of a &lt;a class="localLink" href="http://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
+        /// </summary>
+        [DataMember(Name = "maximumVirtualAttendeeCapacity", Order = 123)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> MaximumVirtualAttendeeCapacity { get; set; }
+
+        /// <summary>
         /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="http://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
-        [DataMember(Name = "offers", Order = 122)]
+        [DataMember(Name = "offers", Order = 124)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IDemand, IOffer> Offers { get; set; }
 
         /// <summary>
         /// An organizer of an Event.
         /// </summary>
-        [DataMember(Name = "organizer", Order = 123)]
+        [DataMember(Name = "organizer", Order = 125)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Organizer { get; set; }
 
         /// <summary>
         /// A performer at the event&amp;#x2014;for example, a presenter, musician, musical group or actor.
         /// </summary>
-        [DataMember(Name = "performer", Order = 124)]
+        [DataMember(Name = "performer", Order = 126)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Performer { get; set; }
 
         /// <summary>
         /// Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
         /// </summary>
-        [DataMember(Name = "previousStartDate", Order = 125)]
+        [DataMember(Name = "previousStartDate", Order = 127)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?> PreviousStartDate { get; set; }
 
         /// <summary>
         /// The CreativeWork that captured all or part of this Event.
         /// </summary>
-        [DataMember(Name = "recordedIn", Order = 126)]
+        [DataMember(Name = "recordedIn", Order = 128)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> RecordedIn { get; set; }
 
         /// <summary>
         /// The number of attendee places for an event that remain unallocated.
         /// </summary>
-        [DataMember(Name = "remainingAttendeeCapacity", Order = 127)]
+        [DataMember(Name = "remainingAttendeeCapacity", Order = 129)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> RemainingAttendeeCapacity { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 128)]
+        [DataMember(Name = "review", Order = 130)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 129)]
+        [DataMember(Name = "sponsor", Order = 131)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// The start date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "startDate", Order = 130)]
+        [DataMember(Name = "startDate", Order = 132)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the item (in &lt;a href="http://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601 date format&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "endDate", Order = 131)]
+        [DataMember(Name = "endDate", Order = 133)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> EndDate { get; set; }
 
         /// <summary>
         /// An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
         /// </summary>
-        [DataMember(Name = "subEvent", Order = 132)]
+        [DataMember(Name = "subEvent", Order = 134)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IEvent> SubEvent { get; set; }
 
         /// <summary>
         /// An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
         /// </summary>
-        [DataMember(Name = "superEvent", Order = 133)]
+        [DataMember(Name = "superEvent", Order = 135)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IEvent> SuperEvent { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
         /// </summary>
-        [DataMember(Name = "translator", Order = 134)]
+        [DataMember(Name = "translator", Order = 136)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Translator { get; set; }
 
         /// <summary>
         /// The typical expected age range, e.g. '7-9', '11-'.
         /// </summary>
-        [DataMember(Name = "typicalAgeRange", Order = 135)]
+        [DataMember(Name = "typicalAgeRange", Order = 137)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> TypicalAgeRange { get; set; }
 
@@ -397,14 +421,14 @@
         /// A work featured in some event, e.g. exhibited in an ExhibitionEvent.
         ///        Specific subproperties are available for workPerformed (e.g. a play), or a workPresented (a Movie at a ScreeningEvent).
         /// </summary>
-        [DataMember(Name = "workFeatured", Order = 136)]
+        [DataMember(Name = "workFeatured", Order = 138)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> WorkFeatured { get; set; }
 
         /// <summary>
         /// A work performed in some event, for example a play performed in a TheaterEvent.
         /// </summary>
-        [DataMember(Name = "workPerformed", Order = 137)]
+        [DataMember(Name = "workPerformed", Order = 139)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> WorkPerformed { get; set; }
 
@@ -438,6 +462,8 @@
                 this.IsAccessibleForFree == other.IsAccessibleForFree &&
                 this.Location == other.Location &&
                 this.MaximumAttendeeCapacity == other.MaximumAttendeeCapacity &&
+                this.MaximumPhysicalAttendeeCapacity == other.MaximumPhysicalAttendeeCapacity &&
+                this.MaximumVirtualAttendeeCapacity == other.MaximumVirtualAttendeeCapacity &&
                 this.Offers == other.Offers &&
                 this.Organizer == other.Organizer &&
                 this.Performer == other.Performer &&
@@ -478,6 +504,8 @@
             .And(this.IsAccessibleForFree)
             .And(this.Location)
             .And(this.MaximumAttendeeCapacity)
+            .And(this.MaximumPhysicalAttendeeCapacity)
+            .And(this.MaximumVirtualAttendeeCapacity)
             .And(this.Offers)
             .And(this.Organizer)
             .And(this.Performer)

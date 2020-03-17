@@ -10,11 +10,6 @@
     public partial interface IMedicalTrial : IMedicalStudy
     {
         /// <summary>
-        /// The phase of the clinical trial.
-        /// </summary>
-        OneOrMany<string> Phase { get; set; }
-
-        /// <summary>
         /// Specifics about the trial design (enumerated).
         /// </summary>
         OneOrMany<MedicalTrialDesign?> TrialDesign { get; set; }
@@ -33,16 +28,9 @@
         public override string Type => "MedicalTrial";
 
         /// <summary>
-        /// The phase of the clinical trial.
-        /// </summary>
-        [DataMember(Name = "phase", Order = 306)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> Phase { get; set; }
-
-        /// <summary>
         /// Specifics about the trial design (enumerated).
         /// </summary>
-        [DataMember(Name = "trialDesign", Order = 307)]
+        [DataMember(Name = "trialDesign", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<MedicalTrialDesign?> TrialDesign { get; set; }
 
@@ -60,7 +48,6 @@
             }
 
             return this.Type == other.Type &&
-                this.Phase == other.Phase &&
                 this.TrialDesign == other.TrialDesign &&
                 base.Equals(other);
         }
@@ -70,7 +57,6 @@
 
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
-            .And(this.Phase)
             .And(this.TrialDesign)
             .And(base.GetHashCode());
     }

@@ -58,13 +58,6 @@
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IDrug> Drug { get; set; }
 
-        /// <summary>
-        /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
-        /// </summary>
-        [DataMember(Name = "indication", Order = 309)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IMedicalIndication> Indication { get; set; }
-
         /// <inheritdoc/>
         public bool Equals(TherapeuticProcedure other)
         {
@@ -82,7 +75,6 @@
                 this.AdverseOutcome == other.AdverseOutcome &&
                 this.DoseSchedule == other.DoseSchedule &&
                 this.Drug == other.Drug &&
-                this.Indication == other.Indication &&
                 base.Equals(other);
         }
 
@@ -94,7 +86,6 @@
             .And(this.AdverseOutcome)
             .And(this.DoseSchedule)
             .And(this.Drug)
-            .And(this.Indication)
             .And(base.GetHashCode());
     }
 }

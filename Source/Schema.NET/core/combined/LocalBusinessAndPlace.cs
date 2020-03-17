@@ -181,51 +181,58 @@
         public override OneOrMany<string> GlobalLocationNumber { get; set; }
 
         /// <summary>
+        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="http://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
+        /// </summary>
+        [DataMember(Name = "hasDriveThroughService", Order = 228)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<bool?> HasDriveThroughService { get; set; }
+
+        /// <summary>
         /// A URL to a map of the place.
         /// </summary>
-        [DataMember(Name = "hasMap", Order = 228)]
+        [DataMember(Name = "hasMap", Order = 229)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IMap, Uri> HasMap { get; set; }
 
         /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
         /// </summary>
-        [DataMember(Name = "isAccessibleForFree", Order = 229)]
+        [DataMember(Name = "isAccessibleForFree", Order = 230)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<bool?> IsAccessibleForFree { get; set; }
 
         /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
-        [DataMember(Name = "isicV4", Order = 230)]
+        [DataMember(Name = "isicV4", Order = 231)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> IsicV4 { get; set; }
 
         /// <summary>
         /// The latitude of a location. For example &lt;code&gt;37.42242&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "latitude", Order = 231)]
+        [DataMember(Name = "latitude", Order = 232)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<double?, string> Latitude { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
-        [DataMember(Name = "logo", Order = 232)]
+        [DataMember(Name = "logo", Order = 233)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// The longitude of a location. For example &lt;code&gt;-122.08585&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "longitude", Order = 233)]
+        [DataMember(Name = "longitude", Order = 234)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<double?, string> Longitude { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
         /// </summary>
-        [DataMember(Name = "maximumAttendeeCapacity", Order = 234)]
+        [DataMember(Name = "maximumAttendeeCapacity", Order = 235)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<int?> MaximumAttendeeCapacity { get; set; }
 
@@ -238,63 +245,63 @@
         /// &lt;li&gt;If a business is open 7 days a week, then it can be specified as &lt;code&gt;&amp;lt;time itemprop=&amp;quot;openingHours&amp;quot; datetime=&amp;quot;Mo-Su&amp;quot;&amp;gt;Monday through Sunday, all day&amp;lt;/time&amp;gt;&lt;/code&gt;.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "openingHours", Order = 235)]
+        [DataMember(Name = "openingHours", Order = 236)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> OpeningHours { get; set; }
 
         /// <summary>
         /// The opening hours of a certain place.
         /// </summary>
-        [DataMember(Name = "openingHoursSpecification", Order = 236)]
+        [DataMember(Name = "openingHoursSpecification", Order = 237)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IOpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// Cash, Credit Card, Cryptocurrency, Local Exchange Tradings System, etc.
         /// </summary>
-        [DataMember(Name = "paymentAccepted", Order = 237)]
+        [DataMember(Name = "paymentAccepted", Order = 238)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PaymentAccepted { get; set; }
 
         /// <summary>
         /// A photograph of this place.
         /// </summary>
-        [DataMember(Name = "photo", Order = 238)]
+        [DataMember(Name = "photo", Order = 239)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
         /// </summary>
-        [DataMember(Name = "priceRange", Order = 239)]
+        [DataMember(Name = "priceRange", Order = 240)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PriceRange { get; set; }
 
         /// <summary>
         /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
         /// </summary>
-        [DataMember(Name = "publicAccess", Order = 240)]
+        [DataMember(Name = "publicAccess", Order = 241)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<bool?> PublicAccess { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 241)]
+        [DataMember(Name = "review", Order = 242)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
         /// </summary>
-        [DataMember(Name = "slogan", Order = 242)]
+        [DataMember(Name = "slogan", Order = 243)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> Slogan { get; set; }
 
         /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
         /// </summary>
-        [DataMember(Name = "smokingAllowed", Order = 243)]
+        [DataMember(Name = "smokingAllowed", Order = 244)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<bool?> SmokingAllowed { get; set; }
 
@@ -302,16 +309,23 @@
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
         /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "specialOpeningHoursSpecification", Order = 244)]
+        [DataMember(Name = "specialOpeningHoursSpecification", Order = 245)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IOpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 245)]
+        [DataMember(Name = "telephone", Order = 246)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> Telephone { get; set; }
+
+        /// <summary>
+        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
+        /// </summary>
+        [DataMember(Name = "tourBookingPage", Order = 247)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<Uri> TourBookingPage { get; set; }
 
         /// <inheritdoc/>
         public bool Equals(LocalBusinessAndPlace other)
@@ -349,6 +363,7 @@
                 this.GeoTouches == other.GeoTouches &&
                 this.GeoWithin == other.GeoWithin &&
                 this.GlobalLocationNumber == other.GlobalLocationNumber &&
+                this.HasDriveThroughService == other.HasDriveThroughService &&
                 this.HasMap == other.HasMap &&
                 this.IsAccessibleForFree == other.IsAccessibleForFree &&
                 this.IsicV4 == other.IsicV4 &&
@@ -367,6 +382,7 @@
                 this.SmokingAllowed == other.SmokingAllowed &&
                 this.SpecialOpeningHoursSpecification == other.SpecialOpeningHoursSpecification &&
                 this.Telephone == other.Telephone &&
+                this.TourBookingPage == other.TourBookingPage &&
                 base.Equals(other);
         }
 
@@ -397,6 +413,7 @@
             .And(this.GeoTouches)
             .And(this.GeoWithin)
             .And(this.GlobalLocationNumber)
+            .And(this.HasDriveThroughService)
             .And(this.HasMap)
             .And(this.IsAccessibleForFree)
             .And(this.IsicV4)
@@ -415,6 +432,7 @@
             .And(this.SmokingAllowed)
             .And(this.SpecialOpeningHoursSpecification)
             .And(this.Telephone)
+            .And(this.TourBookingPage)
             .And(base.GetHashCode());
     }
 }

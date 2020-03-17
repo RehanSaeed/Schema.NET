@@ -9,10 +9,6 @@
     /// </summary>
     public partial interface IAllocateAction : IOrganizeAction
     {
-        /// <summary>
-        /// A goal towards an action is taken. Can be concrete or abstract.
-        /// </summary>
-        Values<MedicalDevicePurpose?, IThing> Purpose { get; set; }
     }
 
     /// <summary>
@@ -26,13 +22,6 @@
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "AllocateAction";
-
-        /// <summary>
-        /// A goal towards an action is taken. Can be concrete or abstract.
-        /// </summary>
-        [DataMember(Name = "purpose", Order = 306)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<MedicalDevicePurpose?, IThing> Purpose { get; set; }
 
         /// <inheritdoc/>
         public bool Equals(AllocateAction other)
@@ -48,7 +37,6 @@
             }
 
             return this.Type == other.Type &&
-                this.Purpose == other.Purpose &&
                 base.Equals(other);
         }
 
@@ -57,7 +45,6 @@
 
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
-            .And(this.Purpose)
             .And(base.GetHashCode());
     }
 }

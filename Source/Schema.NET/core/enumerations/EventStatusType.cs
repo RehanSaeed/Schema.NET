@@ -17,6 +17,12 @@
         EventCancelled,
 
         /// <summary>
+        /// Indicates that the event was changed to allow online participation. See &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; for specifics of whether it is now fully or partially online.
+        /// </summary>
+        [EnumMember(Value = "https://schema.org/EventMovedOnline")]
+        EventMovedOnline,
+
+        /// <summary>
         /// The event has been postponed and no new date has been set. The event's previousStartDate should be set.
         /// </summary>
         [EnumMember(Value = "https://schema.org/EventPostponed")]
