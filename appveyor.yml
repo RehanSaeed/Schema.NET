@@ -25,10 +25,11 @@ build_script:
       ./dotnet-install.ps1 -JSonFile global.json
     }
     else {
-      dotnet --list-sdks
       Invoke-WebRequest "https://dot.net/v1/dotnet-install.sh" -OutFile "./dotnet-install.sh"
       sudo chmod u+x dotnet-install.sh
-      sudo ./dotnet-install.sh --jsonfile global.json --install-dir /usr/share/dotnet
+      $installDirectory = $isMacOS ? '/Users/appveyor/.dotnet/sdk' : '/usr/share/dotnet'
+      $installDirectory
+      sudo ./dotnet-install.sh --jsonfile global.json --install-dir $installDirectory
     }
 - pwsh: dotnet tool restore
 - pwsh: dotnet cake --target=Build
