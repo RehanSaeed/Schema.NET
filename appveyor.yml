@@ -11,10 +11,6 @@ pull_requests:
   # Do not increment build number for pull requests
   do_not_increment_build_number: true
 
-nuget:
-  # Do not publish for pull requests
-  disable_publish_on_pr: true
-
 environment:
   # Set the DOTNET_SKIP_FIRST_TIME_EXPERIENCE environment variable to stop wasting time caching packages
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
