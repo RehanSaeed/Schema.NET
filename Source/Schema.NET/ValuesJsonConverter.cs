@@ -323,8 +323,11 @@ namespace Schema.NET
                 }
                 else if (targetType == typeof(DateTimeOffset))
                 {
-                    success = DateTimeOffset.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out var localResult);
-                    result = localResult;
+                    if (valueString.Contains("+") || valueString.Contains("Z"))
+                    {
+                        success = DateTimeOffset.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out var localResult);
+                        result = localResult;
+                    }
                 }
                 else if (targetType == typeof(TimeSpan))
                 {
