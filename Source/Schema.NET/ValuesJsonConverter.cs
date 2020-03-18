@@ -318,14 +318,27 @@ namespace Schema.NET
                 }
                 else if (targetType == typeof(DateTime))
                 {
-                    success = DateTime.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out var localResult);
-                    result = localResult;
+                    if (DateTimeHelper.TryParseMSDateTime(valueString, out var localResult))
+                    {
+                        success = true;
+                        result = localResult;
+                    }
+                    else
+                    {
+                        success = DateTime.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out localResult);
+                        result = localResult;
+                    }
                 }
                 else if (targetType == typeof(DateTimeOffset))
                 {
-                    if (valueString.Contains("+") || valueString.Contains("Z"))
+                    if (DateTimeHelper.TryParseMSDateTimeOffset(valueString, out var localResult))
                     {
-                        success = DateTimeOffset.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out var localResult);
+                        success = true;
+                        result = localResult;
+                    }
+                    else if (DateTimeHelper.ContainsTimeOffset(valueString))
+                    {
+                        success = DateTimeOffset.TryParse(valueString, CultureInfo.InvariantCulture, DateTimeStyles.None, out localResult);
                         result = localResult;
                     }
                 }
@@ -367,19 +380,6 @@ namespace Schema.NET
                 if (targetType.GetTypeInfo().IsPrimitive || targetType == typeof(decimal))
                 {
                     result = Convert.ChangeType(reader.Value, targetType, CultureInfo.InvariantCulture);
-                    success = true;
-                }
-            }
-            else if (tokenType == JsonToken.Date)
-            {
-                if (targetType == typeof(DateTime) && reader.Value is DateTimeOffset dateTimeOffset)
-                {
-                    result = dateTimeOffset.UtcDateTime;
-                    success = true;
-                }
-                else if (targetType == typeof(DateTimeOffset) && reader.Value is DateTime dateTime)
-                {
-                    result = new DateTimeOffset(dateTime);
                     success = true;
                 }
             }
