@@ -30,11 +30,6 @@
         OneOrMany<IImageObject> Diagram { get; set; }
 
         /// <summary>
-        /// Function of the anatomical structure.
-        /// </summary>
-        OneOrMany<string> Function { get; set; }
-
-        /// <summary>
         /// The anatomical or organ system that this structure is part of.
         /// </summary>
         OneOrMany<IAnatomicalSystem> PartOfSystem { get; set; }
@@ -96,37 +91,30 @@
         public OneOrMany<IImageObject> Diagram { get; set; }
 
         /// <summary>
-        /// Function of the anatomical structure.
-        /// </summary>
-        [DataMember(Name = "function", Order = 210)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> Function { get; set; }
-
-        /// <summary>
         /// The anatomical or organ system that this structure is part of.
         /// </summary>
-        [DataMember(Name = "partOfSystem", Order = 211)]
+        [DataMember(Name = "partOfSystem", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAnatomicalSystem> PartOfSystem { get; set; }
 
         /// <summary>
         /// A medical condition associated with this anatomy.
         /// </summary>
-        [DataMember(Name = "relatedCondition", Order = 212)]
+        [DataMember(Name = "relatedCondition", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalCondition> RelatedCondition { get; set; }
 
         /// <summary>
         /// A medical therapy related to this anatomy.
         /// </summary>
-        [DataMember(Name = "relatedTherapy", Order = 213)]
+        [DataMember(Name = "relatedTherapy", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalTherapy> RelatedTherapy { get; set; }
 
         /// <summary>
         /// Component (sub-)structure(s) that comprise this anatomical structure.
         /// </summary>
-        [DataMember(Name = "subStructure", Order = 214)]
+        [DataMember(Name = "subStructure", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAnatomicalStructure> SubStructure { get; set; }
 
@@ -148,7 +136,6 @@
                 this.BodyLocation == other.BodyLocation &&
                 this.ConnectedTo == other.ConnectedTo &&
                 this.Diagram == other.Diagram &&
-                this.Function == other.Function &&
                 this.PartOfSystem == other.PartOfSystem &&
                 this.RelatedCondition == other.RelatedCondition &&
                 this.RelatedTherapy == other.RelatedTherapy &&
@@ -165,7 +152,6 @@
             .And(this.BodyLocation)
             .And(this.ConnectedTo)
             .And(this.Diagram)
-            .And(this.Function)
             .And(this.PartOfSystem)
             .And(this.RelatedCondition)
             .And(this.RelatedTherapy)

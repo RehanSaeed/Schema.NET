@@ -15,11 +15,6 @@
         OneOrMany<IAnatomicalStructure> ArterialBranch { get; set; }
 
         /// <summary>
-        /// The anatomical or organ system that the artery originates from.
-        /// </summary>
-        OneOrMany<IAnatomicalStructure> Source { get; set; }
-
-        /// <summary>
         /// The area to which the artery supplies blood.
         /// </summary>
         OneOrMany<IAnatomicalStructure> SupplyTo { get; set; }
@@ -45,16 +40,9 @@
         public OneOrMany<IAnatomicalStructure> ArterialBranch { get; set; }
 
         /// <summary>
-        /// The anatomical or organ system that the artery originates from.
-        /// </summary>
-        [DataMember(Name = "source", Order = 407)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAnatomicalStructure> Source { get; set; }
-
-        /// <summary>
         /// The area to which the artery supplies blood.
         /// </summary>
-        [DataMember(Name = "supplyTo", Order = 408)]
+        [DataMember(Name = "supplyTo", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAnatomicalStructure> SupplyTo { get; set; }
 
@@ -73,7 +61,6 @@
 
             return this.Type == other.Type &&
                 this.ArterialBranch == other.ArterialBranch &&
-                this.Source == other.Source &&
                 this.SupplyTo == other.SupplyTo &&
                 base.Equals(other);
         }
@@ -84,7 +71,6 @@
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
             .And(this.ArterialBranch)
-            .And(this.Source)
             .And(this.SupplyTo)
             .And(base.GetHashCode());
     }

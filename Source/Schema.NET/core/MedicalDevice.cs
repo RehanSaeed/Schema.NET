@@ -20,11 +20,6 @@
         Values<IMedicalContraindication, string> Contraindication { get; set; }
 
         /// <summary>
-        /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
-        /// </summary>
-        OneOrMany<IMedicalIndication> Indication { get; set; }
-
-        /// <summary>
         /// A description of the postoperative procedures, care, and/or followups for this device.
         /// </summary>
         OneOrMany<string> PostOp { get; set; }
@@ -38,11 +33,6 @@
         /// A description of the procedure involved in setting up, using, and/or installing the device.
         /// </summary>
         OneOrMany<string> Procedure { get; set; }
-
-        /// <summary>
-        /// A goal towards an action is taken. Can be concrete or abstract.
-        /// </summary>
-        Values<MedicalDevicePurpose?, IThing> Purpose { get; set; }
 
         /// <summary>
         /// A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
@@ -77,44 +67,30 @@
         public Values<IMedicalContraindication, string> Contraindication { get; set; }
 
         /// <summary>
-        /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
-        /// </summary>
-        [DataMember(Name = "indication", Order = 208)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalIndication> Indication { get; set; }
-
-        /// <summary>
         /// A description of the postoperative procedures, care, and/or followups for this device.
         /// </summary>
-        [DataMember(Name = "postOp", Order = 209)]
+        [DataMember(Name = "postOp", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PostOp { get; set; }
 
         /// <summary>
         /// A description of the workup, testing, and other preparations required before implanting this device.
         /// </summary>
-        [DataMember(Name = "preOp", Order = 210)]
+        [DataMember(Name = "preOp", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PreOp { get; set; }
 
         /// <summary>
         /// A description of the procedure involved in setting up, using, and/or installing the device.
         /// </summary>
-        [DataMember(Name = "procedure", Order = 211)]
+        [DataMember(Name = "procedure", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Procedure { get; set; }
 
         /// <summary>
-        /// A goal towards an action is taken. Can be concrete or abstract.
-        /// </summary>
-        [DataMember(Name = "purpose", Order = 212)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<MedicalDevicePurpose?, IThing> Purpose { get; set; }
-
-        /// <summary>
         /// A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
         /// </summary>
-        [DataMember(Name = "seriousAdverseOutcome", Order = 213)]
+        [DataMember(Name = "seriousAdverseOutcome", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalEntity> SeriousAdverseOutcome { get; set; }
 
@@ -134,11 +110,9 @@
             return this.Type == other.Type &&
                 this.AdverseOutcome == other.AdverseOutcome &&
                 this.Contraindication == other.Contraindication &&
-                this.Indication == other.Indication &&
                 this.PostOp == other.PostOp &&
                 this.PreOp == other.PreOp &&
                 this.Procedure == other.Procedure &&
-                this.Purpose == other.Purpose &&
                 this.SeriousAdverseOutcome == other.SeriousAdverseOutcome &&
                 base.Equals(other);
         }
@@ -150,11 +124,9 @@
         public override int GetHashCode() => HashCode.Of(this.Type)
             .And(this.AdverseOutcome)
             .And(this.Contraindication)
-            .And(this.Indication)
             .And(this.PostOp)
             .And(this.PreOp)
             .And(this.Procedure)
-            .And(this.Purpose)
             .And(this.SeriousAdverseOutcome)
             .And(base.GetHashCode());
     }

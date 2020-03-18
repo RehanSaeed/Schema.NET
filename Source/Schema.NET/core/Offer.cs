@@ -6,6 +6,7 @@
 
     /// <summary>
     /// An offer to transfer some rights to an item or to provide a service — for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.&lt;br/&gt;&lt;br/&gt;
+    /// Note: As the &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; property, which identifies the form of offer (e.g. sell, lease, repair, dispose), defaults to http://purl.org/goodrelations/v1#Sell; an Offer without a defined businessFunction value can be assumed to be an offer to sell.&lt;br/&gt;&lt;br/&gt;
     /// For &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GTIN&lt;/a&gt;-related fields, see &lt;a href="http://www.gs1.org/barcodes/support/check_digit_calculator"&gt;Check Digit calculator&lt;/a&gt; and &lt;a href="http://www.gs1us.org/resources/standards/gtin-validation-guide"&gt;validation guide&lt;/a&gt; from &lt;a href="http://www.gs1.org/"&gt;GS1&lt;/a&gt;.
     /// </summary>
     public partial interface IOffer : IIntangible
@@ -148,9 +149,14 @@
         OneOrMany<OfferItemCondition?> ItemCondition { get; set; }
 
         /// <summary>
-        /// The item being offered.
+        /// An item being offered (or demanded). The transactional nature of the offer or demand is documented using &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt;, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
-        Values<IProduct, IService> ItemOffered { get; set; }
+        Values<IAggregateOffer, ICreativeWork, IEvent, IMenuItem, IProduct, IService, ITrip> ItemOffered { get; set; }
+
+        /// <summary>
+        /// Length of the lease for some &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;, either particular to some &lt;a class="localLink" href="http://schema.org/Offer"&gt;Offer&lt;/a&gt; or in some cases intrinsic to the property.
+        /// </summary>
+        Values<TimeSpan?, IQuantitativeValue> LeaseLength { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
@@ -228,6 +234,7 @@
 
     /// <summary>
     /// An offer to transfer some rights to an item or to provide a service — for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.&lt;br/&gt;&lt;br/&gt;
+    /// Note: As the &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; property, which identifies the form of offer (e.g. sell, lease, repair, dispose), defaults to http://purl.org/goodrelations/v1#Sell; an Offer without a defined businessFunction value can be assumed to be an offer to sell.&lt;br/&gt;&lt;br/&gt;
     /// For &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GTIN&lt;/a&gt;-related fields, see &lt;a href="http://www.gs1.org/barcodes/support/check_digit_calculator"&gt;Check Digit calculator&lt;/a&gt; and &lt;a href="http://www.gs1us.org/resources/standards/gtin-validation-guide"&gt;validation guide&lt;/a&gt; from &lt;a href="http://www.gs1.org/"&gt;GS1&lt;/a&gt;.
     /// </summary>
     [DataContract]
@@ -431,23 +438,30 @@
         public OneOrMany<OfferItemCondition?> ItemCondition { get; set; }
 
         /// <summary>
-        /// The item being offered.
+        /// An item being offered (or demanded). The transactional nature of the offer or demand is documented using &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt;, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         [DataMember(Name = "itemOffered", Order = 233)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IProduct, IService> ItemOffered { get; set; }
+        public Values<IAggregateOffer, ICreativeWork, IEvent, IMenuItem, IProduct, IService, ITrip> ItemOffered { get; set; }
+
+        /// <summary>
+        /// Length of the lease for some &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;, either particular to some &lt;a class="localLink" href="http://schema.org/Offer"&gt;Offer&lt;/a&gt; or in some cases intrinsic to the property.
+        /// </summary>
+        [DataMember(Name = "leaseLength", Order = 234)]
+        [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
+        public Values<TimeSpan?, IQuantitativeValue> LeaseLength { get; set; }
 
         /// <summary>
         /// The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
         /// </summary>
-        [DataMember(Name = "mpn", Order = 234)]
+        [DataMember(Name = "mpn", Order = 235)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Mpn { get; set; }
 
         /// <summary>
         /// A pointer to the organization or person making the offer.
         /// </summary>
-        [DataMember(Name = "offeredBy", Order = 235)]
+        [DataMember(Name = "offeredBy", Order = 236)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> OfferedBy { get; set; }
 
@@ -461,7 +475,7 @@
         /// &lt;li&gt;Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "price", Order = 236)]
+        [DataMember(Name = "price", Order = 237)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<decimal?, string> Price { get; set; }
 
@@ -469,70 +483,70 @@
         /// The currency of the price, or a price component when attached to &lt;a class="localLink" href="http://schema.org/PriceSpecification"&gt;PriceSpecification&lt;/a&gt; and its subtypes.&lt;br/&gt;&lt;br/&gt;
         /// Use standard formats: &lt;a href="http://en.wikipedia.org/wiki/ISO_4217"&gt;ISO 4217 currency format&lt;/a&gt; e.g. "USD"; &lt;a href="https://en.wikipedia.org/wiki/List_of_cryptocurrencies"&gt;Ticker symbol&lt;/a&gt; for cryptocurrencies e.g. "BTC"; well known names for &lt;a href="https://en.wikipedia.org/wiki/Local_exchange_trading_system"&gt;Local Exchange Tradings Systems&lt;/a&gt; (LETS) and other currency types e.g. "Ithaca HOUR".
         /// </summary>
-        [DataMember(Name = "priceCurrency", Order = 237)]
+        [DataMember(Name = "priceCurrency", Order = 238)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PriceCurrency { get; set; }
 
         /// <summary>
         /// One or more detailed price specifications, indicating the unit price and delivery or payment charges.
         /// </summary>
-        [DataMember(Name = "priceSpecification", Order = 238)]
+        [DataMember(Name = "priceSpecification", Order = 239)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPriceSpecification> PriceSpecification { get; set; }
 
         /// <summary>
         /// The date after which the price is no longer available.
         /// </summary>
-        [DataMember(Name = "priceValidUntil", Order = 239)]
+        [DataMember(Name = "priceValidUntil", Order = 240)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?> PriceValidUntil { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 240)]
+        [DataMember(Name = "review", Order = 241)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
         /// </summary>
-        [DataMember(Name = "seller", Order = 241)]
+        [DataMember(Name = "seller", Order = 242)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Seller { get; set; }
 
         /// <summary>
         /// The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
         /// </summary>
-        [DataMember(Name = "serialNumber", Order = 242)]
+        [DataMember(Name = "serialNumber", Order = 243)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> SerialNumber { get; set; }
 
         /// <summary>
         /// The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
         /// </summary>
-        [DataMember(Name = "sku", Order = 243)]
+        [DataMember(Name = "sku", Order = 244)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Sku { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid.
         /// </summary>
-        [DataMember(Name = "validFrom", Order = 244)]
+        [DataMember(Name = "validFrom", Order = 245)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> ValidFrom { get; set; }
 
         /// <summary>
         /// The date after when the item is not valid. For example the end of an offer, salary period, or a period of opening hours.
         /// </summary>
-        [DataMember(Name = "validThrough", Order = 245)]
+        [DataMember(Name = "validThrough", Order = 246)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> ValidThrough { get; set; }
 
         /// <summary>
         /// The warranty promise(s) included in the offer.
         /// </summary>
-        [DataMember(Name = "warranty", Order = 246)]
+        [DataMember(Name = "warranty", Order = 247)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IWarrantyPromise> Warranty { get; set; }
 
@@ -578,6 +592,7 @@
                 this.InventoryLevel == other.InventoryLevel &&
                 this.ItemCondition == other.ItemCondition &&
                 this.ItemOffered == other.ItemOffered &&
+                this.LeaseLength == other.LeaseLength &&
                 this.Mpn == other.Mpn &&
                 this.OfferedBy == other.OfferedBy &&
                 this.Price == other.Price &&
@@ -627,6 +642,7 @@
             .And(this.InventoryLevel)
             .And(this.ItemCondition)
             .And(this.ItemOffered)
+            .And(this.LeaseLength)
             .And(this.Mpn)
             .And(this.OfferedBy)
             .And(this.Price)

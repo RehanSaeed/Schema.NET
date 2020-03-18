@@ -12,7 +12,7 @@ namespace Schema.NET.Test
         {
             var value = default(Values<int?, string>);
             var json = this.SerializeObject(value);
-            Assert.Equal("{\"Property\":null}", json);
+            Assert.Equal("{}", json);
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace Schema.NET.Test
         {
             var value = default(OneOrMany<string>);
             var json = this.SerializeObject(value);
-            Assert.Equal("{\"Property\":null}", json);
+            Assert.Equal("{}", json);
         }
 
         [Fact]
@@ -191,10 +191,18 @@ namespace Schema.NET.Test
             Assert.Equal(new DateTime(2000, 1, 1, 12, 34, 0), result.Value2.First());
         }
 
-        [Fact(Skip = "MS DateTime string conversion doesn't support offset - this should be fixed")]
-        public void ReadJson_Values_SingleValue_DateTimeOffsetAsMicrosoftDateTimeString()
+        [Fact]
+        public void ReadJson_Values_SingleValue_DateTimeNegativeOffsetAsMicrosoftDateTimeString()
         {
             var json = "{\"Property\":\"\\/Date(946730040000-0100)\\/\"}";
+            var result = this.DeserializeObject<Values<string, DateTimeOffset>>(json);
+            Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(-1)), result.Value2.First());
+        }
+
+        [Fact]
+        public void ReadJson_Values_SingleValue_DateTimePositiveOffsetAsMicrosoftDateTimeString()
+        {
+            var json = "{\"Property\":\"\\/Date(946730040000+0100)\\/\"}";
             var result = this.DeserializeObject<Values<string, DateTimeOffset>>(json);
             Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(1)), result.Value2.First());
         }
@@ -204,6 +212,30 @@ namespace Schema.NET.Test
         {
             var json = "{\"Property\":\"2000-01-01T12:34:00+01:00\"}";
             var result = this.DeserializeObject<Values<string, DateTimeOffset>>(json);
+            Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(1)), result.Value2.First());
+        }
+
+        [Fact]
+        public void ReadJson_Values_SingleValue_DateTimeOffsetFallback_DateTimeAsISO8601String_NoOffset()
+        {
+            var json = "{\"Property\":\"2000-01-01T12:34:00\"}";
+            var result = this.DeserializeObject<Values<DateTime, DateTimeOffset>>(json);
+            Assert.Equal(new DateTime(2000, 1, 1, 12, 34, 0), result.Value1.First());
+        }
+
+        [Fact]
+        public void ReadJson_Values_SingleValue_DateTimeOffsetNoFallback_DateTimeAsISO8601String_ZOffset()
+        {
+            var json = "{\"Property\":\"2000-01-01T12:34:00Z\"}";
+            var result = this.DeserializeObject<Values<DateTime, DateTimeOffset>>(json);
+            Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(0)), result.Value2.First());
+        }
+
+        [Fact]
+        public void ReadJson_Values_SingleValue_DateTimeOffsetNoFallback_DateTimeAsISO8601String_TimeOffset()
+        {
+            var json = "{\"Property\":\"2000-01-01T12:34:00+01:00\"}";
+            var result = this.DeserializeObject<Values<DateTime, DateTimeOffset>>(json);
             Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(1)), result.Value2.First());
         }
 
@@ -533,11 +565,11 @@ namespace Schema.NET.Test
 
         private string SerializeObject<T>(T value)
             where T : IValues
-            => JsonConvert.SerializeObject(new TestModel<T> { Property = value });
+            => SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
 
         private T DeserializeObject<T>(string json)
             where T : IValues
-            => JsonConvert.DeserializeObject<TestModel<T>>(json).Property;
+            => SchemaSerializer.DeserializeObject<TestModel<T>>(json).Property;
 
         private class TestModel<T>
             where T : IValues

@@ -40,9 +40,19 @@
         OneOrMany<int?> NumberOfBathroomsTotal { get; set; }
 
         /// <summary>
+        /// The total integer number of bedrooms in a some &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/FloorPlan"&gt;FloorPlan&lt;/a&gt;.
+        /// </summary>
+        Values<int?, IQuantitativeValue> NumberOfBedrooms { get; set; }
+
+        /// <summary>
         /// Number of full bathrooms - The total number of full and ¾ bathrooms in an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/BathroomsFull+Field"&gt;BathroomsFull field in RESO&lt;/a&gt;.
         /// </summary>
         OneOrMany<int?> NumberOfFullBathrooms { get; set; }
+
+        /// <summary>
+        /// Number of partial bathrooms - The total number of half and ¼ bathrooms in an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/BathroomsPartial+Field"&gt;BathroomsPartial field in RESO&lt;/a&gt;.
+        /// </summary>
+        OneOrMany<int?> NumberOfPartialBathrooms { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
@@ -59,6 +69,11 @@
         /// Indicates whether pets are allowed to enter the accommodation or lodging business. More detailed information can be put in a text value.
         /// </summary>
         Values<bool?, string> PetsAllowed { get; set; }
+
+        /// <summary>
+        /// The year an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; was constructed. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/YearBuilt+Field"&gt;YearBuilt field in RESO&lt;/a&gt;.
+        /// </summary>
+        OneOrMany<int?> YearBuilt { get; set; }
     }
 
     /// <summary>
@@ -121,33 +136,61 @@
         public OneOrMany<int?> NumberOfBathroomsTotal { get; set; }
 
         /// <summary>
+        /// The total integer number of bedrooms in a some &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/FloorPlan"&gt;FloorPlan&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "numberOfBedrooms", Order = 212)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<int?, IQuantitativeValue> NumberOfBedrooms { get; set; }
+
+        /// <summary>
         /// Number of full bathrooms - The total number of full and ¾ bathrooms in an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/BathroomsFull+Field"&gt;BathroomsFull field in RESO&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "numberOfFullBathrooms", Order = 212)]
+        [DataMember(Name = "numberOfFullBathrooms", Order = 213)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> NumberOfFullBathrooms { get; set; }
+
+        /// <summary>
+        /// Number of partial bathrooms - The total number of half and ¼ bathrooms in an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt;. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/BathroomsPartial+Field"&gt;BathroomsPartial field in RESO&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "numberOfPartialBathrooms", Order = 214)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> NumberOfPartialBathrooms { get; set; }
 
         /// <summary>
         /// The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
         /// Typical unit code(s): ROM for room or C62 for no unit. The type of room can be put in the unitText property of the QuantitativeValue.
         /// </summary>
-        [DataMember(Name = "numberOfRooms", Order = 213)]
+        [DataMember(Name = "numberOfRooms", Order = 215)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<int?, IQuantitativeValue> NumberOfRooms { get; set; }
 
         /// <summary>
         /// Indications regarding the permitted usage of the accommodation.
         /// </summary>
-        [DataMember(Name = "permittedUsage", Order = 214)]
+        [DataMember(Name = "permittedUsage", Order = 216)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PermittedUsage { get; set; }
 
         /// <summary>
         /// Indicates whether pets are allowed to enter the accommodation or lodging business. More detailed information can be put in a text value.
         /// </summary>
-        [DataMember(Name = "petsAllowed", Order = 215)]
+        [DataMember(Name = "petsAllowed", Order = 217)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<bool?, string> PetsAllowed { get; set; }
+
+        /// <summary>
+        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
+        /// </summary>
+        [DataMember(Name = "tourBookingPage", Order = 218)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<Uri> TourBookingPage { get; set; }
+
+        /// <summary>
+        /// The year an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; was constructed. This corresponds to the &lt;a href="https://ddwiki.reso.org/display/DDW17/YearBuilt+Field"&gt;YearBuilt field in RESO&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "yearBuilt", Order = 219)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<int?> YearBuilt { get; set; }
 
         /// <inheritdoc/>
         public bool Equals(Accommodation other)
@@ -169,10 +212,14 @@
                 this.FloorSize == other.FloorSize &&
                 this.LeaseLength == other.LeaseLength &&
                 this.NumberOfBathroomsTotal == other.NumberOfBathroomsTotal &&
+                this.NumberOfBedrooms == other.NumberOfBedrooms &&
                 this.NumberOfFullBathrooms == other.NumberOfFullBathrooms &&
+                this.NumberOfPartialBathrooms == other.NumberOfPartialBathrooms &&
                 this.NumberOfRooms == other.NumberOfRooms &&
                 this.PermittedUsage == other.PermittedUsage &&
                 this.PetsAllowed == other.PetsAllowed &&
+                this.TourBookingPage == other.TourBookingPage &&
+                this.YearBuilt == other.YearBuilt &&
                 base.Equals(other);
         }
 
@@ -187,10 +234,14 @@
             .And(this.FloorSize)
             .And(this.LeaseLength)
             .And(this.NumberOfBathroomsTotal)
+            .And(this.NumberOfBedrooms)
             .And(this.NumberOfFullBathrooms)
+            .And(this.NumberOfPartialBathrooms)
             .And(this.NumberOfRooms)
             .And(this.PermittedUsage)
             .And(this.PetsAllowed)
+            .And(this.TourBookingPage)
+            .And(this.YearBuilt)
             .And(base.GetHashCode());
     }
 }

@@ -45,6 +45,11 @@
         OneOrMany<IBroadcastChannel> HasBroadcastChannel { get; set; }
 
         /// <summary>
+        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
+        /// </summary>
+        Values<ILanguage, string> InLanguage { get; set; }
+
+        /// <summary>
         /// A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
         /// </summary>
         OneOrMany<IBroadcastService> ParentService { get; set; }
@@ -117,16 +122,23 @@
         public OneOrMany<IBroadcastChannel> HasBroadcastChannel { get; set; }
 
         /// <summary>
+        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "inLanguage", Order = 313)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<ILanguage, string> InLanguage { get; set; }
+
+        /// <summary>
         /// A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
         /// </summary>
-        [DataMember(Name = "parentService", Order = 313)]
+        [DataMember(Name = "parentService", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IBroadcastService> ParentService { get; set; }
 
         /// <summary>
         /// The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).
         /// </summary>
-        [DataMember(Name = "videoFormat", Order = 314)]
+        [DataMember(Name = "videoFormat", Order = 315)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> VideoFormat { get; set; }
 
@@ -151,6 +163,7 @@
                 this.BroadcastTimezone == other.BroadcastTimezone &&
                 this.CallSign == other.CallSign &&
                 this.HasBroadcastChannel == other.HasBroadcastChannel &&
+                this.InLanguage == other.InLanguage &&
                 this.ParentService == other.ParentService &&
                 this.VideoFormat == other.VideoFormat &&
                 base.Equals(other);
@@ -168,6 +181,7 @@
             .And(this.BroadcastTimezone)
             .And(this.CallSign)
             .And(this.HasBroadcastChannel)
+            .And(this.InLanguage)
             .And(this.ParentService)
             .And(this.VideoFormat)
             .And(base.GetHashCode());

@@ -23,6 +23,11 @@
         /// The home team in a sports event.
         /// </summary>
         Values<IPerson, ISportsTeam> HomeTeam { get; set; }
+
+        /// <summary>
+        /// A type of sport (e.g. Baseball).
+        /// </summary>
+        Values<string, Uri> Sport { get; set; }
     }
 
     /// <summary>
@@ -58,6 +63,13 @@
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPerson, ISportsTeam> HomeTeam { get; set; }
 
+        /// <summary>
+        /// A type of sport (e.g. Baseball).
+        /// </summary>
+        [DataMember(Name = "sport", Order = 209)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<string, Uri> Sport { get; set; }
+
         /// <inheritdoc/>
         public bool Equals(SportsEvent other)
         {
@@ -75,6 +87,7 @@
                 this.AwayTeam == other.AwayTeam &&
                 this.Competitor == other.Competitor &&
                 this.HomeTeam == other.HomeTeam &&
+                this.Sport == other.Sport &&
                 base.Equals(other);
         }
 
@@ -86,6 +99,7 @@
             .And(this.AwayTeam)
             .And(this.Competitor)
             .And(this.HomeTeam)
+            .And(this.Sport)
             .And(base.GetHashCode());
     }
 }

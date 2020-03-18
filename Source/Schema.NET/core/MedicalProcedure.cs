@@ -25,16 +25,6 @@
         OneOrMany<string> HowPerformed { get; set; }
 
         /// <summary>
-        /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
-        /// </summary>
-        OneOrMany<IMedicalIndication> Indication { get; set; }
-
-        /// <summary>
-        /// Expected or actual outcomes of the study.
-        /// </summary>
-        Values<IMedicalEntity, string> Outcome { get; set; }
-
-        /// <summary>
         /// Typical preparation that a patient must undergo before having the procedure performed.
         /// </summary>
         Values<IMedicalEntity, string> Preparation { get; set; }
@@ -84,37 +74,23 @@
         public OneOrMany<string> HowPerformed { get; set; }
 
         /// <summary>
-        /// A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
-        /// </summary>
-        [DataMember(Name = "indication", Order = 209)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IMedicalIndication> Indication { get; set; }
-
-        /// <summary>
-        /// Expected or actual outcomes of the study.
-        /// </summary>
-        [DataMember(Name = "outcome", Order = 210)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMedicalEntity, string> Outcome { get; set; }
-
-        /// <summary>
         /// Typical preparation that a patient must undergo before having the procedure performed.
         /// </summary>
-        [DataMember(Name = "preparation", Order = 211)]
+        [DataMember(Name = "preparation", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IMedicalEntity, string> Preparation { get; set; }
 
         /// <summary>
         /// The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
         /// </summary>
-        [DataMember(Name = "procedureType", Order = 212)]
+        [DataMember(Name = "procedureType", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<MedicalProcedureType?> ProcedureType { get; set; }
 
         /// <summary>
         /// The status of the study (enumerated).
         /// </summary>
-        [DataMember(Name = "status", Order = 213)]
+        [DataMember(Name = "status", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<EventStatusType?, MedicalStudyStatus?, string> Status { get; set; }
 
@@ -135,8 +111,6 @@
                 this.BodyLocation == other.BodyLocation &&
                 this.Followup == other.Followup &&
                 this.HowPerformed == other.HowPerformed &&
-                this.Indication == other.Indication &&
-                this.Outcome == other.Outcome &&
                 this.Preparation == other.Preparation &&
                 this.ProcedureType == other.ProcedureType &&
                 this.Status == other.Status &&
@@ -151,8 +125,6 @@
             .And(this.BodyLocation)
             .And(this.Followup)
             .And(this.HowPerformed)
-            .And(this.Indication)
-            .And(this.Outcome)
             .And(this.Preparation)
             .And(this.ProcedureType)
             .And(this.Status)

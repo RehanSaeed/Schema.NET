@@ -331,6 +331,7 @@ namespace Schema.NET.Tool.Services
                 case "Mass":
                 case "XPathType":
                 case "CssSelectorType":
+                case "PronounceableText":
                     return new List<string> { "string" };
                 case "Time":
                 case "Duration":

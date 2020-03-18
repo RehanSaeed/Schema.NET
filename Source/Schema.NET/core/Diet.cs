@@ -25,11 +25,6 @@
         OneOrMany<string> ExpertConsiderations { get; set; }
 
         /// <summary>
-        /// Descriptive information establishing the overarching theory/philosophy of the plan. May include the rationale for the name, the population where the plan first came to prominence, etc.
-        /// </summary>
-        OneOrMany<string> Overview { get; set; }
-
-        /// <summary>
         /// Specific physiologic benefits associated to the plan.
         /// </summary>
         OneOrMany<string> PhysiologicalBenefits { get; set; }
@@ -74,23 +69,16 @@
         public OneOrMany<string> ExpertConsiderations { get; set; }
 
         /// <summary>
-        /// Descriptive information establishing the overarching theory/philosophy of the plan. May include the rationale for the name, the population where the plan first came to prominence, etc.
-        /// </summary>
-        [DataMember(Name = "overview", Order = 309)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> Overview { get; set; }
-
-        /// <summary>
         /// Specific physiologic benefits associated to the plan.
         /// </summary>
-        [DataMember(Name = "physiologicalBenefits", Order = 310)]
+        [DataMember(Name = "physiologicalBenefits", Order = 309)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PhysiologicalBenefits { get; set; }
 
         /// <summary>
         /// Specific physiologic risks associated to the diet plan.
         /// </summary>
-        [DataMember(Name = "risks", Order = 311)]
+        [DataMember(Name = "risks", Order = 310)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Risks { get; set; }
 
@@ -111,7 +99,6 @@
                 this.DietFeatures == other.DietFeatures &&
                 this.Endorsers == other.Endorsers &&
                 this.ExpertConsiderations == other.ExpertConsiderations &&
-                this.Overview == other.Overview &&
                 this.PhysiologicalBenefits == other.PhysiologicalBenefits &&
                 this.Risks == other.Risks &&
                 base.Equals(other);
@@ -125,7 +112,6 @@
             .And(this.DietFeatures)
             .And(this.Endorsers)
             .And(this.ExpertConsiderations)
-            .And(this.Overview)
             .And(this.PhysiologicalBenefits)
             .And(this.Risks)
             .And(base.GetHashCode());

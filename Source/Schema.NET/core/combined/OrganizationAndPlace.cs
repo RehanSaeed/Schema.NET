@@ -306,177 +306,191 @@
         public virtual OneOrMany<string> GlobalLocationNumber { get; set; }
 
         /// <summary>
+        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="http://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
+        /// </summary>
+        [DataMember(Name = "hasDriveThroughService", Order = 146)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual OneOrMany<bool?> HasDriveThroughService { get; set; }
+
+        /// <summary>
         /// A URL to a map of the place.
         /// </summary>
-        [DataMember(Name = "hasMap", Order = 146)]
+        [DataMember(Name = "hasMap", Order = 147)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IMap, Uri> HasMap { get; set; }
 
         /// <summary>
         /// Indicates an OfferCatalog listing for this Organization, Person, or Service.
         /// </summary>
-        [DataMember(Name = "hasOfferCatalog", Order = 147)]
+        [DataMember(Name = "hasOfferCatalog", Order = 148)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOfferCatalog> HasOfferCatalog { get; set; }
 
         /// <summary>
         /// Points-of-Sales operated by the organization or person.
         /// </summary>
-        [DataMember(Name = "hasPOS", Order = 148)]
+        [DataMember(Name = "hasPOS", Order = 149)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IPlace> HasPOS { get; set; }
 
         /// <summary>
+        /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
+        /// </summary>
+        [DataMember(Name = "interactionStatistic", Order = 150)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual OneOrMany<IInteractionCounter> InteractionStatistic { get; set; }
+
+        /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
         /// </summary>
-        [DataMember(Name = "isAccessibleForFree", Order = 149)]
+        [DataMember(Name = "isAccessibleForFree", Order = 151)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<bool?> IsAccessibleForFree { get; set; }
 
         /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
-        [DataMember(Name = "isicV4", Order = 150)]
+        [DataMember(Name = "isicV4", Order = 152)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> IsicV4 { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
         /// </summary>
-        [DataMember(Name = "knowsAbout", Order = 151)]
+        [DataMember(Name = "knowsAbout", Order = 153)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<string, IThing, Uri> KnowsAbout { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "knowsLanguage", Order = 152)]
+        [DataMember(Name = "knowsLanguage", Order = 154)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<ILanguage, string> KnowsLanguage { get; set; }
 
         /// <summary>
         /// The latitude of a location. For example &lt;code&gt;37.42242&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "latitude", Order = 153)]
+        [DataMember(Name = "latitude", Order = 155)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<double?, string> Latitude { get; set; }
 
         /// <summary>
         /// The official name of the organization, e.g. the registered company name.
         /// </summary>
-        [DataMember(Name = "legalName", Order = 154)]
+        [DataMember(Name = "legalName", Order = 156)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> LegalName { get; set; }
 
         /// <summary>
         /// An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.
         /// </summary>
-        [DataMember(Name = "leiCode", Order = 155)]
+        [DataMember(Name = "leiCode", Order = 157)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> LeiCode { get; set; }
 
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
         /// </summary>
-        [DataMember(Name = "location", Order = 156)]
+        [DataMember(Name = "location", Order = 158)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IPlace, IPostalAddress, string> Location { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
-        [DataMember(Name = "logo", Order = 157)]
+        [DataMember(Name = "logo", Order = 159)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// The longitude of a location. For example &lt;code&gt;-122.08585&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
         /// </summary>
-        [DataMember(Name = "longitude", Order = 158)]
+        [DataMember(Name = "longitude", Order = 160)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<double?, string> Longitude { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
         /// </summary>
-        [DataMember(Name = "makesOffer", Order = 159)]
+        [DataMember(Name = "makesOffer", Order = 161)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOffer> MakesOffer { get; set; }
 
         /// <summary>
         /// The total number of individuals that may attend an event or venue.
         /// </summary>
-        [DataMember(Name = "maximumAttendeeCapacity", Order = 160)]
+        [DataMember(Name = "maximumAttendeeCapacity", Order = 162)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<int?> MaximumAttendeeCapacity { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
         /// </summary>
-        [DataMember(Name = "member", Order = 161)]
+        [DataMember(Name = "member", Order = 163)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IOrganization, IPerson> Member { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
         /// </summary>
-        [DataMember(Name = "memberOf", Order = 162)]
+        [DataMember(Name = "memberOf", Order = 164)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IOrganization, IProgramMembership> MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
         /// </summary>
-        [DataMember(Name = "naics", Order = 163)]
+        [DataMember(Name = "naics", Order = 165)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> Naics { get; set; }
 
         /// <summary>
         /// The number of employees in an organization e.g. business.
         /// </summary>
-        [DataMember(Name = "numberOfEmployees", Order = 164)]
+        [DataMember(Name = "numberOfEmployees", Order = 166)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
 
         /// <summary>
         /// The opening hours of a certain place.
         /// </summary>
-        [DataMember(Name = "openingHoursSpecification", Order = 165)]
+        [DataMember(Name = "openingHoursSpecification", Order = 167)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence.   Note that the &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt; is also available and can be used to make basic funder information machine-readable.
         /// </summary>
-        [DataMember(Name = "ownershipFundingInfo", Order = 166)]
+        [DataMember(Name = "ownershipFundingInfo", Order = 168)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IAboutPage, ICreativeWork, string, Uri> OwnershipFundingInfo { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
         /// </summary>
-        [DataMember(Name = "owns", Order = 167)]
+        [DataMember(Name = "owns", Order = 169)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IOwnershipInfo, IProduct> Owns { get; set; }
 
         /// <summary>
         /// The larger organization that this organization is a &lt;a class="localLink" href="http://schema.org/subOrganization"&gt;subOrganization&lt;/a&gt; of, if any.
         /// </summary>
-        [DataMember(Name = "parentOrganization", Order = 168)]
+        [DataMember(Name = "parentOrganization", Order = 170)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOrganization> ParentOrganization { get; set; }
 
         /// <summary>
         /// A photograph of this place.
         /// </summary>
-        [DataMember(Name = "photo", Order = 169)]
+        [DataMember(Name = "photo", Order = 171)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
         /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
         /// </summary>
-        [DataMember(Name = "publicAccess", Order = 170)]
+        [DataMember(Name = "publicAccess", Order = 172)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<bool?> PublicAccess { get; set; }
 
@@ -484,35 +498,35 @@
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
         /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
-        [DataMember(Name = "publishingPrinciples", Order = 171)]
+        [DataMember(Name = "publishingPrinciples", Order = 173)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 172)]
+        [DataMember(Name = "review", Order = 174)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
-        [DataMember(Name = "seeks", Order = 173)]
+        [DataMember(Name = "seeks", Order = 175)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IDemand> Seeks { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
         /// </summary>
-        [DataMember(Name = "slogan", Order = 174)]
+        [DataMember(Name = "slogan", Order = 176)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> Slogan { get; set; }
 
         /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
         /// </summary>
-        [DataMember(Name = "smokingAllowed", Order = 175)]
+        [DataMember(Name = "smokingAllowed", Order = 177)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<bool?> SmokingAllowed { get; set; }
 
@@ -520,49 +534,56 @@
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
         /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "specialOpeningHoursSpecification", Order = 176)]
+        [DataMember(Name = "specialOpeningHoursSpecification", Order = 178)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 177)]
+        [DataMember(Name = "sponsor", Order = 179)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
         /// </summary>
-        [DataMember(Name = "subOrganization", Order = 178)]
+        [DataMember(Name = "subOrganization", Order = 180)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<IOrganization> SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
         /// </summary>
-        [DataMember(Name = "taxID", Order = 179)]
+        [DataMember(Name = "taxID", Order = 181)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> TaxID { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 180)]
+        [DataMember(Name = "telephone", Order = 182)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> Telephone { get; set; }
 
         /// <summary>
+        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
+        /// </summary>
+        [DataMember(Name = "tourBookingPage", Order = 183)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public virtual OneOrMany<Uri> TourBookingPage { get; set; }
+
+        /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (typically a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement about policy on use of unnamed sources and the decision process required.
         /// </summary>
-        [DataMember(Name = "unnamedSourcesPolicy", Order = 181)]
+        [DataMember(Name = "unnamedSourcesPolicy", Order = 184)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<ICreativeWork, Uri> UnnamedSourcesPolicy { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.
         /// </summary>
-        [DataMember(Name = "vatID", Order = 182)]
+        [DataMember(Name = "vatID", Order = 185)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<string> VatID { get; set; }
 
@@ -620,9 +641,11 @@
                 this.GeoTouches == other.GeoTouches &&
                 this.GeoWithin == other.GeoWithin &&
                 this.GlobalLocationNumber == other.GlobalLocationNumber &&
+                this.HasDriveThroughService == other.HasDriveThroughService &&
                 this.HasMap == other.HasMap &&
                 this.HasOfferCatalog == other.HasOfferCatalog &&
                 this.HasPOS == other.HasPOS &&
+                this.InteractionStatistic == other.InteractionStatistic &&
                 this.IsAccessibleForFree == other.IsAccessibleForFree &&
                 this.IsicV4 == other.IsicV4 &&
                 this.KnowsAbout == other.KnowsAbout &&
@@ -655,6 +678,7 @@
                 this.SubOrganization == other.SubOrganization &&
                 this.TaxID == other.TaxID &&
                 this.Telephone == other.Telephone &&
+                this.TourBookingPage == other.TourBookingPage &&
                 this.UnnamedSourcesPolicy == other.UnnamedSourcesPolicy &&
                 this.VatID == other.VatID &&
                 base.Equals(other);
@@ -705,9 +729,11 @@
             .And(this.GeoTouches)
             .And(this.GeoWithin)
             .And(this.GlobalLocationNumber)
+            .And(this.HasDriveThroughService)
             .And(this.HasMap)
             .And(this.HasOfferCatalog)
             .And(this.HasPOS)
+            .And(this.InteractionStatistic)
             .And(this.IsAccessibleForFree)
             .And(this.IsicV4)
             .And(this.KnowsAbout)
@@ -740,6 +766,7 @@
             .And(this.SubOrganization)
             .And(this.TaxID)
             .And(this.Telephone)
+            .And(this.TourBookingPage)
             .And(this.UnnamedSourcesPolicy)
             .And(this.VatID)
             .And(base.GetHashCode());

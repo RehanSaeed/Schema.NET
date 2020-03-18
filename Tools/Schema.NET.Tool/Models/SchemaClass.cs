@@ -7,23 +7,7 @@ namespace Schema.NET.Tool.Models
 
     public class SchemaClass : SchemaObject
     {
-        public bool IsEnum => EnumerableExtensions
-            .Traverse(this, x => x.SubClassOf)
-            .Any(x => x.Id == new Uri("http://schema.org/Enumeration"));
-
-        public bool IsArchived => EnumerableExtensions
-            .Traverse(this, x => x.SubClassOf)
-            .Any(x => string.Equals(x.Layer, LayerName.Archived, StringComparison.OrdinalIgnoreCase));
-
-        public bool IsMeta => EnumerableExtensions
-            .Traverse(this, x => x.SubClassOf)
-            .Any(x => string.Equals(x.Layer, LayerName.Meta, StringComparison.OrdinalIgnoreCase));
-
-        public bool IsPending => EnumerableExtensions
-            .Traverse(this, x => x.SubClassOf)
-            .Any(x => string.Equals(x.Layer, LayerName.Pending, StringComparison.OrdinalIgnoreCase));
-
-        public bool IsPrimitive => new string[]
+        private static readonly string[] PrimitiveTypes = new string[]
         {
             "QualitativeValue",
             "Enumeration",
@@ -44,7 +28,26 @@ namespace Schema.NET.Tool.Models
             "Time",
             "URL",
             "DataType",
-        }.Contains(this.Label);
+            "PronounceableText",
+        };
+
+        public bool IsEnum => EnumerableExtensions
+            .Traverse(this, x => x.SubClassOf)
+            .Any(x => x.Id == new Uri("http://schema.org/Enumeration"));
+
+        public bool IsArchived => EnumerableExtensions
+            .Traverse(this, x => x.SubClassOf)
+            .Any(x => string.Equals(x.Layer, LayerName.Archived, StringComparison.OrdinalIgnoreCase));
+
+        public bool IsMeta => EnumerableExtensions
+            .Traverse(this, x => x.SubClassOf)
+            .Any(x => string.Equals(x.Layer, LayerName.Meta, StringComparison.OrdinalIgnoreCase));
+
+        public bool IsPending => EnumerableExtensions
+            .Traverse(this, x => x.SubClassOf)
+            .Any(x => string.Equals(x.Layer, LayerName.Pending, StringComparison.OrdinalIgnoreCase));
+
+        public bool IsPrimitive => PrimitiveTypes.Contains(this.Label);
 
         public List<SchemaClass> SubClassOf { get; } = new List<SchemaClass>();
 

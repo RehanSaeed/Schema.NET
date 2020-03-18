@@ -15,16 +15,6 @@
         OneOrMany<IMedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
-        /// Expected or actual outcomes of the study.
-        /// </summary>
-        Values<IMedicalEntity, string> Outcome { get; set; }
-
-        /// <summary>
-        /// Any characteristics of the population used in the study, e.g. 'males under 65'.
-        /// </summary>
-        OneOrMany<string> Population { get; set; }
-
-        /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
         Values<IOrganization, IPerson> Sponsor { get; set; }
@@ -65,44 +55,30 @@
         public OneOrMany<IMedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
-        /// Expected or actual outcomes of the study.
-        /// </summary>
-        [DataMember(Name = "outcome", Order = 207)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IMedicalEntity, string> Outcome { get; set; }
-
-        /// <summary>
-        /// Any characteristics of the population used in the study, e.g. 'males under 65'.
-        /// </summary>
-        [DataMember(Name = "population", Order = 208)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> Population { get; set; }
-
-        /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 209)]
+        [DataMember(Name = "sponsor", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// The status of the study (enumerated).
         /// </summary>
-        [DataMember(Name = "status", Order = 210)]
+        [DataMember(Name = "status", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<EventStatusType?, MedicalStudyStatus?, string> Status { get; set; }
 
         /// <summary>
         /// The location in which the study is taking/took place.
         /// </summary>
-        [DataMember(Name = "studyLocation", Order = 211)]
+        [DataMember(Name = "studyLocation", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAdministrativeArea> StudyLocation { get; set; }
 
         /// <summary>
         /// A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
         /// </summary>
-        [DataMember(Name = "studySubject", Order = 212)]
+        [DataMember(Name = "studySubject", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMedicalEntity> StudySubject { get; set; }
 
@@ -121,8 +97,6 @@
 
             return this.Type == other.Type &&
                 this.HealthCondition == other.HealthCondition &&
-                this.Outcome == other.Outcome &&
-                this.Population == other.Population &&
                 this.Sponsor == other.Sponsor &&
                 this.Status == other.Status &&
                 this.StudyLocation == other.StudyLocation &&
@@ -136,8 +110,6 @@
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
             .And(this.HealthCondition)
-            .And(this.Outcome)
-            .And(this.Population)
             .And(this.Sponsor)
             .And(this.Status)
             .And(this.StudyLocation)

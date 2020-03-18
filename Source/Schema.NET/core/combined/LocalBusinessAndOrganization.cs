@@ -214,86 +214,93 @@
         public override OneOrMany<IPlace> HasPOS { get; set; }
 
         /// <summary>
+        /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
+        /// </summary>
+        [DataMember(Name = "interactionStatistic", Order = 233)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public override OneOrMany<IInteractionCounter> InteractionStatistic { get; set; }
+
+        /// <summary>
         /// The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
         /// </summary>
-        [DataMember(Name = "isicV4", Order = 233)]
+        [DataMember(Name = "isicV4", Order = 234)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> IsicV4 { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
         /// </summary>
-        [DataMember(Name = "knowsAbout", Order = 234)]
+        [DataMember(Name = "knowsAbout", Order = 235)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<string, IThing, Uri> KnowsAbout { get; set; }
 
         /// <summary>
         /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "knowsLanguage", Order = 235)]
+        [DataMember(Name = "knowsLanguage", Order = 236)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<ILanguage, string> KnowsLanguage { get; set; }
 
         /// <summary>
         /// The official name of the organization, e.g. the registered company name.
         /// </summary>
-        [DataMember(Name = "legalName", Order = 236)]
+        [DataMember(Name = "legalName", Order = 237)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> LegalName { get; set; }
 
         /// <summary>
         /// An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.
         /// </summary>
-        [DataMember(Name = "leiCode", Order = 237)]
+        [DataMember(Name = "leiCode", Order = 238)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> LeiCode { get; set; }
 
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
         /// </summary>
-        [DataMember(Name = "location", Order = 238)]
+        [DataMember(Name = "location", Order = 239)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IPlace, IPostalAddress, string> Location { get; set; }
 
         /// <summary>
         /// An associated logo.
         /// </summary>
-        [DataMember(Name = "logo", Order = 239)]
+        [DataMember(Name = "logo", Order = 240)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// A pointer to products or services offered by the organization or person.
         /// </summary>
-        [DataMember(Name = "makesOffer", Order = 240)]
+        [DataMember(Name = "makesOffer", Order = 241)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IOffer> MakesOffer { get; set; }
 
         /// <summary>
         /// A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
         /// </summary>
-        [DataMember(Name = "member", Order = 241)]
+        [DataMember(Name = "member", Order = 242)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IOrganization, IPerson> Member { get; set; }
 
         /// <summary>
         /// An Organization (or ProgramMembership) to which this Person or Organization belongs.
         /// </summary>
-        [DataMember(Name = "memberOf", Order = 242)]
+        [DataMember(Name = "memberOf", Order = 243)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IOrganization, IProgramMembership> MemberOf { get; set; }
 
         /// <summary>
         /// The North American Industry Classification System (NAICS) code for a particular organization or business person.
         /// </summary>
-        [DataMember(Name = "naics", Order = 243)]
+        [DataMember(Name = "naics", Order = 244)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> Naics { get; set; }
 
         /// <summary>
         /// The number of employees in an organization e.g. business.
         /// </summary>
-        [DataMember(Name = "numberOfEmployees", Order = 244)]
+        [DataMember(Name = "numberOfEmployees", Order = 245)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IQuantitativeValue> NumberOfEmployees { get; set; }
 
@@ -306,42 +313,42 @@
         /// &lt;li&gt;If a business is open 7 days a week, then it can be specified as &lt;code&gt;&amp;lt;time itemprop=&amp;quot;openingHours&amp;quot; datetime=&amp;quot;Mo-Su&amp;quot;&amp;gt;Monday through Sunday, all day&amp;lt;/time&amp;gt;&lt;/code&gt;.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
-        [DataMember(Name = "openingHours", Order = 245)]
+        [DataMember(Name = "openingHours", Order = 246)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> OpeningHours { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence.   Note that the &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt; is also available and can be used to make basic funder information machine-readable.
         /// </summary>
-        [DataMember(Name = "ownershipFundingInfo", Order = 246)]
+        [DataMember(Name = "ownershipFundingInfo", Order = 247)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IAboutPage, ICreativeWork, string, Uri> OwnershipFundingInfo { get; set; }
 
         /// <summary>
         /// Products owned by the organization or person.
         /// </summary>
-        [DataMember(Name = "owns", Order = 247)]
+        [DataMember(Name = "owns", Order = 248)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IOwnershipInfo, IProduct> Owns { get; set; }
 
         /// <summary>
         /// The larger organization that this organization is a &lt;a class="localLink" href="http://schema.org/subOrganization"&gt;subOrganization&lt;/a&gt; of, if any.
         /// </summary>
-        [DataMember(Name = "parentOrganization", Order = 248)]
+        [DataMember(Name = "parentOrganization", Order = 249)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IOrganization> ParentOrganization { get; set; }
 
         /// <summary>
         /// Cash, Credit Card, Cryptocurrency, Local Exchange Tradings System, etc.
         /// </summary>
-        [DataMember(Name = "paymentAccepted", Order = 249)]
+        [DataMember(Name = "paymentAccepted", Order = 250)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PaymentAccepted { get; set; }
 
         /// <summary>
         /// The price range of the business, for example &lt;code&gt;$$$&lt;/code&gt;.
         /// </summary>
-        [DataMember(Name = "priceRange", Order = 250)]
+        [DataMember(Name = "priceRange", Order = 251)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> PriceRange { get; set; }
 
@@ -349,70 +356,70 @@
         /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
         /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
-        [DataMember(Name = "publishingPrinciples", Order = 251)]
+        [DataMember(Name = "publishingPrinciples", Order = 252)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 252)]
+        [DataMember(Name = "review", Order = 253)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// A pointer to products or services sought by the organization or person (demand).
         /// </summary>
-        [DataMember(Name = "seeks", Order = 253)]
+        [DataMember(Name = "seeks", Order = 254)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IDemand> Seeks { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
         /// </summary>
-        [DataMember(Name = "slogan", Order = 254)]
+        [DataMember(Name = "slogan", Order = 255)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> Slogan { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 255)]
+        [DataMember(Name = "sponsor", Order = 256)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
         /// A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
         /// </summary>
-        [DataMember(Name = "subOrganization", Order = 256)]
+        [DataMember(Name = "subOrganization", Order = 257)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IOrganization> SubOrganization { get; set; }
 
         /// <summary>
         /// The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
         /// </summary>
-        [DataMember(Name = "taxID", Order = 257)]
+        [DataMember(Name = "taxID", Order = 258)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> TaxID { get; set; }
 
         /// <summary>
         /// The telephone number.
         /// </summary>
-        [DataMember(Name = "telephone", Order = 258)]
+        [DataMember(Name = "telephone", Order = 259)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> Telephone { get; set; }
 
         /// <summary>
         /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (typically a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement about policy on use of unnamed sources and the decision process required.
         /// </summary>
-        [DataMember(Name = "unnamedSourcesPolicy", Order = 259)]
+        [DataMember(Name = "unnamedSourcesPolicy", Order = 260)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override Values<ICreativeWork, Uri> UnnamedSourcesPolicy { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the organization or person.
         /// </summary>
-        [DataMember(Name = "vatID", Order = 260)]
+        [DataMember(Name = "vatID", Order = 261)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<string> VatID { get; set; }
 
@@ -457,6 +464,7 @@
                 this.GlobalLocationNumber == other.GlobalLocationNumber &&
                 this.HasOfferCatalog == other.HasOfferCatalog &&
                 this.HasPOS == other.HasPOS &&
+                this.InteractionStatistic == other.InteractionStatistic &&
                 this.IsicV4 == other.IsicV4 &&
                 this.KnowsAbout == other.KnowsAbout &&
                 this.KnowsLanguage == other.KnowsLanguage &&
@@ -520,6 +528,7 @@
             .And(this.GlobalLocationNumber)
             .And(this.HasOfferCatalog)
             .And(this.HasPOS)
+            .And(this.InteractionStatistic)
             .And(this.IsicV4)
             .And(this.KnowsAbout)
             .And(this.KnowsLanguage)
