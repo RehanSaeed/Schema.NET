@@ -86,7 +86,7 @@ namespace Schema.NET
 #else
                 var timeValue = input.Substring(dateTimeStartIndex, dateTimeLength);
                 var offsetType = input.Substring(offsetIndex, 1);
-                var offsetValue = input.Substring(offsetIndex + 1, offsetLength);
+                var offsetValue = input.Substring(offsetIndex + 1, offsetLength - 1);
 #endif
 
                 if (double.TryParse(timeValue, out var milliseconds))
