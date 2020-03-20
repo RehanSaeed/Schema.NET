@@ -3,25 +3,12 @@
   <PropertyGroup Label="Build">
     <TargetFrameworks>netstandard1.1;netstandard2.0;net461;net472;netcoreapp3.1</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <LangVersion>latest</LangVersion>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Label="Package">
-    <VersionPrefix>7.1.0</VersionPrefix>
-    <Authors>Muhammad Rehan Saeed (RehanSaeed.com)</Authors>
-    <Company>Muhammad Rehan Saeed (RehanSaeed.com)</Company>
     <Product>Schema.NET</Product>
     <Description>Schema.org objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD and XML, typically used to represent structured data in the head section of html page.</Description>
-    <Copyright>Copyright © Muhammad Rehan Saeed. All rights Reserved</Copyright>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/RehanSaeed/Schema.NET</PackageProjectUrl>
-    <PackageIcon>Icon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/RehanSaeed/Schema.NET.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <PackageTags>Schema;.NET;Schema.org;Schema.NET;Structured Data;Google Structured Data</PackageTags>
-    <PackageReleaseNotes>https://github.com/RehanSaeed/Schema.NET/releases</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Label="Signing">
@@ -48,12 +35,6 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.1' OR '$(TargetFramework)' == 'net461'">
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-  </ItemGroup>
-
-  <ItemGroup Label="Analyzer Package References">
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" PrivateAssets="All" Version="2.9.8" />
-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" PrivateAssets="All" Version="16.5.132" />
-    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All" Version="1.1.118" />
   </ItemGroup>
 
   <ItemGroup Label="Files">
