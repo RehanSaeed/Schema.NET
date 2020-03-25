@@ -3,7 +3,7 @@
 version: '{build}'
 
 image:
-# - MacOS
+- MacOS
 - Ubuntu
 - Visual Studio 2019
 
