@@ -33,7 +33,7 @@ namespace Schema.NET.Tool.Repositories
             {
                 var token = JToken.Load(reader);
                 var graphArray = ((JArray)token["@graph"]).ToList();
-                return graphArray.Select(Read).Where(x => x != null).ToList();
+                return graphArray.Select(Read).Where(x => x is object).ToList();
             }
 
             return Enumerable.Empty<SchemaObject>();
@@ -51,7 +51,7 @@ namespace Schema.NET.Tool.Repositories
             }
 
             var supercededByToken = token["http://schema.org/supersededBy"];
-            if (supercededByToken != null)
+            if (supercededByToken is object)
             {
                 // Ignore deprecated properties.
                 return null;
@@ -124,7 +124,7 @@ namespace Schema.NET.Tool.Repositories
 
         private static IEnumerable<string> GetTokenValues(JToken token)
         {
-            if (token != null)
+            if (token is object)
             {
                 if (token.Type == JTokenType.String)
                 {
@@ -142,7 +142,7 @@ namespace Schema.NET.Tool.Repositories
 
         private static IEnumerable<Uri> GetTokenValues(JToken token, string name)
         {
-            if (token != null)
+            if (token is object)
             {
                 if (token.Type == JTokenType.Object)
                 {

@@ -32,14 +32,14 @@ namespace Schema.NET
                 stringBuilder.Append(this.ValueMinLength.First().Value);
             }
 
-            if (this.ValueName.First() != null)
+            if (this.ValueName.First() is object)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("name=");
                 stringBuilder.Append(this.ValueName.First());
             }
 
-            if (this.ValuePattern.First() != null)
+            if (this.ValuePattern.First() is object)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("pattern=");

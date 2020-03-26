@@ -31,7 +31,7 @@ namespace Schema.NET.Tool.Repositories
             foreach (var enumeration in enumerations)
             {
                 var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("http://schema.org/" + x.Name) == enumeration.Id);
-                if (schemaTreeClass != null)
+                if (schemaTreeClass is object)
                 {
                     enumeration.Layer = schemaTreeClass.Layer;
                 }
@@ -40,7 +40,7 @@ namespace Schema.NET.Tool.Repositories
             foreach (var c in classes)
             {
                 var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("http://schema.org/" + x.Name) == c.Id);
-                if (schemaTreeClass != null)
+                if (schemaTreeClass is object)
                 {
                     c.Layer = schemaTreeClass.Layer;
                 }
