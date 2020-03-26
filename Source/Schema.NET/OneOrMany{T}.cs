@@ -64,7 +64,7 @@ namespace Schema.NET
                     for (var i = 0; i < span.Length; i++)
                     {
                         var item = span[i];
-                        if (item != null)
+                        if (item is object)
                         {
                             items[index] = item;
                             index++;
@@ -223,7 +223,7 @@ namespace Schema.NET
         /// <returns>An enumerator for the <see cref="OneOrMany{T}"/>.</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            if (this.collection != null)
+            if (this.collection is object)
             {
                 for (var i = 0; i < this.collection.Length; i++)
                 {
