@@ -12,7 +12,7 @@ categories:
       - 'bug'
   - title: '🧰 Maintenance'
     labels:
-      - 'chore'
+      - 'maintenance'
 version-resolver:
   major:
     labels:
