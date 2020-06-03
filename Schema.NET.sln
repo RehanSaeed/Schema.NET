@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		dotnet-tools.json = dotnet-tools.json
 		global.json = global.json
 		Key.snk = Key.snk
+		.github\release-drafter.yml = .github\release-drafter.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schema.NET", "Source\Schema.NET\Schema.NET.csproj", "{266BBA60-25FD-4C1B-BD99-9DCFA1B57130}"
@@ -79,6 +80,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{1D81D082
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schema.NET.Tool", "Tools\Schema.NET.Tool\Schema.NET.Tool.csproj", "{379FE111-579B-4A3A-9E49-40D8E2904883}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{040F8F6D-9144-42FD-9B0D-7F88EF0C26C5}"
+	ProjectSection(SolutionItems) = preProject
+		.github\release-drafter.yml = .github\release-drafter.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{9444439E-8476-4BAB-AE1E-DBC24B58865F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\release-drafter.yml = .github\workflows\release-drafter.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -112,6 +124,8 @@ Global
 		{0555C737-CE4B-4C78-87AB-6296E1E32D01} = {7EDFA103-DB69-4C88-9DE4-97ADBF8253A1}
 		{EA1CBFC3-F165-4811-AA9F-157DEB8E31CC} = {E25F6292-80CE-45FE-97B0-0EBBF8E1FC6A}
 		{379FE111-579B-4A3A-9E49-40D8E2904883} = {1D81D082-9C25-4D4E-890E-9CD173532307}
+		{040F8F6D-9144-42FD-9B0D-7F88EF0C26C5} = {F20E2797-D1E3-4321-91BB-FAE54954D2A0}
+		{9444439E-8476-4BAB-AE1E-DBC24B58865F} = {040F8F6D-9144-42FD-9B0D-7F88EF0C26C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {73F36209-F8D6-4066-8951-D97729F773CF}

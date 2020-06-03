@@ -1,0 +1,34 @@
+name-template: 'Schema.NET v$NEXT_PATCH_VERSION'
+tag-template: 'Schema.NET.v$NEXT_PATCH_VERSION'
+change-template: '- $TITLE by @$AUTHOR (#$NUMBER)'
+no-changes-template: '- No changes'
+categories:
+  - title: '🚀 New Features'
+    labels:
+      - 'enhancement'
+      - 'dependencies'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+  - title: '🧰 Maintenance'
+    labels:
+      - 'chore'
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
+template: |
+  ## Changes
+
+  $CHANGES
+
+  ## Contributors
+
+  $CONTRIBUTORS
