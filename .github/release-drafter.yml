@@ -1,5 +1,5 @@
-name-template: 'Schema.NET v$NEXT_PATCH_VERSION'
-tag-template: 'Schema.NET.v$NEXT_PATCH_VERSION'
+name-template: 'Schema.NET $RESOLVED_VERSION'
+tag-template: 'Schema.NET.$RESOLVED_VERSION'
 change-template: '- $TITLE by @$AUTHOR (#$NUMBER)'
 no-changes-template: '- No changes'
 categories:
