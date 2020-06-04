@@ -6,7 +6,6 @@ categories:
   - title: '🚀 New Features'
     labels:
       - 'enhancement'
-      - 'dependencies'
   - title: '🐛 Bug Fixes'
     labels:
       - 'bug'
@@ -25,10 +24,8 @@ version-resolver:
       - 'patch'
   default: patch
 template: |
-  ## Changes
-
   $CHANGES
 
-  ## Contributors
+  ## 👨🏼‍💻 Contributors
 
   $CONTRIBUTORS
