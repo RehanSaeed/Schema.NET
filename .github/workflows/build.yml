@@ -64,7 +64,7 @@ jobs:
         with:
           name: 'windows-latest'
       - name: 'Dotnet NuGet Add Source'
-        run: dotnet nuget add source https://nuget.pkg.github.com/RehanSaeed --name GitHub --username RehanSaeed --password ${{secrets.GITHUB_TOKEN}}
+        run: dotnet nuget add source https://nuget.pkg.github.com/RehanSaeed/index.json --name GitHub --username RehanSaeed --password ${{secrets.GITHUB_TOKEN}}
         shell: pwsh
       - name: 'Dotnet NuGet Push'
         run: dotnet nuget push .\windows-latest\*.nupkg --source GitHub --skip-duplicate
