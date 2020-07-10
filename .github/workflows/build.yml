@@ -2,10 +2,10 @@ name: Build
 
 on:
   push:
-    branches:
-      - '*'
-    tags:
-      - '*'
+  pull_request:
+  release:
+    types:
+      - published
 
 env:
   # Set the DOTNET_SKIP_FIRST_TIME_EXPERIENCE environment variable to stop wasting time caching packages
@@ -23,7 +23,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
-    - name: Checkout
+    - name: 'Checkout'
       uses: actions/checkout@v2
       with:
         lfs: true
@@ -34,7 +34,7 @@ jobs:
     - name: 'Install .NET Core SDK'
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.300
+        dotnet-version: 3.1.301
     - name: 'Dotnet Tool Restore'
       run: dotnet tool restore
       shell: pwsh
