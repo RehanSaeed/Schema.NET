@@ -58,7 +58,7 @@ namespace Schema.NET.Tool.ViewModels
                     stringBuilder.AppendCommentSummary(8, value.Description);
                     stringBuilder.AppendIndentLine(8, $"[EnumMember(Value = \"{httpsValueUri}\")]");
                     stringBuilder.AppendIndent(8, value.Name);
-                    stringBuilder.Append(",");
+                    stringBuilder.Append(',');
                     if (!isLast)
                     {
                         stringBuilder.AppendLine();

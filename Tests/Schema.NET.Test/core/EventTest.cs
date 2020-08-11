@@ -8,8 +8,10 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/events
     public class EventTest
     {
-        private static readonly string NullString = null;
-        private static readonly ItemAvailability? NullItemAvailability = null;
+#pragma warning disable CS0649 // Field is never assigned to and will always have its default value.
+        private static readonly string NullString;
+        private static readonly ItemAvailability? NullItemAvailability;
+#pragma warning restore CS0649 // Field is never assigned to and will always have its default value.
 
         private readonly Event @event = new Event()
         {
