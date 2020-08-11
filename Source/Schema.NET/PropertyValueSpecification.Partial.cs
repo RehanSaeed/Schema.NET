@@ -59,7 +59,7 @@ namespace Schema.NET
         {
             if (stringBuilder.Length > 0)
             {
-                stringBuilder.Append(" ");
+                stringBuilder.Append(' ');
             }
         }
     }
