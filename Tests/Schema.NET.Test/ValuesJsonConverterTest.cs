@@ -270,9 +270,9 @@ namespace Schema.NET.Test
                 "{" +
                     "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"Book\"," +
-                    "\"@id\":\"http://example.com/book/1\"," +
+                    "\"@id\":\"https://example.com/book/1\"," +
                     "\"name\":\"The Catcher in the Rye\"," +
-                    "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
+                    "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
@@ -282,9 +282,9 @@ namespace Schema.NET.Test
             var result = DeserializeObject<Values<string, IBook>>(json);
             var actual = result.Value2.First();
 
-            Assert.Equal(new Uri("http://example.com/book/1"), ((Book)actual).Id);
+            Assert.Equal(new Uri("https://example.com/book/1"), ((Book)actual).Id);
             Assert.Equal("The Catcher in the Rye", actual.Name);
-            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
             var author = Assert.Single(actual.Author.Value2);
             Assert.Equal("J.D. Salinger", author.Name);
         }
@@ -296,9 +296,9 @@ namespace Schema.NET.Test
                 "{" +
                     "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"Book\"," +
-                    "\"@id\":\"http://example.com/book/1\"," +
+                    "\"@id\":\"https://example.com/book/1\"," +
                     "\"name\":\"The Catcher in the Rye\"," +
-                    "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
+                    "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
@@ -308,9 +308,9 @@ namespace Schema.NET.Test
             var result = DeserializeObject<Values<string, Book>>(json);
             var actual = result.Value2.First();
 
-            Assert.Equal(new Uri("http://example.com/book/1"), actual.Id);
+            Assert.Equal(new Uri("https://example.com/book/1"), actual.Id);
             Assert.Equal("The Catcher in the Rye", actual.Name);
-            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
             var author = Assert.Single(actual.Author.Value2);
             Assert.Equal("J.D. Salinger", author.Name);
         }
@@ -321,9 +321,9 @@ namespace Schema.NET.Test
             var json = "{\"Property\":" +
                 "{" +
                     "\"@context\":\"https://schema.org\"," +
-                    "\"@id\":\"http://example.com/book/1\"," +
+                    "\"@id\":\"https://example.com/book/1\"," +
                     "\"name\":\"The Catcher in the Rye\"," +
-                    "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
+                    "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
@@ -333,9 +333,9 @@ namespace Schema.NET.Test
             var result = DeserializeObject<Values<string, IBook>>(json);
             var actual = result.Value2.First();
 
-            Assert.Equal(new Uri("http://example.com/book/1"), ((Book)actual).Id);
+            Assert.Equal(new Uri("https://example.com/book/1"), ((Book)actual).Id);
             Assert.Equal("The Catcher in the Rye", actual.Name);
-            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
             var author = Assert.Single(actual.Author.Value2);
             Assert.Equal("J.D. Salinger", author.Name);
         }
@@ -346,9 +346,9 @@ namespace Schema.NET.Test
             var json = "{\"Property\":" +
                 "{" +
                     "\"@context\":\"https://schema.org\"," +
-                    "\"@id\":\"http://example.com/book/1\"," +
+                    "\"@id\":\"https://example.com/book/1\"," +
                     "\"name\":\"The Catcher in the Rye\"," +
-                    "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
+                    "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
@@ -358,9 +358,9 @@ namespace Schema.NET.Test
             var result = DeserializeObject<Values<string, Book>>(json);
             var actual = result.Value2.First();
 
-            Assert.Equal(new Uri("http://example.com/book/1"), actual.Id);
+            Assert.Equal(new Uri("https://example.com/book/1"), actual.Id);
             Assert.Equal("The Catcher in the Rye", actual.Name);
-            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
             var author = Assert.Single(actual.Author.Value2);
             Assert.Equal("J.D. Salinger", author.Name);
         }
@@ -376,7 +376,7 @@ namespace Schema.NET.Test
         [Fact]
         public void ReadJson_Values_SingleValue_Enum_HttpSchema()
         {
-            var json = "{\"Property\":\"http://schema.org/InStock\"}";
+            var json = "{\"Property\":\"https://schema.org/InStock\"}";
             var result = DeserializeObject<Values<string, ItemAvailability>>(json);
             Assert.Equal(ItemAvailability.InStock, result.Value2.First());
         }
@@ -429,9 +429,9 @@ namespace Schema.NET.Test
                 "{" +
                     "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"Book\"," +
-                    "\"@id\":\"http://example.com/book/1\"," +
+                    "\"@id\":\"https://example.com/book/1\"," +
                     "\"name\":\"The Catcher in the Rye\"," +
-                    "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
+                    "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
@@ -440,9 +440,9 @@ namespace Schema.NET.Test
                 "{" +
                     "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"Book\"," +
-                    "\"@id\":\"http://example.com/book/2\"," +
+                    "\"@id\":\"https://example.com/book/2\"," +
                     "\"name\":\"The Lord of the Rings\"," +
-                    "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JRRTolkien\"," +
+                    "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JRRTolkien\"," +
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.R.R. Tolkien\"" +
@@ -452,15 +452,15 @@ namespace Schema.NET.Test
             var result = DeserializeObject<Values<string, IBook>>(json);
             var actual = result.Value2.ToArray();
 
-            Assert.Equal(new Uri("http://example.com/book/1"), ((Book)actual[0]).Id);
+            Assert.Equal(new Uri("https://example.com/book/1"), ((Book)actual[0]).Id);
             Assert.Equal("The Catcher in the Rye", actual[0].Name);
-            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual[0].Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual[0].Url);
             var author1 = Assert.Single(actual[0].Author.Value2);
             Assert.Equal("J.D. Salinger", author1.Name);
 
-            Assert.Equal(new Uri("http://example.com/book/2"), ((Book)actual[1]).Id);
+            Assert.Equal(new Uri("https://example.com/book/2"), ((Book)actual[1]).Id);
             Assert.Equal("The Lord of the Rings", actual[1].Name);
-            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JRRTolkien"), (Uri)actual[1].Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JRRTolkien"), (Uri)actual[1].Url);
             var author2 = Assert.Single(actual[1].Author.Value2);
             Assert.Equal("J.R.R. Tolkien", author2.Name);
         }

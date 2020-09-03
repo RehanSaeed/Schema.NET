@@ -28,6 +28,7 @@ namespace Schema.NET.Tool
                     new AddQueryInputPropertyToSearchAction(),
                     new AddTextTypeToActionTarget(),
                     new AddNumberTypeToMediaObjectHeightAndWidth(),
+                    new RenameEventProperty(),
                 },
                 new List<IEnumerationOverride>()
                 {
@@ -51,6 +52,7 @@ namespace Schema.NET.Tool
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(exception.ToString());
+                Console.ForegroundColor = ConsoleColor.Gray;
                 return -1;
             }
             finally

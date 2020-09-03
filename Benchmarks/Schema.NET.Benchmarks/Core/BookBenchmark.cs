@@ -9,13 +9,13 @@ namespace Schema.NET.Benchmarks.Core
         [GlobalSetup]
         public void Setup() => this.ConfigureBenchmark(new Book()
         {
-            Id = new Uri("http://example.com/book/1"),
+            Id = new Uri("https://example.com/book/1"),
             Name = "The Catcher in the Rye",
             Author = new Person()
             {
                 Name = "J.D. Salinger",
             },
-            Url = new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"),
+            Url = new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"),
             WorkExample = new List<ICreativeWork>()
             {
                 new Book()
@@ -27,7 +27,7 @@ namespace Schema.NET.Benchmarks.Core
                     {
                         Target = new EntryPoint()
                         {
-                            UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true",
+                            UrlTemplate = "https://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true",
                             ActionPlatform = new List<Uri>()
                             {
                                 new Uri("https://schema.org/DesktopWebPlatform"),
@@ -56,7 +56,7 @@ namespace Schema.NET.Benchmarks.Core
                     {
                         Target = new EntryPoint()
                         {
-                            UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/031676947?purchase=true",
+                            UrlTemplate = "https://www.barnesandnoble.com/store/info/offer/031676947?purchase=true",
                             ActionPlatform = new List<Uri>()
                             {
                                 new Uri("https://schema.org/DesktopWebPlatform"),

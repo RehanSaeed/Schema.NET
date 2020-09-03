@@ -20,17 +20,17 @@
         Values<DateTimeOffset?, TimeSpan?> DepartureTime { get; set; }
 
         /// <summary>
-        /// Destination(s) ( &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; ) that make up a trip. For a trip where destination order is important use &lt;a class="localLink" href="http://schema.org/ItemList"&gt;ItemList&lt;/a&gt; to specify that order (see examples).
+        /// Destination(s) ( &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt; ) that make up a trip. For a trip where destination order is important use &lt;a class="localLink" href="https://schema.org/ItemList"&gt;ItemList&lt;/a&gt; to specify that order (see examples).
         /// </summary>
         Values<IItemList, IPlace> Itinerary { get; set; }
 
         /// <summary>
-        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="http://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
+        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="https://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="https://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         Values<IDemand, IOffer> Offers { get; set; }
 
         /// <summary>
-        /// Identifies that this &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; is a subTrip of another Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
+        /// Identifies that this &lt;a class="localLink" href="https://schema.org/Trip"&gt;Trip&lt;/a&gt; is a subTrip of another Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
         /// </summary>
         OneOrMany<ITrip> PartOfTrip { get; set; }
 
@@ -40,7 +40,7 @@
         Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
-        /// Identifies a &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; that is a subTrip of this Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
+        /// Identifies a &lt;a class="localLink" href="https://schema.org/Trip"&gt;Trip&lt;/a&gt; that is a subTrip of this Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
         /// </summary>
         OneOrMany<ITrip> SubTrip { get; set; }
     }
@@ -72,21 +72,21 @@
         public Values<DateTimeOffset?, TimeSpan?> DepartureTime { get; set; }
 
         /// <summary>
-        /// Destination(s) ( &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; ) that make up a trip. For a trip where destination order is important use &lt;a class="localLink" href="http://schema.org/ItemList"&gt;ItemList&lt;/a&gt; to specify that order (see examples).
+        /// Destination(s) ( &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt; ) that make up a trip. For a trip where destination order is important use &lt;a class="localLink" href="https://schema.org/ItemList"&gt;ItemList&lt;/a&gt; to specify that order (see examples).
         /// </summary>
         [DataMember(Name = "itinerary", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IItemList, IPlace> Itinerary { get; set; }
 
         /// <summary>
-        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="http://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
+        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="https://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="https://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         [DataMember(Name = "offers", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IDemand, IOffer> Offers { get; set; }
 
         /// <summary>
-        /// Identifies that this &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; is a subTrip of another Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
+        /// Identifies that this &lt;a class="localLink" href="https://schema.org/Trip"&gt;Trip&lt;/a&gt; is a subTrip of another Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
         /// </summary>
         [DataMember(Name = "partOfTrip", Order = 210)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -100,7 +100,7 @@
         public Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
-        /// Identifies a &lt;a class="localLink" href="http://schema.org/Trip"&gt;Trip&lt;/a&gt; that is a subTrip of this Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
+        /// Identifies a &lt;a class="localLink" href="https://schema.org/Trip"&gt;Trip&lt;/a&gt; that is a subTrip of this Trip.  For example Day 1, Day 2, etc. of a multi-day trip.
         /// </summary>
         [DataMember(Name = "subTrip", Order = 212)]
         [JsonConverter(typeof(ValuesJsonConverter))]

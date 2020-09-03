@@ -40,14 +40,14 @@ namespace Schema.NET.Test
 
         private readonly string jsonHttp =
         @"{" +
-            "\"@context\":\"http://schema.org\"," +
+            "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"Organization\"," +
             "\"url\":\"https://example.com\"," +
             "\"areaServed\":\"GB\"," +
             "\"contactPoint\":{" +
                 "\"@type\":\"ContactPoint\"," +
                 "\"availableLanguage\":\"English\"," +
-                "\"contactOption\":\"http://schema.org/TollFree\"," +
+                "\"contactOption\":\"https://schema.org/TollFree\"," +
                 "\"contactType\":\"customer service\"," +
                 "\"telephone\":\"+1-401-555-1212\"" +
             "}," +
@@ -68,7 +68,7 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_OrganizationJsonLd_WithHttpSchemaOrg_ReturnsOrganization() =>
             Assert.Equal(
-                this.organization.ToString().Replace("\"@context\":\"https://schema.org\"", "\"@context\":\"http://schema.org\"", StringComparison.Ordinal),
+                this.organization.ToString().Replace("\"@context\":\"https://schema.org\"", "\"@context\":\"https://schema.org\"", StringComparison.Ordinal),
                 JsonConvert.DeserializeObject<Organization>(this.jsonHttp, TestDefaults.DefaultJsonSerializerSettings).ToString());
     }
 }

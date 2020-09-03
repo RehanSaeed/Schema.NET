@@ -76,7 +76,7 @@
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;br/&gt;&lt;br/&gt;
-        /// See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
+        /// See also &lt;a class="localLink" href="https://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
         Values<IGeoShape, IPlace, string> EligibleRegion { get; set; }
 
@@ -86,7 +86,7 @@
         OneOrMany<IPriceSpecification> EligibleTransactionVolume { get; set; }
 
         /// <summary>
-        /// A Global Trade Item Number (&lt;a href="https://www.gs1.org/standards/id-keys/gtin"&gt;GTIN&lt;/a&gt;). GTINs identify trade items, including products and services, using numeric identification codes. The &lt;a class="localLink" href="http://schema.org/gtin"&gt;gtin&lt;/a&gt; property generalizes the earlier &lt;a class="localLink" href="http://schema.org/gtin8"&gt;gtin8&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/gtin12"&gt;gtin12&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/gtin13"&gt;gtin13&lt;/a&gt;, and &lt;a class="localLink" href="http://schema.org/gtin14"&gt;gtin14&lt;/a&gt; properties. The GS1 &lt;a href="https://www.gs1.org/standards/Digital-Link/"&gt;digital link specifications&lt;/a&gt; express GTINs as URLs. A correct &lt;a class="localLink" href="http://schema.org/gtin"&gt;gtin&lt;/a&gt; value should be a valid GTIN, which means that it should be an all-numeric string of either 8, 12, 13 or 14 digits, or a "GS1 Digital Link" URL based on such a string. The numeric component should also have a &lt;a href="https://www.gs1.org/services/check-digit-calculator"&gt;valid GS1 check digit&lt;/a&gt; and meet the other rules for valid GTINs. See also &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GS1's GTIN Summary&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Global_Trade_Item_Number"&gt;Wikipedia&lt;/a&gt; for more details. Left-padding of the gtin values is not required or encouraged.
+        /// A Global Trade Item Number (&lt;a href="https://www.gs1.org/standards/id-keys/gtin"&gt;GTIN&lt;/a&gt;). GTINs identify trade items, including products and services, using numeric identification codes. The &lt;a class="localLink" href="https://schema.org/gtin"&gt;gtin&lt;/a&gt; property generalizes the earlier &lt;a class="localLink" href="https://schema.org/gtin8"&gt;gtin8&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/gtin12"&gt;gtin12&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/gtin13"&gt;gtin13&lt;/a&gt;, and &lt;a class="localLink" href="https://schema.org/gtin14"&gt;gtin14&lt;/a&gt; properties. The GS1 &lt;a href="https://www.gs1.org/standards/Digital-Link/"&gt;digital link specifications&lt;/a&gt; express GTINs as URLs. A correct &lt;a class="localLink" href="https://schema.org/gtin"&gt;gtin&lt;/a&gt; value should be a valid GTIN, which means that it should be an all-numeric string of either 8, 12, 13 or 14 digits, or a "GS1 Digital Link" URL based on such a string. The numeric component should also have a &lt;a href="https://www.gs1.org/services/check-digit-calculator"&gt;valid GS1 check digit&lt;/a&gt; and meet the other rules for valid GTINs. See also &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GS1's GTIN Summary&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Global_Trade_Item_Number"&gt;Wikipedia&lt;/a&gt; for more details. Left-padding of the gtin values is not required or encouraged.
         /// </summary>
         OneOrMany<string> Gtin { get; set; }
 
@@ -111,13 +111,13 @@
         OneOrMany<string> Gtin8 { get; set; }
 
         /// <summary>
-        /// This links to a node or nodes indicating the exact quantity of the products included in the offer.
+        /// This links to a node or nodes indicating the exact quantity of the products included in  an &lt;a class="localLink" href="https://schema.org/Offer"&gt;Offer&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/ProductCollection"&gt;ProductCollection&lt;/a&gt;.
         /// </summary>
         OneOrMany<ITypeAndQuantityNode> IncludesObject { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;br/&gt;&lt;br/&gt;
-        /// See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
+        /// See also &lt;a class="localLink" href="https://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
         /// </summary>
         Values<IGeoShape, IPlace, string> IneligibleRegion { get; set; }
 
@@ -132,7 +132,7 @@
         OneOrMany<OfferItemCondition?> ItemCondition { get; set; }
 
         /// <summary>
-        /// An item being offered (or demanded). The transactional nature of the offer or demand is documented using &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt;, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
+        /// An item being offered (or demanded). The transactional nature of the offer or demand is documented using &lt;a class="localLink" href="https://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt;, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         Values<IAggregateOffer, ICreativeWork, IEvent, IMenuItem, IProduct, IService, ITrip> ItemOffered { get; set; }
 
@@ -282,7 +282,7 @@
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;br/&gt;&lt;br/&gt;
-        /// See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
+        /// See also &lt;a class="localLink" href="https://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "eligibleRegion", Order = 219)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -296,7 +296,7 @@
         public OneOrMany<IPriceSpecification> EligibleTransactionVolume { get; set; }
 
         /// <summary>
-        /// A Global Trade Item Number (&lt;a href="https://www.gs1.org/standards/id-keys/gtin"&gt;GTIN&lt;/a&gt;). GTINs identify trade items, including products and services, using numeric identification codes. The &lt;a class="localLink" href="http://schema.org/gtin"&gt;gtin&lt;/a&gt; property generalizes the earlier &lt;a class="localLink" href="http://schema.org/gtin8"&gt;gtin8&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/gtin12"&gt;gtin12&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/gtin13"&gt;gtin13&lt;/a&gt;, and &lt;a class="localLink" href="http://schema.org/gtin14"&gt;gtin14&lt;/a&gt; properties. The GS1 &lt;a href="https://www.gs1.org/standards/Digital-Link/"&gt;digital link specifications&lt;/a&gt; express GTINs as URLs. A correct &lt;a class="localLink" href="http://schema.org/gtin"&gt;gtin&lt;/a&gt; value should be a valid GTIN, which means that it should be an all-numeric string of either 8, 12, 13 or 14 digits, or a "GS1 Digital Link" URL based on such a string. The numeric component should also have a &lt;a href="https://www.gs1.org/services/check-digit-calculator"&gt;valid GS1 check digit&lt;/a&gt; and meet the other rules for valid GTINs. See also &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GS1's GTIN Summary&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Global_Trade_Item_Number"&gt;Wikipedia&lt;/a&gt; for more details. Left-padding of the gtin values is not required or encouraged.
+        /// A Global Trade Item Number (&lt;a href="https://www.gs1.org/standards/id-keys/gtin"&gt;GTIN&lt;/a&gt;). GTINs identify trade items, including products and services, using numeric identification codes. The &lt;a class="localLink" href="https://schema.org/gtin"&gt;gtin&lt;/a&gt; property generalizes the earlier &lt;a class="localLink" href="https://schema.org/gtin8"&gt;gtin8&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/gtin12"&gt;gtin12&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/gtin13"&gt;gtin13&lt;/a&gt;, and &lt;a class="localLink" href="https://schema.org/gtin14"&gt;gtin14&lt;/a&gt; properties. The GS1 &lt;a href="https://www.gs1.org/standards/Digital-Link/"&gt;digital link specifications&lt;/a&gt; express GTINs as URLs. A correct &lt;a class="localLink" href="https://schema.org/gtin"&gt;gtin&lt;/a&gt; value should be a valid GTIN, which means that it should be an all-numeric string of either 8, 12, 13 or 14 digits, or a "GS1 Digital Link" URL based on such a string. The numeric component should also have a &lt;a href="https://www.gs1.org/services/check-digit-calculator"&gt;valid GS1 check digit&lt;/a&gt; and meet the other rules for valid GTINs. See also &lt;a href="http://www.gs1.org/barcodes/technical/idkeys/gtin"&gt;GS1's GTIN Summary&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Global_Trade_Item_Number"&gt;Wikipedia&lt;/a&gt; for more details. Left-padding of the gtin values is not required or encouraged.
         /// </summary>
         [DataMember(Name = "gtin", Order = 221)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -331,7 +331,7 @@
         public OneOrMany<string> Gtin8 { get; set; }
 
         /// <summary>
-        /// This links to a node or nodes indicating the exact quantity of the products included in the offer.
+        /// This links to a node or nodes indicating the exact quantity of the products included in  an &lt;a class="localLink" href="https://schema.org/Offer"&gt;Offer&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/ProductCollection"&gt;ProductCollection&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "includesObject", Order = 226)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -339,7 +339,7 @@
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;br/&gt;&lt;br/&gt;
-        /// See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
+        /// See also &lt;a class="localLink" href="https://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "ineligibleRegion", Order = 227)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -360,7 +360,7 @@
         public OneOrMany<OfferItemCondition?> ItemCondition { get; set; }
 
         /// <summary>
-        /// An item being offered (or demanded). The transactional nature of the offer or demand is documented using &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt;, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
+        /// An item being offered (or demanded). The transactional nature of the offer or demand is documented using &lt;a class="localLink" href="https://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt;, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         [DataMember(Name = "itemOffered", Order = 230)]
         [JsonConverter(typeof(ValuesJsonConverter))]

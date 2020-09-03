@@ -10,7 +10,7 @@
     public partial interface IAudioObject : IMediaObject
     {
         /// <summary>
-        /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
+        /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="https://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
         /// </summary>
         Values<IMediaObject, string> Caption { get; set; }
 
@@ -33,7 +33,7 @@
         public override string Type => "AudioObject";
 
         /// <summary>
-        /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
+        /// The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the &lt;a class="localLink" href="https://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "caption", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]

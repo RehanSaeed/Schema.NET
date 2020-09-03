@@ -15,7 +15,7 @@
         OneOrMany<IThing> About { get; set; }
 
         /// <summary>
-        /// An abstract is a short description that summarizes a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.
+        /// An abstract is a short description that summarizes a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.
         /// </summary>
         OneOrMany<string> Abstract { get; set; }
 
@@ -75,6 +75,11 @@
         OneOrMany<string> AlternativeHeadline { get; set; }
 
         /// <summary>
+        /// The item being described is intended to assess the competency or learning outcome defined by the referenced term.
+        /// </summary>
+        OneOrMany<string> Assesses { get; set; }
+
+        /// <summary>
         /// A media object that encodes this CreativeWork. This property is a synonym for encoding.
         /// </summary>
         OneOrMany<IMediaObject> AssociatedMedia { get; set; }
@@ -120,7 +125,7 @@
         OneOrMany<int?> CommentCount { get; set; }
 
         /// <summary>
-        /// Conditions that affect the availability of, or method(s) of access to, an item. Typically used for real world items such as an &lt;a class="localLink" href="http://schema.org/ArchiveComponent"&gt;ArchiveComponent&lt;/a&gt; held by an &lt;a class="localLink" href="http://schema.org/ArchiveOrganization"&gt;ArchiveOrganization&lt;/a&gt;. This property is not suitable for use as a general Web access control mechanism. It is expressed only in natural language.&lt;br/&gt;&lt;br/&gt;
+        /// Conditions that affect the availability of, or method(s) of access to, an item. Typically used for real world items such as an &lt;a class="localLink" href="https://schema.org/ArchiveComponent"&gt;ArchiveComponent&lt;/a&gt; held by an &lt;a class="localLink" href="https://schema.org/ArchiveOrganization"&gt;ArchiveOrganization&lt;/a&gt;. This property is not suitable for use as a general Web access control mechanism. It is expressed only in natural language.&lt;br/&gt;&lt;br/&gt;
         /// For example "Available by appointment from the Reading Room" or "Accessible only from logged-in accounts ".
         /// </summary>
         OneOrMany<string> ConditionsOfAccess { get; set; }
@@ -156,7 +161,7 @@
         OneOrMany<int?> CopyrightYear { get; set; }
 
         /// <summary>
-        /// Indicates a correction to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;, either via a &lt;a class="localLink" href="http://schema.org/CorrectionComment"&gt;CorrectionComment&lt;/a&gt;, textually or in another document.
+        /// Indicates a correction to a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;, either via a &lt;a class="localLink" href="https://schema.org/CorrectionComment"&gt;CorrectionComment&lt;/a&gt;, textually or in another document.
         /// </summary>
         Values<string, Uri> Correction { get; set; }
 
@@ -191,9 +196,9 @@
         OneOrMany<Uri> DiscussionUrl { get; set; }
 
         /// <summary>
-        /// An &lt;a href="https://eidr.org/"&gt;[EIDR]&lt;/a&gt; (Entertainment Identifier Registry) &lt;a class="localLink" href="http://schema.org/identifier"&gt;identifier&lt;/a&gt; representing a specific edit / edition for a work of film or television.&lt;br/&gt;&lt;br/&gt;
-        /// For example, the motion picture known as "Ghostbusters" whose &lt;a class="localLink" href="http://schema.org/titleEIDR"&gt;titleEIDR&lt;/a&gt; is "10.5240/7EC7-228A-510A-053E-CBB8-J", has several edits e.g. "10.5240/1F2A-E1C5-680A-14C6-E76B-I" and "10.5240/8A35-3BEE-6497-5D12-9E4F-3".&lt;br/&gt;&lt;br/&gt;
-        /// Since schema.org types like &lt;a class="localLink" href="http://schema.org/Movie"&gt;Movie&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/TVEpisode"&gt;TVEpisode&lt;/a&gt; can be used for both works and their multiple expressions, it is possible to use &lt;a class="localLink" href="http://schema.org/titleEIDR"&gt;titleEIDR&lt;/a&gt; alone (for a general description), or alongside &lt;a class="localLink" href="http://schema.org/editEIDR"&gt;editEIDR&lt;/a&gt; for a more edit-specific description.
+        /// An &lt;a href="https://eidr.org/"&gt;EIDR&lt;/a&gt; (Entertainment Identifier Registry) &lt;a class="localLink" href="https://schema.org/identifier"&gt;identifier&lt;/a&gt; representing a specific edit / edition for a work of film or television.&lt;br/&gt;&lt;br/&gt;
+        /// For example, the motion picture known as "Ghostbusters" whose &lt;a class="localLink" href="https://schema.org/titleEIDR"&gt;titleEIDR&lt;/a&gt; is "10.5240/7EC7-228A-510A-053E-CBB8-J", has several edits e.g. "10.5240/1F2A-E1C5-680A-14C6-E76B-I" and "10.5240/8A35-3BEE-6497-5D12-9E4F-3".&lt;br/&gt;&lt;br/&gt;
+        /// Since schema.org types like &lt;a class="localLink" href="https://schema.org/Movie"&gt;Movie&lt;/a&gt; and &lt;a class="localLink" href="https://schema.org/TVEpisode"&gt;TVEpisode&lt;/a&gt; can be used for both works and their multiple expressions, it is possible to use &lt;a class="localLink" href="https://schema.org/titleEIDR"&gt;titleEIDR&lt;/a&gt; alone (for a general description), or alongside &lt;a class="localLink" href="https://schema.org/editEIDR"&gt;editEIDR&lt;/a&gt; for a more edit-specific description.
         /// </summary>
         Values<string, Uri> EditEIDR { get; set; }
 
@@ -203,9 +208,15 @@
         OneOrMany<IPerson> Editor { get; set; }
 
         /// <summary>
-        /// An alignment to an established educational framework.
+        /// An alignment to an established educational framework.&lt;br/&gt;&lt;br/&gt;
+        /// This property should not be used where the nature of the alignment can be described using a simple property, for example to express that a resource &lt;a class="localLink" href="https://schema.org/teaches"&gt;teaches&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/assesses"&gt;assesses&lt;/a&gt; a competency.
         /// </summary>
         OneOrMany<IAlignmentObject> EducationalAlignment { get; set; }
+
+        /// <summary>
+        /// The level in terms of progression through an educational or training context. Examples of educational levels include 'beginner', 'intermediate' or 'advanced', and formal sets of level indicators.
+        /// </summary>
+        Values<string, Uri> EducationalLevel { get; set; }
 
         /// <summary>
         /// The purpose of a work in the context of education; for example, 'assignment', 'group work'.
@@ -219,7 +230,7 @@
 
         /// <summary>
         /// Media type typically expressed using a MIME format (see &lt;a href="http://www.iana.org/assignments/media-types/media-types.xhtml"&gt;IANA site&lt;/a&gt; and &lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types"&gt;MDN reference&lt;/a&gt;) e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.).&lt;br/&gt;&lt;br/&gt;
-        /// In cases where a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; has several media type representations, &lt;a class="localLink" href="http://schema.org/encoding"&gt;encoding&lt;/a&gt; can be used to indicate each &lt;a class="localLink" href="http://schema.org/MediaObject"&gt;MediaObject&lt;/a&gt; alongside particular &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt; information.&lt;br/&gt;&lt;br/&gt;
+        /// In cases where a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; has several media type representations, &lt;a class="localLink" href="https://schema.org/encoding"&gt;encoding&lt;/a&gt; can be used to indicate each &lt;a class="localLink" href="https://schema.org/MediaObject"&gt;MediaObject&lt;/a&gt; alongside particular &lt;a class="localLink" href="https://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt; information.&lt;br/&gt;&lt;br/&gt;
         /// Unregistered or niche encoding and file formats can be indicated instead via the most appropriate URL, e.g. defining Web page or a Wikipedia/Wikidata entry.
         /// </summary>
         Values<string, Uri> EncodingFormat { get; set; }
@@ -230,7 +241,7 @@
         OneOrMany<ICreativeWork> ExampleOfWork { get; set; }
 
         /// <summary>
-        /// Date the content expires and is no longer useful or available. For example a &lt;a class="localLink" href="http://schema.org/VideoObject"&gt;VideoObject&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt; whose availability or relevance is time-limited, or a &lt;a class="localLink" href="http://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt; fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date.
+        /// Date the content expires and is no longer useful or available. For example a &lt;a class="localLink" href="https://schema.org/VideoObject"&gt;VideoObject&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt; whose availability or relevance is time-limited, or a &lt;a class="localLink" href="https://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt; fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date.
         /// </summary>
         Values<int?, DateTime?> Expires { get; set; }
 
@@ -255,7 +266,7 @@
         OneOrMany<string> Headline { get; set; }
 
         /// <summary>
-        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
+        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="https://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
         /// </summary>
         Values<ILanguage, string> InLanguage { get; set; }
 
@@ -315,7 +326,7 @@
         OneOrMany<IThing> MainEntity { get; set; }
 
         /// <summary>
-        /// A maintainer of a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt;, software package (&lt;a class="localLink" href="http://schema.org/SoftwareApplication"&gt;SoftwareApplication&lt;/a&gt;), or other &lt;a class="localLink" href="http://schema.org/Project"&gt;Project&lt;/a&gt;. A maintainer is a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on "upstream" sources. When &lt;a class="localLink" href="http://schema.org/maintainer"&gt;maintainer&lt;/a&gt; is applied to a specific version of something e.g. a particular version or packaging of a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt;, it is always  possible that the upstream source has a different maintainer. The &lt;a class="localLink" href="http://schema.org/isBasedOn"&gt;isBasedOn&lt;/a&gt; property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.
+        /// A maintainer of a &lt;a class="localLink" href="https://schema.org/Dataset"&gt;Dataset&lt;/a&gt;, software package (&lt;a class="localLink" href="https://schema.org/SoftwareApplication"&gt;SoftwareApplication&lt;/a&gt;), or other &lt;a class="localLink" href="https://schema.org/Project"&gt;Project&lt;/a&gt;. A maintainer is a &lt;a class="localLink" href="https://schema.org/Person"&gt;Person&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on "upstream" sources. When &lt;a class="localLink" href="https://schema.org/maintainer"&gt;maintainer&lt;/a&gt; is applied to a specific version of something e.g. a particular version or packaging of a &lt;a class="localLink" href="https://schema.org/Dataset"&gt;Dataset&lt;/a&gt;, it is always  possible that the upstream source has a different maintainer. The &lt;a class="localLink" href="https://schema.org/isBasedOn"&gt;isBasedOn&lt;/a&gt; property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.
         /// </summary>
         Values<IOrganization, IPerson> Maintainer { get; set; }
 
@@ -335,9 +346,14 @@
         OneOrMany<IThing> Mentions { get; set; }
 
         /// <summary>
-        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="http://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
+        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="https://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="https://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         Values<IDemand, IOffer> Offers { get; set; }
+
+        /// <summary>
+        /// A pattern that something has, for example 'polka dot', 'striped', 'Canadian flag'. Values are typically expressed as text, although links to controlled value schemes are also supported.
+        /// </summary>
+        OneOrMany<string> Pattern { get; set; }
 
         /// <summary>
         /// The position of an item in a series or sequence of items.
@@ -370,8 +386,8 @@
         OneOrMany<IOrganization> PublisherImprint { get; set; }
 
         /// <summary>
-        /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
-        /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
+        /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="https://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="https://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="https://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
+        /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="https://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
         Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
@@ -391,12 +407,12 @@
         OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
-        /// Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application.
+        /// Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as https://schema.org/version/2.0/ if precise indication of schema version was required by some application.
         /// </summary>
         Values<string, Uri> SchemaVersion { get; set; }
 
         /// <summary>
-        /// Indicates the date on which the current structured data was generated / published. Typically used alongside &lt;a class="localLink" href="http://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt;
+        /// Indicates the date on which the current structured data was generated / published. Typically used alongside &lt;a class="localLink" href="https://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt;
         /// </summary>
         Values<int?, DateTime?> SdDatePublished { get; set; }
 
@@ -407,9 +423,14 @@
 
         /// <summary>
         /// Indicates the party responsible for generating and publishing the current structured data markup, typically in cases where the structured data is derived automatically from existing published content but published on a different site. For example, student projects and open data initiatives often re-publish existing content with more explicitly structured metadata. The
-        /// &lt;a class="localLink" href="http://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt; property helps make such practices more explicit.
+        /// &lt;a class="localLink" href="https://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt; property helps make such practices more explicit.
         /// </summary>
         Values<IOrganization, IPerson> SdPublisher { get; set; }
+
+        /// <summary>
+        /// A standardized size of a product or creative work, often simplifying richer information into a simple textual string, either through referring to named sizes or (in the case of product markup), by adopting conventional simplifications. Use of QuantitativeValue with a unitCode or unitText can add more structure; in other cases, the /width, /height, /depth and /weight properties may be more applicable.
+        /// </summary>
+        Values<IQuantitativeValue, string> Size { get; set; }
 
         /// <summary>
         /// The Organization on whose behalf the creator was working.
@@ -418,7 +439,7 @@
 
         /// <summary>
         /// The "spatial" property can be used in cases when more specific properties
-        /// (e.g. &lt;a class="localLink" href="http://schema.org/locationCreated"&gt;locationCreated&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/spatialCoverage"&gt;spatialCoverage&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/contentLocation"&gt;contentLocation&lt;/a&gt;) are not known to be appropriate.
+        /// (e.g. &lt;a class="localLink" href="https://schema.org/locationCreated"&gt;locationCreated&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/spatialCoverage"&gt;spatialCoverage&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/contentLocation"&gt;contentLocation&lt;/a&gt;) are not known to be appropriate.
         /// </summary>
         OneOrMany<IPlace> Spatial { get; set; }
 
@@ -435,8 +456,13 @@
         Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
+        /// The item being described is intended to help a person learn the competency or learning outcome defined by the referenced term.
+        /// </summary>
+        OneOrMany<string> Teaches { get; set; }
+
+        /// <summary>
         /// The "temporal" property can be used in cases where more specific properties
-        /// (e.g. &lt;a class="localLink" href="http://schema.org/temporalCoverage"&gt;temporalCoverage&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/dateCreated"&gt;dateCreated&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/dateModified"&gt;dateModified&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/datePublished"&gt;datePublished&lt;/a&gt;) are not known to be appropriate.
+        /// (e.g. &lt;a class="localLink" href="https://schema.org/temporalCoverage"&gt;temporalCoverage&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/dateCreated"&gt;dateCreated&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/dateModified"&gt;dateModified&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/datePublished"&gt;datePublished&lt;/a&gt;) are not known to be appropriate.
         /// </summary>
         Values<DateTimeOffset?, string> Temporal { get; set; }
 
@@ -479,7 +505,7 @@
         OneOrMany<string> TypicalAgeRange { get; set; }
 
         /// <summary>
-        /// The schema.org &lt;a class="localLink" href="http://schema.org/usageInfo"&gt;usageInfo&lt;/a&gt; property indicates further information about a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;. This property is applicable both to works that are freely available and to those that require payment or other transactions. It can reference additional information e.g. community expectations on preferred linking and citation conventions, as well as purchasing details. For something that can be commercially licensed, usageInfo can provide detailed, resource-specific information about licensing options.&lt;br/&gt;&lt;br/&gt;
+        /// The schema.org &lt;a class="localLink" href="https://schema.org/usageInfo"&gt;usageInfo&lt;/a&gt; property indicates further information about a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;. This property is applicable both to works that are freely available and to those that require payment or other transactions. It can reference additional information e.g. community expectations on preferred linking and citation conventions, as well as purchasing details. For something that can be commercially licensed, usageInfo can provide detailed, resource-specific information about licensing options.&lt;br/&gt;&lt;br/&gt;
         /// This property can be used alongside the license property which indicates license(s) applicable to some piece of content. The usageInfo property can provide information about other licensing options, e.g. acquiring commercial usage rights for an image that is also available under non-commercial creative commons licenses.
         /// </summary>
         Values<ICreativeWork, Uri> UsageInfo { get; set; }
@@ -525,7 +551,7 @@
         public OneOrMany<IThing> About { get; set; }
 
         /// <summary>
-        /// An abstract is a short description that summarizes a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.
+        /// An abstract is a short description that summarizes a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "abstract", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -609,486 +635,515 @@
         public OneOrMany<string> AlternativeHeadline { get; set; }
 
         /// <summary>
+        /// The item being described is intended to assess the competency or learning outcome defined by the referenced term.
+        /// </summary>
+        [DataMember(Name = "assesses", Order = 119)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Assesses { get; set; }
+
+        /// <summary>
         /// A media object that encodes this CreativeWork. This property is a synonym for encoding.
         /// </summary>
-        [DataMember(Name = "associatedMedia", Order = 119)]
+        [DataMember(Name = "associatedMedia", Order = 120)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMediaObject> AssociatedMedia { get; set; }
 
         /// <summary>
         /// An intended audience, i.e. a group for whom something was created.
         /// </summary>
-        [DataMember(Name = "audience", Order = 120)]
+        [DataMember(Name = "audience", Order = 121)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAudience> Audience { get; set; }
 
         /// <summary>
         /// An embedded audio object.
         /// </summary>
-        [DataMember(Name = "audio", Order = 121)]
+        [DataMember(Name = "audio", Order = 122)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IAudioObject, IClip, IMusicRecording> Audio { get; set; }
 
         /// <summary>
         /// The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
         /// </summary>
-        [DataMember(Name = "author", Order = 122)]
+        [DataMember(Name = "author", Order = 123)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Author { get; set; }
 
         /// <summary>
         /// An award won by or for this item.
         /// </summary>
-        [DataMember(Name = "award", Order = 123)]
+        [DataMember(Name = "award", Order = 124)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Award { get; set; }
 
         /// <summary>
         /// Fictional person connected with a creative work.
         /// </summary>
-        [DataMember(Name = "character", Order = 124)]
+        [DataMember(Name = "character", Order = 125)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPerson> Character { get; set; }
 
         /// <summary>
         /// A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
         /// </summary>
-        [DataMember(Name = "citation", Order = 125)]
+        [DataMember(Name = "citation", Order = 126)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICreativeWork, string> Citation { get; set; }
 
         /// <summary>
         /// Comments, typically from users.
         /// </summary>
-        [DataMember(Name = "comment", Order = 126)]
+        [DataMember(Name = "comment", Order = 127)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IComment> Comment { get; set; }
 
         /// <summary>
         /// The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.
         /// </summary>
-        [DataMember(Name = "commentCount", Order = 127)]
+        [DataMember(Name = "commentCount", Order = 128)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> CommentCount { get; set; }
 
         /// <summary>
-        /// Conditions that affect the availability of, or method(s) of access to, an item. Typically used for real world items such as an &lt;a class="localLink" href="http://schema.org/ArchiveComponent"&gt;ArchiveComponent&lt;/a&gt; held by an &lt;a class="localLink" href="http://schema.org/ArchiveOrganization"&gt;ArchiveOrganization&lt;/a&gt;. This property is not suitable for use as a general Web access control mechanism. It is expressed only in natural language.&lt;br/&gt;&lt;br/&gt;
+        /// Conditions that affect the availability of, or method(s) of access to, an item. Typically used for real world items such as an &lt;a class="localLink" href="https://schema.org/ArchiveComponent"&gt;ArchiveComponent&lt;/a&gt; held by an &lt;a class="localLink" href="https://schema.org/ArchiveOrganization"&gt;ArchiveOrganization&lt;/a&gt;. This property is not suitable for use as a general Web access control mechanism. It is expressed only in natural language.&lt;br/&gt;&lt;br/&gt;
         /// For example "Available by appointment from the Reading Room" or "Accessible only from logged-in accounts ".
         /// </summary>
-        [DataMember(Name = "conditionsOfAccess", Order = 128)]
+        [DataMember(Name = "conditionsOfAccess", Order = 129)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> ConditionsOfAccess { get; set; }
 
         /// <summary>
         /// The location depicted or described in the content. For example, the location in a photograph or painting.
         /// </summary>
-        [DataMember(Name = "contentLocation", Order = 129)]
+        [DataMember(Name = "contentLocation", Order = 130)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPlace> ContentLocation { get; set; }
 
         /// <summary>
         /// Official rating of a piece of content&amp;#x2014;for example,'MPAA PG-13'.
         /// </summary>
-        [DataMember(Name = "contentRating", Order = 130)]
+        [DataMember(Name = "contentRating", Order = 131)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IRating, string> ContentRating { get; set; }
 
         /// <summary>
         /// The specific time described by a creative work, for works (e.g. articles, video objects etc.) that emphasise a particular moment within an Event.
         /// </summary>
-        [DataMember(Name = "contentReferenceTime", Order = 131)]
+        [DataMember(Name = "contentReferenceTime", Order = 132)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<DateTimeOffset?> ContentReferenceTime { get; set; }
 
         /// <summary>
         /// A secondary contributor to the CreativeWork or Event.
         /// </summary>
-        [DataMember(Name = "contributor", Order = 132)]
+        [DataMember(Name = "contributor", Order = 133)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Contributor { get; set; }
 
         /// <summary>
         /// The party holding the legal copyright to the CreativeWork.
         /// </summary>
-        [DataMember(Name = "copyrightHolder", Order = 133)]
+        [DataMember(Name = "copyrightHolder", Order = 134)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> CopyrightHolder { get; set; }
 
         /// <summary>
         /// The year during which the claimed copyright for the CreativeWork was first asserted.
         /// </summary>
-        [DataMember(Name = "copyrightYear", Order = 134)]
+        [DataMember(Name = "copyrightYear", Order = 135)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> CopyrightYear { get; set; }
 
         /// <summary>
-        /// Indicates a correction to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;, either via a &lt;a class="localLink" href="http://schema.org/CorrectionComment"&gt;CorrectionComment&lt;/a&gt;, textually or in another document.
+        /// Indicates a correction to a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;, either via a &lt;a class="localLink" href="https://schema.org/CorrectionComment"&gt;CorrectionComment&lt;/a&gt;, textually or in another document.
         /// </summary>
-        [DataMember(Name = "correction", Order = 135)]
+        [DataMember(Name = "correction", Order = 136)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> Correction { get; set; }
 
         /// <summary>
         /// The status of a creative work in terms of its stage in a lifecycle. Example terms include Incomplete, Draft, Published, Obsolete. Some organizations define a set of terms for the stages of their publication lifecycle.
         /// </summary>
-        [DataMember(Name = "creativeWorkStatus", Order = 136)]
+        [DataMember(Name = "creativeWorkStatus", Order = 137)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> CreativeWorkStatus { get; set; }
 
         /// <summary>
         /// The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
         /// </summary>
-        [DataMember(Name = "creator", Order = 137)]
+        [DataMember(Name = "creator", Order = 138)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Creator { get; set; }
 
         /// <summary>
         /// The date on which the CreativeWork was created or the item was added to a DataFeed.
         /// </summary>
-        [DataMember(Name = "dateCreated", Order = 138)]
+        [DataMember(Name = "dateCreated", Order = 139)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> DateCreated { get; set; }
 
         /// <summary>
         /// The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed.
         /// </summary>
-        [DataMember(Name = "dateModified", Order = 139)]
+        [DataMember(Name = "dateModified", Order = 140)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> DateModified { get; set; }
 
         /// <summary>
         /// Date of first broadcast/publication.
         /// </summary>
-        [DataMember(Name = "datePublished", Order = 140)]
+        [DataMember(Name = "datePublished", Order = 141)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?, DateTimeOffset?> DatePublished { get; set; }
 
         /// <summary>
         /// A link to the page containing the comments of the CreativeWork.
         /// </summary>
-        [DataMember(Name = "discussionUrl", Order = 141)]
+        [DataMember(Name = "discussionUrl", Order = 142)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<Uri> DiscussionUrl { get; set; }
 
         /// <summary>
-        /// An &lt;a href="https://eidr.org/"&gt;[EIDR]&lt;/a&gt; (Entertainment Identifier Registry) &lt;a class="localLink" href="http://schema.org/identifier"&gt;identifier&lt;/a&gt; representing a specific edit / edition for a work of film or television.&lt;br/&gt;&lt;br/&gt;
-        /// For example, the motion picture known as "Ghostbusters" whose &lt;a class="localLink" href="http://schema.org/titleEIDR"&gt;titleEIDR&lt;/a&gt; is "10.5240/7EC7-228A-510A-053E-CBB8-J", has several edits e.g. "10.5240/1F2A-E1C5-680A-14C6-E76B-I" and "10.5240/8A35-3BEE-6497-5D12-9E4F-3".&lt;br/&gt;&lt;br/&gt;
-        /// Since schema.org types like &lt;a class="localLink" href="http://schema.org/Movie"&gt;Movie&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/TVEpisode"&gt;TVEpisode&lt;/a&gt; can be used for both works and their multiple expressions, it is possible to use &lt;a class="localLink" href="http://schema.org/titleEIDR"&gt;titleEIDR&lt;/a&gt; alone (for a general description), or alongside &lt;a class="localLink" href="http://schema.org/editEIDR"&gt;editEIDR&lt;/a&gt; for a more edit-specific description.
+        /// An &lt;a href="https://eidr.org/"&gt;EIDR&lt;/a&gt; (Entertainment Identifier Registry) &lt;a class="localLink" href="https://schema.org/identifier"&gt;identifier&lt;/a&gt; representing a specific edit / edition for a work of film or television.&lt;br/&gt;&lt;br/&gt;
+        /// For example, the motion picture known as "Ghostbusters" whose &lt;a class="localLink" href="https://schema.org/titleEIDR"&gt;titleEIDR&lt;/a&gt; is "10.5240/7EC7-228A-510A-053E-CBB8-J", has several edits e.g. "10.5240/1F2A-E1C5-680A-14C6-E76B-I" and "10.5240/8A35-3BEE-6497-5D12-9E4F-3".&lt;br/&gt;&lt;br/&gt;
+        /// Since schema.org types like &lt;a class="localLink" href="https://schema.org/Movie"&gt;Movie&lt;/a&gt; and &lt;a class="localLink" href="https://schema.org/TVEpisode"&gt;TVEpisode&lt;/a&gt; can be used for both works and their multiple expressions, it is possible to use &lt;a class="localLink" href="https://schema.org/titleEIDR"&gt;titleEIDR&lt;/a&gt; alone (for a general description), or alongside &lt;a class="localLink" href="https://schema.org/editEIDR"&gt;editEIDR&lt;/a&gt; for a more edit-specific description.
         /// </summary>
-        [DataMember(Name = "editEIDR", Order = 142)]
+        [DataMember(Name = "editEIDR", Order = 143)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> EditEIDR { get; set; }
 
         /// <summary>
         /// Specifies the Person who edited the CreativeWork.
         /// </summary>
-        [DataMember(Name = "editor", Order = 143)]
+        [DataMember(Name = "editor", Order = 144)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPerson> Editor { get; set; }
 
         /// <summary>
-        /// An alignment to an established educational framework.
+        /// An alignment to an established educational framework.&lt;br/&gt;&lt;br/&gt;
+        /// This property should not be used where the nature of the alignment can be described using a simple property, for example to express that a resource &lt;a class="localLink" href="https://schema.org/teaches"&gt;teaches&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/assesses"&gt;assesses&lt;/a&gt; a competency.
         /// </summary>
-        [DataMember(Name = "educationalAlignment", Order = 144)]
+        [DataMember(Name = "educationalAlignment", Order = 145)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IAlignmentObject> EducationalAlignment { get; set; }
 
         /// <summary>
+        /// The level in terms of progression through an educational or training context. Examples of educational levels include 'beginner', 'intermediate' or 'advanced', and formal sets of level indicators.
+        /// </summary>
+        [DataMember(Name = "educationalLevel", Order = 146)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<string, Uri> EducationalLevel { get; set; }
+
+        /// <summary>
         /// The purpose of a work in the context of education; for example, 'assignment', 'group work'.
         /// </summary>
-        [DataMember(Name = "educationalUse", Order = 145)]
+        [DataMember(Name = "educationalUse", Order = 147)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> EducationalUse { get; set; }
 
         /// <summary>
         /// A media object that encodes this CreativeWork. This property is a synonym for associatedMedia.
         /// </summary>
-        [DataMember(Name = "encoding", Order = 146)]
+        [DataMember(Name = "encoding", Order = 148)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IMediaObject> Encoding { get; set; }
 
         /// <summary>
         /// Media type typically expressed using a MIME format (see &lt;a href="http://www.iana.org/assignments/media-types/media-types.xhtml"&gt;IANA site&lt;/a&gt; and &lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types"&gt;MDN reference&lt;/a&gt;) e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.).&lt;br/&gt;&lt;br/&gt;
-        /// In cases where a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; has several media type representations, &lt;a class="localLink" href="http://schema.org/encoding"&gt;encoding&lt;/a&gt; can be used to indicate each &lt;a class="localLink" href="http://schema.org/MediaObject"&gt;MediaObject&lt;/a&gt; alongside particular &lt;a class="localLink" href="http://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt; information.&lt;br/&gt;&lt;br/&gt;
+        /// In cases where a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; has several media type representations, &lt;a class="localLink" href="https://schema.org/encoding"&gt;encoding&lt;/a&gt; can be used to indicate each &lt;a class="localLink" href="https://schema.org/MediaObject"&gt;MediaObject&lt;/a&gt; alongside particular &lt;a class="localLink" href="https://schema.org/encodingFormat"&gt;encodingFormat&lt;/a&gt; information.&lt;br/&gt;&lt;br/&gt;
         /// Unregistered or niche encoding and file formats can be indicated instead via the most appropriate URL, e.g. defining Web page or a Wikipedia/Wikidata entry.
         /// </summary>
-        [DataMember(Name = "encodingFormat", Order = 147)]
+        [DataMember(Name = "encodingFormat", Order = 149)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<string, Uri> EncodingFormat { get; set; }
 
         /// <summary>
         /// A creative work that this work is an example/instance/realization/derivation of.
         /// </summary>
-        [DataMember(Name = "exampleOfWork", Order = 148)]
+        [DataMember(Name = "exampleOfWork", Order = 150)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> ExampleOfWork { get; set; }
 
         /// <summary>
-        /// Date the content expires and is no longer useful or available. For example a &lt;a class="localLink" href="http://schema.org/VideoObject"&gt;VideoObject&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt; whose availability or relevance is time-limited, or a &lt;a class="localLink" href="http://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt; fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date.
+        /// Date the content expires and is no longer useful or available. For example a &lt;a class="localLink" href="https://schema.org/VideoObject"&gt;VideoObject&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt; whose availability or relevance is time-limited, or a &lt;a class="localLink" href="https://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt; fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date.
         /// </summary>
-        [DataMember(Name = "expires", Order = 149)]
+        [DataMember(Name = "expires", Order = 151)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?> Expires { get; set; }
 
         /// <summary>
         /// A person or organization that supports (sponsors) something through some kind of financial contribution.
         /// </summary>
-        [DataMember(Name = "funder", Order = 150)]
+        [DataMember(Name = "funder", Order = 152)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
         /// Genre of the creative work, broadcast channel or group.
         /// </summary>
-        [DataMember(Name = "genre", Order = 151)]
+        [DataMember(Name = "genre", Order = 153)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> Genre { get; set; }
 
         /// <summary>
         /// Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense).
         /// </summary>
-        [DataMember(Name = "hasPart", Order = 152)]
+        [DataMember(Name = "hasPart", Order = 154)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> HasPart { get; set; }
 
         /// <summary>
         /// Headline of the article.
         /// </summary>
-        [DataMember(Name = "headline", Order = 153)]
+        [DataMember(Name = "headline", Order = 155)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Headline { get; set; }
 
         /// <summary>
-        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
+        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="https://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
         /// </summary>
-        [DataMember(Name = "inLanguage", Order = 154)]
+        [DataMember(Name = "inLanguage", Order = 156)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ILanguage, string> InLanguage { get; set; }
 
         /// <summary>
         /// The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
         /// </summary>
-        [DataMember(Name = "interactionStatistic", Order = 155)]
+        [DataMember(Name = "interactionStatistic", Order = 157)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IInteractionCounter> InteractionStatistic { get; set; }
 
         /// <summary>
         /// The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
         /// </summary>
-        [DataMember(Name = "interactivityType", Order = 156)]
+        [DataMember(Name = "interactivityType", Order = 158)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> InteractivityType { get; set; }
 
         /// <summary>
         /// A flag to signal that the item, event, or place is accessible for free.
         /// </summary>
-        [DataMember(Name = "isAccessibleForFree", Order = 157)]
+        [DataMember(Name = "isAccessibleForFree", Order = 159)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<bool?> IsAccessibleForFree { get; set; }
 
         /// <summary>
         /// A resource from which this work is derived or from which it is a modification or adaption.
         /// </summary>
-        [DataMember(Name = "isBasedOn", Order = 158)]
+        [DataMember(Name = "isBasedOn", Order = 160)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICreativeWork, IProduct, Uri> IsBasedOn { get; set; }
 
         /// <summary>
         /// Indicates whether this content is family friendly.
         /// </summary>
-        [DataMember(Name = "isFamilyFriendly", Order = 159)]
+        [DataMember(Name = "isFamilyFriendly", Order = 161)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<bool?> IsFamilyFriendly { get; set; }
 
         /// <summary>
         /// Indicates an item or CreativeWork that this item, or CreativeWork (in some sense), is part of.
         /// </summary>
-        [DataMember(Name = "isPartOf", Order = 160)]
+        [DataMember(Name = "isPartOf", Order = 162)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICreativeWork, Uri> IsPartOf { get; set; }
 
         /// <summary>
         /// Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
         /// </summary>
-        [DataMember(Name = "keywords", Order = 161)]
+        [DataMember(Name = "keywords", Order = 163)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Keywords { get; set; }
 
         /// <summary>
         /// The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.
         /// </summary>
-        [DataMember(Name = "learningResourceType", Order = 162)]
+        [DataMember(Name = "learningResourceType", Order = 164)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> LearningResourceType { get; set; }
 
         /// <summary>
         /// A license document that applies to this content, typically indicated by URL.
         /// </summary>
-        [DataMember(Name = "license", Order = 163)]
+        [DataMember(Name = "license", Order = 165)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICreativeWork, Uri> License { get; set; }
 
         /// <summary>
         /// The location where the CreativeWork was created, which may not be the same as the location depicted in the CreativeWork.
         /// </summary>
-        [DataMember(Name = "locationCreated", Order = 164)]
+        [DataMember(Name = "locationCreated", Order = 166)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPlace> LocationCreated { get; set; }
 
         /// <summary>
         /// Indicates the primary entity described in some page or other CreativeWork.
         /// </summary>
-        [DataMember(Name = "mainEntity", Order = 165)]
+        [DataMember(Name = "mainEntity", Order = 167)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IThing> MainEntity { get; set; }
 
         /// <summary>
-        /// A maintainer of a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt;, software package (&lt;a class="localLink" href="http://schema.org/SoftwareApplication"&gt;SoftwareApplication&lt;/a&gt;), or other &lt;a class="localLink" href="http://schema.org/Project"&gt;Project&lt;/a&gt;. A maintainer is a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on "upstream" sources. When &lt;a class="localLink" href="http://schema.org/maintainer"&gt;maintainer&lt;/a&gt; is applied to a specific version of something e.g. a particular version or packaging of a &lt;a class="localLink" href="http://schema.org/Dataset"&gt;Dataset&lt;/a&gt;, it is always  possible that the upstream source has a different maintainer. The &lt;a class="localLink" href="http://schema.org/isBasedOn"&gt;isBasedOn&lt;/a&gt; property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.
+        /// A maintainer of a &lt;a class="localLink" href="https://schema.org/Dataset"&gt;Dataset&lt;/a&gt;, software package (&lt;a class="localLink" href="https://schema.org/SoftwareApplication"&gt;SoftwareApplication&lt;/a&gt;), or other &lt;a class="localLink" href="https://schema.org/Project"&gt;Project&lt;/a&gt;. A maintainer is a &lt;a class="localLink" href="https://schema.org/Person"&gt;Person&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on "upstream" sources. When &lt;a class="localLink" href="https://schema.org/maintainer"&gt;maintainer&lt;/a&gt; is applied to a specific version of something e.g. a particular version or packaging of a &lt;a class="localLink" href="https://schema.org/Dataset"&gt;Dataset&lt;/a&gt;, it is always  possible that the upstream source has a different maintainer. The &lt;a class="localLink" href="https://schema.org/isBasedOn"&gt;isBasedOn&lt;/a&gt; property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.
         /// </summary>
-        [DataMember(Name = "maintainer", Order = 166)]
+        [DataMember(Name = "maintainer", Order = 168)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Maintainer { get; set; }
 
         /// <summary>
         /// A material that something is made from, e.g. leather, wool, cotton, paper.
         /// </summary>
-        [DataMember(Name = "material", Order = 167)]
+        [DataMember(Name = "material", Order = 169)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IProduct, string, Uri> Material { get; set; }
 
         /// <summary>
         /// The quantity of the materials being described or an expression of the physical space they occupy.
         /// </summary>
-        [DataMember(Name = "materialExtent", Order = 168)]
+        [DataMember(Name = "materialExtent", Order = 170)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IQuantitativeValue, string> MaterialExtent { get; set; }
 
         /// <summary>
         /// Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
         /// </summary>
-        [DataMember(Name = "mentions", Order = 169)]
+        [DataMember(Name = "mentions", Order = 171)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IThing> Mentions { get; set; }
 
         /// <summary>
-        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="http://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
+        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="https://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="https://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
-        [DataMember(Name = "offers", Order = 170)]
+        [DataMember(Name = "offers", Order = 172)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IDemand, IOffer> Offers { get; set; }
 
         /// <summary>
+        /// A pattern that something has, for example 'polka dot', 'striped', 'Canadian flag'. Values are typically expressed as text, although links to controlled value schemes are also supported.
+        /// </summary>
+        [DataMember(Name = "pattern", Order = 173)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Pattern { get; set; }
+
+        /// <summary>
         /// The position of an item in a series or sequence of items.
         /// </summary>
-        [DataMember(Name = "position", Order = 171)]
+        [DataMember(Name = "position", Order = 174)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<int?, string> Position { get; set; }
 
         /// <summary>
         /// The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
         /// </summary>
-        [DataMember(Name = "producer", Order = 172)]
+        [DataMember(Name = "producer", Order = 175)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Producer { get; set; }
 
         /// <summary>
         /// The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
         /// </summary>
-        [DataMember(Name = "provider", Order = 173)]
+        [DataMember(Name = "provider", Order = 176)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Provider { get; set; }
 
         /// <summary>
         /// A publication event associated with the item.
         /// </summary>
-        [DataMember(Name = "publication", Order = 174)]
+        [DataMember(Name = "publication", Order = 177)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPublicationEvent> Publication { get; set; }
 
         /// <summary>
         /// The publisher of the creative work.
         /// </summary>
-        [DataMember(Name = "publisher", Order = 175)]
+        [DataMember(Name = "publisher", Order = 178)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Publisher { get; set; }
 
         /// <summary>
         /// The publishing division which published the comic.
         /// </summary>
-        [DataMember(Name = "publisherImprint", Order = 176)]
+        [DataMember(Name = "publisherImprint", Order = 179)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IOrganization> PublisherImprint { get; set; }
 
         /// <summary>
-        /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
-        /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
+        /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="https://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="https://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="https://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
+        /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="https://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
-        [DataMember(Name = "publishingPrinciples", Order = 177)]
+        [DataMember(Name = "publishingPrinciples", Order = 180)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICreativeWork, Uri> PublishingPrinciples { get; set; }
 
         /// <summary>
         /// The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
         /// </summary>
-        [DataMember(Name = "recordedAt", Order = 178)]
+        [DataMember(Name = "recordedAt", Order = 181)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IEvent> RecordedAt { get; set; }
 
         /// <summary>
         /// The place and time the release was issued, expressed as a PublicationEvent.
         /// </summary>
-        [DataMember(Name = "releasedEvent", Order = 179)]
+        [DataMember(Name = "releasedEvent", Order = 182)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPublicationEvent> ReleasedEvent { get; set; }
 
         /// <summary>
         /// A review of the item.
         /// </summary>
-        [DataMember(Name = "review", Order = 180)]
+        [DataMember(Name = "review", Order = 183)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
-        /// Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application.
+        /// Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as https://schema.org/version/2.0/ if precise indication of schema version was required by some application.
         /// </summary>
-        [DataMember(Name = "schemaVersion", Order = 181)]
+        [DataMember(Name = "schemaVersion", Order = 184)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<string, Uri> SchemaVersion { get; set; }
 
         /// <summary>
-        /// Indicates the date on which the current structured data was generated / published. Typically used alongside &lt;a class="localLink" href="http://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt;
+        /// Indicates the date on which the current structured data was generated / published. Typically used alongside &lt;a class="localLink" href="https://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt;
         /// </summary>
-        [DataMember(Name = "sdDatePublished", Order = 182)]
+        [DataMember(Name = "sdDatePublished", Order = 185)]
         [JsonConverter(typeof(DateTimeToIso8601DateValuesJsonConverter))]
         public Values<int?, DateTime?> SdDatePublished { get; set; }
 
         /// <summary>
         /// A license document that applies to this structured data, typically indicated by URL.
         /// </summary>
-        [DataMember(Name = "sdLicense", Order = 183)]
+        [DataMember(Name = "sdLicense", Order = 186)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICreativeWork, Uri> SdLicense { get; set; }
 
         /// <summary>
         /// Indicates the party responsible for generating and publishing the current structured data markup, typically in cases where the structured data is derived automatically from existing published content but published on a different site. For example, student projects and open data initiatives often re-publish existing content with more explicitly structured metadata. The
-        /// &lt;a class="localLink" href="http://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt; property helps make such practices more explicit.
+        /// &lt;a class="localLink" href="https://schema.org/sdPublisher"&gt;sdPublisher&lt;/a&gt; property helps make such practices more explicit.
         /// </summary>
-        [DataMember(Name = "sdPublisher", Order = 184)]
+        [DataMember(Name = "sdPublisher", Order = 187)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> SdPublisher { get; set; }
 
         /// <summary>
+        /// A standardized size of a product or creative work, often simplifying richer information into a simple textual string, either through referring to named sizes or (in the case of product markup), by adopting conventional simplifications. Use of QuantitativeValue with a unitCode or unitText can add more structure; in other cases, the /width, /height, /depth and /weight properties may be more applicable.
+        /// </summary>
+        [DataMember(Name = "size", Order = 188)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<IQuantitativeValue, string> Size { get; set; }
+
+        /// <summary>
         /// The Organization on whose behalf the creator was working.
         /// </summary>
-        [DataMember(Name = "sourceOrganization", Order = 185)]
+        [DataMember(Name = "sourceOrganization", Order = 189)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IOrganization> SourceOrganization { get; set; }
 
         /// <summary>
         /// The "spatial" property can be used in cases when more specific properties
-        /// (e.g. &lt;a class="localLink" href="http://schema.org/locationCreated"&gt;locationCreated&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/spatialCoverage"&gt;spatialCoverage&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/contentLocation"&gt;contentLocation&lt;/a&gt;) are not known to be appropriate.
+        /// (e.g. &lt;a class="localLink" href="https://schema.org/locationCreated"&gt;locationCreated&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/spatialCoverage"&gt;spatialCoverage&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/contentLocation"&gt;contentLocation&lt;/a&gt;) are not known to be appropriate.
         /// </summary>
-        [DataMember(Name = "spatial", Order = 186)]
+        [DataMember(Name = "spatial", Order = 190)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPlace> Spatial { get; set; }
 
@@ -1097,22 +1152,29 @@
         ///       contentLocation intended primarily for more technical and detailed materials. For example with a Dataset, it indicates
         ///       areas that the dataset describes: a dataset of New York weather would have spatialCoverage which was the place: the state of New York.
         /// </summary>
-        [DataMember(Name = "spatialCoverage", Order = 187)]
+        [DataMember(Name = "spatialCoverage", Order = 191)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IPlace> SpatialCoverage { get; set; }
 
         /// <summary>
         /// A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.
         /// </summary>
-        [DataMember(Name = "sponsor", Order = 188)]
+        [DataMember(Name = "sponsor", Order = 192)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Sponsor { get; set; }
 
         /// <summary>
-        /// The "temporal" property can be used in cases where more specific properties
-        /// (e.g. &lt;a class="localLink" href="http://schema.org/temporalCoverage"&gt;temporalCoverage&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/dateCreated"&gt;dateCreated&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/dateModified"&gt;dateModified&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/datePublished"&gt;datePublished&lt;/a&gt;) are not known to be appropriate.
+        /// The item being described is intended to help a person learn the competency or learning outcome defined by the referenced term.
         /// </summary>
-        [DataMember(Name = "temporal", Order = 189)]
+        [DataMember(Name = "teaches", Order = 193)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<string> Teaches { get; set; }
+
+        /// <summary>
+        /// The "temporal" property can be used in cases where more specific properties
+        /// (e.g. &lt;a class="localLink" href="https://schema.org/temporalCoverage"&gt;temporalCoverage&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/dateCreated"&gt;dateCreated&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/dateModified"&gt;dateModified&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/datePublished"&gt;datePublished&lt;/a&gt;) are not known to be appropriate.
+        /// </summary>
+        [DataMember(Name = "temporal", Order = 194)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<DateTimeOffset?, string> Temporal { get; set; }
 
@@ -1122,85 +1184,85 @@
         ///       Written works such as books may sometimes have precise temporal coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601 interval format format via "1939/1945".&lt;br/&gt;&lt;br/&gt;
         /// Open-ended date ranges can be written with ".." in place of the end date. For example, "2015-11/.." indicates a range beginning in November 2015 and with no specified final date. This is tentative and might be updated in future when ISO 8601 is officially updated.
         /// </summary>
-        [DataMember(Name = "temporalCoverage", Order = 190)]
+        [DataMember(Name = "temporalCoverage", Order = 195)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<DateTimeOffset?, string, Uri> TemporalCoverage { get; set; }
 
         /// <summary>
         /// The textual content of this CreativeWork.
         /// </summary>
-        [DataMember(Name = "text", Order = 191)]
+        [DataMember(Name = "text", Order = 196)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> Text { get; set; }
 
         /// <summary>
         /// A thumbnail image relevant to the Thing.
         /// </summary>
-        [DataMember(Name = "thumbnailUrl", Order = 192)]
+        [DataMember(Name = "thumbnailUrl", Order = 197)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<Uri> ThumbnailUrl { get; set; }
 
         /// <summary>
         /// Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'PT30M', 'PT1H25M'.
         /// </summary>
-        [DataMember(Name = "timeRequired", Order = 193)]
+        [DataMember(Name = "timeRequired", Order = 198)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
         public OneOrMany<TimeSpan?> TimeRequired { get; set; }
 
         /// <summary>
         /// The work that this work has been translated from. e.g. 物种起源 is a translationOf “On the Origin of Species”
         /// </summary>
-        [DataMember(Name = "translationOfWork", Order = 194)]
+        [DataMember(Name = "translationOfWork", Order = 199)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> TranslationOfWork { get; set; }
 
         /// <summary>
         /// Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
         /// </summary>
-        [DataMember(Name = "translator", Order = 195)]
+        [DataMember(Name = "translator", Order = 200)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> Translator { get; set; }
 
         /// <summary>
         /// The typical expected age range, e.g. '7-9', '11-'.
         /// </summary>
-        [DataMember(Name = "typicalAgeRange", Order = 196)]
+        [DataMember(Name = "typicalAgeRange", Order = 201)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> TypicalAgeRange { get; set; }
 
         /// <summary>
-        /// The schema.org &lt;a class="localLink" href="http://schema.org/usageInfo"&gt;usageInfo&lt;/a&gt; property indicates further information about a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;. This property is applicable both to works that are freely available and to those that require payment or other transactions. It can reference additional information e.g. community expectations on preferred linking and citation conventions, as well as purchasing details. For something that can be commercially licensed, usageInfo can provide detailed, resource-specific information about licensing options.&lt;br/&gt;&lt;br/&gt;
+        /// The schema.org &lt;a class="localLink" href="https://schema.org/usageInfo"&gt;usageInfo&lt;/a&gt; property indicates further information about a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;. This property is applicable both to works that are freely available and to those that require payment or other transactions. It can reference additional information e.g. community expectations on preferred linking and citation conventions, as well as purchasing details. For something that can be commercially licensed, usageInfo can provide detailed, resource-specific information about licensing options.&lt;br/&gt;&lt;br/&gt;
         /// This property can be used alongside the license property which indicates license(s) applicable to some piece of content. The usageInfo property can provide information about other licensing options, e.g. acquiring commercial usage rights for an image that is also available under non-commercial creative commons licenses.
         /// </summary>
-        [DataMember(Name = "usageInfo", Order = 197)]
+        [DataMember(Name = "usageInfo", Order = 202)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<ICreativeWork, Uri> UsageInfo { get; set; }
 
         /// <summary>
         /// The version of the CreativeWork embodied by a specified resource.
         /// </summary>
-        [DataMember(Name = "version", Order = 198)]
+        [DataMember(Name = "version", Order = 203)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<double?, string> Version { get; set; }
 
         /// <summary>
         /// An embedded video object.
         /// </summary>
-        [DataMember(Name = "video", Order = 199)]
+        [DataMember(Name = "video", Order = 204)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IClip, IVideoObject> Video { get; set; }
 
         /// <summary>
         /// Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
         /// </summary>
-        [DataMember(Name = "workExample", Order = 200)]
+        [DataMember(Name = "workExample", Order = 205)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> WorkExample { get; set; }
 
         /// <summary>
         /// A work that is a translation of the content of this work. e.g. 西遊記 has an English workTranslation “Journey to the West”,a German workTranslation “Monkeys Pilgerfahrt” and a Vietnamese  translation Tây du ký bình khảo.
         /// </summary>
-        [DataMember(Name = "workTranslation", Order = 201)]
+        [DataMember(Name = "workTranslation", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<ICreativeWork> WorkTranslation { get; set; }
 
@@ -1231,6 +1293,7 @@
                 this.AcquireLicensePage == other.AcquireLicensePage &&
                 this.AggregateRating == other.AggregateRating &&
                 this.AlternativeHeadline == other.AlternativeHeadline &&
+                this.Assesses == other.Assesses &&
                 this.AssociatedMedia == other.AssociatedMedia &&
                 this.Audience == other.Audience &&
                 this.Audio == other.Audio &&
@@ -1257,6 +1320,7 @@
                 this.EditEIDR == other.EditEIDR &&
                 this.Editor == other.Editor &&
                 this.EducationalAlignment == other.EducationalAlignment &&
+                this.EducationalLevel == other.EducationalLevel &&
                 this.EducationalUse == other.EducationalUse &&
                 this.Encoding == other.Encoding &&
                 this.EncodingFormat == other.EncodingFormat &&
@@ -1283,6 +1347,7 @@
                 this.MaterialExtent == other.MaterialExtent &&
                 this.Mentions == other.Mentions &&
                 this.Offers == other.Offers &&
+                this.Pattern == other.Pattern &&
                 this.Position == other.Position &&
                 this.Producer == other.Producer &&
                 this.Provider == other.Provider &&
@@ -1297,10 +1362,12 @@
                 this.SdDatePublished == other.SdDatePublished &&
                 this.SdLicense == other.SdLicense &&
                 this.SdPublisher == other.SdPublisher &&
+                this.Size == other.Size &&
                 this.SourceOrganization == other.SourceOrganization &&
                 this.Spatial == other.Spatial &&
                 this.SpatialCoverage == other.SpatialCoverage &&
                 this.Sponsor == other.Sponsor &&
+                this.Teaches == other.Teaches &&
                 this.Temporal == other.Temporal &&
                 this.TemporalCoverage == other.TemporalCoverage &&
                 this.Text == other.Text &&
@@ -1335,6 +1402,7 @@
             .And(this.AcquireLicensePage)
             .And(this.AggregateRating)
             .And(this.AlternativeHeadline)
+            .And(this.Assesses)
             .And(this.AssociatedMedia)
             .And(this.Audience)
             .And(this.Audio)
@@ -1361,6 +1429,7 @@
             .And(this.EditEIDR)
             .And(this.Editor)
             .And(this.EducationalAlignment)
+            .And(this.EducationalLevel)
             .And(this.EducationalUse)
             .And(this.Encoding)
             .And(this.EncodingFormat)
@@ -1387,6 +1456,7 @@
             .And(this.MaterialExtent)
             .And(this.Mentions)
             .And(this.Offers)
+            .And(this.Pattern)
             .And(this.Position)
             .And(this.Producer)
             .And(this.Provider)
@@ -1401,10 +1471,12 @@
             .And(this.SdDatePublished)
             .And(this.SdLicense)
             .And(this.SdPublisher)
+            .And(this.Size)
             .And(this.SourceOrganization)
             .And(this.Spatial)
             .And(this.SpatialCoverage)
             .And(this.Sponsor)
+            .And(this.Teaches)
             .And(this.Temporal)
             .And(this.TemporalCoverage)
             .And(this.Text)

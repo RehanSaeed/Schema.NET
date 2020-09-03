@@ -10,7 +10,7 @@ namespace Schema.NET.Test
         private readonly MusicVenue musicVenue = new MusicVenue()
         {
             Name = "Dolby Theatre", // Required
-            Description = "Host to a range of prestigious events including movie premieres, concerts & the Oscars http://www.dolbytheatre.com", // Recommended
+            Description = "Host to a range of prestigious events including movie premieres, concerts & the Oscars https://www.dolbytheatre.com", // Recommended
             Identifier = "KovZpZAdtaEA", // Recommended
             Image = new ImageObject() // Recommended
             {
@@ -19,7 +19,7 @@ namespace Schema.NET.Test
             SameAs = new List<Uri>
             {
                 new Uri("https://www.twitter.com/dolbytheatre"), // Recommended
-                new Uri("http://www.dolbytheatre.com"), // Recommended
+                new Uri("https://www.dolbytheatre.com"), // Recommended
             },
             Url = new Uri("https://foursquare.com/dolbytheatre"), // Recommended
             Address = new PostalAddress() // Recommended
@@ -43,7 +43,7 @@ namespace Schema.NET.Test
             "\"@context\":\"https://schema.org\"," +
             "\"@type\": \"MusicVenue\"," +
             "\"name\": \"Dolby Theatre\"," +
-            "\"description\": \"Host to a range of prestigious events including movie premieres, concerts & the Oscars http://www.dolbytheatre.com\"," +
+            "\"description\": \"Host to a range of prestigious events including movie premieres, concerts & the Oscars https://www.dolbytheatre.com\"," +
             "\"identifier\": \"KovZpZAdtaEA\"," +
             "\"image\": {" +
                 "\"@context\":\"https://schema.org\"," +
@@ -52,7 +52,7 @@ namespace Schema.NET.Test
             "}," +
             "\"sameAs\": [" +
                 "\"https://www.twitter.com/dolbytheatre\"," +
-                "\"http://www.dolbytheatre.com\"" +
+                "\"https://www.dolbytheatre.com\"" +
             "]," +
             "\"url\": \"https://foursquare.com/dolbytheatre\"," +
             "\"address\": {" +

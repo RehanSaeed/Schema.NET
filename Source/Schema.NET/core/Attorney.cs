@@ -6,7 +6,7 @@
 
     /// <summary>
     /// Professional service: Attorney. &lt;br/&gt;&lt;br/&gt;
-    /// This type is deprecated - &lt;a class="localLink" href="http://schema.org/LegalService"&gt;LegalService&lt;/a&gt; is more inclusive and less ambiguous.
+    /// This type is deprecated - &lt;a class="localLink" href="https://schema.org/LegalService"&gt;LegalService&lt;/a&gt; is more inclusive and less ambiguous.
     /// </summary>
     public partial interface IAttorney : ILegalService
     {
@@ -14,7 +14,7 @@
 
     /// <summary>
     /// Professional service: Attorney. &lt;br/&gt;&lt;br/&gt;
-    /// This type is deprecated - &lt;a class="localLink" href="http://schema.org/LegalService"&gt;LegalService&lt;/a&gt; is more inclusive and less ambiguous.
+    /// This type is deprecated - &lt;a class="localLink" href="https://schema.org/LegalService"&gt;LegalService&lt;/a&gt; is more inclusive and less ambiguous.
     /// </summary>
     [DataContract]
     public partial class Attorney : LegalService, IAttorney, IEquatable<Attorney>

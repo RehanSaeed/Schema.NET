@@ -7,7 +7,7 @@
     /// <summary>
     /// See Organization, Place for more information.
     /// </summary>
-    public partial interface IOrganizationAndPlace : IOrganization, IPlace
+    public partial interface IOrganizationAndPlace : IPlace, IOrganization
     {
     }
 
@@ -24,7 +24,7 @@
         public override string Type => "OrganizationAndPlace";
 
         /// <summary>
-        /// For a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; or other news-related &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, a statement about public engagement activities (for news media, the newsroom’s), including involving the public - digitally or otherwise -- in coverage decisions, reporting and activities after publication.
+        /// For a &lt;a class="localLink" href="https://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; or other news-related &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt;, a statement about public engagement activities (for news media, the newsroom’s), including involving the public - digitally or otherwise -- in coverage decisions, reporting and activities after publication.
         /// </summary>
         [DataMember(Name = "actionableFeedbackPolicy", Order = 106)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -32,7 +32,7 @@
 
         /// <summary>
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
-        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. https://schema.org/width, https://schema.org/color, https://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -117,7 +117,7 @@
         public virtual OneOrMany<IPlace> ContainsPlace { get; set; }
 
         /// <summary>
-        /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.
+        /// For an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; (e.g. &lt;a class="localLink" href="https://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement describing (in news media, the newsroom’s) disclosure and correction policy for errors.
         /// </summary>
         [DataMember(Name = "correctionsPolicy", Order = 119)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -138,14 +138,14 @@
         public virtual Values<int?, DateTime?> DissolutionDate { get; set; }
 
         /// <summary>
-        /// Statement on diversity policy by an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; e.g. a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;. For a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, a statement describing the newsroom’s diversity policy on both staffing and sources, typically providing staffing data.
+        /// Statement on diversity policy by an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; e.g. a &lt;a class="localLink" href="https://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;. For a &lt;a class="localLink" href="https://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, a statement describing the newsroom’s diversity policy on both staffing and sources, typically providing staffing data.
         /// </summary>
         [DataMember(Name = "diversityPolicy", Order = 122)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<ICreativeWork, Uri> DiversityPolicy { get; set; }
 
         /// <summary>
-        /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a report on staffing diversity issues. In a news context this might be for example ASNE or RTDNA (US) reports, or self-reported.
+        /// For an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="https://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a report on staffing diversity issues. In a news context this might be for example ASNE or RTDNA (US) reports, or self-reported.
         /// </summary>
         [DataMember(Name = "diversityStaffingReport", Order = 123)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -173,7 +173,7 @@
         public virtual OneOrMany<IPerson> Employee { get; set; }
 
         /// <summary>
-        /// Statement about ethics policy, e.g. of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; regarding journalistic and publishing practices, or of a &lt;a class="localLink" href="http://schema.org/Restaurant"&gt;Restaurant&lt;/a&gt;, a page describing food source policies. In the case of a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.
+        /// Statement about ethics policy, e.g. of a &lt;a class="localLink" href="https://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt; regarding journalistic and publishing practices, or of a &lt;a class="localLink" href="https://schema.org/Restaurant"&gt;Restaurant&lt;/a&gt;, a page describing food source policies. In the case of a &lt;a class="localLink" href="https://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;, an ethicsPolicy is typically a statement describing the personal, organizational, and corporate standards of behavior expected by the organization.
         /// </summary>
         [DataMember(Name = "ethicsPolicy", Order = 127)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -184,7 +184,7 @@
         /// </summary>
         [DataMember(Name = "event", Order = 128)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<IEvent> Event { get; set; }
+        public virtual OneOrMany<IEvent> Events { get; set; }
 
         /// <summary>
         /// The fax number.
@@ -306,7 +306,7 @@
         public virtual OneOrMany<string> GlobalLocationNumber { get; set; }
 
         /// <summary>
-        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="http://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
+        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="https://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="https://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
         /// </summary>
         [DataMember(Name = "hasDriveThroughService", Order = 146)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -355,14 +355,14 @@
         public virtual OneOrMany<string> IsicV4 { get; set; }
 
         /// <summary>
-        /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or &lt;a class="localLink" href="http://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
+        /// Of a &lt;a class="localLink" href="https://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or &lt;a class="localLink" href="https://schema.org/JobPosting"&gt;JobPosting&lt;/a&gt; descriptions.
         /// </summary>
         [DataMember(Name = "knowsAbout", Order = 153)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual Values<string, IThing, Uri> KnowsAbout { get; set; }
 
         /// <summary>
-        /// Of a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;.
+        /// Of a &lt;a class="localLink" href="https://schema.org/Person"&gt;Person&lt;/a&gt;, and less typically of an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt;, to indicate a known language. We do not distinguish skill levels or reading/writing/speaking/signing here. Use language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "knowsLanguage", Order = 154)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -460,7 +460,7 @@
         public virtual OneOrMany<IOpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
         /// <summary>
-        /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence.   Note that the &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt; is also available and can be used to make basic funder information machine-readable.
+        /// For an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; (often but not necessarily a &lt;a class="localLink" href="https://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a description of organizational ownership structure; funding and grants. In a news/media setting, this is with particular reference to editorial independence.   Note that the &lt;a class="localLink" href="https://schema.org/funder"&gt;funder&lt;/a&gt; is also available and can be used to make basic funder information machine-readable.
         /// </summary>
         [DataMember(Name = "ownershipFundingInfo", Order = 168)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -474,7 +474,7 @@
         public virtual Values<IOwnershipInfo, IProduct> Owns { get; set; }
 
         /// <summary>
-        /// The larger organization that this organization is a &lt;a class="localLink" href="http://schema.org/subOrganization"&gt;subOrganization&lt;/a&gt; of, if any.
+        /// The larger organization that this organization is a &lt;a class="localLink" href="https://schema.org/subOrganization"&gt;subOrganization&lt;/a&gt; of, if any.
         /// </summary>
         [DataMember(Name = "parentOrganization", Order = 170)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -488,15 +488,15 @@
         public virtual Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
-        /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
+        /// A flag to signal that the &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
         /// </summary>
         [DataMember(Name = "publicAccess", Order = 172)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<bool?> PublicAccess { get; set; }
 
         /// <summary>
-        /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="http://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="http://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
-        /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="http://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
+        /// The publishingPrinciples property indicates (typically via &lt;a class="localLink" href="https://schema.org/URL"&gt;URL&lt;/a&gt;) a document describing the editorial principles of an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; (or individual e.g. a &lt;a class="localLink" href="https://schema.org/Person"&gt;Person&lt;/a&gt; writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt; (e.g. &lt;a class="localLink" href="https://schema.org/NewsArticle"&gt;NewsArticle&lt;/a&gt;) the principles are those of the party primarily responsible for the creation of the &lt;a class="localLink" href="https://schema.org/CreativeWork"&gt;CreativeWork&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
+        /// While such policies are most typically expressed in natural language, sometimes related information (e.g. indicating a &lt;a class="localLink" href="https://schema.org/funder"&gt;funder&lt;/a&gt;) can be expressed using schema.org terminology.
         /// </summary>
         [DataMember(Name = "publishingPrinciples", Order = 173)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -532,7 +532,7 @@
 
         /// <summary>
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
-        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
+        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="https://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "specialOpeningHoursSpecification", Order = 178)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -567,14 +567,14 @@
         public virtual OneOrMany<string> Telephone { get; set; }
 
         /// <summary>
-        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
+        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="https://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
         /// </summary>
         [DataMember(Name = "tourBookingPage", Order = 183)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public virtual OneOrMany<Uri> TourBookingPage { get; set; }
 
         /// <summary>
-        /// For an &lt;a class="localLink" href="http://schema.org/Organization"&gt;Organization&lt;/a&gt; (typically a &lt;a class="localLink" href="http://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement about policy on use of unnamed sources and the decision process required.
+        /// For an &lt;a class="localLink" href="https://schema.org/Organization"&gt;Organization&lt;/a&gt; (typically a &lt;a class="localLink" href="https://schema.org/NewsMediaOrganization"&gt;NewsMediaOrganization&lt;/a&gt;), a statement about policy on use of unnamed sources and the decision process required.
         /// </summary>
         [DataMember(Name = "unnamedSourcesPolicy", Order = 184)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -623,7 +623,7 @@
                 this.Email == other.Email &&
                 this.Employee == other.Employee &&
                 this.EthicsPolicy == other.EthicsPolicy &&
-                this.Event == other.Event &&
+                this.Events == other.Events &&
                 this.FaxNumber == other.FaxNumber &&
                 this.Founder == other.Founder &&
                 this.FoundingDate == other.FoundingDate &&
@@ -711,7 +711,7 @@
             .And(this.Email)
             .And(this.Employee)
             .And(this.EthicsPolicy)
-            .And(this.Event)
+            .And(this.Events)
             .And(this.FaxNumber)
             .And(this.Founder)
             .And(this.FoundingDate)

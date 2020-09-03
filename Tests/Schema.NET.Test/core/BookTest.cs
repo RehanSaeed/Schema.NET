@@ -11,13 +11,13 @@ namespace Schema.NET.Test
     {
         private readonly Book book = new Book()
         {
-            Id = new Uri("http://example.com/book/1"),
+            Id = new Uri("https://example.com/book/1"),
             Name = "The Catcher in the Rye",
             Author = new Person()
             {
                 Name = "J.D. Salinger",
             },
-            Url = new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"),
+            Url = new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"),
             WorkExample = new List<ICreativeWork>()
             {
                 new Book()
@@ -29,7 +29,7 @@ namespace Schema.NET.Test
                     {
                         Target = new EntryPoint()
                         {
-                            UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true",
+                            UrlTemplate = "https://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true",
                             ActionPlatform = new List<Uri>()
                             {
                                 new Uri("https://schema.org/DesktopWebPlatform"),
@@ -58,7 +58,7 @@ namespace Schema.NET.Test
                     {
                         Target = new EntryPoint()
                         {
-                            UrlTemplate = "http://www.barnesandnoble.com/store/info/offer/031676947?purchase=true",
+                            UrlTemplate = "https://www.barnesandnoble.com/store/info/offer/031676947?purchase=true",
                             ActionPlatform = new List<Uri>()
                             {
                                 new Uri("https://schema.org/DesktopWebPlatform"),
@@ -85,9 +85,9 @@ namespace Schema.NET.Test
         "{" +
             "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"Book\"," +
-            "\"@id\":\"http://example.com/book/1\"," +
+            "\"@id\":\"https://example.com/book/1\"," +
             "\"name\":\"The Catcher in the Rye\"," +
-            "\"url\":\"http://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
+            "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
             "\"author\":{" +
                 "\"@type\":\"Person\"," +
                 "\"name\":\"J.D. Salinger\"" +
@@ -104,7 +104,7 @@ namespace Schema.NET.Test
                                 "\"https://schema.org/IOSPlatform\"," +
                                 "\"https://schema.org/AndroidPlatform\"" +
                             "]," +
-                            "\"urlTemplate\":\"http://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true\"" +
+                            "\"urlTemplate\":\"https://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true\"" +
                         "}," +
                         "\"expectsAcceptanceOf\":{" +
                             "\"@type\":\"Offer\"," +
@@ -132,7 +132,7 @@ namespace Schema.NET.Test
                                 "\"https://schema.org/IOSPlatform\"," +
                                 "\"https://schema.org/AndroidPlatform\"" +
                             "]," +
-                            "\"urlTemplate\":\"http://www.barnesandnoble.com/store/info/offer/031676947?purchase=true\"" +
+                            "\"urlTemplate\":\"https://www.barnesandnoble.com/store/info/offer/031676947?purchase=true\"" +
                         "}," +
                         "\"expectsAcceptanceOf\":{" +
                             "\"@type\":\"Offer\"," +
@@ -169,7 +169,7 @@ namespace Schema.NET.Test
             var book = JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings);
 
             Assert.Equal("The Catcher in the Rye", book.Name);
-            Assert.Equal(new Uri("http://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)book.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)book.Url);
             Assert.True(book.Author.HasValue);
 
             List<IPerson> people = book.Author;
@@ -197,7 +197,7 @@ namespace Schema.NET.Test
         {
             var json =
                 "{" +
-                    "\"@context\" : \"http://schema.org\"," +
+                    "\"@context\" : \"https://schema.org\"," +
                     "\"@type\" : \"Book\"," +
                     "\"author\" : [" +
                         "{" +

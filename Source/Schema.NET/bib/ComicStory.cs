@@ -6,15 +6,15 @@
 
     /// <summary>
     /// The term "story" is any indivisible, re-printable
-    ///     unit of a comic, including the interior stories, covers, and backmatter. Most
-    ///     comics have at least two stories: a cover (ComicCoverArt) and an interior story.
+    ///         unit of a comic, including the interior stories, covers, and backmatter. Most
+    ///         comics have at least two stories: a cover (ComicCoverArt) and an interior story.
     /// </summary>
     public partial interface IComicStory : ICreativeWork
     {
         /// <summary>
         /// The primary artist for a work
-        ///     in a medium other than pencils or digital line art--for example, if the
-        ///     primary artwork is done in watercolors or digital paints.
+        ///         in a medium other than pencils or digital line art--for example, if the
+        ///         primary artwork is done in watercolors or digital paints.
         /// </summary>
         OneOrMany<IPerson> Artist { get; set; }
 
@@ -41,8 +41,8 @@
 
     /// <summary>
     /// The term "story" is any indivisible, re-printable
-    ///     unit of a comic, including the interior stories, covers, and backmatter. Most
-    ///     comics have at least two stories: a cover (ComicCoverArt) and an interior story.
+    ///         unit of a comic, including the interior stories, covers, and backmatter. Most
+    ///         comics have at least two stories: a cover (ComicCoverArt) and an interior story.
     /// </summary>
     [DataContract]
     public partial class ComicStory : CreativeWork, IComicStory, IEquatable<ComicStory>
@@ -55,8 +55,8 @@
 
         /// <summary>
         /// The primary artist for a work
-        ///     in a medium other than pencils or digital line art--for example, if the
-        ///     primary artwork is done in watercolors or digital paints.
+        ///         in a medium other than pencils or digital line art--for example, if the
+        ///         primary artwork is done in watercolors or digital paints.
         /// </summary>
         [DataMember(Name = "artist", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]

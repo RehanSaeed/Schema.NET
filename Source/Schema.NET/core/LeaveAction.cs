@@ -8,8 +8,8 @@
     /// An agent leaves an event / group with participants/friends at a location.&lt;br/&gt;&lt;br/&gt;
     /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/JoinAction"&gt;JoinAction&lt;/a&gt;: The antonym of LeaveAction.&lt;/li&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/UnRegisterAction"&gt;UnRegisterAction&lt;/a&gt;: Unlike UnRegisterAction, LeaveAction implies leaving a group/team of people rather than a service.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/JoinAction"&gt;JoinAction&lt;/a&gt;: The antonym of LeaveAction.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/UnRegisterAction"&gt;UnRegisterAction&lt;/a&gt;: Unlike UnRegisterAction, LeaveAction implies leaving a group/team of people rather than a service.&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
     public partial interface ILeaveAction : IInteractAction
@@ -17,15 +17,15 @@
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        OneOrMany<IEvent> Event { get; set; }
+        OneOrMany<IEvent> Events { get; set; }
     }
 
     /// <summary>
     /// An agent leaves an event / group with participants/friends at a location.&lt;br/&gt;&lt;br/&gt;
     /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/JoinAction"&gt;JoinAction&lt;/a&gt;: The antonym of LeaveAction.&lt;/li&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/UnRegisterAction"&gt;UnRegisterAction&lt;/a&gt;: Unlike UnRegisterAction, LeaveAction implies leaving a group/team of people rather than a service.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/JoinAction"&gt;JoinAction&lt;/a&gt;: The antonym of LeaveAction.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/UnRegisterAction"&gt;UnRegisterAction&lt;/a&gt;: Unlike UnRegisterAction, LeaveAction implies leaving a group/team of people rather than a service.&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
@@ -42,7 +42,7 @@
         /// </summary>
         [DataMember(Name = "event", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> Event { get; set; }
+        public OneOrMany<IEvent> Events { get; set; }
 
         /// <inheritdoc/>
         public bool Equals(LeaveAction other)
@@ -58,7 +58,7 @@
             }
 
             return this.Type == other.Type &&
-                this.Event == other.Event &&
+                this.Events == other.Events &&
                 base.Equals(other);
         }
 
@@ -67,7 +67,7 @@
 
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
-            .And(this.Event)
+            .And(this.Events)
             .And(base.GetHashCode());
     }
 }

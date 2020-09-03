@@ -30,7 +30,7 @@ namespace Schema.NET.Tool.Repositories
 
             foreach (var enumeration in enumerations)
             {
-                var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("http://schema.org/" + x.Name) == enumeration.Id);
+                var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("https://schema.org/" + x.Name) == enumeration.Id);
                 if (schemaTreeClass is object)
                 {
                     enumeration.Layer = schemaTreeClass.Layer;
@@ -39,7 +39,7 @@ namespace Schema.NET.Tool.Repositories
 
             foreach (var c in classes)
             {
-                var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("http://schema.org/" + x.Name) == c.Id);
+                var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("https://schema.org/" + x.Name) == c.Id);
                 if (schemaTreeClass is object)
                 {
                     c.Layer = schemaTreeClass.Layer;
@@ -56,7 +56,7 @@ namespace Schema.NET.Tool.Repositories
         public async Task<List<SchemaObject>> GetSchemaObjectsAsync()
         {
             using (var response = await this.httpClient
-                .GetAsync(new Uri("/version/latest/all-layers.jsonld", UriKind.Relative))
+                .GetAsync(new Uri("/version/latest/schemaorg-all-https.jsonld", UriKind.Relative))
                 .ConfigureAwait(false))
             {
                 response.EnsureSuccessStatusCode();

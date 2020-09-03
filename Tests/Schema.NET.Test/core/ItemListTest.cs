@@ -74,12 +74,12 @@ namespace Schema.NET.Test
                     new ListItem() // Required
                     {
                         Position = 1, // Required
-                        Url = new Uri("http://example.com/articles/1"), // Required
+                        Url = new Uri("https://example.com/articles/1"), // Required
                     },
                     new ListItem()
                     {
                         Position = 2,
-                        Url = new Uri("http://example.com/articles/2"),
+                        Url = new Uri("https://example.com/articles/2"),
                     },
                 },
             };
@@ -90,12 +90,12 @@ namespace Schema.NET.Test
                     "\"itemListElement\":[" +
                         "{" +
                             "\"@type\":\"ListItem\"," +
-                            "\"url\":\"http://example.com/articles/1\"," +
+                            "\"url\":\"https://example.com/articles/1\"," +
                             "\"position\":1" +
                         "}," +
                         "{" +
                             "\"@type\":\"ListItem\"," +
-                            "\"url\":\"http://example.com/articles/2\"," +
+                            "\"url\":\"https://example.com/articles/2\"," +
                             "\"position\":2" +
                         "}" +
                     "]" +

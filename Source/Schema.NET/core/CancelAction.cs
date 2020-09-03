@@ -8,7 +8,7 @@
     /// The act of asserting that a future event/action is no longer going to happen.&lt;br/&gt;&lt;br/&gt;
     /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/ConfirmAction"&gt;ConfirmAction&lt;/a&gt;: The antonym of CancelAction.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/ConfirmAction"&gt;ConfirmAction&lt;/a&gt;: The antonym of CancelAction.&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
     public partial interface ICancelAction : IPlanAction
@@ -19,7 +19,7 @@
     /// The act of asserting that a future event/action is no longer going to happen.&lt;br/&gt;&lt;br/&gt;
     /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/ConfirmAction"&gt;ConfirmAction&lt;/a&gt;: The antonym of CancelAction.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/ConfirmAction"&gt;ConfirmAction&lt;/a&gt;: The antonym of CancelAction.&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]

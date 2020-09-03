@@ -22,7 +22,7 @@ namespace Schema.NET.Test
             HiringOrganization = new Organization() // Required
             {
                 Name = "MagsRUs Wheel Company",
-                SameAs = new Uri("http://www.magsruswheelcompany.com"),
+                SameAs = new Uri("https://www.magsruswheelcompany.com"),
             },
             JobLocation = new Place() // Required
             {
@@ -71,7 +71,7 @@ namespace Schema.NET.Test
             "\"hiringOrganization\":{" +
                 "\"@type\":\"Organization\"," +
                 "\"name\":\"MagsRUs Wheel Company\"," +
-                "\"sameAs\":\"http://www.magsruswheelcompany.com\"" +
+                "\"sameAs\":\"https://www.magsruswheelcompany.com\"" +
             "}," +
             "\"jobLocation\":{" +
                 "\"@type\":\"Place\"," +

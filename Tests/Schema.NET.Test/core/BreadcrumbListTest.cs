@@ -17,9 +17,9 @@ namespace Schema.NET.Test
                     Position = 1,
                     Item = new Book()
                     {
-                        Id = new Uri("http://example.com/books"),
+                        Id = new Uri("https://example.com/books"),
                         Name = "Books",
-                        Image = new Uri("http://example.com/images/icon-book.png"),
+                        Image = new Uri("https://example.com/images/icon-book.png"),
                     },
                 },
                 new ListItem()
@@ -27,9 +27,9 @@ namespace Schema.NET.Test
                     Position = 2,
                     Item = new Person()
                     {
-                        Id = new Uri("http://example.com/books/authors"),
+                        Id = new Uri("https://example.com/books/authors"),
                         Name = "Authors",
-                        Image = new Uri("http://example.com/images/icon-author.png"),
+                        Image = new Uri("https://example.com/images/icon-author.png"),
                     },
                 },
             },
@@ -44,9 +44,9 @@ namespace Schema.NET.Test
                     "\"@type\":\"ListItem\"," +
                     "\"item\":{" + // Required
                         "\"@type\":\"Book\"," +
-                        "\"@id\":\"http://example.com/books\"," + // Required
+                        "\"@id\":\"https://example.com/books\"," + // Required
                         "\"name\":\"Books\"," + // Required
-                        "\"image\":\"http://example.com/images/icon-book.png\"" + // Optional
+                        "\"image\":\"https://example.com/images/icon-book.png\"" + // Optional
                     "}," +
                     "\"position\":1" + // Required
                 "}," +
@@ -54,9 +54,9 @@ namespace Schema.NET.Test
                     "\"@type\":\"ListItem\"," +
                     "\"item\":{" +
                         "\"@type\":\"Person\"," +
-                        "\"@id\":\"http://example.com/books/authors\"," + // Required
+                        "\"@id\":\"https://example.com/books/authors\"," + // Required
                         "\"name\":\"Authors\"," +
-                        "\"image\":\"http://example.com/images/icon-author.png\"" +
+                        "\"image\":\"https://example.com/images/icon-author.png\"" +
                     "}," +
                     "\"position\":2" +
                 "}" +
@@ -92,11 +92,11 @@ namespace Schema.NET.Test
             var book = listItem1.Item.OfType<IBook>().FirstOrDefault();
             Assert.NotNull(book);
             Assert.Equal("Books", book.Name);
-            Assert.Equal(new Uri("http://example.com/images/icon-book.png"), (Uri)book.Image);
+            Assert.Equal(new Uri("https://example.com/images/icon-book.png"), (Uri)book.Image);
             var person = listItem2.Item.OfType<IPerson>().FirstOrDefault();
             Assert.NotNull(person);
             Assert.Equal("Authors", person.Name);
-            Assert.Equal(new Uri("http://example.com/images/icon-author.png"), (Uri)person.Image);
+            Assert.Equal(new Uri("https://example.com/images/icon-author.png"), (Uri)person.Image);
         }
     }
 }

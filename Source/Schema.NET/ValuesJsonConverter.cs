@@ -1,11 +1,9 @@
 namespace Schema.NET
 {
     using System;
-    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Globalization;
-    using System.Linq.Expressions;
     using System.Reflection;
     using System.Xml;
     using Newtonsoft.Json;

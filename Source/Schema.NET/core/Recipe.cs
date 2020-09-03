@@ -5,7 +5,7 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via &lt;a class="localLink" href="http://schema.org/suitableForDiet"&gt;suitableForDiet&lt;/a&gt;. The &lt;a class="localLink" href="http://schema.org/keywords"&gt;keywords&lt;/a&gt; property can also be used to add more detail.
+    /// A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via &lt;a class="localLink" href="https://schema.org/suitableForDiet"&gt;suitableForDiet&lt;/a&gt;. The &lt;a class="localLink" href="https://schema.org/keywords"&gt;keywords&lt;/a&gt; property can also be used to add more detail.
     /// </summary>
     public partial interface IRecipe : IHowTo
     {
@@ -56,7 +56,7 @@
     }
 
     /// <summary>
-    /// A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via &lt;a class="localLink" href="http://schema.org/suitableForDiet"&gt;suitableForDiet&lt;/a&gt;. The &lt;a class="localLink" href="http://schema.org/keywords"&gt;keywords&lt;/a&gt; property can also be used to add more detail.
+    /// A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via &lt;a class="localLink" href="https://schema.org/suitableForDiet"&gt;suitableForDiet&lt;/a&gt;. The &lt;a class="localLink" href="https://schema.org/keywords"&gt;keywords&lt;/a&gt; property can also be used to add more detail.
     /// </summary>
     [DataContract]
     public partial class Recipe : HowTo, IRecipe, IEquatable<Recipe>

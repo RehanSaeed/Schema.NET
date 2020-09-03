@@ -31,7 +31,7 @@ namespace Schema.NET.Test
                     AddressCountry = "US",
                 },
             },
-            Image = new Uri("http://www.example.com/event_image/12345"), // Recommended
+            Image = new Uri("https://www.example.com/event_image/12345"), // Recommended
             EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)), // Recommended
             Offers = new List<IOffer>() // Recommended
             {
@@ -66,7 +66,7 @@ namespace Schema.NET.Test
             "\"@type\":\"Event\"," +
             "\"name\":\"Jan Lieberman Concert Series: Journey in Jazz\"," +
             "\"description\":\"Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.\"," +
-            "\"image\":\"http://www.example.com/event_image/12345\"," +
+            "\"image\":\"https://www.example.com/event_image/12345\"," +
             "\"location\":{" +
                 "\"@type\":\"Place\"," +
                 "\"name\":\"Santa Clara City Library, Central Park Library\"," +

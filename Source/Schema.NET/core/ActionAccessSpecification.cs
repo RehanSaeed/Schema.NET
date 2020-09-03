@@ -22,11 +22,11 @@
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
-        Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
+        Values<PhysicalActivityCategory?, string, IThing, Uri> Category { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;br/&gt;&lt;br/&gt;
-        /// See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
+        /// See also &lt;a class="localLink" href="https://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
         Values<IGeoShape, IPlace, string> EligibleRegion { get; set; }
 
@@ -37,7 +37,7 @@
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;br/&gt;&lt;br/&gt;
-        /// See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
+        /// See also &lt;a class="localLink" href="https://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
         /// </summary>
         Values<IGeoShape, IPlace, string> IneligibleRegion { get; set; }
 
@@ -78,11 +78,11 @@
         /// </summary>
         [DataMember(Name = "category", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, IThing, Uri> Category { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.&lt;br/&gt;&lt;br/&gt;
-        /// See also &lt;a class="localLink" href="http://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
+        /// See also &lt;a class="localLink" href="https://schema.org/ineligibleRegion"&gt;ineligibleRegion&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "eligibleRegion", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -97,7 +97,7 @@
 
         /// <summary>
         /// The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.&lt;br/&gt;&lt;br/&gt;
-        /// See also &lt;a class="localLink" href="http://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
+        /// See also &lt;a class="localLink" href="https://schema.org/eligibleRegion"&gt;eligibleRegion&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "ineligibleRegion", Order = 211)]
         [JsonConverter(typeof(ValuesJsonConverter))]

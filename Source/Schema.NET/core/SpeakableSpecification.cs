@@ -5,23 +5,23 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A SpeakableSpecification indicates (typically via &lt;a class="localLink" href="http://schema.org/xpath"&gt;xpath&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/cssSelector"&gt;cssSelector&lt;/a&gt;) sections of a document that are highlighted as particularly &lt;a class="localLink" href="http://schema.org/speakable"&gt;speakable&lt;/a&gt;. Instances of this type are expected to be used primarily as values of the &lt;a class="localLink" href="http://schema.org/speakable"&gt;speakable&lt;/a&gt; property.
+    /// A SpeakableSpecification indicates (typically via &lt;a class="localLink" href="https://schema.org/xpath"&gt;xpath&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/cssSelector"&gt;cssSelector&lt;/a&gt;) sections of a document that are highlighted as particularly &lt;a class="localLink" href="https://schema.org/speakable"&gt;speakable&lt;/a&gt;. Instances of this type are expected to be used primarily as values of the &lt;a class="localLink" href="https://schema.org/speakable"&gt;speakable&lt;/a&gt; property.
     /// </summary>
     public partial interface ISpeakableSpecification : IIntangible
     {
         /// <summary>
-        /// A CSS selector, e.g. of a &lt;a class="localLink" href="http://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/WebPageElement"&gt;WebPageElement&lt;/a&gt;. In the latter case, multiple matches within a page can constitute a single conceptual "Web page element".
+        /// A CSS selector, e.g. of a &lt;a class="localLink" href="https://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/WebPageElement"&gt;WebPageElement&lt;/a&gt;. In the latter case, multiple matches within a page can constitute a single conceptual "Web page element".
         /// </summary>
         OneOrMany<string> CssSelector { get; set; }
 
         /// <summary>
-        /// An XPath, e.g. of a &lt;a class="localLink" href="http://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/WebPageElement"&gt;WebPageElement&lt;/a&gt;. In the latter case, multiple matches within a page can constitute a single conceptual "Web page element".
+        /// An XPath, e.g. of a &lt;a class="localLink" href="https://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/WebPageElement"&gt;WebPageElement&lt;/a&gt;. In the latter case, multiple matches within a page can constitute a single conceptual "Web page element".
         /// </summary>
         OneOrMany<string> Xpath { get; set; }
     }
 
     /// <summary>
-    /// A SpeakableSpecification indicates (typically via &lt;a class="localLink" href="http://schema.org/xpath"&gt;xpath&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/cssSelector"&gt;cssSelector&lt;/a&gt;) sections of a document that are highlighted as particularly &lt;a class="localLink" href="http://schema.org/speakable"&gt;speakable&lt;/a&gt;. Instances of this type are expected to be used primarily as values of the &lt;a class="localLink" href="http://schema.org/speakable"&gt;speakable&lt;/a&gt; property.
+    /// A SpeakableSpecification indicates (typically via &lt;a class="localLink" href="https://schema.org/xpath"&gt;xpath&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/cssSelector"&gt;cssSelector&lt;/a&gt;) sections of a document that are highlighted as particularly &lt;a class="localLink" href="https://schema.org/speakable"&gt;speakable&lt;/a&gt;. Instances of this type are expected to be used primarily as values of the &lt;a class="localLink" href="https://schema.org/speakable"&gt;speakable&lt;/a&gt; property.
     /// </summary>
     [DataContract]
     public partial class SpeakableSpecification : Intangible, ISpeakableSpecification, IEquatable<SpeakableSpecification>
@@ -33,14 +33,14 @@
         public override string Type => "SpeakableSpecification";
 
         /// <summary>
-        /// A CSS selector, e.g. of a &lt;a class="localLink" href="http://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/WebPageElement"&gt;WebPageElement&lt;/a&gt;. In the latter case, multiple matches within a page can constitute a single conceptual "Web page element".
+        /// A CSS selector, e.g. of a &lt;a class="localLink" href="https://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/WebPageElement"&gt;WebPageElement&lt;/a&gt;. In the latter case, multiple matches within a page can constitute a single conceptual "Web page element".
         /// </summary>
         [DataMember(Name = "cssSelector", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> CssSelector { get; set; }
 
         /// <summary>
-        /// An XPath, e.g. of a &lt;a class="localLink" href="http://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/WebPageElement"&gt;WebPageElement&lt;/a&gt;. In the latter case, multiple matches within a page can constitute a single conceptual "Web page element".
+        /// An XPath, e.g. of a &lt;a class="localLink" href="https://schema.org/SpeakableSpecification"&gt;SpeakableSpecification&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/WebPageElement"&gt;WebPageElement&lt;/a&gt;. In the latter case, multiple matches within a page can constitute a single conceptual "Web page element".
         /// </summary>
         [DataMember(Name = "xpath", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]

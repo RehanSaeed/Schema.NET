@@ -13,10 +13,10 @@ namespace Schema.NET.Test
             Name = "Name", // Required
             SameAs = new List<Uri>() // Required
             {
-                new Uri("http://www.facebook.com/your-profile"),
-                new Uri("http://instagram.com/yourProfile"),
-                new Uri("http://www.linkedin.com/in/yourprofile"),
-                new Uri("http://plus.google.com/your_profile"),
+                new Uri("https://www.facebook.com/your-profile"),
+                new Uri("https://instagram.com/yourProfile"),
+                new Uri("https://www.linkedin.com/in/yourprofile"),
+                new Uri("https://plus.google.com/your_profile"),
             },
             Url = new Uri("https://example.com"), // Required
         };
@@ -27,10 +27,10 @@ namespace Schema.NET.Test
             "\"@type\":\"Person\"," +
             "\"name\":\"Name\"," +
             "\"sameAs\":[" +
-                "\"http://www.facebook.com/your-profile\"," +
-                "\"http://instagram.com/yourProfile\"," +
-                "\"http://www.linkedin.com/in/yourprofile\"," +
-                "\"http://plus.google.com/your_profile\"" +
+                "\"https://www.facebook.com/your-profile\"," +
+                "\"https://instagram.com/yourProfile\"," +
+                "\"https://www.linkedin.com/in/yourprofile\"," +
+                "\"https://plus.google.com/your_profile\"" +
             "]," +
             "\"url\":\"https://example.com\"" +
         "}";

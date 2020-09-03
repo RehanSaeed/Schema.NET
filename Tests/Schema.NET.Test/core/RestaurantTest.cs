@@ -9,10 +9,10 @@ namespace Schema.NET.Test
     {
         private readonly Restaurant restaurant = new Restaurant()
         {
-            Id = new Uri("http://davessteakhouse.example.com"),
+            Id = new Uri("https://davessteakhouse.example.com"),
             Name = "Dave's Steak House",
-            Image = new Uri("http://davessteakhouse.example.com/logo.jpg"),
-            SameAs = new Uri("http://davessteakhouse.example.com"),
+            Image = new Uri("https://davessteakhouse.example.com/logo.jpg"),
+            SameAs = new Uri("https://davessteakhouse.example.com"),
             ServesCuisine = "Steak House",
             PriceRange = "$$$",
             Address = new PostalAddress()
@@ -39,7 +39,7 @@ namespace Schema.NET.Test
             Review = new Review()
             {
                 Description = "Great old fashioned steaks but the salads are sub par.",
-                Url = new Uri("http://www.localreviews.com/restaurants/1/2/3/daves-steak-house.html"),
+                Url = new Uri("https://www.localreviews.com/restaurants/1/2/3/daves-steak-house.html"),
                 Author = new Person()
                 {
                     Name = "Lisa Kennedy",
@@ -48,7 +48,7 @@ namespace Schema.NET.Test
                 Publisher = new Organization()
                 {
                     Name = "Denver Post",
-                    SameAs = new Uri("http://www.denverpost.com"),
+                    SameAs = new Uri("https://www.denverpost.com"),
                 },
                 DatePublished = new DateTime(2014, 3, 13),
                 InLanguage = "en",
@@ -65,10 +65,10 @@ namespace Schema.NET.Test
         "{" +
             "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"Restaurant\"," +
-            "\"@id\":\"http://davessteakhouse.example.com\"," +
+            "\"@id\":\"https://davessteakhouse.example.com\"," +
             "\"name\":\"Dave's Steak House\"," +
-            "\"image\":\"http://davessteakhouse.example.com/logo.jpg\"," +
-            "\"sameAs\":\"http://davessteakhouse.example.com\"," +
+            "\"image\":\"https://davessteakhouse.example.com/logo.jpg\"," +
+            "\"sameAs\":\"https://davessteakhouse.example.com\"," +
             "\"address\":{" +
                 "\"@type\":\"PostalAddress\"," +
                 "\"addressCountry\":\"US\"," +
@@ -92,7 +92,7 @@ namespace Schema.NET.Test
             "\"review\":{" +
                 "\"@type\":\"Review\"," +
                 "\"description\":\"Great old fashioned steaks but the salads are sub par.\"," +
-                "\"url\":\"http://www.localreviews.com/restaurants/1/2/3/daves-steak-house.html\"," +
+                "\"url\":\"https://www.localreviews.com/restaurants/1/2/3/daves-steak-house.html\"," +
                 "\"author\":{" +
                     "\"@type\":\"Person\"," +
                     "\"name\":\"Lisa Kennedy\"," +
@@ -103,7 +103,7 @@ namespace Schema.NET.Test
                 "\"publisher\":{" +
                     "\"@type\":\"Organization\"," +
                     "\"name\":\"Denver Post\"," +
-                    "\"sameAs\":\"http://www.denverpost.com\"" +
+                    "\"sameAs\":\"https://www.denverpost.com\"" +
                 "}," +
                 "\"reviewRating\":{" +
                     "\"@type\":\"Rating\"," +

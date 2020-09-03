@@ -11,7 +11,7 @@ namespace Schema.NET.Test
         {
             Name = "Executive Anvil", // Required
             Description = "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveller looking for something to drop from a height.", // Recommended
-            Image = new Uri("http://www.example.com/anvil_executive.jpg"), // Required
+            Image = new Uri("https://www.example.com/anvil_executive.jpg"), // Required
             Mpn = "925872", // Recommended
             Brand = new Brand() // Recommended
             {
@@ -45,7 +45,7 @@ namespace Schema.NET.Test
             "\"@type\":\"Product\"," +
             "\"name\":\"Executive Anvil\"," +
             "\"description\":\"Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveller looking for something to drop from a height.\"," +
-            "\"image\":\"http://www.example.com/anvil_executive.jpg\"," +
+            "\"image\":\"https://www.example.com/anvil_executive.jpg\"," +
             "\"aggregateRating\":{" +
                 "\"@type\":\"AggregateRating\"," +
                 "\"ratingValue\":4.4," +

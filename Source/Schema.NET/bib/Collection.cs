@@ -5,18 +5,18 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A created collection of Creative Works or other artefacts.
+    /// A collection of items e.g. creative works or products.
     /// </summary>
     public partial interface ICollection : ICreativeWork
     {
         /// <summary>
-        /// The number of items in the &lt;a class="localLink" href="http://schema.org/Collection"&gt;Collection&lt;/a&gt;.
+        /// The number of items in the &lt;a class="localLink" href="https://schema.org/Collection"&gt;Collection&lt;/a&gt;.
         /// </summary>
         OneOrMany<int?> CollectionSize { get; set; }
     }
 
     /// <summary>
-    /// A created collection of Creative Works or other artefacts.
+    /// A collection of items e.g. creative works or products.
     /// </summary>
     [DataContract]
     public partial class Collection : CreativeWork, ICollection, IEquatable<Collection>
@@ -28,7 +28,7 @@
         public override string Type => "Collection";
 
         /// <summary>
-        /// The number of items in the &lt;a class="localLink" href="http://schema.org/Collection"&gt;Collection&lt;/a&gt;.
+        /// The number of items in the &lt;a class="localLink" href="https://schema.org/Collection"&gt;Collection&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "collectionSize", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]

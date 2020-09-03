@@ -50,7 +50,7 @@ namespace Schema.NET.Tool.Repositories
                 return null;
             }
 
-            var supercededByToken = token["http://schema.org/supersededBy"];
+            var supercededByToken = token["https://schema.org/supersededBy"];
             if (supercededByToken is object)
             {
                 // Ignore deprecated properties.
@@ -61,13 +61,13 @@ namespace Schema.NET.Tool.Repositories
             var types = GetTokenValues(token["@type"]).ToList();
             var comment = token["rdfs:comment"].Value<string>();
             var label = GetLabel(token);
-            var domainIncludes = GetTokenValues(token["http://schema.org/domainIncludes"], "@id").ToList();
-            var rangeIncludes = GetTokenValues(token["http://schema.org/rangeIncludes"], "@id").ToList();
+            var domainIncludes = GetTokenValues(token["https://schema.org/domainIncludes"], "@id").ToList();
+            var rangeIncludes = GetTokenValues(token["https://schema.org/rangeIncludes"], "@id").ToList();
             var subClassOf = GetTokenValues(token["rdfs:subClassOf"], "@id").ToList();
-            var isPartOf = GetTokenValues(token["http://schema.org/isPartOf"]).FirstOrDefault();
+            var isPartOf = GetTokenValues(token["https://schema.org/isPartOf"]).FirstOrDefault();
             var layer = isPartOf is null ?
                 LayerName.Core :
-                isPartOf.Replace("http://", string.Empty, StringComparison.Ordinal).Replace(".schema.org", string.Empty, StringComparison.Ordinal);
+                isPartOf.Replace("https://", string.Empty, StringComparison.Ordinal).Replace(".schema.org", string.Empty, StringComparison.Ordinal);
 
             if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.OrdinalIgnoreCase)))
             {

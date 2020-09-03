@@ -8,7 +8,7 @@
     /// The act of an agent relocating to a place.&lt;br/&gt;&lt;br/&gt;
     /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/TransferAction"&gt;TransferAction&lt;/a&gt;: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/TransferAction"&gt;TransferAction&lt;/a&gt;: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
     public partial interface IMoveAction : IAction
@@ -28,7 +28,7 @@
     /// The act of an agent relocating to a place.&lt;br/&gt;&lt;br/&gt;
     /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/TransferAction"&gt;TransferAction&lt;/a&gt;: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/TransferAction"&gt;TransferAction&lt;/a&gt;: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]

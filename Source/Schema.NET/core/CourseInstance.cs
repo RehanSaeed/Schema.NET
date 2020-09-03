@@ -5,7 +5,7 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// An instance of a &lt;a class="localLink" href="http://schema.org/Course"&gt;Course&lt;/a&gt; which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.
+    /// An instance of a &lt;a class="localLink" href="https://schema.org/Course"&gt;Course&lt;/a&gt; which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.
     /// </summary>
     public partial interface ICourseInstance : IEvent
     {
@@ -20,13 +20,13 @@
         OneOrMany<string> CourseWorkload { get; set; }
 
         /// <summary>
-        /// A person assigned to instruct or provide instructional assistance for the &lt;a class="localLink" href="http://schema.org/CourseInstance"&gt;CourseInstance&lt;/a&gt;.
+        /// A person assigned to instruct or provide instructional assistance for the &lt;a class="localLink" href="https://schema.org/CourseInstance"&gt;CourseInstance&lt;/a&gt;.
         /// </summary>
         OneOrMany<IPerson> Instructor { get; set; }
     }
 
     /// <summary>
-    /// An instance of a &lt;a class="localLink" href="http://schema.org/Course"&gt;Course&lt;/a&gt; which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.
+    /// An instance of a &lt;a class="localLink" href="https://schema.org/Course"&gt;Course&lt;/a&gt; which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.
     /// </summary>
     [DataContract]
     public partial class CourseInstance : Event, ICourseInstance, IEquatable<CourseInstance>
@@ -52,7 +52,7 @@
         public OneOrMany<string> CourseWorkload { get; set; }
 
         /// <summary>
-        /// A person assigned to instruct or provide instructional assistance for the &lt;a class="localLink" href="http://schema.org/CourseInstance"&gt;CourseInstance&lt;/a&gt;.
+        /// A person assigned to instruct or provide instructional assistance for the &lt;a class="localLink" href="https://schema.org/CourseInstance"&gt;CourseInstance&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "instructor", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]

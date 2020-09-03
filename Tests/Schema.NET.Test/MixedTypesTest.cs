@@ -10,7 +10,7 @@ namespace Schema.NET.Test
         private readonly Book book =
             new Book()
             {
-                Id = new Uri("http://example.com/book/1"),
+                Id = new Uri("https://example.com/book/1"),
                 Author = new List<object>()
                 {
                     new Organization()
@@ -28,7 +28,7 @@ namespace Schema.NET.Test
             "{" +
                 "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"Book\"," +
-                "\"@id\":\"http://example.com/book/1\"," +
+                "\"@id\":\"https://example.com/book/1\"," +
                 "\"author\":[" +
                     "{" +
                         "\"@type\":\"Organization\"," +
@@ -76,8 +76,8 @@ namespace Schema.NET.Test
             {
                 BankAccountType = new List<object>()
                 {
-                    "http://example.com/1",
-                    new Uri("http://example.com/2"),
+                    "https://example.com/1",
+                    new Uri("https://example.com/2"),
                 },
             };
             var json =
@@ -85,8 +85,8 @@ namespace Schema.NET.Test
                     "\"@context\":\"https://schema.org\"," +
                     "\"@type\":\"BankAccount\"," +
                     "\"bankAccountType\":[" +
-                        "\"http://example.com/1\"," +
-                        "\"http://example.com/2\"" +
+                        "\"https://example.com/1\"," +
+                        "\"https://example.com/2\"" +
                     "]" +
                 "}";
             Assert.Equal(json, bankAccount.ToString());

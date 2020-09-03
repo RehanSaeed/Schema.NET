@@ -9,6 +9,10 @@
     /// </summary>
     public partial interface IMedicalWebPage : IWebPage
     {
+        /// <summary>
+        /// Medical audience for page.
+        /// </summary>
+        Values<IMedicalAudience, MedicalAudienceType?> MedicalAudience { get; set; }
     }
 
     /// <summary>
@@ -22,6 +26,13 @@
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MedicalWebPage";
+
+        /// <summary>
+        /// Medical audience for page.
+        /// </summary>
+        [DataMember(Name = "medicalAudience", Order = 306)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public Values<IMedicalAudience, MedicalAudienceType?> MedicalAudience { get; set; }
 
         /// <inheritdoc/>
         public bool Equals(MedicalWebPage other)
@@ -37,6 +48,7 @@
             }
 
             return this.Type == other.Type &&
+                this.MedicalAudience == other.MedicalAudience &&
                 base.Equals(other);
         }
 
@@ -45,6 +57,7 @@
 
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
+            .And(this.MedicalAudience)
             .And(base.GetHashCode());
     }
 }

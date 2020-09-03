@@ -7,7 +7,7 @@
     /// <summary>
     /// An educational organization.
     /// </summary>
-    public partial interface IEducationalOrganization : IOrganization
+    public partial interface IEducationalOrganization : ICivicStructureAndOrganization
     {
     }
 
@@ -15,7 +15,7 @@
     /// An educational organization.
     /// </summary>
     [DataContract]
-    public partial class EducationalOrganization : Organization, IEducationalOrganization, IEquatable<EducationalOrganization>
+    public partial class EducationalOrganization : CivicStructureAndOrganization, IEducationalOrganization, IEquatable<EducationalOrganization>
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -26,7 +26,7 @@
         /// <summary>
         /// Alumni of an organization.
         /// </summary>
-        [DataMember(Name = "alumni", Order = 206)]
+        [DataMember(Name = "alumni", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<IPerson> Alumni { get; set; }
 

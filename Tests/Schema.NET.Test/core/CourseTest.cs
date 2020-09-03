@@ -14,7 +14,7 @@ namespace Schema.NET.Test
             Provider = new Organization() // Recommended
             {
                 Name = "University of Technology - Eureka",
-                SameAs = new Uri("http://www.ut-eureka.edu"),
+                SameAs = new Uri("https://www.ut-eureka.edu"),
             },
         };
 
@@ -27,7 +27,7 @@ namespace Schema.NET.Test
             "\"provider\":{" +
                 "\"@type\":\"Organization\"," +
                 "\"name\":\"University of Technology - Eureka\"," +
-                "\"sameAs\":\"http://www.ut-eureka.edu\"" +
+                "\"sameAs\":\"https://www.ut-eureka.edu\"" +
             "}" +
         "}";
 
