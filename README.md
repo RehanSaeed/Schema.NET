@@ -20,7 +20,7 @@ The code above outputs the following JSON-LD:
 
 ```JSON
 {
-    "@context":"http://schema.org",
+    "@context":"https://schema.org",
     "@type":"WebSite",
     "alternateName":"An Alternative Name",
     "name":"Your Site Name",
@@ -47,9 +47,9 @@ Using structured data in `html` requires the use of a `script` tag with a MIME t
 ```HTML
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
+  "@context": "https://schema.org",
   "@type": "Organization",
-  "url": "http://www.example.com",
+  "url": "https://www.example.com",
   "name": "Unlimited Ball Bearings Corp.",
   "contactPoint": {
     "@type": "ContactPoint",

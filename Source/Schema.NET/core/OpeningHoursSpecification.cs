@@ -6,8 +6,8 @@
 
     /// <summary>
     /// A structured value providing information about the opening hours of a place or a certain service inside a place.&lt;br/&gt;&lt;br/&gt;
-    /// The place is &lt;strong&gt;open&lt;/strong&gt; if the &lt;a class="localLink" href="http://schema.org/opens"&gt;opens&lt;/a&gt; property is specified, and &lt;strong&gt;closed&lt;/strong&gt; otherwise.&lt;br/&gt;&lt;br/&gt;
-    /// If the value for the &lt;a class="localLink" href="http://schema.org/closes"&gt;closes&lt;/a&gt; property is less than the value for the &lt;a class="localLink" href="http://schema.org/opens"&gt;opens&lt;/a&gt; property then the hour range is assumed to span over the next day.
+    /// The place is &lt;strong&gt;open&lt;/strong&gt; if the &lt;a class="localLink" href="https://schema.org/opens"&gt;opens&lt;/a&gt; property is specified, and &lt;strong&gt;closed&lt;/strong&gt; otherwise.&lt;br/&gt;&lt;br/&gt;
+    /// If the value for the &lt;a class="localLink" href="https://schema.org/closes"&gt;closes&lt;/a&gt; property is less than the value for the &lt;a class="localLink" href="https://schema.org/opens"&gt;opens&lt;/a&gt; property then the hour range is assumed to span over the next day.
     /// </summary>
     public partial interface IOpeningHoursSpecification : IStructuredValue
     {
@@ -39,8 +39,8 @@
 
     /// <summary>
     /// A structured value providing information about the opening hours of a place or a certain service inside a place.&lt;br/&gt;&lt;br/&gt;
-    /// The place is &lt;strong&gt;open&lt;/strong&gt; if the &lt;a class="localLink" href="http://schema.org/opens"&gt;opens&lt;/a&gt; property is specified, and &lt;strong&gt;closed&lt;/strong&gt; otherwise.&lt;br/&gt;&lt;br/&gt;
-    /// If the value for the &lt;a class="localLink" href="http://schema.org/closes"&gt;closes&lt;/a&gt; property is less than the value for the &lt;a class="localLink" href="http://schema.org/opens"&gt;opens&lt;/a&gt; property then the hour range is assumed to span over the next day.
+    /// The place is &lt;strong&gt;open&lt;/strong&gt; if the &lt;a class="localLink" href="https://schema.org/opens"&gt;opens&lt;/a&gt; property is specified, and &lt;strong&gt;closed&lt;/strong&gt; otherwise.&lt;br/&gt;&lt;br/&gt;
+    /// If the value for the &lt;a class="localLink" href="https://schema.org/closes"&gt;closes&lt;/a&gt; property is less than the value for the &lt;a class="localLink" href="https://schema.org/opens"&gt;opens&lt;/a&gt; property then the hour range is assumed to span over the next day.
     /// </summary>
     [DataContract]
     public partial class OpeningHoursSpecification : StructuredValue, IOpeningHoursSpecification, IEquatable<OpeningHoursSpecification>

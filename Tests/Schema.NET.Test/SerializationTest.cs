@@ -13,7 +13,7 @@ namespace Schema.NET.Test
             "{" +
                 "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"Book\"," +
-                "\"@id\":\"http://example.com/book/1\"," +
+                "\"@id\":\"https://example.com/book/1\"," +
                 "\"name\":\"The Catcher in the Rye</script><script>alert('gotcha');</script>\"," +
                 "\"author\":{" +
                     "\"@type\":\"Person\"," +
@@ -25,7 +25,7 @@ namespace Schema.NET.Test
             "{" +
                 "\"@context\":\"https://schema.org\"," +
                 "\"@type\":\"Book\"," +
-                "\"@id\":\"http://example.com/book/1\"," +
+                "\"@id\":\"https://example.com/book/1\"," +
                 "\"name\":\"The Catcher in the Rye\\u003c/script\\u003e\\u003cscript\\u003ealert(\\u0027gotcha\\u0027);\\u003c/script\\u003e\"," +
                 "\"author\":{" +
                     "\"@type\":\"Person\"," +
@@ -48,7 +48,7 @@ namespace Schema.NET.Test
 
         private readonly Book book = new Book()
         {
-            Id = new Uri("http://example.com/book/1"),
+            Id = new Uri("https://example.com/book/1"),
             Name = "The Catcher in the Rye</script><script>alert('gotcha');</script>",
             Author = Person,
         };

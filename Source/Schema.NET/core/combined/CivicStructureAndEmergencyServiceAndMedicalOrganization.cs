@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, EmergencyService, MedicalOrganization for more information.
     /// </summary>
-    public partial interface ICivicStructureAndEmergencyServiceAndMedicalOrganization : IEmergencyService, IMedicalOrganization, ICivicStructure
+    public partial interface ICivicStructureAndEmergencyServiceAndMedicalOrganization : ICivicStructure, IEmergencyService, IMedicalOrganization
     {
     }
 

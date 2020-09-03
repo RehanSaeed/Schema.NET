@@ -10,7 +10,7 @@ namespace Schema.NET.Test
         private readonly ClaimReview claimReview = new ClaimReview()
         {
             DatePublished = new DateTime(2016, 6, 22), // Required
-            Url = new Uri("http://example.com/news/science/worldisflat.html"), // Required
+            Url = new Uri("https://example.com/news/science/worldisflat.html"), // Required
             ItemReviewed = new CreativeWork() // Required
             {
                 Author = new Organization() // Required
@@ -38,7 +38,7 @@ namespace Schema.NET.Test
         "{" +
             "\"@context\":\"https://schema.org\"," +
             "\"@type\":\"ClaimReview\"," +
-            "\"url\":\"http://example.com/news/science/worldisflat.html\"," +
+            "\"url\":\"https://example.com/news/science/worldisflat.html\"," +
             "\"author\":{" +
                 "\"@type\":\"Organization\"," +
                 "\"name\":\"Example.com science watch\"" +

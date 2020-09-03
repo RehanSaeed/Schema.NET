@@ -11,7 +11,7 @@
     {
         /// <summary>
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
-        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. https://schema.org/width, https://schema.org/color, https://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
         OneOrMany<IPropertyValue> AdditionalProperty { get; set; }
 
@@ -49,7 +49,7 @@
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        OneOrMany<IEvent> Event { get; set; }
+        OneOrMany<IEvent> Events { get; set; }
 
         /// <summary>
         /// The fax number.
@@ -117,7 +117,7 @@
         OneOrMany<string> GlobalLocationNumber { get; set; }
 
         /// <summary>
-        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="http://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
+        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="https://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="https://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
         /// </summary>
         OneOrMany<bool?> HasDriveThroughService { get; set; }
 
@@ -167,7 +167,7 @@
         Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
-        /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
+        /// A flag to signal that the &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
         /// </summary>
         OneOrMany<bool?> PublicAccess { get; set; }
 
@@ -188,7 +188,7 @@
 
         /// <summary>
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
-        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
+        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="https://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
         OneOrMany<IOpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
 
@@ -198,7 +198,7 @@
         OneOrMany<string> Telephone { get; set; }
 
         /// <summary>
-        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
+        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="https://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
         /// </summary>
         OneOrMany<Uri> TourBookingPage { get; set; }
     }
@@ -217,7 +217,7 @@
 
         /// <summary>
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
-        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. https://schema.org/width, https://schema.org/color, https://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 106)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -228,14 +228,14 @@
         /// </summary>
         [DataMember(Name = "address", Order = 107)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IPostalAddress, string> Address { get; set; }
+        public virtual Values<IPostalAddress, string> Address { get; set; }
 
         /// <summary>
         /// The overall rating, based on a collection of reviews or ratings, of the item.
         /// </summary>
         [DataMember(Name = "aggregateRating", Order = 108)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IAggregateRating> AggregateRating { get; set; }
+        public virtual OneOrMany<IAggregateRating> AggregateRating { get; set; }
 
         /// <summary>
         /// An amenity feature (e.g. a characteristic or service) of the Accommodation. This generic property does not make a statement about whether the feature is included in an offer for the main accommodation or available at extra costs.
@@ -271,14 +271,14 @@
         /// </summary>
         [DataMember(Name = "event", Order = 113)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> Event { get; set; }
+        public virtual OneOrMany<IEvent> Events { get; set; }
 
         /// <summary>
         /// The fax number.
         /// </summary>
         [DataMember(Name = "faxNumber", Order = 114)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> FaxNumber { get; set; }
+        public virtual OneOrMany<string> FaxNumber { get; set; }
 
         /// <summary>
         /// The geo coordinates of the place.
@@ -362,10 +362,10 @@
         /// </summary>
         [DataMember(Name = "globalLocationNumber", Order = 126)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> GlobalLocationNumber { get; set; }
+        public virtual OneOrMany<string> GlobalLocationNumber { get; set; }
 
         /// <summary>
-        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="http://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
+        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="https://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="https://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
         /// </summary>
         [DataMember(Name = "hasDriveThroughService", Order = 127)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -390,7 +390,7 @@
         /// </summary>
         [DataMember(Name = "isicV4", Order = 130)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> IsicV4 { get; set; }
+        public virtual OneOrMany<string> IsicV4 { get; set; }
 
         /// <summary>
         /// The latitude of a location. For example &lt;code&gt;37.42242&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
@@ -404,7 +404,7 @@
         /// </summary>
         [DataMember(Name = "logo", Order = 132)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<IImageObject, Uri> Logo { get; set; }
+        public virtual Values<IImageObject, Uri> Logo { get; set; }
 
         /// <summary>
         /// The longitude of a location. For example &lt;code&gt;-122.08585&lt;/code&gt; (&lt;a href="https://en.wikipedia.org/wiki/World_Geodetic_System"&gt;WGS 84&lt;/a&gt;).
@@ -435,7 +435,7 @@
         public Values<IImageObject, IPhotograph> Photo { get; set; }
 
         /// <summary>
-        /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
+        /// A flag to signal that the &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
         /// </summary>
         [DataMember(Name = "publicAccess", Order = 137)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -446,14 +446,14 @@
         /// </summary>
         [DataMember(Name = "review", Order = 138)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IReview> Review { get; set; }
+        public virtual OneOrMany<IReview> Review { get; set; }
 
         /// <summary>
         /// A slogan or motto associated with the item.
         /// </summary>
         [DataMember(Name = "slogan", Order = 139)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> Slogan { get; set; }
+        public virtual OneOrMany<string> Slogan { get; set; }
 
         /// <summary>
         /// Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room.
@@ -464,7 +464,7 @@
 
         /// <summary>
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
-        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
+        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="https://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "specialOpeningHoursSpecification", Order = 141)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -475,10 +475,10 @@
         /// </summary>
         [DataMember(Name = "telephone", Order = 142)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> Telephone { get; set; }
+        public virtual OneOrMany<string> Telephone { get; set; }
 
         /// <summary>
-        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
+        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="https://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
         /// </summary>
         [DataMember(Name = "tourBookingPage", Order = 143)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -505,7 +505,7 @@
                 this.BranchCode == other.BranchCode &&
                 this.ContainedInPlace == other.ContainedInPlace &&
                 this.ContainsPlace == other.ContainsPlace &&
-                this.Event == other.Event &&
+                this.Events == other.Events &&
                 this.FaxNumber == other.FaxNumber &&
                 this.Geo == other.Geo &&
                 this.GeoContains == other.GeoContains &&
@@ -551,7 +551,7 @@
             .And(this.BranchCode)
             .And(this.ContainedInPlace)
             .And(this.ContainsPlace)
-            .And(this.Event)
+            .And(this.Events)
             .And(this.FaxNumber)
             .And(this.Geo)
             .And(this.GeoContains)

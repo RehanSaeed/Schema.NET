@@ -62,7 +62,7 @@
         /// </summary>
         [DataMember(Name = "healthCondition", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IMedicalCondition> HealthCondition { get; set; }
+        public virtual OneOrMany<IMedicalCondition> HealthCondition { get; set; }
 
         /// <summary>
         /// Audiences defined by a person's gender.

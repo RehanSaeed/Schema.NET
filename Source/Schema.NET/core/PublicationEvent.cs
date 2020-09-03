@@ -33,23 +33,16 @@
         public override string Type => "PublicationEvent";
 
         /// <summary>
-        /// A flag to signal that the item, event, or place is accessible for free.
-        /// </summary>
-        [DataMember(Name = "isAccessibleForFree", Order = 206)]
-        [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<bool?> IsAccessibleForFree { get; set; }
-
-        /// <summary>
         /// An agent associated with the publication event.
         /// </summary>
-        [DataMember(Name = "publishedBy", Order = 207)]
+        [DataMember(Name = "publishedBy", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IOrganization, IPerson> PublishedBy { get; set; }
 
         /// <summary>
         /// A broadcast service associated with the publication event.
         /// </summary>
-        [DataMember(Name = "publishedOn", Order = 208)]
+        [DataMember(Name = "publishedOn", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<IBroadcastService> PublishedOn { get; set; }
 
@@ -67,7 +60,6 @@
             }
 
             return this.Type == other.Type &&
-                this.IsAccessibleForFree == other.IsAccessibleForFree &&
                 this.PublishedBy == other.PublishedBy &&
                 this.PublishedOn == other.PublishedOn &&
                 base.Equals(other);
@@ -78,7 +70,6 @@
 
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
-            .And(this.IsAccessibleForFree)
             .And(this.PublishedBy)
             .And(this.PublishedOn)
             .And(base.GetHashCode());

@@ -14,7 +14,7 @@ namespace Schema.NET.Test
             {
                 PotentialAction = new SearchAction() // Required
                 {
-                    Target = new Uri("http://example.com/search?&q={query}"), // Required
+                    Target = new Uri("https://example.com/search?&q={query}"), // Required
                     QueryInput = "required", // Required
                 },
                 Url = new Uri("https://example.com"), // Required
@@ -25,7 +25,7 @@ namespace Schema.NET.Test
                     "\"@type\":\"WebSite\"," +
                     "\"potentialAction\":{" +
                         "\"@type\":\"SearchAction\"," +
-                        "\"target\":\"http://example.com/search?&q={query}\"," +
+                        "\"target\":\"https://example.com/search?&q={query}\"," +
                         "\"query-input\":\"required\"" +
                     "}," +
                     "\"url\":\"https://example.com\"" +
@@ -67,7 +67,7 @@ namespace Schema.NET.Test
             {
                 PotentialAction = new SearchAction() // Required
                 {
-                    Target = new Uri("http://example.com/search?&q={query}"), // Required
+                    Target = new Uri("https://example.com/search?&q={query}"), // Required
                     QueryInput = "required", // Required
                 },
                 Url = new Uri("https://example.com"), // Required
@@ -79,7 +79,7 @@ namespace Schema.NET.Test
                 "\"@type\":\"WebSite\"," +
                 "\"potentialAction\":{" +
                     "\"@type\":\"SearchAction\"," +
-                    "\"target\":\"http://example.com/search?&q={query}\"," +
+                    "\"target\":\"https://example.com/search?&q={query}\"," +
                     "\"query-input\":\"required\"" +
                 "}," +
                 "\"url\":\"https://example.com\"" +

@@ -7,7 +7,7 @@
     /// <summary>
     /// See CivicStructure, SportsActivityLocation for more information.
     /// </summary>
-    public partial interface ICivicStructureAndSportsActivityLocation : ISportsActivityLocation, ICivicStructure
+    public partial interface ICivicStructureAndSportsActivityLocation : ICivicStructure, ISportsActivityLocation
     {
     }
 

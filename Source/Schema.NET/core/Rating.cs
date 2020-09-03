@@ -20,7 +20,7 @@
         Values<double?, string> BestRating { get; set; }
 
         /// <summary>
-        /// A short explanation (e.g. one to two sentences) providing background context and other information that led to the conclusion expressed in the rating. This is particularly applicable to ratings associated with "fact check" markup using &lt;a class="localLink" href="http://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt;.
+        /// A short explanation (e.g. one to two sentences) providing background context and other information that led to the conclusion expressed in the rating. This is particularly applicable to ratings associated with "fact check" markup using &lt;a class="localLink" href="https://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt;.
         /// </summary>
         OneOrMany<string> RatingExplanation { get; set; }
 
@@ -72,7 +72,7 @@
         public Values<double?, string> BestRating { get; set; }
 
         /// <summary>
-        /// A short explanation (e.g. one to two sentences) providing background context and other information that led to the conclusion expressed in the rating. This is particularly applicable to ratings associated with "fact check" markup using &lt;a class="localLink" href="http://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt;.
+        /// A short explanation (e.g. one to two sentences) providing background context and other information that led to the conclusion expressed in the rating. This is particularly applicable to ratings associated with "fact check" markup using &lt;a class="localLink" href="https://schema.org/ClaimReview"&gt;ClaimReview&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "ratingExplanation", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]

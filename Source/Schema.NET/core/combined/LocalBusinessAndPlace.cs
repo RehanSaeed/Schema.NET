@@ -7,7 +7,7 @@
     /// <summary>
     /// See LocalBusiness, Place for more information.
     /// </summary>
-    public partial interface ILocalBusinessAndPlace : ILocalBusiness, IPlace
+    public partial interface ILocalBusinessAndPlace : IPlace, ILocalBusiness
     {
     }
 
@@ -25,7 +25,7 @@
 
         /// <summary>
         /// A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.&lt;br/&gt;&lt;br/&gt;
-        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+        /// Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. https://schema.org/width, https://schema.org/color, https://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
         /// </summary>
         [DataMember(Name = "additionalProperty", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -87,7 +87,7 @@
         /// </summary>
         [DataMember(Name = "event", Order = 214)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public override OneOrMany<IEvent> Event { get; set; }
+        public override OneOrMany<IEvent> Events { get; set; }
 
         /// <summary>
         /// The fax number.
@@ -181,7 +181,7 @@
         public override OneOrMany<string> GlobalLocationNumber { get; set; }
 
         /// <summary>
-        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="http://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="http://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
+        /// Indicates whether some facility (e.g. &lt;a class="localLink" href="https://schema.org/FoodEstablishment"&gt;FoodEstablishment&lt;/a&gt;, &lt;a class="localLink" href="https://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt;) offers a service that can be used by driving through in a car. In the case of &lt;a class="localLink" href="https://schema.org/CovidTestingFacility"&gt;CovidTestingFacility&lt;/a&gt; such facilities could potentially help with social distancing from other potentially-infected users.
         /// </summary>
         [DataMember(Name = "hasDriveThroughService", Order = 228)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -278,7 +278,7 @@
         public OneOrMany<string> PriceRange { get; set; }
 
         /// <summary>
-        /// A flag to signal that the &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
+        /// A flag to signal that the &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt; is open to public visitors.  If this property is omitted there is no assumed default boolean value
         /// </summary>
         [DataMember(Name = "publicAccess", Order = 241)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -307,7 +307,7 @@
 
         /// <summary>
         /// The special opening hours of a certain place.&lt;br/&gt;&lt;br/&gt;
-        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="http://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
+        /// Use this to explicitly override general opening hours brought in scope by &lt;a class="localLink" href="https://schema.org/openingHoursSpecification"&gt;openingHoursSpecification&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/openingHours"&gt;openingHours&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "specialOpeningHoursSpecification", Order = 245)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -321,7 +321,7 @@
         public override OneOrMany<string> Telephone { get; set; }
 
         /// <summary>
-        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="http://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="http://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="http://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
+        /// A page providing information on how to book a tour of some &lt;a class="localLink" href="https://schema.org/Place"&gt;Place&lt;/a&gt;, such as an &lt;a class="localLink" href="https://schema.org/Accommodation"&gt;Accommodation&lt;/a&gt; or &lt;a class="localLink" href="https://schema.org/ApartmentComplex"&gt;ApartmentComplex&lt;/a&gt; in a real estate setting, as well as other kinds of tours as appropriate.
         /// </summary>
         [DataMember(Name = "tourBookingPage", Order = 247)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -349,7 +349,7 @@
                 this.ContainedInPlace == other.ContainedInPlace &&
                 this.ContainsPlace == other.ContainsPlace &&
                 this.CurrenciesAccepted == other.CurrenciesAccepted &&
-                this.Event == other.Event &&
+                this.Events == other.Events &&
                 this.FaxNumber == other.FaxNumber &&
                 this.Geo == other.Geo &&
                 this.GeoContains == other.GeoContains &&
@@ -399,7 +399,7 @@
             .And(this.ContainedInPlace)
             .And(this.ContainsPlace)
             .And(this.CurrenciesAccepted)
-            .And(this.Event)
+            .And(this.Events)
             .And(this.FaxNumber)
             .And(this.Geo)
             .And(this.GeoContains)

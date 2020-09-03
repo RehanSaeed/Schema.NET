@@ -17,7 +17,7 @@
         EventCancelled,
 
         /// <summary>
-        /// Indicates that the event was changed to allow online participation. See &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; for specifics of whether it is now fully or partially online.
+        /// Indicates that the event was changed to allow online participation. See &lt;a class="localLink" href="https://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; for specifics of whether it is now fully or partially online.
         /// </summary>
         [EnumMember(Value = "https://schema.org/EventMovedOnline")]
         EventMovedOnline,

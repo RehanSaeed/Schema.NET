@@ -42,7 +42,7 @@ namespace Schema.NET
                 var o = JObject.Load(reader);
 
                 var nameProperty = o.Property("name", StringComparison.OrdinalIgnoreCase);
-                name = nameProperty?.Value?.ToString() ?? "http://schema.org";
+                name = nameProperty?.Value?.ToString() ?? "https://schema.org";
 
                 var languageProperty = o.Property("@language", StringComparison.OrdinalIgnoreCase);
                 language = languageProperty?.Value?.ToString();

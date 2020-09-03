@@ -5,7 +5,7 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the &lt;a class="localLink" href="http://schema.org/offers"&gt;offers&lt;/a&gt; property. Repeated events may be structured as separate Event objects.
+    /// An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the &lt;a class="localLink" href="https://schema.org/offers"&gt;offers&lt;/a&gt; property. Repeated events may be structured as separate Event objects.
     /// </summary>
     public partial interface IEvent : IThing
     {
@@ -70,7 +70,7 @@
         Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
-        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
+        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="https://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
         /// </summary>
         Values<ILanguage, string> InLanguage { get; set; }
 
@@ -90,17 +90,17 @@
         OneOrMany<int?> MaximumAttendeeCapacity { get; set; }
 
         /// <summary>
-        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="http://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="http://schema.org/OfflineEventAttendanceMode"&gt;OfflineEventAttendanceMode&lt;/a&gt; (or the offline aspects, in the case of a &lt;a class="localLink" href="http://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
+        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="https://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="https://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="https://schema.org/OfflineEventAttendanceMode"&gt;OfflineEventAttendanceMode&lt;/a&gt; (or the offline aspects, in the case of a &lt;a class="localLink" href="https://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
         /// </summary>
         OneOrMany<int?> MaximumPhysicalAttendeeCapacity { get; set; }
 
         /// <summary>
-        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="http://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="http://schema.org/OnlineEventAttendanceMode"&gt;OnlineEventAttendanceMode&lt;/a&gt; (or the online aspects, in the case of a &lt;a class="localLink" href="http://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
+        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="https://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="https://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="https://schema.org/OnlineEventAttendanceMode"&gt;OnlineEventAttendanceMode&lt;/a&gt; (or the online aspects, in the case of a &lt;a class="localLink" href="https://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
         /// </summary>
         OneOrMany<int?> MaximumVirtualAttendeeCapacity { get; set; }
 
         /// <summary>
-        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="http://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
+        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="https://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="https://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         Values<IDemand, IOffer> Offers { get; set; }
 
@@ -182,7 +182,7 @@
     }
 
     /// <summary>
-    /// An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the &lt;a class="localLink" href="http://schema.org/offers"&gt;offers&lt;/a&gt; property. Repeated events may be structured as separate Event objects.
+    /// An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the &lt;a class="localLink" href="https://schema.org/offers"&gt;offers&lt;/a&gt; property. Repeated events may be structured as separate Event objects.
     /// </summary>
     [DataContract]
     public partial class Event : Thing, IEvent, IEquatable<Event>
@@ -278,7 +278,7 @@
         public Values<IOrganization, IPerson> Funder { get; set; }
 
         /// <summary>
-        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="http://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
+        /// The language of the content or performance or used in an action. Please use one of the language codes from the &lt;a href="http://tools.ietf.org/html/bcp47"&gt;IETF BCP 47 standard&lt;/a&gt;. See also &lt;a class="localLink" href="https://schema.org/availableLanguage"&gt;availableLanguage&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "inLanguage", Order = 118)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -289,7 +289,7 @@
         /// </summary>
         [DataMember(Name = "isAccessibleForFree", Order = 119)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public virtual OneOrMany<bool?> IsAccessibleForFree { get; set; }
+        public OneOrMany<bool?> IsAccessibleForFree { get; set; }
 
         /// <summary>
         /// The location of for example where the event is happening, an organization is located, or where an action takes place.
@@ -306,21 +306,21 @@
         public OneOrMany<int?> MaximumAttendeeCapacity { get; set; }
 
         /// <summary>
-        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="http://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="http://schema.org/OfflineEventAttendanceMode"&gt;OfflineEventAttendanceMode&lt;/a&gt; (or the offline aspects, in the case of a &lt;a class="localLink" href="http://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
+        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="https://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="https://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="https://schema.org/OfflineEventAttendanceMode"&gt;OfflineEventAttendanceMode&lt;/a&gt; (or the offline aspects, in the case of a &lt;a class="localLink" href="https://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "maximumPhysicalAttendeeCapacity", Order = 122)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> MaximumPhysicalAttendeeCapacity { get; set; }
 
         /// <summary>
-        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="http://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="http://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="http://schema.org/OnlineEventAttendanceMode"&gt;OnlineEventAttendanceMode&lt;/a&gt; (or the online aspects, in the case of a &lt;a class="localLink" href="http://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
+        /// The maximum physical attendee capacity of an &lt;a class="localLink" href="https://schema.org/Event"&gt;Event&lt;/a&gt; whose &lt;a class="localLink" href="https://schema.org/eventAttendanceMode"&gt;eventAttendanceMode&lt;/a&gt; is &lt;a class="localLink" href="https://schema.org/OnlineEventAttendanceMode"&gt;OnlineEventAttendanceMode&lt;/a&gt; (or the online aspects, in the case of a &lt;a class="localLink" href="https://schema.org/MixedEventAttendanceMode"&gt;MixedEventAttendanceMode&lt;/a&gt;).
         /// </summary>
         [DataMember(Name = "maximumVirtualAttendeeCapacity", Order = 123)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<int?> MaximumVirtualAttendeeCapacity { get; set; }
 
         /// <summary>
-        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="http://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="http://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
+        /// An offer to provide this item&amp;#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use &lt;a class="localLink" href="https://schema.org/businessFunction"&gt;businessFunction&lt;/a&gt; to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a &lt;a class="localLink" href="https://schema.org/Demand"&gt;Demand&lt;/a&gt;. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.
         /// </summary>
         [DataMember(Name = "offers", Order = 124)]
         [JsonConverter(typeof(ValuesJsonConverter))]

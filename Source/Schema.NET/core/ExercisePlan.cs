@@ -12,12 +12,12 @@
         /// <summary>
         /// Length of time to engage in the activity.
         /// </summary>
-        OneOrMany<TimeSpan?> ActivityDuration { get; set; }
+        Values<TimeSpan?, IQuantitativeValue> ActivityDuration { get; set; }
 
         /// <summary>
         /// How often one should engage in the activity.
         /// </summary>
-        OneOrMany<string> ActivityFrequency { get; set; }
+        Values<IQuantitativeValue, string> ActivityFrequency { get; set; }
 
         /// <summary>
         /// Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc.
@@ -32,22 +32,22 @@
         /// <summary>
         /// Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement.
         /// </summary>
-        OneOrMany<string> Intensity { get; set; }
+        Values<IQuantitativeValue, string> Intensity { get; set; }
 
         /// <summary>
         /// Number of times one should repeat the activity.
         /// </summary>
-        OneOrMany<double?> Repetitions { get; set; }
+        Values<double?, IQuantitativeValue> Repetitions { get; set; }
 
         /// <summary>
         /// How often one should break from the activity.
         /// </summary>
-        OneOrMany<string> RestPeriods { get; set; }
+        Values<IQuantitativeValue, string> RestPeriods { get; set; }
 
         /// <summary>
         /// Quantitative measure of the physiologic output of the exercise; also referred to as energy expenditure.
         /// </summary>
-        OneOrMany<string> Workload { get; set; }
+        Values<string, IQuantitativeValue> Workload { get; set; }
     }
 
     /// <summary>
@@ -67,14 +67,14 @@
         /// </summary>
         [DataMember(Name = "activityDuration", Order = 406)]
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]
-        public OneOrMany<TimeSpan?> ActivityDuration { get; set; }
+        public Values<TimeSpan?, IQuantitativeValue> ActivityDuration { get; set; }
 
         /// <summary>
         /// How often one should engage in the activity.
         /// </summary>
         [DataMember(Name = "activityFrequency", Order = 407)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> ActivityFrequency { get; set; }
+        public Values<IQuantitativeValue, string> ActivityFrequency { get; set; }
 
         /// <summary>
         /// Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc.
@@ -95,28 +95,28 @@
         /// </summary>
         [DataMember(Name = "intensity", Order = 410)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> Intensity { get; set; }
+        public Values<IQuantitativeValue, string> Intensity { get; set; }
 
         /// <summary>
         /// Number of times one should repeat the activity.
         /// </summary>
         [DataMember(Name = "repetitions", Order = 411)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<double?> Repetitions { get; set; }
+        public Values<double?, IQuantitativeValue> Repetitions { get; set; }
 
         /// <summary>
         /// How often one should break from the activity.
         /// </summary>
         [DataMember(Name = "restPeriods", Order = 412)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> RestPeriods { get; set; }
+        public Values<IQuantitativeValue, string> RestPeriods { get; set; }
 
         /// <summary>
         /// Quantitative measure of the physiologic output of the exercise; also referred to as energy expenditure.
         /// </summary>
         [DataMember(Name = "workload", Order = 413)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<string> Workload { get; set; }
+        public Values<string, IQuantitativeValue> Workload { get; set; }
 
         /// <inheritdoc/>
         public bool Equals(ExercisePlan other)

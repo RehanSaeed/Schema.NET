@@ -21,8 +21,8 @@
 
         /// <summary>
         /// The primary artist for a work
-        ///     in a medium other than pencils or digital line art--for example, if the
-        ///     primary artwork is done in watercolors or digital paints.
+        ///         in a medium other than pencils or digital line art--for example, if the
+        ///         primary artwork is done in watercolors or digital paints.
         /// </summary>
         OneOrMany<IPerson> Artist { get; set; }
 
@@ -100,8 +100,8 @@
 
         /// <summary>
         /// The primary artist for a work
-        ///     in a medium other than pencils or digital line art--for example, if the
-        ///     primary artwork is done in watercolors or digital paints.
+        ///         in a medium other than pencils or digital line art--for example, if the
+        ///         primary artwork is done in watercolors or digital paints.
         /// </summary>
         [DataMember(Name = "artist", Order = 208)]
         [JsonConverter(typeof(ValuesJsonConverter))]

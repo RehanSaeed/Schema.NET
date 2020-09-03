@@ -10,11 +10,6 @@
     public partial interface IProductModel : IProduct
     {
         /// <summary>
-        /// A pointer to a base product from which this product is a variant. It is safe to infer that the variant inherits all product features from the base model, unless defined locally. This is not transitive.
-        /// </summary>
-        OneOrMany<IProductModel> IsVariantOf { get; set; }
-
-        /// <summary>
         /// A pointer from a previous, often discontinued variant of the product to its newer variant.
         /// </summary>
         OneOrMany<IProductModel> PredecessorOf { get; set; }
@@ -38,11 +33,11 @@
         public override string Type => "ProductModel";
 
         /// <summary>
-        /// A pointer to a base product from which this product is a variant. It is safe to infer that the variant inherits all product features from the base model, unless defined locally. This is not transitive.
+        /// Indicates the kind of product that this is a variant of. In the case of &lt;a class="localLink" href="https://schema.org/ProductModel"&gt;ProductModel&lt;/a&gt;, this is a pointer (from a ProductModel) to a base product from which this product is a variant. It is safe to infer that the variant inherits all product features from the base model, unless defined locally. This is not transitive. In the case of a &lt;a class="localLink" href="https://schema.org/ProductGroup"&gt;ProductGroup&lt;/a&gt;, the group description also serves as a template, representing a set of Products that vary on explicitly defined, specific dimensions only (so it defines both a set of variants, as well as which values distinguish amongst those variants). When used with &lt;a class="localLink" href="https://schema.org/ProductGroup"&gt;ProductGroup&lt;/a&gt;, this property can apply to any &lt;a class="localLink" href="https://schema.org/Product"&gt;Product&lt;/a&gt; included in the group.
         /// </summary>
         [DataMember(Name = "isVariantOf", Order = 206)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IProductModel> IsVariantOf { get; set; }
+        public override OneOrMany<IProductModel> IsVariantOf { get; set; }
 
         /// <summary>
         /// A pointer from a previous, often discontinued variant of the product to its newer variant.

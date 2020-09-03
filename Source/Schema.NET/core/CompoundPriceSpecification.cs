@@ -10,7 +10,7 @@
     public partial interface ICompoundPriceSpecification : IPriceSpecification
     {
         /// <summary>
-        /// This property links to all &lt;a class="localLink" href="http://schema.org/UnitPriceSpecification"&gt;UnitPriceSpecification&lt;/a&gt; nodes that apply in parallel for the &lt;a class="localLink" href="http://schema.org/CompoundPriceSpecification"&gt;CompoundPriceSpecification&lt;/a&gt; node.
+        /// This property links to all &lt;a class="localLink" href="https://schema.org/UnitPriceSpecification"&gt;UnitPriceSpecification&lt;/a&gt; nodes that apply in parallel for the &lt;a class="localLink" href="https://schema.org/CompoundPriceSpecification"&gt;CompoundPriceSpecification&lt;/a&gt; node.
         /// </summary>
         OneOrMany<IUnitPriceSpecification> PriceComponent { get; set; }
     }
@@ -28,7 +28,7 @@
         public override string Type => "CompoundPriceSpecification";
 
         /// <summary>
-        /// This property links to all &lt;a class="localLink" href="http://schema.org/UnitPriceSpecification"&gt;UnitPriceSpecification&lt;/a&gt; nodes that apply in parallel for the &lt;a class="localLink" href="http://schema.org/CompoundPriceSpecification"&gt;CompoundPriceSpecification&lt;/a&gt; node.
+        /// This property links to all &lt;a class="localLink" href="https://schema.org/UnitPriceSpecification"&gt;UnitPriceSpecification&lt;/a&gt; nodes that apply in parallel for the &lt;a class="localLink" href="https://schema.org/CompoundPriceSpecification"&gt;CompoundPriceSpecification&lt;/a&gt; node.
         /// </summary>
         [DataMember(Name = "priceComponent", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]

@@ -7,7 +7,7 @@
     /// <summary>
     /// See AutomotiveBusiness, Store for more information.
     /// </summary>
-    public partial interface IAutomotiveBusinessAndStore : IStore, IAutomotiveBusiness
+    public partial interface IAutomotiveBusinessAndStore : IAutomotiveBusiness, IStore
     {
     }
 

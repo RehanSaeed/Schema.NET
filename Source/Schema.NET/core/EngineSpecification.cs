@@ -12,8 +12,8 @@
         /// <summary>
         /// The volume swept by all of the pistons inside the cylinders of an internal combustion engine in a single movement. &lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): CMQ for cubic centimeter, LTR for liters, INQ for cubic inches
-        /// * Note 1: You can link to information about how the given value has been determined using the &lt;a class="localLink" href="http://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.
-        /// * Note 2: You can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.
+        /// * Note 1: You can link to information about how the given value has been determined using the &lt;a class="localLink" href="https://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.
+        /// * Note 2: You can use &lt;a class="localLink" href="https://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="https://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.
         /// </summary>
         OneOrMany<IQuantitativeValue> EngineDisplacement { get; set; }
 
@@ -22,8 +22,8 @@
         ///     Typical unit code(s): KWT for kilowatt, BHP for brake horsepower, N12 for metric horsepower (PS, with 1 PS = 735,49875 W)&lt;br/&gt;&lt;br/&gt;
         /// &lt;ul&gt;
         /// &lt;li&gt;Note 1: There are many different ways of measuring an engine's power. For an overview, see  &lt;a href="http://en.wikipedia.org/wiki/Horsepower#Engine_power_test_codes"&gt;http://en.wikipedia.org/wiki/Horsepower#Engine&lt;em&gt;power&lt;/em&gt;test_codes&lt;/a&gt;.&lt;/li&gt;
-        /// &lt;li&gt;Note 2: You can link to information about how the given value has been determined using the &lt;a class="localLink" href="http://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.&lt;/li&gt;
-        /// &lt;li&gt;Note 3: You can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
+        /// &lt;li&gt;Note 2: You can link to information about how the given value has been determined using the &lt;a class="localLink" href="https://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.&lt;/li&gt;
+        /// &lt;li&gt;Note 3: You can use &lt;a class="localLink" href="https://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="https://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
         OneOrMany<IQuantitativeValue> EnginePower { get; set; }
@@ -42,8 +42,8 @@
         /// The torque (turning force) of the vehicle's engine.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): NU for newton metre (N m), F17 for pound-force per foot, or F48 for pound-force per inch&lt;br/&gt;&lt;br/&gt;
         /// &lt;ul&gt;
-        /// &lt;li&gt;Note 1: You can link to information about how the given value has been determined (e.g. reference RPM) using the &lt;a class="localLink" href="http://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.&lt;/li&gt;
-        /// &lt;li&gt;Note 2: You can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
+        /// &lt;li&gt;Note 1: You can link to information about how the given value has been determined (e.g. reference RPM) using the &lt;a class="localLink" href="https://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.&lt;/li&gt;
+        /// &lt;li&gt;Note 2: You can use &lt;a class="localLink" href="https://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="https://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
         OneOrMany<IQuantitativeValue> Torque { get; set; }
@@ -64,8 +64,8 @@
         /// <summary>
         /// The volume swept by all of the pistons inside the cylinders of an internal combustion engine in a single movement. &lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): CMQ for cubic centimeter, LTR for liters, INQ for cubic inches
-        /// * Note 1: You can link to information about how the given value has been determined using the &lt;a class="localLink" href="http://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.
-        /// * Note 2: You can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.
+        /// * Note 1: You can link to information about how the given value has been determined using the &lt;a class="localLink" href="https://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.
+        /// * Note 2: You can use &lt;a class="localLink" href="https://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="https://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.
         /// </summary>
         [DataMember(Name = "engineDisplacement", Order = 306)]
         [JsonConverter(typeof(ValuesJsonConverter))]
@@ -76,8 +76,8 @@
         ///     Typical unit code(s): KWT for kilowatt, BHP for brake horsepower, N12 for metric horsepower (PS, with 1 PS = 735,49875 W)&lt;br/&gt;&lt;br/&gt;
         /// &lt;ul&gt;
         /// &lt;li&gt;Note 1: There are many different ways of measuring an engine's power. For an overview, see  &lt;a href="http://en.wikipedia.org/wiki/Horsepower#Engine_power_test_codes"&gt;http://en.wikipedia.org/wiki/Horsepower#Engine&lt;em&gt;power&lt;/em&gt;test_codes&lt;/a&gt;.&lt;/li&gt;
-        /// &lt;li&gt;Note 2: You can link to information about how the given value has been determined using the &lt;a class="localLink" href="http://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.&lt;/li&gt;
-        /// &lt;li&gt;Note 3: You can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
+        /// &lt;li&gt;Note 2: You can link to information about how the given value has been determined using the &lt;a class="localLink" href="https://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.&lt;/li&gt;
+        /// &lt;li&gt;Note 3: You can use &lt;a class="localLink" href="https://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="https://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "enginePower", Order = 307)]
@@ -102,8 +102,8 @@
         /// The torque (turning force) of the vehicle's engine.&lt;br/&gt;&lt;br/&gt;
         /// Typical unit code(s): NU for newton metre (N m), F17 for pound-force per foot, or F48 for pound-force per inch&lt;br/&gt;&lt;br/&gt;
         /// &lt;ul&gt;
-        /// &lt;li&gt;Note 1: You can link to information about how the given value has been determined (e.g. reference RPM) using the &lt;a class="localLink" href="http://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.&lt;/li&gt;
-        /// &lt;li&gt;Note 2: You can use &lt;a class="localLink" href="http://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="http://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
+        /// &lt;li&gt;Note 1: You can link to information about how the given value has been determined (e.g. reference RPM) using the &lt;a class="localLink" href="https://schema.org/valueReference"&gt;valueReference&lt;/a&gt; property.&lt;/li&gt;
+        /// &lt;li&gt;Note 2: You can use &lt;a class="localLink" href="https://schema.org/minValue"&gt;minValue&lt;/a&gt; and &lt;a class="localLink" href="https://schema.org/maxValue"&gt;maxValue&lt;/a&gt; to indicate ranges.&lt;/li&gt;
         /// &lt;/ul&gt;
         /// </summary>
         [DataMember(Name = "torque", Order = 310)]

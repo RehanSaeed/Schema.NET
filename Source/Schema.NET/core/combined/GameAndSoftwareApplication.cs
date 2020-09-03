@@ -7,7 +7,7 @@
     /// <summary>
     /// See Game, SoftwareApplication for more information.
     /// </summary>
-    public partial interface IGameAndSoftwareApplication : IGame, ISoftwareApplication
+    public partial interface IGameAndSoftwareApplication : ISoftwareApplication, IGame
     {
     }
 

@@ -10,7 +10,7 @@ namespace Schema.NET.Benchmarks.Core
         {
             PotentialAction = new SearchAction()
             {
-                Target = new Uri("http://example.com/search?&q={query}"),
+                Target = new Uri("https://example.com/search?&q={query}"),
                 QueryInput = "required",
             },
             Url = new Uri("https://example.com"),

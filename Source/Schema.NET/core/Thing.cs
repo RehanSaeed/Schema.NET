@@ -35,12 +35,12 @@
         OneOrMany<string> DisambiguatingDescription { get; set; }
 
         /// <summary>
-        /// The identifier property represents any kind of identifier for any kind of &lt;a class="localLink" href="http://schema.org/Thing"&gt;Thing&lt;/a&gt;, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See &lt;a href="/docs/datamodel.html#identifierBg"&gt;background notes&lt;/a&gt; for more details.
+        /// The identifier property represents any kind of identifier for any kind of &lt;a class="localLink" href="https://schema.org/Thing"&gt;Thing&lt;/a&gt;, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See &lt;a href="/docs/datamodel.html#identifierBg"&gt;background notes&lt;/a&gt; for more details.
         /// </summary>
         Values<IPropertyValue, string, Uri> Identifier { get; set; }
 
         /// <summary>
-        /// An image of the item. This can be a &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt; or a fully described &lt;a class="localLink" href="http://schema.org/ImageObject"&gt;ImageObject&lt;/a&gt;.
+        /// An image of the item. This can be a &lt;a class="localLink" href="https://schema.org/URL"&gt;URL&lt;/a&gt; or a fully described &lt;a class="localLink" href="https://schema.org/ImageObject"&gt;ImageObject&lt;/a&gt;.
         /// </summary>
         Values<IImageObject, Uri> Image { get; set; }
 
@@ -118,14 +118,14 @@
         public OneOrMany<string> DisambiguatingDescription { get; set; }
 
         /// <summary>
-        /// The identifier property represents any kind of identifier for any kind of &lt;a class="localLink" href="http://schema.org/Thing"&gt;Thing&lt;/a&gt;, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See &lt;a href="/docs/datamodel.html#identifierBg"&gt;background notes&lt;/a&gt; for more details.
+        /// The identifier property represents any kind of identifier for any kind of &lt;a class="localLink" href="https://schema.org/Thing"&gt;Thing&lt;/a&gt;, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See &lt;a href="/docs/datamodel.html#identifierBg"&gt;background notes&lt;/a&gt; for more details.
         /// </summary>
         [DataMember(Name = "identifier", Order = 11)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public Values<IPropertyValue, string, Uri> Identifier { get; set; }
 
         /// <summary>
-        /// An image of the item. This can be a &lt;a class="localLink" href="http://schema.org/URL"&gt;URL&lt;/a&gt; or a fully described &lt;a class="localLink" href="http://schema.org/ImageObject"&gt;ImageObject&lt;/a&gt;.
+        /// An image of the item. This can be a &lt;a class="localLink" href="https://schema.org/URL"&gt;URL&lt;/a&gt; or a fully described &lt;a class="localLink" href="https://schema.org/ImageObject"&gt;ImageObject&lt;/a&gt;.
         /// </summary>
         [DataMember(Name = "image", Order = 12)]
         [JsonConverter(typeof(ValuesJsonConverter))]

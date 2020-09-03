@@ -103,7 +103,7 @@ namespace Schema.NET.Tool.Services
                         combinedClass = new Class()
                         {
                             Description = classDescription,
-                            Id = new Uri($"http://CombinedClass/{className}"),
+                            Id = new Uri($"https://CombinedClass/{className}"),
                             IsCombined = true,
                             Layer = @class.IsCombined ? @class.Layer : $"{@class.Layer}{Path.DirectorySeparatorChar}combined",
                             Name = className,
@@ -240,14 +240,14 @@ namespace Schema.NET.Tool.Services
                     property.Types.AddRange(x.RangeIncludes
                         .Where(y =>
                         {
-                            var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty, StringComparison.Ordinal);
+                            var propertyTypeName = y.ToString().Replace("https://schema.org/", string.Empty, StringComparison.Ordinal);
                             var propertyTypeClass = schemaClasses
                                 .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
                             return propertyTypeClass is null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
                         })
                         .Select(y =>
                         {
-                            var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty, StringComparison.Ordinal);
+                            var propertyTypeName = y.ToString().Replace("https://schema.org/", string.Empty, StringComparison.Ordinal);
                             var isPropertyTypeEnum = schemaClasses
                                 .Any(z => z.IsEnum && string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
                             var csharpTypeStrings = GetCSharpTypeStrings(

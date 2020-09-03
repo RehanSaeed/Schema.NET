@@ -47,7 +47,7 @@
         /// <summary>
         /// The class of drug this belongs to (e.g., statins).
         /// </summary>
-        OneOrMany<DrugClass?> DrugClass { get; set; }
+        OneOrMany<IDrugClass> DrugClass { get; set; }
 
         /// <summary>
         /// The unit in which the drug is measured, e.g. '5 mg tablet'.
@@ -213,7 +213,7 @@
         /// </summary>
         [DataMember(Name = "drugClass", Order = 314)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<DrugClass?> DrugClass { get; set; }
+        public OneOrMany<IDrugClass> DrugClass { get; set; }
 
         /// <summary>
         /// The unit in which the drug is measured, e.g. '5 mg tablet'.

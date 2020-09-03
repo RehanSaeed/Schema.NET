@@ -10,7 +10,7 @@ namespace Schema.NET.Test
         {
             Name = "Volvo XC90", // Required
             Description = "The XC90 is pure reflection of luxury that embodies Swedish design heritage. See everything this luxury SUV has to offer.", // Recommended
-            Image = new Uri("http://www.example.com/volvo_xc90.jpg"), // Required
+            Image = new Uri("https://www.example.com/volvo_xc90.jpg"), // Required
             Brand = new Brand // Recommended
             {
                 Name = "Volvo",
@@ -39,7 +39,7 @@ namespace Schema.NET.Test
                 "\"@type\":\"Car\"," +
                 "\"name\":\"Volvo XC90\"," +
                 "\"description\":\"The XC90 is pure reflection of luxury that embodies Swedish design heritage. See everything this luxury SUV has to offer.\"," +
-                "\"image\":\"http://www.example.com/volvo_xc90.jpg\"," +
+                "\"image\":\"https://www.example.com/volvo_xc90.jpg\"," +
                 "\"brand\":{" +
                     "\"@type\":\"Brand\"," +
                     "\"name\":\"Volvo\"" +

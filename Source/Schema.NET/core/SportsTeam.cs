@@ -20,7 +20,7 @@
         OneOrMany<IPerson> Coach { get; set; }
 
         /// <summary>
-        /// Gender of something, typically a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, but possibly also fictional characters, animals, etc. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender. The &lt;a class="localLink" href="http://schema.org/gender"&gt;gender&lt;/a&gt; property can also be used in an extended sense to cover e.g. the gender of sports teams. As with the gender of individuals, we do not try to enumerate all possibilities. A mixed-gender &lt;a class="localLink" href="http://schema.org/SportsTeam"&gt;SportsTeam&lt;/a&gt; can be indicated with a text value of "Mixed".
+        /// Gender of something, typically a &lt;a class="localLink" href="https://schema.org/Person"&gt;Person&lt;/a&gt;, but possibly also fictional characters, animals, etc. While https://schema.org/Male and https://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender. The &lt;a class="localLink" href="https://schema.org/gender"&gt;gender&lt;/a&gt; property can also be used in an extended sense to cover e.g. the gender of sports teams. As with the gender of individuals, we do not try to enumerate all possibilities. A mixed-gender &lt;a class="localLink" href="https://schema.org/SportsTeam"&gt;SportsTeam&lt;/a&gt; can be indicated with a text value of "Mixed".
         /// </summary>
         Values<GenderType?, string> Gender { get; set; }
     }
@@ -52,7 +52,7 @@
         public OneOrMany<IPerson> Coach { get; set; }
 
         /// <summary>
-        /// Gender of something, typically a &lt;a class="localLink" href="http://schema.org/Person"&gt;Person&lt;/a&gt;, but possibly also fictional characters, animals, etc. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender. The &lt;a class="localLink" href="http://schema.org/gender"&gt;gender&lt;/a&gt; property can also be used in an extended sense to cover e.g. the gender of sports teams. As with the gender of individuals, we do not try to enumerate all possibilities. A mixed-gender &lt;a class="localLink" href="http://schema.org/SportsTeam"&gt;SportsTeam&lt;/a&gt; can be indicated with a text value of "Mixed".
+        /// Gender of something, typically a &lt;a class="localLink" href="https://schema.org/Person"&gt;Person&lt;/a&gt;, but possibly also fictional characters, animals, etc. While https://schema.org/Male and https://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender. The &lt;a class="localLink" href="https://schema.org/gender"&gt;gender&lt;/a&gt; property can also be used in an extended sense to cover e.g. the gender of sports teams. As with the gender of individuals, we do not try to enumerate all possibilities. A mixed-gender &lt;a class="localLink" href="https://schema.org/SportsTeam"&gt;SportsTeam&lt;/a&gt; can be indicated with a text value of "Mixed".
         /// </summary>
         [DataMember(Name = "gender", Order = 308)]
         [JsonConverter(typeof(ValuesJsonConverter))]

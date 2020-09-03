@@ -13,6 +13,11 @@
         /// A medical service available from this provider.
         /// </summary>
         Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy> AvailableService { get; set; }
+
+        /// <summary>
+        /// Indicates data describing a hospital, e.g. a CDC &lt;a class="localLink" href="https://schema.org/CDCPMDRecord"&gt;CDCPMDRecord&lt;/a&gt; or as some kind of &lt;a class="localLink" href="https://schema.org/Dataset"&gt;Dataset&lt;/a&gt;.
+        /// </summary>
+        OneOrMany<IDataset> HealthcareReportingData { get; set; }
     }
 
     /// <summary>
@@ -35,9 +40,16 @@
         public Values<IMedicalProcedure, IMedicalTest, IMedicalTherapy> AvailableService { get; set; }
 
         /// <summary>
+        /// Indicates data describing a hospital, e.g. a CDC &lt;a class="localLink" href="https://schema.org/CDCPMDRecord"&gt;CDCPMDRecord&lt;/a&gt; or as some kind of &lt;a class="localLink" href="https://schema.org/Dataset"&gt;Dataset&lt;/a&gt;.
+        /// </summary>
+        [DataMember(Name = "healthcareReportingData", Order = 407)]
+        [JsonConverter(typeof(ValuesJsonConverter))]
+        public OneOrMany<IDataset> HealthcareReportingData { get; set; }
+
+        /// <summary>
         /// A medical specialty of the provider.
         /// </summary>
-        [DataMember(Name = "medicalSpecialty", Order = 407)]
+        [DataMember(Name = "medicalSpecialty", Order = 408)]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public override OneOrMany<MedicalSpecialty?> MedicalSpecialty { get; set; }
 
@@ -56,6 +68,7 @@
 
             return this.Type == other.Type &&
                 this.AvailableService == other.AvailableService &&
+                this.HealthcareReportingData == other.HealthcareReportingData &&
                 this.MedicalSpecialty == other.MedicalSpecialty &&
                 base.Equals(other);
         }
@@ -66,6 +79,7 @@
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
             .And(this.AvailableService)
+            .And(this.HealthcareReportingData)
             .And(this.MedicalSpecialty)
             .And(base.GetHashCode());
     }

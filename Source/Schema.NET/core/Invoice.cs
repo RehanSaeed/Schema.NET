@@ -27,7 +27,7 @@
         /// <summary>
         /// A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
         /// </summary>
-        Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
+        Values<PhysicalActivityCategory?, string, IThing, Uri> Category { get; set; }
 
         /// <summary>
         /// A number that confirms the given order or payment has been received.
@@ -123,7 +123,7 @@
         /// </summary>
         [DataMember(Name = "category", Order = 209)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public Values<PhysicalActivityCategory?, string, IThing> Category { get; set; }
+        public Values<PhysicalActivityCategory?, string, IThing, Uri> Category { get; set; }
 
         /// <summary>
         /// A number that confirms the given order or payment has been received.

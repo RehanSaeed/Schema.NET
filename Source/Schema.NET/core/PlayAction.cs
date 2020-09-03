@@ -8,8 +8,8 @@
     /// The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.&lt;br/&gt;&lt;br/&gt;
     /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/ListenAction"&gt;ListenAction&lt;/a&gt;: Unlike ListenAction (which is under ConsumeAction), PlayAction refers to performing for an audience or at an event, rather than consuming music.&lt;/li&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/WatchAction"&gt;WatchAction&lt;/a&gt;: Unlike WatchAction (which is under ConsumeAction), PlayAction refers to showing/displaying for an audience or at an event, rather than consuming visual content.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/ListenAction"&gt;ListenAction&lt;/a&gt;: Unlike ListenAction (which is under ConsumeAction), PlayAction refers to performing for an audience or at an event, rather than consuming music.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/WatchAction"&gt;WatchAction&lt;/a&gt;: Unlike WatchAction (which is under ConsumeAction), PlayAction refers to showing/displaying for an audience or at an event, rather than consuming visual content.&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
     public partial interface IPlayAction : IAction
@@ -22,15 +22,15 @@
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        OneOrMany<IEvent> Event { get; set; }
+        OneOrMany<IEvent> Events { get; set; }
     }
 
     /// <summary>
     /// The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.&lt;br/&gt;&lt;br/&gt;
     /// Related actions:&lt;br/&gt;&lt;br/&gt;
     /// &lt;ul&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/ListenAction"&gt;ListenAction&lt;/a&gt;: Unlike ListenAction (which is under ConsumeAction), PlayAction refers to performing for an audience or at an event, rather than consuming music.&lt;/li&gt;
-    /// &lt;li&gt;&lt;a class="localLink" href="http://schema.org/WatchAction"&gt;WatchAction&lt;/a&gt;: Unlike WatchAction (which is under ConsumeAction), PlayAction refers to showing/displaying for an audience or at an event, rather than consuming visual content.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/ListenAction"&gt;ListenAction&lt;/a&gt;: Unlike ListenAction (which is under ConsumeAction), PlayAction refers to performing for an audience or at an event, rather than consuming music.&lt;/li&gt;
+    /// &lt;li&gt;&lt;a class="localLink" href="https://schema.org/WatchAction"&gt;WatchAction&lt;/a&gt;: Unlike WatchAction (which is under ConsumeAction), PlayAction refers to showing/displaying for an audience or at an event, rather than consuming visual content.&lt;/li&gt;
     /// &lt;/ul&gt;
     /// </summary>
     [DataContract]
@@ -54,7 +54,7 @@
         /// </summary>
         [DataMember(Name = "event", Order = 207)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> Event { get; set; }
+        public OneOrMany<IEvent> Events { get; set; }
 
         /// <inheritdoc/>
         public bool Equals(PlayAction other)
@@ -71,7 +71,7 @@
 
             return this.Type == other.Type &&
                 this.Audience == other.Audience &&
-                this.Event == other.Event &&
+                this.Events == other.Events &&
                 base.Equals(other);
         }
 
@@ -81,7 +81,7 @@
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
             .And(this.Audience)
-            .And(this.Event)
+            .And(this.Events)
             .And(base.GetHashCode());
     }
 }

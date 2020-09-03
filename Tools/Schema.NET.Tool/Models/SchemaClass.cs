@@ -33,7 +33,7 @@ namespace Schema.NET.Tool.Models
 
         public bool IsEnum => EnumerableExtensions
             .Traverse(this, x => x.SubClassOf)
-            .Any(x => x.Id == new Uri("http://schema.org/Enumeration"));
+            .Any(x => x.Id == new Uri("https://schema.org/Enumeration"));
 
         public bool IsArchived => EnumerableExtensions
             .Traverse(this, x => x.SubClassOf)

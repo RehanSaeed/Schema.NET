@@ -12,7 +12,7 @@
         /// <summary>
         /// Upcoming or past event associated with this place, organization, or action.
         /// </summary>
-        OneOrMany<IEvent> Event { get; set; }
+        OneOrMany<IEvent> Events { get; set; }
     }
 
     /// <summary>
@@ -32,7 +32,7 @@
         /// </summary>
         [DataMember(Name = "event", Order = 406)]
         [JsonConverter(typeof(ValuesJsonConverter))]
-        public OneOrMany<IEvent> Event { get; set; }
+        public OneOrMany<IEvent> Events { get; set; }
 
         /// <inheritdoc/>
         public bool Equals(InformAction other)
@@ -48,7 +48,7 @@
             }
 
             return this.Type == other.Type &&
-                this.Event == other.Event &&
+                this.Events == other.Events &&
                 base.Equals(other);
         }
 
@@ -57,7 +57,7 @@
 
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Type)
-            .And(this.Event)
+            .And(this.Events)
             .And(base.GetHashCode());
     }
 }
