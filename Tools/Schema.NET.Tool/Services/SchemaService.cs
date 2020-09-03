@@ -223,6 +223,7 @@ namespace Schema.NET.Tool.Services
             };
             @class.Parents.AddRange(schemaClasses
                 .Where(x => schemaClass.SubClassOfIds.Contains(x.Id))
+                .Where(x => !x.IsPending)
                 .Select(x => new Class() { Id = x.Id }));
 
             var properties = schemaProperties
