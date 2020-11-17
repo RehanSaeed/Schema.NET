@@ -936,7 +936,7 @@ namespace Schema.NET
         /// <returns>
         /// <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj) => obj is Values<T1, T2, T3, T4, T5, T6, T7> ? this.Equals((Values<T1, T2, T3, T4, T5, T6, T7>)obj) : false;
+        public override bool Equals(object obj) => obj is Values<T1, T2, T3, T4, T5, T6, T7> values && this.Equals(values);
 
         /// <summary>
         /// Returns a hash code for this instance.

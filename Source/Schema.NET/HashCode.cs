@@ -96,9 +96,9 @@ namespace Schema.NET
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
-            if (obj is HashCode)
+            if (obj is HashCode hashCode)
             {
-                return this.Equals((HashCode)obj);
+                return this.Equals(hashCode);
             }
 
             return false;
