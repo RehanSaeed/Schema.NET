@@ -64,7 +64,7 @@ namespace Schema.NET
                     for (var i = 0; i < span.Length; i++)
                     {
                         var item = span[i];
-                        if (item is object)
+                        if (item is not null)
                         {
                             items[index] = item;
                             index++;
@@ -223,7 +223,7 @@ namespace Schema.NET
         /// <returns>An enumerator for the <see cref="OneOrMany{T}"/>.</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            if (this.collection is object)
+            if (this.collection is not null)
             {
                 for (var i = 0; i < this.collection.Length; i++)
                 {
@@ -309,7 +309,7 @@ namespace Schema.NET
         /// <returns>
         ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj) => obj is OneOrMany<T> ? this.Equals((OneOrMany<T>)obj) : false;
+        public override bool Equals(object obj) => obj is OneOrMany<T> oneOrMany && this.Equals(oneOrMany);
 
         /// <summary>
         /// Returns a hash code for this instance.

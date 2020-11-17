@@ -13,7 +13,7 @@ namespace Schema.NET.Tool
                 throw new ArgumentNullException(nameof(parent));
             }
 
-            for (var x = node; x is object; x = parent(x))
+            for (var x = node; x is not null; x = parent(x))
             {
                 yield return x;
             }
@@ -29,7 +29,7 @@ namespace Schema.NET.Tool
             yield return node;
 
             var childNodes = children(node);
-            if (childNodes is object)
+            if (childNodes is not null)
             {
                 foreach (var childNode in childNodes.SelectMany(x => Traverse(x, children)))
                 {
