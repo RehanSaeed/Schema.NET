@@ -15,6 +15,11 @@ namespace Schema.NET
     /// <seealso cref="JsonConverter" />
     public class ValuesJsonConverter : JsonConverter
     {
+        private const string HttpSchemaOrgUrl = "http://schema.org/";
+        private const int HttpSchemaOrgLength = 18; // equivalent to "http://schema.org/".Length
+        private const string HttpsSchemaOrgUrl = "https://schema.org/";
+        private const int HttpsSchemaOrgLength = 19; // equivalent to "https://schema.org/".Length
+
         private static readonly TypeInfo ThingInterfaceTypeInfo = typeof(IThing).GetTypeInfo();
         private static readonly Dictionary<string, Type> BuiltInThingTypeLookup = new Dictionary<string, Type>(StringComparer.Ordinal);
 
@@ -201,7 +206,9 @@ namespace Schema.NET
                             // If the target is an interface, attempt to identify concrete target
                             var localTargetType = underlyingTargetType;
                             var typeInfo = localTargetType.GetTypeInfo();
+#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
                             if (typeInfo.IsInterface && TryGetConcreteType(typeInfo.Name.Substring(1), out var concreteType))
+#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
                             {
                                 localTargetType = concreteType;
                             }
@@ -282,19 +289,18 @@ namespace Schema.NET
                 }
                 else if (targetType.GetTypeInfo().IsEnum)
                 {
-                    const string SCHEMA_ORG = "http://schema.org/";
-                    const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
-                    const string SCHEMA_ORG_HTTPS = "https://schema.org/";
-                    const int SCHEMA_ORG_HTTPS_LENGTH = 19; // equivalent to "https://schema.org/".Length
-
                     string enumString;
-                    if (valueString.StartsWith(SCHEMA_ORG, StringComparison.OrdinalIgnoreCase))
+                    if (valueString.StartsWith(HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
                     {
-                        enumString = valueString.Substring(SCHEMA_ORG_LENGTH);
+#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
+                        enumString = valueString.Substring(HttpSchemaOrgLength);
+#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
                     }
-                    else if (valueString.StartsWith(SCHEMA_ORG_HTTPS, StringComparison.OrdinalIgnoreCase))
+                    else if (valueString.StartsWith(HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
                     {
-                        enumString = valueString.Substring(SCHEMA_ORG_HTTPS_LENGTH);
+#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
+                        enumString = valueString.Substring(HttpsSchemaOrgLength);
+#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
                     }
                     else
                     {
@@ -373,7 +379,7 @@ namespace Schema.NET
                     result = localResult;
                 }
             }
-            else if (tokenType == JsonToken.Integer || tokenType == JsonToken.Float)
+            else if (tokenType is JsonToken.Integer or JsonToken.Float)
             {
                 if (targetType.GetTypeInfo().IsPrimitive || targetType == typeof(decimal))
                 {

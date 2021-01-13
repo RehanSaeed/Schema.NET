@@ -2,13 +2,11 @@ namespace Schema.NET
 {
     using System;
     using System.Collections.Concurrent;
-    using System.Collections.Generic;
     using System.Linq.Expressions;
     using System.Reflection;
-    using System.Text;
 
     /// <summary>
-    /// A faster version of <see cref="Activator.CreateInstance(System.Type, object[])"/> by providing constructor delegates.
+    /// A faster version of <see cref="Activator.CreateInstance(Type, object[])"/> by providing constructor delegates.
     /// </summary>
     internal static class FastActivator
     {
