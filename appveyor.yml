@@ -3,7 +3,7 @@
 version: '{build}'
 
 image:
-- macOS
+#- macOS
 - Ubuntu
 - Visual Studio 2019
 
@@ -28,12 +28,12 @@ build_script:
       Invoke-WebRequest "https://dot.net/v1/dotnet-install.sh" -OutFile "./dotnet-install.sh"
       sudo chmod u+x dotnet-install.sh
       if ($isMacOS) {
-        sudo ./dotnet-install.sh --jsonfile global.json --install-dir '/Users/appveyor/.dotnet'
+        sudo ./dotnet-install.sh --jsonfile global.json --install-dir '/usr/local/share/dotnet'
       } else {
         sudo ./dotnet-install.sh --jsonfile global.json --install-dir '/usr/share/dotnet'
       }
     }
-- pwsh: dotnet tool restore
+- pwsh: dotnet tool restore --verbosity diagnostic
 - pwsh: dotnet cake --target=Build
 - pwsh: dotnet cake --target=Test
 - pwsh: dotnet cake --target=Pack
