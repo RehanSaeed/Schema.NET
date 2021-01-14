@@ -6,24 +6,24 @@ namespace Schema.NET.Tool.CustomOverrides
 
     public class RenameEventProperty : IClassOverride
     {
-        public bool CanOverride(Class @class)
+        public bool CanOverride(Class c)
         {
-            if (@class is null)
+            if (c is null)
             {
-                throw new ArgumentNullException(nameof(@class));
+                throw new ArgumentNullException(nameof(c));
             }
 
-            return @class.Properties.Any(x => string.Equals(x.Name, "Event", StringComparison.OrdinalIgnoreCase));
+            return c.Properties.Any(x => string.Equals(x.Name, "Event", StringComparison.OrdinalIgnoreCase));
         }
 
-        public void Override(Class @class)
+        public void Override(Class c)
         {
-            if (@class is null)
+            if (c is null)
             {
-                throw new ArgumentNullException(nameof(@class));
+                throw new ArgumentNullException(nameof(c));
             }
 
-            var eventProperty = @class
+            var eventProperty = c
                 .Properties
                 .First(x => string.Equals(x.Name, "Event", StringComparison.OrdinalIgnoreCase));
             eventProperty.Name = "Events";

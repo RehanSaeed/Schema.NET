@@ -174,7 +174,9 @@ namespace Schema.NET.Tool.Services
                     var parentClass = classes.FirstOrDefault(x => x.Id == parentClassId);
                     if (parentClass is null)
                     {
+#pragma warning disable CA2201 // Do not raise reserved exception types
                         throw new Exception(Resources.CheckThatNewPrimitiveTypeNotAdded);
+#pragma warning restore CA2201 // Do not raise reserved exception types
                     }
                     else
                     {

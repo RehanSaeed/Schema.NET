@@ -84,9 +84,9 @@ namespace Schema.NET.Tool.ViewModels
             }
             else
             {
-#pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
+#pragma warning disable CA2201 // Do not raise reserved exception types
                 throw new Exception(Resources.InterfaceShouldOnlyHaveOneParent);
-#pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
+#pragma warning restore CA2201 // Do not raise reserved exception types
             }
 
             stringBuilder.AppendIndentLine(4, "{");
@@ -143,9 +143,9 @@ namespace Schema.NET.Tool.ViewModels
             }
             else
             {
-#pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
+#pragma warning disable CA2201 // Do not raise reserved exception types
                 throw new Exception(Resources.ClassShouldOnlyHaveOneParent);
-#pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
+#pragma warning restore CA2201 // Do not raise reserved exception types
             }
 
             stringBuilder.AppendIndentLine(4, "{");
