@@ -35,6 +35,18 @@ namespace Schema.NET
         public virtual string Type { get; }
 
         /// <summary>
+        /// Gets or sets the graph entities for the current JSON-LD document.
+        /// At times, it is necessary to make statements about a graph itself, rather than just a single node.
+        /// This can be done by grouping a set of nodes using the @graph keyword.
+        /// When a JSON-LD document's top-level structure is an object that contains no other properties than @graph and
+        /// optionally @context (properties that are not mapped to an IRI or a keyword are ignored), @graph is considered
+        /// to express the otherwise implicit default graph. This mechanism can be useful when a number of nodes exist
+        /// at the document's top level that share the same context, which is, e.g., the case when a document is flattened.
+        /// </summary>
+        [DataMember(Name = "@graph", Order = 2)]
+        public virtual OneOrMany<IThing> Graph { get; set; }
+
+        /// <summary>
         /// Gets or sets the identifier used to uniquely identify things that are being described in the document with
         /// IRIs or blank node identifiers.
         /// To be able to externally reference nodes in a graph, it is important that nodes have an identifier. IRIs
@@ -42,7 +54,7 @@ namespace Schema.NET
         /// result in a representation of that node.This may allow an application to retrieve further information about
         /// a node. In JSON-LD, a node is identified using the @id keyword:
         /// </summary>
-        [DataMember(Name = "@id", Order = 2)]
+        [DataMember(Name = "@id", Order = 3)]
         public virtual Uri Id { get; set; }
 
         /// <inheritdoc/>
