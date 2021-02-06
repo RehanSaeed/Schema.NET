@@ -7,7 +7,7 @@ namespace Schema.NET
     /// <summary>
     /// Converts a <see cref="JsonLdContext"/> object to and from JSON.
     /// </summary>
-    /// <seealso cref="Newtonsoft.Json.JsonConverter" />
+    /// <seealso cref="JsonConverter" />
     public class ContextJsonConverter : JsonConverter<JsonLdContext>
     {
         /// <inheritdoc />
@@ -48,9 +48,7 @@ namespace Schema.NET
                 language = languageProperty?.Value?.ToString();
             }
 
-#pragma warning disable CA1062 // Validate arguments of public methods
             context.Name = name;
-#pragma warning restore CA1062 // Validate arguments of public methods
             context.Language = language;
             return context;
         }
