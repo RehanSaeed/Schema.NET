@@ -21,7 +21,7 @@ namespace Schema.NET.Tool.Repositories
                 BaseAddress = new Uri("https://schema.org"),
             };
 
-        public async Task<(List<SchemaClass> classes, List<SchemaProperty> properties, List<SchemaEnumerationValue> enumerationValues)> GetObjectsAsync()
+        public async Task<(List<SchemaClass> Classes, List<SchemaProperty> Properties, List<SchemaEnumerationValue> EnumerationValues)> GetObjectsAsync()
         {
             var schemaObjects = await this.GetSchemaObjectsAsync().ConfigureAwait(false);
             var schemaTreeClasses = await this.GetSchemaTreeClassesAsync().ConfigureAwait(false);
