@@ -54,7 +54,7 @@ stages:
         key: 'nuget | "$(Agent.OS)" | **/*.csproj,!**/bin/**,!**/obj/** | **/*.props,!**/bin/**,!**/obj/**'
         restoreKeys: |
            nuget | "$(Agent.OS)"
-        path: '$(UserProfile)/.nuget/packages'
+        path: '~/.nuget/packages'
     - pwsh: 'dotnet tool restore'
       displayName: 'Dotnet Tool Restore'
       failOnStderr: true
