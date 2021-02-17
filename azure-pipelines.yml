@@ -51,7 +51,7 @@ stages:
     - task: Cache@2
       displayName: 'Cache NuGet Packages'
       inputs:
-        key: 'nuget | "$(Agent.OS)" | **/*.csproj | **/*.props,!**/bin/**'
+        key: 'nuget | "$(Agent.OS)" | **/*.csproj,!**/bin/**,!**/obj/** | **/*.props,!**/bin/**,!**/obj/**'
         restoreKeys: |
            nuget | "$(Agent.OS)"
         path: '$(UserProfile)/.nuget/packages'
