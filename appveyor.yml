@@ -17,6 +17,9 @@ environment:
   # Set the build number in MinVer.
   MINVERBUILDMETADATA: build.%APPVEYOR_BUILD_NUMBER%
 
+cache:
+- packages -> ~/.nuget/packages
+
 build_script:
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
 - pwsh: |

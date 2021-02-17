@@ -48,6 +48,13 @@ stages:
       inputs:
         packageType: 'sdk'
         useGlobalJson: true
+    - task: Cache@2
+      displayName: 'Cache NuGet Packages'
+      inputs:
+        key: 'nuget | "$(Agent.OS)" | **/*.csproj | **/*.props,!**/bin/**'
+        restoreKeys: |
+           nuget | "$(Agent.OS)"
+        path: '$(UserProfile)/.nuget/packages'
     - pwsh: 'dotnet tool restore'
       displayName: 'Dotnet Tool Restore'
       failOnStderr: true

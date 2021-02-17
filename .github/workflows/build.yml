@@ -37,6 +37,12 @@ jobs:
       shell: pwsh
     - name: 'Install .NET Core SDK'
       uses: actions/setup-dotnet@v1
+    - uses: actions/cache@v2
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}-${{ hashFiles('**/*.props') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
     - name: 'Dotnet Tool Restore'
       run: dotnet tool restore
       shell: pwsh
