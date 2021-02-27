@@ -37,7 +37,7 @@ namespace Schema.NET.Tool
                 this.schemaRepository);
         }
 
-        public static async Task<int> Main()
+        public static async Task<int> MainAsync()
         {
             var program = new Program();
 
@@ -64,7 +64,7 @@ namespace Schema.NET.Tool
         public async Task ExecuteAsync()
         {
             Console.WriteLine(Resources.StartedClassAndPropertyDownload);
-            var (enumerations, classes) = await this.schemaService.GetObjectsAsync().ConfigureAwait(false);
+            var objects = await this.schemaService.GetObjectsAsync().ConfigureAwait(false);
             Console.WriteLine(Resources.FinishedClassAndPropertyDownload);
 
             var assemblyLocation = typeof(Program).GetTypeInfo().Assembly.Location;
@@ -75,9 +75,7 @@ namespace Schema.NET.Tool
             Console.WriteLine(Resources.FinishedCleanProjectFolder);
 
             Console.WriteLine(Resources.StartedWriteClasses);
-            foreach (var schemaObjectGroup in enumerations
-                .OfType<SchemaObject>()
-                .Concat(classes.OfType<SchemaObject>())
+            foreach (var schemaObjectGroup in objects
                 .GroupBy(x => x.Layer))
             {
                 var directoryPath = Path.Combine(outputDirectory, schemaObjectGroup.Key);

@@ -34,6 +34,19 @@ namespace Schema.NET.Tool.ViewModels
 
         public bool IsCombined { get; set; }
 
+        public IEnumerable<Property> DeclaredProperties
+        {
+            get
+            {
+                var ancestorProps = this.Ancestors.SelectMany(ancestor => ancestor.Properties)
+                    .Select(prop => prop.Name);
+                var declaredProperties = this.Properties.Where(classProp => !ancestorProps.Contains(classProp.Name))
+                    .OrderBy(x => x.Order);
+
+                return declaredProperties;
+            }
+        }
+
         public bool IsMeta => EnumerableExtensions
             .Traverse(this, x => x.Parents)
             .Any(x => string.Equals(x.Layer, LayerName.Meta, StringComparison.Ordinal));

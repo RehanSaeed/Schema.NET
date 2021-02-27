@@ -27,9 +27,6 @@ namespace Schema.NET.Tool.Services
                 throw new ArgumentNullException(nameof(y));
             }
 
-            x = x.ToUpperInvariant();
-            y = y.ToUpperInvariant();
-
             if (x.Equals("ENDDATE", StringComparison.Ordinal))
             {
                 x = "STARTDATE1";

@@ -14,7 +14,8 @@ namespace Schema.NET.Tool.CustomOverrides
                 throw new ArgumentNullException(nameof(c));
             }
 
-            return string.Equals(c.Name, "MediaObject", StringComparison.OrdinalIgnoreCase);
+            return string.Equals(c.Name, "MediaObject", StringComparison.OrdinalIgnoreCase) ||
+                c.CombinationOf.Any(co => string.Equals(co.Name, "MediaObject", StringComparison.OrdinalIgnoreCase));
         }
 
         public void Override(Class c)
