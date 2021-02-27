@@ -1,7 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Build">
-    <TargetFrameworks>net5.0;netcoreapp3.1;netstandard2.0;net472;net461</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <!-- net5.0;netcoreapp3.1;netstandard2.0;net472;net461-->
+    <EmitCompilerGeneratedFiles>True</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Label="Package">
@@ -13,6 +16,7 @@
   <ItemGroup Label="Package References">
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Memory" Version="4.5.4" />
+    <ProjectReference Include="../../Tools/Schema.NET.Tool/Schema.NET.Tool.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup Label="Package References (.NET Framework)" Condition="'$(TargetFramework)' == 'net461'">

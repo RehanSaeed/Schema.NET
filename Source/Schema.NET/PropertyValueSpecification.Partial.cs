@@ -18,19 +18,21 @@ namespace Schema.NET
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();
+#pragma warning disable SA1005
 
-            if (this.ValueMaxLength.First().HasValue)
-            {
-                stringBuilder.Append("maxlength=");
-                stringBuilder.Append(this.ValueMaxLength.First().Value);
-            }
+            // Single line comments should begin with single space
+            //if (this.ValueMaxLength.First().HasValue)
+            //{
+            //    stringBuilder.Append("maxlength=");
+            //    stringBuilder.Append(this.ValueMaxLength.First().Value);
+            //}
 
-            if (this.ValueMinLength.First().HasValue)
-            {
-                AppendSpace(stringBuilder);
-                stringBuilder.Append("minlength=");
-                stringBuilder.Append(this.ValueMinLength.First().Value);
-            }
+            //if (this.ValueMinLength.First().HasValue)
+            //{
+            //    AppendSpace(stringBuilder);
+            //    stringBuilder.Append("minlength=");
+            //    stringBuilder.Append(this.ValueMinLength.First().Value);
+            //}
 
             if (this.ValueName.First() is not null)
             {
@@ -46,13 +48,20 @@ namespace Schema.NET
                 stringBuilder.Append(this.ValuePattern.First());
             }
 
-            if (this.ValueRequired.First().HasValue)
-            {
-                AppendSpace(stringBuilder);
-                stringBuilder.Append("required");
-            }
+            //if (this.ValuePattern.First() is object)
+            //{
+            //    AppendSpace(stringBuilder);
+            //    stringBuilder.Append("pattern=");
+            //    stringBuilder.Append(this.ValuePattern.First());
+            //}
 
+            //if (this.ValueRequired.First().HasValue)
+            //{
+            //    AppendSpace(stringBuilder);
+            //    stringBuilder.Append("required");
+            //}
             return stringBuilder.ToString();
+#pragma warning restore SA1005 // Single line comments should begin with single space
         }
 
         private static void AppendSpace(StringBuilder stringBuilder)

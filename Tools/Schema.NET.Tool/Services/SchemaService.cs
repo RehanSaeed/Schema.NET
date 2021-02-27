@@ -6,6 +6,7 @@ namespace Schema.NET.Tool.Services
     using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using Schema.NET.Tool.CustomOverrides;
     using Schema.NET.Tool.Repositories;
@@ -13,6 +14,8 @@ namespace Schema.NET.Tool.Services
 
     public class SchemaService
     {
+        private static readonly Regex StartsWithNumber = new Regex("^[0-9]", RegexOptions.Compiled);
+
         private readonly IEnumerable<IClassOverride> classOverrides;
         private readonly IEnumerable<IEnumerationOverride> enumerationOverrides;
         private readonly ISchemaRepository schemaRepository;
@@ -27,7 +30,7 @@ namespace Schema.NET.Tool.Services
             this.schemaRepository = schemaRepository;
         }
 
-        public async Task<(List<Enumeration> Enumerations, List<Class> Classes)> GetObjectsAsync()
+        public async Task<IEnumerable<SchemaObject>> GetObjectsAsync()
         {
             var (schemaClasses, schemaProperties, schemaValues) = await this.schemaRepository
                 .GetObjectsAsync()
@@ -58,7 +61,7 @@ namespace Schema.NET.Tool.Services
 
             SetPropertyOrder(classes);
 
-            return (enumerations, classes);
+            return (enumerations as IEnumerable<SchemaObject>).Concat(classes);
         }
 
         private static void CombineMultipleParentsIntoCombinedClass(List<Class> classes)
@@ -95,7 +98,7 @@ namespace Schema.NET.Tool.Services
                 {
                     var className = string.Join("And", @class.Parents.Select(x => x.Name).OrderBy(x => x));
 
-                    var combinedClass = classes.FirstOrDefault(x => string.Equals(x.Name, className, StringComparison.Ordinal));
+                    var combinedClass = classes.FirstOrDefault(x => string.Equals(x.Name, className));
                     if (combinedClass is null)
                     {
                         var classDescription = "See " + string.Join(", ", @class.Parents.Select(x => x.Name).OrderBy(x => x)) + " for more information.";
@@ -221,8 +224,9 @@ namespace Schema.NET.Tool.Services
                 Description = schemaClass.Comment,
                 Id = schemaClass.Id,
                 Layer = schemaClass.Layer,
-                Name = schemaClass.Label,
+                Name = StartsWithNumber.IsMatch(schemaClass.Label) ? $"_{schemaClass.Label}" : schemaClass.Label,
             };
+
             @class.Parents.AddRange(schemaClasses
                 .Where(x => schemaClass.SubClassOfIds.Contains(x.Id))
                 .Where(x => !x.IsPending)
@@ -243,24 +247,24 @@ namespace Schema.NET.Tool.Services
                     property.Types.AddRange(x.RangeIncludes
                         .Where(y =>
                         {
-                            var propertyTypeName = y.ToString().Replace("https://schema.org/", string.Empty, StringComparison.Ordinal);
+                            var propertyTypeName = y.ToString().Replace("schema:", string.Empty);
                             var propertyTypeClass = schemaClasses
-                                .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
+                                .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName));
                             return propertyTypeClass is null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
                         })
                         .Select(y =>
                         {
-                            var propertyTypeName = y.ToString().Replace("https://schema.org/", string.Empty, StringComparison.Ordinal);
+                            var propertyTypeName = y.ToString().Replace("schema:", string.Empty);
                             var isPropertyTypeEnum = schemaClasses
-                                .Any(z => z.IsEnum && string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
+                                .Any(z => z.IsEnum && string.Equals(z.Label, propertyTypeName));
                             var csharpTypeStrings = GetCSharpTypeStrings(
                                 propertyName,
                                 propertyTypeName,
                                 isPropertyTypeEnum);
                             return new PropertyType(propertyTypeName, csharpTypeStrings);
                         })
-                        .Where(y => !string.Equals(y.Name, "Enumeration", StringComparison.OrdinalIgnoreCase) &&
-                            !string.Equals(y.Name, "QualitativeValue", StringComparison.OrdinalIgnoreCase))
+                        .Where(y => !string.Equals(y.Name, "Enumeration") &&
+                            !string.Equals(y.Name, "QualitativeValue"))
                         .GroupBy(y => y.CSharpTypeStrings)
                         .Select(y => y.First())
                         .OrderBy(y => y.Name));
@@ -309,22 +313,24 @@ namespace Schema.NET.Tool.Services
             {
                 case "Boolean":
                     return new List<string> { "bool?" };
+                case "DataType":
+                    return new List<string> { "bool?", "int?", "decimal?", "double?", "DateTime?", "TimeSpan?", "string" };
                 case "Date":
                     return new List<string> { "int?", "DateTime?" };
                 case "DateTime":
                     return new List<string> { "DateTimeOffset?" };
                 case "Integer":
                 case "Number" when
-                    propertyName.Contains("NumberOf", StringComparison.Ordinal) ||
-                    propertyName.Contains("Year", StringComparison.Ordinal) ||
-                    propertyName.Contains("Count", StringComparison.Ordinal) ||
-                    propertyName.Contains("Age", StringComparison.Ordinal):
+                    propertyName.Contains("NumberOf") ||
+                    propertyName.Contains("Year") ||
+                    propertyName.Contains("Count") ||
+                    propertyName.Contains("Age"):
                     return new List<string> { "int?" };
                 case "Number" when
-                    propertyName.Contains("Price", StringComparison.Ordinal) ||
-                    propertyName.Contains("Amount", StringComparison.Ordinal) ||
-                    propertyName.Contains("Salary", StringComparison.Ordinal) ||
-                    propertyName.Contains("Discount", StringComparison.Ordinal):
+                    propertyName.Contains("Price") ||
+                    propertyName.Contains("Amount") ||
+                    propertyName.Contains("Salary") ||
+                    propertyName.Contains("Discount"):
                     return new List<string> { "decimal?" };
                 case "Number":
                     return new List<string> { "double?" };

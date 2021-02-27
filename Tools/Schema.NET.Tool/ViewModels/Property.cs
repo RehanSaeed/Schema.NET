@@ -23,20 +23,38 @@ namespace Schema.NET.Tool.ViewModels
 
         public List<PropertyType> Types { get; } = new List<PropertyType>();
 
-        private string TypeString
+        public string PropertyTypeString
         {
             get
             {
-                var adjustedTypesList = this.Types.SelectMany(x => x.CSharpTypeStrings).ToList();
-                var adjustedTypesString = string.Join(", ", adjustedTypesList);
-                if (adjustedTypesList.Count == 1)
+                var propertyTypes = this.Types.SelectMany(x => x.CSharpTypeStrings).ToArray();
+                var propertyTypesString = string.Join(", ", propertyTypes);
+                if (propertyTypes.Length == 1)
                 {
-                    return $"OneOrMany<{adjustedTypesString}>";
+                    return $"OneOrMany<{propertyTypesString}>";
                 }
                 else
                 {
-                    return $"Values<{adjustedTypesString}>";
+                    return $"Values<{propertyTypesString}>";
                 }
+            }
+        }
+
+        public string JsonConverterType
+        {
+            get
+            {
+                var jsonConverterType = "ValuesJsonConverter";
+                if (this.Types.Any(x => string.Equals(x.Name, "Duration", StringComparison.OrdinalIgnoreCase)))
+                {
+                    jsonConverterType = "TimeSpanToISO8601DurationValuesJsonConverter";
+                }
+                else if (this.Types.Any(x => string.Equals(x.Name, "Date", StringComparison.OrdinalIgnoreCase)))
+                {
+                    jsonConverterType = "DateTimeToIso8601DateValuesJsonConverter";
+                }
+
+                return jsonConverterType;
             }
         }
 
@@ -70,13 +88,13 @@ namespace Schema.NET.Tool.ViewModels
                 stringBuilder.AppendIndentLine(indent, "[JsonConverter(typeof(ValuesJsonConverter))]");
             }
 
-            stringBuilder.AppendIndentLine(indent, $"public{modifier} {this.TypeString} {this.Name} {{ get; set; }}");
+            stringBuilder.AppendIndentLine(indent, $"public{modifier} {this.PropertyTypeString} {this.Name} {{ get; set; }}");
         }
 
         public void AppendIndentLineForInterface(StringBuilder stringBuilder, int indent)
         {
             stringBuilder.AppendCommentSummary(indent, this.Description);
-            stringBuilder.AppendIndentLine(indent, $"{this.TypeString} {this.Name} {{ get; set; }}");
+            stringBuilder.AppendIndentLine(indent, $"{this.PropertyTypeString} {this.Name} {{ get; set; }}");
         }
 
         public Property Clone()

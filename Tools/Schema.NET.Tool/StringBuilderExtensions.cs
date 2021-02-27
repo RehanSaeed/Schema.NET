@@ -49,15 +49,15 @@ namespace Schema.NET.Tool
 
             value = (value ?? string.Empty)
                 .Trim()
-                .Replace("\n\n", "\n", StringComparison.Ordinal)
-                .Replace(" \n", "\n", StringComparison.Ordinal);
+                .Replace("\n\n", "\n")
+                .Replace(" \n", "\n");
             var escapedValue = XmlEscape(value);
 
             stringBuilder.AppendIndent(count);
             stringBuilder.Append("/// ");
             stringBuilder.AppendLine(escapedValue
-                .Replace("\n", $"\n{new string(Space, count)}/// ", StringComparison.Ordinal)
-                .Replace("/// \n", "///\n", StringComparison.Ordinal));
+                .Replace("\n", $"\n{new string(Space, count)}/// ")
+                .Replace("/// \n", "///\n"));
         }
 
         public static void AppendCommentSummary(this StringBuilder stringBuilder, int count, string value)
