@@ -38,8 +38,7 @@ namespace Schema.NET.Tool.Services
 
             var isEnumMap = new HashSet<string>(
                 schemaClasses.Where(c => c.IsEnum).Select(c => c.Label),
-                StringComparer.Ordinal
-            );
+                StringComparer.Ordinal);
 
             var enumerations = new List<GeneratorSchemaEnumeration>();
             var classes = new List<GeneratorSchemaClass>();
