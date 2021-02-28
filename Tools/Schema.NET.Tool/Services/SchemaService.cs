@@ -125,7 +125,7 @@ namespace Schema.NET.Tool.Services
                             Description = classDescription,
                             Id = new Uri($"https://CombinedClass/{className}"),
                             IsCombined = true,
-                            Layer = @class.IsCombined ? @class.Layer : $"{@class.Layer}{Path.DirectorySeparatorChar}combined",
+                            Layer = @class.IsCombined ? @class.Layer : $"{@class.Layer}.combined",
                             Name = className,
                         };
                         combinedClass.CombinationOf.AddRange(@class.Parents);
@@ -215,7 +215,7 @@ namespace Schema.NET.Tool.Services
             var enumeration = new GeneratorSchemaEnumeration()
             {
                 Description = schemaClass.Comment,
-                Layer = $"{schemaClass.Layer}{Path.DirectorySeparatorChar}enumerations",
+                Layer = $"{schemaClass.Layer}.enumerations",
                 Name = schemaClass.Label,
             };
             enumeration.Values.AddRange(schemaValues
