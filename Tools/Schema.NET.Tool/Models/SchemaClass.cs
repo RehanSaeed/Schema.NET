@@ -7,45 +7,19 @@ namespace Schema.NET.Tool.Models
 
     public class SchemaClass : SchemaObject
     {
-        private static readonly string[] PrimitiveTypes = new string[]
-        {
-            "QualitativeValue",
-            "Enumeration",
-            "Boolean",
-            "Date",
-            "DateTime",
-            "Number",
-            "Integer",
-            "Float",
-            "Text",
-            "XPathType",
-            "CssSelectorType",
-            "Quantity",
-            "Mass",
-            "Energy",
-            "Distance",
-            "Duration",
-            "Time",
-            "URL",
-            "DataType",
-            "PronounceableText",
-        };
+        private static readonly Uri EnumerationId = new Uri("schema:Enumeration");
 
         public bool IsEnum => EnumerableExtensions
             .Traverse(this, x => x.SubClassOf)
-            .Any(x => x.Id == new Uri("schema:Enumeration"));
+            .Any(x => x.Id == EnumerationId);
 
-        public bool IsArchived => EnumerableExtensions
+        public override bool IsArchived => EnumerableExtensions
             .Traverse(this, x => x.SubClassOf)
             .Any(x => string.Equals(x.Layer, LayerName.Archived, StringComparison.OrdinalIgnoreCase));
 
-        public bool IsMeta => EnumerableExtensions
+        public override bool IsMeta => EnumerableExtensions
             .Traverse(this, x => x.SubClassOf)
             .Any(x => string.Equals(x.Layer, LayerName.Meta, StringComparison.OrdinalIgnoreCase));
-
-        public bool IsPending => string.Equals(this.Layer, LayerName.Pending, StringComparison.OrdinalIgnoreCase);
-
-        public bool IsPrimitive => PrimitiveTypes.Contains(this.Label);
 
         public List<SchemaClass> SubClassOf { get; } = new List<SchemaClass>();
 

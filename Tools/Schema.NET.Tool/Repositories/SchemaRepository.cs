@@ -9,27 +9,30 @@ namespace Schema.NET.Tool.Repositories
     using System.Threading.Tasks;
     using Schema.NET.Tool.Models;
 
-    public class SchemaRepository : Disposable, ISchemaRepository
+    public class SchemaRepository : ISchemaRepository
     {
-#pragma warning disable CA2213 // Members should be disposed
+        public static readonly Func<SchemaObject, bool> DefaultFilter = (SchemaObject x) => !x.IsArchived && !x.IsMeta && !x.IsPending;
+
         private readonly HttpClient httpClient;
-#pragma warning restore CA2213 // Members should be disposed
 
-        public SchemaRepository() =>
-            this.httpClient = new HttpClient()
-            {
-                BaseAddress = new Uri("https://schema.org"),
-            };
+        public SchemaRepository(HttpClient httpClient) => this.httpClient = httpClient;
 
-        public async Task<(IEnumerable<SchemaClass> Classes, IEnumerable<SchemaProperty> Properties, IEnumerable<SchemaEnumerationValue> EnumerationValues)> GetObjectsAsync()
+        public async Task<(IEnumerable<SchemaClass> Classes, IEnumerable<SchemaProperty> Properties, IEnumerable<SchemaEnumerationValue> EnumerationValues)> GetObjectsAsync(Func<SchemaObject, bool> filter)
         {
+            if (filter == null)
+            {
+                filter = DefaultFilter;
+            }
+
             var schemaObjects = await this.GetSchemaObjectsAsync().ConfigureAwait(false);
+            schemaObjects = schemaObjects.Where(filter).ToArray();
+
             var schemaTreeClasses = await this.GetSchemaTreeClassesAsync().ConfigureAwait(false);
             var schemaClasses = schemaObjects.OfType<SchemaClass>().ToArray();
 
             foreach (var schemaClass in schemaClasses)
             {
-                var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => new Uri("schema:" + x.Name) == schemaClass.Id);
+                var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => x.Name.Equals(schemaClass.Label, StringComparison.OrdinalIgnoreCase));
                 if (schemaTreeClass is not null)
                 {
                     schemaClass.Layer = schemaTreeClass.Layer;
@@ -51,7 +54,7 @@ namespace Schema.NET.Tool.Repositories
             {
                 response.EnsureSuccessStatusCode();
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return Deserialize<IEnumerable<SchemaObject>>(json, new SchemaPropertyJsonConverter());
+                return Deserialize<List<SchemaObject>>(json, new SchemaPropertyJsonConverter());
             }
         }
 
@@ -69,8 +72,6 @@ namespace Schema.NET.Tool.Repositories
                     .ToArray();
             }
         }
-
-        protected override void DisposeManaged() => this.httpClient.Dispose();
 
         private static T Deserialize<T>(string json, JsonConverter converter)
         {

@@ -9,8 +9,8 @@ namespace Schema.NET.Tool.Services
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using Schema.NET.Tool.CustomOverrides;
-    using Schema.NET.Tool.Repositories;
     using Schema.NET.Tool.GeneratorModels;
+    using Schema.NET.Tool.Repositories;
 
     public class SchemaService
     {

@@ -3,6 +3,7 @@ namespace Schema.NET.Tool
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.CodeAnalysis;
@@ -21,7 +22,10 @@ namespace Schema.NET.Tool
 #pragma warning disable IDE0022 // Use expression body for methods
             Task.Run(async () =>
             {
-                var schemaRepository = new SchemaRepository();
+                var schemaRepository = new SchemaRepository(new HttpClient()
+                {
+                    BaseAddress = new Uri("https://schema.org"),
+                });
                 var schemaService = new SchemaService(
                     new IClassOverride[]
                     {
@@ -34,8 +38,6 @@ namespace Schema.NET.Tool
                     schemaRepository);
 
                 this.SchemaObjects = await schemaService.GetObjectsAsync().ConfigureAwait(false);
-
-                schemaRepository.Dispose();
 #pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
             }).GetAwaiter().GetResult();
 #pragma warning restore IDE0022 // Use expression body for methods
