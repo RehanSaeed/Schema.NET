@@ -23,7 +23,7 @@ namespace Schema.NET.Tool
             {
                 var schemaRepository = new SchemaRepository();
                 var schemaService = new SchemaService(
-                    new List<IClassOverride>()
+                    new IClassOverride[]
                     {
                         new AddQueryInputPropertyToSearchAction(),
                         new AddTextTypeToActionTarget(),
