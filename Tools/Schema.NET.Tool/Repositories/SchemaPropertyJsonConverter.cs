@@ -27,17 +27,7 @@ namespace Schema.NET.Tool.Repositories
             return new List<SchemaObject>();
         }
 
-            if (reader.TokenType == JsonToken.StartObject)
-            {
-                var token = JToken.Load(reader);
-                var graphArray = ((JArray)token["@graph"]).ToList();
-                return graphArray.Select(Read).Where(x => x is object).ToList();
-            }
-
-            return Enumerable.Empty<SchemaObject>();
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) =>
+        public override void Write(Utf8JsonWriter writer, List<SchemaObject> value, JsonSerializerOptions options) =>
             throw new NotImplementedException();
 
         private static SchemaObject Read(JsonElement token)
@@ -75,7 +65,7 @@ namespace Schema.NET.Tool.Repositories
                 LayerName.Core :
                 isPartOf.Replace("http://", string.Empty).Replace(".schema.org", string.Empty);
 
-            if (types.Any(type => string.Equals(type, "rdfs:Class")))
+            if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.Ordinal)))
             {
                 var schemaClass = new SchemaClass()
                 {
@@ -88,7 +78,7 @@ namespace Schema.NET.Tool.Repositories
                 schemaClass.Types.AddRange(types);
                 return schemaClass;
             }
-            else if (types.Any(type => string.Equals(type, "rdf:Property")))
+            else if (types.Any(type => string.Equals(type, "rdf:Property", StringComparison.Ordinal)))
             {
                 var schemaProperty = new SchemaProperty()
                 {
