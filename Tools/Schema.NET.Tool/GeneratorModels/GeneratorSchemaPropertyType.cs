@@ -1,18 +1,18 @@
-namespace Schema.NET.Tool.ViewModels
+namespace Schema.NET.Tool.GeneratorModels
 {
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
 
     [DebuggerDisplay("{Name} ({CSharpTypeStrings})")]
-    public class PropertyType : ICloneable<PropertyType>
+    public class GeneratorSchemaPropertyType : ICloneable<GeneratorSchemaPropertyType>
     {
-        public PropertyType(string name, params string[] csharpTypeStrings)
+        public GeneratorSchemaPropertyType(string name, params string[] csharpTypeStrings)
             : this(name, csharpTypeStrings.AsEnumerable())
         {
         }
 
-        public PropertyType(string name, IEnumerable<string> csharpTypeStrings)
+        public GeneratorSchemaPropertyType(string name, IEnumerable<string> csharpTypeStrings)
         {
             this.Name = name;
             this.CSharpTypeStrings = new List<string>(csharpTypeStrings);
@@ -22,6 +22,6 @@ namespace Schema.NET.Tool.ViewModels
 
         public string Name { get; }
 
-        public PropertyType Clone() => new(this.Name, this.CSharpTypeStrings);
+        public GeneratorSchemaPropertyType Clone() => new(this.Name, this.CSharpTypeStrings);
     }
 }

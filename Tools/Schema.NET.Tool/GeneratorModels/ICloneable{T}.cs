@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.ViewModels
+﻿namespace Schema.NET.Tool.GeneratorModels
 {
     public interface ICloneable<T>
     {

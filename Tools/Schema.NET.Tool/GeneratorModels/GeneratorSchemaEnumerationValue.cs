@@ -1,10 +1,10 @@
-namespace Schema.NET.Tool.ViewModels
+namespace Schema.NET.Tool.GeneratorModels
 {
     using System;
     using System.Diagnostics;
 
     [DebuggerDisplay("{Name}")]
-    public class EnumerationValue
+    public class GeneratorSchemaEnumerationValue
     {
         public string Description { get; set; }
 

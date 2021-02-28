@@ -2,12 +2,12 @@ namespace Schema.NET.Tool.CustomOverrides
 {
     using System;
     using System.Linq;
-    using Schema.NET.Tool.ViewModels;
+    using Schema.NET.Tool.GeneratorModels;
 
     // https://github.com/schemaorg/schemaorg/issues/1668
     public class AddNumberTypeToMediaObjectHeightAndWidth : IClassOverride
     {
-        public bool CanOverride(Class c)
+        public bool CanOverride(GeneratorSchemaClass c)
         {
             if (c is null)
             {
@@ -18,7 +18,7 @@ namespace Schema.NET.Tool.CustomOverrides
                 c.CombinationOf.Any(co => string.Equals(co.Name, "MediaObject", StringComparison.OrdinalIgnoreCase));
         }
 
-        public void Override(Class c)
+        public void Override(GeneratorSchemaClass c)
         {
             if (c is null)
             {
@@ -29,12 +29,12 @@ namespace Schema.NET.Tool.CustomOverrides
                 .Properties
                 .First(x => string.Equals(x.Name, "Height", StringComparison.OrdinalIgnoreCase))
                 .Types
-                .Add(new PropertyType("Integer", "int"));
+                .Add(new GeneratorSchemaPropertyType("Integer", "int"));
             c
                 .Properties
                 .First(x => string.Equals(x.Name, "Width", StringComparison.OrdinalIgnoreCase))
                 .Types
-                .Add(new PropertyType("Integer", "int"));
+                .Add(new GeneratorSchemaPropertyType("Integer", "int"));
         }
     }
 }

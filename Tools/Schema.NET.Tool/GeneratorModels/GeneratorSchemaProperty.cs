@@ -1,17 +1,16 @@
-namespace Schema.NET.Tool.ViewModels
+namespace Schema.NET.Tool.GeneratorModels
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
-    using System.Text;
 
     [DebuggerDisplay("{Name}")]
 #pragma warning disable CA1716 // Identifiers should not match keywords
-    public class Property : ICloneable<Property>
+    public class GeneratorSchemaProperty : ICloneable<GeneratorSchemaProperty>
 #pragma warning restore CA1716 // Identifiers should not match keywords
     {
-        public Class Class { get; set; }
+        public GeneratorSchemaClass Class { get; set; }
 
         public string Description { get; set; }
 
@@ -21,7 +20,7 @@ namespace Schema.NET.Tool.ViewModels
 
         public int Order { get; set; }
 
-        public List<PropertyType> Types { get; } = new List<PropertyType>();
+        public List<GeneratorSchemaPropertyType> Types { get; } = new List<GeneratorSchemaPropertyType>();
 
         public string PropertyTypeString
         {
@@ -58,9 +57,9 @@ namespace Schema.NET.Tool.ViewModels
             }
         }
 
-        public Property Clone()
+        public GeneratorSchemaProperty Clone()
         {
-            var property = new Property()
+            var property = new GeneratorSchemaProperty()
             {
                 Description = this.Description,
                 JsonName = this.JsonName,

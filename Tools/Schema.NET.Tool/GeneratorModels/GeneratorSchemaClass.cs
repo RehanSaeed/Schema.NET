@@ -1,26 +1,25 @@
-namespace Schema.NET.Tool.ViewModels
+namespace Schema.NET.Tool.GeneratorModels
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
-    using System.Text;
     using Schema.NET.Tool.Constants;
 
     [DebuggerDisplay("{Name}")]
 #pragma warning disable CA1716 // Identifiers should not match keywords
-    public class Class : SchemaObject
+    public class GeneratorSchemaClass : GeneratorSchemaObject
 #pragma warning restore CA1716 // Identifiers should not match keywords
     {
-        public IEnumerable<Class> Ancestors => EnumerableExtensions
+        public IEnumerable<GeneratorSchemaClass> Ancestors => EnumerableExtensions
             .Traverse(this, x => x.Parents)
             .Where(x => x != this);
 
-        public List<Class> Children { get; } = new List<Class>();
+        public List<GeneratorSchemaClass> Children { get; } = new List<GeneratorSchemaClass>();
 
-        public List<Class> CombinationOf { get; } = new List<Class>();
+        public List<GeneratorSchemaClass> CombinationOf { get; } = new List<GeneratorSchemaClass>();
 
-        public IEnumerable<Class> Descendants => EnumerableExtensions
+        public IEnumerable<GeneratorSchemaClass> Descendants => EnumerableExtensions
             .Traverse(this, x => x.Children)
             .Where(x => x != this);
 
@@ -34,7 +33,7 @@ namespace Schema.NET.Tool.ViewModels
 
         public bool IsCombined { get; set; }
 
-        public IEnumerable<Property> DeclaredProperties
+        public IEnumerable<GeneratorSchemaProperty> DeclaredProperties
         {
             get
             {
@@ -57,8 +56,8 @@ namespace Schema.NET.Tool.ViewModels
 
         public bool IsThingType => string.Equals(this.Name, "Thing", StringComparison.Ordinal);
 
-        public List<Class> Parents { get; } = new List<Class>();
+        public List<GeneratorSchemaClass> Parents { get; } = new List<GeneratorSchemaClass>();
 
-        public List<Property> Properties { get; } = new List<Property>();
+        public List<GeneratorSchemaProperty> Properties { get; } = new List<GeneratorSchemaProperty>();
     }
 }

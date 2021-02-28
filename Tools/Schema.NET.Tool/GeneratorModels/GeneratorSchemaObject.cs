@@ -1,6 +1,6 @@
-﻿namespace Schema.NET.Tool.ViewModels
+namespace Schema.NET.Tool.GeneratorModels
 {
-    public class SchemaObject
+    public class GeneratorSchemaObject
     {
         public string Layer { get; set; }
 

@@ -1,11 +1,11 @@
 namespace Schema.NET.Tool.CustomOverrides
 {
     using System;
-    using Schema.NET.Tool.ViewModels;
+    using Schema.NET.Tool.GeneratorModels;
 
     public class WarnEmptyEnumerations : IEnumerationOverride
     {
-        public bool CanOverride(Enumeration enumeration)
+        public bool CanOverride(GeneratorSchemaEnumeration enumeration)
         {
             if (enumeration is null)
             {
@@ -15,7 +15,7 @@ namespace Schema.NET.Tool.CustomOverrides
             return enumeration.Values.Count == 0;
         }
 
-        public void Override(Enumeration enumeration)
+        public void Override(GeneratorSchemaEnumeration enumeration)
         {
             if (enumeration is null)
             {

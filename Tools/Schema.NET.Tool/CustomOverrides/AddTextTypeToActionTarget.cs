@@ -2,12 +2,12 @@ namespace Schema.NET.Tool.CustomOverrides
 {
     using System;
     using System.Linq;
-    using Schema.NET.Tool.ViewModels;
+    using Schema.NET.Tool.GeneratorModels;
 
     // See https://schema.org/docs/actions.html#part-3
     public class AddTextTypeToActionTarget : IClassOverride
     {
-        public bool CanOverride(Class c)
+        public bool CanOverride(GeneratorSchemaClass c)
         {
             if (c is null)
             {
@@ -17,7 +17,7 @@ namespace Schema.NET.Tool.CustomOverrides
             return string.Equals(c.Name, "Action", StringComparison.OrdinalIgnoreCase);
         }
 
-        public void Override(Class c)
+        public void Override(GeneratorSchemaClass c)
         {
             if (c is null)
             {
@@ -25,7 +25,7 @@ namespace Schema.NET.Tool.CustomOverrides
             }
 
             var property = c.Properties.First(x => string.Equals(x.Name, "target", StringComparison.OrdinalIgnoreCase));
-            property.Types.Add(new PropertyType("URL", "Uri"));
+            property.Types.Add(new GeneratorSchemaPropertyType("URL", "Uri"));
         }
     }
 }
