@@ -3,11 +3,13 @@ namespace Schema.NET.Tool
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Text.RegularExpressions;
     using System.Xml;
 
     public static class SourceUtility
     {
         private const char Space = ' ';
+        private static readonly Regex NewLineReplace = new Regex("[\n ]{0,}\n[\n ]{0,}", RegexOptions.Compiled);
 
         public static string RenderItems<T>(bool canRender, IEnumerable<T> items, Func<T, string> action)
         {
@@ -37,15 +39,8 @@ namespace Schema.NET.Tool
                 return string.Empty;
             }
 
-            text = text
-                   .Trim()
-                   .Replace("\n\n", "\n")
-                   .Replace(" \n", "\n");
-            var escapedValue = XmlEscape(text);
-
-            return escapedValue
-                .Replace("\n", $"\n{new string(Space, indent)}/// ")
-                .Replace("/// \n", "///\n");
+            var escapedValue = XmlEscape(text.Trim());
+            return NewLineReplace.Replace(escapedValue, $"\n{new string(Space, indent)}/// ");
         }
 
         private static string XmlEscape(string value)
