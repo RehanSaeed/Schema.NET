@@ -36,6 +36,11 @@ namespace Schema.NET.Tool.Services
                 .GetObjectsAsync()
                 .ConfigureAwait(false);
 
+            var isEnumMap = new HashSet<string>(
+                schemaClasses.Where(c => c.IsEnum).Select(c => c.Label),
+                StringComparer.Ordinal
+            );
+
             var enumerations = new List<GeneratorSchemaEnumeration>();
             var classes = new List<GeneratorSchemaClass>();
             foreach (var schemaClass in schemaClasses
@@ -48,7 +53,7 @@ namespace Schema.NET.Tool.Services
                 }
                 else
                 {
-                    var @class = TranslateClass(schemaClass, schemaClasses, schemaProperties);
+                    var @class = TranslateClass(schemaClass, schemaClasses, schemaProperties, isEnumMap);
                     classes.Add(@class);
                 }
             }
@@ -217,7 +222,8 @@ namespace Schema.NET.Tool.Services
         private static GeneratorSchemaClass TranslateClass(
             Models.SchemaClass schemaClass,
             IEnumerable<Models.SchemaClass> schemaClasses,
-            IEnumerable<Models.SchemaProperty> schemaProperties)
+            IEnumerable<Models.SchemaProperty> schemaProperties,
+            HashSet<string> isEnumMap)
         {
             var @class = new GeneratorSchemaClass()
             {
@@ -255,8 +261,7 @@ namespace Schema.NET.Tool.Services
                         .Select(y =>
                         {
                             var propertyTypeName = y.ToString().Replace("schema:", string.Empty);
-                            var isPropertyTypeEnum = schemaClasses
-                                .Any(z => z.IsEnum && string.Equals(z.Label, propertyTypeName, StringComparison.Ordinal));
+                            var isPropertyTypeEnum = isEnumMap.Contains(propertyTypeName);
                             var csharpTypeStrings = GetCSharpTypeStrings(
                                 propertyName,
                                 propertyTypeName,
