@@ -4,7 +4,6 @@ namespace Schema.NET.Tool
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
-    using System.Text;
     using System.Threading.Tasks;
     using Microsoft.CodeAnalysis;
     using Schema.NET.Tool.CustomOverrides;
@@ -46,25 +45,24 @@ namespace Schema.NET.Tool
 
         public void Execute(GeneratorExecutionContext context)
         {
-            var stringBuilder = new StringBuilder();
-
             foreach (var schemaObject in this.SchemaObjects)
             {
+                var source = string.Empty;
                 if (schemaObject is GeneratorSchemaClass schemaClass)
                 {
-                    GenerateClass(stringBuilder, schemaClass);
+                    source = RenderClass(schemaClass);
                 }
                 else if (schemaObject is GeneratorSchemaEnumeration schemaEnumeration)
                 {
-                    GenerateEnumeration(stringBuilder, schemaEnumeration);
+                    source = RenderEnumeration(schemaEnumeration);
                 }
 
-                context.AddSource($"{schemaObject.Name}.Generated.cs", stringBuilder.ToString());
-                _ = stringBuilder.Clear();
+                context.AddSource($"{schemaObject.Layer}.{schemaObject.Name}.Generated.cs", source);
             }
         }
 
-        private static void GenerateClass(StringBuilder stringBuilder, GeneratorSchemaClass schemaClass)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1513:Closing brace should be followed by blank line", Justification = "Interpolated string")]
+        private static string RenderClass(GeneratorSchemaClass schemaClass)
         {
             if (schemaClass.Parents.Count > 1)
             {
@@ -87,7 +85,8 @@ namespace Schema.NET.Tool
             var classImplements = parentType is not null ? $" {parentType.Name}," : string.Empty;
             var allProperties = schemaClass.Properties.OrderBy(x => x.Order).ToArray();
 
-            stringBuilder.Append($@"namespace Schema.NET
+            return
+$@"namespace Schema.NET
 {{
     using System;
     using System.Runtime.Serialization;
@@ -97,23 +96,12 @@ namespace Schema.NET.Tool
     /// {SourceUtility.RenderDoc(4, schemaClass.Description)}
     /// </summary>
     public partial interface I{schemaClass.Name}{interfaceImplements}
-    {{");
-
-            if (!schemaClass.IsCombined)
-            {
-                // Only declared properties belong on the interface
-                foreach (var property in schemaClass.DeclaredProperties)
-                {
-                    stringBuilder.Append($@"
+    {{{SourceUtility.RenderItems(!schemaClass.IsCombined, schemaClass.DeclaredProperties, property => $@"
         /// <summary>
         /// {SourceUtility.RenderDoc(8, property.Description)}
         /// </summary>
         {property.PropertyTypeString} {property.Name} {{ get; set; }}
-");
-                }
-            }
-
-            stringBuilder.Append($@"
+")}
     }}
 
     /// <summary>
@@ -126,17 +114,15 @@ namespace Schema.NET.Tool
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = ""@type"", Order = 1)]
-        public override string Type => ""{schemaClass.Name}"";
-");
+        public override string Type => ""{schemaClass.Name}"";{SourceUtility.RenderItems(allProperties, property => $@"
 
-            // Add class properties
-            foreach (var property in allProperties)
-            {
-                GenerateProperty(stringBuilder, property);
-            }
+        /// <summary>
+        /// {SourceUtility.RenderDoc(8, property.Description)}
+        /// </summary>
+        [DataMember(Name = ""{property.JsonName}"", Order = {property.Order})]
+        [JsonConverter(typeof({property.JsonConverterType}))]
+        public{GetAccessModifier(property)} {property.PropertyTypeString} {property.Name} {{ get; set; }}")}
 
-            // Add object equality
-            stringBuilder.Append($@"
         /// <inheritdoc/>
         public bool Equals({schemaClass.Name} other)
         {{
@@ -150,15 +136,8 @@ namespace Schema.NET.Tool
                 return true;
             }}
 
-            return this.Type == other.Type");
-
-            foreach (var property in allProperties)
-            {
-                stringBuilder.Append($@" &&
-                this.{property.Name} == other.{property.Name}");
-            }
-
-            stringBuilder.Append($@" &&
+            return this.Type == other.Type{SourceUtility.RenderItems(allProperties, property => $@" &&
+                this.{property.Name} == other.{property.Name}")} &&
                 base.Equals(other);
         }}
 
@@ -166,23 +145,16 @@ namespace Schema.NET.Tool
         public override bool Equals(object obj) => this.Equals(obj as {schemaClass.Name});
 
         /// <inheritdoc/>
-        public override int GetHashCode() => HashCode.Of(this.Type)");
-
-            foreach (var property in allProperties)
-            {
-                stringBuilder.Append($@"
-            .And(this.{property.Name})");
-            }
-
-            stringBuilder.AppendLine($@"
+        public override int GetHashCode() => HashCode.Of(this.Type){SourceUtility.RenderItems(allProperties, property => $@"
+            .And(this.{property.Name})")}
             .And(base.GetHashCode());
     }}
-}}");
+}}";
         }
 
-        private static void GenerateEnumeration(StringBuilder stringBuilder, GeneratorSchemaEnumeration schemaEnumeration)
-        {
-            stringBuilder.Append($@"namespace Schema.NET
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1513:Closing brace should be followed by blank line", Justification = "Interpolated string")]
+        private static string RenderEnumeration(GeneratorSchemaEnumeration schemaEnumeration) =>
+$@"namespace Schema.NET
 {{
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
@@ -193,45 +165,34 @@ namespace Schema.NET.Tool
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum {schemaEnumeration.Name}
-    {{");
-
-            foreach (var value in schemaEnumeration.Values)
-            {
-                stringBuilder.Append($@"
+    {{{SourceUtility.RenderItems(schemaEnumeration.Values, value => $@"
         /// <summary>
         /// {SourceUtility.RenderDoc(8, value.Description)}
         /// </summary>
         [EnumMember(Value = ""{value.Uri}"")]
-        {value.Name},");
-            }
-
-            stringBuilder.AppendLine($@"
+        {value.Name},")}
     }}
-}}");
-        }
+}}";
 
-        private static void GenerateProperty(StringBuilder stringBuilder, GeneratorSchemaProperty schemaProperty)
+        private static string GetAccessModifier(GeneratorSchemaProperty schemaProperty)
         {
-            // Identify access modifiers
-            var isVirtual = schemaProperty
-                .Class
-                .Descendants
-                .Any(x => x.Properties.Any(y => string.Equals(y.Name, schemaProperty.Name, StringComparison.Ordinal)));
-            var isOverride = schemaProperty
-                .Class
+            var isOverride = schemaProperty.Class
                 .Ancestors
                 .Any(x => x.Properties.Any(y => string.Equals(y.Name, schemaProperty.Name, StringComparison.Ordinal)));
-            var accessModifier = isVirtual ? " virtual" : string.Empty;
-            accessModifier = isOverride ? " override" : accessModifier;
+            if (isOverride)
+            {
+                return " override";
+            }
 
-            stringBuilder.Append($@"
-        /// <summary>
-        /// {SourceUtility.RenderDoc(8, schemaProperty.Description)}
-        /// </summary>
-        [DataMember(Name = ""{schemaProperty.JsonName}"", Order = {schemaProperty.Order})]
-        [JsonConverter(typeof({schemaProperty.JsonConverterType}))]
-        public{accessModifier} {schemaProperty.PropertyTypeString} {schemaProperty.Name} {{ get; set; }}
-");
+            var isVirtual = schemaProperty.Class
+                .Descendants
+                .Any(x => x.Properties.Any(y => string.Equals(y.Name, schemaProperty.Name, StringComparison.Ordinal)));
+            if (isVirtual)
+            {
+                return " virtual";
+            }
+
+            return string.Empty;
         }
     }
 }
