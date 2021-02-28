@@ -307,33 +307,33 @@ namespace Schema.NET.Tool.Services
             return stringBuilder.ToString();
         }
 
-        private static List<string> GetCSharpTypeStrings(string propertyName, string typeName, bool isTypeEnum)
+        private static IEnumerable<string> GetCSharpTypeStrings(string propertyName, string typeName, bool isTypeEnum)
         {
             switch (typeName)
             {
                 case "Boolean":
-                    return new List<string> { "bool?" };
+                    return new string[] { "bool?" };
                 case "DataType":
-                    return new List<string> { "bool?", "int?", "decimal?", "double?", "DateTime?", "TimeSpan?", "string" };
+                    return new string[] { "bool?", "int?", "decimal?", "double?", "DateTime?", "TimeSpan?", "string" };
                 case "Date":
-                    return new List<string> { "int?", "DateTime?" };
+                    return new string[] { "int?", "DateTime?" };
                 case "DateTime":
-                    return new List<string> { "DateTimeOffset?" };
+                    return new string[] { "DateTimeOffset?" };
                 case "Integer":
                 case "Number" when
                     propertyName.Contains("NumberOf") ||
                     propertyName.Contains("Year") ||
                     propertyName.Contains("Count") ||
                     propertyName.Contains("Age"):
-                    return new List<string> { "int?" };
+                    return new string[] { "int?" };
                 case "Number" when
                     propertyName.Contains("Price") ||
                     propertyName.Contains("Amount") ||
                     propertyName.Contains("Salary") ||
                     propertyName.Contains("Discount"):
-                    return new List<string> { "decimal?" };
+                    return new string[] { "decimal?" };
                 case "Number":
-                    return new List<string> { "double?" };
+                    return new string[] { "double?" };
                 case "Text":
                 case "Distance":
                 case "Energy":
@@ -341,20 +341,20 @@ namespace Schema.NET.Tool.Services
                 case "XPathType":
                 case "CssSelectorType":
                 case "PronounceableText":
-                    return new List<string> { "string" };
+                    return new string[] { "string" };
                 case "Time":
                 case "Duration":
-                    return new List<string> { "TimeSpan?" };
+                    return new string[] { "TimeSpan?" };
                 case "URL":
-                    return new List<string> { "Uri" };
+                    return new string[] { "Uri" };
                 default:
                     if (isTypeEnum)
                     {
-                        return new List<string> { typeName + "?" };
+                        return new string[] { typeName + "?" };
                     }
                     else
                     {
-                        return new List<string> { "I" + typeName };
+                        return new string[] { "I" + typeName };
                     }
             }
         }
