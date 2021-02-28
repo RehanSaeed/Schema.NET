@@ -359,7 +359,7 @@ namespace Schema.NET.Tool.Services
             }
         }
 
-        private void ApplyClassOverrides(List<GeneratorSchemaClass> classes)
+        private void ApplyClassOverrides(IEnumerable<GeneratorSchemaClass> classes)
         {
             foreach (var @class in classes)
             {
@@ -367,14 +367,13 @@ namespace Schema.NET.Tool.Services
                 {
                     if (classOverride.CanOverride(@class))
                     {
-                        Console.WriteLine(classOverride.GetType().Name);
                         classOverride.Override(@class);
                     }
                 }
             }
         }
 
-        private void ApplyEnumerationOverrides(List<GeneratorSchemaEnumeration> enumerations)
+        private void ApplyEnumerationOverrides(IEnumerable<GeneratorSchemaEnumeration> enumerations)
         {
             foreach (var enumeration in enumerations)
             {
@@ -382,7 +381,6 @@ namespace Schema.NET.Tool.Services
                 {
                     if (enumerationOverride.CanOverride(enumeration))
                     {
-                        Console.WriteLine(enumerationOverride.GetType().Name);
                         enumerationOverride.Override(enumeration);
                     }
                 }

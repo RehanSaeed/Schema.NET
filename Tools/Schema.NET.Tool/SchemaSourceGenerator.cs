@@ -30,10 +30,7 @@ namespace Schema.NET.Tool
                         new AddNumberTypeToMediaObjectHeightAndWidth(),
                         new RenameEventProperty(),
                     },
-                    new List<IEnumerationOverride>()
-                    {
-                        new WarnEmptyEnumerations(),
-                    },
+                    Array.Empty<IEnumerationOverride>(),
                     schemaRepository);
 
                 this.SchemaObjects = await schemaService.GetObjectsAsync().ConfigureAwait(false);
