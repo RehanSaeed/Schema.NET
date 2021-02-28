@@ -201,7 +201,7 @@ namespace Schema.NET.Tool
         /// <summary>
         /// {SourceUtility.RenderDoc(8, value.Description)}
         /// </summary>
-        [EnumMember(Value = ""{value.HttpsUri}"")]
+        [EnumMember(Value = ""{value.Uri}"")]
         {value.Name},");
             }
 
