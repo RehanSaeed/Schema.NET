@@ -108,7 +108,7 @@ namespace Schema.NET.Test
                         "}," +
                         "\"expectsAcceptanceOf\":{" +
                             "\"@type\":\"Offer\"," +
-                            "\"availability\":\"https://schema.org/InStock\"," +
+                            "\"availability\":\"schema:InStock\"," +
                             "\"eligibleRegion\":{" +
                                 "\"@type\":\"Country\"," +
                                 "\"name\":\"US\"" +
@@ -118,7 +118,7 @@ namespace Schema.NET.Test
                         "}" +
                     "}," +
                     "\"bookEdition\":\"2nd Edition\"," +
-                    "\"bookFormat\":\"https://schema.org/Hardcover\"," +
+                    "\"bookFormat\":\"schema:Hardcover\"," +
                     "\"isbn\":\"031676948\"" +
                 "}," +
                 "{" +
@@ -136,7 +136,7 @@ namespace Schema.NET.Test
                         "}," +
                         "\"expectsAcceptanceOf\":{" +
                             "\"@type\":\"Offer\"," +
-                            "\"availability\":\"https://schema.org/InStock\"," +
+                            "\"availability\":\"schema:InStock\"," +
                             "\"eligibleRegion\":{" +
                                 "\"@type\":\"Country\"," +
                                 "\"name\":\"UK\"" +
@@ -146,7 +146,7 @@ namespace Schema.NET.Test
                         "}" +
                     "}," +
                     "\"bookEdition\":\"1st Edition\"," +
-                    "\"bookFormat\":\"https://schema.org/EBook\"," +
+                    "\"bookFormat\":\"schema:EBook\"," +
                     "\"isbn\":\"031676947\"" +
                 "}" +
             "]" +
