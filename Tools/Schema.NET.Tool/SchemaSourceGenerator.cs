@@ -72,17 +72,7 @@ namespace Schema.NET.Tool
                 throw new ArgumentException(Resources.InterfaceShouldOnlyHaveOneParent);
             }
 
-            stringBuilder.Append($@"namespace Schema.NET
-{{
-    using System;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-
-");
             var parentType = schemaClass.Parents.FirstOrDefault();
-
-            // Add interface based on class
-            stringBuilder.AppendCommentSummary(4, schemaClass.Description);
 
             var interfaceImplements = string.Empty;
             if (schemaClass.IsCombined)
@@ -94,30 +84,43 @@ namespace Schema.NET.Tool
                 interfaceImplements = $" : I{parentType.Name}";
             }
 
-            stringBuilder.Append($@"    public partial interface I{schemaClass.Name}{interfaceImplements}
-    {{
-");
+            var classModifiers = schemaClass.IsCombined ? " abstract" : string.Empty;
+            var classImplements = parentType is not null ? $" {parentType.Name}," : string.Empty;
+            var allProperties = schemaClass.Properties.OrderBy(x => x.Order).ToArray();
+
+            stringBuilder.Append($@"namespace Schema.NET
+{{
+    using System;
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+
+    /// <summary>
+    /// {SourceUtility.RenderDoc(4, schemaClass.Description)}
+    /// </summary>
+    public partial interface I{schemaClass.Name}{interfaceImplements}
+    {{");
 
             if (!schemaClass.IsCombined)
             {
                 // Only declared properties belong on the interface
                 foreach (var property in schemaClass.DeclaredProperties)
                 {
-                    stringBuilder.AppendCommentSummary(8, property.Description);
-                    stringBuilder.AppendLine($@"        {property.PropertyTypeString} {property.Name} {{ get; set; }}");
+                    stringBuilder.Append($@"
+        /// <summary>
+        /// {SourceUtility.RenderDoc(8, property.Description)}
+        /// </summary>
+        {property.PropertyTypeString} {property.Name} {{ get; set; }}
+");
                 }
             }
 
-            stringBuilder.AppendLine($@"    }}");
+            stringBuilder.Append($@"
+    }}
 
-            // Add class
-            stringBuilder.AppendCommentSummary(4, schemaClass.Description);
-
-            var classModifiers = schemaClass.IsCombined ? " abstract" : string.Empty;
-            var classImplements = parentType is not null ? $" {parentType.Name}," : string.Empty;
-            var allProperties = schemaClass.Properties.OrderBy(x => x.Order).ToArray();
-
-            stringBuilder.Append($@"    [DataContract]
+    /// <summary>
+    /// {SourceUtility.RenderDoc(4, schemaClass.Description)}
+    /// </summary>
+    [DataContract]
     public{classModifiers} partial class {schemaClass.Name} :{classImplements} I{schemaClass.Name}, IEquatable<{schemaClass.Name}>
     {{
         /// <summary>
@@ -125,7 +128,6 @@ namespace Schema.NET.Tool
         /// </summary>
         [DataMember(Name = ""@type"", Order = 1)]
         public override string Type => ""{schemaClass.Name}"";
-
 ");
 
             // Add class properties
@@ -135,7 +137,8 @@ namespace Schema.NET.Tool
             }
 
             // Add object equality
-            stringBuilder.Append($@"        /// <inheritdoc/>
+            stringBuilder.Append($@"
+        /// <inheritdoc/>
         public bool Equals({schemaClass.Name} other)
         {{
             if (other is null)
@@ -187,32 +190,29 @@ namespace Schema.NET.Tool
     using Newtonsoft.Json.Converters;
 
     /// <summary>
-");
-            stringBuilder.AppendCommentLine(4, schemaEnumeration.Description);
-            stringBuilder.Append($@"    /// </summary>
+    /// {SourceUtility.RenderDoc(4, schemaEnumeration.Description)}
+    /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum {schemaEnumeration.Name}
-    {{
-");
+    {{");
 
-            var i = 0;
             foreach (var value in schemaEnumeration.Values)
             {
-                var isLast = i == (schemaEnumeration.Values.Count - 1);
-                stringBuilder.AppendCommentSummary(8, value.Description);
-                stringBuilder.Append($@"        [EnumMember(Value = ""{value.HttpsUri}"")]
-        {value.Name},
-{(isLast ? string.Empty : Environment.NewLine)}");
+                stringBuilder.Append($@"
+        /// <summary>
+        /// {SourceUtility.RenderDoc(8, value.Description)}
+        /// </summary>
+        [EnumMember(Value = ""{value.HttpsUri}"")]
+        {value.Name},");
             }
 
-            stringBuilder.AppendLine($@"    }}
+            stringBuilder.AppendLine($@"
+    }}
 }}");
         }
 
         private static void GenerateProperty(StringBuilder stringBuilder, Property schemaProperty)
         {
-            stringBuilder.AppendCommentSummary(8, schemaProperty.Description);
-
             // Identify access modifiers
             var isVirtual = schemaProperty
                 .Class
@@ -225,10 +225,13 @@ namespace Schema.NET.Tool
             var accessModifier = isVirtual ? " virtual" : string.Empty;
             accessModifier = isOverride ? " override" : accessModifier;
 
-            stringBuilder.Append($@"        [DataMember(Name = ""{schemaProperty.JsonName}"", Order = {schemaProperty.Order})]
+            stringBuilder.Append($@"
+        /// <summary>
+        /// {SourceUtility.RenderDoc(8, schemaProperty.Description)}
+        /// </summary>
+        [DataMember(Name = ""{schemaProperty.JsonName}"", Order = {schemaProperty.Order})]
         [JsonConverter(typeof({schemaProperty.JsonConverterType}))]
         public{accessModifier} {schemaProperty.PropertyTypeString} {schemaProperty.Name} {{ get; set; }}
-
 ");
         }
     }
