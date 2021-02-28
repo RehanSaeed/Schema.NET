@@ -58,8 +58,8 @@ namespace Schema.NET.Test
             "\"mpn\":\"925872\"," +
             "\"offers\":{" +
                 "\"@type\":\"Offer\"," +
-                "\"availability\":\"https://schema.org/InStock\"," +
-                "\"itemCondition\":\"https://schema.org/UsedCondition\"," +
+                "\"availability\":\"schema:InStock\"," +
+                "\"itemCondition\":\"schema:UsedCondition\"," +
                 "\"price\":119.99," +
                 "\"priceCurrency\":\"USD\"," +
                 "\"priceValidUntil\":\"2020-11-05\"," +

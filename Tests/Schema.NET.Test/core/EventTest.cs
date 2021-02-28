@@ -67,6 +67,7 @@ namespace Schema.NET.Test
             "\"name\":\"Jan Lieberman Concert Series: Journey in Jazz\"," +
             "\"description\":\"Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.\"," +
             "\"image\":\"https://www.example.com/event_image/12345\"," +
+            "\"endDate\":\"2017-04-24T23:00:00-08:00\"," +
             "\"location\":{" +
                 "\"@type\":\"Place\"," +
                 "\"name\":\"Santa Clara City Library, Central Park Library\"," +
@@ -83,7 +84,7 @@ namespace Schema.NET.Test
                 "{" +
                     "\"@type\":\"Offer\"," +
                     "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
-                    "\"availability\":\"https://schema.org/InStock\"," +
+                    "\"availability\":\"schema:InStock\"," +
                     "\"price\":30.0," +
                     "\"priceCurrency\":\"USD\"," +
                     "\"validFrom\":\"2017-01-20T16:20:00-08:00\"" +
@@ -99,8 +100,7 @@ namespace Schema.NET.Test
                 "\"@type\":\"Person\"," +
                 "\"name\":\"Andy Lagunoff\"" +
             "}," +
-            "\"startDate\":\"2017-04-24T19:30:00-08:00\"," +
-            "\"endDate\":\"2017-04-24T23:00:00-08:00\"" +
+            "\"startDate\":\"2017-04-24T19:30:00-08:00\"" +
         "}";
 
         [Fact]
