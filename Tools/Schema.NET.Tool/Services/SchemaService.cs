@@ -193,7 +193,7 @@ namespace Schema.NET.Tool.Services
 
         private static GeneratorSchemaEnumeration TranslateEnumeration(
             Models.SchemaClass schemaClass,
-            List<Models.SchemaEnumerationValue> schemaValues)
+            IEnumerable<Models.SchemaEnumerationValue> schemaValues)
         {
             var enumeration = new GeneratorSchemaEnumeration()
             {
@@ -216,8 +216,8 @@ namespace Schema.NET.Tool.Services
 
         private static GeneratorSchemaClass TranslateClass(
             Models.SchemaClass schemaClass,
-            List<Models.SchemaClass> schemaClasses,
-            List<Models.SchemaProperty> schemaProperties)
+            IEnumerable<Models.SchemaClass> schemaClasses,
+            IEnumerable<Models.SchemaProperty> schemaProperties)
         {
             var @class = new GeneratorSchemaClass()
             {
