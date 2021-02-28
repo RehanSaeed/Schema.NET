@@ -40,6 +40,14 @@ namespace Schema.NET.Tool.Services
                 schemaClasses.Where(c => c.IsEnum).Select(c => c.Label),
                 StringComparer.Ordinal);
 
+            var knownSchemaClasses = new HashSet<Uri>(
+                schemaClasses.Select(c => c.Id));
+
+            var classPropertyMap = schemaProperties
+                .SelectMany(p => p.DomainIncludes.Select(i => (Id: i, Property: p)))
+                .GroupBy(x => x.Id)
+                .ToDictionary(g => g.Key, g => g.Select(p => p.Property).ToArray());
+
             var enumerations = new List<GeneratorSchemaEnumeration>();
             var classes = new List<GeneratorSchemaClass>();
             foreach (var schemaClass in schemaClasses
@@ -52,7 +60,12 @@ namespace Schema.NET.Tool.Services
                 }
                 else
                 {
-                    var @class = TranslateClass(schemaClass, schemaClasses, schemaProperties, isEnumMap);
+                    if (!classPropertyMap.TryGetValue(schemaClass.Id, out var classProperties))
+                    {
+                        classProperties = Array.Empty<Models.SchemaProperty>();
+                    }
+
+                    var @class = TranslateClass(schemaClass, schemaClasses, classProperties, isEnumMap, knownSchemaClasses);
                     classes.Add(@class);
                 }
             }
@@ -222,7 +235,8 @@ namespace Schema.NET.Tool.Services
             Models.SchemaClass schemaClass,
             IEnumerable<Models.SchemaClass> schemaClasses,
             IEnumerable<Models.SchemaProperty> schemaProperties,
-            HashSet<string> isEnumMap)
+            HashSet<string> isEnumMap,
+            HashSet<Uri> knownSchemaClasses)
         {
             var @class = new GeneratorSchemaClass()
             {
@@ -232,13 +246,11 @@ namespace Schema.NET.Tool.Services
                 Name = StartsWithNumber.IsMatch(schemaClass.Label) ? $"_{schemaClass.Label}" : schemaClass.Label,
             };
 
-            @class.Parents.AddRange(schemaClasses
-                .Where(x => schemaClass.SubClassOfIds.Contains(x.Id))
-                .Where(x => !x.IsPending)
-                .Select(x => new GeneratorSchemaClass() { Id = x.Id }));
+            @class.Parents.AddRange(schemaClass.SubClassOfIds
+                .Where(id => knownSchemaClasses.Contains(id))
+                .Select(id => new GeneratorSchemaClass() { Id = id }));
 
             var properties = schemaProperties
-                .Where(x => x.DomainIncludes.Contains(schemaClass.Id))
                 .Select(x =>
                 {
                     var propertyName = GetPropertyName(x.Label);
