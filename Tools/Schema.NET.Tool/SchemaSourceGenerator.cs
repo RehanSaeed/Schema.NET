@@ -3,14 +3,9 @@ namespace Schema.NET.Tool
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net.Http;
     using System.Text;
-    using System.Text.Json;
     using System.Threading.Tasks;
     using Microsoft.CodeAnalysis;
-    using Microsoft.CodeAnalysis.CSharp;
-    using Microsoft.CodeAnalysis.CSharp.Syntax;
-    using Microsoft.CodeAnalysis.Text;
     using Schema.NET.Tool.CustomOverrides;
     using Schema.NET.Tool.Repositories;
     using Schema.NET.Tool.Services;
@@ -72,6 +67,11 @@ namespace Schema.NET.Tool
 
         private static void GenerateClass(StringBuilder stringBuilder, Class schemaClass)
         {
+            if (schemaClass.Parents.Count > 1)
+            {
+                throw new ArgumentException(Resources.InterfaceShouldOnlyHaveOneParent);
+            }
+
             stringBuilder.Append($@"namespace Schema.NET
 {{
     using System;
@@ -79,13 +79,6 @@ namespace Schema.NET.Tool
     using Newtonsoft.Json;
 
 ");
-            if (schemaClass.Parents.Count > 1)
-            {
-#pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
-                throw new Exception(Resources.InterfaceShouldOnlyHaveOneParent);
-#pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
-            }
-
             var parentType = schemaClass.Parents.FirstOrDefault();
 
             // Add interface based on class

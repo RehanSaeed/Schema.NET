@@ -98,7 +98,7 @@ namespace Schema.NET.Tool.Services
                 {
                     var className = string.Join("And", @class.Parents.Select(x => x.Name).OrderBy(x => x));
 
-                    var combinedClass = classes.FirstOrDefault(x => string.Equals(x.Name, className));
+                    var combinedClass = classes.FirstOrDefault(x => string.Equals(x.Name, className, StringComparison.Ordinal));
                     if (combinedClass is null)
                     {
                         var classDescription = "See " + string.Join(", ", @class.Parents.Select(x => x.Name).OrderBy(x => x)) + " for more information.";
@@ -249,22 +249,22 @@ namespace Schema.NET.Tool.Services
                         {
                             var propertyTypeName = y.ToString().Replace("schema:", string.Empty);
                             var propertyTypeClass = schemaClasses
-                                .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName));
+                                .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.Ordinal));
                             return propertyTypeClass is null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
                         })
                         .Select(y =>
                         {
                             var propertyTypeName = y.ToString().Replace("schema:", string.Empty);
                             var isPropertyTypeEnum = schemaClasses
-                                .Any(z => z.IsEnum && string.Equals(z.Label, propertyTypeName));
+                                .Any(z => z.IsEnum && string.Equals(z.Label, propertyTypeName, StringComparison.Ordinal));
                             var csharpTypeStrings = GetCSharpTypeStrings(
                                 propertyName,
                                 propertyTypeName,
                                 isPropertyTypeEnum);
                             return new PropertyType(propertyTypeName, csharpTypeStrings);
                         })
-                        .Where(y => !string.Equals(y.Name, "Enumeration") &&
-                            !string.Equals(y.Name, "QualitativeValue"))
+                        .Where(y => !string.Equals(y.Name, "Enumeration", StringComparison.Ordinal) &&
+                            !string.Equals(y.Name, "QualitativeValue", StringComparison.Ordinal))
                         .GroupBy(y => y.CSharpTypeStrings)
                         .Select(y => y.First())
                         .OrderBy(y => y.Name));
