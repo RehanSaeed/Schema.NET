@@ -43,7 +43,7 @@ namespace Schema.NET.Tool.Services
             var enumerations = new List<GeneratorSchemaEnumeration>();
             var classes = new List<GeneratorSchemaClass>();
             foreach (var schemaClass in schemaClasses
-                .Where(x => !x.IsPrimitive && !x.IsArchived && !x.IsMeta && !x.IsPending))
+                .Where(x => !x.IsPrimitive))
             {
                 if (schemaClass.IsEnum)
                 {
@@ -73,16 +73,16 @@ namespace Schema.NET.Tool.Services
             while (classes.Any(x => x.Parents.Count > 1))
             {
                 // Remove Thing types from classes with multiple parents.
-                foreach (var @class in classes.Where(x => x.Parents.Count > 1 && x.Parents.Any(y => y.IsThingType)).ToList())
+                foreach (var @class in classes.Where(x => x.Parents.Count > 1 && x.Parents.Any(y => y.IsThingType)).ToArray())
                 {
                     var thingParent = @class.Parents.First(x => x.IsThingType);
                     @class.Parents.Remove(thingParent);
                     thingParent.Children.Remove(@class);
                 }
 
-                foreach (var @class in classes.Where(x => x.Parents.Count > 1).ToList())
+                foreach (var @class in classes.Where(x => x.Parents.Count > 1).ToArray())
                 {
-                    foreach (var parent in @class.Parents.ToList())
+                    foreach (var parent in @class.Parents.ToArray())
                     {
                         if (@class.Parents.Where(x => x != parent).Any(x => x.Ancestors.Any(y => y.Id == parent.Id)))
                         {
@@ -98,7 +98,7 @@ namespace Schema.NET.Tool.Services
                     }
                 }
 
-                foreach (var @class in classes.Where(x => x.Parents.Count > 1).ToList())
+                foreach (var @class in classes.Where(x => x.Parents.Count > 1).ToArray())
                 {
                     var className = string.Join("And", @class.Parents.Select(x => x.Name).OrderBy(x => x));
 
@@ -106,7 +106,7 @@ namespace Schema.NET.Tool.Services
                     if (combinedClass is null)
                     {
                         var classDescription = "See " + string.Join(", ", @class.Parents.Select(x => x.Name).OrderBy(x => x)) + " for more information.";
-                        var parents = @class.Parents.SelectMany(x => x.Parents).GroupBy(x => x.Name).Select(x => x.First()).ToList();
+                        var parents = @class.Parents.SelectMany(x => x.Parents).GroupBy(x => x.Name).Select(x => x.First()).ToArray();
                         combinedClass = new GeneratorSchemaClass()
                         {
                             Description = classDescription,
@@ -176,7 +176,7 @@ namespace Schema.NET.Tool.Services
         {
             foreach (var @class in classes)
             {
-                foreach (var parentClassId in @class.Parents.Select(x => x.Id).Distinct().ToList())
+                foreach (var parentClassId in @class.Parents.Select(x => x.Id).Distinct().ToArray())
                 {
                     var parentClass = classes.FirstOrDefault(x => x.Id == parentClassId);
                     if (parentClass is null)
@@ -238,7 +238,7 @@ namespace Schema.NET.Tool.Services
                 .Select(x => new GeneratorSchemaClass() { Id = x.Id }));
 
             var properties = schemaProperties
-                .Where(x => x.DomainIncludes.Contains(schemaClass.Id) && !x.IsArchived && !x.IsMeta && !x.IsPending)
+                .Where(x => x.DomainIncludes.Contains(schemaClass.Id))
                 .Select(x =>
                 {
                     var propertyName = GetPropertyName(x.Label);
