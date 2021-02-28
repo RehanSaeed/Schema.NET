@@ -7,14 +7,14 @@ namespace Schema.NET.Tool
     using System.Threading.Tasks;
     using Microsoft.CodeAnalysis;
     using Schema.NET.Tool.CustomOverrides;
+    using Schema.NET.Tool.GeneratorModels;
     using Schema.NET.Tool.Repositories;
     using Schema.NET.Tool.Services;
-    using Schema.NET.Tool.ViewModels;
 
     [Generator]
     public class SchemaSourceGenerator : ISourceGenerator
     {
-        private IEnumerable<SchemaObject> SchemaObjects { get; set; }
+        private IEnumerable<GeneratorSchemaObject> SchemaObjects { get; set; }
 
         public void Initialize(GeneratorInitializationContext context)
         {
@@ -25,14 +25,14 @@ namespace Schema.NET.Tool
                 var schemaService = new SchemaService(
                     new List<IClassOverride>()
                     {
-                    new AddQueryInputPropertyToSearchAction(),
-                    new AddTextTypeToActionTarget(),
-                    new AddNumberTypeToMediaObjectHeightAndWidth(),
-                    new RenameEventProperty(),
+                        new AddQueryInputPropertyToSearchAction(),
+                        new AddTextTypeToActionTarget(),
+                        new AddNumberTypeToMediaObjectHeightAndWidth(),
+                        new RenameEventProperty(),
                     },
                     new List<IEnumerationOverride>()
                     {
-                    new WarnEmptyEnumerations(),
+                        new WarnEmptyEnumerations(),
                     },
                     schemaRepository);
 
@@ -51,11 +51,11 @@ namespace Schema.NET.Tool
 
             foreach (var schemaObject in this.SchemaObjects)
             {
-                if (schemaObject is Class schemaClass)
+                if (schemaObject is GeneratorSchemaClass schemaClass)
                 {
                     GenerateClass(stringBuilder, schemaClass);
                 }
-                else if (schemaObject is Enumeration schemaEnumeration)
+                else if (schemaObject is GeneratorSchemaEnumeration schemaEnumeration)
                 {
                     GenerateEnumeration(stringBuilder, schemaEnumeration);
                 }
@@ -65,7 +65,7 @@ namespace Schema.NET.Tool
             }
         }
 
-        private static void GenerateClass(StringBuilder stringBuilder, Class schemaClass)
+        private static void GenerateClass(StringBuilder stringBuilder, GeneratorSchemaClass schemaClass)
         {
             if (schemaClass.Parents.Count > 1)
             {
@@ -181,7 +181,7 @@ namespace Schema.NET.Tool
 }}");
         }
 
-        private static void GenerateEnumeration(StringBuilder stringBuilder, Enumeration schemaEnumeration)
+        private static void GenerateEnumeration(StringBuilder stringBuilder, GeneratorSchemaEnumeration schemaEnumeration)
         {
             stringBuilder.Append($@"namespace Schema.NET
 {{
@@ -211,7 +211,7 @@ namespace Schema.NET.Tool
 }}");
         }
 
-        private static void GenerateProperty(StringBuilder stringBuilder, Property schemaProperty)
+        private static void GenerateProperty(StringBuilder stringBuilder, GeneratorSchemaProperty schemaProperty)
         {
             // Identify access modifiers
             var isVirtual = schemaProperty

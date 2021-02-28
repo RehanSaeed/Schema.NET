@@ -10,7 +10,7 @@ namespace Schema.NET.Tool.Services
     using System.Threading.Tasks;
     using Schema.NET.Tool.CustomOverrides;
     using Schema.NET.Tool.Repositories;
-    using Schema.NET.Tool.ViewModels;
+    using Schema.NET.Tool.GeneratorModels;
 
     public class SchemaService
     {
@@ -30,14 +30,14 @@ namespace Schema.NET.Tool.Services
             this.schemaRepository = schemaRepository;
         }
 
-        public async Task<IEnumerable<SchemaObject>> GetObjectsAsync()
+        public async Task<IEnumerable<GeneratorSchemaObject>> GetObjectsAsync()
         {
             var (schemaClasses, schemaProperties, schemaValues) = await this.schemaRepository
                 .GetObjectsAsync()
                 .ConfigureAwait(false);
 
-            var enumerations = new List<Enumeration>();
-            var classes = new List<Class>();
+            var enumerations = new List<GeneratorSchemaEnumeration>();
+            var classes = new List<GeneratorSchemaClass>();
             foreach (var schemaClass in schemaClasses
                 .Where(x => !x.IsPrimitive && !x.IsArchived && !x.IsMeta && !x.IsPending))
             {
@@ -61,10 +61,10 @@ namespace Schema.NET.Tool.Services
 
             SetPropertyOrder(classes);
 
-            return (enumerations as IEnumerable<SchemaObject>).Concat(classes);
+            return (enumerations as IEnumerable<GeneratorSchemaObject>).Concat(classes);
         }
 
-        private static void CombineMultipleParentsIntoCombinedClass(List<Class> classes)
+        private static void CombineMultipleParentsIntoCombinedClass(List<GeneratorSchemaClass> classes)
         {
             while (classes.Any(x => x.Parents.Count > 1))
             {
@@ -103,7 +103,7 @@ namespace Schema.NET.Tool.Services
                     {
                         var classDescription = "See " + string.Join(", ", @class.Parents.Select(x => x.Name).OrderBy(x => x)) + " for more information.";
                         var parents = @class.Parents.SelectMany(x => x.Parents).GroupBy(x => x.Name).Select(x => x.First()).ToList();
-                        combinedClass = new Class()
+                        combinedClass = new GeneratorSchemaClass()
                         {
                             Description = classDescription,
                             Id = new Uri($"https://CombinedClass/{className}"),
@@ -140,7 +140,7 @@ namespace Schema.NET.Tool.Services
             }
         }
 
-        private static void SetPropertyOrder(List<Class> classes)
+        private static void SetPropertyOrder(List<GeneratorSchemaClass> classes)
         {
             foreach (var @class in classes)
             {
@@ -168,7 +168,7 @@ namespace Schema.NET.Tool.Services
             return stringBuilder.ToString();
         }
 
-        private static void SetParentAndChildren(List<Class> classes)
+        private static void SetParentAndChildren(List<GeneratorSchemaClass> classes)
         {
             foreach (var @class in classes)
             {
@@ -191,11 +191,11 @@ namespace Schema.NET.Tool.Services
             }
         }
 
-        private static Enumeration TranslateEnumeration(
+        private static GeneratorSchemaEnumeration TranslateEnumeration(
             Models.SchemaClass schemaClass,
             List<Models.SchemaEnumerationValue> schemaValues)
         {
-            var enumeration = new Enumeration()
+            var enumeration = new GeneratorSchemaEnumeration()
             {
                 Description = schemaClass.Comment,
                 Layer = $"{schemaClass.Layer}{Path.DirectorySeparatorChar}enumerations",
@@ -204,7 +204,7 @@ namespace Schema.NET.Tool.Services
             enumeration.Values.AddRange(schemaValues
                 .Where(x => x.Types.Contains(schemaClass.Id.ToString()))
                 .Select(
-                    x => new EnumerationValue()
+                    x => new GeneratorSchemaEnumerationValue()
                     {
                         Description = x.Comment,
                         Name = x.Label,
@@ -214,12 +214,12 @@ namespace Schema.NET.Tool.Services
             return enumeration;
         }
 
-        private static Class TranslateClass(
+        private static GeneratorSchemaClass TranslateClass(
             Models.SchemaClass schemaClass,
             List<Models.SchemaClass> schemaClasses,
             List<Models.SchemaProperty> schemaProperties)
         {
-            var @class = new Class()
+            var @class = new GeneratorSchemaClass()
             {
                 Description = schemaClass.Comment,
                 Id = schemaClass.Id,
@@ -230,14 +230,14 @@ namespace Schema.NET.Tool.Services
             @class.Parents.AddRange(schemaClasses
                 .Where(x => schemaClass.SubClassOfIds.Contains(x.Id))
                 .Where(x => !x.IsPending)
-                .Select(x => new Class() { Id = x.Id }));
+                .Select(x => new GeneratorSchemaClass() { Id = x.Id }));
 
             var properties = schemaProperties
                 .Where(x => x.DomainIncludes.Contains(schemaClass.Id) && !x.IsArchived && !x.IsMeta && !x.IsPending)
                 .Select(x =>
                 {
                     var propertyName = GetPropertyName(x.Label);
-                    var property = new Property()
+                    var property = new GeneratorSchemaProperty()
                     {
                         Class = @class,
                         Description = x.Comment,
@@ -261,7 +261,7 @@ namespace Schema.NET.Tool.Services
                                 propertyName,
                                 propertyTypeName,
                                 isPropertyTypeEnum);
-                            return new PropertyType(propertyTypeName, csharpTypeStrings);
+                            return new GeneratorSchemaPropertyType(propertyTypeName, csharpTypeStrings);
                         })
                         .Where(y => !string.Equals(y.Name, "Enumeration", StringComparison.Ordinal) &&
                             !string.Equals(y.Name, "QualitativeValue", StringComparison.Ordinal))
@@ -359,7 +359,7 @@ namespace Schema.NET.Tool.Services
             }
         }
 
-        private void ApplyClassOverrides(List<Class> classes)
+        private void ApplyClassOverrides(List<GeneratorSchemaClass> classes)
         {
             foreach (var @class in classes)
             {
@@ -374,7 +374,7 @@ namespace Schema.NET.Tool.Services
             }
         }
 
-        private void ApplyEnumerationOverrides(List<Enumeration> enumerations)
+        private void ApplyEnumerationOverrides(List<GeneratorSchemaEnumeration> enumerations)
         {
             foreach (var enumeration in enumerations)
             {

@@ -1,11 +1,11 @@
 namespace Schema.NET.Tool.CustomOverrides
 {
-    using Schema.NET.Tool.ViewModels;
+    using Schema.NET.Tool.GeneratorModels;
 
     public interface IEnumerationOverride
     {
-        bool CanOverride(Enumeration enumeration);
+        bool CanOverride(GeneratorSchemaEnumeration enumeration);
 
-        void Override(Enumeration enumeration);
+        void Override(GeneratorSchemaEnumeration enumeration);
     }
 }

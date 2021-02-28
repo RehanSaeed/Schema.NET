@@ -2,11 +2,11 @@ namespace Schema.NET.Tool.CustomOverrides
 {
     using System;
     using System.Collections.Generic;
-    using Schema.NET.Tool.ViewModels;
+    using Schema.NET.Tool.GeneratorModels;
 
     public class AddQueryInputPropertyToSearchAction : IClassOverride
     {
-        public bool CanOverride(Class c)
+        public bool CanOverride(GeneratorSchemaClass c)
         {
             if (c is null)
             {
@@ -16,14 +16,14 @@ namespace Schema.NET.Tool.CustomOverrides
             return string.Equals(c.Name, "SearchAction", StringComparison.Ordinal);
         }
 
-        public void Override(Class c)
+        public void Override(GeneratorSchemaClass c)
         {
             if (c is null)
             {
                 throw new ArgumentNullException(nameof(c));
             }
 
-            var property = new Property()
+            var property = new GeneratorSchemaProperty()
             {
                 Class = c,
                 Description = "Gets or sets the query input search parameter.",
@@ -31,10 +31,10 @@ namespace Schema.NET.Tool.CustomOverrides
                 Name = "QueryInput",
             };
             property.Types.AddRange(
-                new List<PropertyType>()
+                new List<GeneratorSchemaPropertyType>()
                 {
-                    new PropertyType("Text", "string"),
-                    new PropertyType("PropertyValueSpecification", "PropertyValueSpecification"),
+                    new GeneratorSchemaPropertyType("Text", "string"),
+                    new GeneratorSchemaPropertyType("PropertyValueSpecification", "PropertyValueSpecification"),
                 });
             c.Properties.Add(property);
         }
