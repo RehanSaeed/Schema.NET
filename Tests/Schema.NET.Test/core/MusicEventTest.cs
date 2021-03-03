@@ -8,7 +8,7 @@ namespace Schema.NET.Test
 
     public class MusicEventTest
     {
-        private readonly MusicEvent musicEvent = new MusicEvent()
+        private readonly MusicEvent musicEvent = new()
         {
             Name = "Arash & Tohi", // Required
             Identifier = "vv1AaZAQ8Gkds-P77",

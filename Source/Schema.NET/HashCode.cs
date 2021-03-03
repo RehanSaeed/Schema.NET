@@ -55,7 +55,7 @@ namespace Schema.NET
         /// <typeparam name="T">The type of the item.</typeparam>
         /// <param name="item">The item.</param>
         /// <returns>The new hash code.</returns>
-        public static HashCode Of<T>(T item) => new HashCode(GetHashCode(item));
+        public static HashCode Of<T>(T item) => new(GetHashCode(item));
 
         /// <summary>
         /// Takes the hash code of the specified items.
@@ -72,7 +72,7 @@ namespace Schema.NET
         /// <typeparam name="T">The type of the item.</typeparam>
         /// <param name="item">The item.</param>
         /// <returns>The new hash code.</returns>
-        public HashCode And<T>(T item) => new HashCode(CombineHashCodes(this.value, GetHashCode(item)));
+        public HashCode And<T>(T item) => new(CombineHashCodes(this.value, GetHashCode(item)));
 
         /// <summary>
         /// Adds the hash code of the specified items in the collection.

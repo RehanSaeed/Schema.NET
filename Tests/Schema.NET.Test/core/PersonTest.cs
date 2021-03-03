@@ -8,7 +8,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/social-profile-links
     public class PersonTest
     {
-        private readonly Person person = new Person()
+        private readonly Person person = new()
         {
             Name = "Name", // Required
             SameAs = new List<Uri>() // Required

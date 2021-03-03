@@ -13,7 +13,7 @@ namespace Schema.NET.Test
         private static readonly ItemAvailability? NullItemAvailability;
 #pragma warning restore CS0649 // Field is never assigned to and will always have its default value.
 
-        private readonly Event @event = new Event()
+        private readonly Event @event = new()
         {
             Name = "Jan Lieberman Concert Series: Journey in Jazz", // Required
             Description = "Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.", // Recommended

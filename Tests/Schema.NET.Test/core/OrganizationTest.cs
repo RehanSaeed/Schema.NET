@@ -8,7 +8,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/logo
     public class OrganizationTest
     {
-        private readonly Organization organization = new Organization()
+        private readonly Organization organization = new()
         {
             AreaServed = "GB", // Recommended. Omit for global.
             ContactPoint = new ContactPoint() // Required

@@ -127,7 +127,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2>(T1 item) => new Values<T1, T2>(item);
+        public static implicit operator Values<T1, T2>(T1 item) => new(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2>(T2 item) => new Values<T1, T2>(item);
+        public static implicit operator Values<T1, T2>(T2 item) => new(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2>(T1[] array) => new Values<T1, T2>(array);
+        public static implicit operator Values<T1, T2>(T1[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2>(T2[] array) => new Values<T1, T2>(array);
+        public static implicit operator Values<T1, T2>(T2[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2>(List<T1> list) => new Values<T1, T2>(list);
+        public static implicit operator Values<T1, T2>(List<T1> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2>(List<T2> list) => new Values<T1, T2>(list);
+        public static implicit operator Values<T1, T2>(List<T2> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2>(object[] array) => new Values<T1, T2>(array);
+        public static implicit operator Values<T1, T2>(object[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2>(List<object> list) => new Values<T1, T2>(list);
+        public static implicit operator Values<T1, T2>(List<object> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>

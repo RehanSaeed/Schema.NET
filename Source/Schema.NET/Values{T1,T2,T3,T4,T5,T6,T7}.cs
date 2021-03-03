@@ -372,7 +372,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T1 item) => new Values<T1, T2, T3, T4, T5, T6, T7>(item);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T1 item) => new(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T2 item) => new Values<T1, T2, T3, T4, T5, T6, T7>(item);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T2 item) => new(item);
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T3"/> to <see cref="Values{T1,T2,T3,T4,T5,T6,T7}"/>.
@@ -389,7 +389,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T3 item) => new Values<T1, T2, T3, T4, T5, T6, T7>(item);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T3 item) => new(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -398,7 +398,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T4 item) => new Values<T1, T2, T3, T4, T5, T6, T7>(item);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T4 item) => new(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T5"/> to <see cref="Values{T1,T2,T3,T4,T5,T6,T7}"/>.
@@ -406,7 +406,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T5 item) => new Values<T1, T2, T3, T4, T5, T6, T7>(item);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T5 item) => new(item);
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T6"/> to <see cref="Values{T1,T2,T3,T4,T5,T6,T7}"/>.
@@ -414,7 +414,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T6 item) => new Values<T1, T2, T3, T4, T5, T6, T7>(item);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T6 item) => new(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -423,7 +423,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T7 item) => new Values<T1, T2, T3, T4, T5, T6, T7>(item);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T7 item) => new(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -432,7 +432,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T1[] array) => new Values<T1, T2, T3, T4, T5, T6, T7>(array);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T1[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -441,7 +441,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T2[] array) => new Values<T1, T2, T3, T4, T5, T6, T7>(array);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T2[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -450,7 +450,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T3[] array) => new Values<T1, T2, T3, T4, T5, T6, T7>(array);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T3[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -459,7 +459,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T4[] array) => new Values<T1, T2, T3, T4, T5, T6, T7>(array);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T4[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T5[]"/> to <see cref="Values{T1,T2,T3,T4,T5,T6,T7}"/>.
@@ -467,7 +467,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T5[] array) => new Values<T1, T2, T3, T4, T5, T6, T7>(array);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T5[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -476,7 +476,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T6[] array) => new Values<T1, T2, T3, T4, T5, T6, T7>(array);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T6[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -485,7 +485,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T7[] array) => new Values<T1, T2, T3, T4, T5, T6, T7>(array);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(T7[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -494,7 +494,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T1> list) => new Values<T1, T2, T3, T4, T5, T6, T7>(list);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T1> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -503,7 +503,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T2> list) => new Values<T1, T2, T3, T4, T5, T6, T7>(list);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T2> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -512,7 +512,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T3> list) => new Values<T1, T2, T3, T4, T5, T6, T7>(list);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T3> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -521,7 +521,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T4> list) => new Values<T1, T2, T3, T4, T5, T6, T7>(list);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T4> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -530,7 +530,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T5> list) => new Values<T1, T2, T3, T4, T5, T6, T7>(list);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T5> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -539,7 +539,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T6> list) => new Values<T1, T2, T3, T4, T5, T6, T7>(list);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T6> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -548,7 +548,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T7> list) => new Values<T1, T2, T3, T4, T5, T6, T7>(list);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<T7> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -557,7 +557,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(object[] array) => new Values<T1, T2, T3, T4, T5, T6, T7>(array);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(object[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -566,7 +566,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<object> list) => new Values<T1, T2, T3, T4, T5, T6, T7>(list);
+        public static implicit operator Values<T1, T2, T3, T4, T5, T6, T7>(List<object> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>

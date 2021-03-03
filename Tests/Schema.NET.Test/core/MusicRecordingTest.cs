@@ -6,7 +6,7 @@ namespace Schema.NET.Test
 
     public class MusicRecordingTest
     {
-        private readonly MusicRecording musicRecording = new MusicRecording()
+        private readonly MusicRecording musicRecording = new()
         {
             Name = "2 + 2 = 5", // Required
             Identifier = "37kUGdEJJ7NaMl5LFW4EA4", // Recommended

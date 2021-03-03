@@ -8,7 +8,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/guides/mark-up-listings
     public class RecipeTest
     {
-        private readonly Recipe recipe = new Recipe()
+        private readonly Recipe recipe = new()
         {
             Name = "Grandma's Holiday Apple Pie",
             Image = new Uri("https://example.com/image.jpg"),

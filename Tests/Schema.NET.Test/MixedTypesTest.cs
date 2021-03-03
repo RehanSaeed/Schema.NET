@@ -8,7 +8,7 @@ namespace Schema.NET.Test
     public class MixedTypesTest
     {
         private readonly Book book =
-            new Book()
+            new()
             {
                 Id = new Uri("https://example.com/book/1"),
                 Author = new List<object>()

@@ -21,7 +21,7 @@ namespace Schema.NET
         private const int HttpsSchemaOrgLength = 19; // equivalent to "https://schema.org/".Length
 
         private static readonly TypeInfo ThingInterfaceTypeInfo = typeof(IThing).GetTypeInfo();
-        private static readonly Dictionary<string, Type> BuiltInThingTypeLookup = new Dictionary<string, Type>(StringComparer.Ordinal);
+        private static readonly Dictionary<string, Type> BuiltInThingTypeLookup = new(StringComparer.Ordinal);
 
         static ValuesJsonConverter()
         {

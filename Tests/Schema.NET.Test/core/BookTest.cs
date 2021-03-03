@@ -9,7 +9,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/books
     public class BookTest
     {
-        private readonly Book book = new Book()
+        private readonly Book book = new()
         {
             Id = new Uri("https://example.com/book/1"),
             Name = "The Catcher in the Rye",

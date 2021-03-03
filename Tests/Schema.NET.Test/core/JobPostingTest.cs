@@ -7,7 +7,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/job-postings
     public class JobPostingTest
     {
-        private readonly JobPosting jobPosting = new JobPosting()
+        private readonly JobPosting jobPosting = new()
         {
             Title = "Fitter and Turner", // Required
             Description = "<p>Widget assembly role for pressing wheel assemblies.</p><p><strong>Educational Requirements:</strong> Completed level 2 ISTA Machinist Apprenticeship.</p><p><strong>Required Experience:</strong> At least 3 years in a machinist role.</p>", // Required

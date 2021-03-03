@@ -16,7 +16,7 @@ namespace Schema.NET
         /// <summary>
         /// Default serializer settings used when deserializing
         /// </summary>
-        private static readonly JsonSerializerSettings DeserializeSettings = new JsonSerializerSettings
+        private static readonly JsonSerializerSettings DeserializeSettings = new()
         {
             DateParseHandling = DateParseHandling.None,
         };
@@ -24,7 +24,7 @@ namespace Schema.NET
         /// <summary>
         /// Default serializer settings used when HTML escaping is not required.
         /// </summary>
-        private static readonly JsonSerializerSettings DefaultSerializationSettings = new JsonSerializerSettings()
+        private static readonly JsonSerializerSettings DefaultSerializationSettings = new()
         {
             Converters = new List<JsonConverter>()
             {
@@ -38,7 +38,7 @@ namespace Schema.NET
         /// Serializer settings used when trying to avoid XSS vulnerabilities where user-supplied data is used
         /// and the output of the serialization is embedded into a web page raw.
         /// </summary>
-        private static readonly JsonSerializerSettings HtmlEscapedSerializationSettings = new JsonSerializerSettings()
+        private static readonly JsonSerializerSettings HtmlEscapedSerializationSettings = new()
         {
             Converters = new List<JsonConverter>()
             {

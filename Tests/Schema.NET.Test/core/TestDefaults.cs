@@ -5,7 +5,7 @@ namespace Schema.NET.Test
 
     public static class TestDefaults
     {
-        public static readonly JsonSerializerSettings DefaultJsonSerializerSettings = new JsonSerializerSettings()
+        public static readonly JsonSerializerSettings DefaultJsonSerializerSettings = new()
         {
             Formatting = Formatting.None,
             DateParseHandling = DateParseHandling.DateTimeOffset,

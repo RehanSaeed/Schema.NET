@@ -5,7 +5,7 @@ namespace Schema.NET.Tool.Services
 
     public class EnumerationValueComparer : IComparer<string>
     {
-        private static readonly Dictionary<string, int> KnownEnumerationValueOrders = new Dictionary<string, int>
+        private static readonly Dictionary<string, int> KnownEnumerationValueOrders = new()
         {
             { "SUNDAY", 0 },
             { "MONDAY", 1 },

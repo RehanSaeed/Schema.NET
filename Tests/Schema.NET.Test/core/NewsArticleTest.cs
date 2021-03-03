@@ -6,7 +6,7 @@ namespace Schema.NET.Test
 
     public class NewsArticleTest
     {
-        private readonly NewsArticle article = new NewsArticle()
+        private readonly NewsArticle article = new()
         {
             MainEntityOfPage = new Uri("https://google.com/article"), // Ignored
             Headline = "Article headline", // Recommended

@@ -5,7 +5,7 @@ namespace Schema.NET.Tool.Services
 
     public class PropertyNameComparer : IComparer<string>
     {
-        public static readonly Dictionary<string, int> KnownPropertyNameOrders = new Dictionary<string, int>
+        public static readonly Dictionary<string, int> KnownPropertyNameOrders = new()
         {
             { "CONTEXT", 0 },
             { "TYPE", 1 },

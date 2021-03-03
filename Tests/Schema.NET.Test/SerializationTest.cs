@@ -40,20 +40,20 @@ namespace Schema.NET.Test
                 "  \"name\": \"J.D. Salinger\\u003c/script\\u003e\\u003cscript\\u003ealert(\\u0027gotcha\\u0027);\\u003c/script\\u003e\"\r\n" +
             "}";
 
-        private static readonly Person Person = new Person()
+        private static readonly Person Person = new()
         {
             Name = "J.D. Salinger</script><script>alert('gotcha');</script>",
             Description = (string)null,
         };
 
-        private readonly Book book = new Book()
+        private readonly Book book = new()
         {
             Id = new Uri("https://example.com/book/1"),
             Name = "The Catcher in the Rye</script><script>alert('gotcha');</script>",
             Author = Person,
         };
 
-        private readonly JsonSerializerSettings customSerializerSettings = new JsonSerializerSettings()
+        private readonly JsonSerializerSettings customSerializerSettings = new()
         {
             Converters = new List<JsonConverter>()
             {
