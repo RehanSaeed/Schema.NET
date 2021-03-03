@@ -6,7 +6,7 @@ namespace Schema.NET.Test
 
     public class MusicGroupTest
     {
-        private readonly MusicGroup musicGroup = new MusicGroup()
+        private readonly MusicGroup musicGroup = new()
         {
             Name = "Radiohead", // Required
             Identifier = "4Z8W4fKeB5YxbusRsdQVPb", // Recommended

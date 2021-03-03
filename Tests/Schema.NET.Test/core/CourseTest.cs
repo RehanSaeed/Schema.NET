@@ -7,7 +7,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/courses
     public class CourseTest
     {
-        private readonly Course course = new Course()
+        private readonly Course course = new()
         {
             Name = "Introduction to Computer Science and Programming", // Required
             Description = "Introductory CS course laying out the basics.", // Required

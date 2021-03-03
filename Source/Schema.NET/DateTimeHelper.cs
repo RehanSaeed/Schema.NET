@@ -10,7 +10,7 @@ namespace Schema.NET
         private const string MSDateStringStart = "/Date(";
         private const string MSDateStringEnd = ")/";
         private const string NegativeOffset = "-";
-        private static readonly DateTime EpochDate = new DateTime(1970, 1, 1);
+        private static readonly DateTime EpochDate = new(1970, 1, 1);
         private static readonly char[] OffsetChars = new[] { '+', '-' };
 
         /// <summary>

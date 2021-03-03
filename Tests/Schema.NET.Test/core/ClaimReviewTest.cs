@@ -7,7 +7,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/factcheck
     public class ClaimReviewTest
     {
-        private readonly ClaimReview claimReview = new ClaimReview()
+        private readonly ClaimReview claimReview = new()
         {
             DatePublished = new DateTime(2016, 6, 22), // Required
             Url = new Uri("https://example.com/news/science/worldisflat.html"), // Required

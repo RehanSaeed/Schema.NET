@@ -7,7 +7,7 @@ namespace Schema.NET.Test
 
     public class MusicAlbumTest
     {
-        private readonly MusicAlbum musicAlbum = new MusicAlbum()
+        private readonly MusicAlbum musicAlbum = new()
         {
             Name = "Hail to the Thief", // Required
             Identifier = "1oW3v5Har9mvXnGk0x4fHm", // Recommended

@@ -8,7 +8,7 @@ namespace Schema.NET.Test
 
     public class ItemListTest
     {
-        private readonly ItemList itemlist = new ItemList()
+        private readonly ItemList itemlist = new()
         {
             ItemListElement = new List<IListItem>() // Required
                 {

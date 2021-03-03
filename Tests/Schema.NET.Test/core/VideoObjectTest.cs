@@ -7,7 +7,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/articles
     public class VideoObjectTest
     {
-        private readonly VideoObject videoObject = new VideoObject()
+        private readonly VideoObject videoObject = new()
         {
             Name = "Title", // Required
             Description = "Video description", // Required

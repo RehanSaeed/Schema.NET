@@ -142,7 +142,7 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator OneOrMany<T>(T item) => new OneOrMany<T>(item);
+        public static implicit operator OneOrMany<T>(T item) => new(item);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Schema.NET
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator OneOrMany<T>(T[] array) => new OneOrMany<T>(array);
+        public static implicit operator OneOrMany<T>(T[] array) => new(array);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator OneOrMany<T>(List<T> list) => new OneOrMany<T>(list);
+        public static implicit operator OneOrMany<T>(List<T> list) => new(list);
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>

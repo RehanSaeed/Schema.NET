@@ -7,7 +7,7 @@ namespace Schema.NET.Test
 
     public class MusicVenueTest
     {
-        private readonly MusicVenue musicVenue = new MusicVenue()
+        private readonly MusicVenue musicVenue = new()
         {
             Name = "Dolby Theatre", // Required
             Description = "Host to a range of prestigious events including movie premieres, concerts & the Oscars https://www.dolbytheatre.com", // Recommended

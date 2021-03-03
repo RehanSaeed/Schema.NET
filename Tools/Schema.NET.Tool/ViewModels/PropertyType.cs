@@ -22,6 +22,6 @@ namespace Schema.NET.Tool.ViewModels
 
         public string Name { get; }
 
-        public PropertyType Clone() => new PropertyType(this.Name, this.CSharpTypeStrings);
+        public PropertyType Clone() => new(this.Name, this.CSharpTypeStrings);
     }
 }

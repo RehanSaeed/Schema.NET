@@ -7,7 +7,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/products
     public class ProductTest
     {
-        private readonly Product product = new Product()
+        private readonly Product product = new()
         {
             Name = "Executive Anvil", // Required
             Description = "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveller looking for something to drop from a height.", // Recommended

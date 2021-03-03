@@ -10,7 +10,7 @@ namespace Schema.NET
     /// </summary>
     internal static class FastActivator
     {
-        private static readonly ConcurrentDictionary<(Type, Type), Delegate> ConstructorDelegateLookup = new ConcurrentDictionary<(Type, Type), Delegate>();
+        private static readonly ConcurrentDictionary<(Type, Type), Delegate> ConstructorDelegateLookup = new();
 
         /// <summary>
         /// Creates a constructor delegate for the specified type.

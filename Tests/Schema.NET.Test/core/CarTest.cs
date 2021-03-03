@@ -6,7 +6,7 @@ namespace Schema.NET.Test
 
     public class CarTest
     {
-        private readonly Car car = new Car
+        private readonly Car car = new()
         {
             Name = "Volvo XC90", // Required
             Description = "The XC90 is pure reflection of luxury that embodies Swedish design heritage. See everything this luxury SUV has to offer.", // Recommended

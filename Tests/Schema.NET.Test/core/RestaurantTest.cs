@@ -7,7 +7,7 @@ namespace Schema.NET.Test
     // https://developers.google.com/search/docs/data-types/local-businesses
     public class RestaurantTest
     {
-        private readonly Restaurant restaurant = new Restaurant()
+        private readonly Restaurant restaurant = new()
         {
             Id = new Uri("https://davessteakhouse.example.com"),
             Name = "Dave's Steak House",
