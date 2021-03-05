@@ -60,10 +60,13 @@ namespace Schema.NET.Tool.Repositories
             var domainIncludes = GetTokenValues(token, "schema:domainIncludes", "@id").Select(SchemaOrgUrl).ToArray();
             var rangeIncludes = GetTokenValues(token, "schema:rangeIncludes", "@id").Select(SchemaOrgUrl).ToArray();
             var subClassOf = GetTokenValues(token, "rdfs:subClassOf", "@id").Select(SchemaOrgUrl).ToArray();
-            var isPartOf = GetTokenValues(token, "schema:isPartOf", "@id").Select(SchemaOrgUrl).FirstOrDefault();
-            var layer = isPartOf is null ?
-                LayerName.Core :
-                isPartOf.Host.Replace(".schema.org", string.Empty);
+            var isPartOf = GetTokenValues(token, "schema:isPartOf", "@id").Select(s => new Uri(s)).FirstOrDefault();
+
+            var layer = LayerName.Core;
+            if (isPartOf is not null && isPartOf.Host != "schema.org")
+            {
+                layer = isPartOf.Host.Replace(".schema.org", string.Empty);
+            }
 
             if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.Ordinal)))
             {

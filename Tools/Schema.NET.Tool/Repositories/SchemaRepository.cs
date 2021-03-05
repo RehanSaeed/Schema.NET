@@ -27,17 +27,10 @@ namespace Schema.NET.Tool.Repositories
             var schemaObjects = await this.GetSchemaObjectsAsync().ConfigureAwait(false);
             schemaObjects = schemaObjects.Where(filter).ToArray();
 
-            var schemaTreeClasses = await this.GetSchemaTreeClassesAsync().ConfigureAwait(false);
             var schemaClasses = schemaObjects.OfType<SchemaClass>().ToArray();
 
             foreach (var schemaClass in schemaClasses)
             {
-                var schemaTreeClass = schemaTreeClasses.FirstOrDefault(x => x.Name.Equals(schemaClass.Label, StringComparison.OrdinalIgnoreCase));
-                if (schemaTreeClass is not null)
-                {
-                    schemaClass.Layer = schemaTreeClass.Layer;
-                }
-
                 schemaClass.SubClassOf.AddRange(schemaClasses.Where(x => schemaClass.SubClassOfIds.Contains(x.Id)));
             }
 
@@ -58,21 +51,6 @@ namespace Schema.NET.Tool.Repositories
             }
         }
 
-        public async Task<IEnumerable<SchemaTreeClass>> GetSchemaTreeClassesAsync()
-        {
-            using (var response = await this.httpClient
-                .GetAsync(new Uri("/docs/tree.jsonld", UriKind.Relative))
-                .ConfigureAwait(false))
-            {
-                response.EnsureSuccessStatusCode();
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var schemaClass = Deserialize<SchemaTreeClass>(json);
-                return EnumerableExtensions
-                    .Traverse(schemaClass, x => x.Children)
-                    .ToArray();
-            }
-        }
-
         private static T Deserialize<T>(string json, JsonConverter converter)
         {
             var options = new JsonSerializerOptions
@@ -82,13 +60,5 @@ namespace Schema.NET.Tool.Repositories
             options.Converters.Add(converter);
             return JsonSerializer.Deserialize<T>(json, options);
         }
-
-        private static T Deserialize<T>(string json) =>
-            JsonSerializer.Deserialize<T>(
-                json,
-                new JsonSerializerOptions()
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                });
     }
 }
