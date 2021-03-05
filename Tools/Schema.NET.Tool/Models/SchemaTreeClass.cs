@@ -1,4 +1,4 @@
-﻿namespace Schema.NET.Tool.Models
+namespace Schema.NET.Tool.Models
 {
     using System;
     using System.Collections.Generic;
@@ -15,9 +15,6 @@
 
         [DataMember(Name = "@id")]
         public Uri Id { get; set; }
-
-        [DataMember]
-        public string Layer { get; set; }
 
         [DataMember]
         public string Name { get; set; }
