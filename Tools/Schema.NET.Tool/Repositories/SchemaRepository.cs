@@ -11,21 +11,14 @@ namespace Schema.NET.Tool.Repositories
 
     public class SchemaRepository : ISchemaRepository
     {
-        public static readonly Func<SchemaObject, bool> DefaultFilter = (SchemaObject x) => !x.IsArchived && !x.IsMeta && !x.IsPending;
-
         private readonly HttpClient httpClient;
 
         public SchemaRepository(HttpClient httpClient) => this.httpClient = httpClient;
 
-        public async Task<(IEnumerable<SchemaClass> Classes, IEnumerable<SchemaProperty> Properties, IEnumerable<SchemaEnumerationValue> EnumerationValues)> GetObjectsAsync(Func<SchemaObject, bool> filter)
+        public async Task<(IEnumerable<SchemaClass> Classes, IEnumerable<SchemaProperty> Properties, IEnumerable<SchemaEnumerationValue> EnumerationValues)> GetObjectsAsync()
         {
-            if (filter == null)
-            {
-                filter = DefaultFilter;
-            }
-
             var schemaObjects = await this.GetSchemaObjectsAsync().ConfigureAwait(false);
-            schemaObjects = schemaObjects.Where(filter).ToArray();
+            schemaObjects = schemaObjects.ToArray();
 
             var schemaClasses = schemaObjects.OfType<SchemaClass>().ToArray();
 

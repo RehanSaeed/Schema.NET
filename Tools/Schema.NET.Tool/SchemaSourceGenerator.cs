@@ -34,7 +34,8 @@ namespace Schema.NET.Tool
                         new RenameEventProperty(),
                     },
                     Array.Empty<IEnumerationOverride>(),
-                    schemaRepository);
+                    schemaRepository,
+                    false);
 
                 this.SchemaObjects = await schemaService.GetObjectsAsync().ConfigureAwait(false);
 #pragma warning disable VSTHRD002 // Avoid problematic synchronous waits

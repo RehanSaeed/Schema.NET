@@ -19,15 +19,18 @@ namespace Schema.NET.Tool.Services
         private readonly IEnumerable<IClassOverride> classOverrides;
         private readonly IEnumerable<IEnumerationOverride> enumerationOverrides;
         private readonly ISchemaRepository schemaRepository;
+        private readonly bool includePending;
 
         public SchemaService(
             IEnumerable<IClassOverride> classOverrides,
             IEnumerable<IEnumerationOverride> enumerationOverrides,
-            ISchemaRepository schemaRepository)
+            ISchemaRepository schemaRepository,
+            bool includePending)
         {
             this.classOverrides = classOverrides;
             this.enumerationOverrides = enumerationOverrides;
             this.schemaRepository = schemaRepository;
+            this.includePending = includePending;
         }
 
         public async Task<IEnumerable<GeneratorSchemaObject>> GetObjectsAsync()
@@ -41,9 +44,10 @@ namespace Schema.NET.Tool.Services
                 StringComparer.Ordinal);
 
             var knownSchemaClasses = new HashSet<Uri>(
-                schemaClasses.Select(c => c.Id));
+                schemaClasses.Where(c => this.includePending || !c.IsPending).Select(c => c.Id));
 
             var classPropertyMap = schemaProperties
+                .Where(p => !p.IsArchived && !p.IsMeta && (this.includePending || !p.IsPending))
                 .SelectMany(p => p.DomainIncludes.Select(i => (Id: i, Property: p)))
                 .GroupBy(x => x.Id)
                 .ToDictionary(g => g.Key, g => g.Select(p => p.Property).ToArray());
@@ -51,7 +55,7 @@ namespace Schema.NET.Tool.Services
             var enumerations = new List<GeneratorSchemaEnumeration>();
             var classes = new List<GeneratorSchemaClass>();
             foreach (var schemaClass in schemaClasses
-                .Where(x => !x.IsPrimitive))
+                .Where(x => !x.IsPrimitive && !x.IsArchived && !x.IsMeta && (this.includePending || !x.IsPending)))
             {
                 if (schemaClass.IsEnum)
                 {
@@ -65,7 +69,7 @@ namespace Schema.NET.Tool.Services
                         classProperties = Array.Empty<Models.SchemaProperty>();
                     }
 
-                    var @class = TranslateClass(schemaClass, schemaClasses, classProperties, isEnumMap, knownSchemaClasses);
+                    var @class = TranslateClass(schemaClass, schemaClasses, classProperties, isEnumMap, knownSchemaClasses, this.includePending);
                     classes.Add(@class);
                 }
             }
@@ -236,7 +240,8 @@ namespace Schema.NET.Tool.Services
             IEnumerable<Models.SchemaClass> schemaClasses,
             IEnumerable<Models.SchemaProperty> schemaProperties,
             HashSet<string> isEnumMap,
-            HashSet<Uri> knownSchemaClasses)
+            HashSet<Uri> knownSchemaClasses,
+            bool includePending)
         {
             var @class = new GeneratorSchemaClass()
             {
@@ -262,16 +267,14 @@ namespace Schema.NET.Tool.Services
                         Name = propertyName,
                     };
                     property.Types.AddRange(x.RangeIncludes
-                        .Where(y =>
+                        .Where(id =>
                         {
-                            var propertyTypeName = y.ToString().Replace("https://schema.org/", string.Empty);
-                            var propertyTypeClass = schemaClasses
-                                .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.Ordinal));
-                            return propertyTypeClass is null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
+                            var propertyTypeClass = schemaClasses.FirstOrDefault(z => z.Id == id);
+                            return propertyTypeClass is null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && (includePending || !propertyTypeClass.IsPending));
                         })
-                        .Select(y =>
+                        .Select(id =>
                         {
-                            var propertyTypeName = y.ToString().Replace("https://schema.org/", string.Empty);
+                            var propertyTypeName = id.ToString().Replace("https://schema.org/", string.Empty);
                             var isPropertyTypeEnum = isEnumMap.Contains(propertyTypeName);
                             var csharpTypeStrings = GetCSharpTypeStrings(
                                 propertyName,
