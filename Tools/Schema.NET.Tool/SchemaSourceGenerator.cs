@@ -100,8 +100,7 @@ $@"namespace Schema.NET
         /// <summary>
         /// {SourceUtility.RenderDoc(8, property.Description)}
         /// </summary>
-        {property.PropertyTypeString} {property.Name} {{ get; set; }}
-")}
+        {property.PropertyTypeString} {property.Name} {{ get; set; }}")}
     }}
 
     /// <summary>
