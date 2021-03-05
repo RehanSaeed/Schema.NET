@@ -31,7 +31,7 @@ namespace Schema.NET.Test
             "\"contactPoint\":{" +
                 "\"@type\":\"ContactPoint\"," +
                 "\"availableLanguage\":\"English\"," +
-                "\"contactOption\":\"schema:TollFree\"," +
+                "\"contactOption\":\"https://schema.org/TollFree\"," +
                 "\"contactType\":\"customer service\"," +
                 "\"telephone\":\"+1-401-555-1212\"" +
             "}," +
@@ -47,7 +47,7 @@ namespace Schema.NET.Test
             "\"contactPoint\":{" +
                 "\"@type\":\"ContactPoint\"," +
                 "\"availableLanguage\":\"English\"," +
-                "\"contactOption\":\"schema:TollFree\"," +
+                "\"contactOption\":\"https://schema.org/TollFree\"," +
                 "\"contactType\":\"customer service\"," +
                 "\"telephone\":\"+1-401-555-1212\"" +
             "}," +

@@ -84,7 +84,7 @@ namespace Schema.NET.Test
                 "{" +
                     "\"@type\":\"Offer\"," +
                     "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
-                    "\"availability\":\"schema:InStock\"," +
+                    "\"availability\":\"https://schema.org/InStock\"," +
                     "\"price\":30.0," +
                     "\"priceCurrency\":\"USD\"," +
                     "\"validFrom\":\"2017-01-20T16:20:00-08:00\"" +

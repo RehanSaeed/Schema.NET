@@ -43,8 +43,8 @@ namespace Schema.NET.Tool.Repositories
                 return null;
             }
 
-            var id = new Uri(token.GetProperty("@id").GetString());
-            var types = GetTokenValues(token, "@type").ToList();
+            var id = SchemaOrgUrl(token.GetProperty("@id").GetString());
+            var types = GetTokenValues(token, "@type").ToArray();
 
             string comment;
             if (commentToken.ValueKind == JsonValueKind.Object && commentToken.TryGetProperty("@value", out var commentValueToken))
@@ -57,13 +57,13 @@ namespace Schema.NET.Tool.Repositories
             }
 
             var label = GetLabel(token);
-            var domainIncludes = GetTokenValues(token, "schema:domainIncludes", "@id").ToList();
-            var rangeIncludes = GetTokenValues(token, "schema:rangeIncludes", "@id").ToList();
-            var subClassOf = GetTokenValues(token, "rdfs:subClassOf", "@id").ToList();
-            var isPartOf = GetTokenValues(token, "schema:isPartOf").FirstOrDefault();
+            var domainIncludes = GetTokenValues(token, "schema:domainIncludes", "@id").Select(SchemaOrgUrl).ToArray();
+            var rangeIncludes = GetTokenValues(token, "schema:rangeIncludes", "@id").Select(SchemaOrgUrl).ToArray();
+            var subClassOf = GetTokenValues(token, "rdfs:subClassOf", "@id").Select(SchemaOrgUrl).ToArray();
+            var isPartOf = GetTokenValues(token, "schema:isPartOf", "@id").Select(SchemaOrgUrl).FirstOrDefault();
             var layer = isPartOf is null ?
                 LayerName.Core :
-                isPartOf.Replace("http://", string.Empty).Replace(".schema.org", string.Empty);
+                isPartOf.Host.Replace(".schema.org", string.Empty);
 
             if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.Ordinal)))
             {
@@ -101,7 +101,7 @@ namespace Schema.NET.Tool.Repositories
                     Label = label,
                     Layer = layer,
                 };
-                schemaEnumerationValue.Types.AddRange(types);
+                schemaEnumerationValue.Types.AddRange(types.Select(SchemaOrgUrl).Select(u => u.ToString()).ToArray());
                 return schemaEnumerationValue;
             }
         }
@@ -136,22 +136,33 @@ namespace Schema.NET.Tool.Repositories
             }
         }
 
-        private static IEnumerable<Uri> GetTokenValues(JsonElement source, string property, string name)
+        private static IEnumerable<string> GetTokenValues(JsonElement source, string property, string name)
         {
             if (source.TryGetProperty(property, out var token))
             {
                 if (token.ValueKind == JsonValueKind.Object)
                 {
-                    yield return new Uri(token.GetProperty(name).GetString());
+                    yield return token.GetProperty(name).GetString();
                 }
                 else if (token.ValueKind == JsonValueKind.Array)
                 {
                     foreach (var subToken in token.EnumerateArray())
                     {
-                        yield return new Uri(subToken.GetProperty(name).GetString());
+                        yield return subToken.GetProperty(name).GetString();
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// Converts "schema:" URLs to "https://schema.org/" URLs.
+        /// </summary>
+        /// <param name="url">The URL to convert.</param>
+        /// <returns>The updated URL with the new scheme and host.</returns>
+        private static Uri SchemaOrgUrl(string url) => new UriBuilder(url)
+        {
+            Scheme = "https",
+            Host = "schema.org",
+        }.Uri;
     }
 }

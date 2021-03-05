@@ -46,8 +46,8 @@ namespace Schema.NET.Test
                 "}," +
                 "\"offers\":{" +
                     "\"@type\":\"Offer\"," +
-                    "\"availability\":\"schema:InStock\"," +
-                    "\"itemCondition\":\"schema:NewCondition\"," +
+                    "\"availability\":\"https://schema.org/InStock\"," +
+                    "\"itemCondition\":\"https://schema.org/NewCondition\"," +
                     "\"price\":47200.0," +
                     "\"priceCurrency\":\"USD\"," +
                     "\"priceValidUntil\":\"2020-11-05\"," +
