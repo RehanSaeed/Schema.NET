@@ -7,7 +7,7 @@ namespace Schema.NET.Tool.Models
 
     public class SchemaClass : SchemaObject
     {
-        private static readonly Uri EnumerationId = new Uri("schema:Enumeration");
+        private static readonly Uri EnumerationId = new("https://schema.org/Enumeration");
 
         public bool IsEnum => EnumerableExtensions
             .Traverse(this, x => x.SubClassOf)

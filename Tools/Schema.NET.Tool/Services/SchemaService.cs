@@ -264,14 +264,14 @@ namespace Schema.NET.Tool.Services
                     property.Types.AddRange(x.RangeIncludes
                         .Where(y =>
                         {
-                            var propertyTypeName = y.ToString().Replace("schema:", string.Empty);
+                            var propertyTypeName = y.ToString().Replace("https://schema.org/", string.Empty);
                             var propertyTypeClass = schemaClasses
                                 .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.Ordinal));
                             return propertyTypeClass is null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
                         })
                         .Select(y =>
                         {
-                            var propertyTypeName = y.ToString().Replace("schema:", string.Empty);
+                            var propertyTypeName = y.ToString().Replace("https://schema.org/", string.Empty);
                             var isPropertyTypeEnum = isEnumMap.Contains(propertyTypeName);
                             var csharpTypeStrings = GetCSharpTypeStrings(
                                 propertyName,

@@ -19,8 +19,6 @@ namespace Schema.NET
         private const int HttpSchemaOrgLength = 18; // equivalent to "http://schema.org/".Length
         private const string HttpsSchemaOrgUrl = "https://schema.org/";
         private const int HttpsSchemaOrgLength = 19; // equivalent to "https://schema.org/".Length
-        private const string SchemaUrl = "schema:";
-        private const int SchemaUrlLength = 7; // equivalent to "schema:".Length
 
         private static readonly TypeInfo ThingInterfaceTypeInfo = typeof(IThing).GetTypeInfo();
         private static readonly Dictionary<string, Type> BuiltInThingTypeLookup = new(StringComparer.Ordinal);
@@ -303,10 +301,6 @@ namespace Schema.NET
 #pragma warning disable IDE0057 // Use range operator. Need to multi-target.
                         enumString = valueString.Substring(HttpsSchemaOrgLength);
 #pragma warning restore IDE0057 // Use range operator. Need to multi-target.
-                    }
-                    else if (valueString.StartsWith(SchemaUrl, StringComparison.OrdinalIgnoreCase))
-                    {
-                        enumString = valueString.Substring(SchemaUrlLength);
                     }
                     else
                     {
