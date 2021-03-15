@@ -68,28 +68,5 @@ namespace Schema.NET.Test
         [Fact]
         public void ToString_Book_MatchesExpectedJson() =>
             Assert.Equal(this.json, this.book.ToString());
-
-        [Fact]
-        public void ToString_SerializesBankAccountTypeFromStringAndUri_BankAccountTypeHasTwoValues()
-        {
-            var bankAccount = new BankAccount()
-            {
-                BankAccountType = new List<object>()
-                {
-                    "https://example.com/1",
-                    new Uri("https://example.com/2"),
-                },
-            };
-            var json =
-                @"{" +
-                    "\"@context\":\"https://schema.org\"," +
-                    "\"@type\":\"BankAccount\"," +
-                    "\"bankAccountType\":[" +
-                        "\"https://example.com/1\"," +
-                        "\"https://example.com/2\"" +
-                    "]" +
-                "}";
-            Assert.Equal(json, bankAccount.ToString());
-        }
     }
 }
