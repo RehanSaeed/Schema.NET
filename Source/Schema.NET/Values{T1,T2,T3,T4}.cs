@@ -101,10 +101,10 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(items));
             }
 
-            List<T1> items1 = null;
-            List<T2> items2 = null;
-            List<T3> items3 = null;
-            List<T4> items4 = null;
+            List<T1>? items1 = null;
+            List<T2>? items2 = null;
+            List<T3>? items3 = null;
+            List<T4>? items4 = null;
 
             foreach (var item in items)
             {
@@ -340,7 +340,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T1(Values<T1, T2, T3, T4> values) => values.Value1.FirstOrDefault();
+        public static implicit operator T1?(Values<T1, T2, T3, T4> values) => values.Value1.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -351,7 +351,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T2(Values<T1, T2, T3, T4> values) => values.Value2.FirstOrDefault();
+        public static implicit operator T2?(Values<T1, T2, T3, T4> values) => values.Value2.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -362,7 +362,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T3(Values<T1, T2, T3, T4> values) => values.Value3.FirstOrDefault();
+        public static implicit operator T3?(Values<T1, T2, T3, T4> values) => values.Value3.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T4(Values<T1, T2, T3, T4> values) => values.Value4.FirstOrDefault();
+        public static implicit operator T4?(Values<T1, T2, T3, T4> values) => values.Value4.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -567,7 +567,7 @@ namespace Schema.NET
         /// <returns>
         /// <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj) => obj is Values<T1, T2, T3, T4> values && this.Equals(values);
+        public override bool Equals(object? obj) => obj is Values<T1, T2, T3, T4> values && this.Equals(values);
 
         /// <summary>
         /// Returns a hash code for this instance.

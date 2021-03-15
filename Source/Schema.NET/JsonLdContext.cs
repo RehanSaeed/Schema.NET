@@ -13,13 +13,13 @@ namespace Schema.NET
         /// Gets or sets the name.
         /// </summary>
         [DataMember(Name = "name", Order = 0)]
-        public string Name { get; set; } = "https://schema.org";
+        public string? Name { get; set; } = "https://schema.org";
 
         /// <summary>
         /// Gets or sets the language.
         /// </summary>
         [DataMember(Name = "@language", Order = 1)]
-        public string Language { get; set; }
+        public string? Language { get; set; }
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="JsonLdContext"/> to <see cref="string"/>.
@@ -27,7 +27,7 @@ namespace Schema.NET
         /// <param name="context">The context.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA1062 // Validate arguments of public methods.
-        public static implicit operator string(JsonLdContext context) => context.Name;
+        public static implicit operator string?(JsonLdContext context) => context.Name;
 #pragma warning restore CA1062 // Validate arguments of public methods
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Schema.NET
         public static bool operator !=(JsonLdContext left, JsonLdContext right) => !(left == right);
 
         /// <inheritdoc />
-        public bool Equals(JsonLdContext other)
+        public bool Equals(JsonLdContext? other)
         {
             if (other is null)
             {
@@ -70,12 +70,12 @@ namespace Schema.NET
         }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => this.Equals(obj as JsonLdContext);
+        public override bool Equals(object? obj) => this.Equals(obj as JsonLdContext);
 
         /// <inheritdoc />
         public override int GetHashCode() => HashCode.Of(this.Name).And(this.Language);
 
         /// <inheritdoc />
-        public override string ToString() => this.Name;
+        public override string? ToString() => this.Name;
     }
 }

@@ -8,7 +8,7 @@ namespace Schema.NET.Tool.GeneratorModels
     public class GeneratorSchemaEnumeration : GeneratorSchemaObject
 #pragma warning restore CA1724 // Identifiers should conflict with namespaces
     {
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public List<GeneratorSchemaEnumerationValue> Values { get; } = new List<GeneratorSchemaEnumerationValue>();
     }

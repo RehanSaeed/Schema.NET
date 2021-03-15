@@ -3,7 +3,6 @@ namespace Schema.NET.Tool.Services
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.IO;
     using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
@@ -14,7 +13,7 @@ namespace Schema.NET.Tool.Services
 
     public class SchemaService
     {
-        private static readonly Regex StartsWithNumber = new Regex("^[0-9]", RegexOptions.Compiled);
+        private static readonly Regex StartsWithNumber = new("^[0-9]", RegexOptions.Compiled);
 
         private readonly IEnumerable<IClassOverride> classOverrides;
         private readonly IEnumerable<IEnumerationOverride> enumerationOverrides;

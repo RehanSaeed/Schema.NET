@@ -14,7 +14,7 @@ namespace Schema.NET.Tool
     [Generator]
     public class SchemaSourceGenerator : ISourceGenerator
     {
-        private IEnumerable<GeneratorSchemaObject> SchemaObjects { get; set; }
+        private IEnumerable<GeneratorSchemaObject>? SchemaObjects { get; set; }
 
         public void Initialize(GeneratorInitializationContext context)
         {
@@ -46,19 +46,22 @@ namespace Schema.NET.Tool
 
         public void Execute(GeneratorExecutionContext context)
         {
-            foreach (var schemaObject in this.SchemaObjects)
+            if (this.SchemaObjects is not null)
             {
-                var source = string.Empty;
-                if (schemaObject is GeneratorSchemaClass schemaClass)
+                foreach (var schemaObject in this.SchemaObjects)
                 {
-                    source = RenderClass(schemaClass);
-                }
-                else if (schemaObject is GeneratorSchemaEnumeration schemaEnumeration)
-                {
-                    source = RenderEnumeration(schemaEnumeration);
-                }
+                    var source = string.Empty;
+                    if (schemaObject is GeneratorSchemaClass schemaClass)
+                    {
+                        source = RenderClass(schemaClass);
+                    }
+                    else if (schemaObject is GeneratorSchemaEnumeration schemaEnumeration)
+                    {
+                        source = RenderEnumeration(schemaEnumeration);
+                    }
 
-                context.AddSource($"{schemaObject.Layer}.{schemaObject.Name}.Generated.cs", source);
+                    context.AddSource($"{schemaObject.Layer}.{schemaObject.Name}.Generated.cs", source);
+                }
             }
         }
 
@@ -176,7 +179,8 @@ $@"namespace Schema.NET
 
         private static string GetAccessModifier(GeneratorSchemaProperty schemaProperty)
         {
-            var isOverride = schemaProperty.Class
+            var isOverride = schemaProperty.Class is not null && schemaProperty
+                .Class
                 .Ancestors
                 .Any(x => x.Properties.Any(y => string.Equals(y.Name, schemaProperty.Name, StringComparison.Ordinal)));
             if (isOverride)
@@ -184,7 +188,8 @@ $@"namespace Schema.NET
                 return " override";
             }
 
-            var isVirtual = schemaProperty.Class
+            var isVirtual = schemaProperty.Class is not null && schemaProperty
+                .Class
                 .Descendants
                 .Any(x => x.Properties.Any(y => string.Equals(y.Name, schemaProperty.Name, StringComparison.Ordinal)));
             if (isVirtual)

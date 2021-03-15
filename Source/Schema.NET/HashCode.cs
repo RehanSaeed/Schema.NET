@@ -63,7 +63,7 @@ namespace Schema.NET
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="items">The collection.</param>
         /// <returns>The new hash code.</returns>
-        public static HashCode OfEach<T>(IEnumerable<T> items) =>
+        public static HashCode OfEach<T>(IEnumerable<T>? items) =>
             items is null ? new HashCode(0) : new HashCode(GetHashCode(items, 0));
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Schema.NET
         public bool Equals(HashCode other) => this.value.Equals(other.value);
 
         /// <inheritdoc />
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is HashCode hashCode)
             {
@@ -128,7 +128,7 @@ namespace Schema.NET
             }
         }
 
-        private static int GetHashCode<T>(T item) => item?.GetHashCode() ?? 0;
+        private static int GetHashCode<T>(T? item) => item?.GetHashCode() ?? 0;
 
         private static int GetHashCode<T>(IEnumerable<T> items, int startHashCode)
         {

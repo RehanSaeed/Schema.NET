@@ -564,12 +564,12 @@ namespace Schema.NET.Test
         }
 
         private static string SerializeObject<T>(T value)
-            where T : IValues
-            => SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
+            where T : IValues =>
+            SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
 
         private static T DeserializeObject<T>(string json)
-            where T : IValues
-            => SchemaSerializer.DeserializeObject<TestModel<T>>(json).Property;
+            where T : IValues =>
+            SchemaSerializer.DeserializeObject<TestModel<T>>(json).Property;
 
         private class TestModel<T>
             where T : IValues

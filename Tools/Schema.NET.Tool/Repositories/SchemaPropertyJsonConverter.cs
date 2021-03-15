@@ -21,7 +21,7 @@ namespace Schema.NET.Tool.Repositories
             {
                 var token = JsonDocument.ParseValue(ref reader);
                 var graphArray = token.RootElement.GetProperty("@graph").EnumerateArray();
-                return graphArray.Select(Read).Where(x => x != null).ToList();
+                return graphArray.Select(Read).Where(x => x is not null).ToList();
             }
 
             return new List<SchemaObject>();
@@ -30,7 +30,7 @@ namespace Schema.NET.Tool.Repositories
         public override void Write(Utf8JsonWriter writer, List<SchemaObject> value, JsonSerializerOptions options) =>
             throw new NotImplementedException();
 
-        private static SchemaObject Read(JsonElement token)
+        private static SchemaObject? Read(JsonElement token)
         {
             if (!token.TryGetProperty("rdfs:comment", out var commentToken))
             {
@@ -46,7 +46,7 @@ namespace Schema.NET.Tool.Repositories
             var id = SchemaOrgUrl(token.GetProperty("@id").GetString());
             var types = GetTokenValues(token, "@type").ToArray();
 
-            string comment;
+            string? comment;
             if (commentToken.ValueKind == JsonValueKind.Object && commentToken.TryGetProperty("@value", out var commentValueToken))
             {
                 comment = commentValueToken.GetString();
@@ -109,7 +109,7 @@ namespace Schema.NET.Tool.Repositories
             }
         }
 
-        private static string GetLabel(JsonElement token)
+        private static string? GetLabel(JsonElement token)
         {
             var labelToken = token.GetProperty("rdfs:label");
 
@@ -121,7 +121,7 @@ namespace Schema.NET.Tool.Repositories
             return labelToken.GetProperty("@value").GetString();
         }
 
-        private static IEnumerable<string> GetTokenValues(JsonElement source, string property)
+        private static IEnumerable<string?> GetTokenValues(JsonElement source, string property)
         {
             if (source.TryGetProperty(property, out var token))
             {
@@ -139,7 +139,7 @@ namespace Schema.NET.Tool.Repositories
             }
         }
 
-        private static IEnumerable<string> GetTokenValues(JsonElement source, string property, string name)
+        private static IEnumerable<string?> GetTokenValues(JsonElement source, string property, string name)
         {
             if (source.TryGetProperty(property, out var token))
             {
@@ -162,7 +162,7 @@ namespace Schema.NET.Tool.Repositories
         /// </summary>
         /// <param name="url">The URL to convert.</param>
         /// <returns>The updated URL with the new scheme and host.</returns>
-        private static Uri SchemaOrgUrl(string url) => new UriBuilder(url)
+        private static Uri SchemaOrgUrl(string? url) => new UriBuilder(url)
         {
             Scheme = "https",
             Host = "schema.org",

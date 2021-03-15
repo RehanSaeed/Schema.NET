@@ -10,13 +10,13 @@ namespace Schema.NET.Tool.GeneratorModels
     public class GeneratorSchemaProperty : ICloneable<GeneratorSchemaProperty>
 #pragma warning restore CA1716 // Identifiers should not match keywords
     {
-        public GeneratorSchemaClass Class { get; set; }
+        public GeneratorSchemaClass? Class { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public string JsonName { get; set; }
+        public string? JsonName { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public int Order { get; set; }
 

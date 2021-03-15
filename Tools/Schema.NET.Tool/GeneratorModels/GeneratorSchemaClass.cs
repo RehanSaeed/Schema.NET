@@ -23,9 +23,9 @@ namespace Schema.NET.Tool.GeneratorModels
             .Traverse(this, x => x.Children)
             .Where(x => x != this);
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public Uri Id { get; set; }
+        public Uri? Id { get; set; }
 
         public bool IsArchived => EnumerableExtensions
             .Traverse(this, x => x.Parents)

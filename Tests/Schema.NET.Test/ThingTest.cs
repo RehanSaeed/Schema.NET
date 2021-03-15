@@ -27,7 +27,7 @@ namespace Schema.NET.Test
         public void Deserializing_NewObjectJsonLd_ReturnsThing() =>
             Assert.Equal(
                 this.thing.ToString(),
-                JsonConvert.DeserializeObject<Thing>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+                JsonConvert.DeserializeObject<Thing>(this.json, TestDefaults.DefaultJsonSerializerSettings)?.ToString());
 
         [Fact]
         public void Equality_AreEqual_Default() => CompareEqual(new Thing(), new Thing());

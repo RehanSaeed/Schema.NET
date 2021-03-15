@@ -61,7 +61,7 @@ namespace Schema.NET.Test
 
         [Fact]
         public void Constructor_NullList_ThrowsArgumentNullException() =>
-            Assert.Throws<ArgumentNullException>(() => new Values<int, string, DayOfWeek>((List<object>)null));
+            Assert.Throws<ArgumentNullException>(() => new Values<int, string, DayOfWeek>((List<object>)null!));
 
         [Theory]
         [InlineData(0)]

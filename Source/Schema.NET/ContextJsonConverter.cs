@@ -11,7 +11,7 @@ namespace Schema.NET
     public class ContextJsonConverter : JsonConverter<JsonLdContext>
     {
         /// <inheritdoc />
-        public override JsonLdContext ReadJson(JsonReader reader, Type objectType, JsonLdContext existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override JsonLdContext ReadJson(JsonReader reader, Type objectType, JsonLdContext? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             if (reader is null)
             {
@@ -28,13 +28,13 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(serializer));
             }
 
-            var context = hasExistingValue ? existingValue : new JsonLdContext();
+            var context = hasExistingValue ? existingValue! : new JsonLdContext();
 
-            string name;
-            string language;
+            string? name;
+            string? language;
             if (reader.TokenType == JsonToken.String)
             {
-                name = (string)reader.Value;
+                name = (string?)reader.Value;
                 language = null;
             }
             else
@@ -54,7 +54,7 @@ namespace Schema.NET
         }
 
         /// <inheritdoc />
-        public override void WriteJson(JsonWriter writer, JsonLdContext value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, JsonLdContext? value, JsonSerializer serializer)
         {
             if (writer is null)
             {

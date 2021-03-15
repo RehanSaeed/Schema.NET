@@ -32,7 +32,7 @@ namespace Schema.NET
         /// blank node identifiers.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public virtual string Type { get; }
+        public virtual string? Type { get; }
 
         /// <summary>
         /// Gets or sets the identifier used to uniquely identify things that are being described in the document with
@@ -43,10 +43,10 @@ namespace Schema.NET
         /// a node. In JSON-LD, a node is identified using the @id keyword:
         /// </summary>
         [DataMember(Name = "@id", Order = 2)]
-        public virtual Uri Id { get; set; }
+        public virtual Uri? Id { get; set; }
 
         /// <inheritdoc/>
-        public bool Equals(JsonLdObject other)
+        public bool Equals(JsonLdObject? other)
         {
             if (other is null)
             {
@@ -64,7 +64,7 @@ namespace Schema.NET
         }
 
         /// <inheritdoc/>
-        public override bool Equals(object obj) => this.Equals(obj as JsonLdObject);
+        public override bool Equals(object? obj) => this.Equals(obj as JsonLdObject);
 
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Of(this.Context)

@@ -15,7 +15,7 @@ namespace Schema.NET
         : IReadOnlyCollection<T>, IEnumerable<T>, IValues, IEquatable<OneOrMany<T>>
 #pragma warning restore CA1710 // Identifiers should have correct suffix
     {
-        private readonly T[] collection;
+        private readonly T[]? collection;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
@@ -171,7 +171,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T(OneOrMany<T> oneOrMany) => oneOrMany.FirstOrDefault();
+        public static implicit operator T?(OneOrMany<T> oneOrMany) => oneOrMany.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -245,11 +245,11 @@ namespace Schema.NET
         {
             if (this.HasOne)
             {
-                return new[] { this.collection[0] };
+                return new[] { this.collection![0] };
             }
             else if (this.HasMany)
             {
-                var result = new T[this.collection.Length];
+                var result = new T[this.collection!.Length];
                 Array.Copy(this.collection, 0, result, 0, this.collection.Length);
                 return result;
             }
@@ -278,11 +278,11 @@ namespace Schema.NET
             }
             else if (this.HasOne && other.HasOne)
             {
-                return this.collection[0].Equals(other.collection[0]);
+                return Equals(this.collection![0], other.collection![0]);
             }
             else if (this.HasMany && other.HasMany)
             {
-                if (this.collection.Length != other.collection.Length)
+                if (this.collection!.Length != other.collection!.Length)
                 {
                     return false;
                 }
@@ -308,7 +308,7 @@ namespace Schema.NET
         /// <returns>
         ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj) => obj is OneOrMany<T> oneOrMany && this.Equals(oneOrMany);
+        public override bool Equals(object? obj) => obj is OneOrMany<T> oneOrMany && this.Equals(oneOrMany);
 
         /// <summary>
         /// Returns a hash code for this instance.
