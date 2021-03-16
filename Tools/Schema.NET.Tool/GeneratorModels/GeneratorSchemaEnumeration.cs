@@ -8,8 +8,8 @@ namespace Schema.NET.Tool.GeneratorModels
     public class GeneratorSchemaEnumeration : GeneratorSchemaObject
 #pragma warning restore CA1724 // Identifiers should conflict with namespaces
     {
-        public GeneratorSchemaEnumeration(string name, string layer)
-            : base(name, layer)
+        public GeneratorSchemaEnumeration(string layer, string name)
+            : base(layer, name)
         {
         }
 

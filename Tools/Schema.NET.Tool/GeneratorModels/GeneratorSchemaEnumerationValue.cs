@@ -6,10 +6,10 @@ namespace Schema.NET.Tool.GeneratorModels
     [DebuggerDisplay("{Name}")]
     public class GeneratorSchemaEnumerationValue
     {
-        public GeneratorSchemaEnumerationValue(Uri uri, string name)
+        public GeneratorSchemaEnumerationValue(string name, Uri uri)
         {
-            this.Uri = uri;
             this.Name = name;
+            this.Uri = uri;
         }
 
         public string? Description { get; set; }

@@ -2,14 +2,14 @@ namespace Schema.NET.Tool.GeneratorModels
 {
     public class GeneratorSchemaObject
     {
-        public GeneratorSchemaObject(string name, string layer)
+        public GeneratorSchemaObject(string layer, string name)
         {
-            this.Name = name;
             this.Layer = layer;
+            this.Name = name;
         }
 
-        public string Layer { get; set; }
+        public string Layer { get; }
 
-        public string Name { get; set; }
+        public string Name { get; }
     }
 }

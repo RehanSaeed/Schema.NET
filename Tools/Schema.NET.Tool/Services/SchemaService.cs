@@ -124,7 +124,7 @@ namespace Schema.NET.Tool.Services
                         var classDescription = "See " + string.Join(", ", @class.Parents.Select(x => x.Name).OrderBy(x => x)) + " for more information.";
                         var parents = @class.Parents.SelectMany(x => x.Parents).GroupBy(x => x.Name).Select(x => x.First()).ToArray();
                         var layerName = @class.IsCombined ? @class.Layer : $"{@class.Layer}.combined";
-                        combinedClass = new GeneratorSchemaClass(new Uri($"https://CombinedClass/{className}"), className, layerName)
+                        combinedClass = new GeneratorSchemaClass(new Uri($"https://CombinedClass/{className}"), layerName, className)
                         {
                             Description = classDescription,
                             IsCombined = true,
@@ -208,14 +208,14 @@ namespace Schema.NET.Tool.Services
             Models.SchemaClass schemaClass,
             IEnumerable<Models.SchemaEnumerationValue> schemaValues)
         {
-            var enumeration = new GeneratorSchemaEnumeration(schemaClass.Label, $"{schemaClass.Layer}.enumerations")
+            var enumeration = new GeneratorSchemaEnumeration($"{schemaClass.Layer}.enumerations", schemaClass.Label)
             {
                 Description = schemaClass.Comment,
             };
             enumeration.Values.AddRange(schemaValues
                 .Where(x => x.Types.Contains(schemaClass.Id.ToString()))
                 .Select(
-                    x => new GeneratorSchemaEnumerationValue(x.Id, x.Label)
+                    x => new GeneratorSchemaEnumerationValue(x.Label, x.Id)
                     {
                         Description = x.Comment,
                     })
@@ -232,7 +232,7 @@ namespace Schema.NET.Tool.Services
             bool includePending)
         {
             var className = StartsWithNumber.IsMatch(schemaClass.Label) ? $"_{schemaClass.Label}" : schemaClass.Label;
-            var @class = new GeneratorSchemaClass(schemaClass.Id, className, schemaClass.Layer)
+            var @class = new GeneratorSchemaClass(schemaClass.Id, schemaClass.Layer, className)
             {
                 Description = schemaClass.Comment,
             };
@@ -245,7 +245,7 @@ namespace Schema.NET.Tool.Services
                 .Select(x =>
                 {
                     var propertyName = GetPropertyName(x.Label);
-                    var property = new GeneratorSchemaProperty(@class, propertyName, CamelCase(propertyName))
+                    var property = new GeneratorSchemaProperty(@class, CamelCase(propertyName), propertyName)
                     {
                         Description = x.Comment,
                     };

@@ -14,8 +14,8 @@ namespace Schema.NET.Tool.GeneratorModels
         public GeneratorSchemaClass(Uri id)
             : base(string.Empty, string.Empty) => this.Id = id;
 
-        public GeneratorSchemaClass(Uri id, string name, string layer)
-            : base(name, layer) => this.Id = id;
+        public GeneratorSchemaClass(Uri id, string layer, string name)
+            : base(layer, name) => this.Id = id;
 
         public IEnumerable<GeneratorSchemaClass> Ancestors => EnumerableExtensions
             .Traverse(this, x => x.Parents)
