@@ -74,12 +74,12 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(serializer));
             }
 
-            var dynamicConstructor = FastActivator.GetDynamicConstructor<IEnumerable<object>>(objectType);
+            var dynamicConstructor = FastActivator.GetDynamicConstructor<IEnumerable<object?>>(objectType);
             if (dynamicConstructor is not null)
             {
                 if (reader.TokenType == JsonToken.StartArray)
                 {
-                    var items = new List<object>();
+                    var items = new List<object?>();
 
                     while (reader.Read())
                     {
@@ -161,7 +161,7 @@ namespace Schema.NET
         /// <param name="writer">The JSON writer.</param>
         /// <param name="value">The value to write.</param>
         /// <param name="serializer">The JSON serializer.</param>
-        public virtual void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
+        public virtual void WriteObject(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             if (writer is null)
             {
@@ -184,15 +184,15 @@ namespace Schema.NET
 
                 // Use the type property (if provided) to identify the correct type
                 var explicitTypeFromToken = token.SelectToken("@type")?.ToString();
-                if (!string.IsNullOrEmpty(explicitTypeFromToken) && TryGetConcreteType(explicitTypeFromToken, out var explicitType))
+                if (!string.IsNullOrEmpty(explicitTypeFromToken) && TryGetConcreteType(explicitTypeFromToken!, out var explicitType))
                 {
-                    var explicitTypeInfo = explicitType.GetTypeInfo();
+                    var explicitTypeInfo = explicitType!.GetTypeInfo();
                     for (var i = 0; i < targetTypes.Length; i++)
                     {
                         var targetTypeInfo = targetTypes[i].GetTypeInfo();
                         if (targetTypeInfo.IsAssignableFrom(explicitTypeInfo))
                         {
-                            return token.ToObject(explicitType, serializer);
+                            return token.ToObject(explicitType!, serializer);
                         }
                     }
                 }
@@ -201,7 +201,7 @@ namespace Schema.NET
                 for (var i = targetTypes.Length - 1; i >= 0; i--)
                 {
                     var underlyingTargetType = targetTypes[i].GetUnderlyingTypeFromNullable();
-                    if (underlyingTargetType is not null && !underlyingTargetType.IsPrimitiveType())
+                    if (!underlyingTargetType.IsPrimitiveType())
                     {
                         try
                         {
@@ -212,7 +212,7 @@ namespace Schema.NET
                             if (typeInfo.IsInterface && TryGetConcreteType(typeInfo.Name.Substring(1), out var concreteType))
 #pragma warning restore IDE0057 // Use range operator. Need to multi-target.
                             {
-                                localTargetType = concreteType;
+                                localTargetType = concreteType!;
                             }
 
                             return token.ToObject(localTargetType, serializer);
@@ -309,11 +309,20 @@ namespace Schema.NET
                         enumString = valueString;
                     }
 
+#if NETSTANDARD2_0 || NET472 || NET461
+                    try
+                    {
+                        result = Enum.Parse(targetType, enumString);
+                        success = true;
+                    }
+                    catch (Exception)
+#else
                     if (Enum.TryParse(targetType, enumString, out result))
                     {
                         success = true;
                     }
                     else
+#endif
                     {
                         Debug.WriteLine($"Unable to parse enumeration of type {targetType.FullName} with value {enumString}.");
                         success = false;

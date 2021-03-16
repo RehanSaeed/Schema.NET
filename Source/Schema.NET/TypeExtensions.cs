@@ -29,7 +29,7 @@ namespace Schema.NET
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>The underlying type if nullable, otherwise returns the type itself.</returns>
-        public static Type? GetUnderlyingTypeFromNullable(this Type type) =>
-            type.IsNullable() ? Nullable.GetUnderlyingType(type) : type;
+        public static Type GetUnderlyingTypeFromNullable(this Type type) =>
+            type.IsNullable() ? Nullable.GetUnderlyingType(type)! : type;
     }
 }

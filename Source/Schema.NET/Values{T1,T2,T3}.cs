@@ -13,7 +13,7 @@ namespace Schema.NET
     /// <typeparam name="T3">The third type the values can take.</typeparam>
 #pragma warning disable CA1710 // Identifiers should have correct suffix
     public readonly struct Values<T1, T2, T3>
-        : IReadOnlyCollection<object>, IEnumerable<object>, IValues, IEquatable<Values<T1, T2, T3>>
+        : IReadOnlyCollection<object?>, IEnumerable<object?>, IValues, IEquatable<Values<T1, T2, T3>>
 #pragma warning restore CA1710 // Identifiers should have correct suffix
     {
         /// <summary>
@@ -395,7 +395,7 @@ namespace Schema.NET
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>An enumerator that can be used to iterate through the collection.</returns>
-        public IEnumerator<object> GetEnumerator()
+        public IEnumerator<object?> GetEnumerator()
         {
             if (this.HasValue1)
             {
