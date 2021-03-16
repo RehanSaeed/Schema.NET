@@ -23,12 +23,9 @@ namespace Schema.NET.Tool.CustomOverrides
                 throw new ArgumentNullException(nameof(c));
             }
 
-            var property = new GeneratorSchemaProperty()
+            var property = new GeneratorSchemaProperty(c, "QueryInput", "query-input")
             {
-                Class = c,
                 Description = "Gets or sets the query input search parameter.",
-                JsonName = "query-input",
-                Name = "QueryInput",
             };
             property.Types.AddRange(
                 new List<GeneratorSchemaPropertyType>()

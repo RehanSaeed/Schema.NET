@@ -7,16 +7,23 @@ namespace Schema.NET.Tool.GeneratorModels
 
     [DebuggerDisplay("{Name}")]
 #pragma warning disable CA1716 // Identifiers should not match keywords
-    public class GeneratorSchemaProperty : ICloneable<GeneratorSchemaProperty>
+    public class GeneratorSchemaProperty : ICloneable<GeneratorSchemaProperty, GeneratorSchemaClass>
 #pragma warning restore CA1716 // Identifiers should not match keywords
     {
-        public GeneratorSchemaClass? Class { get; set; }
+        public GeneratorSchemaProperty(GeneratorSchemaClass schemaClass, string name, string jsonName)
+        {
+            this.Class = schemaClass;
+            this.Name = name;
+            this.JsonName = jsonName;
+        }
+
+        public GeneratorSchemaClass Class { get; }
 
         public string? Description { get; set; }
 
-        public string? JsonName { get; set; }
+        public string JsonName { get; set; }
 
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         public int Order { get; set; }
 
@@ -57,13 +64,11 @@ namespace Schema.NET.Tool.GeneratorModels
             }
         }
 
-        public GeneratorSchemaProperty Clone()
+        public GeneratorSchemaProperty Clone(GeneratorSchemaClass context)
         {
-            var property = new GeneratorSchemaProperty()
+            var property = new GeneratorSchemaProperty(context, this.Name, this.JsonName)
             {
                 Description = this.Description,
-                JsonName = this.JsonName,
-                Name = this.Name,
                 Order = this.Order,
             };
             property.Types.AddRange(this.Types.Select(x => x.Clone()));
