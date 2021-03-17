@@ -18,7 +18,7 @@ namespace Schema.NET
         /// <param name="writer">The JSON writer.</param>
         /// <param name="value">The value to write.</param>
         /// <param name="serializer">The JSON serializer.</param>
-        public override void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteObject(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             if (writer is null)
             {
