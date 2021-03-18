@@ -68,7 +68,7 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_VideoObjectJsonLd_ReturnsVideoObject()
         {
-            Assert.Equal(this.videoObject.ToString(), JsonConvert.DeserializeObject<VideoObject>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.videoObject.ToString(), JsonConvert.DeserializeObject<VideoObject>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.videoObject, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<VideoObject>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }

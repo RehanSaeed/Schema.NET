@@ -43,7 +43,7 @@ namespace Schema.NET.Test
         private static readonly Person Person = new()
         {
             Name = "J.D. Salinger</script><script>alert('gotcha');</script>",
-            Description = (string)null,
+            Description = (string)null!,
         };
 
         private readonly Book book = new()
@@ -85,7 +85,7 @@ namespace Schema.NET.Test
             var localBusiness = new LocalBusiness()
             {
                 PriceRange = "$$$",
-                Address = (string)null,
+                Address = (string)null!,
             };
             var actual = localBusiness.ToString();
             var expected =

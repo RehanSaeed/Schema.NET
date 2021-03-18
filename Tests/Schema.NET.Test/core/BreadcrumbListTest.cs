@@ -70,14 +70,14 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_BreadcrumbListJsonLd_ReturnsMatchingBreadcrumbList()
         {
-            Assert.Equal(this.breadcrumbList.ToString(), JsonConvert.DeserializeObject<BreadcrumbList>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.breadcrumbList.ToString(), JsonConvert.DeserializeObject<BreadcrumbList>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.breadcrumbList, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<BreadcrumbList>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
 
         [Fact]
         public void Deserializing_BreadcrumbListJsonLd_ReturnsBreadcrumbList()
         {
-            var breadcrumbList = JsonConvert.DeserializeObject<BreadcrumbList>(this.json, TestDefaults.DefaultJsonSerializerSettings);
+            var breadcrumbList = JsonConvert.DeserializeObject<BreadcrumbList>(this.json, TestDefaults.DefaultJsonSerializerSettings)!;
 
             List<IThing> things = breadcrumbList.ItemListElement;
             List<IListItem> listItems = breadcrumbList.ItemListElement;
@@ -87,16 +87,14 @@ namespace Schema.NET.Test
             var thing2 = things.Last();
             var listItem1 = (IListItem)thing1;
             var listItem2 = (IListItem)thing2;
-            Assert.Equal(1, (int)listItem1.Position);
-            Assert.Equal(2, (int)listItem2.Position);
-            var book = listItem1.Item.OfType<IBook>().FirstOrDefault();
-            Assert.NotNull(book);
+            Assert.Equal(1, (int)listItem1.Position!);
+            Assert.Equal(2, (int)listItem2.Position!);
+            var book = listItem1.Item.OfType<IBook>().First()!;
             Assert.Equal("Books", book.Name);
-            Assert.Equal(new Uri("https://example.com/images/icon-book.png"), (Uri)book.Image);
-            var person = listItem2.Item.OfType<IPerson>().FirstOrDefault();
-            Assert.NotNull(person);
+            Assert.Equal(new Uri("https://example.com/images/icon-book.png"), (Uri)book.Image!);
+            var person = listItem2.Item.OfType<IPerson>().First();
             Assert.Equal("Authors", person.Name);
-            Assert.Equal(new Uri("https://example.com/images/icon-author.png"), (Uri)person.Image);
+            Assert.Equal(new Uri("https://example.com/images/icon-author.png"), (Uri)person.Image!);
         }
     }
 }

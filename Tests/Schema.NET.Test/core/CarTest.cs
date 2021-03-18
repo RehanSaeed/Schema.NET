@@ -17,8 +17,8 @@ namespace Schema.NET.Test
             },
             Offers = new Offer // Recommended
             {
-                Url = (Uri)null, // Recommended
-                ItemOffered = (Product)null, // Recommended
+                Url = (Uri)null!, // Recommended
+                ItemOffered = (Product)null!, // Recommended
                 PriceCurrency = "USD", // Required
                 Price = 47200M, // Required
                 PriceValidUntil = new DateTime(2020, 11, 5), // Recommended
@@ -67,7 +67,7 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_CarJsonLd_ReturnsCar()
         {
-            Assert.Equal(this.car.ToString(), JsonConvert.DeserializeObject<Car>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.car.ToString(), JsonConvert.DeserializeObject<Car>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.car, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Car>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }
