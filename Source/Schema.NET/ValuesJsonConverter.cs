@@ -309,20 +309,11 @@ namespace Schema.NET
                         enumString = valueString;
                     }
 
-#if NETSTANDARD2_0 || NET472 || NET461
-                    try
-                    {
-                        result = Enum.Parse(targetType, enumString);
-                        success = true;
-                    }
-                    catch (Exception)
-#else
-                    if (Enum.TryParse(targetType, enumString, out result))
+                    if (EnumHelper.TryParse(targetType, enumString, out result))
                     {
                         success = true;
                     }
                     else
-#endif
                     {
                         Debug.WriteLine($"Unable to parse enumeration of type {targetType.FullName} with value {enumString}.");
                         success = false;
