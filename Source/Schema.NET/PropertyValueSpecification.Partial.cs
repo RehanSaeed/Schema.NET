@@ -2,6 +2,7 @@ namespace Schema.NET
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
 
     /// <summary>
     /// A Property value specification.
@@ -17,38 +18,50 @@ namespace Schema.NET
         /// </returns>
         public override string ToString()
         {
-            var values = new List<string>();
+            var stringBuilder = new StringBuilder();
 
             if (this.ValueMaxLength.First() is double maxLength)
             {
-                values.Add($"maxlength={maxLength}");
+                stringBuilder.Append("maxlength=");
+                stringBuilder.Append(maxLength);
             }
 
             if (this.ValueMinLength.First() is double minLength)
             {
-                values.Add($"minlength={minLength}");
+                AppendSpace(stringBuilder);
+                stringBuilder.Append("minlength=");
+                stringBuilder.Append(minLength);
             }
 
             if (this.ValueName.First() is string name)
             {
-                values.Add($"name={name}");
+                AppendSpace(stringBuilder);
+                stringBuilder.Append("name=");
+                stringBuilder.Append(name);
             }
 
             if (this.ValuePattern.First() is string pattern)
             {
-                values.Add($"pattern={pattern}");
+                AppendSpace(stringBuilder);
+                stringBuilder.Append("pattern=");
+                stringBuilder.Append(pattern);
             }
 
             if (this.ValueRequired.First() is true)
             {
-                values.Add("required");
+                AppendSpace(stringBuilder);
+                stringBuilder.Append("required");
             }
 
-#if NETSTANDARD2_0 || NET472 || NET461
-            return string.Join(" ", values);
-#else
-            return string.Join(' ', values);
-#endif
+            return stringBuilder.ToString();
+        }
+
+        private static void AppendSpace(StringBuilder stringBuilder)
+        {
+            if (stringBuilder.Length > 0)
+            {
+                stringBuilder.Append(' ');
+            }
         }
     }
 }
