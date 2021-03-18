@@ -78,3 +78,4 @@ namespace Schema.NET.Benchmarks.Core
                 },
             };
     }
+}
