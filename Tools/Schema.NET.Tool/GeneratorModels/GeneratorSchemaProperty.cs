@@ -7,7 +7,7 @@ namespace Schema.NET.Tool.GeneratorModels
 
     [DebuggerDisplay("{Name}")]
 #pragma warning disable CA1716 // Identifiers should not match keywords
-    public class GeneratorSchemaProperty : ICloneable<GeneratorSchemaProperty, GeneratorSchemaClass>
+    public class GeneratorSchemaProperty
 #pragma warning restore CA1716 // Identifiers should not match keywords
     {
         public GeneratorSchemaProperty(GeneratorSchemaClass @class, string jsonName, string name)
