@@ -51,20 +51,17 @@ namespace Schema.NET.Tool.Repositories
             var id = SchemaOrgUrl(idToken.GetString()!);
             var types = GetTokenValues(token, "@type").ToArray();
 
-            string? comment;
+            string comment;
             if (commentToken.ValueKind == JsonValueKind.Object && commentToken.TryGetProperty("@value", out var commentValueToken))
             {
-                comment = commentValueToken.GetString();
+                comment = commentValueToken.GetString()!;
             }
             else
             {
-                comment = commentToken.GetString();
+                comment = commentToken.GetString()!;
             }
 
             var label = GetLabel(token);
-            var domainIncludes = GetTokenValues(token, "schema:domainIncludes", "@id").Select(SchemaOrgUrl).ToArray();
-            var rangeIncludes = GetTokenValues(token, "schema:rangeIncludes", "@id").Select(SchemaOrgUrl).ToArray();
-            var subClassOf = GetTokenValues(token, "rdfs:subClassOf", "@id").Select(SchemaOrgUrl).ToArray();
             var isPartOf = GetTokenValues(token, "schema:isPartOf", "@id").Select(s => new Uri(s)).FirstOrDefault();
 
             var layer = LayerName.Core;
@@ -75,32 +72,31 @@ namespace Schema.NET.Tool.Repositories
 
             if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.Ordinal)))
             {
-                var schemaClass = new SchemaClass(id, label, layer)
-                {
-                    Comment = comment,
-                };
+                var schemaClass = new SchemaClass(comment, id, label, layer);
+
+                var subClassOf = GetTokenValues(token, "rdfs:subClassOf", "@id").Select(SchemaOrgUrl);
                 schemaClass.SubClassOfIds.AddRange(subClassOf);
+
                 schemaClass.Types.AddRange(types);
                 return schemaClass;
             }
             else if (types.Any(type => string.Equals(type, "rdf:Property", StringComparison.Ordinal)))
             {
-                var schemaProperty = new SchemaProperty(id, label, layer)
-                {
-                    Comment = comment,
-                };
+                var schemaProperty = new SchemaProperty(comment, id, label, layer);
+
+                var domainIncludes = GetTokenValues(token, "schema:domainIncludes", "@id").Select(SchemaOrgUrl);
                 schemaProperty.DomainIncludes.AddRange(domainIncludes);
+
+                var rangeIncludes = GetTokenValues(token, "schema:rangeIncludes", "@id").Select(SchemaOrgUrl);
                 schemaProperty.RangeIncludes.AddRange(rangeIncludes);
+
                 schemaProperty.Types.AddRange(types);
                 return schemaProperty;
             }
             else
             {
-                var schemaEnumerationValue = new SchemaEnumerationValue(id, label, layer)
-                {
-                    Comment = comment,
-                };
-                schemaEnumerationValue.Types.AddRange(types.Select(SchemaOrgUrl).Select(u => u.ToString()).ToArray());
+                var schemaEnumerationValue = new SchemaEnumerationValue(comment, id, label, layer);
+                schemaEnumerationValue.Types.AddRange(types.Select(SchemaOrgUrl).Select(u => u.ToString()));
                 return schemaEnumerationValue;
             }
         }
