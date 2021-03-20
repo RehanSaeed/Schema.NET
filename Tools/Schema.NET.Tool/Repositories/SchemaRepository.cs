@@ -2,6 +2,7 @@ namespace Schema.NET.Tool.Repositories
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Net.Http;
     using System.Text.Json;
@@ -35,23 +36,23 @@ namespace Schema.NET.Tool.Repositories
         public async Task<IEnumerable<SchemaObject>?> GetSchemaObjectsAsync()
         {
             using (var response = await this.httpClient
-                .GetAsync(new Uri("/version/latest/schemaorg-all-https.jsonld", UriKind.Relative))
+                .GetAsync(new Uri("/version/latest/schemaorg-all-https.jsonld", UriKind.Relative), HttpCompletionOption.ResponseHeadersRead)
                 .ConfigureAwait(false))
             {
                 response.EnsureSuccessStatusCode();
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return Deserialize<List<SchemaObject>>(json, new SchemaPropertyJsonConverter());
+                var jsonStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+                return await DeserializeAsync<List<SchemaObject>>(jsonStream, new SchemaPropertyJsonConverter()).ConfigureAwait(false);
             }
         }
 
-        private static T? Deserialize<T>(string json, JsonConverter converter)
+        private static async Task<T?> DeserializeAsync<T>(Stream jsonStream, JsonConverter converter)
         {
             var options = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
             };
             options.Converters.Add(converter);
-            return JsonSerializer.Deserialize<T>(json, options);
+            return await JsonSerializer.DeserializeAsync<T>(jsonStream, options).ConfigureAwait(false);
         }
     }
 }
