@@ -53,10 +53,10 @@ namespace Schema.NET
         /// <param name="existingValue">The existing value of object being read.</param>
         /// <param name="serializer">The calling serializer.</param>
         /// <returns>The object value.</returns>
-        public override object ReadJson(
+        public override object? ReadJson(
             JsonReader reader,
             Type objectType,
-            object existingValue,
+            object? existingValue,
             JsonSerializer serializer)
         {
             if (reader is null)
@@ -74,34 +74,36 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(serializer));
             }
 
-            var dynamicConstructor = FastActivator.GetDynamicConstructor<IEnumerable<object>>(objectType);
-
-            if (reader.TokenType == JsonToken.StartArray)
+            var dynamicConstructor = FastActivator.GetDynamicConstructor<IEnumerable<object?>>(objectType);
+            if (dynamicConstructor is not null)
             {
-                var items = new List<object>();
-
-                while (reader.Read())
+                if (reader.TokenType == JsonToken.StartArray)
                 {
-                    if (reader.TokenType == JsonToken.EndArray)
+                    var items = new List<object?>();
+
+                    while (reader.Read())
                     {
-                        break;
+                        if (reader.TokenType == JsonToken.EndArray)
+                        {
+                            break;
+                        }
+
+                        if (reader.TokenType == JsonToken.Null)
+                        {
+                            continue;
+                        }
+
+                        var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
+                        items.Add(item);
                     }
 
-                    if (reader.TokenType == JsonToken.Null)
-                    {
-                        continue;
-                    }
-
-                    var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
-                    items.Add(item);
+                    return dynamicConstructor(items);
                 }
-
-                return dynamicConstructor(items);
-            }
-            else if (reader.TokenType != JsonToken.Null)
-            {
-                var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
-                return dynamicConstructor(new[] { item });
+                else if (reader.TokenType != JsonToken.Null)
+                {
+                    var item = ProcessToken(reader, objectType.GenericTypeArguments, serializer);
+                    return dynamicConstructor(new[] { item });
+                }
             }
 
             return default;
@@ -113,7 +115,7 @@ namespace Schema.NET
         /// <param name="writer">The JSON writer.</param>
         /// <param name="value">The <see cref="IValues"/> object.</param>
         /// <param name="serializer">The JSON serializer.</param>
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             if (writer is null)
             {
@@ -159,7 +161,7 @@ namespace Schema.NET
         /// <param name="writer">The JSON writer.</param>
         /// <param name="value">The value to write.</param>
         /// <param name="serializer">The JSON serializer.</param>
-        public virtual void WriteObject(JsonWriter writer, object value, JsonSerializer serializer)
+        public virtual void WriteObject(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             if (writer is null)
             {
@@ -174,7 +176,7 @@ namespace Schema.NET
             serializer.Serialize(writer, value);
         }
 
-        private static object ProcessToken(JsonReader reader, Type[] targetTypes, JsonSerializer serializer)
+        private static object? ProcessToken(JsonReader reader, Type[] targetTypes, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.StartObject)
             {
@@ -182,15 +184,15 @@ namespace Schema.NET
 
                 // Use the type property (if provided) to identify the correct type
                 var explicitTypeFromToken = token.SelectToken("@type")?.ToString();
-                if (!string.IsNullOrEmpty(explicitTypeFromToken) && TryGetConcreteType(explicitTypeFromToken, out var explicitType))
+                if (!string.IsNullOrEmpty(explicitTypeFromToken) && TryGetConcreteType(explicitTypeFromToken!, out var explicitType))
                 {
-                    var explicitTypeInfo = explicitType.GetTypeInfo();
+                    var explicitTypeInfo = explicitType!.GetTypeInfo();
                     for (var i = 0; i < targetTypes.Length; i++)
                     {
                         var targetTypeInfo = targetTypes[i].GetTypeInfo();
                         if (targetTypeInfo.IsAssignableFrom(explicitTypeInfo))
                         {
-                            return token.ToObject(explicitType, serializer);
+                            return token.ToObject(explicitType!, serializer);
                         }
                     }
                 }
@@ -210,7 +212,7 @@ namespace Schema.NET
                             if (typeInfo.IsInterface && TryGetConcreteType(typeInfo.Name.Substring(1), out var concreteType))
 #pragma warning restore IDE0057 // Use range operator. Need to multi-target.
                             {
-                                localTargetType = concreteType;
+                                localTargetType = concreteType!;
                             }
 
                             return token.ToObject(localTargetType, serializer);
@@ -240,10 +242,10 @@ namespace Schema.NET
             return null;
         }
 
-        private static bool TryProcessTokenAsType(JsonReader reader, Type targetType, out object value)
+        private static bool TryProcessTokenAsType(JsonReader reader, Type targetType, out object? value)
         {
             var success = false;
-            object result = null;
+            object? result = null;
 
             var tokenType = reader.TokenType;
             if (reader.ValueType == targetType)
@@ -253,7 +255,7 @@ namespace Schema.NET
             }
             else if (tokenType == JsonToken.String)
             {
-                var valueString = (string)reader.Value;
+                var valueString = (string?)reader.Value;
                 if (targetType.GetTypeInfo().IsPrimitive)
                 {
                     if (targetType == typeof(int))
@@ -289,14 +291,14 @@ namespace Schema.NET
                 }
                 else if (targetType.GetTypeInfo().IsEnum)
                 {
-                    string enumString;
-                    if (valueString.StartsWith(HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
+                    string? enumString;
+                    if (valueString is not null && valueString.StartsWith(HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
                     {
 #pragma warning disable IDE0057 // Use range operator. Need to multi-target.
                         enumString = valueString.Substring(HttpSchemaOrgLength);
 #pragma warning restore IDE0057 // Use range operator. Need to multi-target.
                     }
-                    else if (valueString.StartsWith(HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
+                    else if (valueString is not null && valueString.StartsWith(HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
                     {
 #pragma warning disable IDE0057 // Use range operator. Need to multi-target.
                         enumString = valueString.Substring(HttpsSchemaOrgLength);
@@ -307,18 +309,15 @@ namespace Schema.NET
                         enumString = valueString;
                     }
 
-                    try
+                    if (EnumHelper.TryParse(targetType, enumString, out result))
                     {
-                        result = Enum.Parse(targetType, enumString);
                         success = true;
                     }
-#pragma warning disable CA1031 // Do not catch general exception types
-                    catch (Exception ex)
+                    else
                     {
-                        Debug.WriteLine(ex.Message);
+                        Debug.WriteLine($"Unable to parse enumeration of type {targetType.FullName} with value {enumString}.");
                         success = false;
                     }
-#pragma warning restore CA1031 // Do not catch general exception types
                 }
                 else if (targetType == typeof(DateTime))
                 {
@@ -348,7 +347,11 @@ namespace Schema.NET
                 }
                 else if (targetType == typeof(TimeSpan))
                 {
-                    if (TimeSpan.TryParse(valueString, CultureInfo.InvariantCulture, out var localResult))
+                    if (valueString is null)
+                    {
+                        success = false;
+                    }
+                    else if (TimeSpan.TryParse(valueString, CultureInfo.InvariantCulture, out var localResult))
                     {
                         success = true;
                         result = localResult;
@@ -392,7 +395,7 @@ namespace Schema.NET
             return success;
         }
 
-        private static bool TryGetConcreteType(string typeName, out Type type)
+        private static bool TryGetConcreteType(string typeName, out Type? type)
         {
             if (BuiltInThingTypeLookup.TryGetValue(typeName, out type))
             {
@@ -403,7 +406,7 @@ namespace Schema.NET
                 try
                 {
                     var localType = Type.GetType(typeName, false);
-                    if (ThingInterfaceTypeInfo.IsAssignableFrom(localType.GetTypeInfo()))
+                    if (localType is not null && ThingInterfaceTypeInfo.IsAssignableFrom(localType.GetTypeInfo()))
                     {
                         type = localType;
                         return !(type is null);

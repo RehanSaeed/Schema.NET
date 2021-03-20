@@ -1,5 +1,6 @@
 namespace Schema.NET
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -19,41 +20,34 @@ namespace Schema.NET
         {
             var stringBuilder = new StringBuilder();
 
-            if (this.ValueMaxLength.First().HasValue)
+            if (this.ValueMaxLength.First() is double maxLength)
             {
                 stringBuilder.Append("maxlength=");
-                stringBuilder.Append(this.ValueMaxLength.First().Value);
+                stringBuilder.Append(maxLength);
             }
 
-            if (this.ValueMinLength.First().HasValue)
+            if (this.ValueMinLength.First() is double minLength)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("minlength=");
-                stringBuilder.Append(this.ValueMinLength.First().Value);
+                stringBuilder.Append(minLength);
             }
 
-            if (this.ValueName.First() is not null)
+            if (this.ValueName.First() is string name)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("name=");
-                stringBuilder.Append(this.ValueName.First());
+                stringBuilder.Append(name);
             }
 
-            if (this.ValuePattern.First() is not null)
+            if (this.ValuePattern.First() is string pattern)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("pattern=");
-                stringBuilder.Append(this.ValuePattern.First());
+                stringBuilder.Append(pattern);
             }
 
-            if (this.ValuePattern.First() is object)
-            {
-                AppendSpace(stringBuilder);
-                stringBuilder.Append("pattern=");
-                stringBuilder.Append(this.ValuePattern.First());
-            }
-
-            if (this.ValueRequired.First().HasValue)
+            if (this.ValueRequired.First() is true)
             {
                 AppendSpace(stringBuilder);
                 stringBuilder.Append("required");

@@ -26,7 +26,16 @@ namespace Schema.NET.Tool.CustomOverrides
             var eventProperty = c
                 .Properties
                 .First(x => string.Equals(x.Name, "Event", StringComparison.OrdinalIgnoreCase));
-            eventProperty.Name = "Events";
+            c.Properties.Remove(eventProperty);
+
+            var updatedProperty = new GeneratorSchemaProperty(c, eventProperty.JsonName, "Events")
+            {
+                Description = eventProperty.Description,
+                Order = eventProperty.Order,
+            };
+            updatedProperty.Types.AddRange(eventProperty.Types);
+
+            c.Properties.Add(updatedProperty);
         }
     }
 }

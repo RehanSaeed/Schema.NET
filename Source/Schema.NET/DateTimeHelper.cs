@@ -18,8 +18,13 @@ namespace Schema.NET
         /// </summary>
         /// <param name="input">The input string</param>
         /// <returns>True if the input string has an offset defined</returns>
-        public static bool ContainsTimeOffset(string input)
+        public static bool ContainsTimeOffset(string? input)
         {
+            if (input is null)
+            {
+                return false;
+            }
+
             if (input.IndexOf("+", StringComparison.Ordinal) != -1 || input.IndexOf("Z", StringComparison.Ordinal) != -1)
             {
                 return true;
@@ -40,9 +45,11 @@ namespace Schema.NET
         /// <param name="input">The input string</param>
         /// <param name="result">The result date and time</param>
         /// <returns>True if the input string was able to be parsed into a <see cref="DateTime"/></returns>
-        public static bool TryParseMSDateTime(string input, out DateTime result)
+        public static bool TryParseMSDateTime(string? input, out DateTime result)
         {
-            if (input.StartsWith(MSDateStringStart, StringComparison.Ordinal) && input.EndsWith(MSDateStringEnd, StringComparison.Ordinal))
+            if (input is not null &&
+                input.StartsWith(MSDateStringStart, StringComparison.Ordinal) &&
+                input.EndsWith(MSDateStringEnd, StringComparison.Ordinal))
             {
                 var dateTimeStartIndex = MSDateStringStart.Length;
                 var dateTimeLength = input.IndexOf(MSDateStringEnd, StringComparison.Ordinal) - dateTimeStartIndex;
@@ -70,9 +77,11 @@ namespace Schema.NET
         /// <param name="input">The input string</param>
         /// <param name="result">The result date and time with offset</param>
         /// <returns>True if the input string was able to be parsed into a <see cref="DateTimeOffset"/></returns>
-        public static bool TryParseMSDateTimeOffset(string input, out DateTimeOffset result)
+        public static bool TryParseMSDateTimeOffset(string? input, out DateTimeOffset result)
         {
-            if (input.StartsWith(MSDateStringStart, StringComparison.Ordinal) && input.EndsWith(MSDateStringEnd, StringComparison.Ordinal))
+            if (input is not null &&
+                input.StartsWith(MSDateStringStart, StringComparison.Ordinal) &&
+                input.EndsWith(MSDateStringEnd, StringComparison.Ordinal))
             {
                 var dateTimeStartIndex = MSDateStringStart.Length;
                 var offsetIndex = input.IndexOfAny(OffsetChars);

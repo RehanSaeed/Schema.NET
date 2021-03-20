@@ -159,17 +159,17 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_BookJsonLd_ReturnsMatchingBook()
         {
-            Assert.Equal(this.book.ToString(), JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.book.ToString(), JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.book, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
 
         [Fact]
         public void Deserializing_BookJsonLd_ReturnsBook()
         {
-            var book = JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings);
+            var book = JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings)!;
 
             Assert.Equal("The Catcher in the Rye", book.Name);
-            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)book.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)book.Url!);
             Assert.True(book.Author.HasValue);
 
             List<IPerson> people = book.Author;
@@ -208,7 +208,7 @@ namespace Schema.NET.Test
                     "\"typicalAgeRange\" : \"14\"," +
                     "\"isbn\" : \"3333\"" +
                 "}";
-            var book = JsonConvert.DeserializeObject<Book>(json, TestDefaults.DefaultJsonSerializerSettings);
+            var book = JsonConvert.DeserializeObject<Book>(json, TestDefaults.DefaultJsonSerializerSettings)!;
 
             Assert.Empty(book.Author.Value1);
             var person = Assert.Single(book.Author.Value2);

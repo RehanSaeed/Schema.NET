@@ -6,7 +6,7 @@ namespace Schema.NET.Tool.Models
 
     public abstract class SchemaObject
     {
-        private static readonly HashSet<string> PrimitiveTypes = new HashSet<string>
+        private static readonly HashSet<string> PrimitiveTypes = new()
         {
             "QualitativeValue",
             "Enumeration",
@@ -30,13 +30,20 @@ namespace Schema.NET.Tool.Models
             "PronounceableText",
         };
 
-        public string Comment { get; set; }
+        public SchemaObject(Uri id, string label, string layer)
+        {
+            this.Id = id;
+            this.Label = label;
+            this.Layer = layer;
+        }
 
-        public Uri Id { get; set; }
+        public Uri Id { get; }
 
-        public string Label { get; set; }
+        public string Label { get; }
 
-        public string Layer { get; set; }
+        public string Layer { get; }
+
+        public string? Comment { get; set; }
 
         public List<string> Types { get; } = new List<string>();
 
@@ -46,6 +53,6 @@ namespace Schema.NET.Tool.Models
 
         public virtual bool IsPending => string.Equals(this.Layer, LayerName.Pending, StringComparison.OrdinalIgnoreCase);
 
-        public bool IsPrimitive => PrimitiveTypes.Contains(this.Label);
+        public bool IsPrimitive => this.Label is not null && PrimitiveTypes.Contains(this.Label);
     }
 }

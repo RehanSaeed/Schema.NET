@@ -22,11 +22,11 @@ namespace Schema.NET.Test
                 ReviewCount = 89,
                 RatingValue = 4.4D,
             },
-            Review = new OneOrMany<IReview>((IReview)null), // Recommended
+            Review = new OneOrMany<IReview>((IReview)null!), // Recommended
             Offers = new Offer() // Recommended
             {
-                Url = (Uri)null, // Recommended
-                ItemOffered = (Product)null, // Recommended
+                Url = (Uri)null!, // Recommended
+                ItemOffered = (Product)null!, // Recommended
                 PriceCurrency = "USD", // Required
                 Price = 119.99M, // Required
                 PriceValidUntil = new DateTime(2020, 11, 5), // Recommended
@@ -77,7 +77,7 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_ProductJsonLd_ReturnsProduct()
         {
-            Assert.Equal(this.product.ToString(), JsonConvert.DeserializeObject<Product>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.product.ToString(), JsonConvert.DeserializeObject<Product>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.product, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Product>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }

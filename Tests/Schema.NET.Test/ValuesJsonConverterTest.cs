@@ -284,7 +284,7 @@ namespace Schema.NET.Test
 
             Assert.Equal(new Uri("https://example.com/book/1"), ((Book)actual).Id);
             Assert.Equal("The Catcher in the Rye", actual.Name);
-            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url!);
             var author = Assert.Single(actual.Author.Value2);
             Assert.Equal("J.D. Salinger", author.Name);
         }
@@ -310,7 +310,7 @@ namespace Schema.NET.Test
 
             Assert.Equal(new Uri("https://example.com/book/1"), actual.Id);
             Assert.Equal("The Catcher in the Rye", actual.Name);
-            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url!);
             var author = Assert.Single(actual.Author.Value2);
             Assert.Equal("J.D. Salinger", author.Name);
         }
@@ -335,7 +335,7 @@ namespace Schema.NET.Test
 
             Assert.Equal(new Uri("https://example.com/book/1"), ((Book)actual).Id);
             Assert.Equal("The Catcher in the Rye", actual.Name);
-            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url!);
             var author = Assert.Single(actual.Author.Value2);
             Assert.Equal("J.D. Salinger", author.Name);
         }
@@ -360,7 +360,7 @@ namespace Schema.NET.Test
 
             Assert.Equal(new Uri("https://example.com/book/1"), actual.Id);
             Assert.Equal("The Catcher in the Rye", actual.Name);
-            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url!);
             var author = Assert.Single(actual.Author.Value2);
             Assert.Equal("J.D. Salinger", author.Name);
         }
@@ -454,13 +454,13 @@ namespace Schema.NET.Test
 
             Assert.Equal(new Uri("https://example.com/book/1"), ((Book)actual[0]).Id);
             Assert.Equal("The Catcher in the Rye", actual[0].Name);
-            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual[0].Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual[0].Url!);
             var author1 = Assert.Single(actual[0].Author.Value2);
             Assert.Equal("J.D. Salinger", author1.Name);
 
             Assert.Equal(new Uri("https://example.com/book/2"), ((Book)actual[1]).Id);
             Assert.Equal("The Lord of the Rings", actual[1].Name);
-            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JRRTolkien"), (Uri)actual[1].Url);
+            Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JRRTolkien"), (Uri)actual[1].Url!);
             var author2 = Assert.Single(actual[1].Author.Value2);
             Assert.Equal("J.R.R. Tolkien", author2.Name);
         }
@@ -564,18 +564,18 @@ namespace Schema.NET.Test
         }
 
         private static string SerializeObject<T>(T value)
-            where T : IValues
-            => SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
+            where T : IValues =>
+            SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
 
         private static T DeserializeObject<T>(string json)
-            where T : IValues
-            => SchemaSerializer.DeserializeObject<TestModel<T>>(json).Property;
+            where T : IValues =>
+            SchemaSerializer.DeserializeObject<TestModel<T>>(json)!.Property!;
 
         private class TestModel<T>
             where T : IValues
         {
             [JsonConverter(typeof(ValuesJsonConverter))]
-            public T Property { get; set; }
+            public T? Property { get; set; }
         }
     }
 }

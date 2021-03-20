@@ -5,7 +5,7 @@ namespace Schema.NET.Tool.GeneratorModels
     using System.Linq;
 
     [DebuggerDisplay("{Name} ({CSharpTypeStrings})")]
-    public class GeneratorSchemaPropertyType : ICloneable<GeneratorSchemaPropertyType>
+    public class GeneratorSchemaPropertyType
     {
         public GeneratorSchemaPropertyType(string name, params string[] csharpTypeStrings)
             : this(name, csharpTypeStrings.AsEnumerable())

@@ -27,7 +27,7 @@ namespace Schema.NET.Test
         public void Deserializing_NewObjectJsonLd_ReturnsThing() =>
             Assert.Equal(
                 this.thing.ToString(),
-                JsonConvert.DeserializeObject<Thing>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+                JsonConvert.DeserializeObject<Thing>(this.json, TestDefaults.DefaultJsonSerializerSettings)?.ToString());
 
         [Fact]
         public void Equality_AreEqual_Default() => CompareEqual(new Thing(), new Thing());
@@ -62,7 +62,7 @@ namespace Schema.NET.Test
             {
                 Name = "A",
             },
-            null);
+            null!);
 
         [Fact]
         public void Equality_AreNotEqual_SinglePropertyValue() => CompareNotEqual(
@@ -147,15 +147,17 @@ namespace Schema.NET.Test
                 AdditionalName = "B",
             });
 
-        private static void CompareEqual<T>(T a, T b)
+        private static void CompareEqual<T>(T a, T? b)
         {
-            Assert.Equal(a.GetHashCode(), b?.GetHashCode());
+            Assert.NotNull(a);
+            Assert.Equal(a!.GetHashCode(), b?.GetHashCode());
             Assert.True(a.Equals(b));
         }
 
-        private static void CompareNotEqual<T>(T a, T b)
+        private static void CompareNotEqual<T>(T a, T? b)
         {
-            Assert.NotEqual(a.GetHashCode(), b?.GetHashCode());
+            Assert.NotNull(a);
+            Assert.NotEqual(a!.GetHashCode(), b?.GetHashCode());
             Assert.False(a.Equals(b));
         }
     }

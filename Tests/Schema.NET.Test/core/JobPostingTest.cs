@@ -94,7 +94,7 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_JobPostingJsonLd_ReturnsJobPosting()
         {
-            Assert.Equal(this.jobPosting.ToString(), JsonConvert.DeserializeObject<JobPosting>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.jobPosting.ToString(), JsonConvert.DeserializeObject<JobPosting>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.jobPosting, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<JobPosting>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }

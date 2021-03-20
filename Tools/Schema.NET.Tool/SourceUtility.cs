@@ -9,7 +9,7 @@ namespace Schema.NET.Tool
     public static class SourceUtility
     {
         private const char Space = ' ';
-        private static readonly Regex NewLineReplace = new Regex("[\n ]{0,}\n[\n ]{0,}", RegexOptions.Compiled);
+        private static readonly Regex NewLineReplace = new("[\n ]{0,}\n[\n ]{0,}", RegexOptions.Compiled);
 
         public static string RenderItems<T>(bool canRender, IEnumerable<T> items, Func<T, string> action)
         {
@@ -32,7 +32,7 @@ namespace Schema.NET.Tool
             return stringBuilder.ToString();
         }
 
-        public static string RenderDoc(int indent, string text)
+        public static string RenderDoc(int indent, string? text)
         {
             if (text == null)
             {

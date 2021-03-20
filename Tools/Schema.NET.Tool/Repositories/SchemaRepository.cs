@@ -24,7 +24,7 @@ namespace Schema.NET.Tool.Repositories
 
             foreach (var schemaClass in schemaClasses)
             {
-                schemaClass.SubClassOf.AddRange(schemaClasses.Where(x => schemaClass.SubClassOfIds.Contains(x.Id)));
+                schemaClass.SubClassOf.AddRange(schemaClasses.Where(x => x.Id is not null && schemaClass.SubClassOfIds.Contains(x.Id)));
             }
 
             return (schemaClasses,
@@ -32,7 +32,7 @@ namespace Schema.NET.Tool.Repositories
                 schemaObjects.OfType<SchemaEnumerationValue>().ToArray());
         }
 
-        public async Task<IEnumerable<SchemaObject>> GetSchemaObjectsAsync()
+        public async Task<IEnumerable<SchemaObject>?> GetSchemaObjectsAsync()
         {
             using (var response = await this.httpClient
                 .GetAsync(new Uri("/version/latest/schemaorg-all-https.jsonld", UriKind.Relative))
@@ -44,7 +44,7 @@ namespace Schema.NET.Tool.Repositories
             }
         }
 
-        private static T Deserialize<T>(string json, JsonConverter converter)
+        private static T? Deserialize<T>(string json, JsonConverter converter)
         {
             var options = new JsonSerializerOptions
             {

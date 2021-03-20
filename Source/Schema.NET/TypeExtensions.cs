@@ -21,7 +21,8 @@ namespace Schema.NET
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns><c>true</c> if the type is a primitive type; otherwise, <c>false</c>.</returns>
-        public static bool IsPrimitiveType(this Type type) => type.GetTypeInfo().IsPrimitive || type == typeof(string);
+        public static bool IsPrimitiveType(this Type type) =>
+            type.GetTypeInfo().IsPrimitive || type == typeof(string);
 
         /// <summary>
         /// Gets the underlying type from the potentially nullable type.
@@ -29,6 +30,6 @@ namespace Schema.NET
         /// <param name="type">The type.</param>
         /// <returns>The underlying type if nullable, otherwise returns the type itself.</returns>
         public static Type GetUnderlyingTypeFromNullable(this Type type) =>
-            type.IsNullable() ? Nullable.GetUnderlyingType(type) : type;
+            type.IsNullable() ? Nullable.GetUnderlyingType(type)! : type;
     }
 }

@@ -18,14 +18,17 @@ namespace Schema.NET
         /// <typeparam name="T1">Type of first argument for constructor.</typeparam>
         /// <param name="objectType">The object to find the constructor.</param>
         /// <returns>The constructor delegate.</returns>
-        public static Func<T1, object> GetDynamicConstructor<T1>(Type objectType)
+        public static Func<T1, object>? GetDynamicConstructor<T1>(Type objectType)
         {
             var constructorKey = (objectType, typeof(T1));
             if (!ConstructorDelegateLookup.TryGetValue(constructorKey, out var constructorDelegate))
             {
                 var constructor = GetConstructorInfo(objectType, typeof(T1));
-                constructorDelegate = CreateConstructorDelegate<T1>(constructor);
-                ConstructorDelegateLookup.TryAdd(constructorKey, constructorDelegate);
+                if (constructor is not null)
+                {
+                    constructorDelegate = CreateConstructorDelegate<T1>(constructor);
+                    ConstructorDelegateLookup.TryAdd(constructorKey, constructorDelegate);
+                }
             }
 
             return constructorDelegate as Func<T1, object>;
@@ -37,7 +40,7 @@ namespace Schema.NET
                     typeof(object)),
                 ConstructorParameter<T1>.SingleParameter).Compile();
 
-        private static ConstructorInfo GetConstructorInfo(Type objectType, Type parameter1)
+        private static ConstructorInfo? GetConstructorInfo(Type objectType, Type parameter1)
         {
             foreach (var constructor in objectType.GetTypeInfo().DeclaredConstructors)
             {

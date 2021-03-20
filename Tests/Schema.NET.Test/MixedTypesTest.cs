@@ -44,7 +44,7 @@ namespace Schema.NET.Test
         [Fact]
         public void DeserializeObject_WithCollectionOfMixedTypes_ReturnsObjectWithBothTypes()
         {
-            var book = JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings);
+            var book = JsonConvert.DeserializeObject<Book>(this.json, TestDefaults.DefaultJsonSerializerSettings)!;
 
             Assert.True(book.Author.HasValue);
             Assert.True(book.Author.HasValue1);

@@ -85,7 +85,7 @@ namespace Schema.NET.Test
                 "\"url\":\"https://example.com\"" +
             "}";
 
-            Assert.Equal(website.ToString(), JsonConvert.DeserializeObject<WebSite>(json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(website.ToString(), JsonConvert.DeserializeObject<WebSite>(json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(website, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<WebSite>(json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }

@@ -9,7 +9,7 @@ namespace Schema.NET.Test
     public class EventTest
     {
 #pragma warning disable CS0649 // Field is never assigned to and will always have its default value.
-        private static readonly string NullString;
+        private static readonly string? NullString;
         private static readonly ItemAvailability? NullItemAvailability;
 #pragma warning restore CS0649 // Field is never assigned to and will always have its default value.
 
@@ -110,7 +110,7 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_EventJsonLd_ReturnsEvent()
         {
-            Assert.Equal(this.@event.ToString(), JsonConvert.DeserializeObject<Event>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.@event.ToString(), JsonConvert.DeserializeObject<Event>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.@event, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Event>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }

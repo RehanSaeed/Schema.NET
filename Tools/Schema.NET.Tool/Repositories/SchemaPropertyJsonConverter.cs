@@ -21,7 +21,7 @@ namespace Schema.NET.Tool.Repositories
             {
                 var token = JsonDocument.ParseValue(ref reader);
                 var graphArray = token.RootElement.GetProperty("@graph").EnumerateArray();
-                return graphArray.Select(Read).Where(x => x != null).ToList();
+                return graphArray.Select(Read).Where(x => x is not null).ToList()!;
             }
 
             return new List<SchemaObject>();
@@ -30,7 +30,7 @@ namespace Schema.NET.Tool.Repositories
         public override void Write(Utf8JsonWriter writer, List<SchemaObject> value, JsonSerializerOptions options) =>
             throw new NotImplementedException();
 
-        private static SchemaObject Read(JsonElement token)
+        private static SchemaObject? Read(JsonElement token)
         {
             if (!token.TryGetProperty("rdfs:comment", out var commentToken))
             {
@@ -43,10 +43,15 @@ namespace Schema.NET.Tool.Repositories
                 return null;
             }
 
-            var id = SchemaOrgUrl(token.GetProperty("@id").GetString());
+            if (!token.TryGetProperty("@id", out var idToken) || idToken.ValueKind != JsonValueKind.String)
+            {
+                return null;
+            }
+
+            var id = SchemaOrgUrl(idToken.GetString()!);
             var types = GetTokenValues(token, "@type").ToArray();
 
-            string comment;
+            string? comment;
             if (commentToken.ValueKind == JsonValueKind.Object && commentToken.TryGetProperty("@value", out var commentValueToken))
             {
                 comment = commentValueToken.GetString();
@@ -70,12 +75,9 @@ namespace Schema.NET.Tool.Repositories
 
             if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.Ordinal)))
             {
-                var schemaClass = new SchemaClass()
+                var schemaClass = new SchemaClass(id, label, layer)
                 {
                     Comment = comment,
-                    Id = id,
-                    Label = label,
-                    Layer = layer,
                 };
                 schemaClass.SubClassOfIds.AddRange(subClassOf);
                 schemaClass.Types.AddRange(types);
@@ -83,12 +85,9 @@ namespace Schema.NET.Tool.Repositories
             }
             else if (types.Any(type => string.Equals(type, "rdf:Property", StringComparison.Ordinal)))
             {
-                var schemaProperty = new SchemaProperty()
+                var schemaProperty = new SchemaProperty(id, label, layer)
                 {
                     Comment = comment,
-                    Id = id,
-                    Label = label,
-                    Layer = layer,
                 };
                 schemaProperty.DomainIncludes.AddRange(domainIncludes);
                 schemaProperty.RangeIncludes.AddRange(rangeIncludes);
@@ -97,12 +96,9 @@ namespace Schema.NET.Tool.Repositories
             }
             else
             {
-                var schemaEnumerationValue = new SchemaEnumerationValue()
+                var schemaEnumerationValue = new SchemaEnumerationValue(id, label, layer)
                 {
                     Comment = comment,
-                    Id = id,
-                    Label = label,
-                    Layer = layer,
                 };
                 schemaEnumerationValue.Types.AddRange(types.Select(SchemaOrgUrl).Select(u => u.ToString()).ToArray());
                 return schemaEnumerationValue;
@@ -111,14 +107,19 @@ namespace Schema.NET.Tool.Repositories
 
         private static string GetLabel(JsonElement token)
         {
-            var labelToken = token.GetProperty("rdfs:label");
-
-            if (labelToken.ValueKind == JsonValueKind.String)
+            if (token.TryGetProperty("rdfs:label", out var labelToken))
             {
-                return labelToken.GetString();
+                if (labelToken.ValueKind == JsonValueKind.String)
+                {
+                    return labelToken.GetString()!;
+                }
+                else if (labelToken.TryGetProperty("@value", out var labelValueToken) && labelValueToken.ValueKind == JsonValueKind.String)
+                {
+                    return labelValueToken.GetString()!;
+                }
             }
 
-            return labelToken.GetProperty("@value").GetString();
+            throw new ArgumentException($"Unable to determine label for token {token}.");
         }
 
         private static IEnumerable<string> GetTokenValues(JsonElement source, string property)
@@ -127,13 +128,16 @@ namespace Schema.NET.Tool.Repositories
             {
                 if (token.ValueKind == JsonValueKind.String)
                 {
-                    yield return token.GetString();
+                    yield return token.GetString()!;
                 }
                 else if (token.ValueKind == JsonValueKind.Array)
                 {
                     foreach (var subToken in token.EnumerateArray())
                     {
-                        yield return subToken.GetString();
+                        if (subToken.ValueKind == JsonValueKind.String)
+                        {
+                            yield return subToken.GetString()!;
+                        }
                     }
                 }
             }
@@ -145,13 +149,19 @@ namespace Schema.NET.Tool.Repositories
             {
                 if (token.ValueKind == JsonValueKind.Object)
                 {
-                    yield return token.GetProperty(name).GetString();
+                    if (token.TryGetProperty(name, out var innerToken) && innerToken.ValueKind == JsonValueKind.String)
+                    {
+                        yield return innerToken.GetString()!;
+                    }
                 }
                 else if (token.ValueKind == JsonValueKind.Array)
                 {
                     foreach (var subToken in token.EnumerateArray())
                     {
-                        yield return subToken.GetProperty(name).GetString();
+                        if (subToken.TryGetProperty(name, out var innerToken) && innerToken.ValueKind == JsonValueKind.String)
+                        {
+                            yield return innerToken.GetString()!;
+                        }
                     }
                 }
             }

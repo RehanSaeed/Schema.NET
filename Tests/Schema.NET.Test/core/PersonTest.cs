@@ -42,7 +42,7 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_PersonJsonLd_ReturnsPerson()
         {
-            Assert.Equal(this.person.ToString(), JsonConvert.DeserializeObject<Person>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.person.ToString(), JsonConvert.DeserializeObject<Person>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.person, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Person>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }

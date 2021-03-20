@@ -3,7 +3,6 @@ namespace Schema.NET.Tool.Services
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.IO;
     using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
@@ -14,7 +13,7 @@ namespace Schema.NET.Tool.Services
 
     public class SchemaService
     {
-        private static readonly Regex StartsWithNumber = new Regex("^[0-9]", RegexOptions.Compiled);
+        private static readonly Regex StartsWithNumber = new("^[0-9]", RegexOptions.Compiled);
 
         private readonly IEnumerable<IClassOverride> classOverrides;
         private readonly IEnumerable<IEnumerationOverride> enumerationOverrides;
@@ -124,24 +123,17 @@ namespace Schema.NET.Tool.Services
                     {
                         var classDescription = "See " + string.Join(", ", @class.Parents.Select(x => x.Name).OrderBy(x => x)) + " for more information.";
                         var parents = @class.Parents.SelectMany(x => x.Parents).GroupBy(x => x.Name).Select(x => x.First()).ToArray();
-                        combinedClass = new GeneratorSchemaClass()
+                        var layerName = @class.IsCombined ? @class.Layer : $"{@class.Layer}.combined";
+                        combinedClass = new GeneratorSchemaClass(new Uri($"https://CombinedClass/{className}"), layerName, className)
                         {
                             Description = classDescription,
-                            Id = new Uri($"https://CombinedClass/{className}"),
                             IsCombined = true,
-                            Layer = @class.IsCombined ? @class.Layer : $"{@class.Layer}.combined",
-                            Name = className,
                         };
                         combinedClass.CombinationOf.AddRange(@class.Parents);
                         combinedClass.Properties.AddRange(@class
                             .Parents
                             .SelectMany(x => x.Properties)
-                            .Select(x =>
-                            {
-                                var property = x.Clone();
-                                property.Class = combinedClass;
-                                return property;
-                            })
+                            .Select(x => x.Clone(combinedClass))
                             .GroupBy(x => x.Name)
                             .Select(x => x.First())
                             .OrderBy(x => x.Name));
@@ -216,20 +208,16 @@ namespace Schema.NET.Tool.Services
             Models.SchemaClass schemaClass,
             IEnumerable<Models.SchemaEnumerationValue> schemaValues)
         {
-            var enumeration = new GeneratorSchemaEnumeration()
+            var enumeration = new GeneratorSchemaEnumeration($"{schemaClass.Layer}.enumerations", schemaClass.Label)
             {
                 Description = schemaClass.Comment,
-                Layer = $"{schemaClass.Layer}.enumerations",
-                Name = schemaClass.Label,
             };
             enumeration.Values.AddRange(schemaValues
                 .Where(x => x.Types.Contains(schemaClass.Id.ToString()))
                 .Select(
-                    x => new GeneratorSchemaEnumerationValue()
+                    x => new GeneratorSchemaEnumerationValue(x.Label, x.Id)
                     {
                         Description = x.Comment,
-                        Name = x.Label,
-                        Uri = x.Id,
                     })
                 .OrderBy(x => x.Name, new EnumerationValueComparer()));
             return enumeration;
@@ -243,28 +231,23 @@ namespace Schema.NET.Tool.Services
             HashSet<Uri> knownSchemaClasses,
             bool includePending)
         {
-            var @class = new GeneratorSchemaClass()
+            var className = StartsWithNumber.IsMatch(schemaClass.Label) ? $"_{schemaClass.Label}" : schemaClass.Label;
+            var @class = new GeneratorSchemaClass(schemaClass.Id, schemaClass.Layer, className)
             {
                 Description = schemaClass.Comment,
-                Id = schemaClass.Id,
-                Layer = schemaClass.Layer,
-                Name = StartsWithNumber.IsMatch(schemaClass.Label) ? $"_{schemaClass.Label}" : schemaClass.Label,
             };
 
             @class.Parents.AddRange(schemaClass.SubClassOfIds
                 .Where(id => knownSchemaClasses.Contains(id))
-                .Select(id => new GeneratorSchemaClass() { Id = id }));
+                .Select(id => new GeneratorSchemaClass(id)));
 
             var properties = schemaProperties
                 .Select(x =>
                 {
                     var propertyName = GetPropertyName(x.Label);
-                    var property = new GeneratorSchemaProperty()
+                    var property = new GeneratorSchemaProperty(@class, CamelCase(propertyName), propertyName)
                     {
-                        Class = @class,
                         Description = x.Comment,
-                        JsonName = CamelCase(propertyName),
-                        Name = propertyName,
                     };
                     property.Types.AddRange(x.RangeIncludes
                         .Where(id =>

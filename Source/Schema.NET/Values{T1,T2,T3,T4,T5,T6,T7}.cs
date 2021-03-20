@@ -17,7 +17,7 @@ namespace Schema.NET
     /// <typeparam name="T7">The seventh type the values can take.</typeparam>
 #pragma warning disable CA1710 // Identifiers should have correct suffix
     public readonly struct Values<T1, T2, T3, T4, T5, T6, T7>
-        : IReadOnlyCollection<object>, IEnumerable<object>, IValues, IEquatable<Values<T1, T2, T3, T4, T5, T6, T7>>
+        : IReadOnlyCollection<object?>, IEnumerable<object?>, IValues, IEquatable<Values<T1, T2, T3, T4, T5, T6, T7>>
 #pragma warning restore CA1710 // Identifiers should have correct suffix
     {
         /// <summary>
@@ -187,20 +187,20 @@ namespace Schema.NET
         /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4,T5,T6,T7}"/> struct.
         /// </summary>
         /// <param name="items">The items.</param>
-        public Values(IEnumerable<object> items)
+        public Values(IEnumerable<object?> items)
         {
             if (items is null)
             {
                 throw new ArgumentNullException(nameof(items));
             }
 
-            List<T1> items1 = null;
-            List<T2> items2 = null;
-            List<T3> items3 = null;
-            List<T4> items4 = null;
-            List<T5> items5 = null;
-            List<T6> items6 = null;
-            List<T7> items7 = null;
+            List<T1>? items1 = null;
+            List<T2>? items2 = null;
+            List<T3>? items3 = null;
+            List<T4>? items4 = null;
+            List<T5>? items5 = null;
+            List<T6>? items6 = null;
+            List<T7>? items7 = null;
 
             foreach (var item in items)
             {
@@ -577,7 +577,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T1(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value1.FirstOrDefault();
+        public static implicit operator T1?(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value1.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -588,7 +588,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T2(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value2.FirstOrDefault();
+        public static implicit operator T2?(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value2.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -599,7 +599,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T3(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value3.FirstOrDefault();
+        public static implicit operator T3?(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value3.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -610,7 +610,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T4(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value4.FirstOrDefault();
+        public static implicit operator T4?(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value4.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -621,7 +621,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T5(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value5.FirstOrDefault();
+        public static implicit operator T5?(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value5.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -632,7 +632,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T6(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value6.FirstOrDefault();
+        public static implicit operator T6?(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value6.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -643,7 +643,7 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-        public static implicit operator T7(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value7.FirstOrDefault();
+        public static implicit operator T7?(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value7.FirstOrDefault();
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -843,7 +843,7 @@ namespace Schema.NET
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>An enumerator that can be used to iterate through the collection.</returns>
-        public IEnumerator<object> GetEnumerator()
+        public IEnumerator<object?> GetEnumerator()
         {
             if (this.HasValue1)
             {
@@ -936,7 +936,7 @@ namespace Schema.NET
         /// <returns>
         /// <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj) => obj is Values<T1, T2, T3, T4, T5, T6, T7> values && this.Equals(values);
+        public override bool Equals(object? obj) => obj is Values<T1, T2, T3, T4, T5, T6, T7> values && this.Equals(values);
 
         /// <summary>
         /// Returns a hash code for this instance.

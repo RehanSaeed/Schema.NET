@@ -95,7 +95,7 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_MusicEventJsonLd_ReturnsMusicEvent()
         {
-            Assert.Equal(this.musicEvent.ToString(), JsonConvert.DeserializeObject<MusicEvent>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.musicEvent.ToString(), JsonConvert.DeserializeObject<MusicEvent>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.musicEvent, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<MusicEvent>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
     }

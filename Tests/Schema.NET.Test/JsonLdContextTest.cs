@@ -18,7 +18,7 @@ namespace Schema.NET.Test
 
         public static IEnumerable<object[]> NotEqualContexts => new List<object[]>
         {
-            new object[] { new JsonLdContext(), null },
+            new object[] { new JsonLdContext(), null! },
             new object[] { new JsonLdContext(), new JsonLdContext() { Name = "a" } },
             new object[] { new JsonLdContext() { Name = "a" }, new JsonLdContext() },
             new object[] { new JsonLdContext() { Name = "a" }, new JsonLdContext() { Name = "b" } },

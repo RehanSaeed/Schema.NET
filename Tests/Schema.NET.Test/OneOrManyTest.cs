@@ -50,11 +50,11 @@ namespace Schema.NET.Test
 
         [Fact]
         public void Constructor_NullEnumerable_ThrowsArgumentNullException() =>
-            Assert.Throws<ArgumentNullException>(() => new OneOrMany<int>((IEnumerable<int>)null));
+            Assert.Throws<ArgumentNullException>(() => new OneOrMany<int>((IEnumerable<int>)null!));
 
         [Fact]
         public void Constructor_NullList_ThrowsArgumentNullException() =>
-            Assert.Throws<ArgumentNullException>(() => new OneOrMany<int>((List<int>)null));
+            Assert.Throws<ArgumentNullException>(() => new OneOrMany<int>((List<int>)null!));
 
         [Fact]
         public void Count_DefaultStructConstructor_ReturnsZero() => Assert.Empty(default(OneOrMany<int>));
@@ -205,7 +205,7 @@ namespace Schema.NET.Test
 
         [Fact]
         public void Equals_Null_ReturnsFalse() =>
-            Assert.False(new OneOrMany<int>(1).Equals((object)null));
+            Assert.False(new OneOrMany<int>(1).Equals((object)null!));
 
         [Fact]
         public void Equals_IsEqualOneItem_ReturnsTrue() =>

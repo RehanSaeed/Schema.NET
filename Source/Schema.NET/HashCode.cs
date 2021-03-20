@@ -55,7 +55,7 @@ namespace Schema.NET
         /// <typeparam name="T">The type of the item.</typeparam>
         /// <param name="item">The item.</param>
         /// <returns>The new hash code.</returns>
-        public static HashCode Of<T>(T item) => new(GetHashCode(item));
+        public static HashCode Of<T>(T? item) => new(GetHashCode(item));
 
         /// <summary>
         /// Takes the hash code of the specified items.
@@ -63,7 +63,7 @@ namespace Schema.NET
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="items">The collection.</param>
         /// <returns>The new hash code.</returns>
-        public static HashCode OfEach<T>(IEnumerable<T> items) =>
+        public static HashCode OfEach<T>(IEnumerable<T>? items) =>
             items is null ? new HashCode(0) : new HashCode(GetHashCode(items, 0));
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Schema.NET
         /// <typeparam name="T">The type of the item.</typeparam>
         /// <param name="item">The item.</param>
         /// <returns>The new hash code.</returns>
-        public HashCode And<T>(T item) => new(CombineHashCodes(this.value, GetHashCode(item)));
+        public HashCode And<T>(T? item) => new(CombineHashCodes(this.value, GetHashCode(item)));
 
         /// <summary>
         /// Adds the hash code of the specified items in the collection.
@@ -80,7 +80,7 @@ namespace Schema.NET
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="items">The collection.</param>
         /// <returns>The new hash code.</returns>
-        public HashCode AndEach<T>(IEnumerable<T> items)
+        public HashCode AndEach<T>(IEnumerable<T>? items)
         {
             if (items is null)
             {
@@ -94,7 +94,7 @@ namespace Schema.NET
         public bool Equals(HashCode other) => this.value.Equals(other.value);
 
         /// <inheritdoc />
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is HashCode hashCode)
             {
@@ -128,7 +128,7 @@ namespace Schema.NET
             }
         }
 
-        private static int GetHashCode<T>(T item) => item?.GetHashCode() ?? 0;
+        private static int GetHashCode<T>(T? item) => item?.GetHashCode() ?? 0;
 
         private static int GetHashCode<T>(IEnumerable<T> items, int startHashCode)
         {

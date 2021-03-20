@@ -16,23 +16,26 @@ namespace Schema.NET.Benchmarks
     [SimpleJob(RuntimeMoniker.NetCoreApp31)]
     public abstract class SchemaBenchmarkBase
     {
-        protected Thing Thing { get; set; }
+        public Thing Thing { get; set; } = default!;
 
-        private Type ThingType { get; set; }
+        private Type ThingType { get; set; } = default!;
 
-        private string SerializedThing { get; set; }
+        private string SerializedThing { get; set; } = default!;
+
+        public abstract Thing InitialiseThing();
+
+        [GlobalSetup]
+        public virtual void Setup()
+        {
+            this.Thing = this.InitialiseThing();
+            this.ThingType = this.Thing.GetType();
+            this.SerializedThing = this.Thing.ToString();
+        }
 
         [Benchmark]
         public string Serialize() => this.Thing.ToString();
 
         [Benchmark]
-        public object Deserialize() => JsonConvert.DeserializeObject(this.SerializedThing, this.ThingType);
-
-        protected void ConfigureBenchmark(Thing thing)
-        {
-            this.Thing = thing ?? throw new ArgumentNullException(nameof(thing));
-            this.ThingType = this.Thing.GetType();
-            this.SerializedThing = this.Thing.ToString();
-        }
+        public object? Deserialize() => JsonConvert.DeserializeObject(this.SerializedThing, this.ThingType);
     }
 }

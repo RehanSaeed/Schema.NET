@@ -58,7 +58,7 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_ItemListJsonLd_ReturnsMatchingItemList()
         {
-            Assert.Equal(this.itemlist.ToString(), JsonConvert.DeserializeObject<ItemList>(this.json, TestDefaults.DefaultJsonSerializerSettings).ToString());
+            Assert.Equal(this.itemlist.ToString(), JsonConvert.DeserializeObject<ItemList>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
             Assert.Equal(JsonConvert.SerializeObject(this.itemlist, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<ItemList>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
         }
 
@@ -188,7 +188,7 @@ namespace Schema.NET.Test
                     "}" +
                 "]" +
             "}";
-            var itemList = JsonConvert.DeserializeObject<ItemList>(json, TestDefaults.DefaultJsonSerializerSettings);
+            var itemList = JsonConvert.DeserializeObject<ItemList>(json, TestDefaults.DefaultJsonSerializerSettings)!;
 
             Assert.Equal("ItemList", itemList.Type);
             Assert.True(itemList.ItemListElement.HasValue);
@@ -201,8 +201,8 @@ namespace Schema.NET.Test
             var thing2 = things.Last();
             var listItem1 = (IListItem)thing1;
             var listItem2 = (IListItem)thing2;
-            Assert.Equal(1, (int)listItem1.Position);
-            Assert.Equal(2, (int)listItem2.Position);
+            Assert.Equal(1, (int)listItem1.Position!);
+            Assert.Equal(2, (int)listItem2.Position!);
             var recipe1 = Assert.IsType<Recipe>(listItem1.Item.Single());
             var recipe2 = Assert.IsType<Recipe>(listItem2.Item.Single());
             Assert.Equal("Recipe 1", recipe1.Name);

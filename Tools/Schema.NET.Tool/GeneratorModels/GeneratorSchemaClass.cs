@@ -11,6 +11,12 @@ namespace Schema.NET.Tool.GeneratorModels
     public class GeneratorSchemaClass : GeneratorSchemaObject
 #pragma warning restore CA1716 // Identifiers should not match keywords
     {
+        public GeneratorSchemaClass(Uri id)
+            : base(string.Empty, string.Empty) => this.Id = id;
+
+        public GeneratorSchemaClass(Uri id, string layer, string name)
+            : base(layer, name) => this.Id = id;
+
         public IEnumerable<GeneratorSchemaClass> Ancestors => EnumerableExtensions
             .Traverse(this, x => x.Parents)
             .Where(x => x != this);
@@ -23,9 +29,9 @@ namespace Schema.NET.Tool.GeneratorModels
             .Traverse(this, x => x.Children)
             .Where(x => x != this);
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public Uri Id { get; set; }
+        public Uri Id { get; }
 
         public bool IsArchived => EnumerableExtensions
             .Traverse(this, x => x.Parents)
