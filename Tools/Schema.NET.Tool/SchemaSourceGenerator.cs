@@ -26,10 +26,10 @@ namespace Schema.NET.Tool
             var schemaService = new SchemaService(
                 new IClassOverride[]
                 {
-                        new AddQueryInputPropertyToSearchAction(),
-                        new AddTextTypeToActionTarget(),
-                        new AddNumberTypeToMediaObjectHeightAndWidth(),
-                        new RenameEventProperty(),
+                    new AddQueryInputPropertyToSearchAction(),
+                    new AddTextTypeToActionTarget(),
+                    new AddNumberTypeToMediaObjectHeightAndWidth(),
+                    new RenameEventProperty(),
                 },
                 Array.Empty<IEnumerationOverride>(),
                 schemaRepository,
