@@ -72,7 +72,7 @@ namespace Schema.NET.Tool.Repositories
 
             if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.Ordinal)))
             {
-                var schemaClass = new SchemaClass(comment, id, label, layer);
+                var schemaClass = new SchemaClass(layer, id, label, comment);
 
                 var subClassOf = GetTokenValues(token, "rdfs:subClassOf", "@id").Select(SchemaOrgUrl);
                 schemaClass.SubClassOfIds.AddRange(subClassOf);
@@ -82,7 +82,7 @@ namespace Schema.NET.Tool.Repositories
             }
             else if (types.Any(type => string.Equals(type, "rdf:Property", StringComparison.Ordinal)))
             {
-                var schemaProperty = new SchemaProperty(comment, id, label, layer);
+                var schemaProperty = new SchemaProperty(layer, id, label, comment);
 
                 var domainIncludes = GetTokenValues(token, "schema:domainIncludes", "@id").Select(SchemaOrgUrl);
                 schemaProperty.DomainIncludes.AddRange(domainIncludes);
@@ -95,7 +95,7 @@ namespace Schema.NET.Tool.Repositories
             }
             else
             {
-                var schemaEnumerationValue = new SchemaEnumerationValue(comment, id, label, layer);
+                var schemaEnumerationValue = new SchemaEnumerationValue(layer, id, label, comment);
                 schemaEnumerationValue.Types.AddRange(types.Select(SchemaOrgUrl).Select(u => u.ToString()));
                 return schemaEnumerationValue;
             }

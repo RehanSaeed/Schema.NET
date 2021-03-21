@@ -4,8 +4,8 @@ namespace Schema.NET.Tool.Models
 
     public class SchemaEnumerationValue : SchemaObject
     {
-        public SchemaEnumerationValue(string comment, Uri id, string label, string layer)
-            : base(comment, id, label, layer)
+        public SchemaEnumerationValue(string layer, Uri id, string label, string comment)
+            : base(layer, id, label, comment)
         {
         }
     }
