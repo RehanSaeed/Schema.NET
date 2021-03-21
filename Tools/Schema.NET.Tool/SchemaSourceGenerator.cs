@@ -18,29 +18,24 @@ namespace Schema.NET.Tool
 
         public void Initialize(GeneratorInitializationContext context)
         {
-#pragma warning disable IDE0022 // Use expression body for methods
-            Task.Run(async () =>
+            var schemaRepository = new SchemaRepository(new HttpClient()
             {
-                var schemaRepository = new SchemaRepository(new HttpClient()
+                BaseAddress = new Uri("https://schema.org"),
+            });
+            var schemaService = new SchemaService(
+                new IClassOverride[]
                 {
-                    BaseAddress = new Uri("https://schema.org"),
-                });
-                var schemaService = new SchemaService(
-                    new IClassOverride[]
-                    {
                         new AddQueryInputPropertyToSearchAction(),
                         new AddTextTypeToActionTarget(),
                         new AddNumberTypeToMediaObjectHeightAndWidth(),
                         new RenameEventProperty(),
-                    },
-                    Array.Empty<IEnumerationOverride>(),
-                    schemaRepository,
-                    false);
+                },
+                Array.Empty<IEnumerationOverride>(),
+                schemaRepository,
+                false);
 
-                this.SchemaObjects = await schemaService.GetObjectsAsync().ConfigureAwait(false);
 #pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
-            }).GetAwaiter().GetResult();
-#pragma warning restore IDE0022 // Use expression body for methods
+            this.SchemaObjects = schemaService.GetObjectsAsync().GetAwaiter().GetResult();
 #pragma warning restore VSTHRD002 // Avoid problematic synchronous waits
         }
 
