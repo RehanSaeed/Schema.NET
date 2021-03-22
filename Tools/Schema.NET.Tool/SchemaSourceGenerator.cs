@@ -100,8 +100,8 @@ $@"namespace Schema.NET
 {{
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// {SourceUtility.RenderDoc(4, schemaClass.Description)}
@@ -117,19 +117,18 @@ $@"namespace Schema.NET
     /// <summary>
     /// {SourceUtility.RenderDoc(4, schemaClass.Description)}
     /// </summary>
-    [DataContract]
     public{classModifiers} partial class {schemaClass.Name} :{classImplements} I{schemaClass.Name}, IEquatable<{schemaClass.Name}>
     {{
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
-        [DataMember(Name = ""@type"", Order = 1)]
+        [JsonPropertyName(""@type"")]
         public override string Type => ""{schemaClass.Name}"";{SourceUtility.RenderItems(allProperties, property => $@"
 
         /// <summary>
         /// {SourceUtility.RenderDoc(8, property.Description)}
         /// </summary>
-        [DataMember(Name = ""{property.JsonName}"", Order = {property.Order})]
+        [JsonPropertyName(""{property.JsonName}"")]
         [JsonConverter(typeof({property.JsonConverterType}))]
         public{GetAccessModifier(property)} {property.PropertyTypeString} {property.Name} {{ get; set; }}")}
 
@@ -242,13 +241,12 @@ $@"namespace Schema.NET
 $@"namespace Schema.NET
 {{
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// {SourceUtility.RenderDoc(4, schemaEnumeration.Description)}
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum {schemaEnumeration.Name}
     {{{SourceUtility.RenderItems(schemaEnumeration.Values, value => $@"
         /// <summary>
