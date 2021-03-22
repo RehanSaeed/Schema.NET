@@ -5,10 +5,10 @@ namespace Schema.NET
 
     public class ExternalSchemaModelSharedNamespace : Thing
     {
-        [DataMember(Name = "@type")]
+        [JsonPropertyName("@type")]
         public override string Type => "ExternalSchemaModelSharedNamespace";
 
-        [DataMember(Name = "myCustomProperty")]
+        [JsonPropertyName("myCustomProperty")]
         [JsonConverter(typeof(ValuesJsonConverter))]
         public OneOrMany<string> MyCustomProperty { get; set; }
     }
