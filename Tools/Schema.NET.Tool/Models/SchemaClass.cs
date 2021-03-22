@@ -9,8 +9,8 @@ namespace Schema.NET.Tool.Models
     {
         private static readonly Uri EnumerationId = new("https://schema.org/Enumeration");
 
-        public SchemaClass(Uri id, string label, string layer)
-            : base(id, label, layer)
+        public SchemaClass(string layer, Uri id, string label, string comment)
+            : base(layer, id, label, comment)
         {
         }
 

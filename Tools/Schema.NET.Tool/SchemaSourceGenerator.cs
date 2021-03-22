@@ -4,7 +4,6 @@ namespace Schema.NET.Tool
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
-    using System.Threading.Tasks;
     using Microsoft.CodeAnalysis;
     using Schema.NET.Tool.CustomOverrides;
     using Schema.NET.Tool.GeneratorModels;
@@ -14,41 +13,47 @@ namespace Schema.NET.Tool
     [Generator]
     public class SchemaSourceGenerator : ISourceGenerator
     {
-        private IEnumerable<GeneratorSchemaObject>? SchemaObjects { get; set; }
+        private static readonly object SchemaLock = new();
+
+        private static IEnumerable<GeneratorSchemaObject>? SchemaObjects { get; set; }
 
         public void Initialize(GeneratorInitializationContext context)
         {
-#pragma warning disable IDE0022 // Use expression body for methods
-            Task.Run(async () =>
+            var schemaRepository = new SchemaRepository(new HttpClient()
             {
-                var schemaRepository = new SchemaRepository(new HttpClient()
+                BaseAddress = new Uri("https://schema.org"),
+            });
+            var schemaService = new SchemaService(
+                new IClassOverride[]
                 {
-                    BaseAddress = new Uri("https://schema.org"),
-                });
-                var schemaService = new SchemaService(
-                    new IClassOverride[]
-                    {
-                        new AddQueryInputPropertyToSearchAction(),
-                        new AddTextTypeToActionTarget(),
-                        new AddNumberTypeToMediaObjectHeightAndWidth(),
-                        new RenameEventProperty(),
-                    },
-                    Array.Empty<IEnumerationOverride>(),
-                    schemaRepository,
-                    false);
+                    new AddQueryInputPropertyToSearchAction(),
+                    new AddTextTypeToActionTarget(),
+                    new AddNumberTypeToMediaObjectHeightAndWidth(),
+                    new RenameEventProperty(),
+                },
+                Array.Empty<IEnumerationOverride>(),
+                schemaRepository,
+                false);
 
-                this.SchemaObjects = await schemaService.GetObjectsAsync().ConfigureAwait(false);
+            if (SchemaObjects is null)
+            {
+                lock (SchemaLock)
+                {
+                    if (SchemaObjects is null)
+                    {
 #pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
-            }).GetAwaiter().GetResult();
-#pragma warning restore IDE0022 // Use expression body for methods
+                        SchemaObjects = schemaService.GetObjectsAsync().GetAwaiter().GetResult();
 #pragma warning restore VSTHRD002 // Avoid problematic synchronous waits
+                    }
+                }
+            }
         }
 
         public void Execute(GeneratorExecutionContext context)
         {
-            if (this.SchemaObjects is not null)
+            if (SchemaObjects is not null)
             {
-                foreach (var schemaObject in this.SchemaObjects)
+                foreach (var schemaObject in SchemaObjects)
                 {
                     var source = string.Empty;
                     if (schemaObject is GeneratorSchemaClass schemaClass)

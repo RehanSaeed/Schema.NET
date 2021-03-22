@@ -5,8 +5,8 @@ namespace Schema.NET.Tool.Models
 
     public class SchemaProperty : SchemaObject
     {
-        public SchemaProperty(Uri id, string label, string layer)
-            : base(id, label, layer)
+        public SchemaProperty(string layer, Uri id, string label, string comment)
+            : base(layer, id, label, comment)
         {
         }
 

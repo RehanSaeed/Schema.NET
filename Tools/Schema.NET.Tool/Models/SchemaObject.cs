@@ -30,20 +30,21 @@ namespace Schema.NET.Tool.Models
             "PronounceableText",
         };
 
-        public SchemaObject(Uri id, string label, string layer)
+        public SchemaObject(string layer, Uri id, string label, string comment)
         {
+            this.Layer = layer;
             this.Id = id;
             this.Label = label;
-            this.Layer = layer;
+            this.Comment = comment;
         }
+
+        public string Comment { get; }
 
         public Uri Id { get; }
 
         public string Label { get; }
 
         public string Layer { get; }
-
-        public string? Comment { get; set; }
 
         public List<string> Types { get; } = new List<string>();
 

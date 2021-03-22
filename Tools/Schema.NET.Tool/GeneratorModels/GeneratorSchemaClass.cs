@@ -7,15 +7,19 @@ namespace Schema.NET.Tool.GeneratorModels
     using Schema.NET.Tool.Constants;
 
     [DebuggerDisplay("{Name}")]
-#pragma warning disable CA1716 // Identifiers should not match keywords
     public class GeneratorSchemaClass : GeneratorSchemaObject
-#pragma warning restore CA1716 // Identifiers should not match keywords
     {
         public GeneratorSchemaClass(Uri id)
-            : base(string.Empty, string.Empty) => this.Id = id;
+            : this(layer: string.Empty, id, name: string.Empty, description: string.Empty)
+        {
+        }
 
-        public GeneratorSchemaClass(Uri id, string layer, string name)
-            : base(layer, name) => this.Id = id;
+        public GeneratorSchemaClass(string layer, Uri id, string name, string description, bool isCombined = false)
+            : base(layer, name, description)
+        {
+            this.Id = id;
+            this.IsCombined = isCombined;
+        }
 
         public IEnumerable<GeneratorSchemaClass> Ancestors => EnumerableExtensions
             .Traverse(this, x => x.Parents)
@@ -29,15 +33,13 @@ namespace Schema.NET.Tool.GeneratorModels
             .Traverse(this, x => x.Children)
             .Where(x => x != this);
 
-        public string? Description { get; set; }
-
         public Uri Id { get; }
 
         public bool IsArchived => EnumerableExtensions
             .Traverse(this, x => x.Parents)
             .Any(x => string.Equals(x.Layer, LayerName.Archived, StringComparison.Ordinal));
 
-        public bool IsCombined { get; set; }
+        public bool IsCombined { get; }
 
         public IEnumerable<GeneratorSchemaProperty> DeclaredProperties
         {
