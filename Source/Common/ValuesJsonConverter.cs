@@ -171,7 +171,19 @@ namespace Schema.NET
             }
 #endif
 
-            JsonSerializer.Serialize(writer, value, value?.GetType() ?? typeof(object), options);
+            if (value is null)
+            {
+                writer.WriteNullValue();
+            }
+            else if (value is TimeSpan timeSpan)
+            {
+                // System.Text.Json won't support timespans as time of day. See https://github.com/dotnet/runtime/issues/29932
+                writer.WriteStringValue(timeSpan.ToString("c", CultureInfo.InvariantCulture));
+            }
+            else
+            {
+                JsonSerializer.Serialize(writer, value, value.GetType(), options);
+            }
         }
 
         private static object? ProcessToken(ref Utf8JsonReader reader, Type[] targetTypes, JsonSerializerOptions options)
