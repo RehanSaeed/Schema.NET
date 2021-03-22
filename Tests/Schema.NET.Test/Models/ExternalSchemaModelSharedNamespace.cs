@@ -1,7 +1,7 @@
 namespace Schema.NET
 {
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ExternalSchemaModelSharedNamespace : Thing
     {

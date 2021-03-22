@@ -1,7 +1,7 @@
 namespace SomeCustomNamespace
 {
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Schema.NET;
 
     public class ExternalSchemaModelCustomNamespace : Thing
