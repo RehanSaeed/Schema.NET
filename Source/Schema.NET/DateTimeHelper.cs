@@ -1,6 +1,7 @@
 namespace Schema.NET
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// Helper for parsing strings into <see cref="DateTime"/> or <see cref="DateTimeOffset"/>
@@ -45,7 +46,12 @@ namespace Schema.NET
         /// <param name="input">The input string</param>
         /// <param name="result">The result date and time</param>
         /// <returns>True if the input string was able to be parsed into a <see cref="DateTime"/></returns>
-        public static bool TryParseMSDateTime(string? input, out DateTime result)
+        public static bool TryParseMSDateTime(
+#if NETCOREAPP3_1_OR_GREATER
+            [NotNullWhen(true)]
+#endif
+            string? input,
+            out DateTime result)
         {
             if (input is not null &&
                 input.StartsWith(MSDateStringStart, StringComparison.Ordinal) &&
@@ -54,7 +60,7 @@ namespace Schema.NET
                 var dateTimeStartIndex = MSDateStringStart.Length;
                 var dateTimeLength = input.IndexOf(MSDateStringEnd, StringComparison.Ordinal) - dateTimeStartIndex;
 
-#if NETCOREAPP3_1
+#if NETCOREAPP3_1_OR_GREATER
                 var timeValue = input.AsSpan().Slice(dateTimeStartIndex, dateTimeLength);
 #else
                 var timeValue = input.Substring(dateTimeStartIndex, dateTimeLength);
@@ -77,7 +83,12 @@ namespace Schema.NET
         /// <param name="input">The input string</param>
         /// <param name="result">The result date and time with offset</param>
         /// <returns>True if the input string was able to be parsed into a <see cref="DateTimeOffset"/></returns>
-        public static bool TryParseMSDateTimeOffset(string? input, out DateTimeOffset result)
+        public static bool TryParseMSDateTimeOffset(
+#if NETCOREAPP3_1_OR_GREATER
+            [NotNullWhen(true)]
+#endif
+            string? input,
+            out DateTimeOffset result)
         {
             if (input is not null &&
                 input.StartsWith(MSDateStringStart, StringComparison.Ordinal) &&
@@ -88,7 +99,7 @@ namespace Schema.NET
                 var dateTimeLength = offsetIndex - dateTimeStartIndex;
                 var offsetLength = input.IndexOf(MSDateStringEnd, offsetIndex, StringComparison.Ordinal) - offsetIndex;
 
-#if NETCOREAPP3_1
+#if NETCOREAPP3_1_OR_GREATER
                 var timeValue = input.AsSpan().Slice(dateTimeStartIndex, dateTimeLength);
                 var offsetType = input.AsSpan().Slice(offsetIndex, 1);
                 var offsetValue = input.AsSpan().Slice(offsetIndex + 1, offsetLength - 1);

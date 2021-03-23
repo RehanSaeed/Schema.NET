@@ -3,6 +3,7 @@ namespace Schema.NET
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Reflection;
     using System.Xml;
@@ -395,7 +396,12 @@ namespace Schema.NET
             return success;
         }
 
-        private static bool TryGetConcreteType(string typeName, out Type? type)
+        private static bool TryGetConcreteType(
+            string typeName,
+#if NETCOREAPP3_1_OR_GREATER
+            [NotNullWhen(true)]
+#endif
+            out Type? type)
         {
             if (BuiltInThingTypeLookup.TryGetValue(typeName, out type))
             {
@@ -409,7 +415,7 @@ namespace Schema.NET
                     if (localType is not null && ThingInterfaceTypeInfo.IsAssignableFrom(localType.GetTypeInfo()))
                     {
                         type = localType;
-                        return !(type is null);
+                        return type is not null;
                     }
                     else
                     {
