@@ -1,6 +1,7 @@
 namespace Schema.NET
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// Helper for parsing strings into Enum values.
@@ -15,7 +16,13 @@ namespace Schema.NET
         /// <param name="value">The string representation of the name or numeric value of one or more enumerated constants.</param>
         /// <param name="result">When this method returns true, an object containing an enumeration constant representing the parsed value.</param>
         /// <returns><see langword="true"/> if the conversion succeeded; <see langword="false"/> otherwise.</returns>
-        public static bool TryParse(Type enumType, string? value, out object? result)
+        public static bool TryParse(
+            Type enumType,
+#if NETCOREAPP3_1_OR_GREATER
+            [NotNullWhen(true)]
+#endif
+            string? value,
+            out object? result)
         {
 #if NETSTANDARD2_0 || NET472 || NET461
             try
