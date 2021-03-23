@@ -12,9 +12,9 @@ namespace Schema.NET.Test
 
             var thing = JsonConvert.DeserializeObject<Thing>(json);
 
-            Assert.NotNull(thing.Context);
-            Assert.Equal("foo", thing.Context.Name);
-            Assert.Null(thing.Context.Language);
+            Assert.NotNull(thing?.Context);
+            Assert.Equal("foo", thing?.Context.Name);
+            Assert.Null(thing?.Context.Language);
         }
 
         [Fact]
@@ -24,9 +24,9 @@ namespace Schema.NET.Test
 
             var thing = JsonConvert.DeserializeObject<Thing>(json);
 
-            Assert.NotNull(thing.Context);
-            Assert.Equal("foo", thing.Context.Name);
-            Assert.Null(thing.Context.Language);
+            Assert.NotNull(thing?.Context);
+            Assert.Equal("foo", thing?.Context.Name);
+            Assert.Null(thing?.Context.Language);
         }
 
         [Fact]
@@ -36,9 +36,9 @@ namespace Schema.NET.Test
 
             var thing = JsonConvert.DeserializeObject<Thing>(json);
 
-            Assert.NotNull(thing.Context);
-            Assert.Equal("foo", thing.Context.Name);
-            Assert.Equal("en", thing.Context.Language);
+            Assert.NotNull(thing?.Context);
+            Assert.Equal("foo", thing?.Context.Name);
+            Assert.Equal("en", thing?.Context.Language);
         }
 
         [Fact]
