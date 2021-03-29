@@ -1,8 +1,7 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using Xunit;
 
     // https://developers.google.com/search/docs/guides/mark-up-listings
@@ -93,8 +92,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_RecipeJsonLd_ReturnsRecipe()
         {
-            Assert.Equal(this.recipe.ToString(), JsonConvert.DeserializeObject<Recipe>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.recipe, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Recipe>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.recipe.ToString(), SchemaSerializer.DeserializeObject<Recipe>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.recipe), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<Recipe>(this.json)!));
         }
     }
 }

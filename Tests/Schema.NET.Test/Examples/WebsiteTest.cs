@@ -1,7 +1,6 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
-    using Newtonsoft.Json;
     using Xunit;
 
     public class WebsiteTest
@@ -85,8 +84,8 @@ namespace Schema.NET.Test
                 "\"url\":\"https://example.com\"" +
             "}";
 
-            Assert.Equal(website.ToString(), JsonConvert.DeserializeObject<WebSite>(json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(website, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<WebSite>(json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(website.ToString(), SchemaSerializer.DeserializeObject<WebSite>(json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(website), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<WebSite>(json)!));
         }
     }
 }

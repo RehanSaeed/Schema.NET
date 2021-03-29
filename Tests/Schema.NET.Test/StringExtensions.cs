@@ -8,8 +8,6 @@ namespace Schema.NET.Test
 
     public static class StringExtensions
     {
-        public static string Replace(this string target, string oldValue, string newValue, StringComparison stringComparison) => target.Replace(oldValue, newValue);
-
         public static int GetHashCode(this string target, StringComparison stringComparison) => target.GetHashCode();
     }
 

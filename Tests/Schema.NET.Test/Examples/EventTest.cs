@@ -1,8 +1,7 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using Xunit;
 
     // https://developers.google.com/search/docs/data-types/events
@@ -104,14 +103,10 @@ namespace Schema.NET.Test
         "}";
 
         [Fact]
-        public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() =>
-            Assert.Equal(this.json, this.@event.ToString());
-
-        [Fact]
         public void Deserializing_EventJsonLd_ReturnsEvent()
         {
-            Assert.Equal(this.@event.ToString(), JsonConvert.DeserializeObject<Event>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.@event, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Event>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.@event.ToString(), SchemaSerializer.DeserializeObject<Event>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.@event), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<Event>(this.json)!));
         }
     }
 }

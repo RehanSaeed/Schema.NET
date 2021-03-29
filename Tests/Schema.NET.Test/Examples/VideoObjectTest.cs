@@ -1,7 +1,6 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
-    using Newtonsoft.Json;
     using Xunit;
 
     // https://developers.google.com/search/docs/data-types/articles
@@ -68,8 +67,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_VideoObjectJsonLd_ReturnsVideoObject()
         {
-            Assert.Equal(this.videoObject.ToString(), JsonConvert.DeserializeObject<VideoObject>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.videoObject, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<VideoObject>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.videoObject.ToString(), SchemaSerializer.DeserializeObject<VideoObject>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.videoObject), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<VideoObject>(this.json)!));
         }
     }
 }
