@@ -1,6 +1,5 @@
 namespace Schema.NET.Test
 {
-    using Newtonsoft.Json;
     using Xunit;
 
     public class ContextJsonConverterTest
@@ -10,7 +9,7 @@ namespace Schema.NET.Test
         {
             var json = "{\"@context\":\"foo\",\"@type\":\"Thing\"}";
 
-            var thing = JsonConvert.DeserializeObject<Thing>(json);
+            var thing = SchemaSerializer.DeserializeObject<Thing>(json);
 
             Assert.NotNull(thing?.Context);
             Assert.Equal("foo", thing?.Context.Name);
@@ -22,7 +21,7 @@ namespace Schema.NET.Test
         {
             var json = "{\"@context\":{\"name\":\"foo\"},\"@type\":\"Thing\"}";
 
-            var thing = JsonConvert.DeserializeObject<Thing>(json);
+            var thing = SchemaSerializer.DeserializeObject<Thing>(json);
 
             Assert.NotNull(thing?.Context);
             Assert.Equal("foo", thing?.Context.Name);
@@ -34,7 +33,7 @@ namespace Schema.NET.Test
         {
             var json = "{\"@context\":{\"name\":\"foo\",\"@language\":\"en\"},\"@type\":\"Thing\"}";
 
-            var thing = JsonConvert.DeserializeObject<Thing>(json);
+            var thing = SchemaSerializer.DeserializeObject<Thing>(json);
 
             Assert.NotNull(thing?.Context);
             Assert.Equal("foo", thing?.Context.Name);

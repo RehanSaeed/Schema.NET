@@ -1,7 +1,6 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
-    using Newtonsoft.Json;
     using Xunit;
 
     // https://developers.google.com/search/docs/data-types/products
@@ -77,8 +76,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_ProductJsonLd_ReturnsProduct()
         {
-            Assert.Equal(this.product.ToString(), JsonConvert.DeserializeObject<Product>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.product, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Product>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.product.ToString(), SchemaSerializer.DeserializeObject<Product>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.product), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<Product>(this.json)!));
         }
     }
 }

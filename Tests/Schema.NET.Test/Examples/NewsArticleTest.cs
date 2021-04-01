@@ -1,7 +1,6 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
-    using Newtonsoft.Json;
     using Xunit;
 
     public class NewsArticleTest
@@ -73,8 +72,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_NewsArticleJsonLd_ReturnsNewsArticle()
         {
-            Assert.Equal(this.article.ToString(), JsonConvert.DeserializeObject<NewsArticle>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.article, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<NewsArticle>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.article.ToString(), SchemaSerializer.DeserializeObject<NewsArticle>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.article), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<NewsArticle>(this.json)!));
         }
     }
 }

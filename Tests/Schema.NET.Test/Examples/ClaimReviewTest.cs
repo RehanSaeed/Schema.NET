@@ -1,7 +1,6 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
-    using Newtonsoft.Json;
     using Xunit;
 
     // https://developers.google.com/search/docs/data-types/factcheck
@@ -64,14 +63,10 @@ namespace Schema.NET.Test
         "}";
 
         [Fact]
-        public void ToString_ClaimReviewGoogleStructuredData_ReturnsExpectedJsonLd() =>
-            Assert.Equal(this.json, this.claimReview.ToString());
-
-        [Fact]
         public void Deserializing_ClaimReviewJsonLd_ReturnsClaimReview()
         {
-            Assert.Equal(this.claimReview.ToString(), JsonConvert.DeserializeObject<ClaimReview>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.claimReview, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<ClaimReview>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.claimReview.ToString(), SchemaSerializer.DeserializeObject<ClaimReview>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.claimReview), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<ClaimReview>(this.json)!));
         }
     }
 }

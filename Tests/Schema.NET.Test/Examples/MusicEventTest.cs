@@ -1,9 +1,8 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using Newtonsoft.Json;
     using Xunit;
 
     public class MusicEventTest
@@ -95,8 +94,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_MusicEventJsonLd_ReturnsMusicEvent()
         {
-            Assert.Equal(this.musicEvent.ToString(), JsonConvert.DeserializeObject<MusicEvent>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.musicEvent, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<MusicEvent>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.musicEvent.ToString(), SchemaSerializer.DeserializeObject<MusicEvent>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.musicEvent), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<MusicEvent>(this.json)!));
         }
     }
 }

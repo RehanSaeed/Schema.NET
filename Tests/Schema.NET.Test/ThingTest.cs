@@ -1,7 +1,6 @@
 namespace Schema.NET.Test
 {
     using System;
-    using Newtonsoft.Json;
     using Xunit;
 
     public class ThingTest
@@ -27,7 +26,7 @@ namespace Schema.NET.Test
         public void Deserializing_NewObjectJsonLd_ReturnsThing() =>
             Assert.Equal(
                 this.thing.ToString(),
-                JsonConvert.DeserializeObject<Thing>(this.json, TestDefaults.DefaultJsonSerializerSettings)?.ToString());
+                SchemaSerializer.DeserializeObject<Thing>(this.json)!.ToString());
 
         [Fact]
         public void Equality_AreEqual_Default() => CompareEqual(new Thing(), new Thing());
@@ -146,6 +145,59 @@ namespace Schema.NET.Test
             {
                 AdditionalName = "B",
             });
+
+        [Fact]
+        public void ToString_UnsafeStringData_ReturnsExpectedJsonLd()
+        {
+            var expectedJson =
+                "{" +
+                    "\"@context\":\"https://schema.org\"," +
+                    "\"@type\":\"Thing\"," +
+                    "\"name\":\"Test</script><script>alert('gotcha');</script>\"" +
+                "}";
+
+            var thing = new Thing
+            {
+                Name = "Test</script><script>alert('gotcha');</script>",
+            };
+
+            Assert.Equal(expectedJson, thing.ToString());
+        }
+
+        [Fact]
+        public void ToHtmlEscapedString_UnsafeStringData_ReturnsExpectedJsonLd()
+        {
+            var expectedJson =
+                "{" +
+                    "\"@context\":\"https://schema.org\"," +
+                    "\"@type\":\"Thing\"," +
+                    "\"name\":\"Test\\u003c/script\\u003e\\u003cscript\\u003ealert(\\u0027gotcha\\u0027);\\u003c/script\\u003e\"" +
+                "}";
+
+            var thing = new Thing
+            {
+                Name = "Test</script><script>alert('gotcha');</script>",
+            };
+
+            Assert.Equal(expectedJson, thing.ToHtmlEscapedString());
+        }
+
+        [Fact]
+        public void ToStringWithNullAssignedProperty_ReturnsExpectedJsonLd()
+        {
+            var expectedJson =
+                "{" +
+                    "\"@context\":\"https://schema.org\"," +
+                    "\"@type\":\"Thing\"" +
+                "}";
+
+            var thing = new Thing
+            {
+                Name = (string)null!,
+            };
+
+            Assert.Equal(expectedJson, thing.ToString());
+        }
 
         private static void CompareEqual<T>(T a, T? b)
         {

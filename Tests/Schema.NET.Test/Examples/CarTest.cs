@@ -1,7 +1,6 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
-    using Newtonsoft.Json;
     using Xunit;
 
     public class CarTest
@@ -61,14 +60,10 @@ namespace Schema.NET.Test
             "}";
 
         [Fact]
-        public void ToString_CarGoogleStructuredData_ReturnsExpectedJsonLd() =>
-            Assert.Equal(this.json, this.car.ToString());
-
-        [Fact]
         public void Deserializing_CarJsonLd_ReturnsCar()
         {
-            Assert.Equal(this.car.ToString(), JsonConvert.DeserializeObject<Car>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.car, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Car>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.car.ToString(), SchemaSerializer.DeserializeObject<Car>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.car), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<Car>(this.json)!));
         }
     }
 }

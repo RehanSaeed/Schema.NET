@@ -1,9 +1,8 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Newtonsoft.Json;
     using Xunit;
 
     public class ItemListTest
@@ -58,8 +57,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_ItemListJsonLd_ReturnsMatchingItemList()
         {
-            Assert.Equal(this.itemlist.ToString(), JsonConvert.DeserializeObject<ItemList>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.itemlist, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<ItemList>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.itemlist.ToString(), SchemaSerializer.DeserializeObject<ItemList>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.itemlist), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<ItemList>(this.json)!));
         }
 
         // https://developers.google.com/search/docs/guides/mark-up-listings
@@ -188,7 +187,7 @@ namespace Schema.NET.Test
                     "}" +
                 "]" +
             "}";
-            var itemList = JsonConvert.DeserializeObject<ItemList>(json, TestDefaults.DefaultJsonSerializerSettings)!;
+            var itemList = SchemaSerializer.DeserializeObject<ItemList>(json)!;
 
             Assert.Equal("ItemList", itemList.Type);
             Assert.True(itemList.ItemListElement.HasValue);

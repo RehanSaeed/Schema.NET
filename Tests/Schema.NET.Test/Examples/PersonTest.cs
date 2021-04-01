@@ -1,8 +1,7 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using Xunit;
 
     // https://developers.google.com/search/docs/data-types/social-profile-links
@@ -42,8 +41,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_PersonJsonLd_ReturnsPerson()
         {
-            Assert.Equal(this.person.ToString(), JsonConvert.DeserializeObject<Person>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.person, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Person>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.person.ToString(), SchemaSerializer.DeserializeObject<Person>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.person), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<Person>(this.json)!));
         }
     }
 }

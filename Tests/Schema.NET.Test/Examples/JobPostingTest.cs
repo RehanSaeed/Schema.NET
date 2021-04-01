@@ -1,7 +1,6 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
-    using Newtonsoft.Json;
     using Xunit;
 
     // https://developers.google.com/search/docs/data-types/job-postings
@@ -94,8 +93,8 @@ namespace Schema.NET.Test
         [Fact]
         public void Deserializing_JobPostingJsonLd_ReturnsJobPosting()
         {
-            Assert.Equal(this.jobPosting.ToString(), JsonConvert.DeserializeObject<JobPosting>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.jobPosting, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<JobPosting>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.jobPosting.ToString(), SchemaSerializer.DeserializeObject<JobPosting>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.jobPosting), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<JobPosting>(this.json)!));
         }
     }
 }

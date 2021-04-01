@@ -1,7 +1,6 @@
-namespace Schema.NET.Test
+namespace Schema.NET.Test.Examples
 {
     using System;
-    using Newtonsoft.Json;
     using Xunit;
 
     // https://developers.google.com/search/docs/data-types/courses
@@ -32,14 +31,10 @@ namespace Schema.NET.Test
         "}";
 
         [Fact]
-        public void ToString_CourseGoogleStructuredData_ReturnsExpectedJsonLd() =>
-            Assert.Equal(this.json, this.course.ToString());
-
-        [Fact]
         public void Deserializing_CourseJsonLd_ReturnsCourse()
         {
-            Assert.Equal(this.course.ToString(), JsonConvert.DeserializeObject<Course>(this.json, TestDefaults.DefaultJsonSerializerSettings)!.ToString());
-            Assert.Equal(JsonConvert.SerializeObject(this.course, TestDefaults.DefaultJsonSerializerSettings), JsonConvert.SerializeObject(JsonConvert.DeserializeObject<Course>(this.json, TestDefaults.DefaultJsonSerializerSettings), TestDefaults.DefaultJsonSerializerSettings));
+            Assert.Equal(this.course.ToString(), SchemaSerializer.DeserializeObject<Course>(this.json)!.ToString());
+            Assert.Equal(SchemaSerializer.SerializeObject(this.course), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<Course>(this.json)!));
         }
     }
 }
