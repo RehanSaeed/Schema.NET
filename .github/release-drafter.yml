@@ -3,6 +3,9 @@ tag-template: 'Schema.NET.$RESOLVED_VERSION'
 change-template: '- $TITLE by @$AUTHOR (#$NUMBER)'
 no-changes-template: '- No changes'
 categories:
+  - title: '📚 Documentation'
+    labels:
+      - 'documentation'
   - title: '🚀 New Features'
     labels:
       - 'enhancement'
@@ -29,3 +32,17 @@ template: |
   ## 👨🏼‍💻 Contributors
 
   $CONTRIBUTORS
+autolabeler:
+  - label: 'documentation'
+    files:
+      - '**/*.md'
+  - label: 'enhancement'
+    files:
+      - 'Source/**/*'
+      - 'Tools/**/*'
+  - label: 'maintenance'
+    files:
+      - '.github/**/*'
+      - 'Benchmarks/**/*'
+      - 'Images/**/*'
+      - 'Tests/**/*'
