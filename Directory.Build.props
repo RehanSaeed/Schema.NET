@@ -26,7 +26,7 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" PrivateAssets="All" Version="16.9.60" />
     <PackageReference Include="MinVer" PrivateAssets="All" Version="2.5.0" />
-    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All" Version="1.2.0-beta.321" />
+    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All" Version="1.2.0-beta.333" />
   </ItemGroup>
 
 </Project>
