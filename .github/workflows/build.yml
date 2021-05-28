@@ -29,15 +29,12 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
     - name: 'Checkout'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.3.4
       with:
         lfs: true
         fetch-depth: 0
-    - name: 'Git Fetch Tags'
-      run: git fetch --tags
-      shell: pwsh
     - name: 'Install .NET Core SDK'
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1.8.0
     - name: 'Dotnet Tool Restore'
       run: dotnet tool restore
       shell: pwsh
@@ -63,6 +60,8 @@ jobs:
     environment:
       name: 'GitHub Packages'
       url: https://github.com/RehanSaeed/Schema.NET/packages
+    permissions:
+      packages: write
     runs-on: windows-latest
     steps:
       - name: 'Download Artefact'
