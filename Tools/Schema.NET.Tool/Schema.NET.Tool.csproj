@@ -3,6 +3,7 @@
   <PropertyGroup Label="Build">
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>false</IsPackable>
+    <IsRoslynComponent>true</IsRoslynComponent>
   </PropertyGroup>
 
   <ItemGroup Label="Package References">
