@@ -8,6 +8,9 @@
 
   <ItemGroup Label="Package References">
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.10.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(BuildingInsideVisualStudio)' == 'true'">
     <PackageReference Include="System.Text.Json" Version="6.0.0-preview.5.21301.5" GeneratePathProperty="true" PrivateAssets="all" />
     <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0-preview.5.21301.5" GeneratePathProperty="true" PrivateAssets="all" />
     <PackageReference Include="System.Buffers" Version="4.5.1" GeneratePathProperty="true" PrivateAssets="all" />
@@ -16,6 +19,11 @@
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0-preview.5.21301.5" GeneratePathProperty="true" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0-preview.5.21301.5" GeneratePathProperty="true" PrivateAssets="all" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" GeneratePathProperty="true" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">
+    <PackageReference Include="System.Text.Json" Version="5.0.2" GeneratePathProperty="true" PrivateAssets="all" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="5.0.1" GeneratePathProperty="true" PrivateAssets="all" />
   </ItemGroup>
 
   <PropertyGroup>
