@@ -91,6 +91,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\release-drafter.yml = .github\workflows\release-drafter.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.NET.Pending", "Source\Schema.NET.Pending\Schema.NET.Pending.csproj", "{4EDF33FF-4532-4328-A158-D026C66537BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{AF228B8A-7290-4E26-8506-934C290C6AE3}"
+	ProjectSection(SolutionItems) = preProject
+		Source\Common\ContactType.cs = Source\Common\ContactType.cs
+		Source\Common\ContextJsonConverter.cs = Source\Common\ContextJsonConverter.cs
+		Source\Common\DateTimeHelper.cs = Source\Common\DateTimeHelper.cs
+		Source\Common\DateTimeToIso8601DateValuesJsonConverter.cs = Source\Common\DateTimeToIso8601DateValuesJsonConverter.cs
+		Source\Common\EnumHelper.cs = Source\Common\EnumHelper.cs
+		Source\Common\FastActivator.cs = Source\Common\FastActivator.cs
+		Source\Common\HashCode.cs = Source\Common\HashCode.cs
+		Source\Common\IValues.cs = Source\Common\IValues.cs
+		Source\Common\JsonLdContext.cs = Source\Common\JsonLdContext.cs
+		Source\Common\JsonLdObject.cs = Source\Common\JsonLdObject.cs
+		Source\Common\OneOrMany{T}.cs = Source\Common\OneOrMany{T}.cs
+		Source\Common\PropertyValueSpecification.Partial.cs = Source\Common\PropertyValueSpecification.Partial.cs
+		Source\Common\SchemaSerializer.cs = Source\Common\SchemaSerializer.cs
+		Source\Common\Thing.Partial.cs = Source\Common\Thing.Partial.cs
+		Source\Common\TimeSpanToISO8601DurationValuesJsonConverter.cs = Source\Common\TimeSpanToISO8601DurationValuesJsonConverter.cs
+		Source\Common\TypeExtensions.cs = Source\Common\TypeExtensions.cs
+		Source\Common\ValuesJsonConverter.cs = Source\Common\ValuesJsonConverter.cs
+		Source\Common\Values{T1,T2,T3,T4,T5,T6,T7}.cs = Source\Common\Values{T1,T2,T3,T4,T5,T6,T7}.cs
+		Source\Common\Values{T1,T2,T3,T4}.cs = Source\Common\Values{T1,T2,T3,T4}.cs
+		Source\Common\Values{T1,T2,T3}.cs = Source\Common\Values{T1,T2,T3}.cs
+		Source\Common\Values{T1,T2}.cs = Source\Common\Values{T1,T2}.cs
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.NET.Updater", "Tools\Schema.NET.Updater\Schema.NET.Updater.csproj", "{8923F9E2-4BB8-45F9-9A85-863F381B46EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A208CE34-D2DF-4BD2-B6CF-3047883BC820}"
@@ -120,6 +147,10 @@ Global
 		{379FE111-579B-4A3A-9E49-40D8E2904883}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{379FE111-579B-4A3A-9E49-40D8E2904883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{379FE111-579B-4A3A-9E49-40D8E2904883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDF33FF-4532-4328-A158-D026C66537BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDF33FF-4532-4328-A158-D026C66537BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDF33FF-4532-4328-A158-D026C66537BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDF33FF-4532-4328-A158-D026C66537BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8923F9E2-4BB8-45F9-9A85-863F381B46EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8923F9E2-4BB8-45F9-9A85-863F381B46EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8923F9E2-4BB8-45F9-9A85-863F381B46EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -137,6 +168,8 @@ Global
 		{379FE111-579B-4A3A-9E49-40D8E2904883} = {1D81D082-9C25-4D4E-890E-9CD173532307}
 		{040F8F6D-9144-42FD-9B0D-7F88EF0C26C5} = {F20E2797-D1E3-4321-91BB-FAE54954D2A0}
 		{9444439E-8476-4BAB-AE1E-DBC24B58865F} = {040F8F6D-9144-42FD-9B0D-7F88EF0C26C5}
+		{4EDF33FF-4532-4328-A158-D026C66537BA} = {719809C2-A551-4C4A-9EFD-B10FB5E35BC0}
+		{AF228B8A-7290-4E26-8506-934C290C6AE3} = {719809C2-A551-4C4A-9EFD-B10FB5E35BC0}
 		{8923F9E2-4BB8-45F9-9A85-863F381B46EE} = {1D81D082-9C25-4D4E-890E-9CD173532307}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

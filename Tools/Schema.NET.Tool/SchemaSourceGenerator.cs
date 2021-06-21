@@ -19,39 +19,13 @@ namespace Schema.NET.Tool
 
         public void Initialize(GeneratorInitializationContext context)
         {
-            var schemaDataStream = Assembly
-                .GetExecutingAssembly()
-                .GetManifestResourceStream("Schema.NET.Tool.Data.schemaorg-all-https.jsonld");
-
-            var schemaRepository = new SchemaRepository(schemaDataStream);
-            var schemaService = new SchemaService(
-                new IClassOverride[]
-                {
-                    new AddQueryInputPropertyToSearchAction(),
-                    new AddTextTypeToActionTarget(),
-                    new AddNumberTypeToMediaObjectHeightAndWidth(),
-                    new RenameEventProperty(),
-                },
-                Array.Empty<IEnumerationOverride>(),
-                schemaRepository,
-                false);
-
-            if (SchemaObjects is null)
-            {
-                lock (SchemaLock)
-                {
-                    if (SchemaObjects is null)
-                    {
-#pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
-                        SchemaObjects = schemaService.GetObjectsAsync().GetAwaiter().GetResult();
-#pragma warning restore VSTHRD002 // Avoid problematic synchronous waits
-                    }
-                }
-            }
         }
 
         public void Execute(GeneratorExecutionContext context)
         {
+            // Initialization with configuration is only possible with the GeneratorExecutionContext
+            InitializeWithConfig(context);
+
             if (SchemaObjects is not null)
             {
                 foreach (var schemaObject in SchemaObjects)
@@ -69,6 +43,46 @@ namespace Schema.NET.Tool
                     context.AddSource($"{schemaObject.Layer}.{schemaObject.Name}.Generated.cs", source);
                 }
             }
+        }
+
+        private static void InitializeWithConfig(GeneratorExecutionContext context)
+        {
+            var schemaDataStream = Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceStream("Schema.NET.Tool.Data.schemaorg-all-https.jsonld");
+
+            var schemaRepository = new SchemaRepository(schemaDataStream);
+            var schemaService = new SchemaService(
+                new IClassOverride[]
+                {
+                    new AddQueryInputPropertyToSearchAction(),
+                    new AddTextTypeToActionTarget(),
+                    new AddNumberTypeToMediaObjectHeightAndWidth(),
+                    new RenameEventProperty(),
+                },
+                Array.Empty<IEnumerationOverride>(),
+                schemaRepository,
+                IncludePendingSchemaObjects(context));
+
+            if (SchemaObjects is null)
+            {
+                lock (SchemaLock)
+                {
+                    if (SchemaObjects is null)
+                    {
+#pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
+                        SchemaObjects = schemaService.GetObjectsAsync().GetAwaiter().GetResult();
+#pragma warning restore VSTHRD002 // Avoid problematic synchronous waits
+                    }
+                }
+            }
+        }
+
+        private static bool IncludePendingSchemaObjects(GeneratorExecutionContext context)
+        {
+            var configuration = context.AnalyzerConfigOptions.GlobalOptions;
+            return configuration.TryGetValue($"build_property.IncludePendingSchemaObjects", out var value) &&
+                value.Equals("true", StringComparison.OrdinalIgnoreCase);
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1513:Closing brace should be followed by blank line", Justification = "Interpolated string")]
