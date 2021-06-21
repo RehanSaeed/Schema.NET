@@ -13,7 +13,7 @@ namespace Schema.NET.Updater
         private const string SchemaJsonSourceUrl = "https://schema.org/version/latest/schemaorg-all-https.jsonld";
         private const string SchemaJsonDestinationFilePath = "../../Data/schemaorg-all-https.jsonld";
 
-        private static async Task Main(string[] args)
+        private static async Task Main()
         {
             Console.WriteLine("Downloading '{0}'...", SchemaJsonSourceUrl);
             var httpClient = new HttpClient();
