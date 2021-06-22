@@ -10,6 +10,15 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.10.0" />
   </ItemGroup>
 
+  <!--
+    Due to conflicts between Visual Studio/MSBuild and the .NET CLI (w.r.t transient dependencies),
+    supporting the source generator is accomplished with different package sets.
+
+    The source generator fundamentally only needs System.Text.Json - the rest are transient dependency baggage.
+
+    Introduced via https://github.com/RehanSaeed/Schema.NET/pull/301 (see also https://github.com/RehanSaeed/Schema.NET/issues/265)
+    .NET SDK issue with related transient dependency discussion https://github.com/dotnet/sdk/issues/17775
+  -->
   <ItemGroup Condition="'$(BuildingInsideVisualStudio)' == 'true'">
     <PackageReference Include="System.Text.Json" Version="6.0.0-preview.5.21301.5" GeneratePathProperty="true" PrivateAssets="all" />
     <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0-preview.5.21301.5" GeneratePathProperty="true" PrivateAssets="all" />
