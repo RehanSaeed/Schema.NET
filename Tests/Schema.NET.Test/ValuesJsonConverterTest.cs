@@ -2,7 +2,7 @@ namespace Schema.NET.Test
 {
     using System;
     using System.Linq;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Xunit;
 
     public class ValuesJsonConverterTest
@@ -276,7 +276,7 @@ namespace Schema.NET.Test
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
-                    "}," +
+                    "}" +
                 "}" +
             "}";
             var result = DeserializeObject<Values<string, IBook>>(json);
@@ -302,7 +302,7 @@ namespace Schema.NET.Test
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
-                    "}," +
+                    "}" +
                 "}" +
             "}";
             var result = DeserializeObject<Values<string, Book>>(json);
@@ -327,7 +327,7 @@ namespace Schema.NET.Test
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
-                    "}," +
+                    "}" +
                 "}" +
             "}";
             var result = DeserializeObject<Values<string, IBook>>(json);
@@ -352,7 +352,7 @@ namespace Schema.NET.Test
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
-                    "}," +
+                    "}" +
                 "}" +
             "}";
             var result = DeserializeObject<Values<string, Book>>(json);
@@ -435,7 +435,7 @@ namespace Schema.NET.Test
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.D. Salinger\"" +
-                    "}," +
+                    "}" +
                 "}," +
                 "{" +
                     "\"@context\":\"https://schema.org\"," +
@@ -446,7 +446,7 @@ namespace Schema.NET.Test
                     "\"author\":{" +
                         "\"@type\":\"Person\"," +
                         "\"name\":\"J.R.R. Tolkien\"" +
-                    "}," +
+                    "}" +
                 "}" +
             "]}";
             var result = DeserializeObject<Values<string, IBook>>(json);
@@ -564,18 +564,18 @@ namespace Schema.NET.Test
         }
 
         private static string SerializeObject<T>(T value)
-            where T : IValues =>
-            SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
+            where T : struct, IValues
+            => SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
 
         private static T DeserializeObject<T>(string json)
-            where T : IValues =>
-            SchemaSerializer.DeserializeObject<TestModel<T>>(json)!.Property!;
+            where T : struct, IValues
+            => SchemaSerializer.DeserializeObject<TestModel<T>>(json)!.Property;
 
         private class TestModel<T>
-            where T : IValues
+            where T : struct, IValues
         {
             [JsonConverter(typeof(ValuesJsonConverter))]
-            public T? Property { get; set; }
+            public T Property { get; set; }
         }
     }
 }

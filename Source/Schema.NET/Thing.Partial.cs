@@ -1,6 +1,6 @@
 namespace Schema.NET
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
 
     /// <summary>
     /// The most generic type of item.
@@ -37,18 +37,13 @@ namespace Schema.NET
         public string ToHtmlEscapedString() => SchemaSerializer.HtmlEscapedSerializeObject(this);
 
         /// <summary>
-        /// Returns the JSON-LD representation of this instance using the <see cref="JsonSerializerSettings"/> provided.
-        ///
-        /// Caution: You should ensure your <paramref name="serializerSettings"/> has
-        /// <see cref="JsonSerializerSettings.StringEscapeHandling"/> set to <see cref="StringEscapeHandling.EscapeHtml"/>
-        /// if you plan to embed the output using @Html.Raw anywhere in a web page, else you open yourself up a possible
-        /// Cross-Site Scripting (XSS) attack if untrusted data is set on any of this object's properties.
+        /// Returns the JSON-LD representation of this instance using the <see cref="JsonSerializerOptions"/> provided.
         /// </summary>
-        /// <param name="serializerSettings">Serialization settings.</param>
+        /// <param name="options">Serialization settings.</param>
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public string ToString(JsonSerializerSettings serializerSettings) =>
-            SchemaSerializer.SerializeObject(this, serializerSettings);
+        public string ToString(JsonSerializerOptions options) =>
+            SchemaSerializer.SerializeObject(this, options);
     }
 }
