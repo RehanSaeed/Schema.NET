@@ -3,7 +3,7 @@ namespace Schema.NET.Tool
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net.Http;
+    using System.Reflection;
     using Microsoft.CodeAnalysis;
     using Schema.NET.Tool.CustomOverrides;
     using Schema.NET.Tool.GeneratorModels;
@@ -19,10 +19,11 @@ namespace Schema.NET.Tool
 
         public void Initialize(GeneratorInitializationContext context)
         {
-            var schemaRepository = new SchemaRepository(new HttpClient()
-            {
-                BaseAddress = new Uri("https://schema.org"),
-            });
+            var schemaDataStream = Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceStream("Schema.NET.Tool.Data.schemaorg-all-https.jsonld");
+
+            var schemaRepository = new SchemaRepository(schemaDataStream);
             var schemaService = new SchemaService(
                 new IClassOverride[]
                 {

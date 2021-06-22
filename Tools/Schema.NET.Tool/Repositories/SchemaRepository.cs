@@ -1,10 +1,8 @@
 namespace Schema.NET.Tool.Repositories
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Net.Http;
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using System.Threading.Tasks;
@@ -12,9 +10,9 @@ namespace Schema.NET.Tool.Repositories
 
     public class SchemaRepository : ISchemaRepository
     {
-        private readonly HttpClient httpClient;
+        private readonly Stream fileStream;
 
-        public SchemaRepository(HttpClient httpClient) => this.httpClient = httpClient;
+        public SchemaRepository(Stream fileStream) => this.fileStream = fileStream;
 
         public async Task<(IEnumerable<SchemaClass> Classes, IEnumerable<SchemaProperty> Properties, IEnumerable<SchemaEnumerationValue> EnumerationValues)> GetObjectsAsync()
         {
@@ -33,17 +31,7 @@ namespace Schema.NET.Tool.Repositories
                 schemaObjects.OfType<SchemaEnumerationValue>().ToArray());
         }
 
-        public async Task<IEnumerable<SchemaObject>?> GetSchemaObjectsAsync()
-        {
-            using (var response = await this.httpClient
-                .GetAsync(new Uri("/version/latest/schemaorg-all-https.jsonld", UriKind.Relative), HttpCompletionOption.ResponseHeadersRead)
-                .ConfigureAwait(false))
-            {
-                response.EnsureSuccessStatusCode();
-                var jsonStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                return await DeserializeAsync<List<SchemaObject>>(jsonStream, new SchemaPropertyJsonConverter()).ConfigureAwait(false);
-            }
-        }
+        public async Task<IEnumerable<SchemaObject>?> GetSchemaObjectsAsync() => await DeserializeAsync<List<SchemaObject>>(this.fileStream, new SchemaPropertyJsonConverter()).ConfigureAwait(false);
 
         private static async Task<T?> DeserializeAsync<T>(Stream jsonStream, JsonConverter converter)
         {
