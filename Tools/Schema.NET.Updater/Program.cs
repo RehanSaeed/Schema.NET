@@ -16,7 +16,7 @@ namespace Schema.NET.Updater
         private static async Task Main()
         {
             Console.WriteLine("Downloading '{0}'...", SchemaJsonSourceUrl);
-            var httpClient = new HttpClient();
+            using var httpClient = new HttpClient();
             using var stream = await httpClient.GetStreamAsync(SchemaJsonSourceUrl).ConfigureAwait(true);
             Console.WriteLine("Saving to '{0}'...", SchemaJsonDestinationFilePath);
             using var fileStream = File.Open(SchemaJsonDestinationFilePath, FileMode.Create);
