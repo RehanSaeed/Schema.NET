@@ -13,39 +13,11 @@ namespace Schema.NET.Tool
     [Generator]
     public class SchemaSourceGenerator : ISourceGenerator
     {
-        private static readonly object SchemaLock = new();
-
-        private static IEnumerable<GeneratorSchemaObject>? SchemaObjects { get; set; }
-
         public void Initialize(GeneratorInitializationContext context)
         {
         }
 
         public void Execute(GeneratorExecutionContext context)
-        {
-            // Initialization with configuration is only possible with the GeneratorExecutionContext
-            InitializeWithConfig(context);
-
-            if (SchemaObjects is not null)
-            {
-                foreach (var schemaObject in SchemaObjects)
-                {
-                    var source = string.Empty;
-                    if (schemaObject is GeneratorSchemaClass schemaClass)
-                    {
-                        source = RenderClass(schemaClass);
-                    }
-                    else if (schemaObject is GeneratorSchemaEnumeration schemaEnumeration)
-                    {
-                        source = RenderEnumeration(schemaEnumeration);
-                    }
-
-                    context.AddSource($"{schemaObject.Layer}.{schemaObject.Name}.Generated.cs", source);
-                }
-            }
-        }
-
-        private static void InitializeWithConfig(GeneratorExecutionContext context)
         {
             var schemaDataStream = Assembly
                 .GetExecutingAssembly()
@@ -64,16 +36,25 @@ namespace Schema.NET.Tool
                 schemaRepository,
                 IncludePendingSchemaObjects(context));
 
-            if (SchemaObjects is null)
-            {
-                lock (SchemaLock)
-                {
-                    if (SchemaObjects is null)
-                    {
 #pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
-                        SchemaObjects = schemaService.GetObjectsAsync().GetAwaiter().GetResult();
+            var schemaObjects = schemaService.GetObjectsAsync().GetAwaiter().GetResult();
 #pragma warning restore VSTHRD002 // Avoid problematic synchronous waits
+
+            if (schemaObjects is not null)
+            {
+                foreach (var schemaObject in schemaObjects)
+                {
+                    var source = string.Empty;
+                    if (schemaObject is GeneratorSchemaClass schemaClass)
+                    {
+                        source = RenderClass(schemaClass);
                     }
+                    else if (schemaObject is GeneratorSchemaEnumeration schemaEnumeration)
+                    {
+                        source = RenderEnumeration(schemaEnumeration);
+                    }
+
+                    context.AddSource($"{schemaObject.Layer}.{schemaObject.Name}.Generated.cs", source);
                 }
             }
         }
