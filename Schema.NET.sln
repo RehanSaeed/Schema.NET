@@ -91,7 +91,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\release-drafter.yml = .github\workflows\release-drafter.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.NET.Pending", "Source\Schema.NET.Pending\Schema.NET.Pending.csproj", "{4EDF33FF-4532-4328-A158-D026C66537BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schema.NET.Pending", "Source\Schema.NET.Pending\Schema.NET.Pending.csproj", "{4EDF33FF-4532-4328-A158-D026C66537BA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{AF228B8A-7290-4E26-8506-934C290C6AE3}"
 	ProjectSection(SolutionItems) = preProject
@@ -113,12 +113,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{AF228B
 		Source\Common\TypeExtensions.cs = Source\Common\TypeExtensions.cs
 		Source\Common\ValuesJsonConverter.cs = Source\Common\ValuesJsonConverter.cs
 		Source\Common\Values{T1,T2,T3,T4,T5,T6,T7}.cs = Source\Common\Values{T1,T2,T3,T4,T5,T6,T7}.cs
+		Source\Common\Values{T1,T2,T3,T4,T5,T6}.cs = Source\Common\Values{T1,T2,T3,T4,T5,T6}.cs
 		Source\Common\Values{T1,T2,T3,T4}.cs = Source\Common\Values{T1,T2,T3,T4}.cs
 		Source\Common\Values{T1,T2,T3}.cs = Source\Common\Values{T1,T2,T3}.cs
 		Source\Common\Values{T1,T2}.cs = Source\Common\Values{T1,T2}.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.NET.Updater", "Tools\Schema.NET.Updater\Schema.NET.Updater.csproj", "{8923F9E2-4BB8-45F9-9A85-863F381B46EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schema.NET.Updater", "Tools\Schema.NET.Updater\Schema.NET.Updater.csproj", "{8923F9E2-4BB8-45F9-9A85-863F381B46EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A208CE34-D2DF-4BD2-B6CF-3047883BC820}"
 	ProjectSection(SolutionItems) = preProject
