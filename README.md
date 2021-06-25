@@ -69,7 +69,6 @@ Usage in an ASP.NET MVC project might look like this:
     @Html.Raw(Model.Schema.ToHtmlEscapedString())
 </script>
 ```
- 
 
 #### Windows UWP Sharing
 
@@ -148,6 +147,12 @@ This magic is all carried out using [implicit conversion operators](https://docs
 ## More Examples
 
 For more examples and actual running code samples, take a look at the unit tests in the project source code.
+
+## Schema.NET.Pending
+
+There are many pending types on [schema.org](https://schema.org) which are not yet fully formed and ready for production. If you need to use these, you can install the [Schema.NET.Pending](https://www.nuget.org/packages/Schema.NET.Pending) NuGet package instead of [Schema.NET](https://www.nuget.org/packages/Schema.NET). This package contains all released schema types as well as all pending types.
+
+[![Schema.NET.Pending NuGet Package](https://img.shields.io/nuget/v/Schema.NET.Pending.svg)](https://www.nuget.org/packages/Schema.NET.Pending) [![Schema.NET.Pending Azure Artifacts Package](https://feeds.dev.azure.com/schema-net/_apis/public/Packaging/Feeds/64e69c35-cb00-46e4-9cba-6d8faf1f41d6/Packages/3f7ed124-c136-4be6-8972-3a6b612b932e/Badge)](https://dev.azure.com/schema-net/Schema.NET/_packaging?_a=package&feed=64e69c35-cb00-46e4-9cba-6d8faf1f41d6&package=3f7ed124-c136-4be6-8972-3a6b612b932e&preferRelease=true) [![Schema.NET.Pending NuGet Package Downloads](https://img.shields.io/nuget/dt/Schema.NET.Pending)](https://www.nuget.org/packages/Schema.NET.Pending)
 
 ## Continuous Integration
 
