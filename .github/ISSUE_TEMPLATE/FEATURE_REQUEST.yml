@@ -1,0 +1,24 @@
+name: "Feature Request"
+description: "Suggest an idea for this project"
+title: "🚀 "
+labels: [enhancement]
+assignees:
+body:
+  - type: textarea
+    id: describe-the-bug
+    attributes:
+      label: "Describe the feature"
+      description: "A clear and concise description of what the feature is."
+      placeholder: ""
+      value: ""
+    validations:
+      required: true
+  - type: input
+    id: schema-objects
+    attributes:
+      label: "Schema objects"
+      description: "Which [schema.org](https://schema.org) object is this about if any?"
+      placeholder: "E.g. https://schema.org/Person"
+      value: ""
+    validations:
+      required: false
