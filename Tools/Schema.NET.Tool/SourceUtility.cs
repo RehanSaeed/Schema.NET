@@ -23,6 +23,16 @@ namespace Schema.NET.Tool
 
         public static string RenderItems<T>(IEnumerable<T> items, Func<T, string> action)
         {
+            if (items is null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+
+            if (action is null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
+
             var stringBuilder = new StringBuilder();
             foreach (var item in items)
             {

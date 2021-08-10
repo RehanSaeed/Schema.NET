@@ -30,7 +30,7 @@ namespace Schema.NET.Tool.Models
             "PronounceableText",
         };
 
-        public SchemaObject(string layer, Uri id, string label, string comment)
+        protected SchemaObject(string layer, Uri id, string label, string comment)
         {
             this.Layer = layer;
             this.Id = id;
@@ -46,7 +46,7 @@ namespace Schema.NET.Tool.Models
 
         public string Layer { get; }
 
-        public List<string> Types { get; } = new List<string>();
+        public ICollection<string> Types { get; } = new List<string>();
 
         public virtual bool IsArchived => string.Equals(this.Layer, LayerName.Archived, StringComparison.OrdinalIgnoreCase);
 

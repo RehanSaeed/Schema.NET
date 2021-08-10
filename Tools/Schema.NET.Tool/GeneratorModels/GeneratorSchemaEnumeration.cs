@@ -11,6 +11,6 @@ namespace Schema.NET.Tool.GeneratorModels
         {
         }
 
-        public List<GeneratorSchemaEnumerationValue> Values { get; } = new List<GeneratorSchemaEnumerationValue>();
+        public ICollection<GeneratorSchemaEnumerationValue> Values { get; } = new List<GeneratorSchemaEnumerationValue>();
     }
 }

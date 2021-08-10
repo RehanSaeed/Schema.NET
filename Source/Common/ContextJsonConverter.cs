@@ -23,6 +23,11 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(objectType));
             }
 
+            if (hasExistingValue && existingValue is null)
+            {
+                throw new ArgumentNullException(nameof(existingValue));
+            }
+
             if (serializer is null)
             {
                 throw new ArgumentNullException(nameof(serializer));
@@ -48,8 +53,10 @@ namespace Schema.NET
                 language = languageProperty?.Value?.ToString();
             }
 
+#pragma warning disable CA1062 // Validate arguments of public methods
             context.Name = name;
             context.Language = language;
+#pragma warning restore CA1062 // Validate arguments of public methods
             return context;
         }
 

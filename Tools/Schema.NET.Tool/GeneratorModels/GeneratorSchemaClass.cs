@@ -25,9 +25,9 @@ namespace Schema.NET.Tool.GeneratorModels
             .Traverse(this, x => x.Parents)
             .Where(x => x != this);
 
-        public List<GeneratorSchemaClass> Children { get; } = new List<GeneratorSchemaClass>();
+        public ICollection<GeneratorSchemaClass> Children { get; } = new List<GeneratorSchemaClass>();
 
-        public List<GeneratorSchemaClass> CombinationOf { get; } = new List<GeneratorSchemaClass>();
+        public ICollection<GeneratorSchemaClass> CombinationOf { get; } = new List<GeneratorSchemaClass>();
 
         public IEnumerable<GeneratorSchemaClass> Descendants => EnumerableExtensions
             .Traverse(this, x => x.Children)
@@ -64,8 +64,8 @@ namespace Schema.NET.Tool.GeneratorModels
 
         public bool IsThingType => string.Equals(this.Name, "Thing", StringComparison.Ordinal);
 
-        public List<GeneratorSchemaClass> Parents { get; } = new List<GeneratorSchemaClass>();
+        public ICollection<GeneratorSchemaClass> Parents { get; } = new List<GeneratorSchemaClass>();
 
-        public List<GeneratorSchemaProperty> Properties { get; } = new List<GeneratorSchemaProperty>();
+        public ICollection<GeneratorSchemaProperty> Properties { get; } = new List<GeneratorSchemaProperty>();
     }
 }

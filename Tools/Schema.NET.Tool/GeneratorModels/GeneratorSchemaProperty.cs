@@ -26,7 +26,7 @@ namespace Schema.NET.Tool.GeneratorModels
 
         public int Order { get; set; }
 
-        public List<GeneratorSchemaPropertyType> Types { get; } = new List<GeneratorSchemaPropertyType>();
+        public ICollection<GeneratorSchemaPropertyType> Types { get; } = new List<GeneratorSchemaPropertyType>();
 
         public string PropertyTypeString
         {

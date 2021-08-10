@@ -8,7 +8,7 @@ namespace Schema.NET.Tool.Models
     public class SchemaTreeClass
     {
         [DataMember]
-        public List<SchemaTreeClass> Children { get; set; } = new List<SchemaTreeClass>();
+        public ICollection<SchemaTreeClass> Children { get; set; } = new List<SchemaTreeClass>();
 
         [DataMember]
         public string? Description { get; set; }

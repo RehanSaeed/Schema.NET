@@ -10,8 +10,8 @@ namespace Schema.NET.Tool.Models
         {
         }
 
-        public List<Uri> DomainIncludes { get; } = new List<Uri>();
+        public ICollection<Uri> DomainIncludes { get; } = new List<Uri>();
 
-        public List<Uri> RangeIncludes { get; } = new List<Uri>();
+        public ICollection<Uri> RangeIncludes { get; } = new List<Uri>();
     }
 }
