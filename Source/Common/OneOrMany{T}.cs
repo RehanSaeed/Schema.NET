@@ -23,7 +23,9 @@ namespace Schema.NET
         /// <param name="item">The single item value.</param>
         public OneOrMany(T item)
         {
+#pragma warning disable CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
             if (item is null || (item is string itemAsString && string.IsNullOrWhiteSpace(itemAsString)))
+#pragma warning restore CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
             {
                 this.collection = null;
                 this.HasOne = false;
@@ -51,7 +53,9 @@ namespace Schema.NET
                     for (var i = 0; i < span.Length; i++)
                     {
                         var item = span[i];
+#pragma warning disable CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
                         if (!string.IsNullOrWhiteSpace(item as string))
+#pragma warning restore CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
                         {
                             items[index] = item;
                             index++;
@@ -63,7 +67,9 @@ namespace Schema.NET
                     for (var i = 0; i < span.Length; i++)
                     {
                         var item = span[i];
+#pragma warning disable CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
                         if (item is not null)
+#pragma warning restore CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
                         {
                             items[index] = item;
                             index++;
