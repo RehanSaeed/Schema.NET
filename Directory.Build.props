@@ -3,7 +3,7 @@
   <PropertyGroup Label="Build">
     <LangVersion>latest</LangVersion>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <AnalysisMode>Default</AnalysisMode>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <AnalysisLevel>latest</AnalysisLevel>
     <NeutralLanguage>en-GB</NeutralLanguage>
     <Nullable>enable</Nullable>

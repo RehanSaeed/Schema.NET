@@ -284,7 +284,9 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator Values<T1, T2, T3, T4>(List<T1> list) => new(list);
+#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -293,7 +295,9 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator Values<T1, T2, T3, T4>(List<T2> list) => new(list);
+#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -302,7 +306,9 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator Values<T1, T2, T3, T4>(List<T3> list) => new(list);
+#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -311,7 +317,9 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator Values<T1, T2, T3, T4>(List<T4> list) => new(list);
+#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -329,7 +337,9 @@ namespace Schema.NET
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator Values<T1, T2, T3, T4>(List<object> list) => new(list);
+#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -395,7 +405,9 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator List<T1>(Values<T1, T2, T3, T4> values) => values.Value1.ToList();
+#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -417,7 +429,9 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator List<T2>(Values<T1, T2, T3, T4> values) => values.Value2.ToList();
+#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -439,7 +453,9 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator List<T3>(Values<T1, T2, T3, T4> values) => values.Value3.ToList();
+#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
@@ -461,7 +477,9 @@ namespace Schema.NET
         /// The result of the conversion.
         /// </returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator List<T4>(Values<T1, T2, T3, T4> values) => values.Value4.ToList();
+#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>

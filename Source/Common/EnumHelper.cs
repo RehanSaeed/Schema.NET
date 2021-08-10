@@ -30,7 +30,9 @@ namespace Schema.NET
                 result = Enum.Parse(enumType, value);
                 return true;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 result = null;
                 return false;

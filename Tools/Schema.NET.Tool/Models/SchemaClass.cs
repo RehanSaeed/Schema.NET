@@ -26,8 +26,8 @@ namespace Schema.NET.Tool.Models
             .Traverse(this, x => x.SubClassOf)
             .Any(x => string.Equals(x.Layer, LayerName.Meta, StringComparison.OrdinalIgnoreCase));
 
-        public List<SchemaClass> SubClassOf { get; } = new List<SchemaClass>();
+        public ICollection<SchemaClass> SubClassOf { get; } = new List<SchemaClass>();
 
-        public List<Uri> SubClassOfIds { get; } = new List<Uri>();
+        public ICollection<Uri> SubClassOfIds { get; } = new List<Uri>();
     }
 }

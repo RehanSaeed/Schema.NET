@@ -18,7 +18,7 @@ namespace Schema.NET.Tool.GeneratorModels
             this.CSharpTypeStrings = new List<string>(csharpTypeStrings);
         }
 
-        public List<string> CSharpTypeStrings { get; }
+        public ICollection<string> CSharpTypeStrings { get; }
 
         public string Name { get; }
 

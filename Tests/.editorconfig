@@ -34,6 +34,11 @@ dotnet_diagnostic.SA1633.severity = none
 ##########################################
 
 [*.cs]
+# CA1014: Mark assemblies with CLSCompliant.
+# Justification: Not needed here
+# https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1014
+dotnet_diagnostic.CA1014.severity = none
+
 # CA1062: Validate arguments of public methods
 # Justification: xUnit Theory method parameters don't need to be validated
 # https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1062

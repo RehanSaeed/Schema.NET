@@ -28,3 +28,13 @@ dotnet_diagnostic.SA1602.severity = none
 # Justification: Comments turned off
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1633.md
 dotnet_diagnostic.SA1633.severity = none
+
+##########################################
+# StyleCop
+##########################################
+
+[*.cs]
+# CA1014: Mark assemblies with CLSCompliant.
+# Justification: Not needed here
+# https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1014
+dotnet_diagnostic.CA1014.severity = none
