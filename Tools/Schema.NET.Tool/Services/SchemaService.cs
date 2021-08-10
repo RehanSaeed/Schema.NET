@@ -220,7 +220,7 @@ namespace Schema.NET.Tool.Services
             HashSet<Uri> knownSchemaClasses,
             bool includePending)
         {
-            var className = StartsWithNumber.IsMatch(schemaClass.Label) ? $"_{schemaClass.Label}" : schemaClass.Label;
+            var className = StartsWithNumber.IsMatch(schemaClass.Label) ? $"Type{schemaClass.Label}" : schemaClass.Label;
             var @class = new GeneratorSchemaClass(schemaClass.Layer, schemaClass.Id, className, schemaClass.Comment);
 
             @class.Parents.AddRange(schemaClass.SubClassOfIds

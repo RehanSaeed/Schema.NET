@@ -415,7 +415,7 @@ namespace Schema.NET
                     if (localType is not null && ThingInterfaceTypeInfo.IsAssignableFrom(localType.GetTypeInfo()))
                     {
                         type = localType;
-                        return type is not null;
+                        return true;
                     }
                     else
                     {
