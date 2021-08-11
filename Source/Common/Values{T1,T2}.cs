@@ -10,10 +10,8 @@ namespace Schema.NET
     /// </summary>
     /// <typeparam name="T1">The first type the values can take.</typeparam>
     /// <typeparam name="T2">The second type the values can take.</typeparam>
-#pragma warning disable CA1710 // Identifiers should have correct suffix
     public readonly struct Values<T1, T2>
         : IReadOnlyCollection<object?>, IEnumerable<object?>, IValues, IEquatable<Values<T1, T2>>
-#pragma warning restore CA1710 // Identifiers should have correct suffix
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Values{T1,T2}"/> struct.
@@ -121,83 +119,63 @@ namespace Schema.NET
         /// </summary>
         public OneOrMany<T2> Value2 { get; }
 
+#pragma warning disable CA1002 // Do not expose generic lists
+#pragma warning disable CA2225 // Operator overloads have named alternates
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2>(T1 item) => new(item);
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T2"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2>(T2 item) => new(item);
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T1[]"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2>(T1[] array) => new(array);
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T2[]"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2>(T2[] array) => new(array);
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T1}"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator Values<T1, T2>(List<T1> list) => new(list);
-#pragma warning restore CA1002 // Do not expose generic lists
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{T2}"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator Values<T1, T2>(List<T2> list) => new(list);
-#pragma warning restore CA1002 // Do not expose generic lists
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="object"/> array to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="array">The array of values.</param>
         /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator Values<T1, T2>(object[] array) => new(array);
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="List{Object}"/> to <see cref="Values{T1,T2}"/>.
         /// </summary>
         /// <param name="list">The list of values.</param>
         /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator Values<T1, T2>(List<object> list) => new(list);
-#pragma warning restore CA1002 // Do not expose generic lists
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="Values{T1, T2}"/> to the first item of type <typeparamref name="T1"/>.
@@ -206,9 +184,7 @@ namespace Schema.NET
         /// <returns>
         /// The result of the conversion.
         /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator T1?(Values<T1, T2> values) => values.Value1.FirstOrDefault();
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="Values{T1, T2}"/> to the first item of type <typeparamref name="T2"/>.
@@ -217,9 +193,7 @@ namespace Schema.NET
         /// <returns>
         /// The result of the conversion.
         /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator T2?(Values<T1, T2> values) => values.Value2.FirstOrDefault();
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="Values{T1, T2}"/> to an array of <typeparamref name="T1"/>.
@@ -228,9 +202,7 @@ namespace Schema.NET
         /// <returns>
         /// The result of the conversion.
         /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator T1[](Values<T1, T2> values) => values.Value1.ToArray();
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="Values{T1, T2}"/> to <see cref="List{T1}"/>.
@@ -239,11 +211,7 @@ namespace Schema.NET
         /// <returns>
         /// The result of the conversion.
         /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator List<T1>(Values<T1, T2> values) => values.Value1.ToList();
-#pragma warning restore CA1002 // Do not expose generic lists
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="Values{T1, T2}"/> to an array of <typeparamref name="T2"/>.
@@ -252,9 +220,7 @@ namespace Schema.NET
         /// <returns>
         /// The result of the conversion.
         /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
         public static implicit operator T2[](Values<T1, T2> values) => values.Value2.ToArray();
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="Values{T1, T2}"/> to <see cref="List{T2}"/>.
@@ -263,11 +229,9 @@ namespace Schema.NET
         /// <returns>
         /// The result of the conversion.
         /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-#pragma warning disable CA1002 // Do not expose generic lists
         public static implicit operator List<T2>(Values<T1, T2> values) => values.Value2.ToList();
-#pragma warning restore CA1002 // Do not expose generic lists
 #pragma warning restore CA2225 // Operator overloads have named alternates
+#pragma warning restore CA1002 // Do not expose generic lists
 
         /// <summary>
         /// Implements the operator ==.
