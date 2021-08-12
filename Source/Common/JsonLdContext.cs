@@ -13,12 +13,14 @@ namespace Schema.NET
         /// Gets or sets the name.
         /// </summary>
         [JsonPropertyName("name")]
+        [JsonPropertyOrder(0)]
         public string? Name { get; set; } = "https://schema.org";
 
         /// <summary>
         /// Gets or sets the language.
         /// </summary>
         [JsonPropertyName("@language")]
+        [JsonPropertyOrder(1)]
         public string? Language { get; set; }
 
         /// <summary>

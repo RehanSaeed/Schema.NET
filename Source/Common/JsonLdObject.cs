@@ -23,6 +23,7 @@ namespace Schema.NET
         /// is not a reserved JSON-LD keyword can be used as a term.
         /// </summary>
         [JsonPropertyName("@context")]
+        [JsonPropertyOrder(0)]
         [JsonConverter(typeof(ContextJsonConverter))]
         public virtual JsonLdContext Context { get; internal set; } = new JsonLdContext();
 
@@ -31,6 +32,7 @@ namespace Schema.NET
         /// blank node identifiers.
         /// </summary>
         [JsonPropertyName("@type")]
+        [JsonPropertyOrder(1)]
         public virtual string? Type { get; }
 
         /// <summary>
@@ -42,6 +44,7 @@ namespace Schema.NET
         /// a node. In JSON-LD, a node is identified using the @id keyword:
         /// </summary>
         [JsonPropertyName("@id")]
+        [JsonPropertyOrder(2)]
         public virtual Uri? Id { get; set; }
 
         /// <summary>

@@ -123,12 +123,14 @@ $@"namespace Schema.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [JsonPropertyName(""@type"")]
+        [JsonPropertyOrder(1)]
         public override string Type => ""{schemaClass.Name}"";{SourceUtility.RenderItems(allProperties, property => $@"
 
         /// <summary>
         /// {SourceUtility.RenderDoc(8, property.Description)}
         /// </summary>
         [JsonPropertyName(""{property.JsonName}"")]
+        [JsonPropertyOrder({property.Order})]
         [JsonConverter(typeof({property.JsonConverterType}))]
         public{GetAccessModifier(property)} {property.PropertyTypeString} {property.Name} {{ get; set; }}")}
 
