@@ -32,6 +32,7 @@ namespace Schema.NET
 
             DefaultSerializationSettings = new JsonSerializerOptions
             {
+                AllowTrailingCommas = true,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             };
@@ -39,6 +40,7 @@ namespace Schema.NET
 
             HtmlEscapedSerializationSettings = new JsonSerializerOptions
             {
+                AllowTrailingCommas = true,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
             };
             HtmlEscapedSerializationSettings.Converters.Add(stringEnumConverter);
