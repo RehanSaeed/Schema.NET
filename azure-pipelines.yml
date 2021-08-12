@@ -39,7 +39,7 @@ stages:
           vmImageName: windows-latest
     pool:
       vmImage: $(vmImageName)
-    timeoutInMinutes: 10
+    timeoutInMinutes: 15
     steps:
     - checkout: self
       lfs: true
