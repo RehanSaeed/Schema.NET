@@ -53,7 +53,7 @@ namespace Schema.NET
         /// <param name="value">JSON to deserialize</param>
         /// <returns>An instance of <typeparamref name="T"/> deserialized from JSON</returns>
         public static T? DeserializeObject<T>(string value)
-            => JsonSerializer.Deserialize<T>(value);
+            => JsonSerializer.Deserialize<T>(value, DefaultSerializationSettings);
 
         /// <summary>
         /// Serializes the value to JSON with default serialization settings.
