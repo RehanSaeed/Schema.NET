@@ -179,7 +179,7 @@ namespace Schema.NET.Test
                 Name = "Test</script><script>alert('gotcha');</script>",
             };
 
-            Assert.Equal(expectedJson, thing.ToHtmlEscapedString());
+            Assert.Equal(expectedJson, thing.ToHtmlEscapedString(), ignoreCase: true);
         }
 
         [Fact]
