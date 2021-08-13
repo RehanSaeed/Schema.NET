@@ -16,11 +16,6 @@ namespace Schema.NET
     /// <seealso cref="JsonConverter" />
     public class ValuesJsonConverter : JsonConverter<IValues>
     {
-        private const string HttpSchemaOrgUrl = "http://schema.org/";
-        private const int HttpSchemaOrgLength = 18; // equivalent to "http://schema.org/".Length
-        private const string HttpsSchemaOrgUrl = "https://schema.org/";
-        private const int HttpsSchemaOrgLength = 19; // equivalent to "https://schema.org/".Length
-
         private static readonly Dictionary<string, Type> BuiltInThingTypeLookup = new(StringComparer.Ordinal);
 
         static ValuesJsonConverter()
@@ -299,35 +294,9 @@ namespace Schema.NET
                     success = decimal.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
                     result = localResult;
                 }
-                else if (targetType.GetTypeInfo().IsEnum)
+                else if (targetType.IsEnum)
                 {
-                    string? enumString;
-                    if (valueString is not null && valueString.StartsWith(HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
-                    {
-#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
-                        enumString = valueString.Substring(HttpSchemaOrgLength);
-#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
-                    }
-                    else if (valueString is not null && valueString.StartsWith(HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
-                    {
-#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
-                        enumString = valueString.Substring(HttpsSchemaOrgLength);
-#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
-                    }
-                    else
-                    {
-                        enumString = valueString;
-                    }
-
-                    if (EnumHelper.TryParse(targetType, enumString, out result))
-                    {
-                        success = true;
-                    }
-                    else
-                    {
-                        Debug.WriteLine($"Unable to parse enumeration of type {targetType.FullName} with value {enumString}.");
-                        success = false;
-                    }
+                    success = EnumHelper.TryParseEnumFromSchemaUri(targetType, valueString, out result);
                 }
                 else if (targetType == typeof(DateTime))
                 {

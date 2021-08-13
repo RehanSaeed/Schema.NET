@@ -248,7 +248,7 @@ $@"namespace Schema.NET
     /// <summary>
     /// {SourceUtility.RenderDoc(4, schemaEnumeration.Description)}
     /// </summary>
-    [JsonConverter(typeof(JsonStringEnumConverter))]
+    [JsonConverter(typeof(SchemaEnumJsonConverter<{schemaEnumeration.Name}>))]
     public enum {schemaEnumeration.Name}
     {{{SourceUtility.RenderItems(schemaEnumeration.Values, value => $@"
         /// <summary>

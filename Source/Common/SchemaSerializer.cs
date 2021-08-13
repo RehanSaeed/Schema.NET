@@ -28,22 +28,18 @@ namespace Schema.NET
         static SchemaSerializer()
 #pragma warning restore CA1810 // Initialize reference type static fields inline
         {
-            var stringEnumConverter = new JsonStringEnumConverter();
-
             DefaultSerializationSettings = new JsonSerializerOptions
             {
                 AllowTrailingCommas = true,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             };
-            DefaultSerializationSettings.Converters.Add(stringEnumConverter);
 
             HtmlEscapedSerializationSettings = new JsonSerializerOptions
             {
                 AllowTrailingCommas = true,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
             };
-            HtmlEscapedSerializationSettings.Converters.Add(stringEnumConverter);
         }
 
         /// <summary>
