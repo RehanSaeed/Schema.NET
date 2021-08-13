@@ -175,6 +175,15 @@ namespace Schema.NET
                 // System.Text.Json won't support timespans as time of day. See https://github.com/dotnet/runtime/issues/29932
                 writer.WriteStringValue(timeSpan.ToString("c", CultureInfo.InvariantCulture));
             }
+            else if (value is decimal decimalNumber)
+            {
+                //TODO: Potential unnecessary allocation - may be able to write to a stackalloc span.
+                writer.WriteRawValue(decimalNumber.ToString("G0", CultureInfo.InvariantCulture));
+            }
+            else if (value is double doubleNumber)
+            {
+                writer.WriteRawValue(doubleNumber.ToString("G0", CultureInfo.InvariantCulture));
+            }
             else
             {
                 JsonSerializer.Serialize(writer, value, value.GetType(), options);

@@ -53,7 +53,7 @@ namespace Schema.NET.Test.Examples
             "\"image\":\"https://example.com/image.jpg\"," +
             "\"aggregateRating\":{" +
                 "\"@type\":\"AggregateRating\"," +
-                "\"ratingValue\":4.0," +
+                "\"ratingValue\":4," +
                 "\"reviewCount\":35" +
             "}," +
             "\"author\":{" +
