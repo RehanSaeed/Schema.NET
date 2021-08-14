@@ -25,6 +25,7 @@ namespace Schema.NET
         [JsonPropertyName("@context")]
         [JsonPropertyOrder(0)]
         [JsonConverter(typeof(ContextJsonConverter))]
+        [JsonInclude]
         public virtual JsonLdContext Context { get; internal set; } = new JsonLdContext();
 
         /// <summary>
