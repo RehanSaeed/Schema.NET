@@ -41,6 +41,11 @@ namespace Schema.NET
         /// <returns>The enumeration value.</returns>
         public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
+            if (typeToConvert is null)
+            {
+                throw new ArgumentNullException(nameof(typeToConvert));
+            }
+
             var valueString = reader.GetString();
             if (EnumHelper.TryParseEnumFromSchemaUri(typeToConvert, valueString, out var result))
             {
@@ -56,6 +61,14 @@ namespace Schema.NET
         /// <param name="writer">The JSON writer.</param>
         /// <param name="value">The enumeration value.</param>
         /// <param name="options">The JSON serializer options.</param>
-        public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options) => writer.WriteStringValue(this.valueNameMap[value]);
+        public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
+        {
+            if (writer is null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
+            writer.WriteStringValue(this.valueNameMap[value]);
+        }
     }
 }

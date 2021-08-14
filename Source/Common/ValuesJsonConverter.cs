@@ -177,7 +177,7 @@ namespace Schema.NET
             }
             else if (value is decimal decimalNumber)
             {
-                //TODO: Potential unnecessary allocation - may be able to write to a stackalloc span.
+                // TODO: Potential unnecessary allocation - may be able to write to a stackalloc span.
                 writer.WriteRawValue(decimalNumber.ToString("G0", CultureInfo.InvariantCulture));
             }
             else if (value is double doubleNumber)
@@ -407,7 +407,7 @@ namespace Schema.NET
                 try
                 {
                     var localType = Type.GetType(typeName, false);
-                    if (typeof(IThing).IsAssignableFrom(localType))
+                    if (localType is not null && typeof(IThing).IsAssignableFrom(localType))
                     {
                         type = localType;
                         return true;
