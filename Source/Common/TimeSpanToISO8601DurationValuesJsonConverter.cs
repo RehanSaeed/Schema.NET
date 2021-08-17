@@ -31,11 +31,6 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(writer));
             }
 
-            if (value is null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
             if (options is null)
             {
                 throw new ArgumentNullException(nameof(options));
