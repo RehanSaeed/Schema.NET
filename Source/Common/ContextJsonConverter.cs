@@ -41,7 +41,7 @@ namespace Schema.NET
 
                 if (document.RootElement.TryGetProperty("name", out var nameElement))
                 {
-                    name = nameElement.GetString() ?? "http://schema.org";
+                    name = nameElement.GetString() ?? Constants.HttpsSchemaOrgUrl;
                 }
 
                 if (document.RootElement.TryGetProperty("@language", out var languageElement))
@@ -74,10 +74,8 @@ namespace Schema.NET
                 }
             }
 
-#pragma warning disable CA1062 // Validate arguments of public methods
             context.Name = name;
             context.Language = language;
-#pragma warning restore CA1062 // Validate arguments of public methods
             return context;
         }
 

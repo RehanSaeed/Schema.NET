@@ -14,7 +14,7 @@ namespace Schema.NET
         /// </summary>
         [JsonPropertyName("name")]
         [JsonPropertyOrder(0)]
-        public string? Name { get; set; } = "https://schema.org";
+        public string? Name { get; set; } = Constants.HttpsSchemaOrgUrl;
 
         /// <summary>
         /// Gets or sets the language.

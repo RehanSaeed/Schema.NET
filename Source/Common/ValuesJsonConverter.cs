@@ -110,18 +110,13 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(writer));
             }
 
-            if (value is null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
             if (options is null)
             {
                 throw new ArgumentNullException(nameof(options));
             }
 #endif
 
-            if (value.Count == 0)
+            if (value is null || value.Count == 0)
             {
                 writer.WriteNullValue();
             }
@@ -272,19 +267,10 @@ namespace Schema.NET
                 }
                 else if (targetType.GetTypeInfo().IsPrimitive)
                 {
+                    // Common primitives first
                     if (targetType == typeof(int))
                     {
                         success = int.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
-                        result = localResult;
-                    }
-                    else if (targetType == typeof(long))
-                    {
-                        success = long.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
-                        result = localResult;
-                    }
-                    else if (targetType == typeof(float))
-                    {
-                        success = float.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
                         result = localResult;
                     }
                     else if (targetType == typeof(double))
@@ -295,6 +281,38 @@ namespace Schema.NET
                     else if (targetType == typeof(bool))
                     {
                         success = bool.TryParse(valueString, out var localResult);
+                        result = localResult;
+                    }
+
+                    // All other supported primitives
+                    else if (targetType == typeof(short))
+                    {
+                        success = short.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(ushort))
+                    {
+                        success = ushort.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(uint))
+                    {
+                        success = uint.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(long))
+                    {
+                        success = long.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(ulong))
+                    {
+                        success = ulong.TryParse(valueString, NumberStyles.Integer, CultureInfo.InvariantCulture, out var localResult);
+                        result = localResult;
+                    }
+                    else if (targetType == typeof(float))
+                    {
+                        success = float.TryParse(valueString, NumberStyles.Float, CultureInfo.InvariantCulture, out var localResult);
                         result = localResult;
                     }
                 }
@@ -372,7 +390,50 @@ namespace Schema.NET
             }
             else if (tokenType == JsonTokenType.Number)
             {
-                if (targetType == typeof(short) || targetType == typeof(int) || targetType == typeof(long) || targetType == typeof(float) || targetType == typeof(double) || targetType == typeof(decimal))
+                // Common number types first
+                if (targetType == typeof(int))
+                {
+                    success = reader.TryGetInt32(out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(double))
+                {
+                    success = reader.TryGetDouble(out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(decimal))
+                {
+                    success = reader.TryGetDecimal(out var localResult);
+                    result = localResult;
+                }
+
+                // All other supported number types
+                else if (targetType == typeof(short))
+                {
+                    success = reader.TryGetInt16(out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(ushort))
+                {
+                    success = reader.TryGetUInt16(out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(uint))
+                {
+                    success = reader.TryGetUInt32(out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(long))
+                {
+                    success = reader.TryGetInt64(out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(ulong))
+                {
+                    success = reader.TryGetUInt64(out var localResult);
+                    result = localResult;
+                }
+                else if (targetType == typeof(float))
                 {
                     result = Convert.ChangeType(reader.GetDecimal(), targetType, CultureInfo.InvariantCulture);
                     success = true;

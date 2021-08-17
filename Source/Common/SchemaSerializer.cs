@@ -48,8 +48,8 @@ namespace Schema.NET
         /// <typeparam name="T">Deserialization target type</typeparam>
         /// <param name="value">JSON to deserialize</param>
         /// <returns>An instance of <typeparamref name="T"/> deserialized from JSON</returns>
-        public static T? DeserializeObject<T>(string value)
-            => JsonSerializer.Deserialize<T>(value, DefaultSerializationSettings);
+        public static T? DeserializeObject<T>(string value) =>
+            JsonSerializer.Deserialize<T>(value, DefaultSerializationSettings);
 
         /// <summary>
         /// Serializes the value to JSON with default serialization settings.
@@ -73,8 +73,8 @@ namespace Schema.NET
         /// <param name="value">Serialization target value</param>
         /// <param name="options">JSON serialization settings</param>
         /// <returns>The serialized JSON string</returns>
-        public static string SerializeObject(object value, JsonSerializerOptions options)
-            => RemoveAllButFirstContext(JsonSerializer.Serialize(value, options));
+        public static string SerializeObject(object value, JsonSerializerOptions options) =>
+            RemoveAllButFirstContext(JsonSerializer.Serialize(value, options));
 
         private static string RemoveAllButFirstContext(string json)
         {
