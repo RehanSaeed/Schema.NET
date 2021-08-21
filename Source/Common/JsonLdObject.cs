@@ -1,6 +1,7 @@
 namespace Schema.NET
 {
     using System;
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
 
@@ -44,6 +45,27 @@ namespace Schema.NET
         /// </summary>
         [DataMember(Name = "@id", Order = 2)]
         public virtual Uri? Id { get; set; }
+
+        /// <summary>
+        /// Attempts to set the Schema.org <paramref name="property"/> on the current object with the specified <paramref name="value"/>.
+        /// </summary>
+        /// <param name="property">The property to set the value on.</param>
+        /// <param name="value">The value to set on the property</param>
+        /// <returns><see langword="true"/> when the value has successfully been set; otherwise, <see langword="false"/>.</returns>
+        public virtual bool TrySetValue(string property, IEnumerable<object> value) => false;
+
+        /// <summary>
+        /// Attempts to retrieve the <typeparamref name="TValue"/> from <paramref name="property"/>.
+        /// </summary>
+        /// <typeparam name="TValue">The type of value you want to retrieve.</typeparam>
+        /// <param name="property">The property to get the value from.</param>
+        /// <param name="result">The value on the property.</param>
+        /// <returns><see langword="true"/> when the value has successfully been retrieved; otherwise, <see langword="false"/>.</returns>
+        public virtual bool TryGetValue<TValue>(string property, out OneOrMany<TValue> result)
+        {
+            result = default;
+            return false;
+        }
 
         /// <inheritdoc/>
         public bool Equals(JsonLdObject? other)

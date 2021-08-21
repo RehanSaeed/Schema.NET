@@ -42,6 +42,29 @@ namespace Schema.NET.Tool
             return stringBuilder.ToString();
         }
 
+        public static string RenderItems<T>(IEnumerable<T> items, Func<T, int, string> action)
+        {
+            if (items is null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+
+            if (action is null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
+
+            var stringBuilder = new StringBuilder();
+            var i = 0;
+            foreach (var item in items)
+            {
+                stringBuilder.Append(action(item, i));
+                i++;
+            }
+
+            return stringBuilder.ToString();
+        }
+
         public static string RenderDoc(int indent, string? text)
         {
             if (text == null)
