@@ -233,12 +233,59 @@ namespace Schema.NET.Test
                 Name = "TestName",
             };
 
+            Assert.True(thing.TryGetValue("Name", out var result));
+            var name = Assert.Single(result);
+            Assert.Equal("TestName", name);
+        }
+
+        [Fact]
+        public void TryGetValue_ValidProperty_Values()
+        {
+            var thing = new Thing
+            {
+                Identifier = new Uri("https://example.org/test-identifier"),
+            };
+
+            Assert.True(thing.TryGetValue("Identifier", out var result));
+            var identifier = Assert.Single(result);
+            Assert.Equal(new Uri("https://example.org/test-identifier"), identifier);
+        }
+
+        [Fact]
+        public void TryGetValue_InvalidProperty_InvalidName()
+        {
+            var thing = new Thing();
+
+            Assert.False(thing.TryGetValue("InvalidName", out _));
+        }
+
+        [Fact]
+        public void TryGetValue_CaseInsensitive()
+        {
+            var thing = new Thing
+            {
+                Name = "TestName",
+            };
+
+            Assert.True(thing.TryGetValue("name", out var result));
+            var name = Assert.Single(result);
+            Assert.Equal("TestName", name);
+        }
+
+        [Fact]
+        public void TryGetValue_Generic_ValidProperty_OneOrMany()
+        {
+            var thing = new Thing
+            {
+                Name = "TestName",
+            };
+
             Assert.True(thing.TryGetValue<string>("Name", out var result));
             Assert.Equal("TestName", result);
         }
 
         [Fact]
-        public void TryGetValue_ValidProperty_Values()
+        public void TryGetValue_Generic_ValidProperty_Values()
         {
             var thing = new Thing
             {
@@ -251,7 +298,7 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void TryGetValue_InvalidProperty_InvalidName()
+        public void TryGetValue_Generic_InvalidProperty_InvalidName()
         {
             var thing = new Thing();
 
@@ -259,7 +306,7 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void TryGetValue_InvalidProperty_InvalidType()
+        public void TryGetValue_Generic_InvalidProperty_InvalidType()
         {
             var thing = new Thing
             {
@@ -270,7 +317,7 @@ namespace Schema.NET.Test
         }
 
         [Fact]
-        public void TryGetValue_CaseInsensitive()
+        public void TryGetValue_Generic_CaseInsensitive()
         {
             var thing = new Thing
             {

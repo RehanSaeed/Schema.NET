@@ -180,6 +180,29 @@ $@"namespace Schema.NET
         }}
 
         /// <inheritdoc/>
+        public override bool TryGetValue(string property, out IValues result)
+        {{
+            if (string.IsNullOrWhiteSpace(property))
+            {{
+                result = default;
+                return false;
+            }}
+
+            var success = false;
+            {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
+            {{
+                result = (IValues)this.{property.Name};
+                success = true;
+            }}
+            else ")}
+            {{
+                success = base.TryGetValue(property, out result);
+            }}
+
+            return success;
+        }}
+
+        /// <inheritdoc/>
         public bool Equals({schemaClass.Name} other)
         {{
             if (other is null)

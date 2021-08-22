@@ -55,6 +55,18 @@ namespace Schema.NET
         public virtual bool TrySetValue(string property, IEnumerable<object> value) => false;
 
         /// <summary>
+        /// Attempts to retrieve the value for <paramref name="property"/>.
+        /// </summary>
+        /// <param name="property">The property to get the value from.</param>
+        /// <param name="result">The value on the property.</param>
+        /// <returns><see langword="true"/> when the value has successfully been retrieved; otherwise, <see langword="false"/>.</returns>
+        public virtual bool TryGetValue(string property, out IValues? result)
+        {
+            result = default;
+            return false;
+        }
+
+        /// <summary>
         /// Attempts to retrieve the <typeparamref name="TValue"/> from <paramref name="property"/>.
         /// </summary>
         /// <typeparam name="TValue">The type of value you want to retrieve.</typeparam>
