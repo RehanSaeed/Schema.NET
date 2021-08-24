@@ -93,6 +93,7 @@ namespace Schema.NET.Tool
 $@"namespace Schema.NET
 {{
     using System;
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
 
@@ -125,6 +126,81 @@ $@"namespace Schema.NET
         [DataMember(Name = ""{property.JsonName}"", Order = {property.Order})]
         [JsonConverter(typeof({property.JsonConverterType}))]
         public{GetAccessModifier(property)} {property.PropertyTypeString} {property.Name} {{ get; set; }}")}
+
+        /// <inheritdoc/>
+        public override bool TrySetValue(string property, IEnumerable<object> value)
+        {{
+            if (string.IsNullOrWhiteSpace(property))
+            {{
+                return false;
+            }}
+
+            var success = false;
+            {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
+            {{
+                this.{property.Name} = new(value);
+                success = true;
+            }}
+            else ")}
+            {{
+                success = base.TrySetValue(property, value);
+            }}
+
+            return success;
+        }}
+
+        /// <inheritdoc/>
+        public override bool TryGetValue<TValue>(string property, out OneOrMany<TValue> result)
+        {{
+            if (string.IsNullOrWhiteSpace(property))
+            {{
+                result = default;
+                return false;
+            }}
+
+            var success = false;
+            {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
+            {{
+                {SourceUtility.RenderItems(property.CSharpTypes, (propertyType, index) => $@"if (typeof({propertyType}) == typeof(TValue))
+                {{
+                    result = (OneOrMany<TValue>)(IValues)this.{property.Name}{(property.CSharpTypes.Count() > 1 ? $".Value{index + 1}" : string.Empty)};
+                    success = true;
+                }}
+                else ")}
+                {{
+                    result = default;
+                }}
+            }}
+            else ")}
+            {{
+                success = base.TryGetValue(property, out result);
+            }}
+
+            return success;
+        }}
+
+        /// <inheritdoc/>
+        public override bool TryGetValue(string property, out IValues result)
+        {{
+            if (string.IsNullOrWhiteSpace(property))
+            {{
+                result = default;
+                return false;
+            }}
+
+            var success = false;
+            {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
+            {{
+                result = (IValues)this.{property.Name};
+                success = true;
+            }}
+            else ")}
+            {{
+                success = base.TryGetValue(property, out result);
+            }}
+
+            return success;
+        }}
 
         /// <inheritdoc/>
         public bool Equals({schemaClass.Name} other)

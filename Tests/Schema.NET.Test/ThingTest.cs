@@ -199,6 +199,135 @@ namespace Schema.NET.Test
             Assert.Equal(expectedJson, thing.ToString());
         }
 
+        [Fact]
+        public void TrySetValue_ValidProperty()
+        {
+            var thing = new Thing();
+
+            Assert.True(thing.TrySetValue("Name", new[] { "TestName" }));
+            Assert.Equal("TestName", thing.Name);
+        }
+
+        [Fact]
+        public void TrySetValue_InvalidProperty()
+        {
+            var thing = new Thing();
+
+            Assert.False(thing.TrySetValue("InvalidName", new[] { "TestName" }));
+        }
+
+        [Fact]
+        public void TrySetValue_CaseInsensitive()
+        {
+            var thing = new Thing();
+
+            Assert.True(thing.TrySetValue("name", new[] { "TestName" }));
+            Assert.Equal("TestName", thing.Name);
+        }
+
+        [Fact]
+        public void TryGetValue_ValidProperty_OneOrMany()
+        {
+            var thing = new Thing
+            {
+                Name = "TestName",
+            };
+
+            Assert.True(thing.TryGetValue("Name", out var result));
+            var name = Assert.Single(result);
+            Assert.Equal("TestName", name);
+        }
+
+        [Fact]
+        public void TryGetValue_ValidProperty_Values()
+        {
+            var thing = new Thing
+            {
+                Identifier = new Uri("https://example.org/test-identifier"),
+            };
+
+            Assert.True(thing.TryGetValue("Identifier", out var result));
+            var identifier = Assert.Single(result);
+            Assert.Equal(new Uri("https://example.org/test-identifier"), identifier);
+        }
+
+        [Fact]
+        public void TryGetValue_InvalidProperty_InvalidName()
+        {
+            var thing = new Thing();
+
+            Assert.False(thing.TryGetValue("InvalidName", out _));
+        }
+
+        [Fact]
+        public void TryGetValue_CaseInsensitive()
+        {
+            var thing = new Thing
+            {
+                Name = "TestName",
+            };
+
+            Assert.True(thing.TryGetValue("name", out var result));
+            var name = Assert.Single(result);
+            Assert.Equal("TestName", name);
+        }
+
+        [Fact]
+        public void TryGetValue_Generic_ValidProperty_OneOrMany()
+        {
+            var thing = new Thing
+            {
+                Name = "TestName",
+            };
+
+            Assert.True(thing.TryGetValue<string>("Name", out var result));
+            Assert.Equal("TestName", result);
+        }
+
+        [Fact]
+        public void TryGetValue_Generic_ValidProperty_Values()
+        {
+            var thing = new Thing
+            {
+                Identifier = new Uri("https://example.org/test-identifier"),
+            };
+
+            Assert.True(thing.TryGetValue<Uri>("Identifier", out var result));
+            var identifier = Assert.Single(result);
+            Assert.Equal(new Uri("https://example.org/test-identifier"), identifier);
+        }
+
+        [Fact]
+        public void TryGetValue_Generic_InvalidProperty_InvalidName()
+        {
+            var thing = new Thing();
+
+            Assert.False(thing.TryGetValue<string>("InvalidName", out _));
+        }
+
+        [Fact]
+        public void TryGetValue_Generic_InvalidProperty_InvalidType()
+        {
+            var thing = new Thing
+            {
+                Name = "TestName",
+            };
+
+            Assert.False(thing.TryGetValue<Uri>("Name", out _));
+        }
+
+        [Fact]
+        public void TryGetValue_Generic_CaseInsensitive()
+        {
+            var thing = new Thing
+            {
+                Name = "TestName",
+            };
+
+            Assert.True(thing.TryGetValue<string>("name", out var result));
+            Assert.Equal("TestName", result);
+        }
+
         private static void CompareEqual<T>(T a, T? b)
         {
             Assert.NotNull(a);

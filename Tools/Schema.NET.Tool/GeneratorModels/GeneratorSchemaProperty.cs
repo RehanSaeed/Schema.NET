@@ -28,11 +28,13 @@ namespace Schema.NET.Tool.GeneratorModels
 
         public ICollection<GeneratorSchemaPropertyType> Types { get; } = new List<GeneratorSchemaPropertyType>();
 
+        public IEnumerable<string> CSharpTypes => this.Types.SelectMany(x => x.CSharpTypeStrings);
+
         public string PropertyTypeString
         {
             get
             {
-                var propertyTypes = this.Types.SelectMany(x => x.CSharpTypeStrings).ToArray();
+                var propertyTypes = this.CSharpTypes.ToArray();
                 var propertyTypesString = string.Join(", ", propertyTypes);
                 if (propertyTypes.Length == 1)
                 {
