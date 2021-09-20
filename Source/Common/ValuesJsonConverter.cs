@@ -201,7 +201,7 @@ namespace Schema.NET
                         var targetType = targetTypes[i];
                         if (targetType.IsAssignableFrom(explicitType))
                         {
-                            return ProcessObject(objectRoot, explicitType!, options);
+                            return objectRoot.Deserialize(explicitType!, options);
                         }
                     }
                 }
@@ -224,7 +224,7 @@ namespace Schema.NET
                                 localTargetType = concreteType!;
                             }
 
-                            return ProcessObject(objectRoot, localTargetType, options);
+                            return objectRoot.Deserialize(localTargetType, options);
                         }
 #pragma warning disable CA1031 // Do not catch general exception types
                         catch (Exception ex)
@@ -488,14 +488,6 @@ namespace Schema.NET
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
             }
-        }
-
-        private static object? ProcessObject(JsonElement element, Type objectType, JsonSerializerOptions options)
-        {
-            // TODO: Investigate avoiding the string allocation
-            // Related issue: https://github.com/dotnet/runtime/issues/31274
-            var json = element.GetRawText();
-            return JsonSerializer.Deserialize(json, objectType ?? typeof(object), options);
         }
     }
 }
