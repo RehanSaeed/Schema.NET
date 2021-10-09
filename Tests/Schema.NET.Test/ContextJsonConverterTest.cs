@@ -41,6 +41,18 @@ namespace Schema.NET.Test
         }
 
         [Fact]
+        public void ReadJson_ArrayContextWithNameAndLanguage_ContextHasNameAndLanguage()
+        {
+            var json = "{\"@context\":[\"foo\",{\"@language\":\"en\"}],\"@type\":\"Thing\"}";
+
+            var thing = SchemaSerializer.DeserializeObject<Thing>(json);
+
+            Assert.NotNull(thing?.Context);
+            Assert.Equal("foo", thing?.Context.Name);
+            Assert.Equal("en", thing?.Context.Language);
+        }
+
+        [Fact]
         public void WriteJson_StringContext_ContextHasName()
         {
             var json = new Thing().ToString();
