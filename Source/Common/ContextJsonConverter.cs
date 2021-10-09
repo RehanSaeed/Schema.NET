@@ -42,7 +42,7 @@ namespace Schema.NET
                 name = (string?)reader.Value;
                 language = null;
             }
-            else
+            else if (reader.TokenType == JsonToken.StartObject)
             {
                 var o = JObject.Load(reader);
 
@@ -51,6 +51,29 @@ namespace Schema.NET
 
                 var languageProperty = o.Property("@language", StringComparison.OrdinalIgnoreCase);
                 language = languageProperty?.Value?.ToString();
+            }
+            else
+            {
+                var a = JArray.Load(reader);
+
+                name = language = null;
+                foreach (var entry in a)
+                {
+                    if (entry.Type == JTokenType.String)
+                    {
+                        name ??= (string?)entry;
+                    }
+                    else
+                    {
+                        var o = (JObject)entry;
+
+                        var nameProperty = o.Property("name", StringComparison.OrdinalIgnoreCase);
+                        name ??= nameProperty?.Value?.ToString() ?? "https://schema.org";
+
+                        var languageProperty = o.Property("@language", StringComparison.OrdinalIgnoreCase);
+                        language ??= languageProperty?.Value?.ToString();
+                    }
+                }
             }
 
 #pragma warning disable CA1062 // Validate arguments of public methods
