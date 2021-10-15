@@ -263,11 +263,7 @@ namespace Schema.NET
             }
             else
             {
-#if NETSTANDARD1_1
-                return new T[0];
-#else
                 return Array.Empty<T>();
-#endif
             }
         }
 
