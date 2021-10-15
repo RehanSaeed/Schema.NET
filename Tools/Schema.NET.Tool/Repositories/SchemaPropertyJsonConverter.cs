@@ -12,10 +12,14 @@ namespace Schema.NET.Tool.Repositories
     {
         public override List<SchemaObject> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(typeToConvert);
+#else
             if (typeToConvert is null)
             {
                 throw new ArgumentNullException(nameof(typeToConvert));
             }
+#endif
 
             if (reader.TokenType == JsonTokenType.StartObject)
             {
@@ -67,7 +71,11 @@ namespace Schema.NET.Tool.Repositories
             var layer = LayerName.Core;
             if (isPartOf is not null && isPartOf.Host != "schema.org")
             {
+#if NETSTANDARD2_0
                 layer = isPartOf.Host.Replace(".schema.org", string.Empty);
+#else
+                layer = isPartOf.Host.Replace(".schema.org", string.Empty, StringComparison.OrdinalIgnoreCase);
+#endif
             }
 
             if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.Ordinal)))

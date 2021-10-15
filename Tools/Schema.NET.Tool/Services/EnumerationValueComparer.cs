@@ -16,8 +16,12 @@ namespace Schema.NET.Tool.Services
             { "SATURDAY", 6 },
         };
 
-        public int Compare(string x, string y)
+        public int Compare(string? x, string? y)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(x);
+            ArgumentNullException.ThrowIfNull(y);
+#else
             if (x is null)
             {
                 throw new ArgumentNullException(nameof(x));
@@ -27,6 +31,7 @@ namespace Schema.NET.Tool.Services
             {
                 throw new ArgumentNullException(nameof(y));
             }
+#endif
 
             x = x.ToUpperInvariant();
             y = y.ToUpperInvariant();

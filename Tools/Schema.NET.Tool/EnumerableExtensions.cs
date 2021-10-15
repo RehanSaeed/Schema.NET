@@ -8,10 +8,14 @@ namespace Schema.NET.Tool
     {
         public static IEnumerable<T> Traverse<T>(T node, Func<T, T> parent)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(parent);
+#else
             if (parent is null)
             {
                 throw new ArgumentNullException(nameof(parent));
             }
+#endif
 
             for (var x = node; x is not null; x = parent(x))
             {
@@ -21,10 +25,14 @@ namespace Schema.NET.Tool
 
         public static IEnumerable<T> Traverse<T>(T node, Func<T, IEnumerable<T>> children)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(children);
+#else
             if (children is null)
             {
                 throw new ArgumentNullException(nameof(children));
             }
+#endif
 
             yield return node;
 

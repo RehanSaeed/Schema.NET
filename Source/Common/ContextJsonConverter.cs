@@ -13,6 +13,16 @@ namespace Schema.NET
         /// <inheritdoc />
         public override JsonLdContext ReadJson(JsonReader reader, Type objectType, JsonLdContext? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(reader);
+            ArgumentNullException.ThrowIfNull(objectType);
+            if (hasExistingValue)
+            {
+                ArgumentNullException.ThrowIfNull(existingValue);
+            }
+
+            ArgumentNullException.ThrowIfNull(serializer);
+#else
             if (reader is null)
             {
                 throw new ArgumentNullException(nameof(reader));
@@ -32,6 +42,7 @@ namespace Schema.NET
             {
                 throw new ArgumentNullException(nameof(serializer));
             }
+#endif
 
             var context = hasExistingValue ? existingValue! : new JsonLdContext();
 
@@ -86,6 +97,11 @@ namespace Schema.NET
         /// <inheritdoc />
         public override void WriteJson(JsonWriter writer, JsonLdContext? value, JsonSerializer serializer)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(writer);
+            ArgumentNullException.ThrowIfNull(value);
+            ArgumentNullException.ThrowIfNull(serializer);
+#else
             if (writer is null)
             {
                 throw new ArgumentNullException(nameof(writer));
@@ -100,6 +116,7 @@ namespace Schema.NET
             {
                 throw new ArgumentNullException(nameof(serializer));
             }
+#endif
 
             if (string.IsNullOrWhiteSpace(value.Language))
             {

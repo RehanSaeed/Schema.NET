@@ -5,7 +5,9 @@ namespace Schema.NET
     /// <summary>
     /// The most generic type of item.
     /// </summary>
+#pragma warning disable CA1040 // Avoid empty interfaces
     public partial interface IThing
+#pragma warning restore CA1040 // Avoid empty interfaces
     {
     }
 

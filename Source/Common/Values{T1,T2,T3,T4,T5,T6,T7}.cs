@@ -187,10 +187,14 @@ namespace Schema.NET
         /// <param name="items">The items.</param>
         public Values(IEnumerable<object?> items)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(items);
+#else
             if (items is null)
             {
                 throw new ArgumentNullException(nameof(items));
             }
+#endif
 
             List<T1>? items1 = null;
             List<T2>? items2 = null;

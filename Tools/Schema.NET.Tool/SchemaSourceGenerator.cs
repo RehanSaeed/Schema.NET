@@ -12,6 +12,8 @@ namespace Schema.NET.Tool
     [Generator]
     public class SchemaSourceGenerator : ISourceGenerator
     {
+        private const string SchemaDataName = "Schema.NET.Tool.Data.schemaorg-all-https.jsonld";
+
         public void Initialize(GeneratorInitializationContext context)
         {
         }
@@ -20,7 +22,11 @@ namespace Schema.NET.Tool
         {
             var schemaDataStream = Assembly
                 .GetExecutingAssembly()
-                .GetManifestResourceStream("Schema.NET.Tool.Data.schemaorg-all-https.jsonld");
+                .GetManifestResourceStream(SchemaDataName);
+            if (schemaDataStream == null)
+            {
+                throw new InvalidOperationException($"Schema data file '{SchemaDataName}' not found.");
+            }
 
             var schemaRepository = new SchemaRepository(schemaDataStream);
             var schemaService = new SchemaService(
