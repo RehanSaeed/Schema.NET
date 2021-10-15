@@ -12,8 +12,10 @@ namespace Schema.NET.Benchmarks
     [HtmlExporter]
     [CsvMeasurementsExporter]
     [RPlotExporter]
-    [SimpleJob(RuntimeMoniker.Net472)]
+    [SimpleJob(RuntimeMoniker.Net60)]
+    [SimpleJob(RuntimeMoniker.Net50)]
     [SimpleJob(RuntimeMoniker.NetCoreApp31)]
+    [SimpleJob(RuntimeMoniker.Net472)]
     public abstract class SchemaBenchmarkBase
     {
         public Thing Thing { get; set; } = default!;

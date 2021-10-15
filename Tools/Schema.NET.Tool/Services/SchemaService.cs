@@ -240,7 +240,11 @@ namespace Schema.NET.Tool.Services
                         })
                         .Select(id =>
                         {
+#if NETSTANDARD2_0
                             var propertyTypeName = id.ToString().Replace("https://schema.org/", string.Empty);
+#else
+                            var propertyTypeName = id.ToString().Replace("https://schema.org/", string.Empty, StringComparison.OrdinalIgnoreCase);
+#endif
                             var isPropertyTypeEnum = isEnumMap.Contains(propertyTypeName);
                             var csharpTypeStrings = GetCSharpTypeStrings(
                                 propertyName,
@@ -306,16 +310,30 @@ namespace Schema.NET.Tool.Services
                     return new string[] { "DateTimeOffset?" };
                 case "Integer":
                 case "Number" when
+#if NETSTANDARD2_0
                     propertyName.Contains("NumberOf") ||
                     propertyName.Contains("Year") ||
                     propertyName.Contains("Count") ||
                     propertyName.Contains("Age"):
+#else
+                    propertyName.Contains("NumberOf", StringComparison.OrdinalIgnoreCase) ||
+                    propertyName.Contains("Year", StringComparison.OrdinalIgnoreCase) ||
+                    propertyName.Contains("Count", StringComparison.OrdinalIgnoreCase) ||
+                    propertyName.Contains("Age", StringComparison.OrdinalIgnoreCase):
+#endif
                     return new string[] { "int?" };
                 case "Number" when
+#if NETSTANDARD2_0
                     propertyName.Contains("Price") ||
                     propertyName.Contains("Amount") ||
                     propertyName.Contains("Salary") ||
                     propertyName.Contains("Discount"):
+#else
+                    propertyName.Contains("Price", StringComparison.OrdinalIgnoreCase) ||
+                    propertyName.Contains("Amount", StringComparison.OrdinalIgnoreCase) ||
+                    propertyName.Contains("Salary", StringComparison.OrdinalIgnoreCase) ||
+                    propertyName.Contains("Discount", StringComparison.OrdinalIgnoreCase):
+#endif
                     return new string[] { "decimal?" };
                 case "Number":
                     return new string[] { "double?" };

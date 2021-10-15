@@ -7,6 +7,10 @@ namespace Schema.NET.Tool
     {
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> items)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(collection);
+            ArgumentNullException.ThrowIfNull(items);
+#else
             if (collection is null)
             {
                 throw new ArgumentNullException(nameof(collection));
@@ -16,6 +20,7 @@ namespace Schema.NET.Tool
             {
                 throw new ArgumentNullException(nameof(items));
             }
+#endif
 
             foreach (var item in items)
             {

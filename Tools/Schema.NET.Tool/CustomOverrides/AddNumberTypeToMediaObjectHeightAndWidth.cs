@@ -9,10 +9,14 @@ namespace Schema.NET.Tool.CustomOverrides
     {
         public bool CanOverride(GeneratorSchemaClass c)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(items);
+#else
             if (c is null)
             {
                 throw new ArgumentNullException(nameof(c));
             }
+#endif
 
             return string.Equals(c.Name, "MediaObject", StringComparison.OrdinalIgnoreCase) ||
                 c.CombinationOf.Any(co => string.Equals(co.Name, "MediaObject", StringComparison.OrdinalIgnoreCase));
@@ -20,10 +24,14 @@ namespace Schema.NET.Tool.CustomOverrides
 
         public void Override(GeneratorSchemaClass c)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(c);
+#else
             if (c is null)
             {
                 throw new ArgumentNullException(nameof(c));
             }
+#endif
 
             c
                 .Properties

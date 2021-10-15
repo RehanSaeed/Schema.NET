@@ -23,6 +23,10 @@ namespace Schema.NET.Tool
 
         public static string RenderItems<T>(IEnumerable<T> items, Func<T, string> action)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(items);
+            ArgumentNullException.ThrowIfNull(action);
+#else
             if (items is null)
             {
                 throw new ArgumentNullException(nameof(items));
@@ -32,6 +36,7 @@ namespace Schema.NET.Tool
             {
                 throw new ArgumentNullException(nameof(action));
             }
+#endif
 
             var stringBuilder = new StringBuilder();
             foreach (var item in items)
@@ -44,6 +49,10 @@ namespace Schema.NET.Tool
 
         public static string RenderItems<T>(IEnumerable<T> items, Func<T, int, string> action)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(items);
+            ArgumentNullException.ThrowIfNull(action);
+#else
             if (items is null)
             {
                 throw new ArgumentNullException(nameof(items));
@@ -53,6 +62,7 @@ namespace Schema.NET.Tool
             {
                 throw new ArgumentNullException(nameof(action));
             }
+#endif
 
             var stringBuilder = new StringBuilder();
             var i = 0;

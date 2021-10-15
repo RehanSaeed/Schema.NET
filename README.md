@@ -1,4 +1,4 @@
-![Schema.NET Banner](Images/Banner.png)
+![Schema.NET Banner](https://media.githubusercontent.com/media/RehanSaeed/Schema.NET/main/Images/Banner.png)
 
 [![Schema.NET NuGet Package](https://img.shields.io/nuget/v/Schema.NET.svg)](https://www.nuget.org/packages/Schema.NET) [![Schema.NET Azure Artifacts Package](https://feeds.dev.azure.com/schema-net/_apis/public/Packaging/Feeds/64e69c35-cb00-46e4-9cba-6d8faf1f41d6/Packages/fa72270b-6c54-4403-9307-aa826e43530e/Badge)](https://dev.azure.com/schema-net/Schema.NET/_packaging?_a=package&feed=64e69c35-cb00-46e4-9cba-6d8faf1f41d6&package=fa72270b-6c54-4403-9307-aa826e43530e&preferRelease=true) [![Schema.NET NuGet Package Downloads](https://img.shields.io/nuget/dt/Schema.NET)](https://www.nuget.org/packages/Schema.NET) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/RehanSaeedUK) [![Twitter Follow](https://img.shields.io/twitter/follow/rehansaeeduk.svg?style=social&label=Follow)](https://twitter.com/RehanSaeedUK)
 
@@ -40,7 +40,7 @@ If writing the result into a `<script>` element, be sure to use the `.ToHtmlEsca
 
 Websites can define Structured Data in the `head` section of their `html` to enable search engines to show richer information in their search results. Here is an example of how [Google](https://developers.google.com/search/docs/guides/intro-structured-data) can display extended metadata about your site in it's search results.
 
-![Google Logo Structured Data Example](Images/Google%20Logo%20Structured%20Data%20Example.png)
+![Google Logo Structured Data Example](https://media.githubusercontent.com/media/RehanSaeed/Schema.NET/main/Images/Google%20Logo%20Structured%20Data%20Example.png)
 
 Using structured data in `html` requires the use of a `script` tag with a MIME type of `application/ld+json` like so:
 
@@ -167,7 +167,7 @@ There are many pending types on [schema.org](https://schema.org) which are not y
 
 ## Contributions and Thanks
 
-Please view the [contributing guide](/.github/CONTRIBUTING.md) for more information.
+Please view the [contributing guide](https://github.com/RehanSaeed/Schema.NET/blob/main/.github/CONTRIBUTING.md) for more information.
 
 - [kirkone](https://github.com/kirkone) - CI reads .NET Core version from new global.json file.
 - [Turnerj](https://github.com/Turnerj) - Added `System.Text.Json` support, Had all types implement `IEquatable<T>` `GetHashCode` and added extra unit tests and bug fixes.

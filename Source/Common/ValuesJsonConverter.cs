@@ -60,6 +60,11 @@ namespace Schema.NET
             object? existingValue,
             JsonSerializer serializer)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(reader);
+            ArgumentNullException.ThrowIfNull(objectType);
+            ArgumentNullException.ThrowIfNull(serializer);
+#else
             if (reader is null)
             {
                 throw new ArgumentNullException(nameof(reader));
@@ -74,6 +79,7 @@ namespace Schema.NET
             {
                 throw new ArgumentNullException(nameof(serializer));
             }
+#endif
 
             var dynamicConstructor = FastActivator.GetDynamicConstructor<IEnumerable<object?>>(objectType);
             if (dynamicConstructor is not null)
@@ -118,6 +124,11 @@ namespace Schema.NET
         /// <param name="serializer">The JSON serializer.</param>
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(writer);
+            ArgumentNullException.ThrowIfNull(value);
+            ArgumentNullException.ThrowIfNull(serializer);
+#else
             if (writer is null)
             {
                 throw new ArgumentNullException(nameof(writer));
@@ -132,6 +143,7 @@ namespace Schema.NET
             {
                 throw new ArgumentNullException(nameof(serializer));
             }
+#endif
 
             var values = (IValues)value;
             if (values.Count == 0)
@@ -164,6 +176,10 @@ namespace Schema.NET
         /// <param name="serializer">The JSON serializer.</param>
         public virtual void WriteObject(JsonWriter writer, object? value, JsonSerializer serializer)
         {
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(writer);
+            ArgumentNullException.ThrowIfNull(serializer);
+#else
             if (writer is null)
             {
                 throw new ArgumentNullException(nameof(writer));
@@ -173,6 +189,7 @@ namespace Schema.NET
             {
                 throw new ArgumentNullException(nameof(serializer));
             }
+#endif
 
             serializer.Serialize(writer, value);
         }
