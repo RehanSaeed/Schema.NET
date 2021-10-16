@@ -74,7 +74,7 @@ namespace Schema.NET.Tool.Repositories
 #if NETSTANDARD2_0
                 layer = isPartOf.Host.Replace(".schema.org", string.Empty);
 #else
-                layer = isPartOf.Host.Replace(".schema.org", string.Empty, StringComparison.OrdinalIgnoreCase);
+                layer = isPartOf.Host.Replace(".schema.org", string.Empty, StringComparison.Ordinal);
 #endif
             }
 
