@@ -243,7 +243,7 @@ namespace Schema.NET.Tool.Services
 #if NETSTANDARD2_0
                             var propertyTypeName = id.ToString().Replace("https://schema.org/", string.Empty);
 #else
-                            var propertyTypeName = id.ToString().Replace("https://schema.org/", string.Empty, StringComparison.OrdinalIgnoreCase);
+                            var propertyTypeName = id.ToString().Replace("https://schema.org/", string.Empty, StringComparison.Ordinal);
 #endif
                             var isPropertyTypeEnum = isEnumMap.Contains(propertyTypeName);
                             var csharpTypeStrings = GetCSharpTypeStrings(
@@ -316,10 +316,10 @@ namespace Schema.NET.Tool.Services
                     propertyName.Contains("Count") ||
                     propertyName.Contains("Age"):
 #else
-                    propertyName.Contains("NumberOf", StringComparison.OrdinalIgnoreCase) ||
-                    propertyName.Contains("Year", StringComparison.OrdinalIgnoreCase) ||
-                    propertyName.Contains("Count", StringComparison.OrdinalIgnoreCase) ||
-                    propertyName.Contains("Age", StringComparison.OrdinalIgnoreCase):
+                    propertyName.Contains("NumberOf", StringComparison.Ordinal) ||
+                    propertyName.Contains("Year", StringComparison.Ordinal) ||
+                    propertyName.Contains("Count", StringComparison.Ordinal) ||
+                    propertyName.Contains("Age", StringComparison.Ordinal):
 #endif
                     return new string[] { "int?" };
                 case "Number" when
@@ -329,10 +329,10 @@ namespace Schema.NET.Tool.Services
                     propertyName.Contains("Salary") ||
                     propertyName.Contains("Discount"):
 #else
-                    propertyName.Contains("Price", StringComparison.OrdinalIgnoreCase) ||
-                    propertyName.Contains("Amount", StringComparison.OrdinalIgnoreCase) ||
-                    propertyName.Contains("Salary", StringComparison.OrdinalIgnoreCase) ||
-                    propertyName.Contains("Discount", StringComparison.OrdinalIgnoreCase):
+                    propertyName.Contains("Price", StringComparison.Ordinal) ||
+                    propertyName.Contains("Amount", StringComparison.Ordinal) ||
+                    propertyName.Contains("Salary", StringComparison.Ordinal) ||
+                    propertyName.Contains("Discount", StringComparison.Ordinal):
 #endif
                     return new string[] { "decimal?" };
                 case "Number":
