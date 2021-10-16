@@ -13,8 +13,6 @@ namespace Schema.NET.Benchmarks
     [CsvMeasurementsExporter]
     [RPlotExporter]
     [SimpleJob(RuntimeMoniker.Net60)]
-    [SimpleJob(RuntimeMoniker.Net50)]
-    [SimpleJob(RuntimeMoniker.NetCoreApp31)]
     [SimpleJob(RuntimeMoniker.Net472)]
     public abstract class SchemaBenchmarkBase
     {
