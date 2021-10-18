@@ -24,7 +24,7 @@ namespace Schema.NET
             string? value,
             out object? result)
         {
-#if NETSTANDARD2_0 || NET472
+#if NETSTANDARD2_0 || NET472 || NET461
             try
             {
                 result = Enum.Parse(enumType, value);

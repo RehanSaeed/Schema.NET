@@ -1,4 +1,4 @@
-#if NET472
+#if NET472 || NET461
 namespace Schema.NET.Test
 {
     using System;

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Build">
-    <TargetFrameworks>net6.0;net5.0;net472</TargetFrameworks>
+    <TargetFrameworks>net6.0;net5.0;net472;net461</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup Label="Project References">
