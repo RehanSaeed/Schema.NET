@@ -1,22 +1,22 @@
-namespace Schema.NET.Benchmarks.Core
-{
-    using System;
-    using System.Collections.Generic;
+namespace Schema.NET.Benchmarks.Core;
 
-    public class BookBenchmark : SchemaBenchmarkBase
-    {
-        public override Thing InitialiseThing() =>
-            new Book()
+using System;
+using System.Collections.Generic;
+
+public class BookBenchmark : SchemaBenchmarkBase
+{
+    public override Thing InitialiseThing() =>
+        new Book()
+        {
+            Id = new Uri("https://example.com/book/1"),
+            Name = "The Catcher in the Rye",
+            Author = new Person()
             {
-                Id = new Uri("https://example.com/book/1"),
-                Name = "The Catcher in the Rye",
-                Author = new Person()
-                {
-                    Name = "J.D. Salinger",
-                },
-                Url = new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"),
-                WorkExample = new List<ICreativeWork>()
-                {
+                Name = "J.D. Salinger",
+            },
+            Url = new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"),
+            WorkExample = new List<ICreativeWork>()
+            {
                     new Book()
                     {
                         Isbn = "031676948",
@@ -75,7 +75,6 @@ namespace Schema.NET.Benchmarks.Core
                             },
                         },
                     },
-                },
-            };
-    }
+            },
+        };
 }

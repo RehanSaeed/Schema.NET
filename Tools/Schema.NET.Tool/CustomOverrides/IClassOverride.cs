@@ -1,11 +1,10 @@
-namespace Schema.NET.Tool.CustomOverrides
+namespace Schema.NET.Tool.CustomOverrides;
+
+using Schema.NET.Tool.GeneratorModels;
+
+public interface IClassOverride
 {
-    using Schema.NET.Tool.GeneratorModels;
+    bool CanOverride(GeneratorSchemaClass c);
 
-    public interface IClassOverride
-    {
-        bool CanOverride(GeneratorSchemaClass c);
-
-        void Override(GeneratorSchemaClass c);
-    }
+    void Override(GeneratorSchemaClass c);
 }

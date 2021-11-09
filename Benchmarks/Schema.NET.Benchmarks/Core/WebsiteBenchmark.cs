@@ -1,18 +1,17 @@
-namespace Schema.NET.Benchmarks.Core
-{
-    using System;
+namespace Schema.NET.Benchmarks.Core;
 
-    public class WebsiteBenchmark : SchemaBenchmarkBase
-    {
-        public override Thing InitialiseThing() =>
-            new WebSite()
+using System;
+
+public class WebsiteBenchmark : SchemaBenchmarkBase
+{
+    public override Thing InitialiseThing() =>
+        new WebSite()
+        {
+            PotentialAction = new SearchAction()
             {
-                PotentialAction = new SearchAction()
-                {
-                    Target = new Uri("https://example.com/search?&q={query}"),
-                    QueryInput = "required",
-                },
-                Url = new Uri("https://example.com"),
-            };
-    }
+                Target = new Uri("https://example.com/search?&q={query}"),
+                QueryInput = "required",
+            },
+            Url = new Uri("https://example.com"),
+        };
 }

@@ -1,28 +1,27 @@
-namespace Schema.NET.Tool.Models
+namespace Schema.NET.Tool.Models;
+
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+
+[DataContract]
+public class SchemaTreeClass
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Runtime.Serialization;
+    [DataMember]
+    public ICollection<SchemaTreeClass> Children { get; set; } = new List<SchemaTreeClass>();
 
-    [DataContract]
-    public class SchemaTreeClass
-    {
-        [DataMember]
-        public ICollection<SchemaTreeClass> Children { get; set; } = new List<SchemaTreeClass>();
+    [DataMember]
+    public string? Description { get; set; }
 
-        [DataMember]
-        public string? Description { get; set; }
+    [DataMember(Name = "@id")]
+    public Uri? Id { get; set; }
 
-        [DataMember(Name = "@id")]
-        public Uri? Id { get; set; }
+    [DataMember]
+    public string? Name { get; set; }
 
-        [DataMember]
-        public string? Name { get; set; }
+    [DataMember(Name = "rdfs:subClassOf")]
+    public string? SubClassOf { get; set; }
 
-        [DataMember(Name = "rdfs:subClassOf")]
-        public string? SubClassOf { get; set; }
-
-        [DataMember(Name = "@type")]
-        public string? Type { get; set; }
-    }
+    [DataMember(Name = "@type")]
+    public string? Type { get; set; }
 }
