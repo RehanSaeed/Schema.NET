@@ -23,8 +23,7 @@ namespace Schema.NET
         {
 #if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull(writer);
-            ArgumentNullException.ThrowIfNull(value);
-            ArgumentNullException.ThrowIfNull(serializer);
+            ArgumentNullException.ThrowIfNull(options);
 #else
             if (writer is null)
             {
