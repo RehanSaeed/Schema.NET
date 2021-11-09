@@ -3,8 +3,8 @@ namespace Schema.NET
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Schema JSON Serializer
@@ -14,40 +14,33 @@ namespace Schema.NET
         private const string ContextPropertyJson = "\"@context\":\"https://schema.org\",";
 
         /// <summary>
-        /// Default serializer settings used when deserializing
-        /// </summary>
-        private static readonly JsonSerializerSettings DeserializeSettings = new()
-        {
-            DateParseHandling = DateParseHandling.None,
-        };
-
-        /// <summary>
         /// Default serializer settings used when HTML escaping is not required.
         /// </summary>
-        private static readonly JsonSerializerSettings DefaultSerializationSettings = new()
-        {
-            Converters = new List<JsonConverter>()
-            {
-                new StringEnumConverter(),
-            },
-            DefaultValueHandling = DefaultValueHandling.Ignore,
-            NullValueHandling = NullValueHandling.Ignore,
-        };
+        private static readonly JsonSerializerOptions DefaultSerializationSettings;
 
         /// <summary>
         /// Serializer settings used when trying to avoid XSS vulnerabilities where user-supplied data is used
         /// and the output of the serialization is embedded into a web page raw.
         /// </summary>
-        private static readonly JsonSerializerSettings HtmlEscapedSerializationSettings = new()
+        private static readonly JsonSerializerOptions HtmlEscapedSerializationSettings;
+
+#pragma warning disable CA1810 // Initialize reference type static fields inline
+        static SchemaSerializer()
+#pragma warning restore CA1810 // Initialize reference type static fields inline
         {
-            Converters = new List<JsonConverter>()
+            DefaultSerializationSettings = new JsonSerializerOptions
             {
-                new StringEnumConverter(),
-            },
-            DefaultValueHandling = DefaultValueHandling.Ignore,
-            NullValueHandling = NullValueHandling.Ignore,
-            StringEscapeHandling = StringEscapeHandling.EscapeHtml,
-        };
+                AllowTrailingCommas = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            };
+
+            HtmlEscapedSerializationSettings = new JsonSerializerOptions
+            {
+                AllowTrailingCommas = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+            };
+        }
 
         /// <summary>
         /// Deserializes the JSON to the specified type.
@@ -56,7 +49,7 @@ namespace Schema.NET
         /// <param name="value">JSON to deserialize</param>
         /// <returns>An instance of <typeparamref name="T"/> deserialized from JSON</returns>
         public static T? DeserializeObject<T>(string value) =>
-            JsonConvert.DeserializeObject<T>(value, DeserializeSettings);
+            JsonSerializer.Deserialize<T>(value, DefaultSerializationSettings);
 
         /// <summary>
         /// Serializes the value to JSON with default serialization settings.
@@ -78,10 +71,10 @@ namespace Schema.NET
         /// Serializes the value to JSON with custom serialization settings.
         /// </summary>
         /// <param name="value">Serialization target value</param>
-        /// <param name="jsonSerializerSettings">JSON serialization settings</param>
+        /// <param name="options">JSON serialization settings</param>
         /// <returns>The serialized JSON string</returns>
-        public static string SerializeObject(object value, JsonSerializerSettings jsonSerializerSettings) =>
-            RemoveAllButFirstContext(JsonConvert.SerializeObject(value, jsonSerializerSettings));
+        public static string SerializeObject(object value, JsonSerializerOptions options) =>
+            RemoveAllButFirstContext(JsonSerializer.Serialize(value, options));
 
         private static string RemoveAllButFirstContext(string json)
         {

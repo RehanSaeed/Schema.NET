@@ -78,9 +78,9 @@ namespace Schema.NET.Test.Examples
             "}," +
             "\"aggregateRating\":{" +
                 "\"@type\":\"AggregateRating\"," +
-                "\"bestRating\":100.0," +
-                "\"ratingValue\":88.0," +
-                "\"worstRating\":1.0," +
+                "\"bestRating\":100," +
+                "\"ratingValue\":88," +
+                "\"worstRating\":1," +
                 "\"ratingCount\":20" +
             "}," +
             "\"geo\":{" +
@@ -106,9 +106,9 @@ namespace Schema.NET.Test.Examples
                 "}," +
                 "\"reviewRating\":{" +
                     "\"@type\":\"Rating\"," +
-                    "\"bestRating\":4.0," +
+                    "\"bestRating\":4," +
                     "\"ratingValue\":3.5," +
-                    "\"worstRating\":1.0" +
+                    "\"worstRating\":1" +
                 "}" +
             "}," +
             "\"telephone\":\"+12122459600\"," +

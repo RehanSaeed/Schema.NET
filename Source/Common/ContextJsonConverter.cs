@@ -1,8 +1,8 @@
 namespace Schema.NET
 {
     using System;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Converts a <see cref="JsonLdContext"/> object to and from JSON.
@@ -11,96 +11,81 @@ namespace Schema.NET
     public class ContextJsonConverter : JsonConverter<JsonLdContext>
     {
         /// <inheritdoc />
-        public override JsonLdContext ReadJson(JsonReader reader, Type objectType, JsonLdContext? existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override JsonLdContext Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(reader);
-            ArgumentNullException.ThrowIfNull(objectType);
-            if (hasExistingValue)
-            {
-                ArgumentNullException.ThrowIfNull(existingValue);
-            }
-
-            ArgumentNullException.ThrowIfNull(serializer);
+            ArgumentNullException.ThrowIfNull(typeToConvert);
+            ArgumentNullException.ThrowIfNull(options);
 #else
-            if (reader is null)
+            if (typeToConvert is null)
             {
-                throw new ArgumentNullException(nameof(reader));
+                throw new ArgumentNullException(nameof(typeToConvert));
             }
 
-            if (objectType is null)
+            if (options is null)
             {
-                throw new ArgumentNullException(nameof(objectType));
-            }
-
-            if (hasExistingValue && existingValue is null)
-            {
-                throw new ArgumentNullException(nameof(existingValue));
-            }
-
-            if (serializer is null)
-            {
-                throw new ArgumentNullException(nameof(serializer));
+                throw new ArgumentNullException(nameof(options));
             }
 #endif
+            var context = new JsonLdContext();
 
-            var context = hasExistingValue ? existingValue! : new JsonLdContext();
-
-            string? name;
-            string? language;
-            if (reader.TokenType == JsonToken.String)
+            string? name = null;
+            string? language = null;
+            if (reader.TokenType == JsonTokenType.String)
             {
-                name = (string?)reader.Value;
-                language = null;
+                name = reader.GetString();
             }
-            else if (reader.TokenType == JsonToken.StartObject)
+            else if (reader.TokenType == JsonTokenType.StartObject)
             {
-                var o = JObject.Load(reader);
+                var document = JsonDocument.ParseValue(ref reader);
 
-                var nameProperty = o.Property("name", StringComparison.OrdinalIgnoreCase);
-                name = nameProperty?.Value?.ToString() ?? "https://schema.org";
+                if (document.RootElement.TryGetProperty("name", out var nameElement))
+                {
+                    name = nameElement.GetString() ?? Constants.HttpsSchemaOrgUrl;
+                }
 
-                var languageProperty = o.Property("@language", StringComparison.OrdinalIgnoreCase);
-                language = languageProperty?.Value?.ToString();
+                if (document.RootElement.TryGetProperty("@language", out var languageElement))
+                {
+                    language = languageElement.GetString();
+                }
             }
             else
             {
-                var a = JArray.Load(reader);
+                var array = JsonDocument.ParseValue(ref reader).RootElement.EnumerateArray();
 
-                name = language = null;
-                foreach (var entry in a)
+                foreach (var entry in array)
                 {
-                    if (entry.Type == JTokenType.String)
+                    if (entry.ValueKind == JsonValueKind.String)
                     {
-                        name ??= (string?)entry;
+                        name ??= entry.GetString();
                     }
-                    else
+                    else if (entry.ValueKind == JsonValueKind.Object)
                     {
-                        var o = (JObject)entry;
+                        if (entry.TryGetProperty("name", out var nameElement))
+                        {
+                            name ??= nameElement.GetString() ?? Constants.HttpsSchemaOrgUrl;
+                        }
 
-                        var nameProperty = o.Property("name", StringComparison.OrdinalIgnoreCase);
-                        name ??= nameProperty?.Value?.ToString() ?? "https://schema.org";
-
-                        var languageProperty = o.Property("@language", StringComparison.OrdinalIgnoreCase);
-                        language ??= languageProperty?.Value?.ToString();
+                        if (entry.TryGetProperty("@language", out var languageElement))
+                        {
+                            language ??= languageElement.GetString();
+                        }
                     }
                 }
             }
 
-#pragma warning disable CA1062 // Validate arguments of public methods
             context.Name = name;
             context.Language = language;
-#pragma warning restore CA1062 // Validate arguments of public methods
             return context;
         }
 
         /// <inheritdoc />
-        public override void WriteJson(JsonWriter writer, JsonLdContext? value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, JsonLdContext value, JsonSerializerOptions options)
         {
 #if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull(writer);
             ArgumentNullException.ThrowIfNull(value);
-            ArgumentNullException.ThrowIfNull(serializer);
+            ArgumentNullException.ThrowIfNull(options);
 #else
             if (writer is null)
             {
@@ -112,23 +97,23 @@ namespace Schema.NET
                 throw new ArgumentNullException(nameof(value));
             }
 
-            if (serializer is null)
+            if (options is null)
             {
-                throw new ArgumentNullException(nameof(serializer));
+                throw new ArgumentNullException(nameof(options));
             }
 #endif
 
             if (string.IsNullOrWhiteSpace(value.Language))
             {
-                writer.WriteValue(value.Name);
+                writer.WriteStringValue(value.Name);
             }
             else
             {
                 writer.WriteStartObject();
                 writer.WritePropertyName("name");
-                writer.WriteValue(value.Name);
+                writer.WriteStringValue(value.Name);
                 writer.WritePropertyName("@language");
-                writer.WriteValue(value.Language);
+                writer.WriteStringValue(value.Language);
                 writer.WriteEndObject();
             }
         }

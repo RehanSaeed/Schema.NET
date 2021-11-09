@@ -1,7 +1,7 @@
 namespace Schema.NET
 {
     using System;
-    using System.Runtime.Serialization;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The @context for a JSON-LD document.
@@ -12,13 +12,15 @@ namespace Schema.NET
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [DataMember(Name = "name", Order = 0)]
-        public string? Name { get; set; } = "https://schema.org";
+        [JsonPropertyName("name")]
+        [JsonPropertyOrder(0)]
+        public string? Name { get; set; } = Constants.HttpsSchemaOrgUrl;
 
         /// <summary>
         /// Gets or sets the language.
         /// </summary>
-        [DataMember(Name = "@language", Order = 1)]
+        [JsonPropertyName("@language")]
+        [JsonPropertyOrder(1)]
         public string? Language { get; set; }
 
         /// <summary>

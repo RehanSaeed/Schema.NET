@@ -62,7 +62,7 @@ namespace Schema.NET.Test.Examples
                 "\"value\":{" +
                     "\"@type\":\"QuantitativeValue\"," +
                     "\"unitText\":\"HOUR\"," +
-                    "\"value\":40.0" +
+                    "\"value\":40" +
                 "}" +
             "}," +
             "\"datePosted\":\"2017-01-18\"," +

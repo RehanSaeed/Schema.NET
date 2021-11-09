@@ -2,14 +2,12 @@ namespace Schema.NET
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The base JSON-LD object.
     /// See https://json-ld.org/spec/latest/json-ld
     /// </summary>
-    [DataContract]
     public class JsonLdObject : IEquatable<JsonLdObject>
     {
         /// <summary>
@@ -24,15 +22,18 @@ namespace Schema.NET
         /// Simply speaking, a context is used to map terms to IRIs. Terms are case sensitive and any valid string that
         /// is not a reserved JSON-LD keyword can be used as a term.
         /// </summary>
-        [DataMember(Name = "@context", Order = 0)]
+        [JsonPropertyName("@context")]
+        [JsonPropertyOrder(0)]
         [JsonConverter(typeof(ContextJsonConverter))]
+        [JsonInclude]
         public virtual JsonLdContext Context { get; internal set; } = new JsonLdContext();
 
         /// <summary>
         /// Gets the type, used to uniquely identify things that are being described in the document with IRIs or
         /// blank node identifiers.
         /// </summary>
-        [DataMember(Name = "@type", Order = 1)]
+        [JsonPropertyName("@type")]
+        [JsonPropertyOrder(1)]
         public virtual string? Type { get; }
 
         /// <summary>
@@ -43,7 +44,8 @@ namespace Schema.NET
         /// result in a representation of that node.This may allow an application to retrieve further information about
         /// a node. In JSON-LD, a node is identified using the @id keyword:
         /// </summary>
-        [DataMember(Name = "@id", Order = 2)]
+        [JsonPropertyName("@id")]
+        [JsonPropertyOrder(2)]
         public virtual Uri? Id { get; set; }
 
         /// <summary>
