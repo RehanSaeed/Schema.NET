@@ -63,7 +63,7 @@ namespace Schema.NET
                     {
                         if (entry.TryGetProperty("name", out var nameElement))
                         {
-                            name ??= nameElement.GetString() ?? "http://schema.org";
+                            name ??= nameElement.GetString() ?? Constants.HttpsSchemaOrgUrl;
                         }
 
                         if (entry.TryGetProperty("@language", out var languageElement))

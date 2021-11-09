@@ -9,9 +9,6 @@ namespace Schema.NET
     /// </summary>
     internal static class EnumHelper
     {
-        private const int HttpSchemaOrgLength = 18; // equivalent to "http://schema.org/".Length
-        private const int HttpsSchemaOrgLength = 19; // equivalent to "https://schema.org/".Length
-
         /// <summary>
         /// Converts the string representation of the name or numeric value of one or more
         /// enumerated constants to an equivalent enumerated object.
@@ -67,13 +64,13 @@ namespace Schema.NET
             if (value is not null && value.StartsWith(Constants.HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
             {
 #pragma warning disable IDE0057 // Use range operator. Need to multi-target.
-                enumString = value.Substring(HttpSchemaOrgLength);
+                enumString = value.Substring(Constants.HttpSchemaOrgUrl.Length);
 #pragma warning restore IDE0057 // Use range operator. Need to multi-target.
             }
             else if (value is not null && value.StartsWith(Constants.HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
             {
 #pragma warning disable IDE0057 // Use range operator. Need to multi-target.
-                enumString = value.Substring(HttpsSchemaOrgLength);
+                enumString = value.Substring(Constants.HttpsSchemaOrgUrl.Length);
 #pragma warning restore IDE0057 // Use range operator. Need to multi-target.
             }
             else
