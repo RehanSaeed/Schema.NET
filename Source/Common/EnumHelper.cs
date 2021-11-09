@@ -64,13 +64,13 @@ namespace Schema.NET
             if (value is not null && value.StartsWith(Constants.HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
             {
 #pragma warning disable IDE0057 // Use range operator. Need to multi-target.
-                enumString = value.Substring(Constants.HttpSchemaOrgUrl.Length);
+                enumString = value.Substring(Constants.HttpSchemaOrgUrl.Length + 1);
 #pragma warning restore IDE0057 // Use range operator. Need to multi-target.
             }
             else if (value is not null && value.StartsWith(Constants.HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
             {
 #pragma warning disable IDE0057 // Use range operator. Need to multi-target.
-                enumString = value.Substring(Constants.HttpsSchemaOrgUrl.Length);
+                enumString = value.Substring(Constants.HttpsSchemaOrgUrl.Length + 1);
 #pragma warning restore IDE0057 // Use range operator. Need to multi-target.
             }
             else

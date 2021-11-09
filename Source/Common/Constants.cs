@@ -6,12 +6,12 @@ namespace Schema.NET
     public static class Constants
     {
         /// <summary>
-        /// The HTTPS URL for Schema.org
+        /// The HTTPS URL for Schema.org, excluding trailing slash.
         /// </summary>
         public const string HttpsSchemaOrgUrl = "https://schema.org";
 
         /// <summary>
-        /// The HTTPS URL for Schema.org
+        /// The HTTP URL for Schema.org, excluding trailing slash.
         /// </summary>
         public const string HttpSchemaOrgUrl = "http://schema.org";
     }
