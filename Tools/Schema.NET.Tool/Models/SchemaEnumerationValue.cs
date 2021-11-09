@@ -1,12 +1,11 @@
-namespace Schema.NET.Tool.Models
-{
-    using System;
+namespace Schema.NET.Tool.Models;
 
-    public class SchemaEnumerationValue : SchemaObject
+using System;
+
+public class SchemaEnumerationValue : SchemaObject
+{
+    public SchemaEnumerationValue(string layer, Uri id, string label, string comment)
+        : base(layer, id, label, comment)
     {
-        public SchemaEnumerationValue(string layer, Uri id, string label, string comment)
-            : base(layer, id, label, comment)
-        {
-        }
     }
 }

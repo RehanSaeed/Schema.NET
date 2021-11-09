@@ -1,285 +1,282 @@
-namespace Schema.NET.Tool
+namespace Schema.NET.Tool;
+
+using System;
+using System.Linq;
+using System.Reflection;
+using Microsoft.CodeAnalysis;
+using Schema.NET.Tool.CustomOverrides;
+using Schema.NET.Tool.GeneratorModels;
+using Schema.NET.Tool.Repositories;
+using Schema.NET.Tool.Services;
+
+[Generator]
+public class SchemaSourceGenerator : ISourceGenerator
 {
-    using System;
-    using System.Linq;
-    using System.Reflection;
-    using Microsoft.CodeAnalysis;
-    using Schema.NET.Tool.CustomOverrides;
-    using Schema.NET.Tool.GeneratorModels;
-    using Schema.NET.Tool.Repositories;
-    using Schema.NET.Tool.Services;
+    private const string SchemaDataName = "Schema.NET.Tool.Data.schemaorg-all-https.jsonld";
 
-    [Generator]
-    public class SchemaSourceGenerator : ISourceGenerator
+    public void Initialize(GeneratorInitializationContext context)
     {
-        private const string SchemaDataName = "Schema.NET.Tool.Data.schemaorg-all-https.jsonld";
+    }
 
-        public void Initialize(GeneratorInitializationContext context)
+    public void Execute(GeneratorExecutionContext context)
+    {
+        var schemaDataStream = Assembly
+            .GetExecutingAssembly()
+            .GetManifestResourceStream(SchemaDataName);
+        if (schemaDataStream == null)
         {
+            throw new InvalidOperationException($"Schema data file '{SchemaDataName}' not found.");
         }
 
-        public void Execute(GeneratorExecutionContext context)
-        {
-            var schemaDataStream = Assembly
-                .GetExecutingAssembly()
-                .GetManifestResourceStream(SchemaDataName);
-            if (schemaDataStream == null)
+        var schemaRepository = new SchemaRepository(schemaDataStream);
+        var schemaService = new SchemaService(
+            new IClassOverride[]
             {
-                throw new InvalidOperationException($"Schema data file '{SchemaDataName}' not found.");
-            }
-
-            var schemaRepository = new SchemaRepository(schemaDataStream);
-            var schemaService = new SchemaService(
-                new IClassOverride[]
-                {
                     new AddQueryInputPropertyToSearchAction(),
                     new AddTextTypeToActionTarget(),
                     new AddNumberTypeToMediaObjectHeightAndWidth(),
                     new RenameEventProperty(),
-                },
-                Array.Empty<IEnumerationOverride>(),
-                schemaRepository,
-                IncludePendingSchemaObjects(context));
+            },
+            Array.Empty<IEnumerationOverride>(),
+            schemaRepository,
+            IncludePendingSchemaObjects(context));
 
 #pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
-            var schemaObjects = schemaService.GetObjectsAsync().GetAwaiter().GetResult();
+        var schemaObjects = schemaService.GetObjectsAsync().GetAwaiter().GetResult();
 #pragma warning restore VSTHRD002 // Avoid problematic synchronous waits
 
-            if (schemaObjects is not null)
+        if (schemaObjects is not null)
+        {
+            foreach (var schemaObject in schemaObjects)
             {
-                foreach (var schemaObject in schemaObjects)
+                var source = string.Empty;
+                if (schemaObject is GeneratorSchemaClass schemaClass)
                 {
-                    var source = string.Empty;
-                    if (schemaObject is GeneratorSchemaClass schemaClass)
-                    {
-                        source = RenderClass(schemaClass);
-                    }
-                    else if (schemaObject is GeneratorSchemaEnumeration schemaEnumeration)
-                    {
-                        source = RenderEnumeration(schemaEnumeration);
-                    }
-
-                    context.AddSource($"{schemaObject.Layer}.{schemaObject.Name}.Generated.cs", source);
+                    source = RenderClass(schemaClass);
                 }
+                else if (schemaObject is GeneratorSchemaEnumeration schemaEnumeration)
+                {
+                    source = RenderEnumeration(schemaEnumeration);
+                }
+
+                context.AddSource($"{schemaObject.Layer}.{schemaObject.Name}.Generated.cs", source);
             }
         }
+    }
 
-        private static bool IncludePendingSchemaObjects(GeneratorExecutionContext context)
+    private static bool IncludePendingSchemaObjects(GeneratorExecutionContext context)
+    {
+        var configuration = context.AnalyzerConfigOptions.GlobalOptions;
+        return configuration.TryGetValue($"build_property.IncludePendingSchemaObjects", out var value) &&
+            value.Equals("true", StringComparison.OrdinalIgnoreCase);
+    }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1513:Closing brace should be followed by blank line", Justification = "Interpolated string")]
+    private static string RenderClass(GeneratorSchemaClass schemaClass)
+    {
+        if (schemaClass.Parents.Count > 1)
         {
-            var configuration = context.AnalyzerConfigOptions.GlobalOptions;
-            return configuration.TryGetValue($"build_property.IncludePendingSchemaObjects", out var value) &&
-                value.Equals("true", StringComparison.OrdinalIgnoreCase);
+            throw new ArgumentException(Resources.InterfaceShouldOnlyHaveOneParent);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1513:Closing brace should be followed by blank line", Justification = "Interpolated string")]
-        private static string RenderClass(GeneratorSchemaClass schemaClass)
+        var parentType = schemaClass.Parents.FirstOrDefault();
+
+        var interfaceImplements = string.Empty;
+        if (schemaClass.IsCombined)
         {
-            if (schemaClass.Parents.Count > 1)
-            {
-                throw new ArgumentException(Resources.InterfaceShouldOnlyHaveOneParent);
-            }
+            interfaceImplements = $" : {string.Join(", ", schemaClass.CombinationOf.Select(c => $"I{c.Name}"))}";
+        }
+        else if (parentType is not null)
+        {
+            interfaceImplements = $" : I{parentType.Name}";
+        }
 
-            var parentType = schemaClass.Parents.FirstOrDefault();
+        var classModifiers = schemaClass.IsCombined ? " abstract" : string.Empty;
+        var classImplements = parentType is not null ? $" {parentType.Name}," : string.Empty;
+        var allProperties = schemaClass.Properties.OrderBy(x => x.Order).ToArray();
 
-            var interfaceImplements = string.Empty;
-            if (schemaClass.IsCombined)
-            {
-                interfaceImplements = $" : {string.Join(", ", schemaClass.CombinationOf.Select(c => $"I{c.Name}"))}";
-            }
-            else if (parentType is not null)
-            {
-                interfaceImplements = $" : I{parentType.Name}";
-            }
+        return
+$@"namespace Schema.NET;
 
-            var classModifiers = schemaClass.IsCombined ? " abstract" : string.Empty;
-            var classImplements = parentType is not null ? $" {parentType.Name}," : string.Empty;
-            var allProperties = schemaClass.Properties.OrderBy(x => x.Order).ToArray();
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-            return
-$@"namespace Schema.NET
+/// <summary>
+/// {SourceUtility.RenderDoc(4, schemaClass.Description)}
+/// </summary>
+public partial interface I{schemaClass.Name}{interfaceImplements}
+{{{SourceUtility.RenderItems(!schemaClass.IsCombined, schemaClass.DeclaredProperties, property => $@"
+    /// <summary>
+    /// {SourceUtility.RenderDoc(8, property.Description)}
+    /// </summary>
+    {property.PropertyTypeString} {property.Name} {{ get; set; }}")}
+}}
+
+/// <summary>
+/// {SourceUtility.RenderDoc(4, schemaClass.Description)}
+/// </summary>
+public{classModifiers} partial class {schemaClass.Name} :{classImplements} I{schemaClass.Name}, IEquatable<{schemaClass.Name}>
 {{
-    using System;
-    using System.Collections.Generic;
-    using System.Text.Json;
-    using System.Text.Json.Serialization;
+    /// <summary>
+    /// Gets the name of the type as specified by schema.org.
+    /// </summary>
+    [JsonPropertyName(""@type"")]
+    [JsonPropertyOrder(1)]
+    public override string Type => ""{schemaClass.Name}"";{SourceUtility.RenderItems(allProperties, property => $@"
 
     /// <summary>
-    /// {SourceUtility.RenderDoc(4, schemaClass.Description)}
+    /// {SourceUtility.RenderDoc(8, property.Description)}
     /// </summary>
-    public partial interface I{schemaClass.Name}{interfaceImplements}
-    {{{SourceUtility.RenderItems(!schemaClass.IsCombined, schemaClass.DeclaredProperties, property => $@"
-        /// <summary>
-        /// {SourceUtility.RenderDoc(8, property.Description)}
-        /// </summary>
-        {property.PropertyTypeString} {property.Name} {{ get; set; }}")}
-    }}
+    [JsonPropertyName(""{property.JsonName}"")]
+    [JsonPropertyOrder({property.Order})]
+    [JsonConverter(typeof({property.JsonConverterType}))]
+    public{GetAccessModifier(property)} {property.PropertyTypeString} {property.Name} {{ get; set; }}")}
 
-    /// <summary>
-    /// {SourceUtility.RenderDoc(4, schemaClass.Description)}
-    /// </summary>
-    public{classModifiers} partial class {schemaClass.Name} :{classImplements} I{schemaClass.Name}, IEquatable<{schemaClass.Name}>
+    /// <inheritdoc/>
+    public override bool TrySetValue(string property, IEnumerable<object> value)
     {{
-        /// <summary>
-        /// Gets the name of the type as specified by schema.org.
-        /// </summary>
-        [JsonPropertyName(""@type"")]
-        [JsonPropertyOrder(1)]
-        public override string Type => ""{schemaClass.Name}"";{SourceUtility.RenderItems(allProperties, property => $@"
-
-        /// <summary>
-        /// {SourceUtility.RenderDoc(8, property.Description)}
-        /// </summary>
-        [JsonPropertyName(""{property.JsonName}"")]
-        [JsonPropertyOrder({property.Order})]
-        [JsonConverter(typeof({property.JsonConverterType}))]
-        public{GetAccessModifier(property)} {property.PropertyTypeString} {property.Name} {{ get; set; }}")}
-
-        /// <inheritdoc/>
-        public override bool TrySetValue(string property, IEnumerable<object> value)
+        if (string.IsNullOrWhiteSpace(property))
         {{
-            if (string.IsNullOrWhiteSpace(property))
-            {{
-                return false;
-            }}
-
-            var success = false;
-            {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
-            {{
-                this.{property.Name} = new(value);
-                success = true;
-            }}
-            else ")}
-            {{
-                success = base.TrySetValue(property, value);
-            }}
-
-            return success;
+            return false;
         }}
 
-        /// <inheritdoc/>
-        public override bool TryGetValue<TValue>(string property, out OneOrMany<TValue> result)
+        var success = false;
+        {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
         {{
-            if (string.IsNullOrWhiteSpace(property))
-            {{
-                result = default;
-                return false;
-            }}
-
-            var success = false;
-            {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
-            {{
-                {SourceUtility.RenderItems(property.CSharpTypes, (propertyType, index) => $@"if (typeof({propertyType}) == typeof(TValue))
-                {{
-                    result = (OneOrMany<TValue>)(IValues)this.{property.Name}{(property.CSharpTypes.Count() > 1 ? $".Value{index + 1}" : string.Empty)};
-                    success = true;
-                }}
-                else ")}
-                {{
-                    result = default;
-                }}
-            }}
-            else ")}
-            {{
-                success = base.TryGetValue(property, out result);
-            }}
-
-            return success;
+            this.{property.Name} = new(value);
+            success = true;
+        }}
+        else ")}
+        {{
+            success = base.TrySetValue(property, value);
         }}
 
-        /// <inheritdoc/>
-        public override bool TryGetValue(string property, out IValues result)
-        {{
-            if (string.IsNullOrWhiteSpace(property))
-            {{
-                result = default;
-                return false;
-            }}
-
-            var success = false;
-            {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
-            {{
-                result = (IValues)this.{property.Name};
-                success = true;
-            }}
-            else ")}
-            {{
-                success = base.TryGetValue(property, out result);
-            }}
-
-            return success;
-        }}
-
-        /// <inheritdoc/>
-        public bool Equals({schemaClass.Name} other)
-        {{
-            if (other is null)
-            {{
-                return false;
-            }}
-
-            if (ReferenceEquals(this, other))
-            {{
-                return true;
-            }}
-
-            return this.Type == other.Type{SourceUtility.RenderItems(allProperties, property => $@" &&
-                this.{property.Name} == other.{property.Name}")} &&
-                base.Equals(other);
-        }}
-
-        /// <inheritdoc/>
-        public override bool Equals(object obj) => this.Equals(obj as {schemaClass.Name});
-
-        /// <inheritdoc/>
-        public override int GetHashCode() => HashCode.Of(this.Type){SourceUtility.RenderItems(allProperties, property => $@"
-            .And(this.{property.Name})")}
-            .And(base.GetHashCode());
+        return success;
     }}
+
+    /// <inheritdoc/>
+    public override bool TryGetValue<TValue>(string property, out OneOrMany<TValue> result)
+    {{
+        if (string.IsNullOrWhiteSpace(property))
+        {{
+            result = default;
+            return false;
+        }}
+
+        var success = false;
+        {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
+        {{
+            {SourceUtility.RenderItems(property.CSharpTypes, (propertyType, index) => $@"if (typeof({propertyType}) == typeof(TValue))
+            {{
+                result = (OneOrMany<TValue>)(IValues)this.{property.Name}{(property.CSharpTypes.Count() > 1 ? $".Value{index + 1}" : string.Empty)};
+                success = true;
+            }}
+            else ")}
+            {{
+                result = default;
+            }}
+        }}
+        else ")}
+        {{
+            success = base.TryGetValue(property, out result);
+        }}
+
+        return success;
+    }}
+
+    /// <inheritdoc/>
+    public override bool TryGetValue(string property, out IValues result)
+    {{
+        if (string.IsNullOrWhiteSpace(property))
+        {{
+            result = default;
+            return false;
+        }}
+
+        var success = false;
+        {SourceUtility.RenderItems(allProperties, property => $@"if (""{property.Name}"".Equals(property, StringComparison.OrdinalIgnoreCase))
+        {{
+            result = (IValues)this.{property.Name};
+            success = true;
+        }}
+        else ")}
+        {{
+            success = base.TryGetValue(property, out result);
+        }}
+
+        return success;
+    }}
+
+    /// <inheritdoc/>
+    public bool Equals({schemaClass.Name} other)
+    {{
+        if (other is null)
+        {{
+            return false;
+        }}
+
+        if (ReferenceEquals(this, other))
+        {{
+            return true;
+        }}
+
+        return this.Type == other.Type{SourceUtility.RenderItems(allProperties, property => $@" &&
+            this.{property.Name} == other.{property.Name}")} &&
+            base.Equals(other);
+    }}
+
+    /// <inheritdoc/>
+    public override bool Equals(object obj) => this.Equals(obj as {schemaClass.Name});
+
+    /// <inheritdoc/>
+    public override int GetHashCode() => HashCode.Of(this.Type){SourceUtility.RenderItems(allProperties, property => $@"
+        .And(this.{property.Name})")}
+        .And(base.GetHashCode());
 }}";
-        }
+    }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1513:Closing brace should be followed by blank line", Justification = "Interpolated string")]
-        private static string RenderEnumeration(GeneratorSchemaEnumeration schemaEnumeration) =>
-$@"namespace Schema.NET
-{{
-    using System.Runtime.Serialization;
-    using System.Text.Json.Serialization;
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1513:Closing brace should be followed by blank line", Justification = "Interpolated string")]
+    private static string RenderEnumeration(GeneratorSchemaEnumeration schemaEnumeration) =>
+$@"namespace Schema.NET;
 
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
+/// <summary>
+/// {SourceUtility.RenderDoc(4, schemaEnumeration.Description)}
+/// </summary>
+[JsonConverter(typeof(SchemaEnumJsonConverter<{schemaEnumeration.Name}>))]
+public enum {schemaEnumeration.Name}
+{{{SourceUtility.RenderItems(schemaEnumeration.Values, value => $@"
     /// <summary>
-    /// {SourceUtility.RenderDoc(4, schemaEnumeration.Description)}
+    /// {SourceUtility.RenderDoc(8, value.Description)}
     /// </summary>
-    [JsonConverter(typeof(SchemaEnumJsonConverter<{schemaEnumeration.Name}>))]
-    public enum {schemaEnumeration.Name}
-    {{{SourceUtility.RenderItems(schemaEnumeration.Values, value => $@"
-        /// <summary>
-        /// {SourceUtility.RenderDoc(8, value.Description)}
-        /// </summary>
-        [EnumMember(Value = ""{value.Uri}"")]
-        {value.Name},")}
-    }}
+    [EnumMember(Value = ""{value.Uri}"")]
+    {value.Name},")}
 }}";
 
-        private static string GetAccessModifier(GeneratorSchemaProperty schemaProperty)
+    private static string GetAccessModifier(GeneratorSchemaProperty schemaProperty)
+    {
+        var isOverride = schemaProperty.Class is not null && schemaProperty
+            .Class
+            .Ancestors
+            .Any(x => x.Properties.Any(y => string.Equals(y.Name, schemaProperty.Name, StringComparison.Ordinal)));
+        if (isOverride)
         {
-            var isOverride = schemaProperty.Class is not null && schemaProperty
-                .Class
-                .Ancestors
-                .Any(x => x.Properties.Any(y => string.Equals(y.Name, schemaProperty.Name, StringComparison.Ordinal)));
-            if (isOverride)
-            {
-                return " override";
-            }
-
-            var isVirtual = schemaProperty.Class is not null && schemaProperty
-                .Class
-                .Descendants
-                .Any(x => x.Properties.Any(y => string.Equals(y.Name, schemaProperty.Name, StringComparison.Ordinal)));
-            if (isVirtual)
-            {
-                return " virtual";
-            }
-
-            return string.Empty;
+            return " override";
         }
+
+        var isVirtual = schemaProperty.Class is not null && schemaProperty
+            .Class
+            .Descendants
+            .Any(x => x.Properties.Any(y => string.Equals(y.Name, schemaProperty.Name, StringComparison.Ordinal)));
+        if (isVirtual)
+        {
+            return " virtual";
+        }
+
+        return string.Empty;
     }
 }

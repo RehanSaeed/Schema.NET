@@ -1,15 +1,14 @@
-namespace Schema.NET.Tool.Services
+namespace Schema.NET.Tool.Services;
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Schema.NET.Tool.Models;
+
+public interface ISchemaService
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Schema.NET.Tool.Models;
+    Task<List<SchemaClass>> GetSchemaClassesAsync();
 
-    public interface ISchemaService
-    {
-        Task<List<SchemaClass>> GetSchemaClassesAsync();
+    Task<List<SchemaClass>> GetSchemaClassesWithPropertiesAsync();
 
-        Task<List<SchemaClass>> GetSchemaClassesWithPropertiesAsync();
-
-        Task<List<SchemaProperty>> GetSchemaPropertiesAsync();
-    }
+    Task<List<SchemaProperty>> GetSchemaPropertiesAsync();
 }
