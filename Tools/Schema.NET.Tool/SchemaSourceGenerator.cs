@@ -1,6 +1,7 @@
 namespace Schema.NET.Tool;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using Microsoft.CodeAnalysis;
@@ -32,10 +33,10 @@ public class SchemaSourceGenerator : ISourceGenerator
         var schemaService = new SchemaService(
             new IClassOverride[]
             {
-                    new AddQueryInputPropertyToSearchAction(),
-                    new AddTextTypeToActionTarget(),
-                    new AddNumberTypeToMediaObjectHeightAndWidth(),
-                    new RenameEventProperty(),
+                new AddQueryInputPropertyToSearchAction(),
+                new AddTextTypeToActionTarget(),
+                new AddNumberTypeToMediaObjectHeightAndWidth(),
+                new RenameEventProperty(),
             },
             Array.Empty<IEnumerationOverride>(),
             schemaRepository,
@@ -71,7 +72,10 @@ public class SchemaSourceGenerator : ISourceGenerator
             value.Equals("true", StringComparison.OrdinalIgnoreCase);
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1513:Closing brace should be followed by blank line", Justification = "Interpolated string")]
+    [SuppressMessage(
+        "StyleCop.CSharp.LayoutRules",
+        "SA1513:Closing brace should be followed by blank line",
+        Justification = "Interpolated string")]
     private static string RenderClass(GeneratorSchemaClass schemaClass)
     {
         if (schemaClass.Parents.Count > 1)
@@ -237,7 +241,10 @@ public{classModifiers} partial class {schemaClass.Name} :{classImplements} I{sch
 }}";
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1513:Closing brace should be followed by blank line", Justification = "Interpolated string")]
+    [SuppressMessage(
+        "StyleCop.CSharp.LayoutRules",
+        "SA1513:Closing brace should be followed by blank line",
+        Justification = "Interpolated string")]
     private static string RenderEnumeration(GeneratorSchemaEnumeration schemaEnumeration) =>
 $@"namespace Schema.NET;
 
