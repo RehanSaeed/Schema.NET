@@ -379,7 +379,7 @@ public class ValuesJsonConverter : JsonConverter<IValues>
             }
             else if (targetType == typeof(Uri))
             {
-                success = Uri.TryCreate(valueString, UriKind.Absolute, out var localResult);
+                success = Uri.TryCreate(valueString, UriKind.RelativeOrAbsolute, out var localResult);
                 result = localResult;
             }
             else if (targetType == typeof(Guid))
