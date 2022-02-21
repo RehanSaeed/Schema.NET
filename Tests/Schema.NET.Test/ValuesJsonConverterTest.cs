@@ -264,6 +264,14 @@ public class ValuesJsonConverterTest
     }
 
     [Fact]
+    public void ReadJson_ParseValueToken_RelativeUriAsString()
+    {
+        var json = "{\"Property\":\"/Thing\"}";
+        var result = DeserializeObject<Values<string, Uri>>(json);
+        Assert.Equal(new Uri("/Thing", UriKind.Relative), result.Value2.First());
+    }
+
+    [Fact]
     public void ReadJson_Values_SingleValue_ThingInterface()
     {
         var json = "{\"Property\":" +
@@ -273,6 +281,7 @@ public class ValuesJsonConverterTest
                 "\"@id\":\"https://example.com/book/1\"," +
                 "\"name\":\"The Catcher in the Rye\"," +
                 "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
+                "\"image\":\"/images/book/1\"," +
                 "\"author\":{" +
                     "\"@type\":\"Person\"," +
                     "\"name\":\"J.D. Salinger\"" +
@@ -285,6 +294,7 @@ public class ValuesJsonConverterTest
         Assert.Equal(new Uri("https://example.com/book/1"), ((Book)actual).Id);
         Assert.Equal("The Catcher in the Rye", actual.Name);
         Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url!);
+        Assert.Equal(new Uri("/images/book/1", UriKind.Relative), (Uri)actual.Image!);
         var author = Assert.Single(actual.Author.Value2);
         Assert.Equal("J.D. Salinger", author.Name);
     }
