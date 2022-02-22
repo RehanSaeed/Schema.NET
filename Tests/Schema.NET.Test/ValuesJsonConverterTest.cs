@@ -268,7 +268,7 @@ public class ValuesJsonConverterTest
     {
         var json = "{\"Property\":\"/Thing\"}";
         var result = DeserializeObject<Values<string, Uri>>(json);
-        Assert.Equal(new Uri("/Thing", UriKind.Relative), result.Value2.First());
+        Assert.Equal(new Uri("/Thing", UriKind.RelativeOrAbsolute), result.Value2.First());
     }
 
     [Fact]
@@ -294,7 +294,7 @@ public class ValuesJsonConverterTest
         Assert.Equal(new Uri("https://example.com/book/1"), ((Book)actual).Id);
         Assert.Equal("The Catcher in the Rye", actual.Name);
         Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual.Url!);
-        Assert.Equal(new Uri("/images/book/1", UriKind.Relative), (Uri)actual.Image!);
+        Assert.Equal(new Uri("/images/book/1", UriKind.RelativeOrAbsolute), (Uri)actual.Image!);
         var author = Assert.Single(actual.Author.Value2);
         Assert.Equal("J.D. Salinger", author.Name);
     }
