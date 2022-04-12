@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Package References">
-    <PackageReference Include="System.Text.Json" Version="6.0.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.3" />
     <PackageReference Include="System.Memory" Version="4.5.4" />
     <ProjectReference Include="../../Tools/Schema.NET.Tool/Schema.NET.Tool.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
