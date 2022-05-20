@@ -49,7 +49,7 @@ public class SchemaEnumJsonConverter<T> : JsonConverter<T>
         var valueString = reader.GetString();
         if (EnumHelper.TryParseEnumFromSchemaUri(typeToConvert, valueString, out var result))
         {
-            return (T)(result!);
+            return (T)result!;
         }
 
         return default;

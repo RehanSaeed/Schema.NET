@@ -26,7 +26,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(new List<object>() { 1 }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -48,7 +48,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { "Foo" }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(new List<object>() { DayOfWeek.Friday }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { DayOfWeek.Friday }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -92,7 +92,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+        var item = Assert.Single(values.Cast<object>().ToList());
         Assert.IsType<Person>(item);
     }
 
@@ -115,7 +115,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+        var item = Assert.Single(values.Cast<object>().ToList());
         Assert.IsType<DateTime>(item);
     }
 
@@ -138,7 +138,7 @@ public class Values7Test
         Assert.Single(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+        var item = Assert.Single(values.Cast<object>().ToList());
         Assert.IsType<bool>(item);
     }
 
@@ -161,7 +161,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.True(values.HasValue7);
         Assert.Single(values.Value7);
-        var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+        var item = Assert.Single(values.Cast<object>().ToList());
         Assert.IsType<TimeSpan>(item);
     }
 
@@ -185,7 +185,9 @@ public class Values7Test
         Assert.Single(values.Value6);
         Assert.True(values.HasValue7);
         Assert.Single(values.Value7);
-        Assert.Equal(new List<object>() { 1, "Foo", DayOfWeek.Friday, person, DateTime.MinValue, true, TimeSpan.MinValue }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(
+            new List<object>() { 1, "Foo", DayOfWeek.Friday, person, DateTime.MinValue, true, TimeSpan.MinValue },
+            values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -291,7 +293,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(new List<object>() { 1 }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -313,7 +315,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { "Foo" }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -335,7 +337,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(new List<object>() { DayOfWeek.Friday }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { DayOfWeek.Friday }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -357,7 +359,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+        var item = Assert.Single(values.Cast<object>().ToList());
         Assert.IsType<Person>(item);
     }
 
@@ -380,7 +382,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+        var item = Assert.Single(values.Cast<object>().ToList());
         Assert.IsType<DateTime>(item);
     }
 
@@ -403,7 +405,7 @@ public class Values7Test
         Assert.Single(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+        var item = Assert.Single(values.Cast<object>().ToList());
         Assert.IsType<bool>(item);
     }
 
@@ -426,7 +428,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.True(values.HasValue7);
         Assert.Single(values.Value7);
-        var item = Assert.Single(((IValues)values).Cast<object>().ToList());
+        var item = Assert.Single(values.Cast<object>().ToList());
         Assert.IsType<TimeSpan>(item);
     }
 
@@ -449,7 +451,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(new List<object>() { 1, 2 }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { 1, 2 }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -471,7 +473,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(new List<object>() { "Foo", "Bar" }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { "Foo", "Bar" }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -493,7 +495,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(new List<object>() { DayOfWeek.Friday, DayOfWeek.Monday }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { DayOfWeek.Friday, DayOfWeek.Monday }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -515,7 +517,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(2, ((IValues)values).Cast<object>().ToList().Count);
+        Assert.Equal(2, values.Cast<object>().ToList().Count);
     }
 
     [Fact]
@@ -537,7 +539,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(2, ((IValues)values).Cast<object>().ToList().Count);
+        Assert.Equal(2, values.Cast<object>().ToList().Count);
     }
 
     [Fact]
@@ -559,7 +561,7 @@ public class Values7Test
         Assert.Equal(2, values.Value6.Count);
         Assert.False(values.HasValue7);
         Assert.Empty(values.Value7);
-        Assert.Equal(2, ((IValues)values).Cast<object>().ToList().Count);
+        Assert.Equal(2, values.Cast<object>().ToList().Count);
     }
 
     [Fact]
@@ -581,7 +583,7 @@ public class Values7Test
         Assert.Empty(values.Value6);
         Assert.True(values.HasValue7);
         Assert.Equal(2, values.Value7.Count);
-        Assert.Equal(2, ((IValues)values).Cast<object>().ToList().Count);
+        Assert.Equal(2, values.Cast<object>().ToList().Count);
     }
 
     [Fact]
