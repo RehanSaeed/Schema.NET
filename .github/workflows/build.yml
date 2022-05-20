@@ -63,10 +63,10 @@ jobs:
     name: "Publish Tests Results"
     needs: build
     if: always()
-    runs-on: ubuntu-latest
     permissions:
       checks: write
       pull-requests: write
+    runs-on: ubuntu-latest
     steps:
       - name: "Download Artefact"
         uses: actions/download-artifact@v3.0.0
