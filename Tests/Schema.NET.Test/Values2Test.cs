@@ -16,7 +16,7 @@ public class Values2Test
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
         Assert.Empty(values.Value2);
-        Assert.Equal(new List<object>() { 1 }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -28,7 +28,7 @@ public class Values2Test
         Assert.Empty(values.Value1);
         Assert.True(values.HasValue2);
         Assert.Single(values.Value2);
-        Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { "Foo" }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -40,7 +40,7 @@ public class Values2Test
         Assert.Single(values.Value1);
         Assert.True(values.HasValue2);
         Assert.Single(values.Value2);
-        Assert.Equal(new List<object>() { 1, "Foo" }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { 1, "Foo" }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -89,7 +89,7 @@ public class Values2Test
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
         Assert.Empty(values.Value2);
-        Assert.Equal(new List<object>() { 1 }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -101,7 +101,7 @@ public class Values2Test
         Assert.Empty(values.Value1);
         Assert.True(values.HasValue2);
         Assert.Single(values.Value2);
-        Assert.Equal(new List<object>() { "Foo" }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { "Foo" }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -113,7 +113,7 @@ public class Values2Test
         Assert.Equal(2, values.Value1.Count);
         Assert.False(values.HasValue2);
         Assert.Empty(values.Value2);
-        Assert.Equal(new List<object>() { 1, 2 }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { 1, 2 }, values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -125,7 +125,7 @@ public class Values2Test
         Assert.Empty(values.Value1);
         Assert.True(values.HasValue2);
         Assert.Equal(2, values.Value2.Count);
-        Assert.Equal(new List<object>() { "Foo", "Bar" }, ((IValues)values).Cast<object>().ToList());
+        Assert.Equal(new List<object>() { "Foo", "Bar" }, values.Cast<object>().ToList());
     }
 
     [Fact]

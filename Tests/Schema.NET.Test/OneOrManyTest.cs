@@ -1,7 +1,6 @@
 namespace Schema.NET.Test;
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -114,21 +113,21 @@ public class OneOrManyTest
     public void ImplicitConversionOperator_ToItem_HasOneItem()
     {
         OneOrMany<int> oneOrMany = 1;
-        Assert.Equal(new List<object>() { 1 }, ((IValues)oneOrMany).Cast<object>());
+        Assert.Equal(new List<object>() { 1 }, oneOrMany.Cast<object>());
     }
 
     [Fact]
     public void ImplicitConversionOperator_ToArray_HasTwoItems()
     {
         OneOrMany<int> oneOrMany = new int[] { 1, 2 };
-        Assert.Equal(new List<object>() { 1, 2 }, ((IValues)oneOrMany).Cast<object>());
+        Assert.Equal(new List<object>() { 1, 2 }, oneOrMany.Cast<object>());
     }
 
     [Fact]
     public void ImplicitConversionOperator_ToList_HasTwoItems()
     {
         OneOrMany<int> oneOrMany = new List<int>() { 1, 2 };
-        Assert.Equal(new List<object>() { 1, 2 }, ((IValues)oneOrMany).Cast<object>());
+        Assert.Equal(new List<object>() { 1, 2 }, oneOrMany.Cast<object>());
     }
 
     [Fact]
@@ -170,26 +169,26 @@ public class OneOrManyTest
 
     [Fact]
     public void GetEnumerator_DefaultStructConstructor_ReturnsNull() =>
-        Assert.Empty(((IEnumerable)default(OneOrMany<int>)).Cast<object>());
+        Assert.Empty(default(OneOrMany<int>).Cast<object>());
 
     [Fact]
     public void GetEnumerator_DefaultClassConstructor_ReturnsNull() =>
-        Assert.Empty(((IEnumerable)default(OneOrMany<string>)).Cast<object>());
+        Assert.Empty(default(OneOrMany<string>).Cast<object>());
 
     [Fact]
     public void GetEnumerator_OneItem_ReturnsOne()
     {
-        var item = Assert.Single(((IEnumerable)new OneOrMany<int>(1)).Cast<object>());
+        var item = Assert.Single(new OneOrMany<int>(1).Cast<object>());
         Assert.Equal(1, item);
     }
 
     [Fact]
     public void GetEnumerator_Array_ReturnsTwo() =>
-        Assert.Equal(new List<object>() { 1, 2 }, ((IEnumerable)new OneOrMany<int>(1, 2)).Cast<object>());
+        Assert.Equal(new List<object>() { 1, 2 }, new OneOrMany<int>(1, 2).Cast<object>());
 
     [Fact]
     public void GetEnumerator_Enumerable_ReturnsTwo() =>
-        Assert.Equal(new List<object>() { 1, 2 }, ((IEnumerable)new OneOrMany<int>(new List<int>() { 1, 2 })).Cast<object>());
+        Assert.Equal(new List<object>() { 1, 2 }, new OneOrMany<int>(new List<int>() { 1, 2 }).Cast<object>());
 
     [Fact]
     public void GetEnumeratorT_NoItems_ReturnsEmptyCllection() =>

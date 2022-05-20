@@ -25,7 +25,9 @@ public class ProductTest
         Offers = new Offer() // Recommended
         {
             Url = (Uri)null!, // Recommended
+#pragma warning disable IDE0004 // Remove Unnecessary Cast
             ItemOffered = (Product)null!, // Recommended
+#pragma warning restore IDE0004 // Remove Unnecessary Cast
             PriceCurrency = "USD", // Required
             Price = 119.99M, // Required
             PriceValidUntil = new DateTime(2020, 11, 5), // Recommended
