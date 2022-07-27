@@ -34,40 +34,42 @@ public class NewsArticleTest
         Description = "A most wonderful article", // Ignored
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"NewsArticle\"," +
-        "\"description\":\"A most wonderful article\"," +
-        "\"image\":{" +
-            "\"@type\":\"ImageObject\"," +
-            "\"url\":\"https://google.com/thumbnail1.jpg\"," +
-            "\"height\":800," +
-            "\"width\":800" +
-        "}," +
-        "\"mainEntityOfPage\":\"https://google.com/article\"," +
-        "\"author\":{" +
-            "\"@type\":\"Person\"," +
-            "\"name\":\"John Doe\"" +
-        "}," +
-        "\"dateModified\":\"2015-02-05T09:20:00+00:00\"," +
-        "\"datePublished\":\"2015-02-05\"," +
-        "\"headline\":\"Article headline\"," +
-        "\"publisher\":{" +
-            "\"@type\":\"Organization\"," +
-            "\"name\":\"Google\"," +
-            "\"logo\":{" +
-                "\"@type\":\"ImageObject\"," +
-                "\"url\":\"https://google.com/logo.jpg\"," +
-                "\"height\":60," +
-                "\"width\":600" +
-            "}" +
-        "}" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "description": "A most wonderful article",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://google.com/thumbnail1.jpg",
+                "height": 800,
+                "width": 800
+            },
+            "mainEntityOfPage": "https://google.com/article",
+            "author": {
+                "@type": "Person",
+                "name": "John Doe"
+            },
+            "dateModified": "2015-02-05T09:20:00+00:00",
+            "datePublished": "2015-02-05",
+            "headline": "Article headline",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Google",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://google.com/logo.jpg",
+                    "height": 60,
+                    "width": 600
+                }
+            }
+        }
+        """;
 
     [Fact]
     public void ToString_ArticleGoogleStructuredData_ReturnsExpectedJsonLd() =>
-        Assert.Equal(this.json, this.article.ToString());
+        Assert.Equal(this.json.MinifyJson(), this.article.ToString());
 
     [Fact]
     public void Deserializing_NewsArticleJsonLd_ReturnsNewsArticle()

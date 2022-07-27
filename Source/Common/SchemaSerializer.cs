@@ -1,8 +1,8 @@
 namespace Schema.NET;
 
 using System;
-using System.Collections.Generic;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -32,7 +32,7 @@ public static class SchemaSerializer
         {
             AllowTrailingCommas = true,
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
         };
 
         HtmlEscapedSerializationSettings = new JsonSerializerOptions

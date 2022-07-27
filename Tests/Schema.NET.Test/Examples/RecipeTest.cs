@@ -44,50 +44,54 @@ public class RecipeTest
             },
     };
 
-    private readonly string json =
-        "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"Recipe\"," +
-        "\"name\":\"Grandma's Holiday Apple Pie\"," +
-        "\"description\":\"This is my grandmother's apple pie recipe. I like to add a dash of nutmeg.\"," +
-        "\"image\":\"https://example.com/image.jpg\"," +
-        "\"aggregateRating\":{" +
-            "\"@type\":\"AggregateRating\"," +
-            "\"ratingValue\":4," +
-            "\"reviewCount\":35" +
-        "}," +
-        "\"author\":{" +
-            "\"@type\":\"Person\"," +
-            "\"name\":\"Carol Smith\"" +
-        "}," +
-        "\"datePublished\":\"2009-11-05\"," +
-        "\"prepTime\":\"PT30M\"," +
-        "\"totalTime\":\"PT1H30M\"," +
-        "\"cookTime\":\"PT1H\"," +
-        "\"nutrition\":{" +
-            "\"@type\":\"NutritionInformation\"," +
-            "\"calories\":\"250 cal\"," +
-            "\"fatContent\":\"12 g\"," +
-            "\"servingSize\":\"1 medium slice\"" +
-        "}," +
-        "\"recipeIngredient\":[" +
-            "\"Thinly-sliced apples:6 cups\"," +
-            "\"White sugar:3/4 cup\"" +
-        "]," +
-        "\"recipeInstructions\":[{" +
-                "\"@type\":\"HowToStep\"," +
-                "\"text\":\"1. Cut and peel apples...\"" +
-            "},{" +
-                "\"@type\":\"HowToStep\"," +
-                "\"text\":\"2. Put in pie shell...\"" +
-            "}" +
-        "]," +
-        "\"recipeYield\":\"1 9 inch pie (8 servings)\"" +
-        "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "Recipe",
+            "name": "Grandma's Holiday Apple Pie",
+            "description": "This is my grandmother's apple pie recipe. I like to add a dash of nutmeg.",
+            "image": "https://example.com/image.jpg",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 4,
+                "reviewCount": 35
+            },
+            "author": {
+                "@type": "Person",
+                "name": "Carol Smith"
+            },
+            "datePublished": "2009-11-05",
+            "prepTime": "PT30M",
+            "totalTime": "PT1H30M",
+            "cookTime": "PT1H",
+            "nutrition": {
+                "@type": "NutritionInformation",
+                "calories": "250 cal",
+                "fatContent": "12 g",
+                "servingSize": "1 medium slice"
+            },
+            "recipeIngredient": [
+                "Thinly-sliced apples:6 cups",
+                "White sugar:3/4 cup"
+            ],
+            "recipeInstructions": [
+                {
+                    "@type": "HowToStep",
+                    "text": "1. Cut and peel apples..."
+                },
+                {
+                    "@type": "HowToStep",
+                    "text": "2. Put in pie shell..."
+                }
+            ],
+            "recipeYield": "1 9 inch pie (8 servings)"
+        }
+        """;
 
     [Fact]
     public void ToString_CarouselGoogleStructuredData_ReturnsExpectedJsonLd() =>
-        Assert.Equal(this.json, this.recipe.ToString());
+        Assert.Equal(this.json.MinifyJson(), this.recipe.ToString());
 
     [Fact]
     public void Deserializing_RecipeJsonLd_ReturnsRecipe()

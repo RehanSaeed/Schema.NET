@@ -33,34 +33,40 @@ public class ClaimReviewTest
         },
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"ClaimReview\"," +
-        "\"url\":\"https://example.com/news/science/worldisflat.html\"," +
-        "\"author\":{" +
-            "\"@type\":\"Organization\"," +
-            "\"name\":\"Example.com science watch\"" +
-        "}," +
-        "\"datePublished\":\"2016-06-22\"," +
-        "\"itemReviewed\":{" +
-            "\"@type\":\"CreativeWork\"," +
-            "\"author\":{" +
-                "\"@type\":\"Organization\"," +
-                "\"name\":\"Square World Society\"," +
-                "\"sameAs\":\"https://example.flatworlders.com/we-know-that-the-world-is-flat\"" +
-            "}," +
-            "\"datePublished\":\"2016-06-20\"" +
-        "}," +
-        "\"reviewRating\":{" +
-            "\"@type\":\"Rating\"," +
-            "\"alternateName\":\"False\"," +
-            "\"bestRating\":5.0," +
-            "\"ratingValue\":1.0," +
-            "\"worstRating\":1.0" +
-        "}," +
-        "\"claimReviewed\":\"The world is flat\"" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "ClaimReview",
+            "url": "https://example.com/news/science/worldisflat.html",
+            "author": {
+                "@type": "Organization",
+                "name": "Example.com science watch"
+            },
+            "datePublished": "2016-06-22",
+            "itemReviewed": {
+                "@type": "CreativeWork",
+                "author": {
+                    "@type": "Organization",
+                    "name": "Square World Society",
+                    "sameAs": "https://example.flatworlders.com/we-know-that-the-world-is-flat"
+                },
+                "datePublished": "2016-06-20"
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "alternateName": "False",
+                "bestRating": 5,
+                "ratingValue": 1,
+                "worstRating": 1
+            },
+            "claimReviewed": "The world is flat"
+        }
+        """;
+
+    [Fact]
+    public void ToString_ClaimReviewGoogleStructuredData_ReturnsExpectedJsonLd() =>
+        Assert.Equal(this.json.MinifyJson(), this.claimReview.ToString());
 
     [Fact]
     public void Deserializing_ClaimReviewJsonLd_ReturnsClaimReview()

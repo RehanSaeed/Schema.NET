@@ -173,37 +173,31 @@ public readonly struct Values<T1, T2, T3, T4, T5, T6>
             if (item is T6 itemT6)
             {
                 items6 ??= new List<T6>();
-
                 items6.Add(itemT6);
             }
             else if (item is T5 itemT5)
             {
                 items5 ??= new List<T5>();
-
                 items5.Add(itemT5);
             }
             else if (item is T4 itemT4)
             {
                 items4 ??= new List<T4>();
-
                 items4.Add(itemT4);
             }
             else if (item is T3 itemT3)
             {
                 items3 ??= new List<T3>();
-
                 items3.Add(itemT3);
             }
             else if (item is T2 itemT2)
             {
                 items2 ??= new List<T2>();
-
                 items2.Add(itemT2);
             }
             else if (item is T1 itemT1)
             {
                 items1 ??= new List<T1>();
-
                 items1.Add(itemT1);
             }
         }

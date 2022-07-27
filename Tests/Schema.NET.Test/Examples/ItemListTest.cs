@@ -30,29 +30,31 @@ public class ItemListTest
                 },
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"ItemList\"," +
-        "\"itemListElement\":[" +
-            "{" +
-                "\"@type\":\"ListItem\"," +
-                "\"item\":{" +
-                    "\"@type\":\"Recipe\"," +
-                    "\"name\":\"Recipe 1\"" +
-                "}," +
-                "\"position\":1" +
-            "}," +
-            "{" +
-                "\"@type\":\"ListItem\"," +
-                "\"item\":{" +
-                    "\"@type\":\"Recipe\"," +
-                    "\"name\":\"Recipe 2\"" +
-                    "}," +
-                "\"position\":2" +
-            "}" +
-        "]" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "item": {
+                        "@type": "Recipe",
+                        "name": "Recipe 1"
+                    },
+                    "position": 1
+                },
+                {
+                    "@type": "ListItem",
+                    "item": {
+                        "@type": "Recipe",
+                        "name": "Recipe 2"
+                    },
+                    "position": 2
+                }
+            ]
+        }
+        """;
 
     [Fact]
     public void Deserializing_ItemListJsonLd_ReturnsMatchingItemList()
@@ -82,27 +84,29 @@ public class ItemListTest
                     },
                 },
         };
-        var expectedJson =
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@type\":\"ItemList\"," +
-                "\"itemListElement\":[" +
-                    "{" +
-                        "\"@type\":\"ListItem\"," +
-                        "\"url\":\"https://example.com/articles/1\"," +
-                        "\"position\":1" +
-                    "}," +
-                    "{" +
-                        "\"@type\":\"ListItem\"," +
-                        "\"url\":\"https://example.com/articles/2\"," +
-                        "\"position\":2" +
-                    "}" +
-                "]" +
-            "}";
+        var expectedJson = /*lang=json,strict*/
+            """
+            {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "url": "https://example.com/articles/1",
+                        "position": 1
+                    },
+                    {
+                        "@type": "ListItem",
+                        "url": "https://example.com/articles/2",
+                        "position": 2
+                    }
+                ]
+            }
+            """;
 
         var json = itemList.ToString();
 
-        Assert.Equal(expectedJson, json);
+        Assert.Equal(expectedJson.MinifyJson(), json);
     }
 
     // https://developers.google.com/search/docs/guides/mark-up-listings
@@ -132,61 +136,65 @@ public class ItemListTest
                     },
                 },
         };
-        var expectedJson =
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@type\":\"ItemList\"," +
-                "\"itemListElement\":[" +
-                    "{" +
-                        "\"@type\":\"ListItem\"," +
-                        "\"item\":{" +
-                            "\"@type\":\"Recipe\"," +
-                            "\"name\":\"Recipe 1\"" +
-                        "}," +
-                        "\"position\":1" +
-                    "}," +
-                    "{" +
-                        "\"@type\":\"ListItem\"," +
-                        "\"item\":{" +
-                            "\"@type\":\"Recipe\"," +
-                            "\"name\":\"Recipe 2\"" +
-                        "}," +
-                        "\"position\":2" +
-                    "}" +
-                "]" +
-            "}";
+        var expectedJson = /*lang=json,strict*/
+            """
+            {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "item": {
+                            "@type": "Recipe",
+                            "name": "Recipe 1"
+                        },
+                        "position": 1
+                    },
+                    {
+                        "@type": "ListItem",
+                        "item": {
+                            "@type": "Recipe",
+                            "name": "Recipe 2"
+                        },
+                        "position": 2
+                    }
+                ]
+            }
+            """;
 
         var json = itemList.ToString();
 
-        Assert.Equal(expectedJson, json);
+        Assert.Equal(expectedJson.MinifyJson(), json);
     }
 
     [Fact]
     public void Deserializing_ItemListJsonLd_ReturnsItemList()
     {
-        var json =
-        "{" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\":\"ItemList\"," +
-            "\"itemListElement\":[" +
-                "{" +
-                    "\"@type\":\"ListItem\"," +
-                    "\"item\":{" +
-                        "\"@type\":\"Recipe\"," +
-                        "\"name\":\"Recipe 1\"" +
-                    "}," +
-                    "\"position\":1" +
-                "}," +
-                "{" +
-                    "\"@type\":\"ListItem\"," +
-                    "\"item\":{" +
-                        "\"@type\":\"Recipe\"," +
-                        "\"name\":\"Recipe 2\"" +
-                        "}," +
-                    "\"position\":2" +
-                "}" +
-            "]" +
-        "}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "item": {
+                            "@type": "Recipe",
+                            "name": "Recipe 1"
+                        },
+                        "position": 1
+                    },
+                    {
+                        "@type": "ListItem",
+                        "item": {
+                            "@type": "Recipe",
+                            "name": "Recipe 2"
+                        },
+                        "position": 2
+                    }
+                ]
+            }
+            """;
         var itemList = SchemaSerializer.DeserializeObject<ItemList>(json)!;
 
         Assert.Equal("ItemList", itemList.Type);

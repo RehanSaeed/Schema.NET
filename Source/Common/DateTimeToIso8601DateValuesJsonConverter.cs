@@ -13,6 +13,8 @@ using System.Text.Json.Serialization;
 /// <seealso cref="ValuesJsonConverter" />
 public class DateTimeToIso8601DateValuesJsonConverter : ValuesJsonConverter
 {
+    private const string DateFormat = "yyyy-MM-dd";
+
     /// <summary>
     /// Writes the object retrieved from <see cref="IValues" /> when one is found.
     /// </summary>
@@ -38,7 +40,7 @@ public class DateTimeToIso8601DateValuesJsonConverter : ValuesJsonConverter
 
         if (value is DateTime dateTimeType)
         {
-            writer.WriteStringValue(dateTimeType.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+            writer.WriteStringValue(dateTimeType.ToString(DateFormat, CultureInfo.InvariantCulture));
         }
         else
         {

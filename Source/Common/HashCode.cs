@@ -114,7 +114,7 @@ public struct HashCode : IEquatable<HashCode>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public override int GetHashCode() =>
 #pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
-            throw new NotSupportedException("Implicitly convert this struct to an int to get the hash code.");
+        throw new NotSupportedException("Implicitly convert this struct to an int to get the hash code.");
 #pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
 
     private static int CombineHashCodes(int h1, int h2)

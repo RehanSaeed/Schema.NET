@@ -9,7 +9,7 @@ public class RenameEventProperty : IClassOverride
     public bool CanOverride(GeneratorSchemaClass c)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(c);
+        ArgumentNullException.ThrowIfNull(c);
 #else
         if (c is null)
         {
@@ -23,7 +23,7 @@ public class RenameEventProperty : IClassOverride
     public void Override(GeneratorSchemaClass c)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(c);
+        ArgumentNullException.ThrowIfNull(c);
 #else
         if (c is null)
         {

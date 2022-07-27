@@ -32,37 +32,39 @@ public class VideoObjectTest
         },
     };
 
-    private readonly string json =
-        "{" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\":\"VideoObject\"," +
-            "\"name\":\"Title\"," +
-            "\"description\":\"Video description\"," +
-            "\"expires\":\"2016-02-05\"," +
-            "\"interactionStatistic\":{" +
-                "\"@type\":\"InteractionCounter\"," +
-                "\"userInteractionCount\":2347" +
-            "}," +
-            "\"publisher\":{" +
-                "\"@type\":\"Organization\"," +
-                "\"name\":\"Example Publisher\"," +
-                "\"logo\":{" +
-                    "\"@type\":\"ImageObject\"," +
-                    "\"url\":\"https://example.com/logo.jpg\"," +
-                    "\"height\":60," +
-                    "\"width\":600" +
-                "}" +
-            "}," +
-            "\"thumbnailUrl\":\"https://www.example.com/thumbnail.jpg\"," +
-            "\"contentUrl\":\"https://www.example.com/video123.flv\"," +
-            "\"duration\":\"PT1M33S\"," +
-            "\"embedUrl\":\"https://www.example.com/videoplayer.swf?video=123\"," +
-            "\"uploadDate\":\"2015-02-05\"" +
-        "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "Title",
+            "description": "Video description",
+            "expires": "2016-02-05",
+            "interactionStatistic": {
+                "@type": "InteractionCounter",
+                "userInteractionCount": 2347
+            },
+            "publisher":{
+                "@type": "Organization",
+                "name": "Example Publisher",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://example.com/logo.jpg",
+                    "height": 60,
+                    "width": 600
+                }
+            },
+            "thumbnailUrl": "https://www.example.com/thumbnail.jpg",
+            "contentUrl": "https://www.example.com/video123.flv",
+            "duration": "PT1M33S",
+            "embedUrl": "https://www.example.com/videoplayer.swf?video=123",
+            "uploadDate": "2015-02-05"
+        }
+        """;
 
     [Fact]
     public void ToString_VideoGoogleStructuredData_ReturnsExpectedJsonLd() =>
-        Assert.Equal(this.json, this.videoObject.ToString());
+        Assert.Equal(this.json.MinifyJson(), this.videoObject.ToString());
 
     [Fact]
     public void Deserializing_VideoObjectJsonLd_ReturnsVideoObject()

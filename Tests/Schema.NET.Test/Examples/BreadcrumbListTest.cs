@@ -34,33 +34,39 @@ public class BreadcrumbListTest
             },
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"BreadcrumbList\"," +
-        "\"itemListElement\":[" +
-            "{" +
-                "\"@type\":\"ListItem\"," +
-                "\"item\":{" + // Required
-                    "\"@type\":\"Book\"," +
-                    "\"@id\":\"https://example.com/books\"," + // Required
-                    "\"name\":\"Books\"," + // Required
-                    "\"image\":\"https://example.com/images/icon-book.png\"" + // Optional
-                "}," +
-                "\"position\":1" + // Required
-            "}," +
-            "{" +
-                "\"@type\":\"ListItem\"," +
-                "\"item\":{" +
-                    "\"@type\":\"Person\"," +
-                    "\"@id\":\"https://example.com/books/authors\"," + // Required
-                    "\"name\":\"Authors\"," +
-                    "\"image\":\"https://example.com/images/icon-author.png\"" +
-                "}," +
-                "\"position\":2" +
-            "}" +
-        "]" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "item": {
+                        "@type": "Book",
+                        "@id": "https://example.com/books",
+                        "name": "Books",
+                        "image": "https://example.com/images/icon-book.png"
+                    },
+                    "position": 1
+                },
+                {
+                    "@type": "ListItem",
+                    "item": {
+                        "@type": "Person",
+                        "@id": "https://example.com/books/authors",
+                        "name": "Authors",
+                        "image": "https://example.com/images/icon-author.png"
+                    },
+                    "position": 2
+                }
+            ]
+        }
+        """;
+
+    [Fact]
+    public void ToString_BreadcrumbListGoogleStructuredData_ReturnsExpectedJsonLd() =>
+        Assert.Equal(this.json.MinifyJson(), this.breadcrumbList.ToString());
 
     [Fact]
     public void Deserializing_BreadcrumbListJsonLd_ReturnsMatchingBreadcrumbList()

@@ -17,18 +17,24 @@ public class CourseTest
         },
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"Course\"," +
-        "\"name\":\"Introduction to Computer Science and Programming\"," +
-        "\"description\":\"Introductory CS course laying out the basics.\"," +
-        "\"provider\":{" +
-            "\"@type\":\"Organization\"," +
-            "\"name\":\"University of Technology - Eureka\"," +
-            "\"sameAs\":\"https://www.ut-eureka.edu\"" +
-        "}" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Introduction to Computer Science and Programming",
+            "description": "Introductory CS course laying out the basics.",
+            "provider": {
+                "@type": "Organization",
+                "name": "University of Technology - Eureka",
+                "sameAs": "https://www.ut-eureka.edu"
+            }
+        }
+        """;
+
+    [Fact]
+    public void ToString_CourseGoogleStructuredData_ReturnsExpectedJsonLd() =>
+        Assert.Equal(this.json.MinifyJson(), this.course.ToString());
 
     [Fact]
     public void Deserializing_CourseJsonLd_ReturnsCourse()

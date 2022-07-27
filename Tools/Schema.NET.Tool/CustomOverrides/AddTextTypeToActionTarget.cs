@@ -10,7 +10,7 @@ public class AddTextTypeToActionTarget : IClassOverride
     public bool CanOverride(GeneratorSchemaClass c)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(c);
+        ArgumentNullException.ThrowIfNull(c);
 #else
         if (c is null)
         {
@@ -24,7 +24,7 @@ public class AddTextTypeToActionTarget : IClassOverride
     public void Override(GeneratorSchemaClass c)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(c);
+        ArgumentNullException.ThrowIfNull(c);
 #else
         if (c is null)
         {
