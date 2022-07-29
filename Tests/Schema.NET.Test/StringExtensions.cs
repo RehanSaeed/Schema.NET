@@ -4,7 +4,9 @@ namespace Schema.NET.Test;
 using System;
 #endif
 using System.IO;
-using Newtonsoft.Json;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 
 public static class StringExtensions
 {
@@ -14,23 +16,21 @@ public static class StringExtensions
 #pragma warning restore IDE0060 // Remove unused parameter
 
 #endif
-    public static string MinifyJson(this string json, Formatting formatting = Formatting.None)
+    public static string MinifyJson(this string json)
     {
-        using (var stringReader = new StringReader(json))
-        using (var stringWriter = new StringWriter())
+        var options = new JsonWriterOptions()
         {
-            MinifyJson(stringReader, stringWriter, formatting);
-            return stringWriter.ToString();
-        }
-    }
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            Indented = false,
+        };
 
-    private static void MinifyJson(TextReader textReader, TextWriter textWriter, Formatting formatting)
-    {
-        using (JsonReader jsonReader = new JsonTextReader(textReader))
-        using (JsonWriter jsonWriter = new JsonTextWriter(textWriter))
+        using (var stream = new MemoryStream())
+        using (var writer = new Utf8JsonWriter(stream, options))
+        using (var jsonDocument = JsonDocument.Parse(json))
         {
-            jsonWriter.Formatting = formatting;
-            jsonWriter.WriteToken(jsonReader);
+            jsonDocument.WriteTo(writer);
+            writer.Flush();
+            return Encoding.UTF8.GetString(stream.ToArray());
         }
     }
 }
