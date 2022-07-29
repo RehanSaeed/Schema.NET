@@ -43,16 +43,10 @@ public class SchemaEnumJsonConverter<T> : JsonConverter<T>
     {
 #if NET6_0_OR_GREATER
         ArgumentNullException.ThrowIfNull(typeToConvert);
-        ArgumentNullException.ThrowIfNull(options);
 #else
         if (typeToConvert is null)
         {
             throw new ArgumentNullException(nameof(typeToConvert));
-        }
-
-        if (options is null)
-        {
-            throw new ArgumentNullException(nameof(options));
         }
 #endif
 
