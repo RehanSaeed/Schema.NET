@@ -112,9 +112,9 @@ public class SchemaSourceGenerator : ISourceGenerator
 
             {{RenderClassTrySetValue(allProperties, 4)}}
 
-            {{RenderClassTryGetVaue1(allProperties, 4)}}
+            {{RenderClassTryGetVaueOneOrMany(allProperties, 4)}}
 
-            {{RenderClassTryGetVaue2(allProperties, 4)}}
+            {{RenderClassTryGetVaueIValues(allProperties, 4)}}
 
             {{RenderClassEquals(schemaClass, allProperties, 4)}}
 
@@ -228,7 +228,7 @@ public class SchemaSourceGenerator : ISourceGenerator
             indent);
     }
 
-    private static string RenderClassTryGetVaue1(GeneratorSchemaProperty[] allProperties, int indent)
+    private static string RenderClassTryGetVaueOneOrMany(GeneratorSchemaProperty[] allProperties, int indent)
     {
         if (allProperties.Length == 0)
         {
@@ -299,7 +299,7 @@ public class SchemaSourceGenerator : ISourceGenerator
             indent);
     }
 
-    private static string RenderClassTryGetVaue2(GeneratorSchemaProperty[] allProperties, int indent)
+    private static string RenderClassTryGetVaueIValues(GeneratorSchemaProperty[] allProperties, int indent)
     {
         if (allProperties.Length == 0)
         {
@@ -394,7 +394,7 @@ public class SchemaSourceGenerator : ISourceGenerator
         [JsonConverter(typeof(SchemaEnumJsonConverter<{{schemaEnumeration.Name}}>))]
         public enum {{schemaEnumeration.Name}}
         {
-        {{SourceUtility.RenderItems(schemaEnumeration.Values, RenderEnumerationValue, 4, SourceDelimeter.NewLineSpace)}}
+        {{SourceUtility.RenderItems(schemaEnumeration.Values.ToArray(), RenderEnumerationValue, 4, SourceDelimeter.NewLineSpace)}}
         }
         """;
 

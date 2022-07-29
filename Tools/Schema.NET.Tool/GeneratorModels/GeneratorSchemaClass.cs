@@ -41,7 +41,7 @@ public class GeneratorSchemaClass : GeneratorSchemaObject
 
     public bool IsCombined { get; }
 
-    public ICollection<GeneratorSchemaProperty> DeclaredProperties
+    public IReadOnlyCollection<GeneratorSchemaProperty> DeclaredProperties
     {
         get
         {
@@ -50,7 +50,7 @@ public class GeneratorSchemaClass : GeneratorSchemaObject
             var declaredProperties = this.Properties.Where(classProp => !ancestorProps.Contains(classProp.Name))
                 .OrderBy(x => x.Order);
 
-            return declaredProperties.ToList();
+            return declaredProperties.ToArray();
         }
     }
 

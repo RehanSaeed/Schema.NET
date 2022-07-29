@@ -18,7 +18,7 @@ public static class SourceUtility
         return indentString + value.Replace(Environment.NewLine, Environment.NewLine + indentString);
     }
 
-    public static string RenderItems<T>(bool canRender, ICollection<T> items, Func<int, int, T, string> action, int indent = 0, SourceDelimeter sourceDelimeter = SourceDelimeter.None)
+    public static string RenderItems<T>(bool canRender, IReadOnlyCollection<T> items, Func<int, int, T, string> action, int indent = 0, SourceDelimeter sourceDelimeter = SourceDelimeter.None)
     {
         if (canRender)
         {
@@ -28,7 +28,7 @@ public static class SourceUtility
         return string.Empty;
     }
 
-    public static string RenderItems<T>(ICollection<T> items, Func<int, int, T, string> action, int indent = 0, SourceDelimeter sourceDelimeter = SourceDelimeter.None)
+    public static string RenderItems<T>(IReadOnlyCollection<T> items, Func<int, int, T, string> action, int indent = 0, SourceDelimeter sourceDelimeter = SourceDelimeter.None)
     {
 #if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull(items);
