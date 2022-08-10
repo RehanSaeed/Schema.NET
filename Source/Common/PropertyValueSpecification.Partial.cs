@@ -13,7 +13,7 @@ public partial class PropertyValueSpecification
     private const string NamePropertyName = "name=";
     private const string PatternPropertyName = "pattern=";
     private const string RequiredPropertyName = "required";
-    private const char Space = ' ';
+    private const char SpaceDelimeter = ' ';
 
     /// <summary>
     /// Returns a <see cref="string" /> that represents the short hand representation of this instance.
@@ -34,39 +34,39 @@ public partial class PropertyValueSpecification
 
         if (this.ValueMinLength.First() is double minLength)
         {
-            AppendSpace(stringBuilder);
+            AppendSpaceDelimeter(stringBuilder);
             stringBuilder.Append(MinLengthPropertyName);
             stringBuilder.Append(minLength);
         }
 
         if (this.ValueName.First() is string name)
         {
-            AppendSpace(stringBuilder);
+            AppendSpaceDelimeter(stringBuilder);
             stringBuilder.Append(NamePropertyName);
             stringBuilder.Append(name);
         }
 
         if (this.ValuePattern.First() is string pattern)
         {
-            AppendSpace(stringBuilder);
+            AppendSpaceDelimeter(stringBuilder);
             stringBuilder.Append(PatternPropertyName);
             stringBuilder.Append(pattern);
         }
 
         if (this.ValueRequired.First() is true)
         {
-            AppendSpace(stringBuilder);
+            AppendSpaceDelimeter(stringBuilder);
             stringBuilder.Append(RequiredPropertyName);
         }
 
         return stringBuilder.ToString();
     }
 
-    private static void AppendSpace(StringBuilder stringBuilder)
+    private static void AppendSpaceDelimeter(StringBuilder stringBuilder)
     {
         if (stringBuilder.Length > 0)
         {
-            stringBuilder.Append(Space);
+            stringBuilder.Append(SpaceDelimeter);
         }
     }
 }
