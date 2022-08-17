@@ -61,11 +61,11 @@ internal static class EnumHelper
         string? enumString;
         if (value is not null && value.StartsWith(Constants.HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
-            enumString = value.Substring(Constants.HttpSchemaOrgUrl.Length + 1);
+            enumString = value[(Constants.HttpSchemaOrgUrl.Length + 1)..];
         }
         else if (value is not null && value.StartsWith(Constants.HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
-            enumString = value.Substring(Constants.HttpsSchemaOrgUrl.Length + 1);
+            enumString = value[(Constants.HttpsSchemaOrgUrl.Length + 1)..];
         }
         else
         {
