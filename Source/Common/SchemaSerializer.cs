@@ -24,9 +24,7 @@ public static class SchemaSerializer
     /// </summary>
     private static readonly JsonSerializerOptions HtmlEscapedSerializationSettings;
 
-#pragma warning disable CA1810 // Initialize reference type static fields inline
     static SchemaSerializer()
-#pragma warning restore CA1810 // Initialize reference type static fields inline
     {
         DefaultSerializationSettings = new JsonSerializerOptions
         {

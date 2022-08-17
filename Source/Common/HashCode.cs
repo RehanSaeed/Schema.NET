@@ -25,9 +25,7 @@ public struct HashCode : IEquatable<HashCode>
     /// <returns>
     /// The result of the conversion.
     /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
     public static implicit operator int(HashCode hashCode) => hashCode.value;
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
     /// <summary>
     /// Implements the operator ==.
@@ -113,9 +111,7 @@ public struct HashCode : IEquatable<HashCode>
     /// <exception cref="NotSupportedException">Implicitly convert this struct to an <see cref="int" /> to get the hash code.</exception>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public override int GetHashCode() =>
-#pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
         throw new NotSupportedException("Implicitly convert this struct to an int to get the hash code.");
-#pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
 
     private static int CombineHashCodes(int h1, int h2)
     {

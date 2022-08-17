@@ -21,9 +21,7 @@ public readonly struct OneOrMany<T>
     /// <param name="item">The single item value.</param>
     public OneOrMany(T item)
     {
-#pragma warning disable CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
         if (item is null || (item is string itemAsString && string.IsNullOrWhiteSpace(itemAsString)))
-#pragma warning restore CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
         {
             this.collection = null;
             this.HasOne = false;
@@ -51,9 +49,7 @@ public readonly struct OneOrMany<T>
                 for (var i = 0; i < span.Length; i++)
                 {
                     var item = span[i];
-#pragma warning disable CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
                     if (!string.IsNullOrWhiteSpace(item as string))
-#pragma warning restore CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
                     {
                         items[index] = item;
                         index++;
@@ -65,9 +61,7 @@ public readonly struct OneOrMany<T>
                 for (var i = 0; i < span.Length; i++)
                 {
                     var item = span[i];
-#pragma warning disable CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
                     if (item is not null)
-#pragma warning restore CA1508 // TODO: Remove this suppression in .NET 6 where the warning is fixed.
                     {
                         items[index] = item;
                         index++;
@@ -145,29 +139,21 @@ public readonly struct OneOrMany<T>
     /// </summary>
     /// <param name="item">The single item value.</param>
     /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
     public static implicit operator OneOrMany<T>(T item) => new(item);
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T[]"/> to <see cref="OneOrMany{T}"/>.
     /// </summary>
     /// <param name="array">The array of values.</param>
     /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
     public static implicit operator OneOrMany<T>(T[] array) => new(array);
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="List{T}"/> to <see cref="OneOrMany{T}"/>.
     /// </summary>
     /// <param name="list">The list of values.</param>
     /// <returns>The result of the conversion.</returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-#pragma warning disable CA1002 // Do not expose generic lists
     public static implicit operator OneOrMany<T>(List<T> list) => new(list);
-#pragma warning restore CA1002 // Do not expose generic lists
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="OneOrMany{T}"/> to <typeparamref name="T"/>.
@@ -176,9 +162,7 @@ public readonly struct OneOrMany<T>
     /// <returns>
     /// The result of the conversion.
     /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
     public static implicit operator T?(OneOrMany<T> oneOrMany) => oneOrMany.FirstOrDefault();
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="OneOrMany{T}"/> to <typeparamref name="T[]"/>.
@@ -187,9 +171,7 @@ public readonly struct OneOrMany<T>
     /// <returns>
     /// The result of the conversion.
     /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
     public static implicit operator T[](OneOrMany<T> oneOrMany) => oneOrMany.ToArray();
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="OneOrMany{T}"/> to <see cref="List{T}"/>.
@@ -198,11 +180,7 @@ public readonly struct OneOrMany<T>
     /// <returns>
     /// The result of the conversion.
     /// </returns>
-#pragma warning disable CA2225 // Operator overloads have named alternates
-#pragma warning disable CA1002 // Do not expose generic lists
     public static implicit operator List<T>(OneOrMany<T> oneOrMany) => oneOrMany.ToList();
-#pragma warning restore CA1002 // Do not expose generic lists
-#pragma warning restore CA2225 // Operator overloads have named alternates
 
     /// <summary>
     /// Implements the operator ==.

@@ -31,9 +31,7 @@ internal static class EnumHelper
             result = Enum.Parse(enumType, value);
             return true;
         }
-#pragma warning disable CA1031 // Do not catch general exception types
         catch
-#pragma warning restore CA1031 // Do not catch general exception types
         {
             result = null;
             return false;
@@ -63,15 +61,11 @@ internal static class EnumHelper
         string? enumString;
         if (value is not null && value.StartsWith(Constants.HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
-#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
             enumString = value.Substring(Constants.HttpSchemaOrgUrl.Length + 1);
-#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
         }
         else if (value is not null && value.StartsWith(Constants.HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
-#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
             enumString = value.Substring(Constants.HttpsSchemaOrgUrl.Length + 1);
-#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
         }
         else
         {

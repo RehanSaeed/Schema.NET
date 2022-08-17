@@ -4,9 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-#pragma warning disable IDE0001 // Simplify Names
 using HashCode = Schema.NET.HashCode;
-#pragma warning restore IDE0001 // Simplify Names
 
 public class OneOrManyTest
 {
