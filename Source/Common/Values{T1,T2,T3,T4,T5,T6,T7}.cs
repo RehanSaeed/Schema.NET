@@ -208,64 +208,43 @@ public readonly struct Values<T1, T2, T3, T4, T5, T6, T7>
         {
             if (item is T7 itemT7)
             {
-                if (items7 == null)
-                {
-                    items7 = new List<T7>();
-                }
+                items7 ??= new List<T7>();
 
                 items7.Add(itemT7);
             }
             else if (item is T6 itemT6)
             {
-                if (items6 == null)
-                {
-                    items6 = new List<T6>();
-                }
+                items6 ??= new List<T6>();
 
                 items6.Add(itemT6);
             }
             else if (item is T5 itemT5)
             {
-                if (items5 == null)
-                {
-                    items5 = new List<T5>();
-                }
+                items5 ??= new List<T5>();
 
                 items5.Add(itemT5);
             }
             else if (item is T4 itemT4)
             {
-                if (items4 == null)
-                {
-                    items4 = new List<T4>();
-                }
+                items4 ??= new List<T4>();
 
                 items4.Add(itemT4);
             }
             else if (item is T3 itemT3)
             {
-                if (items3 == null)
-                {
-                    items3 = new List<T3>();
-                }
+                items3 ??= new List<T3>();
 
                 items3.Add(itemT3);
             }
             else if (item is T2 itemT2)
             {
-                if (items2 == null)
-                {
-                    items2 = new List<T2>();
-                }
+                items2 ??= new List<T2>();
 
                 items2.Add(itemT2);
             }
             else if (item is T1 itemT1)
             {
-                if (items1 == null)
-                {
-                    items1 = new List<T1>();
-                }
+                items1 ??= new List<T1>();
 
                 items1.Add(itemT1);
             }

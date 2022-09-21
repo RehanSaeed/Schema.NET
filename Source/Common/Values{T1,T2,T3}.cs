@@ -88,28 +88,19 @@ public readonly struct Values<T1, T2, T3>
         {
             if (item is T3 itemT3)
             {
-                if (items3 == null)
-                {
-                    items3 = new List<T3>();
-                }
+                items3 ??= new List<T3>();
 
                 items3.Add(itemT3);
             }
             else if (item is T2 itemT2)
             {
-                if (items2 == null)
-                {
-                    items2 = new List<T2>();
-                }
+                items2 ??= new List<T2>();
 
                 items2.Add(itemT2);
             }
             else if (item is T1 itemT1)
             {
-                if (items1 == null)
-                {
-                    items1 = new List<T1>();
-                }
+                items1 ??= new List<T1>();
 
                 items1.Add(itemT1);
             }
