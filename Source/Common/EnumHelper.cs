@@ -61,11 +61,19 @@ internal static class EnumHelper
         string? enumString;
         if (value is not null && value.StartsWith(Constants.HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
+#if NETCOREAPP3_0_OR_GREATER
             enumString = value[(Constants.HttpSchemaOrgUrl.Length + 1)..];
+#else
+            enumString = value.Substring(Constants.HttpSchemaOrgUrl.Length + 1);
+#endif
         }
         else if (value is not null && value.StartsWith(Constants.HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
+#if NETCOREAPP3_0_OR_GREATER
             enumString = value[(Constants.HttpsSchemaOrgUrl.Length + 1)..];
+#else
+            enumString = value.Substring(Constants.HttpsSchemaOrgUrl.Length + 1);
+#endif
         }
         else
         {

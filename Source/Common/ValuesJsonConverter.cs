@@ -217,7 +217,11 @@ public class ValuesJsonConverter : JsonConverter<IValues>
                         // If the target is an interface, attempt to identify concrete target
                         var localTargetType = underlyingTargetType;
                         var typeInfo = localTargetType.GetTypeInfo();
+#if NETCOREAPP3_0_OR_GREATER
                         if (typeInfo.IsInterface && TryGetConcreteType(typeInfo.Name[1..], out var concreteType))
+#else
+                        if (typeInfo.IsInterface && TryGetConcreteType(typeInfo.Name.Substring(1), out var concreteType))
+#endif
                         {
                             localTargetType = concreteType!;
                         }
