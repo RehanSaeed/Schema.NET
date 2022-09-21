@@ -15,7 +15,9 @@ using System.Linq;
 /// <typeparam name="T5">The fifth type the values can take.</typeparam>
 /// <typeparam name="T6">The sixth type the values can take.</typeparam>
 /// <typeparam name="T7">The seventh type the values can take.</typeparam>
+#pragma warning disable CA1710 // Identifiers should have correct suffix.
 public readonly struct Values<T1, T2, T3, T4, T5, T6, T7>
+#pragma warning restore CA1710 // Identifiers should have correct suffix.
     : IReadOnlyCollection<object?>, IEnumerable<object?>, IValues, IEquatable<Values<T1, T2, T3, T4, T5, T6, T7>>
 {
     /// <summary>
