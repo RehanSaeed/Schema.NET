@@ -12,6 +12,7 @@ using BenchmarkDotNet.Jobs;
 [HtmlExporter]
 [CsvMeasurementsExporter]
 [RPlotExporter]
+[SimpleJob(RuntimeMoniker.Net70)]
 [SimpleJob(RuntimeMoniker.Net60)]
 [SimpleJob(RuntimeMoniker.Net472)]
 public abstract class SchemaBenchmarkBase
