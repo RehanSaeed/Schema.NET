@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Build">
-    <TargetFrameworks>net7.0;net6.0;netcoreapp3.1;netstandard2.0;net472;net461</TargetFrameworks>
+    <TargetFrameworks>net7.0;net6.0;netstandard2.0;net472;net462</TargetFrameworks>
     <EmitCompilerGeneratedFiles>True</EmitCompilerGeneratedFiles>
     <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
     <IncludePendingSchemaObjects>True</IncludePendingSchemaObjects>
@@ -19,7 +19,7 @@
     <ProjectReference Include="../../Tools/Schema.NET.Tool/Schema.NET.Tool.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
-  <ItemGroup Label="Package References (.NET Framework)" Condition="'$(TargetFramework)' == 'net461'">
+  <ItemGroup Label="Package References (.NET Framework)" Condition="'$(TargetFramework)' == 'net462'">
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
