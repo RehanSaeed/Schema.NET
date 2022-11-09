@@ -42,7 +42,7 @@ Task("Build")
     .Does(() =>
     {
         var project = GetFiles("./**/Schema.NET.Tool.csproj").Single();
-        DotNetCoreRun(project.ToString());
+        DotNetRun(project.ToString());
 
         Information("Started Listing Files");
         foreach (var file in GetFiles("./**/Schema.NET/**/*"))
