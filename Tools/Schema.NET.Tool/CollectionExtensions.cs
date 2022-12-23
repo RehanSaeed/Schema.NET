@@ -8,8 +8,8 @@ public static class CollectionExtensions
     public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> items)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(collection);
-            ArgumentNullException.ThrowIfNull(items);
+        ArgumentNullException.ThrowIfNull(collection);
+        ArgumentNullException.ThrowIfNull(items);
 #else
         if (collection is null)
         {

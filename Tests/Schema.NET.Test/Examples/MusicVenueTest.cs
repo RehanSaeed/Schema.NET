@@ -37,40 +37,43 @@ public class MusicVenueTest
         Telephone = "(323) 308-6300", // Recommended
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\": \"MusicVenue\"," +
-        "\"name\": \"Dolby Theatre\"," +
-        "\"description\": \"Host to a range of prestigious events including movie premieres, concerts & the Oscars https://www.dolbytheatre.com\"," +
-        "\"identifier\": \"KovZpZAdtaEA\"," +
-        "\"image\": {" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\": \"ImageObject\"," +
-            "\"contentUrl\": \"https://s1.ticketm.net/dam/v/e6b/380fa861-3f46-44a9-a514-21553f7fbe6b_379601_SOURCE.jpg\"" +
-        "}," +
-        "\"sameAs\": [" +
-            "\"https://www.twitter.com/dolbytheatre\"," +
-            "\"https://www.dolbytheatre.com\"" +
-        "]," +
-        "\"url\": \"https://foursquare.com/dolbytheatre\"," +
-        "\"address\": {" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\": \"PostalAddress\"," +
-            "\"addressCountry\": \"US\"," +
-            "\"addressLocality\": \"Los Angeles\"," +
-            "\"addressRegion\": \"CA\"," +
-            "\"postalCode\": \"90028\"," +
-            "\"streetAddress\": \"6801 Hollywood Blvd\"" +
-        "}," +
-        "\"geo\": {" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\": \"GeoCoordinates\"," +
-            "\"latitude\": \"34.1018929033898\"," +
-            "\"longitude\": \"-118.340147939959\"" +
-        "}," +
-        "\"telephone\": \"(323) 308-6300\"" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "MusicVenue",
+            "name": "Dolby Theatre",
+            "description": "Host to a range of prestigious events including movie premieres, concerts & the Oscars https://www.dolbytheatre.com",
+            "identifier": "KovZpZAdtaEA",
+            "image": {
+                "@type": "ImageObject",
+                "contentUrl": "https://s1.ticketm.net/dam/v/e6b/380fa861-3f46-44a9-a514-21553f7fbe6b_379601_SOURCE.jpg"
+            },
+            "sameAs": [
+                "https://www.twitter.com/dolbytheatre",
+                "https://www.dolbytheatre.com"
+            ],
+            "url": "https://foursquare.com/dolbytheatre",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "US",
+                "addressLocality": "Los Angeles",
+                "addressRegion": "CA",
+                "postalCode": "90028",
+                "streetAddress": "6801 Hollywood Blvd"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "34.1018929033898",
+                "longitude": "-118.340147939959"
+            },
+            "telephone": "(323) 308-6300"
+        }
+        """;
+
+    [Fact]
+    public void ToString_MusicVenueGoogleStructuredData_ReturnsExpectedJsonLd() =>
+        Assert.Equal(this.json.MinifyJson(), this.musicVenue.ToString());
 
     [Fact]
     public void Deserializing_MusicVenueJsonLd_ReturnsMusicVenue()

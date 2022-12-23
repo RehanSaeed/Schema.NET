@@ -25,15 +25,13 @@ internal static class EnumHelper
         string? value,
         out object? result)
     {
-#if NETSTANDARD2_0 || NET472 || NET461
+#if NETSTANDARD2_0 || NET472 || NET462
         try
         {
             result = Enum.Parse(enumType, value);
             return true;
         }
-#pragma warning disable CA1031 // Do not catch general exception types
         catch
-#pragma warning restore CA1031 // Do not catch general exception types
         {
             result = null;
             return false;
@@ -63,15 +61,19 @@ internal static class EnumHelper
         string? enumString;
         if (value is not null && value.StartsWith(Constants.HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
-#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
+#if NETCOREAPP3_0_OR_GREATER
+            enumString = value[(Constants.HttpSchemaOrgUrl.Length + 1)..];
+#else
             enumString = value.Substring(Constants.HttpSchemaOrgUrl.Length + 1);
-#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
+#endif
         }
         else if (value is not null && value.StartsWith(Constants.HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
-#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
+#if NETCOREAPP3_0_OR_GREATER
+            enumString = value[(Constants.HttpsSchemaOrgUrl.Length + 1)..];
+#else
             enumString = value.Substring(Constants.HttpsSchemaOrgUrl.Length + 1);
-#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
+#endif
         }
         else
         {

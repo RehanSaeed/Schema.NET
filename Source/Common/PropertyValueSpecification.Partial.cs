@@ -1,6 +1,5 @@
 namespace Schema.NET;
 
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -9,6 +8,13 @@ using System.Text;
 /// </summary>
 public partial class PropertyValueSpecification
 {
+    private const string MaxLengthPropertyName = "maxlength=";
+    private const string MinLengthPropertyName = "minlength=";
+    private const string NamePropertyName = "name=";
+    private const string PatternPropertyName = "pattern=";
+    private const string RequiredPropertyName = "required";
+    private const char SpaceDelimeter = ' ';
+
     /// <summary>
     /// Returns a <see cref="string" /> that represents the short hand representation of this instance.
     /// See https://schema.org/docs/actions.html#part-3.
@@ -22,45 +28,45 @@ public partial class PropertyValueSpecification
 
         if (this.ValueMaxLength.First() is double maxLength)
         {
-            stringBuilder.Append("maxlength=");
+            stringBuilder.Append(MaxLengthPropertyName);
             stringBuilder.Append(maxLength);
         }
 
         if (this.ValueMinLength.First() is double minLength)
         {
-            AppendSpace(stringBuilder);
-            stringBuilder.Append("minlength=");
+            AppendSpaceDelimeter(stringBuilder);
+            stringBuilder.Append(MinLengthPropertyName);
             stringBuilder.Append(minLength);
         }
 
         if (this.ValueName.First() is string name)
         {
-            AppendSpace(stringBuilder);
-            stringBuilder.Append("name=");
+            AppendSpaceDelimeter(stringBuilder);
+            stringBuilder.Append(NamePropertyName);
             stringBuilder.Append(name);
         }
 
         if (this.ValuePattern.First() is string pattern)
         {
-            AppendSpace(stringBuilder);
-            stringBuilder.Append("pattern=");
+            AppendSpaceDelimeter(stringBuilder);
+            stringBuilder.Append(PatternPropertyName);
             stringBuilder.Append(pattern);
         }
 
         if (this.ValueRequired.First() is true)
         {
-            AppendSpace(stringBuilder);
-            stringBuilder.Append("required");
+            AppendSpaceDelimeter(stringBuilder);
+            stringBuilder.Append(RequiredPropertyName);
         }
 
         return stringBuilder.ToString();
     }
 
-    private static void AppendSpace(StringBuilder stringBuilder)
+    private static void AppendSpaceDelimeter(StringBuilder stringBuilder)
     {
         if (stringBuilder.Length > 0)
         {
-            stringBuilder.Append(' ');
+            stringBuilder.Append(SpaceDelimeter);
         }
     }
 }

@@ -42,7 +42,7 @@ Task("Build")
     .Does(() =>
     {
         var project = GetFiles("./**/Schema.NET.Tool.csproj").Single();
-        DotNetCoreRun(project.ToString());
+        DotNetRun(project.ToString());
 
         Information("Started Listing Files");
         foreach (var file in GetFiles("./**/Schema.NET/**/*"))
@@ -54,26 +54,31 @@ Task("Build")
 
 Task("Test")
     .Description("Runs unit tests and outputs test results to the artefacts directory.")
-    .DoesForEach(GetFiles("./Tests/**/*.csproj"), project =>
-    {
-        DotNetTest(
-            project.ToString(),
-            new DotNetTestSettings()
-            {
-                Blame = true,
-                Collectors = new string[] { "Code Coverage", "XPlat Code Coverage" },
-                Configuration = configuration,
-                Loggers = new string[]
+    .DoesForEach(
+        GetFiles("./Tests/**/*.csproj"),
+        project =>
+        {
+            DotNetTest(
+                project.ToString(),
+                new DotNetTestSettings()
                 {
-                    $"trx;LogFileName={project.GetFilenameWithoutExtension()}.trx",
-                    $"junit;LogFileName={project.GetFilenameWithoutExtension()}.xml",
-                    $"html;LogFileName={project.GetFilenameWithoutExtension()}.html",
-                },
-                NoBuild = true,
-                NoRestore = true,
-                ResultsDirectory = artefactsDirectory,
-            });
-    });
+                    Blame = true,
+                    Collectors = new string[] { "Code Coverage", "XPlat Code Coverage" },
+                    Configuration = configuration,
+                    Loggers = new string[]
+                    {
+                        $"trx;LogFilePrefix={project.GetFilenameWithoutExtension()}",
+                        $"junit;LogFileName={project.GetFilenameWithoutExtension()}_{{framework}}.xml",
+                        $"html;LogFilePrefix={project.GetFilenameWithoutExtension()}",
+                    },
+                    NoBuild = true,
+                    NoRestore = true,
+                    ResultsDirectory = artefactsDirectory,
+                });
+            // Workaround the test-summary GitHub Action not being able to handle empty JUnit test result XML files.
+            // https://github.com/test-summary/action/issues/19
+            DeleteFiles($"./**/{project.GetFilenameWithoutExtension()}_NETFramework472.xml");
+        });
 
 Task("Pack")
     .Description("Creates NuGet packages and outputs them to the artefacts directory.")

@@ -9,7 +9,7 @@ public class AddQueryInputPropertyToSearchAction : IClassOverride
     public bool CanOverride(GeneratorSchemaClass c)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(c);
+        ArgumentNullException.ThrowIfNull(c);
 #else
         if (c is null)
         {
@@ -23,7 +23,7 @@ public class AddQueryInputPropertyToSearchAction : IClassOverride
     public void Override(GeneratorSchemaClass c)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(c);
+        ArgumentNullException.ThrowIfNull(c);
 #else
         if (c is null)
         {
@@ -35,8 +35,8 @@ public class AddQueryInputPropertyToSearchAction : IClassOverride
         property.Types.AddRange(
             new List<GeneratorSchemaPropertyType>()
             {
-                    new GeneratorSchemaPropertyType("Text", "string"),
-                    new GeneratorSchemaPropertyType("PropertyValueSpecification", "PropertyValueSpecification"),
+                new GeneratorSchemaPropertyType("Text", "string"),
+                new GeneratorSchemaPropertyType("PropertyValueSpecification", "PropertyValueSpecification"),
             });
         c.Properties.Add(property);
     }

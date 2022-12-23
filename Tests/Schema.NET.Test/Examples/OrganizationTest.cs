@@ -21,25 +21,27 @@ public class OrganizationTest
         Logo = new Uri("https://example.com/logo.png"),
     };
 
-    private readonly string json =
-    @"{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"Organization\"," +
-        "\"url\":\"https://example.com\"," +
-        "\"areaServed\":\"GB\"," +
-        "\"contactPoint\":{" +
-            "\"@type\":\"ContactPoint\"," +
-            "\"availableLanguage\":\"English\"," +
-            "\"contactOption\":\"https://schema.org/TollFree\"," +
-            "\"contactType\":\"customer service\"," +
-            "\"telephone\":\"+1-401-555-1212\"" +
-        "}," +
-        "\"logo\":\"https://example.com/logo.png\"" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "https://example.com",
+            "areaServed": "GB",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "availableLanguage": "English",
+                "contactOption": "https://schema.org/TollFree",
+                "contactType": "customer service",
+                "telephone": "+1-401-555-1212"
+            },
+            "logo": "https://example.com/logo.png"
+        }
+        """;
 
     [Fact]
     public void ToString_CorporateContactsGoogleStructuredData_ReturnsExpectedJsonLd() =>
-        Assert.Equal(this.json, this.organization.ToString());
+        Assert.Equal(this.json.MinifyJson(), this.organization.ToString());
 
     [Fact]
     public void Deserializing_OrganizationJsonLd_ReturnsOrganization()

@@ -11,14 +11,19 @@ public class DurationValuesJsonConverterTest
     {
         var value = new OneOrMany<TimeSpan>(new TimeSpan(12, 34, 56));
         var json = SerializeObject(value);
-        Assert.Equal("{\"Property\":\"PT12H34M56S\"}", json);
+
+        const string expected = /*lang=json,strict*/
+            """
+            {"Property":"PT12H34M56S"}
+            """;
+        Assert.Equal(expected, json);
     }
 
     private static string SerializeObject<T>(T value)
-        where T : struct, IValues
-        => SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
+        where T : struct, IValues =>
+        SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
 
-    private class TestModel<T>
+    private sealed class TestModel<T>
         where T : struct, IValues
     {
         [JsonConverter(typeof(TimeSpanToISO8601DurationValuesJsonConverter))]

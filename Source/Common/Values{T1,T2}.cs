@@ -10,7 +10,9 @@ using System.Linq;
 /// </summary>
 /// <typeparam name="T1">The first type the values can take.</typeparam>
 /// <typeparam name="T2">The second type the values can take.</typeparam>
+#pragma warning disable CA1710 // Identifiers should have correct suffix.
 public readonly struct Values<T1, T2>
+#pragma warning restore CA1710 // Identifiers should have correct suffix.
     : IReadOnlyCollection<object?>, IEnumerable<object?>, IValues, IEquatable<Values<T1, T2>>
 {
     /// <summary>
@@ -69,13 +71,11 @@ public readonly struct Values<T1, T2>
             if (item is T2 itemT2)
             {
                 items2 ??= new List<T2>();
-
                 items2.Add(itemT2);
             }
             else if (item is T1 itemT1)
             {
                 items1 ??= new List<T1>();
-
                 items1.Add(itemT1);
             }
         }
@@ -117,8 +117,6 @@ public readonly struct Values<T1, T2>
     /// </summary>
     public OneOrMany<T2> Value2 { get; }
 
-#pragma warning disable CA1002 // Do not expose generic lists
-#pragma warning disable CA2225 // Operator overloads have named alternates
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1,T2}"/>.
     /// </summary>
@@ -228,8 +226,6 @@ public readonly struct Values<T1, T2>
     /// The result of the conversion.
     /// </returns>
     public static implicit operator List<T2>(Values<T1, T2> values) => values.Value2.ToList();
-#pragma warning restore CA2225 // Operator overloads have named alternates
-#pragma warning restore CA1002 // Do not expose generic lists
 
     /// <summary>
     /// Implements the operator ==.

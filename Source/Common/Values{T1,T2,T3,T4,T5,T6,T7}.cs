@@ -15,7 +15,9 @@ using System.Linq;
 /// <typeparam name="T5">The fifth type the values can take.</typeparam>
 /// <typeparam name="T6">The sixth type the values can take.</typeparam>
 /// <typeparam name="T7">The seventh type the values can take.</typeparam>
+#pragma warning disable CA1710 // Identifiers should have correct suffix.
 public readonly struct Values<T1, T2, T3, T4, T5, T6, T7>
+#pragma warning restore CA1710 // Identifiers should have correct suffix.
     : IReadOnlyCollection<object?>, IEnumerable<object?>, IValues, IEquatable<Values<T1, T2, T3, T4, T5, T6, T7>>
 {
     /// <summary>
@@ -209,43 +211,36 @@ public readonly struct Values<T1, T2, T3, T4, T5, T6, T7>
             if (item is T7 itemT7)
             {
                 items7 ??= new List<T7>();
-
                 items7.Add(itemT7);
             }
             else if (item is T6 itemT6)
             {
                 items6 ??= new List<T6>();
-
                 items6.Add(itemT6);
             }
             else if (item is T5 itemT5)
             {
                 items5 ??= new List<T5>();
-
                 items5.Add(itemT5);
             }
             else if (item is T4 itemT4)
             {
                 items4 ??= new List<T4>();
-
                 items4.Add(itemT4);
             }
             else if (item is T3 itemT3)
             {
                 items3 ??= new List<T3>();
-
                 items3.Add(itemT3);
             }
             else if (item is T2 itemT2)
             {
                 items2 ??= new List<T2>();
-
                 items2.Add(itemT2);
             }
             else if (item is T1 itemT1)
             {
                 items1 ??= new List<T1>();
-
                 items1.Add(itemT1);
             }
         }
@@ -347,8 +342,6 @@ public readonly struct Values<T1, T2, T3, T4, T5, T6, T7>
     /// </summary>
     public OneOrMany<T7> Value7 { get; }
 
-#pragma warning disable CA1002 // Do not expose generic lists
-#pragma warning disable CA2225 // Operator overloads have named alternates
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1,T2,T3,T4,T5,T6,T7}"/>.
     /// </summary>
@@ -698,8 +691,6 @@ public readonly struct Values<T1, T2, T3, T4, T5, T6, T7>
     /// The result of the conversion.
     /// </returns>
     public static implicit operator List<T7>(Values<T1, T2, T3, T4, T5, T6, T7> values) => values.Value7.ToList();
-#pragma warning restore CA2225 // Operator overloads have named alternates
-#pragma warning restore CA1002 // Do not expose generic lists
 
     /// <summary>
     /// Implements the operator ==.

@@ -32,37 +32,40 @@ public class MusicRecordingTest
         IsrcCode = "GBAYE0300801", // Recommended
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\": \"MusicRecording\"," +
-        "\"name\": \"2 + 2 = 5\"," +
-        "\"identifier\": \"37kUGdEJJ7NaMl5LFW4EA4\"," +
-        "\"image\": {" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\": \"ImageObject\"," +
-            "\"contentUrl\": \"https://is4-ssl.mzstatic.com/image/thumb/Music69/v4/cc/1c/90/cc1c9039-c3ba-4256-e251-1687df46cb0a/cover.jpg/1400x1400bb.jpeg\"" +
-        "}," +
-        "\"sameAs\": \"https://music.apple.com/us/album/2-2-5/1097863576?i=1097863810\"," +
-        "\"url\": \"https://open.spotify.com/track/37kUGdEJJ7NaMl5LFW4EA4\"," +
-        "\"datePublished\": \"2003-05-26\"," +
-        "\"isFamilyFriendly\": true," +
-        "\"position\": \"1.1\"," +
-        "\"byArtist\": {" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\": \"MusicGroup\"," +
-            "\"name\": \"Radiohead\"," +
-            "\"identifier\": \"4Z8W4fKeB5YxbusRsdQVPb\"" +
-        "}," +
-        "\"duration\": \"PT3M19.36S\"," +
-        "\"inAlbum\": {" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\": \"MusicAlbum\"," +
-            "\"name\": \"Hail To the Thief\"," +
-            "\"identifier\": \"1oW3v5Har9mvXnGk0x4fHm\"" +
-        "}," +
-        "\"isrcCode\": \"GBAYE0300801\"" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "MusicRecording",
+            "name": "2 + 2 = 5",
+            "identifier": "37kUGdEJJ7NaMl5LFW4EA4",
+            "image": {
+                "@type": "ImageObject",
+                "contentUrl": "https://is4-ssl.mzstatic.com/image/thumb/Music69/v4/cc/1c/90/cc1c9039-c3ba-4256-e251-1687df46cb0a/cover.jpg/1400x1400bb.jpeg"
+            },
+            "sameAs": "https://music.apple.com/us/album/2-2-5/1097863576?i=1097863810",
+            "url": "https://open.spotify.com/track/37kUGdEJJ7NaMl5LFW4EA4",
+            "datePublished": "2003-05-26",
+            "isFamilyFriendly": true,
+            "position": "1.1",
+            "byArtist": {
+                "@type": "MusicGroup",
+                "name": "Radiohead",
+                "identifier": "4Z8W4fKeB5YxbusRsdQVPb"
+            },
+            "duration": "PT3M19.36S",
+            "inAlbum": {
+                "@type": "MusicAlbum",
+                "name": "Hail To the Thief",
+                "identifier": "1oW3v5Har9mvXnGk0x4fHm"
+            },
+            "isrcCode": "GBAYE0300801"
+        }
+        """;
+
+    [Fact]
+    public void ToString_MusicRecordingGoogleStructuredData_ReturnsExpectedJsonLd() =>
+        Assert.Equal(this.json.MinifyJson(), this.musicRecording.ToString());
 
     [Fact]
     public void Deserializing_MusicRecordingJsonLd_ReturnsMusicRecording()

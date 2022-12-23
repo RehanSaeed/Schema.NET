@@ -18,21 +18,23 @@ public class WebsiteTest
             },
             Url = new Uri("https://example.com"), // Required
         };
-        var expectedJson =
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@type\":\"WebSite\"," +
-                "\"potentialAction\":{" +
-                    "\"@type\":\"SearchAction\"," +
-                    "\"target\":\"https://example.com/search?&q={query}\"," +
-                    "\"query-input\":\"required\"" +
-                "}," +
-                "\"url\":\"https://example.com\"" +
-            "}";
+        var expectedJson = /*lang=json,strict*/
+            """
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://example.com/search?&q={query}",
+                "query-input": "required"
+              },
+              "url": "https://example.com"
+            }
+            """;
 
         var json = website.ToString();
 
-        Assert.Equal(expectedJson, json);
+        Assert.Equal(expectedJson.MinifyJson(), json);
     }
 
     // https://developers.google.com/search/docs/data-types/sitename
@@ -45,18 +47,20 @@ public class WebsiteTest
             Name = "Your Site Name", // Required
             Url = new Uri("https://example.com"), // Required
         };
-        var expectedJson =
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@type\":\"WebSite\"," +
-                "\"name\":\"Your Site Name\"," +
-                "\"alternateName\":\"An Alternative Name\"," +
-                "\"url\":\"https://example.com\"" +
-            "}";
+        var expectedJson = /*lang=json,strict*/
+            """
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Your Site Name",
+                "alternateName": "An Alternative Name",
+                "url": "https://example.com"
+            }
+            """;
 
         var json = website.ToString();
 
-        Assert.Equal(expectedJson, json);
+        Assert.Equal(expectedJson.MinifyJson(), json);
     }
 
     [Fact]
@@ -72,17 +76,19 @@ public class WebsiteTest
             Url = new Uri("https://example.com"), // Required
         };
 
-        var json =
-        "{" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\":\"WebSite\"," +
-            "\"potentialAction\":{" +
-                "\"@type\":\"SearchAction\"," +
-                "\"target\":\"https://example.com/search?&q={query}\"," +
-                "\"query-input\":\"required\"" +
-            "}," +
-            "\"url\":\"https://example.com\"" +
-        "}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://example.com/search?&q={query}",
+                    "query-input": "required"
+                },
+                "url": "https://example.com"
+            }
+            """;
 
         Assert.Equal(website.ToString(), SchemaSerializer.DeserializeObject<WebSite>(json)!.ToString());
         Assert.Equal(SchemaSerializer.SerializeObject(website), SchemaSerializer.SerializeObject(SchemaSerializer.DeserializeObject<WebSite>(json)!));

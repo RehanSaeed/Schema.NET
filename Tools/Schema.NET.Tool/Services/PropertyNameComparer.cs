@@ -18,8 +18,8 @@ public class PropertyNameComparer : IComparer<string>
     public int Compare(string? x, string? y)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(x);
-            ArgumentNullException.ThrowIfNull(y);
+        ArgumentNullException.ThrowIfNull(x);
+        ArgumentNullException.ThrowIfNull(y);
 #else
         if (x is null)
         {

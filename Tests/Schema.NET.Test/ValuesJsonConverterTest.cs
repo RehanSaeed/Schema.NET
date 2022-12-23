@@ -20,7 +20,12 @@ public class ValuesJsonConverterTest
     {
         var value = new Values<int?, string>("One Value");
         var json = SerializeObject(value);
-        Assert.Equal("{\"Property\":\"One Value\"}", json);
+
+        var expectedJson = /*lang=json,strict*/
+            """
+            {"Property":"One Value"}
+            """;
+        Assert.Equal(expectedJson, json);
     }
 
     [Fact]
@@ -28,7 +33,12 @@ public class ValuesJsonConverterTest
     {
         var value = new Values<int?, string>(new[] { "A", "B" });
         var json = SerializeObject(value);
-        Assert.Equal("{\"Property\":[\"A\",\"B\"]}", json);
+
+        var expectedJson = /*lang=json,strict*/
+            """
+            {"Property":["A","B"]}
+            """;
+        Assert.Equal(expectedJson, json);
     }
 
     [Fact]
@@ -36,7 +46,12 @@ public class ValuesJsonConverterTest
     {
         var value = new Values<int?, string>(new object[] { 123, "B" });
         var json = SerializeObject(value);
-        Assert.Equal("{\"Property\":[123,\"B\"]}", json);
+
+        var expectedJson = /*lang=json,strict*/
+            """
+            {"Property":[123,"B"]}
+            """;
+        Assert.Equal(expectedJson, json);
     }
 
     [Fact]
@@ -44,6 +59,7 @@ public class ValuesJsonConverterTest
     {
         var value = default(OneOrMany<string>);
         var json = SerializeObject(value);
+
         Assert.Equal("{}", json);
     }
 
@@ -52,7 +68,12 @@ public class ValuesJsonConverterTest
     {
         var value = new OneOrMany<string>("One Value");
         var json = SerializeObject(value);
-        Assert.Equal("{\"Property\":\"One Value\"}", json);
+
+        var expectedJson = /*lang=json,strict*/
+            """"
+            {"Property":"One Value"}
+            """";
+        Assert.Equal(expectedJson, json);
     }
 
     [Fact]
@@ -60,7 +81,12 @@ public class ValuesJsonConverterTest
     {
         var value = new OneOrMany<string>(new[] { "A", "B" });
         var json = SerializeObject(value);
-        Assert.Equal("{\"Property\":[\"A\",\"B\"]}", json);
+
+        var expectedJson = /*lang=json,strict*/
+            """"
+            {"Property":["A","B"]}
+            """";
+        Assert.Equal(expectedJson, json);
     }
 
     [Fact]
@@ -68,7 +94,12 @@ public class ValuesJsonConverterTest
     {
         var value = new OneOrMany<DateTime>(new DateTime(2000, 1, 1, 12, 34, 56));
         var json = SerializeObject(value);
-        Assert.Equal("{\"Property\":\"2000-01-01T12:34:56\"}", json);
+
+        var expectedJson = /*lang=json,strict*/
+            """"
+            {"Property":"2000-01-01T12:34:56"}
+            """";
+        Assert.Equal(expectedJson, json);
     }
 
     [Fact]
@@ -76,7 +107,12 @@ public class ValuesJsonConverterTest
     {
         var value = new OneOrMany<DateTimeOffset>(new DateTimeOffset(2000, 1, 1, 12, 34, 56, TimeSpan.FromHours(1)));
         var json = SerializeObject(value);
-        Assert.Equal("{\"Property\":\"2000-01-01T12:34:56+01:00\"}", json);
+
+        var expectedJson = /*lang=json,strict*/
+            """"
+            {"Property":"2000-01-01T12:34:56+01:00"}
+            """";
+        Assert.Equal(expectedJson, json);
     }
 
     [Fact]
@@ -84,21 +120,33 @@ public class ValuesJsonConverterTest
     {
         var value = new OneOrMany<TimeSpan>(new TimeSpan(12, 34, 56));
         var json = SerializeObject(value);
-        Assert.Equal("{\"Property\":\"12:34:56\"}", json);
+
+        var expectedJson = /*lang=json,strict*/
+            """"
+            {"Property":"12:34:56"}
+            """";
+        Assert.Equal(expectedJson, json);
     }
 
     [Fact]
     public void ReadJson_Values_SingleValue_String()
     {
-        var json = "{\"Property\":\"Test String\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "Test String"}
+            """;
         var result = DeserializeObject<Values<int, string>>(json);
+
         Assert.Equal("Test String", result.Value2.First());
     }
 
     [Fact]
     public void ReadJson_Values_SingleValue_IntegerAsString()
     {
-        var json = "{\"Property\":\"123\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "123"}
+            """;
         var result = DeserializeObject<Values<string, int>>(json);
         Assert.Equal(123, result.Value2.First());
     }
@@ -106,7 +154,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_LongAsString()
     {
-        var json = "{\"Property\":\"8294967295\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "8294967295"}
+            """;
         var result = DeserializeObject<Values<string, long>>(json);
         Assert.Equal(8294967295, result.Value2.First());
     }
@@ -114,7 +165,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_FloatAsString()
     {
-        var json = "{\"Property\":\"123.45\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "123.45"}
+            """;
         var result = DeserializeObject<Values<string, float>>(json);
         Assert.Equal(123.45f, result.Value2.First());
     }
@@ -122,7 +176,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DoubleAsString()
     {
-        var json = "{\"Property\":\"123.45\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "123.45"}
+            """;
         var result = DeserializeObject<Values<string, double>>(json);
         Assert.Equal(123.45, result.Value2.First());
     }
@@ -130,7 +187,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_BooleanAsString()
     {
-        var json = "{\"Property\":\"true\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "true"}
+            """;
         var result = DeserializeObject<Values<string, bool>>(json);
         Assert.True(result.Value2.First());
     }
@@ -138,7 +198,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_GuidAsString()
     {
-        var json = "{\"Property\":\"13ec75b3-250c-48a2-8bd0-dfee62852bd4\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "13ec75b3-250c-48a2-8bd0-dfee62852bd4"}
+            """;
         var result = DeserializeObject<Values<string, Guid>>(json);
         Assert.Equal(new Guid("13ec75b3-250c-48a2-8bd0-dfee62852bd4"), result.Value2.First());
     }
@@ -146,7 +209,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_NullablePrimitiveAsString()
     {
-        var json = "{\"Property\":\"123\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "123"}
+            """;
         var result = DeserializeObject<Values<string, int?>>(json);
         Assert.Equal(123, result.Value2.First());
     }
@@ -154,7 +220,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_Primitive()
     {
-        var json = "{\"Property\":123}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": 123}
+            """;
         var result = DeserializeObject<Values<string, int>>(json);
         Assert.Equal(123, result.Value2.First());
     }
@@ -162,7 +231,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DecimalAsString()
     {
-        var json = "{\"Property\":\"123.456\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "123.456"}
+            """;
         var result = DeserializeObject<Values<string, decimal>>(json);
         Assert.Equal(123.456m, result.Value2.First());
     }
@@ -170,7 +242,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_Decimal()
     {
-        var json = "{\"Property\":123.456}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": 123.456}
+            """;
         var result = DeserializeObject<Values<string, decimal>>(json);
         Assert.Equal(123.456m, result.Value2.First());
     }
@@ -178,7 +253,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DateTimeAsISO8601String()
     {
-        var json = "{\"Property\":\"2000-01-01T12:34\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "2000-01-01T12:34"}
+            """;
         var result = DeserializeObject<Values<string, DateTime>>(json);
         Assert.Equal(new DateTime(2000, 1, 1, 12, 34, 0), result.Value2.First());
     }
@@ -186,7 +264,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DateTimeAsMicrosoftDateTimeString()
     {
-        var json = "{\"Property\":\"\\/Date(946730040000)\\/\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "\/Date(946730040000)\/"}
+            """;
         var result = DeserializeObject<Values<string, DateTime>>(json);
         Assert.Equal(new DateTime(2000, 1, 1, 12, 34, 0), result.Value2.First());
     }
@@ -194,7 +275,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DateTimeNegativeOffsetAsMicrosoftDateTimeString()
     {
-        var json = "{\"Property\":\"\\/Date(946730040000-0100)\\/\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "\/Date(946730040000-0100)\/"}
+            """;
         var result = DeserializeObject<Values<string, DateTimeOffset>>(json);
         Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(-1)), result.Value2.First());
     }
@@ -202,7 +286,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DateTimePositiveOffsetAsMicrosoftDateTimeString()
     {
-        var json = "{\"Property\":\"\\/Date(946730040000+0100)\\/\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "\/Date(946730040000+0100)\/"}
+            """;
         var result = DeserializeObject<Values<string, DateTimeOffset>>(json);
         Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(1)), result.Value2.First());
     }
@@ -210,7 +297,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DateTimeOffsetAsISO8601String()
     {
-        var json = "{\"Property\":\"2000-01-01T12:34:00+01:00\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "2000-01-01T12:34:00+01:00"}
+            """;
         var result = DeserializeObject<Values<string, DateTimeOffset>>(json);
         Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(1)), result.Value2.First());
     }
@@ -218,7 +308,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DateTimeOffsetFallback_DateTimeAsISO8601String_NoOffset()
     {
-        var json = "{\"Property\":\"2000-01-01T12:34:00\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "2000-01-01T12:34:00"}
+            """;
         var result = DeserializeObject<Values<DateTime, DateTimeOffset>>(json);
         Assert.Equal(new DateTime(2000, 1, 1, 12, 34, 0), result.Value1.First());
     }
@@ -226,7 +319,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DateTimeOffsetNoFallback_DateTimeAsISO8601String_ZOffset()
     {
-        var json = "{\"Property\":\"2000-01-01T12:34:00Z\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "2000-01-01T12:34:00Z"}
+            """;
         var result = DeserializeObject<Values<DateTime, DateTimeOffset>>(json);
         Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(0)), result.Value2.First());
     }
@@ -234,7 +330,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_DateTimeOffsetNoFallback_DateTimeAsISO8601String_TimeOffset()
     {
-        var json = "{\"Property\":\"2000-01-01T12:34:00+01:00\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "2000-01-01T12:34:00+01:00"}
+            """;
         var result = DeserializeObject<Values<DateTime, DateTimeOffset>>(json);
         Assert.Equal(new DateTimeOffset(2000, 1, 1, 12, 34, 0, TimeSpan.FromHours(1)), result.Value2.First());
     }
@@ -242,7 +341,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_TimeSpanAsISO8601TimeOfDayString()
     {
-        var json = "{\"Property\":\"12:34\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "12:34"}
+            """;
         var result = DeserializeObject<Values<string, TimeSpan>>(json);
         Assert.Equal(new TimeSpan(12, 34, 0), result.Value2.First());
     }
@@ -250,7 +352,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_TimeSpanAsISO8601DurationString()
     {
-        var json = "{\"Property\":\"PT12H34M\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "PT12H34M"}
+            """;
         var result = DeserializeObject<Values<string, TimeSpan>>(json);
         Assert.Equal(new TimeSpan(12, 34, 0), result.Value2.First());
     }
@@ -258,7 +363,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_ParseValueToken_UriAsString()
     {
-        var json = "{\"Property\":\"https://schema.org/Thing\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "https://schema.org/Thing"}
+            """;
         var result = DeserializeObject<Values<string, Uri>>(json);
         Assert.Equal(new Uri("https://schema.org/Thing"), result.Value2.First());
     }
@@ -266,7 +374,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_ParseValueToken_RelativeUriAsString()
     {
-        var json = "{\"Property\":\"thing\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "thing"}
+            """;
         var result = DeserializeObject<Values<string, Uri>>(json);
         Assert.Equal(new Uri("thing", UriKind.Relative), result.Value2.First());
     }
@@ -274,20 +385,23 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_ThingInterface()
     {
-        var json = "{\"Property\":" +
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@type\":\"Book\"," +
-                "\"@id\":\"https://example.com/book/1\"," +
-                "\"name\":\"The Catcher in the Rye\"," +
-                "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
-                "\"image\":\"book1.jpg\"," +
-                "\"author\":{" +
-                    "\"@type\":\"Person\"," +
-                    "\"name\":\"J.D. Salinger\"" +
-                "}" +
-            "}" +
-        "}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "Property": {
+                    "@context": "https://schema.org",
+                    "@type": "Book",
+                    "@id": "https://example.com/book/1",
+                    "name": "The Catcher in the Rye",
+                    "url": "https://www.barnesandnoble.com/store/info/offer/JDSalinger",
+                    "image": "book1.jpg",
+                    "author": {
+                        "@type": "Person",
+                        "name": "J.D. Salinger"
+                    }
+                }
+            }
+            """;
         var result = DeserializeObject<Values<string, IBook>>(json);
         var actual = result.Value2.First();
 
@@ -302,19 +416,22 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_ThingActual()
     {
-        var json = "{\"Property\":" +
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@type\":\"Book\"," +
-                "\"@id\":\"https://example.com/book/1\"," +
-                "\"name\":\"The Catcher in the Rye\"," +
-                "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
-                "\"author\":{" +
-                    "\"@type\":\"Person\"," +
-                    "\"name\":\"J.D. Salinger\"" +
-                "}" +
-            "}" +
-        "}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "Property": {
+                    "@context": "https://schema.org",
+                    "@type": "Book",
+                    "@id": "https://example.com/book/1",
+                    "name": "The Catcher in the Rye",
+                    "url": "https://www.barnesandnoble.com/store/info/offer/JDSalinger",
+                    "author": {
+                        "@type": "Person",
+                        "name": "J.D. Salinger"
+                    }
+                }
+            }
+            """;
         var result = DeserializeObject<Values<string, Book>>(json);
         var actual = result.Value2.First();
 
@@ -328,18 +445,21 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_ThingInterfaceWithNoTypeToken()
     {
-        var json = "{\"Property\":" +
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@id\":\"https://example.com/book/1\"," +
-                "\"name\":\"The Catcher in the Rye\"," +
-                "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
-                "\"author\":{" +
-                    "\"@type\":\"Person\"," +
-                    "\"name\":\"J.D. Salinger\"" +
-                "}" +
-            "}" +
-        "}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "Property": {
+                    "@context": "https://schema.org",
+                    "@id": "https://example.com/book/1",
+                    "name": "The Catcher in the Rye",
+                    "url": "https://www.barnesandnoble.com/store/info/offer/JDSalinger",
+                    "author": {
+                        "@type": "Person",
+                        "name": "J.D. Salinger"
+                    }
+                }
+            }
+            """;
         var result = DeserializeObject<Values<string, IBook>>(json);
         var actual = result.Value2.First();
 
@@ -353,18 +473,21 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_ThingActualWithNoTypeToken()
     {
-        var json = "{\"Property\":" +
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@id\":\"https://example.com/book/1\"," +
-                "\"name\":\"The Catcher in the Rye\"," +
-                "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
-                "\"author\":{" +
-                    "\"@type\":\"Person\"," +
-                    "\"name\":\"J.D. Salinger\"" +
-                "}" +
-            "}" +
-        "}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "Property": {
+                    "@context": "https://schema.org",
+                    "@id": "https://example.com/book/1",
+                    "name": "The Catcher in the Rye",
+                    "url": "https://www.barnesandnoble.com/store/info/offer/JDSalinger",
+                    "author": {
+                        "@type": "Person",
+                        "name":"J.D. Salinger"
+                    }
+                }
+            }
+            """;
         var result = DeserializeObject<Values<string, Book>>(json);
         var actual = result.Value2.First();
 
@@ -378,7 +501,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_Enum_NoUrl()
     {
-        var json = "{\"Property\":\"InStock\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "InStock"}
+            """;
         var result = DeserializeObject<Values<string, ItemAvailability>>(json);
         Assert.Equal(ItemAvailability.InStock, result.Value2.First());
     }
@@ -386,7 +512,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_Enum_HttpSchema()
     {
-        var json = "{\"Property\":\"https://schema.org/InStock\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "https://schema.org/InStock"}
+            """;
         var result = DeserializeObject<Values<string, ItemAvailability>>(json);
         Assert.Equal(ItemAvailability.InStock, result.Value2.First());
     }
@@ -394,7 +523,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_SingleValue_Enum_HttpsSchema()
     {
-        var json = "{\"Property\":\"https://schema.org/InStock\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "https://schema.org/InStock"}
+            """;
         var result = DeserializeObject<Values<string, ItemAvailability>>(json);
         Assert.Equal(ItemAvailability.InStock, result.Value2.First());
     }
@@ -402,7 +534,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_MultiValue_SameType()
     {
-        var json = "{\"Property\":[\"A\",\"B\"]}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": ["A", "B"]}
+            """;
         var result = DeserializeObject<Values<int, string>>(json);
         Assert.Equal(new[] { "A", "B" }, result.Value2);
     }
@@ -410,7 +545,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_MultiValue_SameType_ArgumentsSwapped()
     {
-        var json = "{\"Property\":[\"A\",\"B\"]}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": ["A", "B"]}
+            """;
         var result = DeserializeObject<Values<string, int>>(json);
         Assert.Equal(new[] { "A", "B" }, result.Value1);
     }
@@ -418,7 +556,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_MultiValue_MixedType()
     {
-        var json = "{\"Property\":[1,\"B\"]}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": [1, "B"]}
+            """;
         var result = DeserializeObject<Values<int, string>>(json);
         Assert.Equal(new[] { 1 }, result.Value1);
         Assert.Equal(new[] { "B" }, result.Value2);
@@ -427,7 +568,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_MultiValue_NullablePrimitiveAsString()
     {
-        var json = "{\"Property\":[\"123\",\"456\"]}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": ["123", "456"]}
+            """;
         var result = DeserializeObject<Values<string, int?>>(json);
         Assert.Equal(new int?[] { 123, 456 }, result.Value2);
     }
@@ -435,30 +579,35 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_Values_MultiValue_ThingInterface()
     {
-        var json = "{\"Property\":[" +
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@type\":\"Book\"," +
-                "\"@id\":\"https://example.com/book/1\"," +
-                "\"name\":\"The Catcher in the Rye\"," +
-                "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JDSalinger\"," +
-                "\"author\":{" +
-                    "\"@type\":\"Person\"," +
-                    "\"name\":\"J.D. Salinger\"" +
-                "}" +
-            "}," +
-            "{" +
-                "\"@context\":\"https://schema.org\"," +
-                "\"@type\":\"Book\"," +
-                "\"@id\":\"https://example.com/book/2\"," +
-                "\"name\":\"The Lord of the Rings\"," +
-                "\"url\":\"https://www.barnesandnoble.com/store/info/offer/JRRTolkien\"," +
-                "\"author\":{" +
-                    "\"@type\":\"Person\"," +
-                    "\"name\":\"J.R.R. Tolkien\"" +
-                "}" +
-            "}" +
-        "]}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "Property": [
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Book",
+                        "@id": "https://example.com/book/1",
+                        "name": "The Catcher in the Rye",
+                        "url": "https://www.barnesandnoble.com/store/info/offer/JDSalinger",
+                        "author": {
+                            "@type": "Person",
+                            "name": "J.D. Salinger"
+                        }
+                    },
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Book",
+                        "@id": "https://example.com/book/2",
+                        "name": "The Lord of the Rings",
+                        "url": "https://www.barnesandnoble.com/store/info/offer/JRRTolkien",
+                        "author":  {
+                            "@type": "Person",
+                            "name": "J.R.R. Tolkien"
+                        }
+                    }
+                ]
+            }
+            """;
         var result = DeserializeObject<Values<string, IBook>>(json);
         var actual = result.Value2.ToArray();
 
@@ -478,7 +627,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_OneOrMany_SingleValue_String()
     {
-        var json = "{\"Property\":\"Test String\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "Test String"}
+            """;
         var result = DeserializeObject<OneOrMany<string>>(json);
         Assert.Equal("Test String", result.First());
     }
@@ -486,7 +638,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_OneOrMany_MultiValue_String()
     {
-        var json = "{\"Property\":[\"A\",\"B\"]}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": ["A", "B"]}
+            """;
         var result = DeserializeObject<OneOrMany<string>>(json);
         Assert.Equal(new[] { "A", "B" }, result);
     }
@@ -494,7 +649,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_OneOrMany_SingleValue_NullablePrimitiveAsString()
     {
-        var json = "{\"Property\":\"123\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": "123"}
+            """;
         var result = DeserializeObject<OneOrMany<int?>>(json);
         Assert.Equal(123, result.First());
     }
@@ -502,7 +660,10 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_OneOrMany_MultiValue_NullablePrimitiveAsString()
     {
-        var json = "{\"Property\":[\"123\",\"456\"]}";
+        var json = /*lang=json,strict*/
+            """
+            {"Property": ["123", "456"]}
+            """;
         var result = DeserializeObject<OneOrMany<int?>>(json);
         Assert.Equal(new int?[] { 123, 456 }, result);
     }
@@ -510,13 +671,18 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_ExplicitExternalTypes_AllowCustomNamespace()
     {
-        var json = "{\"Property\":[" +
-            "{" +
-                "\"@type\":\"ExternalSchemaModelCustomNamespace, Schema.NET.Test\"," +
-                "\"name\":\"Property from Thing\"," +
-                "\"myCustomProperty\":\"My Test String\"" +
-            "}" +
-        "]}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "Property": [
+                    {
+                        "@type": "ExternalSchemaModelCustomNamespace, Schema.NET.Test",
+                        "name": "Property from Thing",
+                        "myCustomProperty": "My Test String"
+                    }
+                ]
+            }
+            """;
         var result = DeserializeObject<Values<string, SomeCustomNamespace.ExternalSchemaModelCustomNamespace>>(json);
         var actual = Assert.Single(result.Value2);
         Assert.Equal(new[] { "Property from Thing" }, actual.Name);
@@ -526,13 +692,18 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_ExplicitExternalTypes_AllowSharedNamespace()
     {
-        var json = "{\"Property\":[" +
-            "{" +
-                "\"@type\":\"ExternalSchemaModelSharedNamespace, Schema.NET.Test\"," +
-                "\"name\":\"Property from Thing\"," +
-                "\"myCustomProperty\":\"My Test String\"" +
-            "}" +
-        "]}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "Property": [
+                    {
+                        "@type": "ExternalSchemaModelSharedNamespace, Schema.NET.Test",
+                        "name": "Property from Thing",
+                        "myCustomProperty": "My Test String"
+                    }
+                ]
+            }
+            """;
         var result = DeserializeObject<Values<string, ExternalSchemaModelSharedNamespace>>(json);
         var actual = Assert.Single(result.Value2);
         Assert.Equal(new[] { "Property from Thing" }, actual.Name);
@@ -542,13 +713,18 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_ImplicitExternalTypes_AllowCustomNamespace()
     {
-        var json = "{\"Property\":[" +
-            "{" +
-                "\"@type\":\"SomeCustomNamespace.ExternalSchemaModelCustomNamespace, Schema.NET.Test\"," +
-                "\"name\":\"Property from Thing\"," +
-                "\"myCustomProperty\":\"My Test String\"" +
-            "}" +
-        "]}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "Property": [
+                    {
+                        "@type": "SomeCustomNamespace.ExternalSchemaModelCustomNamespace, Schema.NET.Test",
+                        "name": "Property from Thing",
+                        "myCustomProperty": "My Test String"
+                    }
+                ]
+            }
+            """;
         var result = DeserializeObject<Values<string, IThing>>(json);
         var actual = Assert.Single(result.Value2);
         Assert.IsType<SomeCustomNamespace.ExternalSchemaModelCustomNamespace>(actual);
@@ -559,13 +735,18 @@ public class ValuesJsonConverterTest
     [Fact]
     public void ReadJson_ImplicitExternalTypes_AllowSharedNamespace()
     {
-        var json = "{\"Property\":[" +
-            "{" +
-                "\"@type\":\"Schema.NET.ExternalSchemaModelSharedNamespace, Schema.NET.Test\"," +
-                "\"name\":\"Property from Thing\"," +
-                "\"myCustomProperty\":\"My Test String\"" +
-            "}" +
-        "]}";
+        var json = /*lang=json,strict*/
+            """
+            {
+                "Property": [
+                    {
+                        "@type": "Schema.NET.ExternalSchemaModelSharedNamespace, Schema.NET.Test",
+                        "name": "Property from Thing",
+                        "myCustomProperty": "My Test String"
+                    }
+                ]
+            }
+            """;
         var result = DeserializeObject<Values<string, IThing>>(json);
         var actual = Assert.Single(result.Value2);
         Assert.IsType<ExternalSchemaModelSharedNamespace>(actual);
@@ -581,7 +762,7 @@ public class ValuesJsonConverterTest
         where T : struct, IValues
         => SchemaSerializer.DeserializeObject<TestModel<T>>(json)!.Property;
 
-    private class TestModel<T>
+    private sealed class TestModel<T>
         where T : struct, IValues
     {
         [JsonConverter(typeof(ValuesJsonConverter))]

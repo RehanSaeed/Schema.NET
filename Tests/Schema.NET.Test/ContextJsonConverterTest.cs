@@ -7,7 +7,10 @@ public class ContextJsonConverterTest
     [Fact]
     public void ReadJson_StringContext_ContextHasName()
     {
-        var json = "{\"@context\":\"foo\",\"@type\":\"Thing\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"@context":"foo","@type":"Thing"}
+            """;
 
         var thing = SchemaSerializer.DeserializeObject<Thing>(json);
 
@@ -19,7 +22,10 @@ public class ContextJsonConverterTest
     [Fact]
     public void ReadJson_ObjectContextWithName_ContextHasName()
     {
-        var json = "{\"@context\":{\"name\":\"foo\"},\"@type\":\"Thing\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"@context":{"name":"foo"},"@type":"Thing"}
+            """;
 
         var thing = SchemaSerializer.DeserializeObject<Thing>(json);
 
@@ -31,7 +37,10 @@ public class ContextJsonConverterTest
     [Fact]
     public void ReadJson_ObjectContextWithNameAndLanguage_ContextHasNameAndLanguage()
     {
-        var json = "{\"@context\":{\"name\":\"foo\",\"@language\":\"en\"},\"@type\":\"Thing\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"@context":{"name":"foo","@language":"en"},"@type":"Thing"}
+            """;
 
         var thing = SchemaSerializer.DeserializeObject<Thing>(json);
 
@@ -43,7 +52,10 @@ public class ContextJsonConverterTest
     [Fact]
     public void ReadJson_ArrayContextWithNameAndLanguage_ContextHasNameAndLanguage()
     {
-        var json = "{\"@context\":[\"foo\",{\"@language\":\"en\"}],\"@type\":\"Thing\"}";
+        var json = /*lang=json,strict*/
+            """
+            {"@context":["foo",{"@language":"en"}],"@type":"Thing"}
+            """;
 
         var thing = SchemaSerializer.DeserializeObject<Thing>(json);
 
@@ -57,7 +69,11 @@ public class ContextJsonConverterTest
     {
         var json = new Thing().ToString();
 
-        Assert.Equal("{\"@context\":\"https://schema.org\",\"@type\":\"Thing\"}", json);
+        var expectedJson = /*lang=json,strict*/
+            """
+            {"@context":"https://schema.org","@type":"Thing"}
+            """;
+        Assert.Equal(expectedJson, json);
     }
 
     [Fact]
@@ -68,6 +84,10 @@ public class ContextJsonConverterTest
 
         var json = thing.ToString();
 
-        Assert.Equal("{\"@context\":{\"name\":\"https://schema.org\",\"@language\":\"en\"},\"@type\":\"Thing\"}", json);
+        var expectedJson = /*lang=json,strict*/
+            """
+            {"@context":{"name":"https://schema.org","@language":"en"},"@type":"Thing"}
+            """;
+        Assert.Equal(expectedJson, json);
     }
 }

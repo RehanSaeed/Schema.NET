@@ -1,8 +1,8 @@
 namespace Schema.NET;
 
 using System;
-using System.Collections.Generic;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -24,15 +24,13 @@ public static class SchemaSerializer
     /// </summary>
     private static readonly JsonSerializerOptions HtmlEscapedSerializationSettings;
 
-#pragma warning disable CA1810 // Initialize reference type static fields inline
     static SchemaSerializer()
-#pragma warning restore CA1810 // Initialize reference type static fields inline
     {
         DefaultSerializationSettings = new JsonSerializerOptions
         {
             AllowTrailingCommas = true,
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
         };
 
         HtmlEscapedSerializationSettings = new JsonSerializerOptions

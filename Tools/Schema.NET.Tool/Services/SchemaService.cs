@@ -224,7 +224,7 @@ public class SchemaService
         var @class = new GeneratorSchemaClass(schemaClass.Layer, schemaClass.Id, className, schemaClass.Comment);
 
         @class.Parents.AddRange(schemaClass.SubClassOfIds
-            .Where(id => knownSchemaClasses.Contains(id))
+            .Where(knownSchemaClasses.Contains)
             .Select(id => new GeneratorSchemaClass(id)));
 
         var properties = schemaProperties

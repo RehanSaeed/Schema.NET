@@ -34,32 +34,38 @@ public class CarTest
         VehicleModelDate = 2019,
     };
 
-    private readonly string json =
-        "{" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\":\"Car\"," +
-            "\"name\":\"Volvo XC90\"," +
-            "\"description\":\"The XC90 is pure reflection of luxury that embodies Swedish design heritage. See everything this luxury SUV has to offer.\"," +
-            "\"image\":\"https://www.example.com/volvo_xc90.jpg\"," +
-            "\"brand\":{" +
-                "\"@type\":\"Brand\"," +
-                "\"name\":\"Volvo\"" +
-            "}," +
-            "\"offers\":{" +
-                "\"@type\":\"Offer\"," +
-                "\"availability\":\"https://schema.org/InStock\"," +
-                "\"itemCondition\":\"https://schema.org/NewCondition\"," +
-                "\"price\":47200.0," +
-                "\"priceCurrency\":\"USD\"," +
-                "\"priceValidUntil\":\"2020-11-05\"," +
-                "\"seller\":{" +
-                    "\"@type\":\"Organization\"," +
-                    "\"name\":\"Volvo Dealer\"" +
-                "}" +
-            "}," +
-            "\"modelDate\":2019," +
-            "\"vehicleModelDate\":2019" +
-        "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "Car",
+            "name": "Volvo XC90",
+            "description": "The XC90 is pure reflection of luxury that embodies Swedish design heritage. See everything this luxury SUV has to offer.",
+            "image": "https://www.example.com/volvo_xc90.jpg",
+            "brand": {
+                "@type": "Brand",
+                "name": "Volvo"
+            },
+            "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "itemCondition": "https://schema.org/NewCondition",
+                "price": 47200,
+                "priceCurrency": "USD",
+                "priceValidUntil": "2020-11-05",
+                "seller": {
+                    "@type": "Organization",
+                    "name": "Volvo Dealer"
+                }
+            },
+            "modelDate": 2019,
+            "vehicleModelDate": 2019
+        }
+        """;
+
+    [Fact]
+    public void ToString_CarGoogleStructuredData_ReturnsExpectedJsonLd() =>
+        Assert.Equal(this.json.MinifyJson(), this.car.ToString());
 
     [Fact]
     public void Deserializing_CarJsonLd_ReturnsCar()

@@ -234,6 +234,7 @@ public class ThingTest
         };
 
         Assert.True(thing.TryGetValue("Name", out var result));
+        Assert.NotNull(result);
         var name = Assert.Single(result);
         Assert.Equal("TestName", name);
     }
@@ -247,6 +248,7 @@ public class ThingTest
         };
 
         Assert.True(thing.TryGetValue("Identifier", out var result));
+        Assert.NotNull(result);
         var identifier = Assert.Single(result);
         Assert.Equal(new Uri("https://example.org/test-identifier"), identifier);
     }
@@ -268,6 +270,7 @@ public class ThingTest
         };
 
         Assert.True(thing.TryGetValue("name", out var result));
+        Assert.NotNull(result);
         var name = Assert.Single(result);
         Assert.Equal("TestName", name);
     }

@@ -20,23 +20,25 @@ public class PersonTest
         Url = new Uri("https://example.com"), // Required
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"Person\"," +
-        "\"name\":\"Name\"," +
-        "\"sameAs\":[" +
-            "\"https://www.facebook.com/your-profile\"," +
-            "\"https://instagram.com/yourProfile\"," +
-            "\"https://www.linkedin.com/in/yourprofile\"," +
-            "\"https://plus.google.com/your_profile\"" +
-        "]," +
-        "\"url\":\"https://example.com\"" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Name",
+            "sameAs": [
+                "https://www.facebook.com/your-profile",
+                "https://instagram.com/yourProfile",
+                "https://www.linkedin.com/in/yourprofile",
+                "https://plus.google.com/your_profile"
+            ],
+            "url": "https://example.com"
+        }
+        """;
 
     [Fact]
     public void ToString_SiteNameGoogleStructuredData_ReturnsExpectedJsonLd() =>
-        Assert.Equal(this.json, this.person.ToString());
+        Assert.Equal(this.json.MinifyJson(), this.person.ToString());
 
     [Fact]
     public void Deserializing_PersonJsonLd_ReturnsPerson()

@@ -35,10 +35,10 @@ internal static class FastActivator
     }
 
     private static Func<T1, object> CreateConstructorDelegate<T1>(ConstructorInfo constructor) => Expression.Lambda<Func<T1, object>>(
-            Expression.Convert(
-                Expression.New(constructor, ConstructorParameter<T1>.SingleParameter),
-                typeof(object)),
-            ConstructorParameter<T1>.SingleParameter).Compile();
+        Expression.Convert(
+            Expression.New(constructor, ConstructorParameter<T1>.SingleParameter),
+            typeof(object)),
+        ConstructorParameter<T1>.SingleParameter).Compile();
 
     private static ConstructorInfo? GetConstructorInfo(Type objectType, Type parameter1)
     {

@@ -60,65 +60,67 @@ public class RestaurantTest
         },
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"Restaurant\"," +
-        "\"@id\":\"https://davessteakhouse.example.com\"," +
-        "\"name\":\"Dave's Steak House\"," +
-        "\"image\":\"https://davessteakhouse.example.com/logo.jpg\"," +
-        "\"sameAs\":\"https://davessteakhouse.example.com\"," +
-        "\"address\":{" +
-            "\"@type\":\"PostalAddress\"," +
-            "\"addressCountry\":\"US\"," +
-            "\"addressLocality\":\"New York\"," +
-            "\"addressRegion\":\"NY\"," +
-            "\"postalCode\":\"10019\"," +
-            "\"streetAddress\":\"148 W 51st St\"" +
-        "}," +
-        "\"aggregateRating\":{" +
-            "\"@type\":\"AggregateRating\"," +
-            "\"bestRating\":100," +
-            "\"ratingValue\":88," +
-            "\"worstRating\":1," +
-            "\"ratingCount\":20" +
-        "}," +
-        "\"geo\":{" +
-            "\"@type\":\"GeoCoordinates\"," +
-            "\"latitude\":40.761293," +
-            "\"longitude\":-73.982294" +
-        "}," +
-        "\"review\":{" +
-            "\"@type\":\"Review\"," +
-            "\"description\":\"Great old fashioned steaks but the salads are sub par.\"," +
-            "\"url\":\"https://www.localreviews.com/restaurants/1/2/3/daves-steak-house.html\"," +
-            "\"author\":{" +
-                "\"@type\":\"Person\"," +
-                "\"name\":\"Lisa Kennedy\"," +
-                "\"sameAs\":\"https://plus.google.com/114108465800532712602\"" +
-            "}," +
-            "\"datePublished\":\"2014-03-13\"," +
-            "\"inLanguage\":\"en\"," +
-            "\"publisher\":{" +
-                "\"@type\":\"Organization\"," +
-                "\"name\":\"Denver Post\"," +
-                "\"sameAs\":\"https://www.denverpost.com\"" +
-            "}," +
-            "\"reviewRating\":{" +
-                "\"@type\":\"Rating\"," +
-                "\"bestRating\":4," +
-                "\"ratingValue\":3.5," +
-                "\"worstRating\":1" +
-            "}" +
-        "}," +
-        "\"telephone\":\"+12122459600\"," +
-        "\"priceRange\":\"$$$\"," +
-        "\"servesCuisine\":\"Steak House\"" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "@id": "https://davessteakhouse.example.com",
+            "name": "Dave's Steak House",
+            "image": "https://davessteakhouse.example.com/logo.jpg",
+            "sameAs": "https://davessteakhouse.example.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "US",
+                "addressLocality": "New York",
+                "addressRegion": "NY",
+                "postalCode": "10019",
+                "streetAddress": "148 W 51st St"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "bestRating": 100,
+                "ratingValue": 88,
+                "worstRating": 1,
+                "ratingCount": 20
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 40.761293,
+                "longitude": -73.982294
+            },
+            "review": {
+                "@type": "Review",
+                "description": "Great old fashioned steaks but the salads are sub par.",
+                "url": "https://www.localreviews.com/restaurants/1/2/3/daves-steak-house.html",
+                "author": {
+                    "@type": "Person",
+                    "name": "Lisa Kennedy",
+                    "sameAs": "https://plus.google.com/114108465800532712602"
+                },
+                "datePublished": "2014-03-13",
+                "inLanguage": "en",
+                "publisher": {
+                   "@type": "Organization",
+                   "name": "Denver Post",
+                   "sameAs": "https://www.denverpost.com"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "bestRating": 4,
+                    "ratingValue": 3.5,
+                    "worstRating": 1
+                }
+            },
+            "telephone": "+12122459600",
+            "priceRange": "$$$",
+            "servesCuisine": "Steak House"
+        }
+        """;
 
     [Fact]
     public void ToString_RestaurantGoogleStructuredData_ReturnsExpectedJsonLd() =>
-        Assert.Equal(this.json, this.restaurant.ToString());
+        Assert.Equal(this.json.MinifyJson(), this.restaurant.ToString());
 
     [Fact]
     public void Deserializing_RestaurantJsonLd_ReturnsRestaurant()

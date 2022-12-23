@@ -37,8 +37,7 @@ jobs:
         uses: actions/setup-dotnet@v3.0.3
         with:
           dotnet-version: |
-            3.1.x
-            5.0.x
+            6.0.x
           global-json-file: "./global.json"
       - name: "Dotnet Tool Restore"
         run: dotnet tool restore
@@ -74,6 +73,7 @@ jobs:
           path: "./Artefacts"
       - name: "Publish Test Summary"
         uses: test-summary/action@v2
+        if: always()
         with:
           paths: "./Artefacts/*/*.xml"
 

@@ -13,7 +13,7 @@ public class SchemaPropertyJsonConverter : JsonConverter<List<SchemaObject>>
     public override List<SchemaObject> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(typeToConvert);
+        ArgumentNullException.ThrowIfNull(typeToConvert);
 #else
         if (typeToConvert is null)
         {
@@ -74,7 +74,7 @@ public class SchemaPropertyJsonConverter : JsonConverter<List<SchemaObject>>
 #if NETSTANDARD2_0
             layer = isPartOf.Host.Replace(".schema.org", string.Empty);
 #else
-                layer = isPartOf.Host.Replace(".schema.org", string.Empty, StringComparison.Ordinal);
+            layer = isPartOf.Host.Replace(".schema.org", string.Empty, StringComparison.Ordinal);
 #endif
         }
 

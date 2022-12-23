@@ -23,22 +23,24 @@ public class MixedTypesTest
             },
         };
 
-    private readonly string json =
-        "{" +
-            "\"@context\":\"https://schema.org\"," +
-            "\"@type\":\"Book\"," +
-            "\"@id\":\"https://example.com/book/1\"," +
-            "\"author\":[" +
-                "{" +
-                    "\"@type\":\"Organization\"," +
-                    "\"name\":\"Penguin\"" +
-                "}," +
-                "{" +
-                    "\"@type\":\"Person\"," +
-                    "\"name\":\"J.D. Salinger\"" +
-                "}" +
-            "]" +
-        "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "Book",
+            "@id": "https://example.com/book/1",
+            "author": [
+                {
+                    "@type": "Organization",
+                    "name": "Penguin"
+                },
+                {
+                    "@type": "Person",
+                    "name": "J.D. Salinger"
+                }
+            ]
+        }
+        """;
 
     [Fact]
     public void Deserializing_WithCollectionOfMixedTypes_ReturnsMatchingObject()

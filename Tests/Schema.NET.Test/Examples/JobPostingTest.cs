@@ -45,50 +45,52 @@ public class JobPostingTest
         },
     };
 
-    private readonly string json =
-    "{" +
-        "\"@context\":\"https://schema.org\"," +
-        "\"@type\":\"JobPosting\"," +
-        "\"title\":\"Fitter and Turner\"," +
-        "\"description\":\"<p>Widget assembly role for pressing wheel assemblies.</p><p><strong>Educational Requirements:</strong> Completed level 2 ISTA Machinist Apprenticeship.</p><p><strong>Required Experience:</strong> At least 3 years in a machinist role.</p>\"," +
-        "\"identifier\":{" +
-            "\"@type\":\"PropertyValue\"," +
-            "\"name\":\"MagsRUs Wheel Company\"," +
-            "\"value\":\"1234567\"" +
-        "}," +
-        "\"baseSalary\":{" +
-            "\"@type\":\"MonetaryAmount\"," +
-            "\"currency\":\"USD\"," +
-            "\"value\":{" +
-                "\"@type\":\"QuantitativeValue\"," +
-                "\"unitText\":\"HOUR\"," +
-                "\"value\":40" +
-            "}" +
-        "}," +
-        "\"datePosted\":\"2017-01-18\"," +
-        "\"employmentType\":\"CONTRACTOR\"," +
-        "\"hiringOrganization\":{" +
-            "\"@type\":\"Organization\"," +
-            "\"name\":\"MagsRUs Wheel Company\"," +
-            "\"sameAs\":\"https://www.magsruswheelcompany.com\"" +
-        "}," +
-        "\"jobLocation\":{" +
-            "\"@type\":\"Place\"," +
-            "\"address\":{" +
-                "\"@type\":\"PostalAddress\"," +
-                "\"addressCountry\":\"US\"," +
-                "\"addressLocality\":\"Detroit\"," +
-                "\"addressRegion\":\"MI\"," +
-                "\"postalCode\":\"48201\"," +
-                "\"streetAddress\":\"555 Clancy St\"" +
-            "}" +
-        "}," +
-        "\"validThrough\":\"2017-03-18T00:00:00+00:00\"" +
-    "}";
+    private readonly string json = /*lang=json,strict*/
+        """
+        {
+            "@context": "https://schema.org",
+            "@type": "JobPosting",
+            "title": "Fitter and Turner",
+            "description": "<p>Widget assembly role for pressing wheel assemblies.</p><p><strong>Educational Requirements:</strong> Completed level 2 ISTA Machinist Apprenticeship.</p><p><strong>Required Experience:</strong> At least 3 years in a machinist role.</p>",
+            "identifier": {
+                "@type": "PropertyValue",
+                "name": "MagsRUs Wheel Company",
+                "value": "1234567"
+            },
+            "baseSalary": {
+                "@type": "MonetaryAmount",
+                "currency": "USD",
+                "value": {
+                    "@type": "QuantitativeValue",
+                    "unitText": "HOUR",
+                    "value": 40
+                }
+            },
+            "datePosted": "2017-01-18",
+            "employmentType": "CONTRACTOR",
+            "hiringOrganization": {
+                "@type": "Organization",
+                "name": "MagsRUs Wheel Company",
+                "sameAs": "https://www.magsruswheelcompany.com"
+            },
+            "jobLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "US",
+                    "addressLocality": "Detroit",
+                    "addressRegion": "MI",
+                    "postalCode": "48201",
+                    "streetAddress": "555 Clancy St"
+                }
+            },
+            "validThrough":"2017-03-18T00:00:00+00:00"
+        }
+        """;
 
     [Fact]
     public void ToString_JobPostingGoogleStructuredData_ReturnsExpectedJsonLd() =>
-        Assert.Equal(this.json, this.jobPosting.ToString());
+        Assert.Equal(this.json.MinifyJson(), this.jobPosting.ToString());
 
     [Fact]
     public void Deserializing_JobPostingJsonLd_ReturnsJobPosting()

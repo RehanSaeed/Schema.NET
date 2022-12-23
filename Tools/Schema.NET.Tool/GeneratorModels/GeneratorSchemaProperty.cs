@@ -28,7 +28,7 @@ public class GeneratorSchemaProperty
 
     public ICollection<GeneratorSchemaPropertyType> Types { get; } = new List<GeneratorSchemaPropertyType>();
 
-    public IEnumerable<string> CSharpTypes => this.Types.SelectMany(x => x.CSharpTypeStrings);
+    public IReadOnlyCollection<string> CSharpTypes => this.Types.SelectMany(x => x.CSharpTypeStrings).ToArray();
 
     public string PropertyTypeString
     {

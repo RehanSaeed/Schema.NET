@@ -217,21 +217,21 @@ public class ValuesJsonConverter : JsonConverter<IValues>
                         // If the target is an interface, attempt to identify concrete target
                         var localTargetType = underlyingTargetType;
                         var typeInfo = localTargetType.GetTypeInfo();
-#pragma warning disable IDE0057 // Use range operator. Need to multi-target.
+#if NETCOREAPP3_0_OR_GREATER
+                        if (typeInfo.IsInterface && TryGetConcreteType(typeInfo.Name[1..], out var concreteType))
+#else
                         if (typeInfo.IsInterface && TryGetConcreteType(typeInfo.Name.Substring(1), out var concreteType))
-#pragma warning restore IDE0057 // Use range operator. Need to multi-target.
+#endif
                         {
                             localTargetType = concreteType!;
                         }
 
                         return objectRoot.Deserialize(localTargetType, options);
                     }
-#pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception ex)
                     {
                         Debug.WriteLine(ex.Message);
                     }
-#pragma warning restore CA1031 // Do not catch general exception types
                 }
             }
         }
@@ -369,12 +369,10 @@ public class ValuesJsonConverter : JsonConverter<IValues>
                         result = XmlConvert.ToTimeSpan(valueString);
                         success = true;
                     }
-#pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception ex)
                     {
                         Debug.WriteLine(ex);
                     }
-#pragma warning restore CA1031 // Do not catch general exception types
                 }
             }
             else if (targetType == typeof(Uri))
@@ -479,14 +477,12 @@ public class ValuesJsonConverter : JsonConverter<IValues>
                     return false;
                 }
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 type = null;
                 return false;
             }
-#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }
