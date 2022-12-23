@@ -7,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 /// <summary>
 /// Helper for parsing strings into Enum values.
 /// </summary>
-internal static class EnumHelper
+public static class EnumHelper
 {
     /// <summary>
     /// Converts the string representation of the name or numeric value of one or more
@@ -61,7 +61,7 @@ internal static class EnumHelper
         out object? result)
     {
         string? enumString;
-        if (value is not null && value.StartsWith(Constants.HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
+        if (value is not null && value.Length > Constants.HttpSchemaOrgUrl.Length && value.StartsWith(Constants.HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
 #if NETCOREAPP3_0_OR_GREATER
             enumString = value[(Constants.HttpSchemaOrgUrl.Length + 1)..];
@@ -69,7 +69,7 @@ internal static class EnumHelper
             enumString = value.Substring(Constants.HttpSchemaOrgUrl.Length + 1);
 #endif
         }
-        else if (value is not null && value.StartsWith(Constants.HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
+        else if (value is not null && value.Length > Constants.HttpsSchemaOrgUrl.Length && value.StartsWith(Constants.HttpsSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
 #if NETCOREAPP3_0_OR_GREATER
             enumString = value[(Constants.HttpsSchemaOrgUrl.Length + 1)..];
