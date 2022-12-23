@@ -754,6 +754,37 @@ public class ValuesJsonConverterTest
         Assert.Equal(new[] { "My Test String" }, ((ExternalSchemaModelSharedNamespace)actual).MyCustomProperty);
     }
 
+    [Fact]
+    public void ReadJson_Values_AllowComments()
+    {
+        var json = /*lang=json*/
+            """
+            {
+                "Property": [
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Book",
+                        "@id": "https://example.com/book/1",
+                        "name": "The Catcher in the Rye", // This is the book name
+                        "url": "https://www.barnesandnoble.com/store/info/offer/JDSalinger",
+                        "author": {
+                            "@type": "Person",
+                            "name": "J.D. Salinger" // Author name
+                        }
+                    }
+                ]
+            }
+            """;
+        var result = DeserializeObject<Values<string, IBook>>(json);
+        var actual = result.Value2.ToArray();
+
+        Assert.Equal(new Uri("https://example.com/book/1"), ((Book)actual[0]).Id);
+        Assert.Equal("The Catcher in the Rye", actual[0].Name);
+        Assert.Equal(new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"), (Uri)actual[0].Url!);
+        var author1 = Assert.Single(actual[0].Author.Value2);
+        Assert.Equal("J.D. Salinger", author1.Name);
+    }
+
     private static string SerializeObject<T>(T value)
         where T : struct, IValues
         => SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
