@@ -15,16 +15,16 @@ internal sealed class Program
 
     private static async Task Main()
     {
-        Console.WriteLine("Downloading '{0}'...", SchemaJsonSourceUrl);
+        Console.WriteLine(Resources.Downloading, SchemaJsonSourceUrl);
 
         using var httpClient = new HttpClient();
         using var stream = await httpClient.GetStreamAsync(new Uri(SchemaJsonSourceUrl)).ConfigureAwait(true);
 
-        Console.WriteLine("Saving to '{0}'...", SchemaJsonDestinationFilePath);
+        Console.WriteLine(Resources.SavingTo, SchemaJsonDestinationFilePath);
 
         using var fileStream = File.Open(SchemaJsonDestinationFilePath, FileMode.Create);
         await stream.CopyToAsync(fileStream).ConfigureAwait(true);
 
-        Console.WriteLine("Update complete!");
+        Console.WriteLine(Resources.UpdateComplete);
     }
 }

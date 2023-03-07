@@ -17,11 +17,8 @@ public class SchemaRepository : ISchemaRepository
 
     public async Task<(IEnumerable<SchemaClass> Classes, IEnumerable<SchemaProperty> Properties, IEnumerable<SchemaEnumerationValue> EnumerationValues)> GetObjectsAsync()
     {
-        var schemaObjects = await this.GetSchemaObjectsAsync().ConfigureAwait(false);
-        if (schemaObjects is null)
-        {
+        var schemaObjects = await this.GetSchemaObjectsAsync().ConfigureAwait(false) ??
             throw new InvalidOperationException("No schema objects found.");
-        }
 
         schemaObjects = schemaObjects.ToArray();
 
