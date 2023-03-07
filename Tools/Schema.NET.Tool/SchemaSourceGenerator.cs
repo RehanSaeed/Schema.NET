@@ -22,11 +22,8 @@ public class SchemaSourceGenerator : ISourceGenerator
     {
         var schemaDataStream = Assembly
             .GetExecutingAssembly()
-            .GetManifestResourceStream(SchemaDataName);
-        if (schemaDataStream == null)
-        {
+            .GetManifestResourceStream(SchemaDataName) ??
             throw new InvalidOperationException($"Schema data file '{SchemaDataName}' not found.");
-        }
 
         var schemaRepository = new SchemaRepository(schemaDataStream);
         var schemaService = new SchemaService(

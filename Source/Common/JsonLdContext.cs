@@ -28,7 +28,7 @@ public class JsonLdContext : IEquatable<JsonLdContext>
     /// </summary>
     /// <param name="context">The context.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator string?(JsonLdContext context) => context.Name;
+    public static implicit operator string?(JsonLdContext context) => context?.Name;
 
     /// <summary>
     /// Implements the operator ==.
@@ -38,7 +38,15 @@ public class JsonLdContext : IEquatable<JsonLdContext>
     /// <returns>
     /// The result of the operator.
     /// </returns>
-    public static bool operator ==(JsonLdContext left, JsonLdContext right) => left.Equals(right);
+    public static bool operator ==(JsonLdContext left, JsonLdContext right)
+    {
+        if (left is null)
+        {
+            return right is null;
+        }
+
+        return left.Equals(right);
+    }
 
     /// <summary>
     /// Implements the operator !=.

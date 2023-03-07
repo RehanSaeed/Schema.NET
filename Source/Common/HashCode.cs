@@ -48,6 +48,15 @@ public struct HashCode : IEquatable<HashCode>
     public static bool operator !=(HashCode left, HashCode right) => !(left == right);
 
     /// <summary>
+    /// Performs a conversion from <see cref="HashCode"/> to <see cref="int"/>.
+    /// </summary>
+    /// <param name="hashCode">The hash code.</param>
+    /// <returns>
+    /// The result of the conversion.
+    /// </returns>
+    public static int FromHashCode(HashCode hashCode) => hashCode.value;
+
+    /// <summary>
     /// Takes the hash code of the specified item.
     /// </summary>
     /// <typeparam name="T">The type of the item.</typeparam>
@@ -111,7 +120,9 @@ public struct HashCode : IEquatable<HashCode>
     /// <exception cref="NotSupportedException">Implicitly convert this struct to an <see cref="int" /> to get the hash code.</exception>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public override int GetHashCode() =>
+#pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
         throw new NotSupportedException("Implicitly convert this struct to an int to get the hash code.");
+#pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
 
     private static int CombineHashCodes(int h1, int h2)
     {
