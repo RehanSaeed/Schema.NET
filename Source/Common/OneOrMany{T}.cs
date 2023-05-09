@@ -141,6 +141,7 @@ public readonly struct OneOrMany<T>
     /// </summary>
     /// <param name="item">The single item value.</param>
     /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA2225 // Operator overloads have named alternates
     public static implicit operator OneOrMany<T>(T item) => new(item);
 
     /// <summary>
@@ -155,7 +156,9 @@ public readonly struct OneOrMany<T>
     /// </summary>
     /// <param name="list">The list of values.</param>
     /// <returns>The result of the conversion.</returns>
+#pragma warning disable CA1002 // Do not expose generic lists
     public static implicit operator OneOrMany<T>(List<T> list) => new(list);
+#pragma warning restore CA1002 // Do not expose generic lists
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="OneOrMany{T}"/> to <typeparamref name="T"/>.
@@ -182,7 +185,10 @@ public readonly struct OneOrMany<T>
     /// <returns>
     /// The result of the conversion.
     /// </returns>
+#pragma warning disable CA1002 // Do not expose generic lists
     public static implicit operator List<T>(OneOrMany<T> oneOrMany) => oneOrMany.ToList();
+#pragma warning restore CA1002 // Do not expose generic lists
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
     /// <summary>
     /// Implements the operator ==.

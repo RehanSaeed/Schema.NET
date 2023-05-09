@@ -154,6 +154,8 @@ public readonly struct Values<T1, T2, T3>
     /// </summary>
     public OneOrMany<T3> Value3 { get; }
 
+#pragma warning disable CA2225 // Operator overloads have named alternates
+#pragma warning disable CA1002 // Do not expose generic lists
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1,T2}"/>.
     /// </summary>
@@ -311,6 +313,8 @@ public readonly struct Values<T1, T2, T3>
     /// The result of the conversion.
     /// </returns>
     public static implicit operator List<T3>(Values<T1, T2, T3> values) => values.Value3.ToList();
+#pragma warning restore CA1002 // Do not expose generic lists
+#pragma warning restore CA2225 // Operator overloads have named alternates
 
     /// <summary>
     /// Implements the operator ==.

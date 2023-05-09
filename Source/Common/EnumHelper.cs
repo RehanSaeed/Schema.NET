@@ -25,21 +25,23 @@ internal static class EnumHelper
         string? value,
         out object? result)
     {
-#if NETSTANDARD2_0 || NET472 || NET462
+#if NET6_0_OR_GREATER
+#pragma warning disable IDE0022 // Use expression body for methods
+        return Enum.TryParse(enumType, value, out result);
+#pragma warning restore IDE0022 // Use expression body for methods
+#else
         try
         {
             result = Enum.Parse(enumType, value);
             return true;
         }
+#pragma warning disable CA1031 // Do not catch general exception types
         catch
+#pragma warning restore CA1031 // Do not catch general exception types
         {
             result = null;
             return false;
         }
-#else
-#pragma warning disable IDE0022 // Use expression body for methods
-        return Enum.TryParse(enumType, value, out result);
-#pragma warning restore IDE0022 // Use expression body for methods
 #endif
     }
 

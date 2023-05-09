@@ -228,9 +228,11 @@ public class ValuesJsonConverter : JsonConverter<IValues>
 
                         return objectRoot.Deserialize(localTargetType, options);
                     }
-                    catch (Exception ex)
+#pragma warning disable CA1031 // Do not catch general exception types
+                    catch (Exception exception)
+#pragma warning restore CA1031 // Do not catch general exception types
                     {
-                        Debug.WriteLine(ex.Message);
+                        Debug.WriteLine(exception);
                     }
                 }
             }
@@ -369,9 +371,11 @@ public class ValuesJsonConverter : JsonConverter<IValues>
                         result = XmlConvert.ToTimeSpan(valueString);
                         success = true;
                     }
-                    catch (Exception ex)
+#pragma warning disable CA1031 // Do not catch general exception types
+                    catch (Exception exception)
+#pragma warning restore CA1031 // Do not catch general exception types
                     {
-                        Debug.WriteLine(ex);
+                        Debug.WriteLine(exception);
                     }
                 }
             }
@@ -477,9 +481,11 @@ public class ValuesJsonConverter : JsonConverter<IValues>
                     return false;
                 }
             }
-            catch (Exception ex)
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(exception);
                 type = null;
                 return false;
             }

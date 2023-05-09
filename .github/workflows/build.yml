@@ -29,7 +29,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.5.2
         with:
           lfs: true
           fetch-depth: 0
@@ -52,7 +52,7 @@ jobs:
         run: dotnet cake --target=Pack
         shell: pwsh
       - name: "Publish Artefacts"
-        uses: actions/upload-artifact@v3.1.1
+        uses: actions/upload-artifact@v3.1.2
         if: always()
         with:
           name: ${{matrix.os}}
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Download Artefact"
-        uses: actions/download-artifact@v3.0.1
+        uses: actions/download-artifact@v3.0.2
         with:
           path: "./Artefacts"
       - name: "Publish Test Summary"
@@ -89,7 +89,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: "Download Artefact"
-        uses: actions/download-artifact@v3.0.1
+        uses: actions/download-artifact@v3.0.2
         with:
           name: "windows-latest"
       - name: "Dotnet NuGet Add Source"
@@ -109,7 +109,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: "Download Artefact"
-        uses: actions/download-artifact@v3.0.1
+        uses: actions/download-artifact@v3.0.2
         with:
           name: "windows-latest"
       - name: "Dotnet NuGet Push"

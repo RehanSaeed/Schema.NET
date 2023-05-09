@@ -16,15 +16,18 @@ public static class SchemaSerializer
     /// <summary>
     /// Default serializer settings used when HTML escaping is not required.
     /// </summary>
-    private static readonly JsonSerializerOptions DefaultSerializationSettings;
+    private static readonly JsonSerializerOptions DefaultSerializationSettings = new()
+    {
+        AllowTrailingCommas = true,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    };
 
     /// <summary>
     /// Serializer settings used when trying to avoid XSS vulnerabilities where user-supplied data is used
     /// and the output of the serialization is embedded into a web page raw.
     /// </summary>
-    private static readonly JsonSerializerOptions HtmlEscapedSerializationSettings;
-
-    static SchemaSerializer()
+    private static readonly JsonSerializerOptions HtmlEscapedSerializationSettings = new()
     {
         DefaultSerializationSettings = new JsonSerializerOptions
         {
