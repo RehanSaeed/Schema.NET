@@ -60,6 +60,14 @@ public static class EnumHelper
         string? value,
         out object? result)
     {
+#if NET6_0_OR_GREATER
+        ArgumentNullException.ThrowIfNull(enumType);
+#else
+        if (enumType is null)
+        {
+            throw new ArgumentNullException(nameof(enumType));
+        }
+#endif
         string? enumString;
         if (value is not null && value.Length > Constants.HttpSchemaOrgUrl.Length && value.StartsWith(Constants.HttpSchemaOrgUrl, StringComparison.OrdinalIgnoreCase))
         {
