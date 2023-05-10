@@ -21,6 +21,7 @@ public static class SchemaSerializer
         AllowTrailingCommas = true,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        ReadCommentHandling = JsonCommentHandling.Skip,
     };
 
     /// <summary>
@@ -31,6 +32,7 @@ public static class SchemaSerializer
     {
         AllowTrailingCommas = true,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+        ReadCommentHandling = JsonCommentHandling.Skip,
     };
 
     /// <summary>
