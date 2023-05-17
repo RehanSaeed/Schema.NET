@@ -114,6 +114,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{AF228B
 		Source\Common\ValuesJsonConverter.cs = Source\Common\ValuesJsonConverter.cs
 		Source\Common\Values{T1,T2,T3,T4,T5,T6,T7}.cs = Source\Common\Values{T1,T2,T3,T4,T5,T6,T7}.cs
 		Source\Common\Values{T1,T2,T3,T4,T5,T6}.cs = Source\Common\Values{T1,T2,T3,T4,T5,T6}.cs
+		Source\Common\Values{T1,T2,T3,T4,T5}.cs = Source\Common\Values{T1,T2,T3,T4,T5}.cs
 		Source\Common\Values{T1,T2,T3,T4}.cs = Source\Common\Values{T1,T2,T3,T4}.cs
 		Source\Common\Values{T1,T2,T3}.cs = Source\Common\Values{T1,T2,T3}.cs
 		Source\Common\Values{T1,T2}.cs = Source\Common\Values{T1,T2}.cs
