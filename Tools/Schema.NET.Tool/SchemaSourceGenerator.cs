@@ -30,7 +30,6 @@ public class SchemaSourceGenerator : ISourceGenerator
             new IClassOverride[]
             {
                 new AddQueryInputPropertyToSearchAction(),
-                new AddTextTypeToActionTarget(),
                 new AddNumberTypeToMediaObjectHeightAndWidth(),
                 new RenameEventProperty(),
             },
