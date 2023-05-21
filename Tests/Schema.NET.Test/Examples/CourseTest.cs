@@ -10,7 +10,7 @@ public class CourseTest
     {
         Name = "Introduction to Computer Science and Programming", // Required
         Description = "Introductory CS course laying out the basics.", // Required
-        Provider = new Organization() // Recommended
+        SourceOrganization = new Organization() // Note: This is typically set via "Provider" (a pending property) and is required
         {
             Name = "University of Technology - Eureka",
             SameAs = new Uri("https://www.ut-eureka.edu"),
@@ -24,7 +24,7 @@ public class CourseTest
             "@type": "Course",
             "name": "Introduction to Computer Science and Programming",
             "description": "Introductory CS course laying out the basics.",
-            "provider": {
+            "sourceOrganization": {
                 "@type": "Organization",
                 "name": "University of Technology - Eureka",
                 "sameAs": "https://www.ut-eureka.edu"
