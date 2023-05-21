@@ -27,4 +27,8 @@
     <Compile Include="../Common/*.*" />
   </ItemGroup>
 
+  <ItemGroup Label="Source Generation">
+    <AdditionalFiles Include="../../Data/*.*" LinkBase="Data" />
+  </ItemGroup>
+
 </Project>

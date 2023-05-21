@@ -2,25 +2,22 @@ namespace Schema.NET.Tool.Repositories;
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.Text;
 using Schema.NET.Tool.Models;
 
 public class SchemaRepository : ISchemaRepository
 {
-    private readonly Stream stream;
+    private readonly SourceText jsonLd;
 
-    public SchemaRepository(Stream stream) => this.stream = stream;
+    public SchemaRepository(SourceText jsonLd) => this.jsonLd = jsonLd;
 
-    public async Task<(IEnumerable<SchemaClass> Classes, IEnumerable<SchemaProperty> Properties, IEnumerable<SchemaEnumerationValue> EnumerationValues)> GetObjectsAsync()
+    public (IEnumerable<SchemaClass> Classes, IEnumerable<SchemaProperty> Properties, IEnumerable<SchemaEnumerationValue> EnumerationValues) GetObjects()
     {
-        var schemaObjects = await this.GetSchemaObjectsAsync().ConfigureAwait(false) ??
+        var schemaObjects = Deserialize<List<SchemaObject>>(this.jsonLd.ToString(), new SchemaPropertyJsonConverter()) ??
             throw new InvalidOperationException("No schema objects found.");
-
-        schemaObjects = schemaObjects.ToArray();
 
         var schemaClasses = schemaObjects.OfType<SchemaClass>().ToArray();
 
@@ -34,17 +31,13 @@ public class SchemaRepository : ISchemaRepository
             schemaObjects.OfType<SchemaEnumerationValue>().ToArray());
     }
 
-    public async Task<IEnumerable<SchemaObject>?> GetSchemaObjectsAsync() =>
-        await DeserializeAsync<List<SchemaObject>>(this.stream, new SchemaPropertyJsonConverter())
-        .ConfigureAwait(false);
-
-    private static async Task<T?> DeserializeAsync<T>(Stream jsonStream, JsonConverter converter)
+    private static T? Deserialize<T>(string json, JsonConverter converter)
     {
         var options = new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         };
         options.Converters.Add(converter);
-        return await JsonSerializer.DeserializeAsync<T>(jsonStream, options).ConfigureAwait(false);
+        return JsonSerializer.Deserialize<T>(json, options);
     }
 }
