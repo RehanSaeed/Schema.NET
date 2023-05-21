@@ -1,31 +1,41 @@
 namespace Schema.NET.Tool;
 
 using System;
+using System.Collections.Immutable;
 using System.Linq;
-using System.Reflection;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Diagnostics;
 using Schema.NET.Tool.CustomOverrides;
 using Schema.NET.Tool.GeneratorModels;
 using Schema.NET.Tool.Repositories;
 using Schema.NET.Tool.Services;
 
 [Generator]
-public class SchemaSourceGenerator : ISourceGenerator
+public class SchemaSourceGenerator : IIncrementalGenerator
 {
-    private const string SchemaDataName = "Schema.NET.Tool.Data.schemaorg-all-https.jsonld";
+    private const string SchemaDataName = "schemaorg-all-https.jsonld";
 
-    public void Initialize(GeneratorInitializationContext context)
+    public void Initialize(IncrementalGeneratorInitializationContext context)
     {
+        var schemaJsonLdDataFile = context.AdditionalTextsProvider
+            .Where(static text => text.Path.EndsWith(SchemaDataName, StringComparison.OrdinalIgnoreCase))
+            .Collect();
+
+        var configuration = context.AnalyzerConfigOptionsProvider
+            .Select((provider, _) => provider.GlobalOptions);
+
+        context.RegisterSourceOutput(configuration.Combine(schemaJsonLdDataFile), Generate);
     }
 
-    public void Execute(GeneratorExecutionContext context)
+    private static void Generate(SourceProductionContext context, (AnalyzerConfigOptions Options, ImmutableArray<AdditionalText> AdditionalText) data)
     {
-        var schemaDataStream = Assembly
-            .GetExecutingAssembly()
-            .GetManifestResourceStream(SchemaDataName) ??
-            throw new InvalidOperationException($"Schema data file '{SchemaDataName}' not found.");
+        var schemaJsonLdDataFile = data.AdditionalText.SingleOrDefault() ??
+            throw new InvalidOperationException($"Schema data file '{SchemaDataName}' not configured.");
 
-        var schemaRepository = new SchemaRepository(schemaDataStream);
+        var schemaJsonLdData = schemaJsonLdDataFile.GetText(context.CancellationToken) ??
+            throw new InvalidOperationException($"Unable to read schema data file '{SchemaDataName}'.");
+
+        var schemaRepository = new SchemaRepository(schemaJsonLdData);
         var schemaService = new SchemaService(
             new IClassOverride[]
             {
@@ -35,12 +45,9 @@ public class SchemaSourceGenerator : ISourceGenerator
             },
             Array.Empty<IEnumerationOverride>(),
             schemaRepository,
-            IncludePendingSchemaObjects(context));
+            IncludePendingSchemaObjects(data.Options));
 
-#pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
-        var schemaObjects = schemaService.GetObjectsAsync().GetAwaiter().GetResult();
-#pragma warning restore VSTHRD002 // Avoid problematic synchronous waits
-
+        var schemaObjects = schemaService.GetObjects();
         if (schemaObjects is not null)
         {
             foreach (var schemaObject in schemaObjects)
@@ -60,12 +67,9 @@ public class SchemaSourceGenerator : ISourceGenerator
         }
     }
 
-    private static bool IncludePendingSchemaObjects(GeneratorExecutionContext context)
-    {
-        var configuration = context.AnalyzerConfigOptions.GlobalOptions;
-        return configuration.TryGetValue($"build_property.IncludePendingSchemaObjects", out var value) &&
+    private static bool IncludePendingSchemaObjects(AnalyzerConfigOptions options) =>
+        options.TryGetValue($"build_property.IncludePendingSchemaObjects", out var value) &&
             value.Equals("true", StringComparison.OrdinalIgnoreCase);
-    }
 
     private static string RenderClass(GeneratorSchemaClass schemaClass)
     {

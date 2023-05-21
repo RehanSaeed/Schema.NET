@@ -6,7 +6,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Schema.NET.Tool.CustomOverrides;
 using Schema.NET.Tool.GeneratorModels;
 using Schema.NET.Tool.Repositories;
@@ -32,11 +31,10 @@ public class SchemaService
         this.includePending = includePending;
     }
 
-    public async Task<IEnumerable<GeneratorSchemaObject>> GetObjectsAsync()
+    public IEnumerable<GeneratorSchemaObject> GetObjects()
     {
-        var (schemaClasses, schemaProperties, schemaValues) = await this.schemaRepository
-            .GetObjectsAsync()
-            .ConfigureAwait(false);
+        var (schemaClasses, schemaProperties, schemaValues) = this.schemaRepository
+            .GetObjects();
 
         var isEnumMap = new HashSet<string>(
             schemaClasses.Where(c => c.IsEnum).Select(c => c.Label),

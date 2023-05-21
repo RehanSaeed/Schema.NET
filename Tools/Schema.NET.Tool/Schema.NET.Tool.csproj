@@ -68,7 +68,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="../../Data/*.*" LinkBase="Data" />
   </ItemGroup>
 
 </Project>
