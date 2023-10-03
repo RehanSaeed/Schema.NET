@@ -15,7 +15,7 @@ public class Values2Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
@@ -88,7 +88,7 @@ public class Values2Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
@@ -112,7 +112,7 @@ public class Values2Test
         Assert.True(values.HasValue1);
         Assert.Equal(2, values.Value1.Count);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.Equal(new List<object>() { 1, 2 }, values.Cast<object>().ToList());
     }
 

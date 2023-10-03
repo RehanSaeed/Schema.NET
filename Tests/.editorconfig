@@ -1,4 +1,29 @@
 ##########################################
+# .NET
+##########################################
+
+[*.cs]
+# CA1014: Mark assemblies with CLSCompliant.
+# Justification: Not needed here
+# https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1014
+dotnet_diagnostic.CA1014.severity = none
+
+# CA1062: Validate arguments of public methods
+# Justification: xUnit Theory method parameters don't need to be validated
+# https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1062
+dotnet_diagnostic.CA1062.severity = none
+
+# CA1707: Identifiers should not contain underscores
+# Justification: Test method names contain underscores
+# https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1707
+dotnet_diagnostic.CA1707.severity = none
+
+# IDE0005: Remove unnecessary usings/imports.
+# Justification: There is a bug in the .NET SDK that requires GenerateDocumentationFile to be enabled for IDE0005 to work.
+# https://github.com/dotnet/aspnetcore/issues/47912
+dotnet_diagnostic.IDE0005.severity = none
+
+##########################################
 # StyleCop
 ##########################################
 
@@ -28,23 +53,3 @@ dotnet_diagnostic.SA1602.severity = none
 # Justification: Comments turned off
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1633.md
 dotnet_diagnostic.SA1633.severity = none
-
-##########################################
-# Custom
-##########################################
-
-[*.cs]
-# CA1014: Mark assemblies with CLSCompliant.
-# Justification: Not needed here
-# https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1014
-dotnet_diagnostic.CA1014.severity = none
-
-# CA1062: Validate arguments of public methods
-# Justification: xUnit Theory method parameters don't need to be validated
-# https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1062
-dotnet_diagnostic.CA1062.severity = none
-
-# CA1707: Identifiers should not contain underscores
-# Justification: Test method names contain underscores
-# https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1707
-dotnet_diagnostic.CA1707.severity = none

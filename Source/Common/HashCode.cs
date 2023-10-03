@@ -79,7 +79,7 @@ public struct HashCode : IEquatable<HashCode>
     /// <typeparam name="T">The type of the item.</typeparam>
     /// <param name="item">The item.</param>
     /// <returns>The new hash code.</returns>
-    public HashCode And<T>(T? item) => new(CombineHashCodes(this.value, GetHashCode(item)));
+    public readonly HashCode And<T>(T? item) => new(CombineHashCodes(this.value, GetHashCode(item)));
 
     /// <summary>
     /// Adds the hash code of the specified items in the collection.
@@ -87,7 +87,7 @@ public struct HashCode : IEquatable<HashCode>
     /// <typeparam name="T">The type of the items.</typeparam>
     /// <param name="items">The collection.</param>
     /// <returns>The new hash code.</returns>
-    public HashCode AndEach<T>(IEnumerable<T>? items)
+    public readonly HashCode AndEach<T>(IEnumerable<T>? items)
     {
         if (items is null)
         {
@@ -98,10 +98,10 @@ public struct HashCode : IEquatable<HashCode>
     }
 
     /// <inheritdoc />
-    public bool Equals(HashCode other) => this.value.Equals(other.value);
+    public readonly bool Equals(HashCode other) => this.value.Equals(other.value);
 
     /// <inheritdoc />
-    public override bool Equals(object? obj)
+    public override readonly bool Equals(object? obj)
     {
         if (obj is HashCode hashCode)
         {
@@ -119,7 +119,7 @@ public struct HashCode : IEquatable<HashCode>
     /// </returns>
     /// <exception cref="NotSupportedException">Implicitly convert this struct to an <see cref="int" /> to get the hash code.</exception>
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public override int GetHashCode() =>
+    public override readonly int GetHashCode() =>
 #pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
         throw new NotSupportedException("Implicitly convert this struct to an int to get the hash code.");
 #pragma warning restore CA1065 // Do not raise exceptions in unexpected locations

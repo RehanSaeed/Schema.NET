@@ -60,7 +60,7 @@ public class OneOrManyTest
     public void Count_DefaultStructConstructor_ReturnsZero() => Assert.Empty(default(OneOrMany<int>));
 
     [Fact]
-    public void Count_DefaultClassConstructor_ReturnsZero() => Assert.Empty(default(OneOrMany<string>));
+    public void Count_DefaultClassConstructor_ReturnsZero() => Assert.Empty(default(OneOrMany<string>)!);
 
     [Fact]
     public void Count_NullItem_ReturnsZero() => Assert.Empty(new OneOrMany<int?>((int?)null));
