@@ -15,7 +15,7 @@ public class Values7Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -59,7 +59,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.True(values.HasValue3);
         Assert.Single(values.Value3);
         Assert.False(values.HasValue4);
@@ -81,7 +81,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.True(values.HasValue4);
@@ -104,7 +104,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -127,7 +127,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -150,7 +150,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -282,7 +282,7 @@ public class Values7Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -326,7 +326,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.True(values.HasValue3);
         Assert.Single(values.Value3);
         Assert.False(values.HasValue4);
@@ -348,7 +348,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.True(values.HasValue4);
@@ -371,7 +371,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -394,7 +394,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -417,7 +417,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -440,7 +440,7 @@ public class Values7Test
         Assert.True(values.HasValue1);
         Assert.Equal(2, values.Value1.Count);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -484,7 +484,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.True(values.HasValue3);
         Assert.Equal(2, values.Value3.Count);
         Assert.False(values.HasValue4);
@@ -506,7 +506,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.True(values.HasValue4);
@@ -528,7 +528,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -550,7 +550,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -572,7 +572,7 @@ public class Values7Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);

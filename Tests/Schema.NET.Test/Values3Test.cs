@@ -15,7 +15,7 @@ public class Values3Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
@@ -39,7 +39,7 @@ public class Values3Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.True(values.HasValue3);
         Assert.Single(values.Value3);
         Assert.Equal(new List<object>() { DayOfWeek.Friday }, values.Cast<object>().ToList());
@@ -119,7 +119,7 @@ public class Values3Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
@@ -143,7 +143,7 @@ public class Values3Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.True(values.HasValue3);
         Assert.Single(values.Value3);
         Assert.Equal(new List<object>() { DayOfWeek.Friday }, values.Cast<object>().ToList());
@@ -157,7 +157,7 @@ public class Values3Test
         Assert.True(values.HasValue1);
         Assert.Equal(2, values.Value1.Count);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.Equal(new List<object>() { 1, 2 }, values.Cast<object>().ToList());
     }
 
@@ -181,7 +181,7 @@ public class Values3Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2);
+        Assert.Empty(values.Value2!);
         Assert.True(values.HasValue3);
         Assert.Equal(2, values.Value3.Count);
         Assert.Equal(new List<object>() { DayOfWeek.Friday, DayOfWeek.Monday }, values.Cast<object>().ToList());
