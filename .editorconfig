@@ -1,5 +1,5 @@
-# Version: 4.0.0 (Using https://semver.org/)
-# Updated: 2021-10-12
+# Version: 5.0.0 (Using https://semver.org/)
+# Updated: 2023-09-19
 # See https://github.com/RehanSaeed/EditorConfig/releases for release notes.
 # See https://github.com/RehanSaeed/EditorConfig for updates to this file.
 # See http://EditorConfig.org for more information about .editorconfig files.
@@ -44,11 +44,11 @@ indent_size = 2
 indent_size = 2
 
 # Markdown Files
-[*.md]
+[*.{md,mdx}]
 trim_trailing_whitespace = false
 
 # Web Files
-[*.{htm,html,js,jsm,ts,tsx,css,sass,scss,less,pcss,svg,vue}]
+[*.{htm,html,js,jsm,ts,tsx,cjs,cts,ctsx,mjs,mts,mtsx,css,sass,scss,less,pcss,svg,vue}]
 indent_size = 2
 
 # Batch Files
@@ -64,146 +64,184 @@ end_of_line = lf
 indent_style = tab
 
 ##########################################
+# Visual Studio Spell Checker
+# https://learn.microsoft.com/visualstudio/ide/text-spell-checker
+##########################################
+
+# Note that you must have the relevant Windows language pack installed on your machine for this to work.
+spelling_languages = en-GB            # NEW
+spelling_error_severity = information # NEW
+spelling_checkable_types =            # NEW
+
+##########################################
 # Default .NET Code Style Severities
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/configuration-options#scope
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/configuration-options#scope
 ##########################################
 
 [*.{cs,csx,cake,vb,vbx}]
+
 # Default Severity for all .NET Code Style rules below
 dotnet_analyzer_diagnostic.severity = warning
 
 ##########################################
-# Language Rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules
+# Language Rules - .NET
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules
 ##########################################
 
-# .NET Style Rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules#net-style-rules
 [*.{cs,csx,cake,vb,vbx}]
-# "this." and "Me." qualifiers
-dotnet_style_qualification_for_field = true:warning
-dotnet_style_qualification_for_property = true:warning
-dotnet_style_qualification_for_method = true:warning
-dotnet_style_qualification_for_event = true:warning
-# Language keywords instead of framework type names for type references
-dotnet_style_predefined_type_for_locals_parameters_members = true:warning
-dotnet_style_predefined_type_for_member_access = true:warning
-# Modifier preferences
-dotnet_style_require_accessibility_modifiers = always:warning
-csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:warning
-visual_basic_preferred_modifier_order = Partial,Default,Private,Protected,Public,Friend,NotOverridable,Overridable,MustOverride,Overloads,Overrides,MustInherit,NotInheritable,Static,Shared,Shadows,ReadOnly,WriteOnly,Dim,Const,WithEvents,Widening,Narrowing,Custom,Async:warning
-dotnet_style_readonly_field = true:warning
-# Parentheses preferences
-dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:warning
-dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:warning
-dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:warning
-dotnet_style_parentheses_in_other_operators = never_if_unnecessary:warning
-# Expression-level preferences
-dotnet_style_object_initializer = true:warning
-dotnet_style_collection_initializer = true:warning
-dotnet_style_explicit_tuple_names = true:warning
-dotnet_style_prefer_inferred_tuple_names = true:warning
-dotnet_style_prefer_inferred_anonymous_type_member_names = true:warning
-dotnet_style_prefer_auto_properties = true:warning
-dotnet_style_prefer_conditional_expression_over_assignment = false:suggestion
-dotnet_diagnostic.IDE0045.severity = suggestion
-dotnet_style_prefer_conditional_expression_over_return = false:suggestion
-dotnet_diagnostic.IDE0046.severity = suggestion
-dotnet_style_prefer_compound_assignment = true:warning
-dotnet_style_prefer_simplified_interpolation = true:warning
-dotnet_style_prefer_simplified_boolean_expressions = true:warning
-# Null-checking preferences
-dotnet_style_coalesce_expression = true:warning
-dotnet_style_null_propagation = true:warning
-dotnet_style_prefer_is_null_check_over_reference_equality_method = true:warning
+
 # File header preferences
 # file_header_template = <copyright file="{fileName}" company="PROJECT-AUTHOR">\n© PROJECT-AUTHOR\n</copyright>
 # If you use StyleCop, you'll need to disable SA1636: File header copyright text should match.
 # dotnet_diagnostic.SA1636.severity = none
-# Undocumented
-dotnet_style_operator_placement_when_wrapping = end_of_line:warning
-csharp_style_prefer_null_check_over_type_check = true:warning
-dotnet_style_namespace_match_folder = true:suggestion
-dotnet_diagnostic.IDE0130.severity = suggestion
 
-# C# Style Rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules#c-style-rules
-[*.{cs,csx,cake}]
-# 'var' preferences
-csharp_style_var_for_built_in_types = true:warning
-csharp_style_var_when_type_is_apparent = true:warning
-csharp_style_var_elsewhere = true:warning
-# Expression-bodied members
-csharp_style_expression_bodied_methods = true:warning
-csharp_style_expression_bodied_constructors = true:warning
-csharp_style_expression_bodied_operators = true:warning
-csharp_style_expression_bodied_properties = true:warning
-csharp_style_expression_bodied_indexers = true:warning
-csharp_style_expression_bodied_accessors = true:warning
-csharp_style_expression_bodied_lambdas = true:warning
-csharp_style_expression_bodied_local_functions = true:warning
-# Pattern matching preferences
-csharp_style_pattern_matching_over_is_with_cast_check = true:warning
-csharp_style_pattern_matching_over_as_with_null_check = true:warning
-csharp_style_prefer_switch_expression = true:warning
-csharp_style_prefer_pattern_matching = true:warning
-csharp_style_prefer_not_pattern = true:warning
 # Expression-level preferences
-csharp_style_inlined_variable_declaration = true:warning
-csharp_prefer_simple_default_expression = true:warning
-csharp_style_pattern_local_over_anonymous_function = true:warning
-csharp_style_deconstructed_variable_declaration = true:warning
-csharp_style_prefer_index_operator = true:warning
-csharp_style_prefer_range_operator = true:warning
-csharp_style_implicit_object_creation_when_type_is_apparent = true:warning
-# "Null" checking preferences
-csharp_style_throw_expression = true:warning
-csharp_style_conditional_delegate_call = true:warning
-# Code block preferences
-csharp_prefer_braces = true:warning
-csharp_prefer_simple_using_statement = true:suggestion
-dotnet_diagnostic.IDE0063.severity = suggestion
-# 'using' directive preferences
-csharp_using_directive_placement = inside_namespace:warning
+dotnet_style_object_initializer = true
+dotnet_style_collection_initializer = true
+dotnet_style_coalesce_expression = true
+dotnet_style_null_propagation = true
+dotnet_style_prefer_auto_properties = true
+dotnet_style_explicit_tuple_names = true
+dotnet_style_prefer_inferred_tuple_names = true
+dotnet_style_prefer_inferred_anonymous_type_member_names = true
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true
+dotnet_style_prefer_conditional_expression_over_assignment = false
+dotnet_diagnostic.IDE0045.severity = suggestion
+dotnet_style_prefer_conditional_expression_over_return = false
+dotnet_diagnostic.IDE0046.severity = suggestion
+dotnet_style_prefer_compound_assignment = true
+dotnet_style_prefer_simplified_interpolation = true
+dotnet_style_prefer_simplified_boolean_expressions = true
+dotnet_style_namespace_match_folder = true
+dotnet_diagnostic.IDE0130.severity = suggestion
+dotnet_style_prefer_foreach_explicit_cast_in_source = when_strongly_typed
+
+# Field preferences
+dotnet_style_readonly_field = true # NEW
+
+# Language keyword vs. framework types preferences
+dotnet_style_predefined_type_for_locals_parameters_members = true # NEW
+dotnet_style_predefined_type_for_member_access = true # NEW
+
 # Modifier preferences
-csharp_prefer_static_local_function = true:warning
-# Undocumented
-csharp_style_namespace_declarations = file_scoped:warning
+dotnet_style_require_accessibility_modifiers = always # NEW
+
+# Parameter preferences
+dotnet_code_quality_unused_parameters = all
+
+# Parentheses preferences
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary
+
+# Suppression preferences
+dotnet_remove_unnecessary_suppression_exclusions = none
+
+# "this."" preferences
+dotnet_style_qualification_for_field = true
+dotnet_style_qualification_for_property = true
+dotnet_style_qualification_for_method = true
+dotnet_style_qualification_for_event = true
 
 ##########################################
-# Unnecessary Code Rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/unnecessary-code-rules
+# Language Rules - C#
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules
 ##########################################
 
-# .NET Unnecessary code rules
-[*.{cs,csx,cake,vb,vbx}]
-dotnet_code_quality_unused_parameters = all:warning
-dotnet_remove_unnecessary_suppression_exclusions = none:warning
-
-# C# Unnecessary code rules
 [*.{cs,csx,cake}]
-csharp_style_unused_value_expression_statement_preference = discard_variable:suggestion
+
+# 'using' directive preferences
+csharp_using_directive_placement = inside_namespace
+
+# Code-block preferences
+csharp_prefer_braces = true
+csharp_prefer_simple_using_statement = true
+dotnet_diagnostic.IDE0063.severity = suggestion
+csharp_style_namespace_declarations = file_scoped
+csharp_style_prefer_method_group_conversion = true # NEW
+csharp_style_prefer_top_level_statements = true # NEW
+
+# Expression-bodied members
+csharp_style_expression_bodied_constructors = true
+csharp_style_expression_bodied_methods = true
+csharp_style_expression_bodied_operators = true
+csharp_style_expression_bodied_properties = true
+csharp_style_expression_bodied_indexers = true
+csharp_style_expression_bodied_accessors = true
+csharp_style_expression_bodied_lambdas = true
+csharp_style_expression_bodied_local_functions = true
+
+# Expression-level preferences
+csharp_style_unused_value_expression_statement_preference = discard_variable
 dotnet_diagnostic.IDE0058.severity = suggestion
-csharp_style_unused_value_assignment_preference = discard_variable:suggestion
+csharp_style_unused_value_assignment_preference = discard_variable
 dotnet_diagnostic.IDE0059.severity = suggestion
+csharp_style_throw_expression = true
+csharp_style_inlined_variable_declaration = true
+csharp_prefer_simple_default_expression = true
+csharp_style_prefer_local_over_anonymous_function = true # New
+csharp_style_deconstructed_variable_declaration = true
+csharp_style_prefer_index_operator = true
+csharp_style_prefer_range_operator = true
+csharp_style_implicit_object_creation_when_type_is_apparent = true
+csharp_style_prefer_null_check_over_type_check = true
+csharp_style_prefer_tuple_swap = true # NEW
+csharp_style_prefer_utf8_string_literals = true # NEW
+
+# Modifier preferences
+csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async
+csharp_prefer_static_local_function = true
+csharp_style_prefer_readonly_struct = true # NEW
+csharp_style_prefer_readonly_struct_member = true # NEW
+
+# "null" checking preferences
+csharp_style_conditional_delegate_call = true
+
+# Pattern-matching preferences
+csharp_style_pattern_matching_over_as_with_null_check = true
+csharp_style_pattern_matching_over_is_with_cast_check = true
+csharp_style_prefer_switch_expression = true
+csharp_style_prefer_pattern_matching = true
+csharp_style_prefer_not_pattern = true
+csharp_style_prefer_extended_property_pattern = true # NEW
+
+# 'var' preferences
+csharp_style_var_for_built_in_types = true
+csharp_style_var_when_type_is_apparent = true
+csharp_style_var_elsewhere = true
 
 ##########################################
-# Formatting Rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules
+# .NET Coding Conventions - .NET
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/dotnet-formatting-options
 ##########################################
 
-# .NET formatting rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules#net-formatting-rules
 [*.{cs,csx,cake,vb,vbx}]
-# Organize using directives
+
+# .NET code refactoring options
+# https://learn.microsoft.com/visualstudio/ide/reference/code-styles-refactoring-options
+dotnet_style_operator_placement_when_wrapping = end_of_line
+
+##########################################
+# Formatting Rules - .NET
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/dotnet-formatting-options
+##########################################
+
+[*.{cs,csx,cake,vb,vbx}]
+
+# Using directive options
 dotnet_sort_system_directives_first = true
 dotnet_separate_import_directive_groups = false
 
-# C# formatting rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules#c-formatting-rules
+##########################################
+# Formatting Rules - C#
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/csharp-formatting-options
+##########################################
+
 [*.{cs,csx,cake}]
+
 # Newline options
-# https://docs.microsoft.com/visualstudio/ide/editorconfig-formatting-conventions#new-line-options
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules#new-line-options
 csharp_new_line_before_open_brace = all
 csharp_new_line_before_else = true
 csharp_new_line_before_catch = true
@@ -211,16 +249,18 @@ csharp_new_line_before_finally = true
 csharp_new_line_before_members_in_object_initializers = true
 csharp_new_line_before_members_in_anonymous_types = true
 csharp_new_line_between_query_expression_clauses = true
+
 # Indentation options
-# https://docs.microsoft.com/visualstudio/ide/editorconfig-formatting-conventions#indentation-options
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules#indentation-options
 csharp_indent_case_contents = true
 csharp_indent_switch_labels = true
 csharp_indent_labels = no_change
 csharp_indent_block_contents = true
 csharp_indent_braces = false
 csharp_indent_case_contents_when_block = false
+
 # Spacing options
-# https://docs.microsoft.com/visualstudio/ide/editorconfig-formatting-conventions#spacing-options
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules#spacing-options
 csharp_space_after_cast = false
 csharp_space_after_keywords_in_control_flow_statements = true
 csharp_space_between_parentheses = false
@@ -243,14 +283,15 @@ csharp_space_around_declaration_statements = false
 csharp_space_before_open_square_brackets = false
 csharp_space_between_empty_square_brackets = false
 csharp_space_between_square_brackets = false
+
 # Wrap options
-# https://docs.microsoft.com/visualstudio/ide/editorconfig-formatting-conventions#wrap-options
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules#wrap-options
 csharp_preserve_single_line_statements = false
 csharp_preserve_single_line_blocks = true
 
 ##########################################
 # .NET Naming Rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/naming-rules
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/naming-rules
 ##########################################
 
 [*.{cs,csx,cake,vb,vbx}]
@@ -283,11 +324,11 @@ dotnet_naming_style.internal_error_style.required_suffix = ____INTERNAL_ERROR___
 ##########################################
 # .NET Design Guideline Field Naming Rules
 # Naming rules for fields follow the .NET Framework design guidelines
-# https://docs.microsoft.com/dotnet/standard/design-guidelines/index
+# https://learn.microsoft.com/dotnet/standard/design-guidelines/
 ##########################################
 
 # All public/protected/protected_internal constant fields must be PascalCase
-# https://docs.microsoft.com/dotnet/standard/design-guidelines/field
+# https://learn.microsoft.com/dotnet/standard/design-guidelines/field
 dotnet_naming_symbols.public_protected_constant_fields_group.applicable_accessibilities = public, protected, protected_internal
 dotnet_naming_symbols.public_protected_constant_fields_group.required_modifiers         = const
 dotnet_naming_symbols.public_protected_constant_fields_group.applicable_kinds           = field
@@ -296,7 +337,7 @@ dotnet_naming_rule.public_protected_constant_fields_must_be_pascal_case_rule.sty
 dotnet_naming_rule.public_protected_constant_fields_must_be_pascal_case_rule.severity   = warning
 
 # All public/protected/protected_internal static readonly fields must be PascalCase
-# https://docs.microsoft.com/dotnet/standard/design-guidelines/field
+# https://learn.microsoft.com/dotnet/standard/design-guidelines/field
 dotnet_naming_symbols.public_protected_static_readonly_fields_group.applicable_accessibilities = public, protected, protected_internal
 dotnet_naming_symbols.public_protected_static_readonly_fields_group.required_modifiers         = static, readonly
 dotnet_naming_symbols.public_protected_static_readonly_fields_group.applicable_kinds           = field
@@ -305,7 +346,7 @@ dotnet_naming_rule.public_protected_static_readonly_fields_must_be_pascal_case_r
 dotnet_naming_rule.public_protected_static_readonly_fields_must_be_pascal_case_rule.severity   = warning
 
 # No other public/protected/protected_internal fields are allowed
-# https://docs.microsoft.com/dotnet/standard/design-guidelines/field
+# https://learn.microsoft.com/dotnet/standard/design-guidelines/field
 dotnet_naming_symbols.other_public_protected_fields_group.applicable_accessibilities = public, protected, protected_internal
 dotnet_naming_symbols.other_public_protected_fields_group.applicable_kinds           = field
 dotnet_naming_rule.other_public_protected_fields_disallowed_rule.symbols             = other_public_protected_fields_group
@@ -377,36 +418,36 @@ dotnet_naming_rule.sanity_check_uncovered_field_case_rule.severity = error
 
 # All of the following must be PascalCase:
 # - Namespaces
-#   https://docs.microsoft.com/dotnet/standard/design-guidelines/names-of-namespaces
+#   https://learn.microsoft.com/dotnet/standard/design-guidelines/names-of-namespaces
 #   https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1300.md
 # - Classes and Enumerations
-#   https://docs.microsoft.com/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces
+#   https://learn.microsoft.com/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces
 #   https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1300.md
 # - Delegates
-#   https://docs.microsoft.com/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces#names-of-common-types
+#   https://learn.microsoft.com/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces#names-of-common-types
 # - Constructors, Properties, Events, Methods
-#   https://docs.microsoft.com/dotnet/standard/design-guidelines/names-of-type-members
+#   https://learn.microsoft.com/dotnet/standard/design-guidelines/names-of-type-members
 dotnet_naming_symbols.element_group.applicable_kinds = namespace, class, enum, struct, delegate, event, method, property
 dotnet_naming_rule.element_rule.symbols              = element_group
 dotnet_naming_rule.element_rule.style                = pascal_case_style
 dotnet_naming_rule.element_rule.severity             = warning
 
 # Interfaces use PascalCase and are prefixed with uppercase 'I'
-# https://docs.microsoft.com/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces
+# https://learn.microsoft.com/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces
 dotnet_naming_symbols.interface_group.applicable_kinds = interface
 dotnet_naming_rule.interface_rule.symbols              = interface_group
 dotnet_naming_rule.interface_rule.style                = prefix_interface_with_i_style
 dotnet_naming_rule.interface_rule.severity             = warning
 
 # Generics Type Parameters use PascalCase and are prefixed with uppercase 'T'
-# https://docs.microsoft.com/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces
+# https://learn.microsoft.com/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces
 dotnet_naming_symbols.type_parameter_group.applicable_kinds = type_parameter
 dotnet_naming_rule.type_parameter_rule.symbols              = type_parameter_group
 dotnet_naming_rule.type_parameter_rule.style                = prefix_type_parameters_with_t_style
 dotnet_naming_rule.type_parameter_rule.severity             = warning
 
 # Function parameters use camelCase
-# https://docs.microsoft.com/dotnet/standard/design-guidelines/naming-parameters
+# https://learn.microsoft.com/dotnet/standard/design-guidelines/naming-parameters
 dotnet_naming_symbols.parameters_group.applicable_kinds = parameter
 dotnet_naming_rule.parameters_rule.symbols              = parameters_group
 dotnet_naming_rule.parameters_rule.style                = camel_case_style

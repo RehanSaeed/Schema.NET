@@ -23,13 +23,12 @@ public static class EnumHelper
         [NotNullWhen(true)]
 #endif
         string? value,
+#if NET6_0_OR_GREATER
+        out object? result) =>
+        Enum.TryParse(enumType, value, out result);
+#else
         out object? result)
     {
-#if NET6_0_OR_GREATER
-#pragma warning disable IDE0022 // Use expression body for methods
-        return Enum.TryParse(enumType, value, out result);
-#pragma warning restore IDE0022 // Use expression body for methods
-#else
         try
         {
             result = Enum.Parse(enumType, value);
@@ -42,8 +41,8 @@ public static class EnumHelper
             result = null;
             return false;
         }
-#endif
     }
+#endif
 
     /// <summary>
     /// Converts the Schema URI representation of the enum type to an equivalent enumerated object.
