@@ -16,6 +16,7 @@ root = true
 charset = utf-8
 indent_style = space
 indent_size = 4
+tab_width = 4
 insert_final_newline = true
 trim_trailing_whitespace = true
 
@@ -210,6 +211,10 @@ csharp_style_prefer_extended_property_pattern = true # NEW
 csharp_style_var_for_built_in_types = true
 csharp_style_var_when_type_is_apparent = true
 csharp_style_var_elsewhere = true
+
+# Undocumented
+# https://github.com/dotnet/docs/issues/28791
+csharp_style_prefer_primary_constructors = true # NEW
 
 ##########################################
 # .NET Coding Conventions - .NET
