@@ -167,17 +167,17 @@ public readonly struct Values<T1, T2, T3, T4, T5>
             }
         }
 
-        this.HasValue1 = items1?.Count > 0;
-        this.HasValue2 = items2?.Count > 0;
-        this.HasValue3 = items3?.Count > 0;
-        this.HasValue4 = items4?.Count > 0;
-        this.HasValue5 = items5?.Count > 0;
-
         this.Value1 = items1 == null ? default : (OneOrMany<T1>)items1;
         this.Value2 = items2 == null ? default : (OneOrMany<T2>)items2;
         this.Value3 = items3 == null ? default : (OneOrMany<T3>)items3;
         this.Value4 = items4 == null ? default : (OneOrMany<T4>)items4;
         this.Value5 = items5 == null ? default : (OneOrMany<T5>)items5;
+
+        this.HasValue1 = this.Value1.Count > 0;
+        this.HasValue2 = this.Value2.Count > 0;
+        this.HasValue3 = this.Value3.Count > 0;
+        this.HasValue4 = this.Value4.Count > 0;
+        this.HasValue5 = this.Value5.Count > 0;
     }
 
     /// <summary>

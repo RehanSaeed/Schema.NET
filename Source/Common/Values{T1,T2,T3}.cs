@@ -105,13 +105,13 @@ public readonly struct Values<T1, T2, T3>
             }
         }
 
-        this.HasValue1 = items1?.Count > 0;
-        this.HasValue2 = items2?.Count > 0;
-        this.HasValue3 = items3?.Count > 0;
-
         this.Value1 = items1 == null ? default : (OneOrMany<T1>)items1;
         this.Value2 = items2 == null ? default : (OneOrMany<T2>)items2;
         this.Value3 = items3 == null ? default : (OneOrMany<T3>)items3;
+
+        this.HasValue1 = this.Value1.Count > 0;
+        this.HasValue2 = this.Value2.Count > 0;
+        this.HasValue3 = this.Value3.Count > 0;
     }
 
     /// <summary>
