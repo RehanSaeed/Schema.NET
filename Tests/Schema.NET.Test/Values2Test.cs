@@ -44,6 +44,23 @@ public class Values2Test
     }
 
     [Fact]
+    public void Constructor_StringItems_NullOrWhitespaceDoesntHaveValue()
+    {
+        object[] nullOrWhitespaceValues = new[]
+        {
+            string.Empty,
+            null!,
+            "\u2028 \u2029 \u0009 \u000A \u000B \u000C \u000D \u0085",
+        };
+        var values = new Values<int, string>(nullOrWhitespaceValues);
+
+        Assert.False(values.HasValue1);
+        Assert.Empty(values.Value1);
+        Assert.False(values.HasValue2, $"{nameof(values.HasValue2)}: Expected: False, Actual: True");
+        AssertEx.Empty(values.Value2);
+    }
+
+    [Fact]
     public void Constructor_NullList_ThrowsArgumentNullException() =>
         Assert.Throws<ArgumentNullException>(() => new Values<int, string>((List<object>)null!));
 
