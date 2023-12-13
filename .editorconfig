@@ -84,6 +84,10 @@ spelling_checkable_types =            # NEW
 # Default Severity for all .NET Code Style rules below
 dotnet_analyzer_diagnostic.severity = warning
 
+# VSSpell001: Spell Check
+dotnet_diagnostic.VSSpell001.severity = suggestion
+dotnet_diagnostic.VSSpell002.severity = suggestion
+
 ##########################################
 # Language Rules - .NET
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules
@@ -162,6 +166,7 @@ dotnet_diagnostic.IDE0063.severity = suggestion
 csharp_style_namespace_declarations = file_scoped
 csharp_style_prefer_method_group_conversion = true # NEW
 csharp_style_prefer_top_level_statements = true # NEW
+dotnet_diagnostic.IDE0290.severity = suggestion # NEW - Use primary constructor
 
 # Expression-bodied members
 csharp_style_expression_bodied_constructors = true
@@ -189,6 +194,11 @@ csharp_style_implicit_object_creation_when_type_is_apparent = true
 csharp_style_prefer_null_check_over_type_check = true
 csharp_style_prefer_tuple_swap = true # NEW
 csharp_style_prefer_utf8_string_literals = true # NEW
+dotnet_diagnostic.IDE0028.severity = suggestion # NEW - Use collection initializers
+dotnet_diagnostic.IDE0090.severity = suggestion # NEW - Simplify new expression
+dotnet_diagnostic.IDE0300.severity = suggestion # NEW - Collection initialization can be simplified
+dotnet_diagnostic.IDE0301.severity = suggestion # NEW - Collection initialization can be simplified
+dotnet_diagnostic.IDE0305.severity = suggestion # NEW - Collection initialization can be simplified
 
 # Modifier preferences
 csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async
@@ -293,6 +303,27 @@ csharp_space_between_square_brackets = false
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules#wrap-options
 csharp_preserve_single_line_statements = false
 csharp_preserve_single_line_blocks = true
+
+##########################################
+# Code Quality Rules - C#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/
+##########################################
+
+[*.{cs,csx,cake}]
+
+# Usage rules
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/usage-warnings
+dotnet_diagnostic.CA2249.severity = suggestion # NEW - Consider using String.Contains instead of String.IndexOf
+
+# Performance rules
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/performance-warnings
+dotnet_diagnostic.CA1854.severity = suggestion # NEW - Prefer the IDictionary.TryGetValue(TKey, out TValue) method
+dotnet_diagnostic.CA1859.severity = suggestion # NEW - Use concrete types when possible for improved performance
+dotnet_diagnostic.CA1861.severity = suggestion # NEW - Avoid constant arrays as arguments
+dotnet_diagnostic.CA1865.severity = suggestion # NEW - Use 'string.Method(char)' instead of 'string.Method(string)' for string with single char
+dotnet_diagnostic.CA1866.severity = suggestion # NEW - Use 'string.Method(char)' instead of 'string.Method(string)' for string with single char
+dotnet_diagnostic.CA1867.severity = suggestion # NEW - Use 'string.Method(char)' instead of 'string.Method(string)' for string with single char
+dotnet_diagnostic.CA1869.severity = suggestion # NEW - Cache and reuse 'JsonSerializerOptions' instances
 
 ##########################################
 # .NET Naming Rules
