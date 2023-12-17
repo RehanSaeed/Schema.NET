@@ -15,7 +15,7 @@ public class Values5Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -51,7 +51,7 @@ public class Values5Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.True(values.HasValue3);
         Assert.Single(values.Value3);
         Assert.False(values.HasValue4);
@@ -69,7 +69,7 @@ public class Values5Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.True(values.HasValue4);
@@ -88,7 +88,7 @@ public class Values5Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -118,6 +118,29 @@ public class Values5Test
         Assert.Equal(
             new List<object>() { 1, "Foo", DayOfWeek.Friday, person, DateTime.MinValue },
             values.Cast<object>().ToList());
+    }
+
+    [Fact]
+    public void Constructor_StringItems_NullOrWhitespaceDoesntHaveValue()
+    {
+        object[] nullOrWhitespaceValues = new[]
+        {
+            string.Empty,
+            null!,
+            "\u2028 \u2029 \u0009 \u000A \u000B \u000C \u000D \u0085",
+        };
+        var values = new Values<int, string, DayOfWeek, Person, DateTime>(nullOrWhitespaceValues);
+
+        Assert.False(values.HasValue1);
+        Assert.Empty(values.Value1);
+        Assert.False(values.HasValue2, $"{nameof(values.HasValue2)}: Expected: False, Actual: True");
+        AssertEx.Empty(values.Value2);
+        Assert.False(values.HasValue3);
+        Assert.Empty(values.Value3);
+        Assert.False(values.HasValue4);
+        Assert.Empty(values.Value4);
+        Assert.False(values.HasValue5);
+        Assert.Empty(values.Value5);
     }
 
     [Fact]
@@ -196,7 +219,7 @@ public class Values5Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -232,7 +255,7 @@ public class Values5Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.True(values.HasValue3);
         Assert.Single(values.Value3);
         Assert.False(values.HasValue4);
@@ -250,7 +273,7 @@ public class Values5Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.True(values.HasValue4);
@@ -269,7 +292,7 @@ public class Values5Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -288,7 +311,7 @@ public class Values5Test
         Assert.True(values.HasValue1);
         Assert.Equal(2, values.Value1.Count);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);
@@ -324,7 +347,7 @@ public class Values5Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.True(values.HasValue3);
         Assert.Equal(2, values.Value3.Count);
         Assert.False(values.HasValue4);
@@ -344,7 +367,7 @@ public class Values5Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.True(values.HasValue4);
@@ -362,7 +385,7 @@ public class Values5Test
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.False(values.HasValue3);
         Assert.Empty(values.Value3);
         Assert.False(values.HasValue4);

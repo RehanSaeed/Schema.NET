@@ -15,7 +15,7 @@ public class Values2Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
@@ -41,6 +41,23 @@ public class Values2Test
         Assert.True(values.HasValue2);
         Assert.Single(values.Value2);
         Assert.Equal(new List<object>() { 1, "Foo" }, values.Cast<object>().ToList());
+    }
+
+    [Fact]
+    public void Constructor_StringItems_NullOrWhitespaceDoesntHaveValue()
+    {
+        object[] nullOrWhitespaceValues = new[]
+        {
+            string.Empty,
+            null!,
+            "\u2028 \u2029 \u0009 \u000A \u000B \u000C \u000D \u0085",
+        };
+        var values = new Values<int, string>(nullOrWhitespaceValues);
+
+        Assert.False(values.HasValue1);
+        Assert.Empty(values.Value1);
+        Assert.False(values.HasValue2, $"{nameof(values.HasValue2)}: Expected: False, Actual: True");
+        AssertEx.Empty(values.Value2);
     }
 
     [Fact]
@@ -88,7 +105,7 @@ public class Values2Test
         Assert.True(values.HasValue1);
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
     }
 
@@ -112,7 +129,7 @@ public class Values2Test
         Assert.True(values.HasValue1);
         Assert.Equal(2, values.Value1.Count);
         Assert.False(values.HasValue2);
-        Assert.Empty(values.Value2!);
+        AssertEx.Empty(values.Value2);
         Assert.Equal(new List<object>() { 1, 2 }, values.Cast<object>().ToList());
     }
 
