@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 /// The @context for a JSON-LD document.
 /// See https://w3c.github.io/json-ld-syntax
 /// </summary>
-public class JsonLdContext : IEquatable<JsonLdContext>
+public sealed class JsonLdContext : IEquatable<JsonLdContext>
 {
     /// <summary>
     /// Gets or sets the name.
@@ -28,7 +28,7 @@ public class JsonLdContext : IEquatable<JsonLdContext>
     /// </summary>
     /// <param name="context">The context.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator string?(JsonLdContext context) => context?.Name;
+    public static implicit operator string?(JsonLdContext? context) => context?.Name;
 
     /// <summary>
     /// Implements the operator ==.
@@ -38,7 +38,7 @@ public class JsonLdContext : IEquatable<JsonLdContext>
     /// <returns>
     /// The result of the operator.
     /// </returns>
-    public static bool operator ==(JsonLdContext left, JsonLdContext right)
+    public static bool operator ==(JsonLdContext? left, JsonLdContext? right)
     {
         if (left is null)
         {
@@ -56,7 +56,7 @@ public class JsonLdContext : IEquatable<JsonLdContext>
     /// <returns>
     /// The result of the operator.
     /// </returns>
-    public static bool operator !=(JsonLdContext left, JsonLdContext right) => !(left == right);
+    public static bool operator !=(JsonLdContext? left, JsonLdContext? right) => !(left == right);
 
     /// <inheritdoc />
     public bool Equals(JsonLdContext? other)

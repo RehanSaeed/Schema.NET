@@ -6,39 +6,39 @@ using System.Collections.Generic;
 public class BookBenchmark : SchemaBenchmarkBase
 {
     public override Thing InitialiseThing() =>
-        new Book()
+        new Book
         {
             Id = new Uri("https://example.com/book/1"),
             Name = "The Catcher in the Rye",
-            Author = new Person()
+            Author = new Person
             {
                 Name = "J.D. Salinger",
             },
             Url = new Uri("https://www.barnesandnoble.com/store/info/offer/JDSalinger"),
-            WorkExample = new List<ICreativeWork>()
+            WorkExample = new List<ICreativeWork?>
             {
-                    new Book()
+                    new Book
                     {
                         Isbn = "031676948",
                         BookEdition = "2nd Edition",
                         BookFormat = BookFormatType.Hardcover,
-                        PotentialAction = new ReadAction()
+                        PotentialAction = new ReadAction
                         {
-                            Target = new EntryPoint()
+                            Target = new EntryPoint
                             {
                                 UrlTemplate = "https://www.barnesandnoble.com/store/info/offer/0316769487?purchase=true",
-                                ActionPlatform = new List<Uri>()
+                                ActionPlatform = new List<Uri?>
                                 {
                                     new Uri("https://schema.org/DesktopWebPlatform"),
                                     new Uri("https://schema.org/IOSPlatform"),
                                     new Uri("https://schema.org/AndroidPlatform"),
                                 },
                             },
-                            ExpectsAcceptanceOf = new Offer()
+                            ExpectsAcceptanceOf = new Offer
                             {
                                 Price = 6.99M,
                                 PriceCurrency = "USD",
-                                EligibleRegion = new Country()
+                                EligibleRegion = new Country
                                 {
                                     Name = "US",
                                 },
@@ -46,28 +46,28 @@ public class BookBenchmark : SchemaBenchmarkBase
                             },
                         },
                     },
-                    new Book()
+                    new Book
                     {
                         Isbn = "031676947",
                         BookEdition = "1st Edition",
                         BookFormat = BookFormatType.EBook,
-                        PotentialAction = new ReadAction()
+                        PotentialAction = new ReadAction
                         {
-                            Target = new EntryPoint()
+                            Target = new EntryPoint
                             {
                                 UrlTemplate = "https://www.barnesandnoble.com/store/info/offer/031676947?purchase=true",
-                                ActionPlatform = new List<Uri>()
+                                ActionPlatform = new List<Uri?>
                                 {
                                     new Uri("https://schema.org/DesktopWebPlatform"),
                                     new Uri("https://schema.org/IOSPlatform"),
                                     new Uri("https://schema.org/AndroidPlatform"),
                                 },
                             },
-                            ExpectsAcceptanceOf = new Offer()
+                            ExpectsAcceptanceOf = new Offer
                             {
                                 Price = 1.99M,
                                 PriceCurrency = "USD",
-                                EligibleRegion = new Country()
+                                EligibleRegion = new Country
                                 {
                                     Name = "UK",
                                 },

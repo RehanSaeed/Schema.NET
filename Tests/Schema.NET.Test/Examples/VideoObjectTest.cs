@@ -14,7 +14,7 @@ public class VideoObjectTest
         Expires = new DateTime(2016, 2, 5), // Recommended
         UploadDate = new DateTime(2015, 2, 5), // Required
         Duration = new TimeSpan(0, 1, 33), // Recommended
-        Publisher = new Organization()
+        Publisher = new Organization
         {
             Name = "Example Publisher", // Required
             Logo = new ImageObject() // Required
@@ -26,7 +26,7 @@ public class VideoObjectTest
         },
         ContentUrl = new Uri("https://www.example.com/video123.flv"), // Recommended
         EmbedUrl = new Uri("https://www.example.com/videoplayer.swf?video=123"), // Recommended
-        InteractionStatistic = new InteractionCounter()
+        InteractionStatistic = new InteractionCounter
         {
             UserInteractionCount = 2347, // Recommended
         },

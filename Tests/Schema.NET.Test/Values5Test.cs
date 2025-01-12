@@ -22,7 +22,7 @@ public class Values5Test
         Assert.Empty(values.Value4);
         Assert.False(values.HasValue5);
         Assert.Empty(values.Value5);
-        Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
+        Assert.Equal([1], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -40,7 +40,7 @@ public class Values5Test
         Assert.Empty(values.Value4);
         Assert.False(values.HasValue5);
         Assert.Empty(values.Value5);
-        Assert.Equal(new List<object>() { "Foo" }, values.Cast<object>().ToList());
+        Assert.Equal(["Foo"], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -58,7 +58,7 @@ public class Values5Test
         Assert.Empty(values.Value4);
         Assert.False(values.HasValue5);
         Assert.Empty(values.Value5);
-        Assert.Equal(new List<object>() { DayOfWeek.Friday }, values.Cast<object>().ToList());
+        Assert.Equal([DayOfWeek.Friday], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -116,19 +116,19 @@ public class Values5Test
         Assert.True(values.HasValue5);
         Assert.Single(values.Value5);
         Assert.Equal(
-            new List<object>() { 1, "Foo", DayOfWeek.Friday, person, DateTime.MinValue },
+            [1, "Foo", DayOfWeek.Friday, person, DateTime.MinValue],
             values.Cast<object>().ToList());
     }
 
     [Fact]
     public void Constructor_StringItems_NullOrWhitespaceDoesntHaveValue()
     {
-        object[] nullOrWhitespaceValues = new[]
-        {
+        object[] nullOrWhitespaceValues =
+        [
             string.Empty,
             null!,
-            "\u2028 \u2029 \u0009 \u000A \u000B \u000C \u000D \u0085",
-        };
+            "\u2028 \u2029 \u0009 \u000A \u000B \u000C \u000D \u0085"
+        ];
         var values = new Values<int, string, DayOfWeek, Person, DateTime>(nullOrWhitespaceValues);
 
         Assert.False(values.HasValue1);
@@ -226,7 +226,7 @@ public class Values5Test
         Assert.Empty(values.Value4);
         Assert.False(values.HasValue5);
         Assert.Empty(values.Value5);
-        Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
+        Assert.Equal([1], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -244,7 +244,7 @@ public class Values5Test
         Assert.Empty(values.Value4);
         Assert.False(values.HasValue5);
         Assert.Empty(values.Value5);
-        Assert.Equal(new List<object>() { "Foo" }, values.Cast<object>().ToList());
+        Assert.Equal(["Foo"], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -262,7 +262,7 @@ public class Values5Test
         Assert.Empty(values.Value4);
         Assert.False(values.HasValue5);
         Assert.Empty(values.Value5);
-        Assert.Equal(new List<object>() { DayOfWeek.Friday }, values.Cast<object>().ToList());
+        Assert.Equal([DayOfWeek.Friday], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -306,7 +306,7 @@ public class Values5Test
     [Fact]
     public void ImplicitConversionOperator_Value1CollectionPassed_OnlyValue1HasValue()
     {
-        Values<int, string, DayOfWeek, Person, DateTime> values = new List<int>() { 1, 2 };
+        Values<int, string, DayOfWeek, Person, DateTime> values = new List<int> { 1, 2 };
 
         Assert.True(values.HasValue1);
         Assert.Equal(2, values.Value1.Count);
@@ -318,13 +318,13 @@ public class Values5Test
         Assert.Empty(values.Value4);
         Assert.False(values.HasValue5);
         Assert.Empty(values.Value5);
-        Assert.Equal(new List<object>() { 1, 2 }, values.Cast<object>().ToList());
+        Assert.Equal([1, 2], values.Cast<object>().ToList());
     }
 
     [Fact]
     public void ImplicitConversionOperator_Value2CollectionPassed_OnlyValue2HasValue()
     {
-        Values<int, string, DayOfWeek, Person, DateTime> values = new List<string>() { "Foo", "Bar" };
+        Values<int, string, DayOfWeek, Person, DateTime> values = new List<string?> { "Foo", "Bar" };
 
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
@@ -336,13 +336,13 @@ public class Values5Test
         Assert.Empty(values.Value4);
         Assert.False(values.HasValue5);
         Assert.Empty(values.Value5);
-        Assert.Equal(new List<object>() { "Foo", "Bar" }, values.Cast<object>().ToList());
+        Assert.Equal(["Foo", "Bar"], values.Cast<object>().ToList());
     }
 
     [Fact]
     public void ImplicitConversionOperator_Value3CollectionPassed_OnlyValue3HasValue()
     {
-        Values<int, string, DayOfWeek, Person, DateTime> values = new List<DayOfWeek>() { DayOfWeek.Friday, DayOfWeek.Monday };
+        Values<int, string, DayOfWeek, Person, DateTime> values = new List<DayOfWeek> { DayOfWeek.Friday, DayOfWeek.Monday };
 
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
@@ -355,14 +355,14 @@ public class Values5Test
         Assert.False(values.HasValue5);
         Assert.Empty(values.Value5);
         Assert.Equal(
-            new List<object>() { DayOfWeek.Friday, DayOfWeek.Monday },
+            [DayOfWeek.Friday, DayOfWeek.Monday],
             values.Cast<object>().ToList());
     }
 
     [Fact]
     public void ImplicitConversionOperator_Value4CollectionPassed_OnlyValue4HasValue()
     {
-        Values<int, string, DayOfWeek, Person, DateTime> values = new List<Person>() { new Person(), new Person() };
+        Values<int, string, DayOfWeek, Person, DateTime> values = new List<Person?> { new Person(), new Person() };
 
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
@@ -380,7 +380,7 @@ public class Values5Test
     [Fact]
     public void ImplicitConversionOperator_Value5CollectionPassed_OnlyValue5HasValue()
     {
-        Values<int, string, DayOfWeek, Person, DateTime> values = new List<DateTime>() { DateTime.MinValue, DateTime.MinValue };
+        Values<int, string, DayOfWeek, Person, DateTime> values = new List<DateTime> { DateTime.MinValue, DateTime.MinValue };
 
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
@@ -400,7 +400,7 @@ public class Values5Test
     {
         List<int> values = new Values<int, string, DayOfWeek, Person, DateTime>(1);
 
-        Assert.Equal(new List<int>() { 1 }, values);
+        Assert.Equal([1], values);
     }
 
     [Fact]
@@ -408,7 +408,7 @@ public class Values5Test
     {
         List<string> values = new Values<int, string, DayOfWeek, Person, DateTime>("Foo");
 
-        Assert.Equal(new List<string>() { "Foo" }, values);
+        Assert.Equal(["Foo"], values);
     }
 
     [Fact]
@@ -416,7 +416,7 @@ public class Values5Test
     {
         List<DayOfWeek> values = new Values<int, string, DayOfWeek, Person, DateTime>(DayOfWeek.Friday);
 
-        Assert.Equal(new List<DayOfWeek>() { DayOfWeek.Friday }, values);
+        Assert.Equal([DayOfWeek.Friday], values);
     }
 
     [Fact]
@@ -425,7 +425,7 @@ public class Values5Test
         var person = new Person();
         List<Person> values = new Values<int, string, DayOfWeek, Person, DateTime>(person);
 
-        Assert.Equal(new List<Person>() { person }, values);
+        Assert.Equal([person], values);
     }
 
     [Fact]
@@ -433,7 +433,7 @@ public class Values5Test
     {
         List<DateTime> values = new Values<int, string, DayOfWeek, Person, DateTime>(DateTime.MinValue);
 
-        Assert.Equal(new List<DateTime>() { DateTime.MinValue }, values);
+        Assert.Equal([DateTime.MinValue], values);
     }
 
     [Fact]
@@ -441,11 +441,11 @@ public class Values5Test
     {
         var person = new Person();
         var (integers, strings, daysOfWeek, people, dates) = new Values<int, string, DayOfWeek, Person, DateTime>(1, "Foo", DayOfWeek.Friday, person, DateTime.MinValue);
-        Assert.Equal(new List<int>() { 1 }, integers);
-        Assert.Equal(new List<string>() { "Foo" }, strings);
-        Assert.Equal(new List<DayOfWeek>() { DayOfWeek.Friday }, daysOfWeek);
-        Assert.Equal(new List<Person>() { person }, people);
-        Assert.Equal(new List<DateTime>() { DateTime.MinValue }, dates);
+        Assert.Equal(new List<int> { 1 }, integers);
+        Assert.Equal(new List<string> { "Foo" }, strings);
+        Assert.Equal(new List<DayOfWeek> { DayOfWeek.Friday }, daysOfWeek);
+        Assert.Equal(new List<Person> { person }, people);
+        Assert.Equal(new List<DateTime> { DateTime.MinValue }, dates);
     }
 
     [Fact]
@@ -646,7 +646,11 @@ public class Values5Test
     [Fact]
     public void GetHashCode_Value2Passed_ReturnsMatchingHashCode() =>
         Assert.Equal(
-            CombineHashCodes(CombineHashCodes(CombineHashCodes("Foo".GetHashCode(StringComparison.Ordinal), 0), 0), 0),
+            CombineHashCodes(CombineHashCodes(CombineHashCodes("Foo".GetHashCode(
+#if !NET48
+                StringComparison.Ordinal
+#endif
+            ), 0), 0), 0),
             new Values<int, string, DayOfWeek, Person, DateTime>("Foo").GetHashCode());
 
     [Fact]

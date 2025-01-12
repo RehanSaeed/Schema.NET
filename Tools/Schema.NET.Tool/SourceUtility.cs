@@ -7,10 +7,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-public static class SourceUtility
+public static partial class SourceUtility
 {
     private const char Space = ' ';
-    private static readonly Regex NewLineReplace = new("[\n ]{0,}\n[\n ]{0,}", RegexOptions.Compiled);
 
     public static string Render(string value, int indent = 0)
     {
@@ -24,10 +23,11 @@ public static class SourceUtility
 #endif
 
         var indentString = new string(Space, indent);
-        return indentString + value.Replace(Environment.NewLine, Environment.NewLine + indentString);
+        return indentString + EnvironmentAgnosticNewLineReplace().Replace(value, "$1" + indentString);
     }
 
-    public static string RenderItems<T>(bool canRender, IReadOnlyCollection<T> items, Func<int, int, T, string> action, int indent = 0, SourceDelimeter sourceDelimeter = SourceDelimeter.None)
+    public static string RenderItems<T>(bool canRender, IReadOnlyCollection<T> items, Func<int, int, T, string> action,
+        int indent = 0, SourceDelimeter sourceDelimeter = SourceDelimeter.None)
     {
         if (canRender)
         {
@@ -37,11 +37,12 @@ public static class SourceUtility
         return string.Empty;
     }
 
-    public static string RenderItems<T>(IReadOnlyCollection<T> items, Func<int, int, T, string> action, int indent = 0, SourceDelimeter sourceDelimeter = SourceDelimeter.None)
+    public static string RenderItems<T>(IReadOnlyCollection<T> items, Func<int, int, T, string> action, int indent = 0,
+        SourceDelimeter sourceDelimeter = SourceDelimeter.None)
     {
 #if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(items);
-            ArgumentNullException.ThrowIfNull(action);
+        ArgumentNullException.ThrowIfNull(items);
+        ArgumentNullException.ThrowIfNull(action);
 #else
         if (items is null)
         {
@@ -58,7 +59,7 @@ public static class SourceUtility
         for (var i = 0; i < items.Count; ++i)
         {
             var item = items.ElementAt(i);
-            var line = action(i, indent, item).Replace(Environment.NewLine, Environment.NewLine + new string(Space, indent));
+            var line = EnvironmentAgnosticNewLineReplace().Replace(action(i, indent, item), "$1" + new string(Space, indent));
             var isLast = i == items.Count - 1;
 
             stringBuilder.Append(Space, indent);
@@ -93,7 +94,7 @@ public static class SourceUtility
         }
 
         var escapedValue = XmlEscape(text.Trim());
-        return NewLineReplace.Replace(escapedValue, $"\n{new string(Space, indent)}/// ");
+        return NewLineReplace().Replace(escapedValue, $"\n{new string(Space, indent)}/// ");
     }
 
     private static string XmlEscape(string value)
@@ -103,4 +104,18 @@ public static class SourceUtility
         element.InnerText = value;
         return element.InnerXml;
     }
+
+#if NET8_0_OR_GREATER
+    [GeneratedRegex("[\n ]{0,}\n[\n ]{0,}", RegexOptions.Compiled)]
+    private static partial Regex NewLineReplace();
+
+    [GeneratedRegex("(\r?\n)", RegexOptions.Compiled)]
+    private static partial Regex EnvironmentAgnosticNewLineReplace();
+#else
+    private static readonly Regex NewLineRegex = new Regex("[\n ]{0,}\n[\n ]{0,}", RegexOptions.Compiled);
+    private static Regex NewLineReplace() => NewLineRegex;
+
+    private static readonly Regex EnvironmentAgnosticNewLineRegex = new Regex("(\r?\n)", RegexOptions.Compiled);
+    private static Regex EnvironmentAgnosticNewLineReplace() => EnvironmentAgnosticNewLineRegex;
+#endif
 }

@@ -9,7 +9,7 @@ public class WebsiteTest
     [Fact]
     public void ToString_SiteLinksSearchBoxGoogleStructuredData_ReturnsExpectedJsonLd()
     {
-        var website = new WebSite()
+        var website = new WebSite
         {
             PotentialAction = new SearchAction() // Required
             {
@@ -41,7 +41,7 @@ public class WebsiteTest
     [Fact]
     public void ToString_SiteNameGoogleStructuredData_ReturnsExpectedJsonLd()
     {
-        var website = new WebSite()
+        var website = new WebSite
         {
             AlternateName = "An Alternative Name", // Optional
             Name = "Your Site Name", // Required
@@ -66,7 +66,7 @@ public class WebsiteTest
     [Fact]
     public void Deserializing_WebSiteJsonLd_ReturnsWebSite()
     {
-        var website = new WebSite()
+        var website = new WebSite
         {
             PotentialAction = new SearchAction() // Required
             {

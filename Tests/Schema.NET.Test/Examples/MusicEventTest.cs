@@ -29,7 +29,7 @@ public class MusicEventTest
                 PriceCurrency = "USD", // Recommended
             },
         },
-        Performer = new List<IOrganization>() // Recommended
+        Performer = new List<IOrganization?>() // Recommended
             {
                 new MusicGroup() // Recommended
                 {

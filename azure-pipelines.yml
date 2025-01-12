@@ -44,20 +44,15 @@ stages:
           - checkout: self
             lfs: true
           - task: UseDotNet@2
-            displayName: "Install .NET Core 3.1 SDK"
-            inputs:
-              packageType: "sdk"
-              version: 3.1.x
-          - task: UseDotNet@2
             displayName: "Install .NET Core 6.0 SDK"
             inputs:
               packageType: "sdk"
               version: 6.0.x
           - task: UseDotNet@2
-            displayName: "Install .NET Core SDK"
+            displayName: "Install .NET Core 8.0 SDK"
             inputs:
               packageType: "sdk"
-              useGlobalJson: true
+              version: 8.0.x
           - pwsh: "dotnet tool restore"
             displayName: "Dotnet Tool Restore"
             failOnStderr: true

@@ -33,7 +33,7 @@ public class ProductTest
             PriceValidUntil = new DateTime(2020, 11, 5), // Recommended
             ItemCondition = OfferItemCondition.UsedCondition,
             Availability = ItemAvailability.InStock, // Recommended
-            Seller = new Organization()
+            Seller = new Organization
             {
                 Name = "Executive Objects",
             },

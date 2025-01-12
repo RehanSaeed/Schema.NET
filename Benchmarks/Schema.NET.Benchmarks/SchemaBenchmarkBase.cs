@@ -12,9 +12,11 @@ using BenchmarkDotNet.Jobs;
 [HtmlExporter]
 [CsvMeasurementsExporter]
 [RPlotExporter]
-[SimpleJob(RuntimeMoniker.Net70)]
+[SimpleJob(RuntimeMoniker.Net80)]
 [SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net462)]
 [SimpleJob(RuntimeMoniker.Net472)]
+[SimpleJob(RuntimeMoniker.Net48)]
 public abstract class SchemaBenchmarkBase
 {
     public Thing Thing { get; set; } = default!;

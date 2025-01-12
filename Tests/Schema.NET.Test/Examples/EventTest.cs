@@ -32,7 +32,7 @@ public class EventTest
         },
         Image = new Uri("https://www.example.com/event_image/12345"), // Recommended
         EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)), // Recommended
-        Offers = new List<IOffer>() // Recommended
+        Offers = new List<IOffer?>() // Recommended
             {
                 new Offer
                 {

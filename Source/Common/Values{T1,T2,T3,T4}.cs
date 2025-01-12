@@ -15,7 +15,7 @@ using System.Linq;
 #pragma warning disable CA1710 // Identifiers should have correct suffix.
 public readonly struct Values<T1, T2, T3, T4>
 #pragma warning restore CA1710 // Identifiers should have correct suffix.
-    : IReadOnlyCollection<object?>, IEnumerable<object?>, IValues, IEquatable<Values<T1, T2, T3, T4>>
+    : IReadOnlyCollection<object?>, IValues, IEquatable<Values<T1, T2, T3, T4>>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
@@ -85,7 +85,7 @@ public readonly struct Values<T1, T2, T3, T4>
     /// Initializes a new instance of the <see cref="Values{T1,T2,T3,T4}"/> struct.
     /// </summary>
     /// <param name="items">The items.</param>
-    public Values(params object[] items)
+    public Values(params object?[] items)
         : this(items.AsEnumerable())
     {
     }
@@ -114,30 +114,30 @@ public readonly struct Values<T1, T2, T3, T4>
         {
             if (item is T4 itemT4)
             {
-                items4 ??= new List<T4>();
+                items4 ??= [];
                 items4.Add(itemT4);
             }
             else if (item is T3 itemT3)
             {
-                items3 ??= new List<T3>();
+                items3 ??= [];
                 items3.Add(itemT3);
             }
             else if (item is T2 itemT2)
             {
-                items2 ??= new List<T2>();
+                items2 ??= [];
                 items2.Add(itemT2);
             }
             else if (item is T1 itemT1)
             {
-                items1 ??= new List<T1>();
+                items1 ??= [];
                 items1.Add(itemT1);
             }
         }
 
-        this.Value1 = items1 == null ? default : (OneOrMany<T1>)items1;
-        this.Value2 = items2 == null ? default : (OneOrMany<T2>)items2;
-        this.Value3 = items3 == null ? default : (OneOrMany<T3>)items3;
-        this.Value4 = items4 == null ? default : (OneOrMany<T4>)items4;
+        this.Value1 = items1 == null ? default : (OneOrMany<T1>)items1!;
+        this.Value2 = items2 == null ? default : (OneOrMany<T2>)items2!;
+        this.Value3 = items3 == null ? default : (OneOrMany<T3>)items3!;
+        this.Value4 = items4 == null ? default : (OneOrMany<T4>)items4!;
 
         this.HasValue1 = this.Value1.Count > 0;
         this.HasValue2 = this.Value2.Count > 0;
@@ -202,98 +202,98 @@ public readonly struct Values<T1, T2, T3, T4>
     /// </summary>
     /// <param name="item">The single item value.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(T1 item) => new(item);
+    public static implicit operator Values<T1, T2, T3, T4>(T1? item) => new(item);
 
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T2"/> to <see cref="Values{T1,T2}"/>.
     /// </summary>
     /// <param name="item">The single item value.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(T2 item) => new(item);
+    public static implicit operator Values<T1, T2, T3, T4>(T2? item) => new(item);
 
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T3"/> to <see cref="Values{T1,T2}"/>.
     /// </summary>
     /// <param name="item">The single item value.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(T3 item) => new(item);
+    public static implicit operator Values<T1, T2, T3, T4>(T3? item) => new(item);
 
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T4"/> to <see cref="Values{T1,T2}"/>.
     /// </summary>
     /// <param name="item">The single item value.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(T4 item) => new(item);
+    public static implicit operator Values<T1, T2, T3, T4>(T4? item) => new(item);
 
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T1[]"/> to <see cref="Values{T1,T2,T,T43}"/>.
     /// </summary>
     /// <param name="array">The array of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(T1[] array) => new(array);
+    public static implicit operator Values<T1, T2, T3, T4>(T1?[] array) => new(array);
 
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T2[]"/> to <see cref="Values{T1,T2,T3,T4}"/>.
     /// </summary>
     /// <param name="array">The array of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(T2[] array) => new(array);
+    public static implicit operator Values<T1, T2, T3, T4>(T2?[] array) => new(array);
 
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T3[]"/> to <see cref="Values{T1,T2,T3,T4}"/>.
     /// </summary>
     /// <param name="array">The array of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(T3[] array) => new(array);
+    public static implicit operator Values<T1, T2, T3, T4>(T3?[] array) => new(array);
 
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T4[]"/> to <see cref="Values{T1,T2,T3,T4}"/>.
     /// </summary>
     /// <param name="array">The array of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(T4[] array) => new(array);
+    public static implicit operator Values<T1, T2, T3, T4>(T4?[] array) => new(array);
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="List{T1}"/> to <see cref="Values{T1,T2}"/>.
     /// </summary>
     /// <param name="list">The list of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(List<T1> list) => new(list);
+    public static implicit operator Values<T1, T2, T3, T4>(List<T1?> list) => new(list);
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="List{T2}"/> to <see cref="Values{T1,T2}"/>.
     /// </summary>
     /// <param name="list">The list of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(List<T2> list) => new(list);
+    public static implicit operator Values<T1, T2, T3, T4>(List<T2?> list) => new(list);
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="List{T3}"/> to <see cref="Values{T1,T2}"/>.
     /// </summary>
     /// <param name="list">The list of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(List<T3> list) => new(list);
+    public static implicit operator Values<T1, T2, T3, T4>(List<T3?> list) => new(list);
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="List{T4}"/> to <see cref="Values{T1,T2}"/>.
     /// </summary>
     /// <param name="list">The list of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(List<T4> list) => new(list);
+    public static implicit operator Values<T1, T2, T3, T4>(List<T4?> list) => new(list);
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="object"/> array to <see cref="Values{T1,T2,T3,T4}"/>.
     /// </summary>
     /// <param name="array">The array of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(object[] array) => new(array);
+    public static implicit operator Values<T1, T2, T3, T4>(object?[] array) => new(array);
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="List{Object}"/> to <see cref="Values{T1,T2,T3,T4}"/>.
     /// </summary>
     /// <param name="list">The list of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator Values<T1, T2, T3, T4>(List<object> list) => new(list);
+    public static implicit operator Values<T1, T2, T3, T4>(List<object?> list) => new(list);
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="Values{T1, T2, T3, T4}"/> to the first item of type <typeparamref name="T1"/>.

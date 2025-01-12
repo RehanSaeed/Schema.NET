@@ -14,7 +14,7 @@ public class RestaurantTest
         SameAs = new Uri("https://davessteakhouse.example.com"),
         ServesCuisine = "Steak House",
         PriceRange = "$$$",
-        Address = new PostalAddress()
+        Address = new PostalAddress
         {
             AddressCountry = "US",
             AddressLocality = "New York",
@@ -23,35 +23,35 @@ public class RestaurantTest
             StreetAddress = "148 W 51st St",
         },
         Telephone = "+12122459600",
-        Geo = new GeoCoordinates()
+        Geo = new GeoCoordinates
         {
             Latitude = 40.761293D,
             Longitude = -73.982294,
         },
-        AggregateRating = new AggregateRating()
+        AggregateRating = new AggregateRating
         {
             RatingValue = 88D,
             BestRating = 100D,
             WorstRating = 1D,
             RatingCount = 20,
         },
-        Review = new Review()
+        Review = new Review
         {
             Description = "Great old fashioned steaks but the salads are sub par.",
             Url = new Uri("https://www.localreviews.com/restaurants/1/2/3/daves-steak-house.html"),
-            Author = new Person()
+            Author = new Person
             {
                 Name = "Lisa Kennedy",
                 SameAs = new Uri("https://plus.google.com/114108465800532712602"),
             },
-            Publisher = new Organization()
+            Publisher = new Organization
             {
                 Name = "Denver Post",
                 SameAs = new Uri("https://www.denverpost.com"),
             },
             DatePublished = new DateTime(2014, 3, 13),
             InLanguage = "en",
-            ReviewRating = new Rating()
+            ReviewRating = new Rating
             {
                 WorstRating = 1D,
                 BestRating = 4D,
