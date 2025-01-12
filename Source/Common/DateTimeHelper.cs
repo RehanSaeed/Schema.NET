@@ -12,7 +12,7 @@ internal static class DateTimeHelper
     private const string MSDateStringEnd = ")/";
     private const string NegativeOffset = "-";
     private static readonly DateTime EpochDate = new(1970, 1, 1);
-    private static readonly char[] OffsetChars = new[] { '+', '-' };
+    private static readonly char[] OffsetChars = ['+', '-'];
 
     /// <summary>
     /// Whether a given ISO 8601 date string has an offset defined (eg. "+", "-", "Z")

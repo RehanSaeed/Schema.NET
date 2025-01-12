@@ -18,7 +18,7 @@ public static class StringExtensions
 #endif
     public static string MinifyJson(this string json)
     {
-        var options = new JsonWriterOptions()
+        var options = new JsonWriterOptions
         {
             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             Indented = false,

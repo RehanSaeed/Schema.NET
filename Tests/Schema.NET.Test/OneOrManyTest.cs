@@ -35,7 +35,7 @@ public class OneOrManyTest
     [Fact]
     public void Constructor_Enumerable_HasManyItems()
     {
-        var oneOrMany = new OneOrMany<int>(new List<int>() { 1, 2, }.AsEnumerable());
+        var oneOrMany = new OneOrMany<int>(new List<int> { 1, 2, }.AsEnumerable());
         Assert.False(oneOrMany.HasOne);
         Assert.True(oneOrMany.HasMany);
     }
@@ -43,7 +43,7 @@ public class OneOrManyTest
     [Fact]
     public void Constructor_List_HasManyItems()
     {
-        var oneOrMany = new OneOrMany<int>(new List<int>() { 1, 2, });
+        var oneOrMany = new OneOrMany<int>(new List<int> { 1, 2, });
         Assert.False(oneOrMany.HasOne);
         Assert.True(oneOrMany.HasMany);
     }
@@ -73,7 +73,7 @@ public class OneOrManyTest
 
     [Fact]
     public void Count_Enumerable_ReturnsTwo() =>
-        Assert.Equal(2, new OneOrMany<int>(new List<int>() { 1, 2 }).Count);
+        Assert.Equal(2, new OneOrMany<int>(new List<int> { 1, 2 }).Count);
 
     [Fact]
     public void HasOne_DefaultStructConstructor_ReturnsFalse() => Assert.False(default(OneOrMany<int>).HasOne);
@@ -92,7 +92,7 @@ public class OneOrManyTest
 
     [Fact]
     public void HasOne_Enumerable_ReturnsFalse() =>
-        Assert.False(new OneOrMany<int>(new List<int>() { 1, 2 }).HasOne);
+        Assert.False(new OneOrMany<int>(new List<int> { 1, 2 }).HasOne);
 
     [Fact]
     public void HasMany_DefaultStructConstructor_ReturnsFalse() => Assert.False(default(OneOrMany<int>).HasMany);
@@ -108,27 +108,27 @@ public class OneOrManyTest
 
     [Fact]
     public void HasMany_Enumerable_ReturnsTrue() =>
-        Assert.True(new OneOrMany<int>(new List<int>() { 1, 2 }).HasMany);
+        Assert.True(new OneOrMany<int>(new List<int> { 1, 2 }).HasMany);
 
     [Fact]
     public void ImplicitConversionOperator_ToItem_HasOneItem()
     {
         OneOrMany<int> oneOrMany = 1;
-        Assert.Equal(new List<object>() { 1 }, oneOrMany.Cast<object>());
+        Assert.Equal(new List<object> { 1 }, oneOrMany.Cast<object>());
     }
 
     [Fact]
     public void ImplicitConversionOperator_ToArray_HasTwoItems()
     {
         OneOrMany<int> oneOrMany = new int[] { 1, 2 };
-        Assert.Equal(new List<object>() { 1, 2 }, oneOrMany.Cast<object>());
+        Assert.Equal(new List<object> { 1, 2 }, oneOrMany.Cast<object>());
     }
 
     [Fact]
     public void ImplicitConversionOperator_ToList_HasTwoItems()
     {
-        OneOrMany<int> oneOrMany = new List<int>() { 1, 2 };
-        Assert.Equal(new List<object>() { 1, 2 }, oneOrMany.Cast<object>());
+        OneOrMany<int> oneOrMany = new List<int> { 1, 2 };
+        Assert.Equal(new List<object> { 1, 2 }, oneOrMany.Cast<object>());
     }
 
     [Fact]
@@ -142,14 +142,14 @@ public class OneOrManyTest
     public void ImplicitConversionOperator_FromArray_HasTwoItems()
     {
         int[] items = new OneOrMany<int>(1, 2);
-        Assert.Equal(new int[] { 1, 2 }, items);
+        Assert.Equal([1, 2], items);
     }
 
     [Fact]
     public void ImplicitConversionOperator_FromList_HasTwoItems()
     {
         List<int> items = new OneOrMany<int>(1, 2);
-        Assert.Equal(new List<int> { 1, 2 }, items);
+        Assert.Equal([1, 2], items);
     }
 
     [Fact]
@@ -185,23 +185,23 @@ public class OneOrManyTest
 
     [Fact]
     public void GetEnumerator_Array_ReturnsTwo() =>
-        Assert.Equal(new List<object>() { 1, 2 }, new OneOrMany<int>(1, 2).Cast<object>());
+        Assert.Equal(new List<object> { 1, 2 }, new OneOrMany<int>(1, 2).Cast<object>());
 
     [Fact]
     public void GetEnumerator_Enumerable_ReturnsTwo() =>
-        Assert.Equal(new List<object>() { 1, 2 }, new OneOrMany<int>(new List<int>() { 1, 2 }).Cast<object>());
+        Assert.Equal(new List<object> { 1, 2 }, new OneOrMany<int>(new List<int> { 1, 2 }).Cast<object>());
 
     [Fact]
     public void GetEnumeratorT_NoItems_ReturnsEmptyCllection() =>
-        Assert.Equal(new List<string>(), default(OneOrMany<string>).ToList());
+        Assert.Equal([], default(OneOrMany<string>).ToList());
 
     [Fact]
     public void GetEnumeratorT_OneItem_ReturnsOneItem() =>
-        Assert.Equal(new List<int>() { 1 }, new OneOrMany<int>(1).ToList());
+        Assert.Equal([1], new OneOrMany<int>(1).ToList());
 
     [Fact]
     public void GetEnumeratorT_TwoItems_ReturnsTwoItems() =>
-        Assert.Equal(new List<int>() { 1, 2 }, new OneOrMany<int>(1, 2).ToList());
+        Assert.Equal([1, 2], new OneOrMany<int>(1, 2).ToList());
 
     [Fact]
     public void Equals_Null_ReturnsFalse() =>
@@ -233,16 +233,16 @@ public class OneOrManyTest
 
     [Fact]
     public void GetHashCode_TwoItems_HashCodeEqualToTwoItems() =>
-        Assert.Equal(HashCode.OfEach(new List<int>() { 1, 2 }), new OneOrMany<int>(1, 2).GetHashCode());
+        Assert.Equal(HashCode.OfEach(new List<int> { 1, 2 }), new OneOrMany<int>(1, 2).GetHashCode());
 
     [Theory]
     [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
     [InlineData("  ")]
-    public void ToString_NullEmptyOrWhiteSpace_BookOmitsNameProperty(string name)
+    public void ToString_NullEmptyOrWhiteSpace_BookOmitsNameProperty(string? name)
     {
-        var book = new Book() { Name = name };
+        var book = new Book { Name = name };
 
         var expectedJson = /*lang=json,strict*/
             """
@@ -256,9 +256,9 @@ public class OneOrManyTest
     [InlineData("")]
     [InlineData(" ")]
     [InlineData("  ")]
-    public void ToString_NullEmptyOrWhiteSpace_OrganizationOmitsAddressProperty(string address)
+    public void ToString_NullEmptyOrWhiteSpace_OrganizationOmitsAddressProperty(string? address)
     {
-        var organization = new Organization() { Address = address };
+        var organization = new Organization { Address = address };
 
         var expectedJson = /*lang=json,strict*/
             """
@@ -272,9 +272,9 @@ public class OneOrManyTest
     [InlineData("")]
     [InlineData(" ")]
     [InlineData("  ")]
-    public void ToString_NullEmptyOrWhiteSpace_BookOmitsNamePropertyFromList(string name)
+    public void ToString_NullEmptyOrWhiteSpace_BookOmitsNamePropertyFromList(string? name)
     {
-        var book = new Book() { Name = new List<string> { "Hamlet", name } };
+        var book = new Book { Name = new List<string?> { "Hamlet", name } };
 
         var expectedJson = /*lang=json,strict*/
             """
@@ -288,9 +288,9 @@ public class OneOrManyTest
     [InlineData("")]
     [InlineData(" ")]
     [InlineData("  ")]
-    public void ToString_NullEmptyOrWhiteSpace_BookOmitsNamePropertyFromArray(string name)
+    public void ToString_NullEmptyOrWhiteSpace_BookOmitsNamePropertyFromArray(string? name)
     {
-        var book = new Book() { Name = new string[] { "Hamlet", name } };
+        var book = new Book { Name = new string?[] { "Hamlet", name } };
 
         var expectedJson = /*lang=json,strict*/
             """
@@ -304,9 +304,9 @@ public class OneOrManyTest
     [InlineData("")]
     [InlineData(" ")]
     [InlineData("  ")]
-    public void ToString_EmptyOrWhiteSpace_OrganizationOmitsAddressProperty(string address)
+    public void ToString_EmptyOrWhiteSpace_OrganizationOmitsAddressProperty(string? address)
     {
-        var organization = new Organization() { Address = address };
+        var organization = new Organization { Address = address };
 
         var expectedJson = /*lang=json,strict*/
             """
@@ -320,9 +320,9 @@ public class OneOrManyTest
     [InlineData("")]
     [InlineData(" ")]
     [InlineData("  ")]
-    public void ToString_NullEmptyOrWhiteSpace_OrganizationOmitsNamePropertyFromList(string address)
+    public void ToString_NullEmptyOrWhiteSpace_OrganizationOmitsNamePropertyFromList(string? address)
     {
-        var organization = new Organization() { Name = new List<string> { "Cardiff, UK", address } };
+        var organization = new Organization { Name = new List<string?> { "Cardiff, UK", address } };
 
         var expectedJson = /*lang=json,strict*/
             """
@@ -336,9 +336,9 @@ public class OneOrManyTest
     [InlineData("")]
     [InlineData(" ")]
     [InlineData("  ")]
-    public void ToString_NullEmptyOrWhiteSpace_OrganizationOmitsNamePropertyFromArray(string address)
+    public void ToString_NullEmptyOrWhiteSpace_OrganizationOmitsNamePropertyFromArray(string? address)
     {
-        var organization = new Organization() { Name = new string[] { "Cardiff, UK", address } };
+        var organization = new Organization { Name = new string?[] { "Cardiff, UK", address } };
 
         var expectedJson = /*lang=json,strict*/
             """

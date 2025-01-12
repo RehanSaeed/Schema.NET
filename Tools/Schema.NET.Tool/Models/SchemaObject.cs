@@ -6,8 +6,8 @@ using Schema.NET.Tool.Constants;
 
 public abstract class SchemaObject
 {
-    private static readonly HashSet<string> PrimitiveTypes = new()
-    {
+    private static readonly HashSet<string> PrimitiveTypes =
+    [
         "QualitativeValue",
         "Enumeration",
         "Boolean",
@@ -27,8 +27,8 @@ public abstract class SchemaObject
         "Time",
         "URL",
         "DataType",
-        "PronounceableText",
-    };
+        "PronounceableText"
+    ];
 
     protected SchemaObject(string layer, Uri id, string label, string comment)
     {

@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Build">
-    <TargetFrameworks>net7.0;net6.0;netstandard2.0;net472;net462</TargetFrameworks>
+    <TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
     <EmitCompilerGeneratedFiles>True</EmitCompilerGeneratedFiles>
     <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
     <IncludePendingSchemaObjects>False</IncludePendingSchemaObjects>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <PropertyGroup Label="Package">
@@ -13,14 +14,23 @@
     <PackageTags>Schema;.NET;Schema.org;Schema.NET;Structured Data;Google Structured Data</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup Label="Package References">
-    <PackageReference Include="System.Text.Json" Version="7.0.0" />
-    <PackageReference Include="System.Memory" Version="4.5.5" />
-    <ProjectReference Include="../../Tools/Schema.NET.Tool/Schema.NET.Tool.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  <ItemGroup Label="Package References (.NET 8)" Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" />
   </ItemGroup>
 
-  <ItemGroup Label="Package References (.NET Framework)" Condition="'$(TargetFramework)' == 'net462'">
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  <ItemGroup Label="Package References (.NET 6)" Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="System.Text.Json" Version="6.0.11" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2" />
+  </ItemGroup>
+
+  <ItemGroup Label="Package References (netstandard 2.0)" Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Text.Json" Version="6.0.11" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="Package References">
+    <ProjectReference Include="../../Tools/Schema.NET.Tool/Schema.NET.Tool.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup Label="Common Code">

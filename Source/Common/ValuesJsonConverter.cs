@@ -85,7 +85,7 @@ public class ValuesJsonConverter : JsonConverter<IValues>
             else if (reader.TokenType != JsonTokenType.Null)
             {
                 var item = ProcessToken(ref reader, typeToConvert.GenericTypeArguments, options);
-                return (IValues)dynamicConstructor(new[] { item });
+                return (IValues)dynamicConstructor([item]);
             }
         }
 

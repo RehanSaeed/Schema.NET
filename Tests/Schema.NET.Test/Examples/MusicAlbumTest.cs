@@ -10,7 +10,7 @@ public class MusicAlbumTest
     {
         Name = "Hail to the Thief", // Required
         Identifier = "1oW3v5Har9mvXnGk0x4fHm", // Recommended
-        Image = new List<IImageObject> // Recommended
+        Image = new List<IImageObject?> // Recommended
             {
                 new ImageObject() // Recommended
                 {
@@ -37,7 +37,7 @@ public class MusicAlbumTest
         NumTracks = 14, // Recommended
         AlbumRelease = new MusicRelease() // Recommended
         {
-            RecordLabel = new Organization()
+            RecordLabel = new Organization
             {
                 Name = "XL Recordings", // Required
             },

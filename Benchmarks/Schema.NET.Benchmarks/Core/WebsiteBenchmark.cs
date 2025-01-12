@@ -5,9 +5,9 @@ using System;
 public class WebsiteBenchmark : SchemaBenchmarkBase
 {
     public override Thing InitialiseThing() =>
-        new WebSite()
+        new WebSite
         {
-            PotentialAction = new SearchAction()
+            PotentialAction = new SearchAction
             {
                 Target = new Uri("https://example.com/search?&q={query}"),
                 QueryInput = "required",
