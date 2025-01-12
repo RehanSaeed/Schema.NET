@@ -5,9 +5,6 @@
     <IsPackable>false</IsPackable>
     <IsRoslynComponent>true</IsRoslynComponent>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <LangVersion>12</LangVersion>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup Label="Package References (.NET 8)" Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="System.Text.Json" Version="8.0.5" />

@@ -4,8 +4,6 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

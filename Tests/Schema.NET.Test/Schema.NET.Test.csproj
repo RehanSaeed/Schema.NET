@@ -2,8 +2,6 @@
 
   <PropertyGroup Label="Build">
     <TargetFrameworks>net8.0;net6.0;net462;net472;net48</TargetFrameworks>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup Label="Project References">
