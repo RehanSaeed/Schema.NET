@@ -16,6 +16,14 @@ public class ValuesJsonConverterTest
     }
 
     [Fact]
+    public void WriteJson_ValuesNull_WritesNull()
+    {
+        var value = new Values<int?, string?>((string?)null);
+        var json = SerializeObject(value);
+        Assert.Equal("{}", json);
+    }
+
+    [Fact]
     public void WriteJson_Values_OneCountWritesSingle()
     {
         var value = new Values<int?, string>("One Value");
@@ -126,6 +134,14 @@ public class ValuesJsonConverterTest
             {"Property":"12:34:56"}
             """";
         Assert.Equal(expectedJson, json);
+    }
+
+    [Fact]
+    public void ReadJson_Values_NullValue_String()
+    {
+        var json = "{\"Property\":null}";
+        var result = DeserializeObject<Values<int, string?>>(json);
+        Assert.Null(result.Value2.First());
     }
 
     [Fact]
@@ -786,12 +802,12 @@ public class ValuesJsonConverterTest
     }
 
     private static string SerializeObject<T>(T value)
-        where T : struct, IValues
-        => SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
+        where T : struct, IValues =>
+        SchemaSerializer.SerializeObject(new TestModel<T> { Property = value });
 
     private static T DeserializeObject<T>(string json)
-        where T : struct, IValues
-        => SchemaSerializer.DeserializeObject<TestModel<T>>(json)!.Property;
+        where T : struct, IValues =>
+        SchemaSerializer.DeserializeObject<TestModel<T>>(json)!.Property;
 
     private sealed class TestModel<T>
         where T : struct, IValues
