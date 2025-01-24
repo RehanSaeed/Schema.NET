@@ -13,10 +13,14 @@
     <PackageTags>Schema;.NET;Schema.org;Schema.NET;Structured Data;Google Structured Data</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup Label="Package References">
-    <PackageReference Include="System.Text.Json" Version="7.0.0" />
+  <ItemGroup Label="Package References (Common)">
+    <PackageReference Include="System.Text.Json" Version="6.0.7" Condition="'$(TargetFramework)' != 'net7.0'" />
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <ProjectReference Include="../../Tools/Schema.NET.Tool/Schema.NET.Tool.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+  
+  <ItemGroup Label="Package References (.NET 7)" Condition="'$(TargetFramework)' == 'net7.0'">
+    <PackageReference Include="System.Text.Json" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup Label="Package References (.NET Framework)" Condition="'$(TargetFramework)' == 'net462'">
