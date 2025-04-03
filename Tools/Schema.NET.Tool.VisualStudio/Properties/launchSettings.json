@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Schema.NET.Tool": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\..\\Source\\Schema.NET\\Schema.NET.csproj"
+    }
+  }
+}

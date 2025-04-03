@@ -37,12 +37,11 @@ public class SchemaSourceGenerator : IIncrementalGenerator
 
         var schemaRepository = new SchemaRepository(schemaJsonLdData);
         var schemaService = new SchemaService(
-            new IClassOverride[]
-            {
+            [
                 new AddQueryInputPropertyToSearchAction(),
                 new AddNumberTypeToMediaObjectHeightAndWidth(),
-                new RenameEventProperty(),
-            },
+                new RenameEventProperty()
+            ],
             Array.Empty<IEnumerationOverride>(),
             schemaRepository,
             IncludePendingSchemaObjects(data.Options));

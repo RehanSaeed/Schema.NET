@@ -9,7 +9,7 @@ public class ItemListTest
 {
     private readonly ItemList itemlist = new()
     {
-        ItemListElement = new List<IListItem>() // Required
+        ItemListElement = new List<IListItem?>() // Required
                 {
                     new ListItem() // Required
                     {
@@ -19,10 +19,10 @@ public class ItemListTest
                             Name = "Recipe 1",
                         },
                     },
-                    new ListItem()
+                    new ListItem
                     {
                         Position = 2,
-                        Item = new Recipe()
+                        Item = new Recipe
                         {
                             Name = "Recipe 2",
                         },
@@ -68,16 +68,16 @@ public class ItemListTest
     public void ToString_CarouselSummaryPageSearchBoxGoogleStructuredData_ReturnsExpectedJsonLd()
     {
         // All items in the list must be of the same type. Recipe, Film, Course, Article, Recipe are supported.
-        var itemList = new ItemList()
+        var itemList = new ItemList
         {
-            ItemListElement = new List<IListItem>() // Required
+            ItemListElement = new List<IListItem?>() // Required
                 {
                     new ListItem() // Required
                     {
                         Position = 1, // Required
                         Url = new Uri("https://example.com/articles/1"), // Required
                     },
-                    new ListItem()
+                    new ListItem
                     {
                         Position = 2,
                         Url = new Uri("https://example.com/articles/2"),
@@ -114,9 +114,9 @@ public class ItemListTest
     public void ToString_CarouselAllInOnePageSearchBoxGoogleStructuredData_ReturnsExpectedJsonLd()
     {
         // All items in the list must be of the same type. Recipe, Film, Course, Article, Recipe are supported.
-        var itemList = new ItemList()
+        var itemList = new ItemList
         {
-            ItemListElement = new List<IListItem>() // Required
+            ItemListElement = new List<IListItem?>() // Required
                 {
                     new ListItem() // Required
                     {
@@ -126,10 +126,10 @@ public class ItemListTest
                             Name = "Recipe 1",
                         },
                     },
-                    new ListItem()
+                    new ListItem
                     {
                         Position = 2,
-                        Item = new Recipe()
+                        Item = new Recipe
                         {
                             Name = "Recipe 2",
                         },

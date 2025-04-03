@@ -28,7 +28,7 @@ public class SchemaPropertyJsonConverter : JsonConverter<List<SchemaObject>>
             return graphArray.Select(Read).Where(x => x is not null).ToList()!;
         }
 
-        return new List<SchemaObject>();
+        return [];
     }
 
     public override void Write(Utf8JsonWriter writer, List<SchemaObject> value, JsonSerializerOptions options) =>

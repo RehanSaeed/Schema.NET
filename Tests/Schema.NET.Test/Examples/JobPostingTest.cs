@@ -25,7 +25,7 @@ public class JobPostingTest
         },
         JobLocation = new Place() // Required
         {
-            Address = new PostalAddress()
+            Address = new PostalAddress
             {
                 AddressCountry = "US",
                 AddressLocality = "Detroit",
@@ -37,7 +37,7 @@ public class JobPostingTest
         BaseSalary = new MonetaryAmount() // Recommended
         {
             Currency = "USD",
-            Value = new QuantitativeValue()
+            Value = new QuantitativeValue
             {
                 Value = 40D,
                 UnitText = "HOUR", // HOUR, WEEK, MONTH, YEAR

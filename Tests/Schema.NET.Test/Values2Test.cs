@@ -16,7 +16,7 @@ public class Values2Test
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
         AssertEx.Empty(values.Value2);
-        Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
+        Assert.Equal([1], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -28,7 +28,7 @@ public class Values2Test
         Assert.Empty(values.Value1);
         Assert.True(values.HasValue2);
         Assert.Single(values.Value2);
-        Assert.Equal(new List<object>() { "Foo" }, values.Cast<object>().ToList());
+        Assert.Equal(["Foo"], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -40,18 +40,18 @@ public class Values2Test
         Assert.Single(values.Value1);
         Assert.True(values.HasValue2);
         Assert.Single(values.Value2);
-        Assert.Equal(new List<object>() { 1, "Foo" }, values.Cast<object>().ToList());
+        Assert.Equal([1, "Foo"], values.Cast<object>().ToList());
     }
 
     [Fact]
     public void Constructor_StringItems_NullOrWhitespaceDoesntHaveValue()
     {
-        object[] nullOrWhitespaceValues = new[]
-        {
+        object[] nullOrWhitespaceValues =
+        [
             string.Empty,
             null!,
-            "\u2028 \u2029 \u0009 \u000A \u000B \u000C \u000D \u0085",
-        };
+            "\u2028 \u2029 \u0009 \u000A \u000B \u000C \u000D \u0085"
+        ];
         var values = new Values<int, string>(nullOrWhitespaceValues);
 
         Assert.False(values.HasValue1);
@@ -106,7 +106,7 @@ public class Values2Test
         Assert.Single(values.Value1);
         Assert.False(values.HasValue2);
         AssertEx.Empty(values.Value2);
-        Assert.Equal(new List<object>() { 1 }, values.Cast<object>().ToList());
+        Assert.Equal([1], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -118,31 +118,31 @@ public class Values2Test
         Assert.Empty(values.Value1);
         Assert.True(values.HasValue2);
         Assert.Single(values.Value2);
-        Assert.Equal(new List<object>() { "Foo" }, values.Cast<object>().ToList());
+        Assert.Equal(["Foo"], values.Cast<object>().ToList());
     }
 
     [Fact]
     public void ImplicitConversionOperator_Value1ListPassed_OnlyValue1HasValue()
     {
-        Values<int, string> values = new List<int>() { 1, 2 };
+        Values<int, string> values = new List<int> { 1, 2 };
 
         Assert.True(values.HasValue1);
         Assert.Equal(2, values.Value1.Count);
         Assert.False(values.HasValue2);
         AssertEx.Empty(values.Value2);
-        Assert.Equal(new List<object>() { 1, 2 }, values.Cast<object>().ToList());
+        Assert.Equal([1, 2], values.Cast<object>().ToList());
     }
 
     [Fact]
     public void ImplicitConversionOperator_Value2ListPassed_OnlyValue2HasValue()
     {
-        Values<int, string> values = new List<string>() { "Foo", "Bar" };
+        Values<int, string> values = new List<string?> { "Foo", "Bar" };
 
         Assert.False(values.HasValue1);
         Assert.Empty(values.Value1);
         Assert.True(values.HasValue2);
         Assert.Equal(2, values.Value2.Count);
-        Assert.Equal(new List<object>() { "Foo", "Bar" }, values.Cast<object>().ToList());
+        Assert.Equal(["Foo", "Bar"], values.Cast<object>().ToList());
     }
 
     [Fact]
@@ -150,7 +150,7 @@ public class Values2Test
     {
         List<int> values = new Values<int, string>(1);
 
-        Assert.Equal(new List<int>() { 1 }, values);
+        Assert.Equal([1], values);
     }
 
     [Fact]
@@ -158,15 +158,15 @@ public class Values2Test
     {
         List<string> values = new Values<int, string>("Foo");
 
-        Assert.Equal(new List<string>() { "Foo" }, values);
+        Assert.Equal(["Foo"], values);
     }
 
     [Fact]
     public void Deconstruct_Values_ReturnsAllEnumerables()
     {
         var (integers, strings) = new Values<int, string>(1, "Foo");
-        Assert.Equal(new List<int>() { 1 }, integers);
-        Assert.Equal(new List<string>() { "Foo" }, strings);
+        Assert.Equal(new List<int> { 1 }, integers);
+        Assert.Equal(new List<string> { "Foo" }, strings);
     }
 
     [Fact]
@@ -231,19 +231,19 @@ public class Values2Test
 
     [Fact]
     public void Equals_MixedTypes_ThisMissingValue2_ReturnsFalse() =>
-        Assert.False(new Values<int, string>(new object[] { 0 }).Equals(new Values<int, string>(new object[] { 0, "Foo" })));
+        Assert.False(new Values<int, string>([0]).Equals(new Values<int, string>(new object[] { 0, "Foo" })));
 
     [Fact]
     public void Equals_MixedTypes_ThisMissingValue1_ReturnsFalse() =>
-        Assert.False(new Values<int, string>(new object[] { "Foo" }).Equals(new Values<int, string>(new object[] { 0, "Foo" })));
+        Assert.False(new Values<int, string>(["Foo"]).Equals(new Values<int, string>(new object[] { 0, "Foo" })));
 
     [Fact]
     public void Equals_MixedTypes_OtherMissingValue2_ReturnsFalse() =>
-        Assert.False(new Values<int, string>(new object[] { 0, "Foo" }).Equals(new Values<int, string>(new object[] { 0 })));
+        Assert.False(new Values<int, string>(new object[] { 0, "Foo" }).Equals(new Values<int, string>([0])));
 
     [Fact]
     public void Equals_MixedTypes_OtherMissingValue1_ReturnsFalse() =>
-        Assert.False(new Values<int, string>(new object[] { 0, "Foo" }).Equals(new Values<int, string>(new object[] { "Foo" })));
+        Assert.False(new Values<int, string>(new object[] { 0, "Foo" }).Equals(new Values<int, string>(["Foo"])));
 
     [Fact]
     public void GetHashCode_Value1Passed_ReturnsMatchingHashCode() =>
@@ -251,13 +251,17 @@ public class Values2Test
 
     [Fact]
     public void GetHashCode_Value2Passed_ReturnsMatchingHashCode() =>
-        Assert.Equal("Foo".GetHashCode(StringComparison.Ordinal), new Values<int, string>("Foo").GetHashCode());
+        Assert.Equal("Foo".GetHashCode(
+#if !NET48
+            StringComparison.Ordinal
+#endif
+        ), new Values<int, string>("Foo").GetHashCode());
 
     [Fact]
     public void GetHashCode_Value1And2Passed_ReturnsMatchingHashCode() =>
         Assert.Equal(
             NET.HashCode.Of(1).And("Foo"),
-            new Values<int, string>(new List<object>() { 1, "Foo" }).GetHashCode());
+            new Values<int, string>(new List<object> { 1, "Foo" }).GetHashCode());
 
     private static int CombineHashCodes(int h1, int h2) => ((h1 << 5) + h1) ^ h2;
 }

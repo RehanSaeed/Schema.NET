@@ -10,7 +10,7 @@ public class PersonTest
     private readonly Person person = new()
     {
         Name = "Name", // Required
-        SameAs = new List<Uri>() // Required
+        SameAs = new List<Uri?>() // Required
             {
                 new Uri("https://www.facebook.com/your-profile"),
                 new Uri("https://instagram.com/yourProfile"),

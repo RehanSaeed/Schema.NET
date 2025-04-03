@@ -33,7 +33,7 @@ public class AddQueryInputPropertyToSearchAction : IClassOverride
 
         var property = new GeneratorSchemaProperty(c, "query-input", "QueryInput", "Gets or sets the query input search parameter.");
         property.Types.AddRange(
-            new List<GeneratorSchemaPropertyType>()
+            new List<GeneratorSchemaPropertyType>
             {
                 new GeneratorSchemaPropertyType("Text", "string"),
                 new GeneratorSchemaPropertyType("PropertyValueSpecification", "PropertyValueSpecification"),

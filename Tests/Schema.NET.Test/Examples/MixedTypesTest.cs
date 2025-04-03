@@ -10,13 +10,13 @@ public class MixedTypesTest
         new()
         {
             Id = new Uri("https://example.com/book/1"),
-            Author = new List<object>()
+            Author = new List<object?>
             {
-                    new Organization()
+                    new Organization
                     {
                         Name = "Penguin",
                     },
-                    new Person()
+                    new Person
                     {
                         Name = "J.D. Salinger",
                     },

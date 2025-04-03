@@ -539,7 +539,7 @@ public class ValuesJsonConverterTest
             {"Property": ["A", "B"]}
             """;
         var result = DeserializeObject<Values<int, string>>(json);
-        Assert.Equal(new[] { "A", "B" }, result.Value2);
+        Assert.Equal(["A", "B"], result.Value2);
     }
 
     [Fact]
@@ -550,7 +550,7 @@ public class ValuesJsonConverterTest
             {"Property": ["A", "B"]}
             """;
         var result = DeserializeObject<Values<string, int>>(json);
-        Assert.Equal(new[] { "A", "B" }, result.Value1);
+        Assert.Equal(["A", "B"], result.Value1);
     }
 
     [Fact]
@@ -561,8 +561,8 @@ public class ValuesJsonConverterTest
             {"Property": [1, "B"]}
             """;
         var result = DeserializeObject<Values<int, string>>(json);
-        Assert.Equal(new[] { 1 }, result.Value1);
-        Assert.Equal(new[] { "B" }, result.Value2);
+        Assert.Equal([1], result.Value1);
+        Assert.Equal(["B"], result.Value2);
     }
 
     [Fact]
@@ -573,7 +573,7 @@ public class ValuesJsonConverterTest
             {"Property": ["123", "456"]}
             """;
         var result = DeserializeObject<Values<string, int?>>(json);
-        Assert.Equal(new int?[] { 123, 456 }, result.Value2);
+        Assert.Equal([123, 456], result.Value2);
     }
 
     [Fact]
@@ -643,7 +643,7 @@ public class ValuesJsonConverterTest
             {"Property": ["A", "B"]}
             """;
         var result = DeserializeObject<OneOrMany<string>>(json);
-        Assert.Equal(new[] { "A", "B" }, result);
+        Assert.Equal(["A", "B"], result);
     }
 
     [Fact]
@@ -665,7 +665,7 @@ public class ValuesJsonConverterTest
             {"Property": ["123", "456"]}
             """;
         var result = DeserializeObject<OneOrMany<int?>>(json);
-        Assert.Equal(new int?[] { 123, 456 }, result);
+        Assert.Equal([123, 456], result);
     }
 
     [Fact]
@@ -685,8 +685,8 @@ public class ValuesJsonConverterTest
             """;
         var result = DeserializeObject<Values<string, SomeCustomNamespace.ExternalSchemaModelCustomNamespace>>(json);
         var actual = Assert.Single(result.Value2);
-        Assert.Equal(new[] { "Property from Thing" }, actual.Name);
-        Assert.Equal(new[] { "My Test String" }, actual.MyCustomProperty);
+        Assert.Equal(["Property from Thing"], actual.Name);
+        Assert.Equal(["My Test String"], actual.MyCustomProperty);
     }
 
     [Fact]
@@ -706,8 +706,8 @@ public class ValuesJsonConverterTest
             """;
         var result = DeserializeObject<Values<string, ExternalSchemaModelSharedNamespace>>(json);
         var actual = Assert.Single(result.Value2);
-        Assert.Equal(new[] { "Property from Thing" }, actual.Name);
-        Assert.Equal(new[] { "My Test String" }, actual.MyCustomProperty);
+        Assert.Equal(["Property from Thing"], actual.Name);
+        Assert.Equal(["My Test String"], actual.MyCustomProperty);
     }
 
     [Fact]
@@ -728,8 +728,8 @@ public class ValuesJsonConverterTest
         var result = DeserializeObject<Values<string, IThing>>(json);
         var actual = Assert.Single(result.Value2);
         Assert.IsType<SomeCustomNamespace.ExternalSchemaModelCustomNamespace>(actual);
-        Assert.Equal(new[] { "Property from Thing" }, actual.Name);
-        Assert.Equal(new[] { "My Test String" }, ((SomeCustomNamespace.ExternalSchemaModelCustomNamespace)actual).MyCustomProperty);
+        Assert.Equal(["Property from Thing"], actual.Name);
+        Assert.Equal(["My Test String"], ((SomeCustomNamespace.ExternalSchemaModelCustomNamespace)actual).MyCustomProperty);
     }
 
     [Fact]
@@ -750,8 +750,8 @@ public class ValuesJsonConverterTest
         var result = DeserializeObject<Values<string, IThing>>(json);
         var actual = Assert.Single(result.Value2);
         Assert.IsType<ExternalSchemaModelSharedNamespace>(actual);
-        Assert.Equal(new[] { "Property from Thing" }, actual.Name);
-        Assert.Equal(new[] { "My Test String" }, ((ExternalSchemaModelSharedNamespace)actual).MyCustomProperty);
+        Assert.Equal(["Property from Thing"], actual.Name);
+        Assert.Equal(["My Test String"], ((ExternalSchemaModelSharedNamespace)actual).MyCustomProperty);
     }
 
     [Fact]

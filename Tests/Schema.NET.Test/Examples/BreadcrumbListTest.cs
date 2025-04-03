@@ -9,22 +9,22 @@ public class BreadcrumbListTest
 {
     private readonly BreadcrumbList breadcrumbList = new()
     {
-        ItemListElement = new List<IListItem>()
-            {
-                new ListItem()
+        ItemListElement = new List<IListItem?>
+        {
+                new ListItem
                 {
                     Position = 1,
-                    Item = new Book()
+                    Item = new Book
                     {
                         Id = new Uri("https://example.com/books"),
                         Name = "Books",
                         Image = new Uri("https://example.com/images/icon-book.png"),
                     },
                 },
-                new ListItem()
+                new ListItem
                 {
                     Position = 2,
-                    Item = new Person()
+                    Item = new Person
                     {
                         Id = new Uri("https://example.com/books/authors"),
                         Name = "Authors",

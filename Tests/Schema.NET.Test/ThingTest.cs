@@ -204,7 +204,7 @@ public class ThingTest
     {
         var thing = new Thing();
 
-        Assert.True(thing.TrySetValue("Name", new[] { "TestName" }));
+        Assert.True(thing.TrySetValue("Name", ["TestName"]));
         Assert.Equal("TestName", thing.Name);
     }
 
@@ -213,7 +213,7 @@ public class ThingTest
     {
         var thing = new Thing();
 
-        Assert.False(thing.TrySetValue("InvalidName", new[] { "TestName" }));
+        Assert.False(thing.TrySetValue("InvalidName", ["TestName"]));
     }
 
     [Fact]
@@ -221,7 +221,7 @@ public class ThingTest
     {
         var thing = new Thing();
 
-        Assert.True(thing.TrySetValue("name", new[] { "TestName" }));
+        Assert.True(thing.TrySetValue("name", ["TestName"]));
         Assert.Equal("TestName", thing.Name);
     }
 

@@ -10,10 +10,15 @@ using Schema.NET.Tool.CustomOverrides;
 using Schema.NET.Tool.GeneratorModels;
 using Schema.NET.Tool.Repositories;
 
-public class SchemaService
+public partial class SchemaService
 {
-    private static readonly Regex StartsWithNumber = new("^[0-9]", RegexOptions.Compiled);
-
+#if NET8_0_OR_GREATER
+    [GeneratedRegex("^[0-9]", RegexOptions.Compiled)]
+    private static partial Regex StartsWithNumber();
+#else
+    private static readonly Regex StartsWithNumberRegex = new Regex("^[0-9]", RegexOptions.Compiled);
+    private static Regex StartsWithNumber() => StartsWithNumberRegex;
+#endif
     private readonly IEnumerable<IClassOverride> classOverrides;
     private readonly IEnumerable<IEnumerationOverride> enumerationOverrides;
     private readonly ISchemaRepository schemaRepository;
@@ -63,7 +68,7 @@ public class SchemaService
             {
                 if (!classPropertyMap.TryGetValue(schemaClass.Id, out var classProperties))
                 {
-                    classProperties = Array.Empty<Models.SchemaProperty>();
+                    classProperties = [];
                 }
 
                 var @class = TranslateClass(schemaClass, schemaClasses, classProperties, isEnumMap, knownSchemaClasses, this.includePending);
@@ -158,9 +163,9 @@ public class SchemaService
                 property.Order = propertyOrder;
 
                 var upperPropertyName = property.Name.ToUpperInvariant();
-                if (PropertyNameComparer.KnownPropertyNameOrders.ContainsKey(upperPropertyName))
+                if (PropertyNameComparer.KnownPropertyNameOrders.TryGetValue(upperPropertyName, out var order))
                 {
-                    property.Order = PropertyNameComparer.KnownPropertyNameOrders[upperPropertyName];
+                    property.Order = order;
                 }
 
                 ++propertyOrder;
@@ -218,7 +223,7 @@ public class SchemaService
         HashSet<Uri> knownSchemaClasses,
         bool includePending)
     {
-        var className = StartsWithNumber.IsMatch(schemaClass.Label) ? $"Type{schemaClass.Label}" : schemaClass.Label;
+        var className = StartsWithNumber().IsMatch(schemaClass.Label) ? $"Type{schemaClass.Label}" : schemaClass.Label;
         var @class = new GeneratorSchemaClass(schemaClass.Layer, schemaClass.Id, className, schemaClass.Comment);
 
         @class.Parents.AddRange(schemaClass.SubClassOfIds
@@ -294,47 +299,47 @@ public class SchemaService
         return stringBuilder.ToString();
     }
 
-    private static IEnumerable<string> GetCSharpTypeStrings(string propertyName, string typeName, bool isTypeEnum)
+    private static string[] GetCSharpTypeStrings(string propertyName, string typeName, bool isTypeEnum)
     {
         switch (typeName)
         {
             case "Boolean":
-                return new string[] { "bool?" };
+                return ["bool?"];
             case "DataType":
-                return new string[] { "bool?", "int?", "decimal?", "double?", "DateTime?", "TimeSpan?", "string" };
+                return ["bool?", "int?", "decimal?", "double?", "DateTime?", "TimeSpan?", "string"];
             case "Date":
-                return new string[] { "int?", "DateTime?" };
+                return ["int?", "DateTime?"];
             case "DateTime":
-                return new string[] { "DateTimeOffset?" };
+                return ["DateTimeOffset?"];
             case "Integer":
             case "Number" when
 #if NETSTANDARD2_0
-                    propertyName.Contains("NumberOf") ||
+                propertyName.Contains("NumberOf") ||
                 propertyName.Contains("Year") ||
                 propertyName.Contains("Count") ||
                 propertyName.Contains("Age"):
 #else
-                    propertyName.Contains("NumberOf", StringComparison.Ordinal) ||
-                    propertyName.Contains("Year", StringComparison.Ordinal) ||
-                    propertyName.Contains("Count", StringComparison.Ordinal) ||
-                    propertyName.Contains("Age", StringComparison.Ordinal):
+                propertyName.Contains("NumberOf", StringComparison.Ordinal) ||
+                propertyName.Contains("Year", StringComparison.Ordinal) ||
+                propertyName.Contains("Count", StringComparison.Ordinal) ||
+                propertyName.Contains("Age", StringComparison.Ordinal):
 #endif
-                return new string[] { "int?" };
+                return ["int?"];
             case "Number" when
 #if NETSTANDARD2_0
-                    propertyName.Contains("Price") ||
+                propertyName.Contains("Price") ||
                 propertyName.Contains("Amount") ||
                 propertyName.Contains("Salary") ||
                 propertyName.Contains("Discount"):
 #else
-                    propertyName.Contains("Price", StringComparison.Ordinal) ||
-                    propertyName.Contains("Amount", StringComparison.Ordinal) ||
-                    propertyName.Contains("Salary", StringComparison.Ordinal) ||
-                    propertyName.Contains("Discount", StringComparison.Ordinal):
+                propertyName.Contains("Price", StringComparison.Ordinal) ||
+                propertyName.Contains("Amount", StringComparison.Ordinal) ||
+                propertyName.Contains("Salary", StringComparison.Ordinal) ||
+                propertyName.Contains("Discount", StringComparison.Ordinal):
 #endif
-                return new string[] { "decimal?" };
+                return ["decimal?"];
             case "Number":
-                return new string[] { "double?" };
+                return ["double?"];
             case "Text":
             case "Distance":
             case "Energy":
@@ -342,20 +347,20 @@ public class SchemaService
             case "XPathType":
             case "CssSelectorType":
             case "PronounceableText":
-                return new string[] { "string" };
+                return ["string"];
             case "Time":
             case "Duration":
-                return new string[] { "TimeSpan?" };
+                return ["TimeSpan?"];
             case "URL":
-                return new string[] { "Uri" };
+                return ["Uri"];
             default:
                 if (isTypeEnum)
                 {
-                    return new string[] { typeName + "?" };
+                    return [typeName + "?"];
                 }
                 else
                 {
-                    return new string[] { "I" + typeName };
+                    return ["I" + typeName];
                 }
         }
     }

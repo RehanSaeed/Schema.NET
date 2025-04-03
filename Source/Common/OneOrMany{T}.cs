@@ -13,7 +13,7 @@ using System.Linq;
 #pragma warning disable CA1710 // Identifiers should have correct suffix.
 public readonly struct OneOrMany<T>
 #pragma warning restore CA1710 // Identifiers should have correct suffix.
-    : IReadOnlyCollection<T>, IEnumerable<T>, IValues, IEquatable<OneOrMany<T>>
+    : IReadOnlyCollection<T>, IValues, IEquatable<OneOrMany<T>>
 {
     private readonly T[]? collection;
 
@@ -21,7 +21,7 @@ public readonly struct OneOrMany<T>
     /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
     /// </summary>
     /// <param name="item">The single item value.</param>
-    public OneOrMany(T item)
+    public OneOrMany(T? item)
     {
         if (item is null || (item is string itemAsString && string.IsNullOrWhiteSpace(itemAsString)))
         {
@@ -39,7 +39,7 @@ public readonly struct OneOrMany<T>
     /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
     /// </summary>
     /// <param name="span">The span of values.</param>
-    public OneOrMany(ReadOnlySpan<T> span)
+    public OneOrMany(ReadOnlySpan<T?> span)
     {
         if (!span.IsEmpty)
         {
@@ -53,7 +53,7 @@ public readonly struct OneOrMany<T>
                     var item = span[i];
                     if (!string.IsNullOrWhiteSpace(item as string))
                     {
-                        items[index] = item;
+                        items[index] = item!;
                         index++;
                     }
                 }
@@ -96,7 +96,7 @@ public readonly struct OneOrMany<T>
     /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
     /// </summary>
     /// <param name="array">The array of values.</param>
-    public OneOrMany(params T[] array)
+    public OneOrMany(params T?[] array)
         : this(array.AsSpan())
     {
     }
@@ -105,7 +105,7 @@ public readonly struct OneOrMany<T>
     /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
     /// </summary>
     /// <param name="collection">The collection of values.</param>
-    public OneOrMany(IEnumerable<T> collection)
+    public OneOrMany(IEnumerable<T?> collection)
         : this(collection.ToArray().AsSpan())
     {
     }
@@ -114,8 +114,8 @@ public readonly struct OneOrMany<T>
     /// Initializes a new instance of the <see cref="OneOrMany{T}"/> struct.
     /// </summary>
     /// <param name="collection">The list of values.</param>
-    public OneOrMany(IEnumerable<object> collection)
-        : this(collection.Cast<T>().ToArray().AsSpan())
+    public OneOrMany(IEnumerable<object?> collection)
+        : this(collection.Cast<T?>().ToArray().AsSpan())
     {
     }
 
@@ -142,14 +142,14 @@ public readonly struct OneOrMany<T>
     /// <param name="item">The single item value.</param>
     /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA2225 // Operator overloads have named alternates
-    public static implicit operator OneOrMany<T>(T item) => new(item);
+    public static implicit operator OneOrMany<T>(T? item) => new(item);
 
     /// <summary>
     /// Performs an implicit conversion from <typeparamref name="T[]"/> to <see cref="OneOrMany{T}"/>.
     /// </summary>
     /// <param name="array">The array of values.</param>
     /// <returns>The result of the conversion.</returns>
-    public static implicit operator OneOrMany<T>(T[] array) => new(array);
+    public static implicit operator OneOrMany<T>(T?[] array) => new(array);
 
     /// <summary>
     /// Performs an implicit conversion from <see cref="List{T}"/> to <see cref="OneOrMany{T}"/>.
@@ -157,7 +157,7 @@ public readonly struct OneOrMany<T>
     /// <param name="list">The list of values.</param>
     /// <returns>The result of the conversion.</returns>
 #pragma warning disable CA1002 // Do not expose generic lists
-    public static implicit operator OneOrMany<T>(List<T> list) => new(list);
+    public static implicit operator OneOrMany<T>(List<T?> list) => new(list);
 #pragma warning restore CA1002 // Do not expose generic lists
 
     /// <summary>
@@ -239,7 +239,7 @@ public readonly struct OneOrMany<T>
     {
         if (this.HasOne)
         {
-            return new[] { this.collection![0] };
+            return [this.collection![0]];
         }
         else if (this.HasMany)
         {
@@ -249,7 +249,7 @@ public readonly struct OneOrMany<T>
         }
         else
         {
-            return Array.Empty<T>();
+            return [];
         }
     }
 

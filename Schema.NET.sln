@@ -127,6 +127,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A208CE34-D
 		Data\schemaorg-all-https.jsonld = Data\schemaorg-all-https.jsonld
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.NET.Tool.VisualStudio", "Tools\Schema.NET.Tool.VisualStudio\Schema.NET.Tool.VisualStudio.csproj", "{647EABEE-FB8C-465B-A18E-1B300F6E4615}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5EC26412-D03A-4E67-B9D6-B6E733318879}"
+	ProjectSection(SolutionItems) = preProject
+		Tools\Common\Constants\LayerName.cs = Tools\Common\Constants\LayerName.cs
+		Tools\Common\CustomOverrides\AddNumberTypeToMediaObjectHeightAndWidth.cs = Tools\Common\CustomOverrides\AddNumberTypeToMediaObjectHeightAndWidth.cs
+		Tools\Common\CustomOverrides\AddQueryInputPropertyToSearchAction.cs = Tools\Common\CustomOverrides\AddQueryInputPropertyToSearchAction.cs
+		Tools\Common\CustomOverrides\IClassOverride.cs = Tools\Common\CustomOverrides\IClassOverride.cs
+		Tools\Common\CustomOverrides\IEnumerationOverride.cs = Tools\Common\CustomOverrides\IEnumerationOverride.cs
+		Tools\Common\CustomOverrides\RenameEventProperty.cs = Tools\Common\CustomOverrides\RenameEventProperty.cs
+		Tools\Common\GeneratorModels\GeneratorSchemaClass.cs = Tools\Common\GeneratorModels\GeneratorSchemaClass.cs
+		Tools\Common\GeneratorModels\GeneratorSchemaEnumeration.cs = Tools\Common\GeneratorModels\GeneratorSchemaEnumeration.cs
+		Tools\Common\GeneratorModels\GeneratorSchemaEnumerationValue.cs = Tools\Common\GeneratorModels\GeneratorSchemaEnumerationValue.cs
+		Tools\Common\GeneratorModels\GeneratorSchemaObject.cs = Tools\Common\GeneratorModels\GeneratorSchemaObject.cs
+		Tools\Common\GeneratorModels\GeneratorSchemaProperty.cs = Tools\Common\GeneratorModels\GeneratorSchemaProperty.cs
+		Tools\Common\GeneratorModels\GeneratorSchemaPropertyType.cs = Tools\Common\GeneratorModels\GeneratorSchemaPropertyType.cs
+		Tools\Common\Models\SchemaClass.cs = Tools\Common\Models\SchemaClass.cs
+		Tools\Common\Models\SchemaEnumerationValue.cs = Tools\Common\Models\SchemaEnumerationValue.cs
+		Tools\Common\Models\SchemaObject.cs = Tools\Common\Models\SchemaObject.cs
+		Tools\Common\Models\SchemaProperty.cs = Tools\Common\Models\SchemaProperty.cs
+		Tools\Common\Models\SchemaTreeClass.cs = Tools\Common\Models\SchemaTreeClass.cs
+		Tools\Common\Repositories\ISchemaRepository.cs = Tools\Common\Repositories\ISchemaRepository.cs
+		Tools\Common\Repositories\SchemaPropertyJsonConverter.cs = Tools\Common\Repositories\SchemaPropertyJsonConverter.cs
+		Tools\Common\Repositories\SchemaRepository.cs = Tools\Common\Repositories\SchemaRepository.cs
+		Tools\Common\Services\EnumerationValueComparer.cs = Tools\Common\Services\EnumerationValueComparer.cs
+		Tools\Common\Services\ISchemaService.cs = Tools\Common\Services\ISchemaService.cs
+		Tools\Common\Services\PropertyNameComparer.cs = Tools\Common\Services\PropertyNameComparer.cs
+		Tools\Common\Services\SchemaService.cs = Tools\Common\Services\SchemaService.cs
+		Tools\Common\CollectionExtensions.cs = Tools\Common\CollectionExtensions.cs
+		Tools\Common\EnumerableExtensions.cs = Tools\Common\EnumerableExtensions.cs
+		Tools\Common\SchemaSourceGenerator.cs = Tools\Common\SchemaSourceGenerator.cs
+		Tools\Common\SourceDelimeter.cs = Tools\Common\SourceDelimeter.cs
+		Tools\Common\SourceUtility.cs = Tools\Common\SourceUtility.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +192,10 @@ Global
 		{8923F9E2-4BB8-45F9-9A85-863F381B46EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8923F9E2-4BB8-45F9-9A85-863F381B46EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8923F9E2-4BB8-45F9-9A85-863F381B46EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{647EABEE-FB8C-465B-A18E-1B300F6E4615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{647EABEE-FB8C-465B-A18E-1B300F6E4615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{647EABEE-FB8C-465B-A18E-1B300F6E4615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{647EABEE-FB8C-465B-A18E-1B300F6E4615}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -173,6 +212,8 @@ Global
 		{4EDF33FF-4532-4328-A158-D026C66537BA} = {719809C2-A551-4C4A-9EFD-B10FB5E35BC0}
 		{AF228B8A-7290-4E26-8506-934C290C6AE3} = {719809C2-A551-4C4A-9EFD-B10FB5E35BC0}
 		{8923F9E2-4BB8-45F9-9A85-863F381B46EE} = {1D81D082-9C25-4D4E-890E-9CD173532307}
+		{647EABEE-FB8C-465B-A18E-1B300F6E4615} = {1D81D082-9C25-4D4E-890E-9CD173532307}
+		{5EC26412-D03A-4E67-B9D6-B6E733318879} = {1D81D082-9C25-4D4E-890E-9CD173532307}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {73F36209-F8D6-4066-8951-D97729F773CF}
